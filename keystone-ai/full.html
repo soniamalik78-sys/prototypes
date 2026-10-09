@@ -511,6 +511,31 @@ footer b{color:var(--fg)}
 .ladder li span{color:var(--muted)}
 .packet{background:var(--sunk); border:1px solid var(--line); border-radius:var(--r); padding:12px 14px; margin-bottom:12px}
 .packet .kv{margin-top:6px}
+/* compact header + When we meet (one viewport) */
+.thesis{max-width:none}
+.eyebrow .pill.neutral{white-space:nowrap}
+#overview > .lede{max-width:100ch}
+#meet{padding-top:16px}
+.tab{padding-inline:10px}
+.hero{padding-block:30px 22px}
+.thesis{margin-top:12px}
+#meet .sec-head{margin-bottom:10px; gap:2px}
+#meet .locks.meet3{grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px}
+#meet .lockcard{padding:13px 14px; gap:6px}
+#meet .lockcard h3{font-size:1.02rem}
+#meet .lockcard p, #meet .lockcard ul, #meet .qs{font-size:.84rem}
+#meet .qs{gap:3px; padding-left:18px}
+#meet .veil{padding:6px 10px; font-size:.8rem}
+#meet .d90 h3{font-size:.95rem}
+#meet .lockcard.d90{margin-top:10px; padding-block:10px; grid-template-columns:minmax(0,1.1fr) repeat(3,minmax(0,1fr)); gap:8px 16px; align-items:start; font-size:.84rem}
+#meet .d90 > div > b{display:block; color:var(--accent-ink)}
+#meet .d90 .badge{margin-bottom:6px}
+#meet .cta{margin-top:10px; padding:10px 16px; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:2px 16px}
+#meet .cta h3{font-size:1.1rem}
+#meet .cta p{font-size:.86rem}
+#meet .cta > div{grid-column:2; grid-row:1 / span 2}
+@media (max-width:820px){ #meet .locks.meet3, #meet .lockcard.d90{grid-template-columns:1fr} #meet .cta{grid-template-columns:1fr} #meet .cta > div{grid-column:1; grid-row:auto} }
+@media (max-width:640px){ .eyebrow .pill.neutral{white-space:normal} }
 </style>
 </head>
 <body>
@@ -520,11 +545,11 @@ footer b{color:var(--fg)}
   <header class="hero">
     <div class="eyebrow">
       <span class="pill">Prototype by Sonia Malik</span>
-      <span class="pill neutral">Prepared for State Street: Global Head of AI, MD · AI Strategy &amp; Transformation</span>
+      <span class="pill neutral">Prepared for State Street · Global Head of AI · AI Strategy &amp; Transformation</span>
     </div>
     <div class="brand"><svg class="ksmark" viewBox="0 0 48 40" aria-hidden="true"><path class="arch-ring" d="M6 38 V20 A18 18 0 0 1 42 20 V38"/><path class="arch-key" d="M20 3 H28 L26.5 12 H21.5 Z"/><path class="arch-stones" d="M10 38 V21 M38 38 V21"/></svg>KEYSTONE</div>
     <div class="pron">The stone at the top of an arch that holds the others in place</div>
-    <p class="thesis">An AI portfolio run on evidence: clear intake and prioritization, value measured against a baseline, and governance forums that decide what to fund, scale or stop.</p>
+    <p class="thesis">An AI portfolio run on evidence, from intake to value at scale.</p>
   </header>
 
   <div class="tabbar">
@@ -543,7 +568,7 @@ footer b{color:var(--fg)}
 
   <!-- OVERVIEW -->
   <section class="pane" id="overview" role="tabpanel" aria-labelledby="t-overview">
-    <p class="lede">KEYSTONE is the model I would propose for AI strategy and transformation: one portfolio of AI use cases with intake and prioritization, steering-committee governance, a value framework, employee AI enablement, and vendor and tool evaluation, all resting on controls in the delivery pipeline. It is an illustrative prototype with sample data, not connected to any company's systems.</p>
+    <p class="lede">A proposed model for AI strategy and transformation: intake and prioritization, steering-committee forums, value measured against a baseline, employee AI enablement and vendor review, on pipeline controls. Sample data; not connected to any company's systems.</p>
     <div class="proof">
       <div><b class="mono">~400</b><span>engineers on governed AI workflows within 13 months</span></div>
       <div><b class="mono">10+</b><span>AI developer tools reviewed against build–buy–partner criteria, preventing tool sprawl</span></div>
@@ -813,34 +838,29 @@ footer b{color:var(--fg)}
   <!-- WHEN WE MEET -->
   <section class="pane" id="meet" role="tabpanel" aria-labelledby="t-meet" hidden>
     <div class="sec-head">
-      <span class="label">When we meet</span>
+      <span class="label">When we meet · previews I would walk through live</span>
       <h2>Some of KEYSTONE is better shown than read</h2>
-      <p class="lede">These are previews. I would walk through each one live.</p>
     </div>
-    <div class="locks">
+    <div class="locks meet3">
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Live walkthrough</span>
         <h3>An AI use case, from idea to scale</h3>
-        <p>How intake, the baseline, the pilot and the steering committee decision fit together, and what the portfolio record looks like afterwards.</p>
+        <p>Intake, baseline, pilot and the steering committee decision, and the portfolio record they leave.</p>
       </div>
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Deep dive</span>
-        <h3>Measuring AI value without fooling ourselves</h3>
+        <h3>Measuring AI value honestly</h3>
         <ul><li>Baselines before pilots</li><li>Adoption versus usage</li><li>When to stop a use case</li></ul>
-        <div class="veil-wrap"><p class="veil">How baselines are set at intake, how adoption is separated from novelty usage, and the stop criteria the steering committee applies.</p></div>
-      </div>
-      <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>First 90 days</span>
-        <h3>Inventory, then guardrails, then reporting</h3>
-        <ul><li><b>Days 1–30:</b> meet business and technology leaders; inventory AI use cases, tools and vendors</li><li><b>Days 31–60:</b> intake and prioritization in place; value framework agreed with Finance; first steering committee</li><li><b>Days 61–90:</b> first portfolio review with KPIs against baselines; employee enablement plan launched</li></ul>
-        <div class="veil-wrap"><p class="veil">Which use cases I would prioritize first, how the forums would run, and the three numbers I would commit to by day 90.</p></div>
+        <div class="veil-wrap"><p class="veil">How baselines and stop rules are set.</p></div>
       </div>
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Questions I'd bring</span>
         <h3>What I would want to learn from you</h3>
-        <ol class="qs"><li>Which AI use cases matter most to the firm&rsquo;s priorities today?</li><li>How are AI use cases funded and measured now?</li><li>Which AI tools and vendors are in use, and how were they chosen?</li></ol>
+        <ol class="qs"><li>Which AI use cases matter most today?</li><li>How are use cases funded and measured?</li><li>Which AI tools are in use, and why?</li></ol>
       </div>
     </div>
+    <div class="lockcard d90"><div><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>First 90 days</span><h3>Inventory, intake, portfolio review</h3></div><div><b>Days 1–30</b>Meet leaders; inventory AI use cases, tools and vendors</div><div><b>Days 31–60</b>Intake and value framework set with Finance; first steering committee</div><div><b>Days 61–90</b>First portfolio review vs. baselines; enablement plan launched</div></div>
     <div class="cta">
       <h3>I would welcome the conversation</h3>
       <div><button class="talk" type="button" data-contact>Let&rsquo;s talk</button></div>
-      <p>Thirty minutes is enough to walk through the AI portfolio view, a use case from idea to scale, and the first 90 days.</p>
+      <p>Thirty minutes is enough for the AI portfolio view, a use case from idea to scale, and the first 90 days.</p>
     </div>
   </section>
 
