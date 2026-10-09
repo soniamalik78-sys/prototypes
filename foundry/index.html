@@ -1,0 +1,1058 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>FOUNDRY Executive Preview</title>
+<meta name="description" content="FOUNDRY: a prototype by Sonia Malik of an AI Engineering Center of Excellence operating model, with sample data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: single reading column (max 1040px), arch-ring hero, tabbed panes; trace demo is a 4-step stepper; tables scroll inside their own box. */
+:root{
+  --bg:#F5F3F5; --surface:#FFFFFF; --sunk:#ECE7EC; --fg:#1E1A1F; --muted:#5F5761; --faint:#877E89;
+  --line:#DED7DF; --line-strong:#C5BBC7;
+  --accent:#6B3A6E; --accent-soft:#F1E6F1; --accent-ink:#552A58;
+  --vine:#4A6B5C;
+  --ok:#2E7D4F; --ok-bg:#E3F2E8; --warn:#8F5E00; --warn-bg:#FBF0D9; --bad:#B3373F; --bad-bg:#F9E3E4;
+  --lattice:rgba(107,58,110,0.10);
+  --f-display:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-body:"Public Sans", "Segoe UI", Arial, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#151216; --surface:#1E1A1F; --sunk:#29232A; --fg:#EEE8EF; --muted:#B5ABB7; --faint:#8F8591;
+  --line:#362F38; --line-strong:#4B424D;
+  --accent:#CE9FD1; --accent-soft:#3A273C; --accent-ink:#E2BEE4; --vine:#8FBFA8;
+  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F;
+  --lattice:rgba(206,159,209,0.09); color-scheme:dark; } }
+:root[data-theme="dark"]{
+  --bg:#151216; --surface:#1E1A1F; --sunk:#29232A; --fg:#EEE8EF; --muted:#B5ABB7; --faint:#8F8591;
+  --line:#362F38; --line-strong:#4B424D;
+  --accent:#CE9FD1; --accent-soft:#3A273C; --accent-ink:#E2BEE4; --vine:#8FBFA8;
+  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F;
+  --lattice:rgba(206,159,209,0.09); color-scheme:dark; }
+
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--fg); font-family:var(--f-body); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1040px; margin:0 auto; padding-inline:20px; padding-block:0 64px;}
+h1,h2,h3{font-family:var(--f-display); font-weight:500; text-wrap:balance; margin:0;}
+h2{font-size:clamp(1.5rem,3vw,1.9rem); line-height:1.2;}
+h3{font-size:1.15rem; line-height:1.3;}
+p{margin:0}
+.lede{color:var(--muted); max-width:66ch;}
+.label{font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--faint);}
+.mono{font-family:var(--f-mono); font-variant-numeric:tabular-nums;}
+a{color:var(--accent-ink)}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:4px}
+
+/* Hero with lattice */
+.hero{position:relative; padding-block:56px 40px; border-bottom:1px solid var(--line);}
+.hero::before{content:""; position:absolute; inset:0; z-index:-1;
+  background:
+    repeating-radial-gradient(circle at 86% 115%, transparent 0 30px, var(--lattice) 30px 31px);
+  -webkit-mask-image:linear-gradient(to bottom, #000 0%, transparent 100%); mask-image:linear-gradient(to bottom, #000 0%, transparent 100%);}
+.hero{isolation:isolate}
+.eyebrow{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin-bottom:18px;}
+.pill{display:inline-flex; align-items:center; gap:6px; font-size:.75rem; font-weight:600; padding:3px 10px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink);}
+.pill.neutral{background:var(--sunk); color:var(--muted)}
+.brand{font-family:var(--f-display); font-size:clamp(3rem,9vw,5.6rem); line-height:.95; letter-spacing:.02em; font-weight:500;}
+.pron{font-family:var(--f-mono); font-size:.85rem; color:var(--faint); margin-top:8px;}
+.thesis{font-family:var(--f-display); font-size:clamp(1.25rem,2.6vw,1.6rem); line-height:1.35; max-width:30ch; margin-top:22px;}
+.hero .lede{margin-top:14px}
+.hero-meta{display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:26px; font-size:.9rem; color:var(--muted)}
+.hero-meta b{color:var(--fg); font-weight:600}
+
+section{padding-block:52px 8px}
+.sec-head{display:grid; gap:10px; margin-bottom:24px}
+
+/* Lifecycle */
+.flow{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; position:relative}
+@media (max-width:900px){ .flow{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:480px){ .flow{grid-template-columns:1fr} }
+.stage{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:16px 16px 18px; display:grid; gap:8px; align-content:start; min-width:0}
+.stage .step{font-family:var(--f-mono); font-size:.75rem; color:var(--accent-ink)}
+.stage h3{font-size:1.1rem}
+.stage ul{margin:0; padding-left:18px; color:var(--muted); font-size:.88rem; display:grid; gap:4px}
+.nist{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px}
+.nist span{font-family:var(--f-mono); font-size:.7rem; padding:1px 7px; border-radius:6px; border:1px solid var(--line-strong); color:var(--muted)}
+.vine{margin-top:14px; height:6px; border-radius:6px; background:linear-gradient(90deg, var(--vine), var(--accent)); opacity:.75}
+.flow-note{margin-top:12px; font-size:.88rem; color:var(--muted)}
+
+/* Demo */
+.demo{background:var(--surface); border:1px solid var(--line); border-radius:14px; overflow:hidden}
+.demo-top{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; padding:16px 18px; border-bottom:1px solid var(--line); background:var(--sunk)}
+.cases{display:flex; flex-wrap:wrap; gap:8px}
+.case-btn{border:1px solid var(--line-strong); background:var(--surface); color:var(--fg); border-radius:999px; padding:6px 14px; font-size:.85rem; cursor:pointer}
+.case-btn[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:var(--surface)}
+.reset{background:none; border:none; color:var(--muted); font-size:.85rem; cursor:pointer; text-decoration:underline}
+.steps{display:flex; flex-wrap:wrap; gap:0; border-bottom:1px solid var(--line)}
+.steps button{flex:1 1 140px; background:none; border:none; border-bottom:3px solid transparent; padding:12px 14px; text-align:left; cursor:pointer; color:var(--faint); font-size:.85rem}
+.steps button b{display:block; font-family:var(--f-mono); font-weight:500; font-size:.72rem}
+.steps button.done{color:var(--muted)}
+.steps button.done b::after{content:" ✓"; color:var(--ok)}
+.steps button.on{color:var(--fg); border-bottom-color:var(--accent)}
+.steps button:disabled{cursor:not-allowed; opacity:.55}
+.panel{padding:22px 20px 24px}
+.panel-grid{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:22px}
+@media (max-width:820px){ .panel-grid{grid-template-columns:1fr} }
+.case-card{display:grid; gap:6px}
+.case-card h3{font-size:1.3rem}
+.kv{display:grid; grid-template-columns:auto 1fr; gap:4px 14px; font-size:.88rem; margin-top:8px}
+.kv dt{color:var(--faint)} .kv dd{margin:0}
+.q{display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid var(--line)}
+.q:last-child{border-bottom:none}
+.q label{flex:1; font-size:.92rem; cursor:pointer}
+.q small{display:block; color:var(--faint); font-size:.8rem}
+.switch{appearance:none; -webkit-appearance:none; width:38px; height:22px; border-radius:22px; background:var(--line-strong); position:relative; cursor:pointer; flex:0 0 auto; margin-top:2px; transition:background .15s}
+.switch::after{content:""; position:absolute; top:3px; left:3px; width:16px; height:16px; border-radius:50%; background:var(--surface); transition:transform .15s}
+.switch:checked{background:var(--accent)}
+.switch:checked::after{transform:translateX(16px)}
+.tier{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; padding:14px 16px; border-radius:var(--r); border:1px solid var(--line)}
+.tier .t{font-family:var(--f-display); font-size:1.6rem}
+.tier.Standard{background:var(--ok-bg)} .tier.Standard .t{color:var(--ok)}
+.tier.Elevated{background:var(--warn-bg)} .tier.Elevated .t{color:var(--warn)}
+.tier.High{background:var(--bad-bg)} .tier.High .t{color:var(--bad)}
+.tier p{font-size:.85rem; color:var(--muted); flex-basis:100%}
+.controls{list-style:none; margin:14px 0 0; padding:0; display:grid; gap:6px}
+.controls li{display:flex; gap:10px; align-items:flex-start; font-size:.88rem}
+.tag{flex:0 0 auto; font-family:var(--f-mono); font-size:.68rem; padding:2px 7px; border-radius:6px; margin-top:2px}
+.tag.auto{background:var(--accent-soft); color:var(--accent-ink)}
+.tag.person{background:var(--sunk); color:var(--muted); border:1px solid var(--line-strong)}
+.controls li.new{animation:grow .4s ease-out}
+@keyframes grow{from{background:var(--accent-soft)} to{background:transparent}}
+.actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; align-items:center}
+.btn{background:var(--accent); color:var(--surface); border:none; border-radius:8px; padding:10px 16px; font-size:.9rem; font-weight:600; cursor:pointer}
+.btn.ghost{background:none; color:var(--accent-ink); border:1px solid var(--accent)}
+.btn.warn{background:var(--bad)}
+.hint{font-size:.82rem; color:var(--faint)}
+
+.metric{display:grid; grid-template-columns:minmax(120px,190px) minmax(0,1fr) 92px; gap:12px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line); font-size:.88rem}
+@media (max-width:520px){ .metric{grid-template-columns:1fr 84px} .metric .bar{grid-column:1 / -1; grid-row:2} }
+.bar{position:relative; height:10px; background:var(--sunk); border-radius:6px}
+.bar i{position:absolute; inset:0 auto 0 0; border-radius:6px; background:var(--ok); transition:width .6s ease}
+.bar i.fail{background:var(--bad)}
+.bar s{position:absolute; top:-4px; width:2px; height:18px; background:var(--fg); text-decoration:none}
+.score{font-family:var(--f-mono); text-align:right; font-variant-numeric:tabular-nums}
+.score.fail{color:var(--bad)} .score.pass{color:var(--ok)}
+.gate{margin-top:16px; padding:12px 14px; border-radius:var(--r); font-weight:600; font-size:.92rem}
+.gate.pass{background:var(--ok-bg); color:var(--ok)} .gate.fail{background:var(--bad-bg); color:var(--bad)}
+.judge-note{font-size:.82rem; color:var(--muted); margin-top:6px}
+.review-box{border:1px solid var(--line); border-radius:var(--r); padding:16px; display:grid; gap:10px}
+.sample{font-family:var(--f-display); font-size:1.05rem; line-height:1.5; background:var(--sunk); border-left:3px solid var(--accent); padding:12px 14px; border-radius:0 8px 8px 0}
+.checks{display:grid; gap:6px; font-size:.86rem}
+.checks div{display:flex; gap:8px}
+.checks span{color:var(--ok); font-weight:700}
+.result{margin-top:14px; padding:12px 14px; border-radius:var(--r); background:var(--accent-soft); color:var(--accent-ink); font-size:.9rem}
+
+/* Tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--r); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:.88rem; min-width:640px}
+th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+th{font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); font-weight:700; background:var(--sunk)}
+tr:last-child td{border-bottom:none}
+tr.fresh td{animation:grow 1.2s ease-out}
+.chip{display:inline-block; font-size:.72rem; font-weight:600; padding:2px 8px; border-radius:999px}
+.chip.Standard{background:var(--ok-bg); color:var(--ok)} .chip.Elevated{background:var(--warn-bg); color:var(--warn)} .chip.High{background:var(--bad-bg); color:var(--bad)}
+.chip.live{background:var(--accent-soft); color:var(--accent-ink)}
+
+/* Metrics */
+.sample-note{display:inline-block; font-size:.8rem; background:var(--sunk); color:var(--muted); padding:4px 10px; border-radius:6px}
+.tiles{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:16px}
+@media (max-width:820px){ .tiles{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.tile{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; display:grid; gap:2px; min-width:0}
+.tile .v{font-family:var(--f-display); font-size:2rem; line-height:1.1}
+.tile .k{font-size:.84rem; color:var(--muted)}
+.tile .s{font-size:.75rem; color:var(--faint)}
+.charts{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:12px}
+@media (max-width:820px){ .charts{grid-template-columns:1fr} }
+.chart{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px 16px 10px; min-width:0}
+.chart h3{font-family:var(--f-body); font-size:.92rem; font-weight:600}
+.chart p{font-size:.8rem; color:var(--faint)}
+.chart svg{width:100%; height:auto; display:block; margin-top:6px}
+.ax{stroke:var(--line); stroke-width:1}
+.axt{fill:var(--faint); font-family:var(--f-mono); font-size:10px}
+.ln{fill:none; stroke:var(--accent); stroke-width:2.2}
+.ar{fill:var(--accent); opacity:.12}
+.pt{fill:var(--accent)}
+.ptl{fill:var(--fg); font-family:var(--f-mono); font-size:11px; font-weight:500}
+
+/* Plan */
+.plan{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px}
+@media (max-width:820px){ .plan{grid-template-columns:1fr} }
+.plan div{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:16px; display:grid; gap:8px; align-content:start}
+.plan .when{font-family:var(--f-mono); font-size:.78rem; color:var(--accent-ink)}
+.plan p{font-size:.9rem; color:var(--muted)}
+
+/* Under the hood */
+.arch{overflow-x:auto; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px}
+.arch svg{min-width:760px; width:100%; height:auto; display:block}
+.nd rect{fill:var(--surface); stroke:var(--line-strong); stroke-width:1.2}
+.nd.run rect{fill:var(--accent-soft); stroke:var(--accent)}
+.nt{fill:var(--fg); font-family:var(--f-body); font-size:14px; font-weight:600}
+.ns{fill:var(--muted); font-family:var(--f-body); font-size:11.5px}
+.aw{stroke:var(--faint); stroke-width:1.4; fill:none}
+.aw.run{stroke:var(--accent); stroke-width:2}
+.ahp{fill:var(--faint)} .ahr{fill:var(--accent)}
+.arch-legend{display:flex; flex-wrap:wrap; gap:8px 20px; font-size:.8rem; color:var(--muted); margin-top:10px}
+.arch-legend i{display:inline-block; width:18px; height:3px; vertical-align:middle; margin-right:6px; background:var(--faint)}
+.arch-legend i.run{background:var(--accent)}
+.engine{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; margin-top:16px}
+@media (max-width:820px){ .engine{grid-template-columns:1fr} }
+.code{background:var(--sunk); border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; overflow-x:auto; min-width:0}
+.code pre{margin:0; font-family:var(--f-mono); font-size:.78rem; line-height:1.6; color:var(--fg); white-space:pre}
+.code .c{color:var(--faint)} .code .k{color:var(--accent-ink)}
+.code-cap{font-size:.8rem; color:var(--faint); margin-bottom:8px}
+.facts{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; min-width:0}
+@media (max-width:560px){ .facts{grid-template-columns:1fr} }
+.facts div{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px; display:grid; gap:6px; align-content:start; min-width:0}
+.facts h3{font-family:var(--f-body); font-size:.92rem; font-weight:700}
+.facts ul{margin:0; padding-left:16px; font-size:.84rem; color:var(--muted); display:grid; gap:4px}
+.targets{font-size:.8rem; color:var(--faint); margin-top:10px}
+.calib{display:flex; gap:10px; align-items:flex-start; font-size:.86rem; padding:10px 12px; border:1px solid var(--line); border-radius:var(--r); background:var(--sunk); margin-bottom:12px}
+.ev td.st{font-weight:700; white-space:nowrap} .ev td.st.pass{color:var(--ok)} .ev td.st.fail{color:var(--bad)}
+.ev td.num{font-family:var(--f-mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+.ev table{min-width:560px}
+.eval-foot{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; margin-top:14px; align-items:start}
+@media (max-width:820px){ .eval-foot{grid-template-columns:1fr} }
+.chip.shadow{background:var(--warn-bg); color:var(--warn)}
+/* Who it serves */
+.who{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px}
+@media (max-width:900px){ .who{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:560px){ .who{grid-template-columns:1fr} }
+.who article{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:16px; display:grid; gap:10px; align-content:start; min-width:0}
+.who article.primary{border-color:var(--accent)}
+.who .top .pill{white-space:nowrap; flex:0 0 auto}
+.who .top{display:flex; justify-content:space-between; gap:8px; align-items:flex-start}
+.who h3{font-size:1.1rem}
+.who .ask{font-family:var(--f-display); font-style:italic; font-size:1rem; line-height:1.4; color:var(--fg)}
+.ba{display:grid; gap:6px; font-size:.86rem}
+.ba div{display:grid; grid-template-columns:56px minmax(0,1fr); gap:8px; align-items:baseline}
+.ba b{font-size:.68rem; letter-spacing:.06em; text-transform:uppercase}
+.ba .b b{color:var(--faint)} .ba .b span{color:var(--muted)}
+.ba .a b{color:var(--accent-ink)}
+.measure{font-size:.76rem; color:var(--muted); border-top:1px solid var(--line); padding-top:8px}
+.measure span{font-family:var(--f-mono); color:var(--accent-ink)}
+/* One customer moment */
+.moment{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; position:relative}
+.moment::before{content:""; position:absolute; left:6%; right:6%; top:15px; height:2px; background:var(--line-strong)}
+@media (max-width:900px){ .moment{grid-template-columns:1fr} .moment::before{left:15px; right:auto; top:8px; bottom:8px; width:2px; height:auto} }
+.moment li{position:relative; display:grid; gap:6px; align-content:start; min-width:0}
+.moment .dot{width:30px; height:30px; border-radius:50%; background:var(--surface); border:2px solid var(--accent); display:grid; place-items:center; font-family:var(--f-mono); font-size:.75rem; color:var(--accent-ink); position:relative}
+.moment li.alert .dot{border-color:var(--bad); color:var(--bad)}
+@media (max-width:900px){ .moment li{grid-template-columns:30px minmax(0,1fr); column-gap:14px} .moment li > :not(.dot){grid-column:2} .moment .dot{grid-row:1 / span 4} }
+.moment .when{font-family:var(--f-mono); font-size:.74rem; color:var(--faint)}
+.moment h3{font-family:var(--f-body); font-size:.95rem; font-weight:700; line-height:1.35}
+.moment p{font-size:.85rem; color:var(--muted)}
+.moment .ctl{justify-self:start; font-size:.72rem; font-weight:600; padding:2px 8px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink)}
+.moment-foot{margin-top:16px; font-size:.88rem; color:var(--muted); max-width:70ch}
+.watermark{position:fixed; inset:0; z-index:60; pointer-events:none; background:var(--fg); opacity:.06;
+  -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='240'><text x='10' y='150' transform='rotate(-22 210 120)' font-family='Arial, sans-serif' font-size='15' fill='black'>© 2026 Sonia Malik · FOUNDRY prototype</text></svg>"); mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='240'><text x='10' y='150' transform='rotate(-22 210 120)' font-family='Arial, sans-serif' font-size='15' fill='black'>© 2026 Sonia Malik · FOUNDRY prototype</text></svg>"); -webkit-mask-repeat:repeat; mask-repeat:repeat}
+@media print{ .watermark{opacity:.12} }
+
+/* ---------- Floating profile bar + contact card ---------- */
+.wrap{padding-bottom:120px}
+.pf{position:fixed; left:50%; transform:translateX(-50%); bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; width:min(760px, calc(100% - 24px)); background:var(--surface); border:1px solid var(--line-strong); border-radius:16px; box-shadow:0 10px 30px rgba(30,14,32,.18); padding:10px 12px}
+.pf[hidden]{display:none!important}
+.pf-row{display:flex; align-items:center; gap:12px}
+.av{flex:0 0 40px; height:40px; border-radius:50%; background:var(--accent); color:var(--surface); display:grid; place-items:center; font-weight:700; font-size:.9rem; letter-spacing:.02em}
+.pf-min{flex:1 1 auto; min-width:0; display:grid; line-height:1.3}
+.pf-min b{font-size:.92rem}
+.pf-min span{font-size:.8rem; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.pf-btn{flex:0 0 auto; background:none; border:1px solid var(--line-strong); color:var(--fg); border-radius:999px; padding:6px 12px; font-size:.8rem; font-weight:600; cursor:pointer}
+.talk{flex:0 0 auto; background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:8px 16px; font-size:.85rem; font-weight:700; cursor:pointer; white-space:nowrap}
+.pf-x{flex:0 0 auto; background:none; border:none; color:var(--faint); font-size:1.3rem; line-height:1; cursor:pointer; padding:2px 6px}
+.pf-more{margin-top:10px; padding-top:10px; border-top:1px solid var(--line); display:grid; gap:8px; max-height:50vh; overflow:auto}
+.pf-more[hidden]{display:none!important}
+.pf-title{font-size:.82rem; color:var(--accent-ink); font-weight:600}
+.pf-pitch{font-size:.9rem; line-height:1.5}
+.pf-stats{display:flex; flex-wrap:wrap; gap:6px}
+.pf-stats span{border:1px solid var(--line); background:var(--sunk); border-radius:8px; padding:3px 8px; font-size:.76rem; color:var(--fg)}
+.pf-stats b{color:var(--accent-ink)}
+.pf-mini{position:fixed; right:16px; bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; display:flex; align-items:center; gap:8px; background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:6px 14px 6px 6px; font-size:.85rem; font-weight:700; cursor:pointer; box-shadow:0 8px 22px rgba(30,14,32,.22)}
+.pf-mini[hidden]{display:none!important}
+.pf-mini .av{flex-basis:30px; height:30px; background:var(--surface); color:var(--accent-ink); font-size:.75rem}
+@media (max-width:560px){ .pf-min span{display:none} .pf-btn{display:none} }
+.cmodal{position:fixed; inset:0; z-index:120; display:flex; align-items:center; justify-content:center; padding:16px}
+.cmodal[hidden]{display:none!important}
+.cm-back{position:absolute; inset:0; background:rgba(10,20,18,.55)}
+.cm-card{position:relative; background:var(--surface); color:var(--fg); border-radius:14px; border-top:4px solid var(--accent); width:min(520px,100%); max-height:calc(100% - 32px); overflow:auto; padding:22px; box-shadow:0 20px 50px rgba(0,0,0,.3); display:grid; gap:10px}
+.cm-close{position:absolute; top:8px; right:10px; background:none; border:none; font-size:1.6rem; line-height:1; color:var(--faint); cursor:pointer}
+.cm-card h2{font-size:1.4rem}
+.cm-route{font-size:.86rem; background:var(--accent-soft); border-radius:8px; padding:10px 12px}
+.cm-row{display:grid; grid-template-columns:76px minmax(0,1fr) auto; gap:10px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line)}
+.cm-row:last-of-type{border-bottom:none}
+.cm-k{font-size:.72rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--faint)}
+.cm-v{font-weight:600; word-break:break-all; user-select:all}
+.cm-copy{background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:4px 12px; font-size:.78rem; font-weight:700; cursor:pointer}
+.cm-status{font-size:.82rem; color:var(--ok); min-height:1.2em}
+
+.blocks{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px}
+@media (max-width:820px){ .blocks{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:480px){ .blocks{grid-template-columns:1fr} }
+.blocks div{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--vine); border-radius:var(--r); padding:12px 14px; display:grid; gap:4px; min-width:0}
+.blocks b{font-size:.92rem} .blocks span{font-size:.84rem; color:var(--muted)}
+/* Side drawer */
+.wrap{padding-bottom:64px}
+@media (max-width:1180px){ .wrap{padding-right:60px} .tabbar{margin-right:-60px; padding-right:60px} }
+@media (max-width:560px){ .wrap{padding-right:52px} .tabbar{margin-right:-52px; padding-right:52px} }
+.side-tab{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:70; display:flex; flex-direction:column; align-items:center; gap:10px; background:var(--accent); color:var(--surface); border:none; border-radius:12px 0 0 12px; padding:10px 7px 14px; cursor:pointer; box-shadow:-4px 6px 18px rgba(30,14,32,.18)}
+.side-tab .av{flex:0 0 30px; width:30px; height:30px; background:var(--surface); color:var(--accent-ink); font-size:.74rem}
+.side-tab .st-txt{writing-mode:vertical-rl; transform:rotate(180deg); font-size:.82rem; font-weight:700; letter-spacing:.02em; white-space:nowrap}
+@media (max-width:560px){ .side-tab .st-txt{font-size:.74rem} }
+.drawer{position:fixed; top:0; right:0; bottom:0; z-index:90; width:min(380px, 92vw); background:var(--surface); border-left:1px solid var(--line-strong); box-shadow:-12px 0 30px rgba(30,14,32,.18); padding:calc(22px + env(safe-area-inset-top,0px)) 22px calc(22px + env(safe-area-inset-bottom,0px)); overflow:auto; display:grid; gap:14px; align-content:start}
+.drawer[hidden]{display:none!important}
+.dr-close{position:absolute; top:calc(10px + env(safe-area-inset-top,0px)); right:12px; background:none; border:none; font-size:1.6rem; line-height:1; color:var(--faint); cursor:pointer}
+.dr-head{display:flex; gap:12px; align-items:center; padding-right:28px}
+.dr-head .av{flex:0 0 46px; width:46px; height:46px}
+.dr-head b{display:block; font-size:1.05rem}
+.dr-head span{font-size:.8rem; color:var(--muted)}
+.drawer .talk{justify-self:start}
+footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); display:grid; gap:8px; font-size:.86rem; color:var(--muted)}
+footer b{color:var(--fg)}
+.copy{background:none; border:1px solid var(--line-strong); border-radius:6px; padding:2px 8px; font-size:.78rem; color:var(--muted); cursor:pointer; margin-left:6px}
+@media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
+
+/* ---------- Tabbed layout ---------- */
+.tabbar{position:sticky; top:env(safe-area-inset-top,0px); z-index:40; background:var(--bg); border-bottom:1px solid var(--line); margin-inline:-20px; padding-inline:20px}
+.tabs{display:flex; gap:2px; overflow-x:auto; scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto; background:none; border:none; border-bottom:3px solid transparent; padding:14px 14px 11px; font-size:.9rem; font-weight:600; color:var(--muted); cursor:pointer; white-space:nowrap}
+.tab:hover{color:var(--fg)}
+.tab[aria-selected="true"]{color:var(--fg); border-bottom-color:var(--accent)}
+.tab .lock{font-size:.7rem; margin-left:4px; color:var(--faint)}
+.pane{padding-block:36px 8px}
+.pane[hidden]{display:none!important}
+.hero{padding-block:40px 30px}
+.next{display:flex; justify-content:flex-end; margin-top:28px}
+.next button{background:none; border:1px solid var(--accent); color:var(--accent-ink); border-radius:999px; padding:8px 16px; font-size:.88rem; font-weight:600; cursor:pointer}
+
+/* Overview */
+.proof{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:22px}
+@media (max-width:820px){ .proof{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.proof div{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; display:grid; gap:2px; min-width:0}
+.proof b{font-family:var(--f-display); font-weight:500; font-size:1.9rem; line-height:1.1}
+.proof span{font-size:.84rem; color:var(--muted)}
+.proof-note{font-size:.78rem; color:var(--faint); margin-top:8px}
+.pillars{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px}
+@media (max-width:820px){ .pillars{grid-template-columns:1fr} }
+.pillars div{border-top:3px solid var(--accent); background:var(--surface); border-radius:0 0 var(--r) var(--r); padding:14px 16px; display:grid; gap:6px; border-left:1px solid var(--line); border-right:1px solid var(--line); border-bottom:1px solid var(--line)}
+.pillars h3{font-size:1.1rem}
+.pillars p{font-size:.88rem; color:var(--muted)}
+.jump{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px}
+@media (max-width:820px){ .jump{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:480px){ .jump{grid-template-columns:1fr} }
+.jump button{text-align:left; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; cursor:pointer; display:grid; gap:4px; color:var(--fg)}
+.jump button:hover{border-color:var(--accent)}
+.jump b{font-size:.95rem}
+.jump span{font-size:.82rem; color:var(--muted)}
+.jump i{font-style:normal; font-size:.78rem; color:var(--accent-ink); font-weight:600}
+
+/* Who it serves, interactive */
+.who2{display:grid; grid-template-columns:minmax(0,260px) minmax(0,1fr); gap:16px; align-items:start}
+@media (max-width:820px){ .who2{grid-template-columns:1fr} }
+.glist{display:grid; gap:6px}
+@media (max-width:820px){ .glist{display:flex; overflow-x:auto; gap:8px; padding-bottom:4px} .glist button{flex:0 0 auto} }
+.glist button{text-align:left; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:10px 12px; cursor:pointer; color:var(--fg); font-size:.88rem; font-weight:600; display:flex; justify-content:space-between; gap:8px; align-items:center}
+.glist button[aria-pressed="true"]{border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink)}
+.glist small{font-size:.68rem; font-weight:700; color:var(--accent-ink); text-transform:uppercase; letter-spacing:.05em}
+.gcard{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px; display:grid; gap:14px; min-width:0}
+.gcard h3{font-size:1.4rem}
+.gcard .ask{font-family:var(--f-display); font-style:italic; font-size:1.15rem; line-height:1.4}
+.bagrid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:12px}
+@media (max-width:560px){ .bagrid{grid-template-columns:1fr} }
+.bagrid div{border-radius:var(--r); padding:12px 14px; font-size:.9rem; display:grid; gap:4px}
+.bagrid .b{background:var(--sunk); color:var(--muted)}
+.bagrid .a{background:var(--accent-soft); color:var(--fg)}
+.bagrid b{font-size:.68rem; letter-spacing:.06em; text-transform:uppercase}
+.bagrid .a b{color:var(--accent-ink)}
+.lived{border-left:3px solid var(--vine); padding:4px 0 4px 12px; font-size:.88rem; color:var(--muted)}
+.lived b{color:var(--fg)}
+.gcard .measure{border-top:1px solid var(--line); padding-top:10px}
+
+/* Dashboard slider */
+.scrub{display:flex; flex-wrap:wrap; gap:12px 18px; align-items:center; margin:6px 0 4px}
+.scrub label{font-size:.85rem; color:var(--muted)}
+.scrub input[type=range]{flex:1 1 240px; accent-color:var(--accent)}
+.scrub output{font-family:var(--f-mono); font-size:.95rem; min-width:9ch}
+.play{background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:7px 14px; font-size:.85rem; font-weight:600; cursor:pointer}
+.mk{stroke:var(--fg); stroke-width:1; stroke-dasharray:3 3; opacity:.5}
+
+/* Why me */
+.lessons{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
+@media (max-width:820px){ .lessons{grid-template-columns:1fr} }
+.lesson{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:16px; display:grid; gap:8px; align-content:start; min-width:0}
+.lesson .yr{font-family:var(--f-mono); font-size:.75rem; color:var(--faint)}
+.lesson h3{font-size:1.15rem}
+.lesson .quote{font-family:var(--f-display); font-style:italic; font-size:1.02rem; line-height:1.4; color:var(--accent-ink)}
+.lesson ul{margin:0; padding-left:18px; font-size:.86rem; color:var(--muted); display:grid; gap:3px}
+.lesson .shows{font-size:.8rem; color:var(--muted); border-top:1px solid var(--line); padding-top:8px}
+.lesson .shows span{display:inline-block; margin:2px 4px 0 0; padding:1px 8px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink); font-weight:600; font-size:.72rem}
+
+/* When we meet (locked previews) */
+.locks{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
+@media (max-width:820px){ .locks{grid-template-columns:1fr} }
+.lockcard{position:relative; background:var(--surface); border:1px dashed var(--line-strong); border-radius:var(--r); padding:18px; display:grid; gap:8px; align-content:start; overflow:hidden}
+.lockcard .badge{justify-self:start; display:inline-flex; gap:6px; align-items:center; font-size:.72rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--accent-ink); background:var(--accent-soft); padding:3px 9px; border-radius:999px}
+.lockcard h3{font-size:1.15rem}
+.lockcard p{font-size:.88rem; color:var(--muted)}
+.lockcard ul{margin:0; padding-left:18px; font-size:.86rem; color:var(--fg); display:grid; gap:3px}
+.veil{position:relative; font-size:.86rem; color:var(--muted); padding:10px 12px; border-radius:8px; background:var(--sunk); filter:blur(3.5px); user-select:none}
+.veil-wrap{position:relative}
+.veil-wrap::after{content:"Shared in conversation"; position:absolute; inset:0; display:grid; place-items:center; font-size:.78rem; font-weight:700; color:var(--accent-ink)}
+.cta{margin-top:20px; background:var(--accent-soft); border:1px solid var(--accent); border-radius:14px; padding:20px; display:grid; gap:8px}
+.cta h3{font-size:1.3rem}
+.cta p{font-size:.92rem; color:var(--fg)}
+.qs{display:grid; gap:8px; margin:0; padding-left:20px; font-size:.92rem}
+
+.gcard .moment{grid-template-columns:1fr; gap:12px}
+.gcard .moment::before{left:15px; right:auto; top:8px; bottom:8px; width:2px; height:auto}
+.gcard .moment li{grid-template-columns:30px minmax(0,1fr); column-gap:14px}
+.gcard .moment li > :not(.dot){grid-column:2}
+.gcard .moment .dot{grid-row:1 / span 4}
+.gcard .moment h3{font-family:var(--f-body); font-size:.95rem; font-weight:700}
+.sample-note{justify-self:start}
+
+/* ---------- Shared additions ---------- */
+.brand{display:flex; align-items:center; gap:.2em}
+.ksmark{width:.9em; height:.75em; flex:0 0 auto; overflow:visible}
+.ksmark .arch-ring{fill:none; stroke:var(--line-strong); stroke-width:3}
+.ksmark .arch-stones{stroke:var(--line-strong); stroke-width:3}
+.ksmark .arch-key{fill:var(--accent); transform-origin:24px 8px; animation:drop .9s cubic-bezier(.3,1.5,.5,1) both .2s}
+@keyframes drop{0%{transform:translateY(-14px); opacity:0} 100%{transform:none; opacity:1}}
+.pron{font-family:var(--f-body); font-size:.95rem; color:var(--muted); letter-spacing:.01em}
+
+.stages{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:8px; position:relative}
+@media (max-width:900px){ .stages{grid-template-columns:repeat(3,minmax(0,1fr))} }
+@media (max-width:480px){ .stages{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.stages button{text-align:left; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:10px 12px; cursor:pointer; color:var(--fg); display:grid; gap:2px; min-width:0; position:relative}
+.stages button b{font-size:.86rem; line-height:1.25}
+.stages .sn{font-family:var(--f-mono); font-size:.7rem; color:var(--faint)}
+.stages .sk{position:absolute; top:8px; right:10px; font-family:var(--f-mono); font-size:.66rem; color:var(--faint)}
+.stages button[aria-pressed="true"]{border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink)}
+.stages button[aria-pressed="true"] .sn, .stages button[aria-pressed="true"] .sk{color:var(--accent-ink)}
+.cl{margin:4px 0 0; padding-left:18px; display:grid; gap:3px}
+
+.filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px}
+.sub-btn{border:1px solid var(--line-strong); background:var(--surface); color:var(--fg); border-radius:999px; padding:6px 14px; font-size:.85rem; cursor:pointer}
+.sub-btn small{font-family:var(--f-mono); font-size:.7rem; color:var(--faint); margin:0 4px}
+.sub-btn[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:var(--surface)}
+.sub-btn[aria-pressed="true"] small{color:var(--surface); opacity:.8}
+.who2.port{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+@media (max-width:900px){ .who2.port{grid-template-columns:1fr} }
+.ptable{min-width:600px}
+.ptable tr.prow{cursor:pointer}
+.ptable tr.prow:hover td{background:var(--sunk)}
+.ptable tr.prow.sel td{background:var(--accent-soft)}
+.ptable tr.prow:focus-visible{outline:2px solid var(--accent); outline-offset:-2px}
+.ptable td.kpi{font-size:.82rem; color:var(--muted)}
+.chip.stage-Idea{background:var(--sunk); color:var(--muted)}
+.chip.stage-Pilot{background:var(--warn-bg); color:var(--warn)}
+.chip.stage-Scale{background:var(--ok-bg); color:var(--ok)}
+.chip.stage-Stopped{background:var(--bad-bg); color:var(--bad)}
+.ask-line{font-size:.9rem}
+.fn{display:grid; grid-template-columns:130px minmax(0,1fr) 44px; gap:10px; align-items:center; font-size:.86rem; padding:3px 0}
+.fn i{display:block; height:12px; border-radius:6px; background:var(--accent); opacity:.8}
+.fn b{font-weight:500; text-align:right}
+
+.agents{list-style:none; margin:0; padding:0; display:grid; gap:8px}
+.agents li{display:grid; grid-template-columns:36px minmax(0,1fr) auto; gap:4px 12px; align-items:start; padding:12px 14px; border:1px solid var(--line); border-radius:var(--r); background:var(--surface); transition:opacity .25s, border-color .25s}
+.agents li.wait{opacity:.45}
+.agents li.run{border-color:var(--accent)}
+.agents .ai{width:36px; height:32px; border-radius:8px; background:var(--sunk); display:grid; place-items:center; font-family:var(--f-mono); font-size:.68rem; font-weight:600; color:var(--muted); grid-row:1 / span 2}
+.agents li.run .ai{background:var(--accent-soft); color:var(--accent-ink)}
+.agents .an{font-weight:700; font-size:.92rem}
+.agents .af{grid-column:2 / -1; font-size:.86rem; color:var(--muted)}
+.agents .af cite{font-style:normal; font-family:var(--f-mono); font-size:.72rem; color:var(--faint); display:block; margin-top:2px}
+.st{justify-self:end; font-size:.72rem; font-weight:700; padding:2px 9px; border-radius:999px; white-space:nowrap}
+.st.clear{background:var(--ok-bg); color:var(--ok)}
+.st.action{background:var(--warn-bg); color:var(--warn)}
+.st.escalate{background:var(--bad-bg); color:var(--bad)}
+.st.pending{background:var(--sunk); color:var(--faint)}
+.dots::after{content:"…"; animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:.2}}
+.verdict{margin-top:14px; padding:12px 14px; border-radius:var(--r); font-size:.9rem; display:grid; gap:4px}
+.verdict.action{background:var(--warn-bg)} .verdict.escalate{background:var(--bad-bg)}
+.verdict b{font-size:.95rem}
+.paths{display:grid; gap:10px}
+.path{text-align:left; display:grid; gap:6px; padding:14px 16px; border:1px solid var(--line-strong); border-radius:var(--r); background:var(--surface); color:var(--fg); cursor:pointer; font-size:.88rem}
+.path:hover{border-color:var(--accent)}
+.path[aria-pressed="true"]{border-color:var(--accent); background:var(--accent-soft); box-shadow:inset 0 0 0 1px var(--accent)}
+.path .ph{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}
+.path .ph b{font-size:.98rem}
+.path .rec{font-size:.68rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:2px 8px; border-radius:999px; background:var(--accent); color:var(--surface); white-space:nowrap}
+.path p{color:var(--muted)}
+.path .meta{font-family:var(--f-mono); font-size:.72rem; color:var(--faint)}
+.expert{display:flex; gap:10px; align-items:flex-start; padding:12px 14px; border-radius:var(--r); background:var(--sunk); font-size:.88rem; margin-bottom:12px}
+.expert .av{flex:0 0 32px; width:32px; height:32px; font-size:.7rem; background:var(--vine)}
+.ledger td.num{font-family:var(--f-mono); font-size:.78rem; white-space:nowrap; color:var(--faint)}
+.ledger table{min-width:600px}
+.watch{margin-top:14px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:.82rem; color:var(--muted)}
+.watch span{font-family:var(--f-mono); font-size:.72rem; padding:2px 8px; border-radius:6px; border:1px solid var(--line-strong)}
+.bagrid div{align-content:start}
+@media (max-width:640px){
+  .ledger table{min-width:0}
+  .ledger thead{display:none}
+  .ledger tr{display:grid; grid-template-columns:minmax(0,1fr); padding:10px 12px; border-bottom:1px solid var(--line)}
+  .ledger tr:last-child{border-bottom:none}
+  .ledger td{display:block; border:none; padding:1px 0}
+}
+
+.trust-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; align-items:start}
+@media (max-width:820px){ .trust-grid{grid-template-columns:1fr} }
+.ladder{display:grid; gap:10px}
+.ladder ol{list-style:none; margin:0; padding:0; display:grid; gap:8px; counter-reset:lv}
+.ladder li{counter-increment:lv; display:grid; gap:2px; padding:12px 14px 12px 52px; position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); font-size:.88rem}
+.ladder li::before{content:"L" counter(lv); position:absolute; left:12px; top:12px; width:30px; height:26px; border-radius:6px; background:var(--accent-soft); color:var(--accent-ink); display:grid; place-items:center; font-family:var(--f-mono); font-size:.74rem; font-weight:600}
+.ladder li span{color:var(--muted)}
+.packet{background:var(--sunk); border:1px solid var(--line); border-radius:var(--r); padding:12px 14px; margin-bottom:12px}
+.packet .kv{margin-top:6px}
+/* compact header + When we meet (one viewport) */
+.thesis{max-width:none}
+.eyebrow .pill.neutral{white-space:nowrap}
+#overview > .lede{max-width:100ch}
+#meet{padding-top:16px}
+.tab{padding-inline:10px}
+.hero{padding-block:30px 22px}
+.thesis{margin-top:12px}
+#meet .sec-head{margin-bottom:10px; gap:2px}
+#meet .locks.meet3{grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px}
+#meet .lockcard{padding:13px 14px; gap:6px}
+#meet .lockcard h3{font-size:1.02rem}
+#meet .lockcard p, #meet .lockcard ul, #meet .qs{font-size:.84rem}
+#meet .qs{gap:3px; padding-left:18px}
+#meet .veil{padding:6px 10px; font-size:.8rem}
+#meet .d90 h3{font-size:.95rem}
+#meet .lockcard.d90{margin-top:10px; padding-block:10px; grid-template-columns:minmax(0,1.1fr) repeat(3,minmax(0,1fr)); gap:8px 16px; align-items:start; font-size:.84rem}
+#meet .d90 > div > b{display:block; color:var(--accent-ink)}
+#meet .d90 .badge{margin-bottom:6px}
+#meet .cta{margin-top:10px; padding:10px 16px; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:2px 16px}
+#meet .cta h3{font-size:1.1rem}
+#meet .cta p{font-size:.86rem}
+#meet .cta > div{grid-column:2; grid-row:1 / span 2}
+@media (max-width:820px){ #meet .locks.meet3, #meet .lockcard.d90{grid-template-columns:1fr} #meet .cta{grid-template-columns:1fr} #meet .cta > div{grid-column:1; grid-row:auto} }
+@media (max-width:640px){ .eyebrow .pill.neutral{white-space:normal} }
+
+/* ---------- FOUNDRY theme ---------- */
+:root{--bg:#F6F4F2; --sunk:#EDE8E4; --line:#E0D9D3; --line-strong:#C9BEB5; --accent:#9A4A1B; --accent-soft:#F6E9E0; --accent-ink:#7A3510; --lattice:rgba(154,74,27,0.10);}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --accent:#E7A77D; --accent-soft:#3A2619; --accent-ink:#F2C4A4; --lattice:rgba(231,167,125,0.09); } }
+:root[data-theme="dark"]{ --accent:#E7A77D; --accent-soft:#3A2619; --accent-ink:#F2C4A4; --lattice:rgba(231,167,125,0.09); }
+.ksmark{width:.85em; height:.72em}
+.ksmark .arch-key{transform-origin:24px 6px}
+</style>
+</head>
+<body>
+
+<div class="watermark" aria-hidden="true"></div>
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">
+      <span class="pill">Executive preview · Sonia Malik</span>
+      <span class="pill neutral">Prepared for Mastercard · VP, AI Engineering – AI CoE</span>
+    </div>
+    <div class="brand"><svg class="ksmark" viewBox="0 0 48 40" aria-hidden="true"><path class="arch-ring" d="M8 14 H40 L35 36 H13 Z"/><path class="arch-key" d="M24 1 C27 5 28.5 7.5 28.5 9.5 A4.5 4.5 0 0 1 19.5 9.5 C19.5 7.5 21 5 24 1 Z"/><path class="arch-stones" d="M4 38 H44"/></svg>FOUNDRY</div>
+    <div class="pron">Where raw material is cast into parts that fit, every time</div>
+    <p class="thesis">Turning AI pilots into production-grade, reusable capability.</p>
+  </header>
+
+  <div class="tabbar">
+    <div class="tabs" role="tablist" aria-label="FOUNDRY sections" id="tabs">
+      <button class="tab" role="tab" id="t-overview" aria-controls="overview" data-tab="overview">Overview</button>
+      <button class="tab" role="tab" id="t-factory" aria-controls="factory" data-tab="factory">Agent factory</button>
+      <button class="tab" role="tab" id="t-assets" aria-controls="assets" data-tab="assets">Reusable assets</button>
+      <button class="tab" role="tab" id="t-gates" aria-controls="gates" data-tab="gates">Readiness gates</button>
+      <button class="tab" role="tab" id="t-rai" aria-controls="rai" data-tab="rai">Responsible AI</button>
+      <button class="tab" role="tab" id="t-score" aria-controls="score" data-tab="score">Scorecard</button>
+      <button class="tab" role="tab" id="t-team" aria-controls="team" data-tab="team">Team</button>
+      <button class="tab" role="tab" id="t-why" aria-controls="why" data-tab="why">Why me</button>
+      <button class="tab" role="tab" id="t-meet" aria-controls="meet" data-tab="meet">When we meet</button>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section class="pane" id="overview" role="tabpanel" aria-labelledby="t-overview">
+    <p class="lede">The model I would propose for an AI Engineering CoE: an agent factory, certified reusable patterns, production-readiness gates and Responsible AI in the platform. Sample data; not tied to any company's systems.</p>
+    <div class="proof">
+      <div><b class="mono">6 months</b><span>to stand up an AI-first PDLC and AI developer platform designed to serve 1,200 engineers</span></div>
+      <div><b class="mono">~400</b><span>engineers on governed AI workflows within 13 months</span></div>
+      <div><b class="mono">10+</b><span>AI developer tools evaluated against build–buy–partner criteria</span></div>
+      <div><b class="mono">−30%</b><span>Sev2s, security vulnerabilities and launch risk</span></div>
+    </div>
+    <p class="proof-note">These four figures are from my work at S&amp;P Global and Audible. Everything in the other tabs is a proposed model with sample data.</p>
+
+    <div class="sec-head" style="margin-top:36px"><span class="label">The idea in three lines</span></div>
+    <div class="pillars">
+      <div><h3>A factory, not a lab</h3><p>Every use case moves through the same six stages with entry and exit criteria, so a pilot either graduates to production or is retired on purpose.</p></div>
+      <div><h3>Build once, reuse everywhere</h3><p>Agent patterns, prompt templates, evaluation harnesses and guardrails are versioned assets with owners, so each new team starts from a certified pattern.</p></div>
+      <div><h3>Ready means measured</h3><p>Evaluation, reliability, observability and rollback are pipeline gates, with faster, evidence-backed human approval on regulated checks.</p></div>
+    </div>
+
+    <div class="sec-head" style="margin-top:36px"><span class="label">Where to go next</span></div>
+    <div class="jump">
+      <button type="button" data-go="factory"><b>Agent factory</b><span>Six lifecycle stages, from intake to retirement</span><i>2 min →</i></button>
+      <button type="button" data-go="assets"><b>Reusable assets</b><span>A sample catalog of agent patterns and shared components</span><i>2 min →</i></button>
+      <button type="button" data-go="gates"><b>Readiness gates</b><span>Run three sample use cases through the production gates</span><i>3 min →</i></button>
+      <button type="button" data-go="rai"><b>Responsible AI</b><span>Controls built into the platform, and faster human approval</span><i>2 min →</i></button>
+      <button type="button" data-go="score"><b>Scorecard</b><span>Value and adoption, month by month, for leadership</span><i>1 min →</i></button>
+      <button type="button" data-go="team"><b>Team</b><span>Leaders of leaders, architects and AI engineers</span><i>2 min →</i></button>
+    </div>
+  </section>
+
+  <!-- AGENT FACTORY -->
+  <section class="pane" id="factory" role="tabpanel" aria-labelledby="t-factory" hidden>
+    <div class="sec-head">
+      <span class="label">Agent factory · proposed model</span>
+      <h2>Six lifecycle stages, each with clear entry and exit criteria</h2>
+      <p class="lede">Select a stage to see what it checks, who owns it, how it runs, and the evidence it leaves. Depth scales with the risk tier: an internal productivity agent moves faster than a client-facing one.</p>
+    </div>
+    <div class="stages" id="stages" role="group" aria-label="Lifecycle stages"></div>
+    <div class="gcard" id="stagecard" aria-live="polite" style="margin-top:14px"></div>
+    <div class="next"><button type="button" data-go="assets">Next: reusable assets →</button></div>
+  </section>
+
+  <!-- REUSABLE ASSETS -->
+  <section class="pane" id="assets" role="tabpanel" aria-labelledby="t-assets" hidden>
+    <div class="sec-head">
+      <span class="label">Reusable assets</span>
+      <h2>A catalog of certified patterns, so teams start at the middle, not at zero</h2>
+      <p class="lede">Each asset has an owner, a version, a status and a reuse count. Filter by type, then select an asset to see its card.</p>
+      <span class="sample-note">Sample catalog, for illustration</span>
+    </div>
+    <div class="filters" id="afilters" role="group" aria-label="Filter by asset type"></div>
+    <div class="who2 port">
+      <div class="tbl-wrap"><table class="ptable"><thead><tr><th>Asset</th><th>Type</th><th>Status</th><th>Reused by</th></tr></thead><tbody id="arows"></tbody></table></div>
+      <div class="gcard" id="acard" aria-live="polite"></div>
+    </div>
+    <p class="targets">Certified means it passed the same evaluation, security and observability gates as a production release. Deprecated assets have a migration path and a retirement date.</p>
+    <div class="next"><button type="button" data-go="gates">Next: readiness gates →</button></div>
+  </section>
+
+  <!-- READINESS GATES -->
+  <section class="pane" id="gates" role="tabpanel" aria-labelledby="t-gates" hidden>
+    <div class="sec-head">
+      <span class="label">Try it · production readiness</span>
+      <h2>Six gates between a pilot and production</h2>
+      <p class="lede">Pick a sample use case. Each gate cites its evidence; the verdict tells the team exactly what to fix, not just that it failed.</p>
+      <span class="sample-note">Sample use cases and results, for illustration</span>
+    </div>
+    <div class="demo">
+      <div class="demo-top"><div class="cases" role="group" aria-label="Sample use cases" id="gcases"></div></div>
+      <div class="panel" id="gpanel" aria-live="polite"></div>
+    </div>
+    <div class="next"><button type="button" data-go="rai">Next: Responsible AI →</button></div>
+  </section>
+
+  <!-- RESPONSIBLE AI -->
+  <section class="pane" id="rai" role="tabpanel" aria-labelledby="t-rai" hidden>
+    <div class="sec-head">
+      <span class="label">Responsible AI, built into the platform</span>
+      <h2>Controls run as platform capabilities, not as review meetings</h2>
+      <p class="lede">Security, privacy, governance and auditability are part of every scaffold. Where regulation requires a person to approve, the approver decides from an evidence packet, and decision time is tracked.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Control</th><th>Where it runs</th><th>Evidence it leaves</th></tr></thead>
+        <tbody>
+          <tr><td><b>Data classification and PII handling</b></td><td>Guardrail component on every model call</td><td>Redaction and policy logs</td></tr>
+          <tr><td><b>Prompt-injection and jailbreak tests</b></td><td>Evaluation harness in CI</td><td>Test report per release</td></tr>
+          <tr><td><b>Model and prompt versioning</b></td><td>Shared template library and model registry</td><td>Version pins per release</td></tr>
+          <tr><td><b>Traceability and explainability</b></td><td>Tracing component in the scaffold</td><td>Trace from request to response</td></tr>
+          <tr><td><b>Human approval on regulated checks</b></td><td>Approval step in the pipeline, with an evidence packet</td><td>Approver, decision, decision time</td></tr>
+          <tr><td><b>Third-party AI review</b></td><td>Build–buy–partner review with Security, Risk and Legal</td><td>Review record and approved tool list</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="trust-grid" style="margin-top:20px">
+      <div class="gcard packet-demo">
+        <span class="label">What the approver sees · sample</span>
+        <h3>Evidence packet, one screen</h3>
+        <dl class="kv">
+          <dt>Use case</dt><dd>Contract clause extraction · Elevated risk</dd>
+          <dt>Pattern</dt><dd>Document extraction v1.4 (certified)</dd>
+          <dt>Evaluation</dt><dd>97.8% field accuracy (threshold 97%)</dd>
+          <dt>Security</dt><dd>Prompt-injection suite passed</dd>
+          <dt>Rollback</dt><dd>Flag off and version pin, drill in 4 min</dd>
+          <dt>Pipeline view</dt><dd><b>Approve for 10% rollout</b></dd>
+        </dl>
+        <p class="hint">The approver opens any line of evidence and records a decision with a reason. Time to decision is logged.</p>
+      </div>
+      <div class="ladder">
+        <span class="label">Faster, evidence-backed human approval on regulated checks</span>
+        <ol>
+          <li><b>Full review</b><span>A new class of use case starts with a full human review.</span></li>
+          <li><b>Evidence-packet review</b><span>The person decides from the packet and opens detail when something looks off. The floor for regulated and client-facing changes.</span></li>
+          <li><b>Fast-path approval</b><span>For a class with a strong track record, the packet arrives pre-filled; the person still approves, and a sample gets a deep review.</span></li>
+        </ol>
+        <p class="hint">A person approves at every level where regulation requires it. Any escaped defect moves the class back a level.</p>
+      </div>
+    </div>
+    <div class="next"><button type="button" data-go="score">Next: scorecard →</button></div>
+  </section>
+
+  <!-- SCORECARD -->
+  <section class="pane" id="score" role="tabpanel" aria-labelledby="t-score" hidden>
+    <div class="sec-head">
+      <span class="label">For executives</span>
+      <h2>Value and adoption scorecard, every month</h2>
+      <p class="lede">What I would bring to leadership. Move through a sample first year: more capabilities reach production, more new builds start from a certified pattern, and pilot-to-production time falls.</p>
+      <span class="sample-note">Sample data showing year-one targets, for illustration</span>
+    </div>
+    <div class="scrub">
+      <button class="play" type="button" id="play">Play year</button>
+      <label for="month">Month</label>
+      <input type="range" id="month" min="1" max="12" value="12">
+      <output id="mout" for="month">Month 12</output>
+    </div>
+    <div class="tiles">
+      <div class="tile"><span class="v mono" id="k1">18</span><span class="k">AI capabilities in production with a measured KPI</span><span class="s">started at 3</span></div>
+      <div class="tile"><span class="v mono" id="k2">65%</span><span class="k">New builds starting from a certified pattern</span><span class="s">started at 10%</span></div>
+      <div class="tile"><span class="v mono" id="k3">6 wks</span><span class="k">Median time from pilot to production</span><span class="s">started at 16 weeks</span></div>
+      <div class="tile"><span class="v mono" id="k4">27</span><span class="k">Teams using CoE assets</span><span class="s">started at 4</span></div>
+    </div>
+    <div class="charts">
+      <div class="chart"><h3>Reuse rate</h3><p>Share of new builds that start from a certified pattern, by month</p><svg id="c1" viewBox="0 0 460 190" role="img" aria-label="Reuse rate rises from 10% in month 1 to 65% in month 12"></svg></div>
+      <div class="chart"><h3>Pilot to production</h3><p>Median weeks from pilot start to production, by month</p><svg id="c2" viewBox="0 0 460 190" role="img" aria-label="Median weeks from pilot to production fall from 16 in month 1 to 6 in month 12"></svg></div>
+    </div>
+    <div class="sec-head" style="margin-top:28px"><span class="label">Proposed value measures</span></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Outcome</th><th>Proposed KPI</th><th>Measured against</th></tr></thead>
+        <tbody>
+          <tr><td><b>Productivity</b></td><td>Hours saved per task; active use, not licences</td><td>A baseline taken before the pilot</td></tr>
+          <tr><td><b>Customer impact</b></td><td>Turnaround time; quality of customer-facing output</td><td>A baseline, with a control group where possible</td></tr>
+          <tr><td><b>Risk reduction</b></td><td>Incidents, escaped defects, open findings</td><td>The prior quarter</td></tr>
+          <tr><td><b>Business outcomes</b></td><td>Cost per transaction; revenue influenced</td><td>Agreed with Finance at intake</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="next"><button type="button" data-go="team">Next: team →</button></div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="pane" id="team" role="tabpanel" aria-labelledby="t-team" hidden>
+    <div class="sec-head">
+      <span class="label">How the team would be organized · proposed</span>
+      <h2>Leaders of leaders, a chapter of architects, and pods of AI engineers</h2>
+      <p class="lede">Four groups, each led by a leader of leaders, with architects working across all of them and AI engineering pods aligned to business priorities.</p>
+      <span class="sample-note">Proposed structure, for illustration</span>
+    </div>
+    <div class="lessons">
+      <article class="lesson"><span class="yr">Group 1 · leader of leaders</span><h3>Agent factory and delivery</h3><ul><li>AI engineering pods aligned to business priorities</li><li>Own delivery from intake to value realization</li><li>Report adoption and outcomes on the scorecard</li></ul></article>
+      <article class="lesson"><span class="yr">Group 2 · leader of leaders</span><h3>Reusable assets and patterns</h3><ul><li>Agent patterns, shared components and the prompt-template library</li><li>Certify, version and retire assets</li><li>Measure reuse and remove duplication</li></ul></article>
+      <article class="lesson"><span class="yr">Group 3 · leader of leaders</span><h3>Production readiness and reliability</h3><ul><li>Evaluation harness and readiness gates</li><li>Observability, error budgets and rollback drills</li><li>Incident reviews that feed new checks</li></ul></article>
+      <article class="lesson"><span class="yr">Group 4 · leader of leaders</span><h3>Responsible AI engineering and enablement</h3><ul><li>Platform controls with Security, Risk, Legal and Compliance</li><li>Third-party AI reviews, build–buy–partner</li><li>Training paths for engineers and business teams</li></ul></article>
+    </div>
+    <div class="pillars" style="margin-top:16px">
+      <div><h3>Architects as a chapter</h3><p>Architects sit in the pods but meet as one chapter, so patterns are decided once and reused everywhere.</p></div>
+      <div><h3>Pods own outcomes</h3><p>Each pod owns a KPI, not just a backlog, and reports it against a baseline.</p></div>
+      <div><h3>Growing talent</h3><p>Clear career paths for AI engineers and architects, with pairing and rotation through the readiness group.</p></div>
+    </div>
+    <div class="next"><button type="button" data-go="why">Next: why me →</button></div>
+  </section>
+
+  <!-- WHY ME -->
+  <section class="pane" id="why" role="tabpanel" aria-labelledby="t-why" hidden>
+    <div class="sec-head">
+      <span class="label">Why me</span>
+      <h2>FOUNDRY comes from platforms and controls I have built inside engineering</h2>
+      <p class="lede">The figures are from my resume.</p>
+    </div>
+    <div class="lessons">
+      <article class="lesson">
+        <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; QE</span><h3>S&amp;P Global</h3>
+        <p class="quote">"Reuse is a product decision, not a side effect."</p>
+        <ul><li>Re-architected the PDLC AI-first across two business units, with agents for requirements, code generation, test automation and code review, through to deployment telemetry</li><li>AI developer platform in 6 months, designed to serve 1,200 engineers; ~400 engineers on governed AI in 13 months</li><li>Central reusable-components team and a shared prompt-template library</li><li>Partnered with CISO, Risk, Compliance, Legal, Architecture and Controls; presented AI PDLC standards directly to the AI Governance Committee</li><li>Led a 350+ organization with Senior Directors as direct reports and a $70M+ budget; executive scorecard adopted by Tech and Finance</li></ul>
+        <p class="shows">Shows up in FOUNDRY as <span>Agent factory</span><span>Reusable assets</span><span>Scorecard</span></p>
+      </article>
+      <article class="lesson">
+        <span class="yr">2024–2025 · VP, Head of Quality Engineering</span><h3>DoubleVerify</h3>
+        <p class="quote">"If it isn't measured, it isn't ready."</p>
+        <ul><li>AI-assisted testing: 25% less manual effort, 20% shorter test cycles</li><li>KPI dashboards for quality and incident trends</li></ul>
+        <p class="shows">Shows up in FOUNDRY as <span>Evaluation gate</span><span>Scorecard</span></p>
+      </article>
+      <article class="lesson">
+        <span class="yr">2019–2024 · QAE Director, CTO Office</span><h3>Audible, an Amazon company</h3>
+        <p class="quote">"Production readiness is earned before launch, not after."</p>
+        <ul><li>Applied AI/ML from 2022 to production defect and Sev2 incident management</li><li>−30% Sev2s, −30% security vulnerabilities, −30% launch risk</li></ul>
+        <p class="shows">Shows up in FOUNDRY as <span>Readiness gates</span><span>Monitor stage</span></p>
+      </article>
+      <article class="lesson">
+        <span class="yr">2015–2019 · Head of Quality Engineering, CIO Office</span><h3>Prudential</h3>
+        <p class="quote">"In regulated work, evidence is part of the product."</p>
+        <ul><li>Zero Sev2s on major regulated-insurance launches</li><li>Built Customer Office QE from zero</li></ul>
+        <p class="shows">Shows up in FOUNDRY as <span>Responsible AI</span><span>Rollback</span></p>
+      </article>
+    </div>
+    <details style="margin-top:20px">
+      <summary style="cursor:pointer; font-weight:600">How this maps to the role, line by line</summary>
+      <div class="tbl-wrap" style="margin-top:12px"><table>
+        <thead><tr><th>The role asks for</th><th>Where I have done it</th></tr></thead>
+        <tbody>
+          <tr><td>Move AI from experimentation to production-grade, reusable capability</td><td>AI-first PDLC and AI developer platform in 6 months, designed to serve 1,200 engineers; ~400 engineers on governed AI in 13 months (S&amp;P Global)</td></tr>
+          <tr><td>Reusable AI assets, agent patterns and shared components</td><td>Central reusable-components team and a shared prompt-template library; agents across the SDLC from requirements to deployment telemetry (S&amp;P Global)</td></tr>
+          <tr><td>Production readiness: reliability, observability, operational performance</td><td>−30% Sev2s, security vulnerabilities and launch risk; AI/ML for production defect and Sev2 incident management from 2022 (Audible); zero Sev2s on major launches (Prudential)</td></tr>
+          <tr><td>Responsible AI, security, governance and auditability across the lifecycle</td><td>Faster, evidence-backed human approval on regulated checks; controls built with CISO, Risk, Compliance, Legal, Architecture and Controls; AI PDLC standards presented to the AI Governance Committee (S&amp;P Global)</td></tr>
+          <tr><td>Measure adoption, productivity and business outcomes</td><td>Executive scorecard adopted by Tech and Finance (S&amp;P Global); KPI dashboards (DoubleVerify)</td></tr>
+          <tr><td>Partner across platform, security, architecture and risk teams</td><td>10+ AI tools evaluated against build–buy–partner criteria under cybersecurity and controls requirements (S&amp;P Global)</td></tr>
+          <tr><td>Lead a global organization of leaders</td><td>350+ global organization with Senior Directors as direct reports and a $70M+ budget (S&amp;P Global)</td></tr>
+        </tbody>
+      </table></div>
+    </details>
+    <div class="next"><button type="button" data-go="meet">Next: when we meet →</button></div>
+  </section>
+
+  <!-- WHEN WE MEET -->
+  <section class="pane" id="meet" role="tabpanel" aria-labelledby="t-meet" hidden>
+    <div class="sec-head">
+      <span class="label">When we meet · previews I would walk through live</span>
+      <h2>Some of FOUNDRY is better shown than read</h2>
+    </div>
+    <div class="locks meet3">
+      <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Live walkthrough</span>
+        <h3>A use case through the factory</h3>
+        <p>From intake and a certified pattern to the readiness gates, approval and the first month in production.</p>
+      </div>
+      <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Deep dive</span>
+        <h3>Pilot to production in weeks</h3>
+        <ul><li>Certified patterns first</li><li>Gates as code, tuned by risk</li><li>Stop rules agreed up front</li></ul>
+        <div class="veil-wrap"><p class="veil">How the gates are tuned by risk tier.</p></div>
+      </div>
+      <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Questions I'd bring</span>
+        <h3>What I would want to learn from you</h3>
+        <ol class="qs"><li>Which pilots are closest to production?</li><li>Where does duplication slow teams down?</li><li>How is AI value measured today?</li></ol>
+      </div>
+    </div>
+    <div class="lockcard d90"><div><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>First 90 days</span><h3>Listen, certify, then scale</h3></div><div><b>Days 1–30</b>Meet leaders and partners; inventory pilots, assets and tools</div><div><b>Days 31–60</b>Certify first patterns; readiness gates live for one product area</div><div><b>Days 61–90</b>First value and adoption scorecard; team design agreed</div></div>
+    <div class="cta">
+      <h3>I would welcome the conversation</h3>
+      <div><button class="talk" type="button" data-contact>Let&rsquo;s talk</button></div>
+      <p>Thirty minutes is enough to walk through a use case in the factory, the readiness gates, and the first 90 days.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 Sonia Malik. FOUNDRY is an independent prototype of a proposed operating model, with sample data. It is not affiliated with, and uses no systems or data from, any employer or prospective employer.</div>
+  </footer>
+</div>
+
+<button class="side-tab" type="button" id="side-tab" aria-controls="drawer" aria-expanded="false"><span class="av" aria-hidden="true">SM</span><span class="st-txt">About me · Let&rsquo;s talk</span></button>
+<aside class="drawer" id="drawer" aria-label="About Sonia Malik" hidden>
+  <button class="dr-close" type="button" id="dr-close" aria-label="Close">&times;</button>
+  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>VP, Global Head of AI PDLC &amp; Quality Engineering, S&amp;P Global</span></div></div>
+  <p class="pf-pitch">I build engineering systems that let AI scale safely. At S&amp;P Global I re-architected the development lifecycle AI-first, with agents across the SDLC, a reusable-components team, a shared prompt-template library, and Risk, Compliance and Legal requirements built into the platform. For an AI Engineering CoE, I would bring the same approach: certified patterns, clear production-readiness gates, and evidence leaders can act on.</p>
+  <div class="pf-stats">
+    <span><b>6 months</b> to an AI developer platform designed for 1,200 engineers</span>
+    <span><b>~400</b> engineers on governed AI in 13 months</span>
+    <span><b>Faster,</b> evidence-backed human approval on regulated checks</span>
+    <span><b>10+</b> AI tools reviewed</span>
+    <span><b>350+</b> people · <b>$70M+</b> budget led</span>
+    <span><b>Regulated:</b> S&amp;P Global, Prudential</span>
+  </div>
+  <button class="talk" type="button" data-contact>Let&rsquo;s talk</button>
+</aside>
+<div class="cmodal" id="cmodal" hidden>
+  <div class="cm-back" data-close></div>
+  <div class="cm-card" role="dialog" aria-modal="true" aria-labelledby="cm-title">
+    <button class="cm-close" type="button" data-close aria-label="Close">&times;</button>
+    <span class="label">Next step</span>
+    <h2 id="cm-title">Let&rsquo;s walk through FOUNDRY together</h2>
+    <p>In 30 minutes I can take you through a use case moving through the factory, the readiness gates, and my first 90 days.</p>
+    <p class="cm-route">Through your standard process: your recruiting partner can reach me directly to schedule. I am flexible on timing.</p>
+    <div class="cm-row"><span class="cm-k">Email</span><span class="cm-v">sonia.malik78@gmail.com</span><button class="cm-copy" type="button" data-cc="sonia.malik78@gmail.com">Copy</button></div>
+    <div class="cm-row"><span class="cm-k">Phone</span><span class="cm-v">732-629-1034</span><button class="cm-copy" type="button" data-cc="732-629-1034">Copy</button></div>
+    <div class="cm-row"><span class="cm-k">LinkedIn</span><span class="cm-v">linkedin.com/in/sonia-malik-b059705</span><button class="cm-copy" type="button" data-cc="https://www.linkedin.com/in/sonia-malik-b059705">Copy</button></div>
+    <div class="cm-status" id="cm-status" aria-live="polite"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ---------- Tabs ----------
+  const TABS=[...document.querySelectorAll('#tabs .tab')];
+  function selectTab(id, opts){
+    opts=opts||{};
+    TABS.forEach(t=>{ const on=t.dataset.tab===id; t.setAttribute('aria-selected',String(on)); t.tabIndex=on?0:-1; document.getElementById(t.dataset.tab).hidden=!on; });
+    const bar=document.querySelector('.tabbar');
+    if(opts.scroll){ const y=bar.getBoundingClientRect().top+window.scrollY; if(window.scrollY>y) window.scrollTo({top:y, behavior:'auto'}); }
+    if(opts.focus){ const t=TABS.find(x=>x.dataset.tab===id); if(t) t.focus(); }
+    if(id==='score') drawScore(+document.getElementById('month').value);
+  }
+  TABS.forEach((t,i)=>{
+    t.addEventListener('click',()=>selectTab(t.dataset.tab,{scroll:true}));
+    t.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); const n=TABS[(i+(e.key==='ArrowRight'?1:-1)+TABS.length)%TABS.length]; selectTab(n.dataset.tab,{focus:true}); } });
+  });
+  document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>selectTab(b.dataset.go,{scroll:true})));
+
+  // ---------- Agent factory ----------
+  const STAGES=[
+    {k:'INT', n:'Intake', owner:'CoE intake lead, with the business sponsor',
+     checks:['Business problem, KPI and baseline named','Catalog checked for a reusable pattern before any new build','Risk tier and data classification set'],
+     auto:'An intake form scores value, feasibility and risk. A match in the asset catalog routes the team to reuse first.',
+     ev:'Intake record, baseline, risk tier', kpi:'Time from idea to decision'},
+    {k:'BLD', n:'Build', owner:'AI engineering pod, with a CoE architect',
+     checks:['Starts from a certified agent pattern','Prompts kept in the shared template library, versioned','AI-assisted code tagged with tool and model version'],
+     auto:'Scaffolds come from the catalog with guardrails, tracing and evaluation hooks already wired in.',
+     ev:'Pattern ID, template versions, repository', kpi:'Reuse rate, build time'},
+    {k:'EVL', n:'Evaluate', owner:'AI engineering, with Quality Engineering for the harness',
+     checks:['Evaluation set agreed with the business owner','Quality thresholds set by risk tier','Security tests, including prompt injection; red-teaming for higher tiers'],
+     auto:'Evaluations run in CI on every change. Results below threshold block promotion.',
+     ev:'Evaluation report, thresholds version', kpi:'Evaluation pass rate, escaped defects'},
+    {k:'DEP', n:'Deploy', owner:'Platform engineering and the product owner',
+     checks:['Readiness gates passed: reliability, observability, rollback','Human approval where regulation requires it, decided from an evidence packet','Staged rollout with a rollback plan'],
+     auto:'Gates are pipeline checks. Approval is faster because the approver sees evidence, not raw output, and decision time is tracked.',
+     ev:'Readiness checklist, approver, decision time', kpi:'Pilot-to-production time'},
+    {k:'MON', n:'Monitor', owner:'AI engineering on-call, with the business owner',
+     checks:['Quality drift, latency and cost per transaction against budgets','Adoption and value against the baseline','Incidents reviewed, with new checks added'],
+     auto:'Dashboards and alerts ship with the scaffold. A drift alert opens a ticket with the trace attached.',
+     ev:'Dashboards, alert history, incident log', kpi:'Adoption, value vs. baseline, incidents'},
+    {k:'RET', n:'Retire', owner:'CoE portfolio lead',
+     checks:['Adoption or value below the agreed stop rule','Pattern superseded by a newer certified version','Model or vendor reaching end of support'],
+     auto:'Retirement is planned: users migrated, prompts and data archived, licences and infrastructure released.',
+     ev:'Retirement record, migration plan', kpi:'Assets retired, cost released'}
+  ];
+  let ssel='EVL';
+  function renderStages(){
+    const L=document.getElementById('stages'); L.innerHTML='';
+    STAGES.forEach((s,i)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-pressed',String(s.k===ssel)); b.innerHTML=`<span class="sn">${i+1}</span><span class="sk">${s.k}</span><b>${s.n}</b>`; b.onclick=()=>{ ssel=s.k; renderStages(); }; L.appendChild(b); });
+    const s=STAGES.find(x=>x.k===ssel);
+    document.getElementById('stagecard').innerHTML=`<div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:flex-start"><div><span class="label">Stage ${STAGES.indexOf(s)+1} of 6</span><h3>${s.n}</h3></div><span class="pill">Owner: ${s.owner}</span></div>
+      <div class="bagrid"><div class="b"><b>What it checks</b><ul class="cl">${s.checks.map(c=>`<li>${c}</li>`).join('')}</ul></div><div class="a"><b>How it runs</b>${s.auto}</div></div>
+      <p class="measure">Evidence: <span>${s.ev}</span> · Feeds the KPI: <span>${s.kpi}</span></p>`;
+  }
+  renderStages();
+
+  // ---------- Reusable assets ----------
+  const TYPES={pattern:'Agent pattern', comp:'Component', tmpl:'Template', guard:'Guardrail', eval:'Evaluation'};
+  const ST={Certified:'Standard', Beta:'Elevated', Deprecated:'High'};
+  const AS=[
+    {id:'a1', n:'Retrieval-grounded answers', t:'pattern', st:'Certified', r:9, v:'v3.2', owner:'Reusable assets group', d:'Answers grounded in approved sources, with citations, guardrails and tracing wired in.', note:'Most reused pattern; evaluation set shared across teams.'},
+    {id:'a2', n:'Document extraction', t:'pattern', st:'Certified', r:5, v:'v1.4', owner:'Reusable assets group', d:'Extracts fields from documents with confidence scores and human review below a threshold.', note:'Certified after reaching 97%+ field accuracy on the shared set.'},
+    {id:'a3', n:'Tool-calling workflow agent', t:'pattern', st:'Beta', r:2, v:'v0.9', owner:'Agent factory pod', d:'A single agent calling an approved list of tools, with every call logged and rate-limited.', note:'Beta: two pilots; certification after the rollback drill.'},
+    {id:'a4', n:'Prompt-template library', t:'tmpl', st:'Certified', r:14, v:'v5.0', owner:'Reusable assets group', d:'Versioned prompt templates with owners, test cases and change history.', note:'Every production prompt is pinned to a template version.'},
+    {id:'a5', n:'Evaluation harness', t:'eval', st:'Certified', r:11, v:'v2.3', owner:'Production readiness group', d:'Runs evaluation sets in CI and blocks promotion below the threshold for the risk tier.', note:'Thresholds set by risk tier; results feed the scorecard.'},
+    {id:'a6', n:'PII and prompt-injection guardrail', t:'guard', st:'Certified', r:12, v:'v2.1', owner:'Responsible AI engineering', d:'Redacts sensitive data and screens inputs and outputs on every model call.', note:'Built with Security and Privacy; logs kept for audit.'},
+    {id:'a7', n:'Tracing and cost telemetry', t:'comp', st:'Certified', r:10, v:'v1.8', owner:'Production readiness group', d:'Traces each request end to end, with latency, cost and quality signals on one dashboard.', note:'Drift alerts open a ticket with the trace attached.'},
+    {id:'a8', n:'Legacy summarization chain', t:'pattern', st:'Deprecated', r:1, v:'v0.6', owner:'Agent factory pod', d:'An early summarization flow replaced by the retrieval-grounded pattern.', note:'Retirement date set; last team migrating this quarter.'}
+  ];
+  let af='all', asel='a1';
+  function renderAssets(){
+    const F=document.getElementById('afilters'); F.innerHTML='';
+    [['all','All assets'],...Object.entries(TYPES)].forEach(([k,l])=>{ const c=k==='all'?AS.length:AS.filter(a=>a.t===k).length; if(!c) return; const b=document.createElement('button'); b.type='button'; b.className='sub-btn'; b.setAttribute('aria-pressed',String(af===k)); b.innerHTML=`${l} <small>${c}</small>`; b.onclick=()=>{ af=k; const vis=AS.filter(a=>af==='all'||a.t===af); if(!vis.some(a=>a.id===asel)) asel=vis[0].id; renderAssets(); }; F.appendChild(b); });
+    const vis=AS.filter(a=>af==='all'||a.t===af);
+    const T=document.getElementById('arows');
+    T.innerHTML=vis.map(a=>`<tr class="prow${a.id===asel?' sel':''}" data-id="${a.id}" tabindex="0" role="button" aria-pressed="${a.id===asel}"><td><b>${a.n}</b></td><td>${TYPES[a.t]}</td><td><span class="chip ${ST[a.st]}">${a.st}</span></td><td class="kpi">${a.r} team${a.r===1?'':'s'}</td></tr>`).join('');
+    T.querySelectorAll('tr').forEach(r=>{ const go=()=>{ asel=r.dataset.id; renderAssets(); }; r.onclick=go; r.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } }; });
+    const a=AS.find(x=>x.id===asel);
+    document.getElementById('acard').innerHTML=`<span class="label">Asset card</span><h3>${a.n}</h3><p style="font-size:.9rem;color:var(--muted)">${a.d}</p>
+      <dl class="kv"><dt>Type</dt><dd>${TYPES[a.t]}</dd><dt>Version</dt><dd>${a.v}</dd><dt>Owner</dt><dd>${a.owner}</dd><dt>Reused by</dt><dd>${a.r} team${a.r===1?'':'s'}</dd></dl>
+      <div class="verdict ${a.st==='Beta'?'action':a.st==='Deprecated'?'escalate':''}" style="${a.st==='Certified'?'background:var(--ok-bg)':''}"><b>${a.st}</b><span>${a.note}</span></div>`;
+  }
+  renderAssets();
+
+  // ---------- Readiness gates ----------
+  const G=[['EVL','Evaluation'],['REL','Reliability'],['OBS','Observability'],['RBK','Rollback'],['SEC','Security & privacy'],['APR','Human approval']];
+  const LBL={clear:'Pass',action:'Needs action',escalate:'Escalate'};
+  const UCS={
+    support:{tier:'Standard', name:'Support ticket summarizer', d:'Summarizes internal support tickets for agents. Built on the retrieval-grounded pattern.',
+      res:[['clear','Faithfulness 98.6% on 1,200 sample tickets; threshold 97%.','eval: harness v2.3'],
+           ['clear','p95 latency 1.8 s against a 3 s budget; falls back to the manual queue.','load test: 3x peak'],
+           ['clear','Traces, cost per summary and drift alerts wired in.','telemetry v1.8'],
+           ['clear','Feature flag and version pin; rollback drill took 4 minutes.','drill: passed'],
+           ['clear','Guardrail on; prompt-injection suite passed.','guardrail v2.1'],
+           ['action','Internal use: the team lead approves from the evidence packet.','approver: ready']],
+      verdict:['','Ready for approval','All gates passed. One approval from the evidence packet, then a staged rollout.']},
+    extract:{tier:'Elevated', name:'Contract clause extraction', d:'Extracts key clauses from vendor contracts for a legal operations team. Built on the document extraction pattern.',
+      res:[['action','Field accuracy 94.1% against a 97% threshold; errors cluster in renewal terms.','eval: 600 sample contracts'],
+           ['clear','Batch jobs finish within the window; retries tested.','load test: passed'],
+           ['action','No alert on falling extraction confidence.','telemetry: alert missing'],
+           ['clear','Version pin and flag in place; drill passed.','drill: passed'],
+           ['clear','PII redaction verified on sample contracts.','guardrail v2.1'],
+           ['action','A regulated check: a named approver decides once the gates pass.','approver: on hold']],
+      verdict:['action','Two fixes before release','Add renewal-term examples to the evaluation set and the confidence alert, then re-run the gates.']},
+    chat:{tier:'High', name:'Customer-facing help assistant', d:'Answers customer questions on a public help page. Built on the retrieval-grounded and tool-calling patterns.',
+      res:[['clear','Answer quality 97.4% on 2,000 sample questions; threshold 97%.','eval: harness v2.3'],
+           ['clear','p95 latency within budget; graceful hand-off to a human agent.','load test: passed'],
+           ['clear','Traces and drift alerts in place.','telemetry v1.8'],
+           ['clear','Kill switch and version pin; drill passed.','drill: passed'],
+           ['action','Red-team found one jailbreak path; fixed and re-tested.','red team: 1 finding closed'],
+           ['escalate','Customer-facing with regulated disclosures: Responsible AI review with Legal and Compliance.','review: scheduled']],
+      verdict:['escalate','Sent to Responsible AI review','Gates passed; customer-facing disclosures need a review before a 5% canary.']}
+  };
+  const ORDER=['support','extract','chat']; let gsel='extract';
+  function renderGates(){
+    const C=document.getElementById('gcases'); C.innerHTML='';
+    ORDER.forEach(k=>{ const u=UCS[k]; const b=document.createElement('button'); b.type='button'; b.className='sub-btn'; b.setAttribute('aria-pressed',String(k===gsel)); b.innerHTML=`<small>${u.tier}</small>${u.name}`; b.onclick=()=>{ gsel=k; renderGates(); }; C.appendChild(b); });
+    const u=UCS[gsel];
+    document.getElementById('gpanel').innerHTML=`<p style="font-size:.9rem;color:var(--muted);margin-bottom:12px"><b style="color:var(--fg)">${u.name}</b> · ${u.tier} risk. ${u.d}</p>
+      <ul class="agents">${G.map(([c,n],i)=>{ const r=u.res[i]; return `<li><span class="ai">${c}</span><span class="an">${n}</span><span class="st ${r[0]}">${LBL[r[0]]}</span><span class="af">${r[1]}<cite>${r[2]}</cite></span></li>`; }).join('')}</ul>
+      <div class="verdict ${u.verdict[0]}" style="${u.verdict[0]===''?'background:var(--ok-bg)':''}"><b>${u.verdict[1]}</b><span>${u.verdict[2]}</span></div>`;
+  }
+  renderGates();
+
+  // ---------- Scorecard ----------
+  const P=[3,4,5,6,8,9,11,12,14,15,17,18], R=[10,14,19,24,30,35,41,46,51,56,61,65], W=[16,15,14,13,12,11,10,9,8,7,7,6], TM=[4,5,7,9,11,13,15,18,20,22,25,27];
+  function line(svgId, data, yMax, yTicks, fmt, m){
+    const svg=document.getElementById(svgId); if(!svg) return; const Wd=460,H=190,L=38,Rr=44,T=14,B=26;
+    const x=i=>L+i*(Wd-L-Rr)/(data.length-1), y=v=>T+(1-v/yMax)*(H-T-B);
+    let s='';
+    yTicks.forEach(v=>{ s+=`<line class="ax" x1="${L}" x2="${Wd-Rr}" y1="${y(v)}" y2="${y(v)}"/><text class="axt" x="${L-6}" y="${y(v)+3}" text-anchor="end">${fmt(v)}</text>`; });
+    [1,3,6,9,12].forEach(k=>{ s+=`<text class="axt" x="${x(k-1)}" y="${H-8}" text-anchor="middle">M${k}</text>`; });
+    const shown=data.slice(0,m), pts=shown.map((v,i)=>`${x(i)},${y(v)}`).join(' ');
+    if(shown.length>1) s+=`<polygon class="ar" points="${x(0)},${y(0)} ${pts} ${x(shown.length-1)},${y(0)}"/><polyline class="ln" points="${pts}"/>`;
+    const li=m-1;
+    s+=`<line class="mk" x1="${x(li)}" x2="${x(li)}" y1="${T}" y2="${H-B}"/><circle class="pt" cx="${x(li)}" cy="${y(data[li])}" r="4.5"/>`;
+    const lx=li>8?x(li)-8:x(li)+8, anchor=li>8?'end':'start';
+    s+=`<text class="ptl" x="${lx}" y="${y(data[li])-8}" text-anchor="${anchor}">${fmt(data[li])}</text>`;
+    svg.innerHTML=s;
+  }
+  function drawScore(m){
+    document.getElementById('mout').textContent='Month '+m;
+    document.getElementById('k1').textContent=P[m-1];
+    document.getElementById('k2').textContent=R[m-1]+'%';
+    document.getElementById('k3').textContent=W[m-1]+' wks';
+    document.getElementById('k4').textContent=TM[m-1];
+    line('c1',R,100,[0,25,50,75,100],v=>v+'%',m);
+    line('c2',W,20,[0,5,10,15,20],v=>v+'w',m);
+  }
+  const mIn=document.getElementById('month'); let timer=null;
+  function stopPlay(){ if(timer){ clearInterval(timer); timer=null; document.getElementById('play').textContent='Play year'; } }
+  mIn.addEventListener('input',()=>{ stopPlay(); drawScore(+mIn.value); });
+  document.getElementById('play').addEventListener('click',()=>{
+    if(timer){ stopPlay(); return; }
+    let m=1; mIn.value=1; drawScore(1); document.getElementById('play').textContent='Pause';
+    timer=setInterval(()=>{ m++; if(m>12){ stopPlay(); return; } mIn.value=m; drawScore(m); }, 600);
+  });
+  drawScore(12);
+
+  // ---------- Initial tab (hash only; query parameters such as ?src= are ignored) ----------
+  const start=(location.hash||'').replace('#','');
+  selectTab(TABS.some(t=>t.dataset.tab===start)?start:'overview');
+
+  // ---------- Side drawer + contact card ----------
+  const dr=document.getElementById('drawer'), stab=document.getElementById('side-tab');
+  function openDrawer(){ dr.hidden=false; stab.setAttribute('aria-expanded','true'); document.getElementById('dr-close').focus(); }
+  function closeDrawer(){ dr.hidden=true; stab.setAttribute('aria-expanded','false'); stab.focus(); }
+  stab.addEventListener('click',()=>{ dr.hidden?openDrawer():closeDrawer(); });
+  document.getElementById('dr-close').addEventListener('click',closeDrawer);
+  document.addEventListener('keydown',ev=>{ if(ev.key==='Escape' && !dr.hidden && document.getElementById('cmodal').hidden) closeDrawer(); });
+  const cm=document.getElementById('cmodal'); let cmRet=null;
+  function openContact(){ cmRet=document.activeElement; cm.hidden=false; document.getElementById('cm-status').textContent=''; cm.querySelector('.cm-close').focus(); }
+  function closeContact(){ cm.hidden=true; if(cmRet) cmRet.focus(); }
+  document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',openContact));
+  cm.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click',closeContact));
+  document.addEventListener('keydown',ev=>{ if(ev.key==='Escape' && !cm.hidden) closeContact(); });
+  cm.querySelectorAll('.cm-copy').forEach(b=>b.addEventListener('click',()=>{
+    const t=b.dataset.cc, st=document.getElementById('cm-status');
+    const done=()=>{ st.textContent='Copied: '+t; };
+    const sel=()=>{ const v=b.previousElementSibling; const r=document.createRange(); r.selectNodeContents(v); const g=getSelection(); g.removeAllRanges(); g.addRange(r); st.textContent='Selected. Press Ctrl+C or Cmd+C to copy.'; };
+    try{ navigator.clipboard.writeText(t).then(done).catch(sel); }catch(e){ sel(); }
+  }));
+})();
+</script>
+
+</body>
+</html>
