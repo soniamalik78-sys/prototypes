@@ -4,37 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>FOUNDRY AI Engineering CoE</title>
-<meta name="description" content="FOUNDRY: a prototype by Sonia Malik of an AI Engineering Center of Excellence operating model, with sample data.">
+<title>FOUNDRY AI Engineering</title>
+<meta name="description" content="FOUNDRY: a prototype by Sonia Malik of an AI Center of Excellence engineering path from idea to production-grade, reusable AI products.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Layout: single reading column (max 1040px), arch-ring hero, tabbed panes; trace demo is a 4-step stepper; tables scroll inside their own box. */
+/* Layout: single reading column (max 1040px), grid-textured hero, tabbed panes; readiness review is a 4-step stepper; tables scroll inside their own box. */
 :root{
-  --bg:#F5F3F5; --surface:#FFFFFF; --sunk:#ECE7EC; --fg:#1E1A1F; --muted:#5F5761; --faint:#877E89;
-  --line:#DED7DF; --line-strong:#C5BBC7;
-  --accent:#6B3A6E; --accent-soft:#F1E6F1; --accent-ink:#552A58;
-  --vine:#4A6B5C;
+  --bg:#F2F5F5; --surface:#FFFFFF; --sunk:#E6ECEC; --fg:#162022; --muted:#55615F; --faint:#7A8684;
+  --line:#D5DEDD; --line-strong:#B8C6C4;
+  --accent:#14656B; --accent-soft:#E0EEEE; --accent-ink:#0F4F54;
+  --vine:#6A4F8A;
   --ok:#2E7D4F; --ok-bg:#E3F2E8; --warn:#8F5E00; --warn-bg:#FBF0D9; --bad:#B3373F; --bad-bg:#F9E3E4;
-  --lattice:rgba(107,58,110,0.10);
-  --f-display:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --lattice:rgba(20,101,107,0.10);
+  --f-display:"Fraunces", Georgia, "Times New Roman", serif;
   --f-body:"Public Sans", "Segoe UI", Arial, sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
   --r:10px;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#151216; --surface:#1E1A1F; --sunk:#29232A; --fg:#EEE8EF; --muted:#B5ABB7; --faint:#8F8591;
-  --line:#362F38; --line-strong:#4B424D;
-  --accent:#CE9FD1; --accent-soft:#3A273C; --accent-ink:#E2BEE4; --vine:#8FBFA8;
+  --bg:#101718; --surface:#172022; --sunk:#1F2A2C; --fg:#E4ECEB; --muted:#A5B3B1; --faint:#7F8E8C;
+  --line:#2B3638; --line-strong:#3F4D4F;
+  --accent:#6FC7CB; --accent-soft:#163538; --accent-ink:#9DDCDF; --vine:#B9A2D8;
   --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F;
-  --lattice:rgba(206,159,209,0.09); color-scheme:dark; } }
+  --lattice:rgba(111,199,203,0.09); color-scheme:dark; } }
 :root[data-theme="dark"]{
-  --bg:#151216; --surface:#1E1A1F; --sunk:#29232A; --fg:#EEE8EF; --muted:#B5ABB7; --faint:#8F8591;
-  --line:#362F38; --line-strong:#4B424D;
-  --accent:#CE9FD1; --accent-soft:#3A273C; --accent-ink:#E2BEE4; --vine:#8FBFA8;
+  --bg:#101718; --surface:#172022; --sunk:#1F2A2C; --fg:#E4ECEB; --muted:#A5B3B1; --faint:#7F8E8C;
+  --line:#2B3638; --line-strong:#3F4D4F;
+  --accent:#6FC7CB; --accent-soft:#163538; --accent-ink:#9DDCDF; --vine:#B9A2D8;
   --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F;
-  --lattice:rgba(206,159,209,0.09); color-scheme:dark; }
+  --lattice:rgba(111,199,203,0.09); color-scheme:dark; }
 
 *{box-sizing:border-box}
 body{background:var(--bg); color:var(--fg); font-family:var(--f-body); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
@@ -54,7 +54,8 @@ button{font-family:inherit}
 .hero{position:relative; padding-block:56px 40px; border-bottom:1px solid var(--line);}
 .hero::before{content:""; position:absolute; inset:0; z-index:-1;
   background:
-    repeating-radial-gradient(circle at 86% 115%, transparent 0 30px, var(--lattice) 30px 31px);
+    repeating-linear-gradient(0deg, transparent 0 23px, var(--lattice) 23px 24px),
+    repeating-linear-gradient(90deg, transparent 0 23px, var(--lattice) 23px 24px);
   -webkit-mask-image:linear-gradient(to bottom, #000 0%, transparent 100%); mask-image:linear-gradient(to bottom, #000 0%, transparent 100%);}
 .hero{isolation:isolate}
 .eyebrow{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin-bottom:18px;}
@@ -256,7 +257,7 @@ tr.fresh td{animation:grow 1.2s ease-out}
 
 /* ---------- Floating profile bar + contact card ---------- */
 .wrap{padding-bottom:120px}
-.pf{position:fixed; left:50%; transform:translateX(-50%); bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; width:min(760px, calc(100% - 24px)); background:var(--surface); border:1px solid var(--line-strong); border-radius:16px; box-shadow:0 10px 30px rgba(30,14,32,.18); padding:10px 12px}
+.pf{position:fixed; left:50%; transform:translateX(-50%); bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; width:min(760px, calc(100% - 24px)); background:var(--surface); border:1px solid var(--line-strong); border-radius:16px; box-shadow:0 10px 30px rgba(30,18,10,.18); padding:10px 12px}
 .pf[hidden]{display:none!important}
 .pf-row{display:flex; align-items:center; gap:12px}
 .av{flex:0 0 40px; height:40px; border-radius:50%; background:var(--accent); color:var(--surface); display:grid; place-items:center; font-weight:700; font-size:.9rem; letter-spacing:.02em}
@@ -273,7 +274,7 @@ tr.fresh td{animation:grow 1.2s ease-out}
 .pf-stats{display:flex; flex-wrap:wrap; gap:6px}
 .pf-stats span{border:1px solid var(--line); background:var(--sunk); border-radius:8px; padding:3px 8px; font-size:.76rem; color:var(--fg)}
 .pf-stats b{color:var(--accent-ink)}
-.pf-mini{position:fixed; right:16px; bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; display:flex; align-items:center; gap:8px; background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:6px 14px 6px 6px; font-size:.85rem; font-weight:700; cursor:pointer; box-shadow:0 8px 22px rgba(30,14,32,.22)}
+.pf-mini{position:fixed; right:16px; bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; display:flex; align-items:center; gap:8px; background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:6px 14px 6px 6px; font-size:.85rem; font-weight:700; cursor:pointer; box-shadow:0 8px 22px rgba(30,18,10,.22)}
 .pf-mini[hidden]{display:none!important}
 .pf-mini .av{flex-basis:30px; height:30px; background:var(--surface); color:var(--accent-ink); font-size:.75rem}
 @media (max-width:560px){ .pf-min span{display:none} .pf-btn{display:none} }
@@ -300,11 +301,11 @@ tr.fresh td{animation:grow 1.2s ease-out}
 .wrap{padding-bottom:64px}
 @media (max-width:1180px){ .wrap{padding-right:60px} .tabbar{margin-right:-60px; padding-right:60px} }
 @media (max-width:560px){ .wrap{padding-right:52px} .tabbar{margin-right:-52px; padding-right:52px} }
-.side-tab{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:70; display:flex; flex-direction:column; align-items:center; gap:10px; background:var(--accent); color:var(--surface); border:none; border-radius:12px 0 0 12px; padding:10px 7px 14px; cursor:pointer; box-shadow:-4px 6px 18px rgba(30,14,32,.18)}
+.side-tab{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:70; display:flex; flex-direction:column; align-items:center; gap:10px; background:var(--accent); color:var(--surface); border:none; border-radius:12px 0 0 12px; padding:10px 7px 14px; cursor:pointer; box-shadow:-4px 6px 18px rgba(30,18,10,.18)}
 .side-tab .av{flex:0 0 30px; width:30px; height:30px; background:var(--surface); color:var(--accent-ink); font-size:.74rem}
 .side-tab .st-txt{writing-mode:vertical-rl; transform:rotate(180deg); font-size:.82rem; font-weight:700; letter-spacing:.02em; white-space:nowrap}
 @media (max-width:560px){ .side-tab .st-txt{font-size:.74rem} }
-.drawer{position:fixed; top:0; right:0; bottom:0; z-index:90; width:min(380px, 92vw); background:var(--surface); border-left:1px solid var(--line-strong); box-shadow:-12px 0 30px rgba(30,14,32,.18); padding:calc(22px + env(safe-area-inset-top,0px)) 22px calc(22px + env(safe-area-inset-bottom,0px)); overflow:auto; display:grid; gap:14px; align-content:start}
+.drawer{position:fixed; top:0; right:0; bottom:0; z-index:90; width:min(380px, 92vw); background:var(--surface); border-left:1px solid var(--line-strong); box-shadow:-12px 0 30px rgba(30,18,10,.18); padding:calc(22px + env(safe-area-inset-top,0px)) 22px calc(22px + env(safe-area-inset-bottom,0px)); overflow:auto; display:grid; gap:14px; align-content:start}
 .drawer[hidden]{display:none!important}
 .dr-close{position:absolute; top:calc(10px + env(safe-area-inset-top,0px)); right:12px; background:none; border:none; font-size:1.6rem; line-height:1; color:var(--faint); cursor:pointer}
 .dr-head{display:flex; gap:12px; align-items:center; padding-right:28px}
@@ -417,53 +418,35 @@ footer b{color:var(--fg)}
 .gcard .moment h3{font-family:var(--f-body); font-size:.95rem; font-weight:700}
 .sample-note{justify-self:start}
 
-/* ---------- Shared additions ---------- */
-.brand{display:flex; align-items:center; gap:.2em}
-.ksmark{width:.9em; height:.75em; flex:0 0 auto; overflow:visible}
-.ksmark .arch-ring{fill:none; stroke:var(--line-strong); stroke-width:3}
-.ksmark .arch-stones{stroke:var(--line-strong); stroke-width:3}
-.ksmark .arch-key{fill:var(--accent); transform-origin:24px 8px; animation:drop .9s cubic-bezier(.3,1.5,.5,1) both .2s}
-@keyframes drop{0%{transform:translateY(-14px); opacity:0} 100%{transform:none; opacity:1}}
+/* ---------- FOUNDRY additions ---------- */
+.brand{display:flex; align-items:center; gap:.18em}
+.zz-needle{width:.78em; height:.78em; flex:0 0 auto}
+.zz-needle .ring{fill:none; stroke:var(--line-strong); stroke-width:1.6}
+.zz-needle .nd-s{fill:var(--faint)}
+.zz-needle .nd-n{fill:var(--accent)}
+.zz-needle path{transform-origin:20px 20px; animation:swing 1.6s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes swing{0%{transform:rotate(-70deg)} 100%{transform:rotate(18deg)}}
 .pron{font-family:var(--f-body); font-size:.95rem; color:var(--muted); letter-spacing:.01em}
 
-.stages{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:8px; position:relative}
-@media (max-width:900px){ .stages{grid-template-columns:repeat(3,minmax(0,1fr))} }
-@media (max-width:480px){ .stages{grid-template-columns:repeat(2,minmax(0,1fr))} }
-.stages button{text-align:left; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:10px 12px; cursor:pointer; color:var(--fg); display:grid; gap:2px; min-width:0; position:relative}
-.stages button b{font-size:.86rem; line-height:1.25}
-.stages .sn{font-family:var(--f-mono); font-size:.7rem; color:var(--faint)}
-.stages .sk{position:absolute; top:8px; right:10px; font-family:var(--f-mono); font-size:.66rem; color:var(--faint)}
-.stages button[aria-pressed="true"]{border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink)}
-.stages button[aria-pressed="true"] .sn, .stages button[aria-pressed="true"] .sk{color:var(--accent-ink)}
-.cl{margin:4px 0 0; padding-left:18px; display:grid; gap:3px}
+/* Tiers */
+.glist button .tn{font-family:var(--f-mono); font-size:.7rem; color:var(--faint); display:block; font-weight:500}
+.glist button[aria-pressed="true"] .tn{color:var(--accent-ink)}
+.looks{display:flex; flex-wrap:wrap; gap:6px}
+.looks span{font-size:.76rem; padding:2px 9px; border-radius:999px; border:1px solid var(--line-strong); color:var(--muted)}
+.risk-meter{display:flex; align-items:center; gap:10px; font-size:.82rem; color:var(--muted)}
+.risk-meter i{display:inline-block; width:22px; height:8px; border-radius:4px; background:var(--sunk)}
+.risk-meter i.on{background:var(--accent)}
 
-.filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px}
+/* Agent desk */
 .sub-btn{border:1px solid var(--line-strong); background:var(--surface); color:var(--fg); border-radius:999px; padding:6px 14px; font-size:.85rem; cursor:pointer}
-.sub-btn small{font-family:var(--f-mono); font-size:.7rem; color:var(--faint); margin:0 4px}
+.sub-btn small{font-family:var(--f-mono); font-size:.7rem; color:var(--faint); margin-right:6px}
 .sub-btn[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:var(--surface)}
 .sub-btn[aria-pressed="true"] small{color:var(--surface); opacity:.8}
-.who2.port{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
-@media (max-width:900px){ .who2.port{grid-template-columns:1fr} }
-.ptable{min-width:600px}
-.ptable tr.prow{cursor:pointer}
-.ptable tr.prow:hover td{background:var(--sunk)}
-.ptable tr.prow.sel td{background:var(--accent-soft)}
-.ptable tr.prow:focus-visible{outline:2px solid var(--accent); outline-offset:-2px}
-.ptable td.kpi{font-size:.82rem; color:var(--muted)}
-.chip.stage-Idea{background:var(--sunk); color:var(--muted)}
-.chip.stage-Pilot{background:var(--warn-bg); color:var(--warn)}
-.chip.stage-Scale{background:var(--ok-bg); color:var(--ok)}
-.chip.stage-Stopped{background:var(--bad-bg); color:var(--bad)}
-.ask-line{font-size:.9rem}
-.fn{display:grid; grid-template-columns:130px minmax(0,1fr) 44px; gap:10px; align-items:center; font-size:.86rem; padding:3px 0}
-.fn i{display:block; height:12px; border-radius:6px; background:var(--accent); opacity:.8}
-.fn b{font-weight:500; text-align:right}
-
 .agents{list-style:none; margin:0; padding:0; display:grid; gap:8px}
-.agents li{display:grid; grid-template-columns:36px minmax(0,1fr) auto; gap:4px 12px; align-items:start; padding:12px 14px; border:1px solid var(--line); border-radius:var(--r); background:var(--surface); transition:opacity .25s, border-color .25s}
+.agents li{display:grid; grid-template-columns:32px minmax(0,1fr) auto; gap:4px 12px; align-items:start; padding:12px 14px; border:1px solid var(--line); border-radius:var(--r); background:var(--surface); transition:opacity .25s, border-color .25s}
 .agents li.wait{opacity:.45}
 .agents li.run{border-color:var(--accent)}
-.agents .ai{width:36px; height:32px; border-radius:8px; background:var(--sunk); display:grid; place-items:center; font-family:var(--f-mono); font-size:.68rem; font-weight:600; color:var(--muted); grid-row:1 / span 2}
+.agents .ai{width:32px; height:32px; border-radius:8px; background:var(--sunk); display:grid; place-items:center; font-family:var(--f-mono); font-size:.72rem; font-weight:600; color:var(--muted); grid-row:1 / span 2}
 .agents li.run .ai{background:var(--accent-soft); color:var(--accent-ink)}
 .agents .an{font-weight:700; font-size:.92rem}
 .agents .af{grid-column:2 / -1; font-size:.86rem; color:var(--muted)}
@@ -493,6 +476,7 @@ footer b{color:var(--fg)}
 .ledger table{min-width:600px}
 .watch{margin-top:14px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:.82rem; color:var(--muted)}
 .watch span{font-family:var(--f-mono); font-size:.72rem; padding:2px 8px; border-radius:6px; border:1px solid var(--line-strong)}
+td.num{font-variant-numeric:tabular-nums}
 .bagrid div{align-content:start}
 @media (max-width:640px){
   .ledger table{min-width:0}
@@ -501,6 +485,16 @@ footer b{color:var(--fg)}
   .ledger tr:last-child{border-bottom:none}
   .ledger td{display:block; border:none; padding:1px 0}
 }
+.stages{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:8px; position:relative}
+@media (max-width:900px){ .stages{grid-template-columns:repeat(3,minmax(0,1fr))} }
+@media (max-width:480px){ .stages{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.stages button{text-align:left; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:10px 12px; cursor:pointer; color:var(--fg); display:grid; gap:2px; min-width:0; position:relative}
+.stages button b{font-size:.86rem; line-height:1.25}
+.stages .sn{font-family:var(--f-mono); font-size:.7rem; color:var(--faint)}
+.stages .sk{position:absolute; top:8px; right:10px; font-family:var(--f-mono); font-size:.66rem; color:var(--faint)}
+.stages button[aria-pressed="true"]{border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink)}
+.stages button[aria-pressed="true"] .sn, .stages button[aria-pressed="true"] .sk{color:var(--accent-ink)}
+.cl{margin:4px 0 0; padding-left:18px; display:grid; gap:3px}
 
 .trust-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; align-items:start}
 @media (max-width:820px){ .trust-grid{grid-template-columns:1fr} }
@@ -511,63 +505,43 @@ footer b{color:var(--fg)}
 .ladder li span{color:var(--muted)}
 .packet{background:var(--sunk); border:1px solid var(--line); border-radius:var(--r); padding:12px 14px; margin-bottom:12px}
 .packet .kv{margin-top:6px}
-/* compact header + When we meet (one viewport) */
-.thesis{max-width:none}
-.eyebrow .pill.neutral{white-space:nowrap}
-#overview > .lede{max-width:100ch}
-#meet{padding-top:16px}
-.tab{padding-inline:10px}
-.hero{padding-block:30px 22px}
-.thesis{margin-top:12px}
-#meet .sec-head{margin-bottom:10px; gap:2px}
-#meet .locks.meet3{grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px}
-#meet .lockcard{padding:13px 14px; gap:6px}
-#meet .lockcard h3{font-size:1.02rem}
-#meet .lockcard p, #meet .lockcard ul, #meet .qs{font-size:.84rem}
-#meet .qs{gap:3px; padding-left:18px}
-#meet .veil{padding:6px 10px; font-size:.8rem}
-#meet .d90 h3{font-size:.95rem}
-#meet .lockcard.d90{margin-top:10px; padding-block:10px; grid-template-columns:minmax(0,1.1fr) repeat(3,minmax(0,1fr)); gap:8px 16px; align-items:start; font-size:.84rem}
-#meet .d90 > div > b{display:block; color:var(--accent-ink)}
-#meet .d90 .badge{margin-bottom:6px}
-#meet .cta{margin-top:10px; padding:10px 16px; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:2px 16px}
-#meet .cta h3{font-size:1.1rem}
-#meet .cta p{font-size:.86rem}
-#meet .cta > div{grid-column:2; grid-row:1 / span 2}
-@media (max-width:820px){ #meet .locks.meet3, #meet .lockcard.d90{grid-template-columns:1fr} #meet .cta{grid-template-columns:1fr} #meet .cta > div{grid-column:1; grid-row:auto} }
-@media (max-width:640px){ .eyebrow .pill.neutral{white-space:normal} }
 
-/* ---------- FOUNDRY theme ---------- */
-:root{--bg:#F6F4F2; --sunk:#EDE8E4; --line:#E0D9D3; --line-strong:#C9BEB5; --accent:#9A4A1B; --accent-soft:#F6E9E0; --accent-ink:#7A3510; --lattice:rgba(154,74,27,0.10);}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --accent:#E7A77D; --accent-soft:#3A2619; --accent-ink:#F2C4A4; --lattice:rgba(231,167,125,0.09); } }
-:root[data-theme="dark"]{ --accent:#E7A77D; --accent-soft:#3A2619; --accent-ink:#F2C4A4; --lattice:rgba(231,167,125,0.09); }
-.ksmark{width:.85em; height:.72em}
-.ksmark .arch-key{transform-origin:24px 6px}
+.stages .ssla{font-family:var(--f-mono); font-size:.66rem; color:var(--faint)}
+.stages button[aria-pressed="true"] .ssla{color:var(--accent-ink)}
+.brand{display:flex; align-items:center; gap:.2em}
+.fmark{width:.8em; height:.88em; flex:0 0 auto; overflow:visible}
+.fmark .f-hex{fill:none; stroke:var(--line-strong); stroke-width:2.4; stroke-linejoin:round}
+.fmark .f-core{fill:var(--accent); opacity:.35}
+.fmark .f-drop{fill:var(--accent); animation:pour 2.4s cubic-bezier(.5,0,.8,.6) infinite}
+@keyframes pour{0%{transform:translateY(-4px); opacity:0} 20%{opacity:1} 75%{transform:translateY(14px); opacity:1} 100%{transform:translateY(17px); opacity:0}}
+@media (prefers-reduced-motion: reduce){ .fmark .f-drop{animation:none} }
+
+/* FOUNDRY layout tweaks */
+.thesis{max-width:none}
+.tab{padding:14px 11px 11px; font-size:.88rem}
 </style>
 </head>
 <body>
-
 <div class="watermark" aria-hidden="true"></div>
 <div class="wrap">
   <header class="hero">
     <div class="eyebrow">
       <span class="pill">Prototype by Sonia Malik</span>
-      <span class="pill neutral">Prepared for Mastercard · VP, AI Engineering – AI CoE</span>
+      <span class="pill neutral">Prepared for the Mastercard VP, AI Engineering – AI CoE role</span>
     </div>
-    <div class="brand"><svg class="ksmark" viewBox="0 0 48 40" aria-hidden="true"><path class="arch-ring" d="M8 14 H40 L35 36 H13 Z"/><path class="arch-key" d="M24 1 C27 5 28.5 7.5 28.5 9.5 A4.5 4.5 0 0 1 19.5 9.5 C19.5 7.5 21 5 24 1 Z"/><path class="arch-stones" d="M4 38 H44"/></svg>FOUNDRY</div>
-    <div class="pron">Where raw material is cast into parts that fit, every time</div>
-    <p class="thesis">Turning AI pilots into production-grade, reusable capability.</p>
+    <div class="brand"><svg class="fmark" viewBox="0 0 40 44" aria-hidden="true"><path class="f-hex" d="M20 20 L30.4 26 V38 L20 44 L9.6 38 V26 Z"/><circle class="f-core" cx="20" cy="32" r="3.6"/><path class="f-drop" d="M20 2 C23 7 24.5 9.5 24.5 11.5 A4.5 4.5 0 0 1 15.5 11.5 C15.5 9.5 17 7 20 2 Z"/></svg>FOUNDRY</div>
+    <div class="pron">Where AI experiments become production-grade, reusable products</div>
+    <p class="thesis">One engineering path from idea to production: built on shared patterns, production-ready by design, measured by value.</p>
   </header>
 
   <div class="tabbar">
     <div class="tabs" role="tablist" aria-label="FOUNDRY sections" id="tabs">
       <button class="tab" role="tab" id="t-overview" aria-controls="overview" data-tab="overview">Overview</button>
-      <button class="tab" role="tab" id="t-factory" aria-controls="factory" data-tab="factory">Agent factory</button>
-      <button class="tab" role="tab" id="t-assets" aria-controls="assets" data-tab="assets">Reusable assets</button>
-      <button class="tab" role="tab" id="t-gates" aria-controls="gates" data-tab="gates">Readiness gates</button>
-      <button class="tab" role="tab" id="t-rai" aria-controls="rai" data-tab="rai">Responsible AI</button>
-      <button class="tab" role="tab" id="t-score" aria-controls="score" data-tab="score">Scorecard</button>
-      <button class="tab" role="tab" id="t-team" aria-controls="team" data-tab="team">Team</button>
+      <button class="tab" role="tab" id="t-types" aria-controls="types" data-tab="types">Agent patterns</button>
+      <button class="tab" role="tab" id="t-desk" aria-controls="desk" data-tab="desk">Readiness review</button>
+      <button class="tab" role="tab" id="t-ops" aria-controls="ops" data-tab="ops">Delivery model</button>
+      <button class="tab" role="tab" id="t-trust" aria-controls="trust" data-tab="trust">Human in the loop</button>
+      <button class="tab" role="tab" id="t-dash" aria-controls="dash" data-tab="dash">Value &amp; adoption</button>
       <button class="tab" role="tab" id="t-why" aria-controls="why" data-tab="why">Why me</button>
       <button class="tab" role="tab" id="t-meet" aria-controls="meet" data-tab="meet">When we meet</button>
     </div>
@@ -575,130 +549,140 @@ footer b{color:var(--fg)}
 
   <!-- OVERVIEW -->
   <section class="pane" id="overview" role="tabpanel" aria-labelledby="t-overview">
-    <p class="lede">The model I would propose for an AI Engineering CoE: an agent factory, certified reusable patterns, production-readiness gates and Responsible AI in the platform. Sample data; not tied to any company's systems.</p>
+    <p class="lede">FOUNDRY shows how I would run AI engineering in a Center of Excellence: turning business priorities into AI solutions built from shared agent patterns, taking them through one production-readiness gate, and measuring adoption and value after launch. Responsible AI, security, governance and auditability are built into the path, not added at the end. It is an illustrative prototype with sample data, not connected to any company's systems.</p>
     <div class="proof">
-      <div><b class="mono">6 months</b><span>to stand up an AI-first PDLC and AI developer platform designed to serve 1,200 engineers</span></div>
+      <div><b class="mono">6 months</b><span>to stand up an AI-first PDLC and AI developer platform built for 1,200 engineers</span></div>
       <div><b class="mono">~400</b><span>engineers on governed AI workflows within 13 months</span></div>
-      <div><b class="mono">10+</b><span>AI developer tools evaluated against build–buy–partner criteria</span></div>
-      <div><b class="mono">−30%</b><span>Sev2s, security vulnerabilities and launch risk</span></div>
+      <div><b class="mono">9 → 4 days</b><span>regression lead time, with release cadence doubled from weekly to twice-weekly in 3 months</span></div>
+      <div><b class="mono">10+</b><span>AI tools reviewed against build–buy–partner criteria, preventing tool sprawl</span></div>
     </div>
-    <p class="proof-note">These four figures are from my work at S&amp;P Global and Audible. Everything in the other tabs is a proposed model with sample data.</p>
+    <p class="proof-note">These four figures are from my work at S&amp;P Global. Figures in the Value &amp; adoption tab are sample data.</p>
 
     <div class="sec-head" style="margin-top:36px"><span class="label">The idea in three lines</span></div>
     <div class="pillars">
-      <div><h3>A factory, not a lab</h3><p>Every use case moves through the same six stages with entry and exit criteria, so a pilot either graduates to production or is retired on purpose.</p></div>
-      <div><h3>Build once, reuse everywhere</h3><p>Agent patterns, prompt templates, evaluation harnesses and guardrails are versioned assets with owners, so each new team starts from a certified pattern.</p></div>
-      <div><h3>Ready means measured</h3><p>Evaluation, reliability, observability and rollback are pipeline gates, with faster, evidence-backed human approval on regulated checks.</p></div>
+      <div><h3>Build once, reuse everywhere</h3><p>Agent patterns, orchestration, connectors and evaluation sets are shared assets. Each new solution starts from them, which cuts duplication and inherits the controls.</p></div>
+      <div><h3>Production-ready by design</h3><p>Reliability, observability, security and Responsible AI are checked at one readiness gate, with evidence, before anything reaches customers or operations.</p></div>
+      <div><h3>Measured by value, not launches</h3><p>Every solution has an owner, a baseline and a business KPI. Adoption and outcomes are tracked after launch, and low-value work is stopped.</p></div>
     </div>
 
     <div class="sec-head" style="margin-top:36px"><span class="label">Where to go next</span></div>
     <div class="jump">
-      <button type="button" data-go="factory"><b>Agent factory</b><span>Six lifecycle stages, from intake to retirement</span><i>2 min →</i></button>
-      <button type="button" data-go="assets"><b>Reusable assets</b><span>A sample catalog of agent patterns and shared components</span><i>2 min →</i></button>
-      <button type="button" data-go="gates"><b>Readiness gates</b><span>Run three sample use cases through the production gates</span><i>3 min →</i></button>
-      <button type="button" data-go="rai"><b>Responsible AI</b><span>Controls built into the platform, and faster human approval</span><i>2 min →</i></button>
-      <button type="button" data-go="score"><b>Scorecard</b><span>Value and adoption, month by month, for leadership</span><i>1 min →</i></button>
-      <button type="button" data-go="team"><b>Team</b><span>Leaders of leaders, architects and AI engineers</span><i>2 min →</i></button>
+      <button type="button" data-go="types"><b>Agent patterns</b><span>Four reusable patterns that new solutions start from</span><i>2 min →</i></button>
+      <button type="button" data-go="desk"><b>Readiness review</b><span>Take a sample AI solution through the production-readiness gate</span><i>3 min →</i></button>
+      <button type="button" data-go="ops">
+<b>Delivery model</b><span>Idea to scale in six stages, with owners and decision rights</span><i>2 min →</i></button>
+      <button type="button" data-go="trust"><b>Human in the loop</b><span>How people decide faster as agents earn trust with evidence</span><i>2 min →</i></button>
+      <button type="button" data-go="dash"><b>Value &amp; adoption</b><span>Production, reuse, reliability and speed, every month</span><i>1 min →</i></button>
+      <button type="button" data-go="why"><b>Why me</b><span>What S&amp;P Global, DoubleVerify, Audible and Prudential taught me</span><i>2 min →</i></button>
     </div>
   </section>
 
-  <!-- AGENT FACTORY -->
-  <section class="pane" id="factory" role="tabpanel" aria-labelledby="t-factory" hidden>
+  <!-- AGENT PATTERNS -->
+  <section class="pane" id="types" role="tabpanel" aria-labelledby="t-types" hidden>
     <div class="sec-head">
-      <span class="label">Agent factory · proposed model</span>
-      <h2>Six lifecycle stages, each with clear entry and exit criteria</h2>
-      <p class="lede">Select a stage to see what it checks, who owns it, how it runs, and the evidence it leaves. Depth scales with the risk tier: an internal productivity agent moves faster than a client-facing one.</p>
+      <span class="label">Shared assets, not one-off builds</span>
+      <h2>Four agent patterns every new solution starts from</h2>
+      <p class="lede">Each pattern is a reusable asset with its components, evaluation set and controls already built in. Teams assemble solutions from them instead of starting from a blank page. "Typical today" describes a typical enterprise, not any specific company.</p>
     </div>
-    <div class="stages" id="stages" role="group" aria-label="Lifecycle stages"></div>
-    <div class="gcard" id="stagecard" aria-live="polite" style="margin-top:14px"></div>
-    <div class="next"><button type="button" data-go="assets">Next: reusable assets →</button></div>
+    <div class="who2">
+      <div class="glist" id="tlist" role="group" aria-label="Agent patterns"></div>
+      <div class="gcard" id="tcard" aria-live="polite"></div>
+    </div>
+    <div class="next"><button type="button" data-go="desk">Next: readiness review →</button></div>
   </section>
 
-  <!-- REUSABLE ASSETS -->
-  <section class="pane" id="assets" role="tabpanel" aria-labelledby="t-assets" hidden>
+  <!-- READINESS REVIEW -->
+  <section class="pane" id="desk" role="tabpanel" aria-labelledby="t-desk" hidden>
     <div class="sec-head">
-      <span class="label">Reusable assets</span>
-      <h2>A catalog of certified patterns, so teams start at the middle, not at zero</h2>
-      <p class="lede">Each asset has an owner, a version, a status and a reuse count. Filter by type, then select an asset to see its card.</p>
-      <span class="sample-note">Sample catalog, for illustration</span>
-    </div>
-    <div class="filters" id="afilters" role="group" aria-label="Filter by asset type"></div>
-    <div class="who2 port">
-      <div class="tbl-wrap"><table class="ptable"><thead><tr><th>Asset</th><th>Type</th><th>Status</th><th>Reused by</th></tr></thead><tbody id="arows"></tbody></table></div>
-      <div class="gcard" id="acard" aria-live="polite"></div>
-    </div>
-    <p class="targets">Certified means it passed the same evaluation, security and observability gates as a production release. Deprecated assets have a migration path and a retirement date.</p>
-    <div class="next"><button type="button" data-go="gates">Next: readiness gates →</button></div>
-  </section>
-
-  <!-- READINESS GATES -->
-  <section class="pane" id="gates" role="tabpanel" aria-labelledby="t-gates" hidden>
-    <div class="sec-head">
-      <span class="label">Try it · production readiness</span>
-      <h2>Six gates between a pilot and production</h2>
-      <p class="lede">Pick a sample use case. Each gate cites its evidence; the verdict tells the team exactly what to fix, not just that it failed.</p>
-      <span class="sample-note">Sample use cases and results, for illustration</span>
+      <span class="label">Try it</span>
+      <h2>The production-readiness review</h2>
+      <p class="lede">Pick a sample AI solution. Five readiness checks run against the engineering standards, each citing its evidence. The CoE proposes a way forward, and the release lands in the release record.</p>
     </div>
     <div class="demo">
-      <div class="demo-top"><div class="cases" role="group" aria-label="Sample use cases" id="gcases"></div></div>
-      <div class="panel" id="gpanel" aria-live="polite"></div>
+      <div class="demo-top">
+        <div class="cases" role="group" aria-label="Sample AI solutions" id="subs"></div>
+        <button class="reset" id="dreset" type="button">Start over</button>
+      </div>
+      <div class="steps" id="dsteps">
+        <button type="button" data-step="0"><b>Step 1</b>Solution</button>
+        <button type="button" data-step="1"><b>Step 2</b>Readiness checks</button>
+        <button type="button" data-step="2"><b>Step 3</b>Path forward</button>
+        <button type="button" data-step="3"><b>Step 4</b>Release record</button>
+      </div>
+      <div class="panel" id="dpanel" aria-live="polite"></div>
     </div>
-    <div class="next"><button type="button" data-go="rai">Next: Responsible AI →</button></div>
+    <div class="next"><button type="button" data-go="ops">Next: delivery model →</button></div>
   </section>
 
-  <!-- RESPONSIBLE AI -->
-  <section class="pane" id="rai" role="tabpanel" aria-labelledby="t-rai" hidden>
+  <!-- DELIVERY MODEL -->
+  <section class="pane" id="ops" role="tabpanel" aria-labelledby="t-ops" hidden>
     <div class="sec-head">
-      <span class="label">Responsible AI, built into the platform</span>
-      <h2>Controls run as platform capabilities, not as review meetings</h2>
-      <p class="lede">Security, privacy, governance and auditability are part of every scaffold. Where regulation requires a person to approve, the approver decides from an evidence packet, and decision time is tracked.</p>
+      <span class="label">From priority to value</span>
+      <h2>Six stages, each with an owner, a service level and evidence</h2>
+      <p class="lede">Select a stage to see what happens in it. The path takes an AI solution from a prioritized business need to production, adoption and, when it stops earning its place, retirement.</p>
     </div>
+    <div class="stages" id="stages" role="group" aria-label="Stages"></div>
+    <div class="gcard" id="stagecard" aria-live="polite" style="margin-top:14px"></div>
+    <div class="sec-head" style="margin-top:32px"><span class="label">Decision rights</span></div>
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th>Control</th><th>Where it runs</th><th>Evidence it leaves</th></tr></thead>
+        <thead><tr><th>Who decides</th><th>What they decide</th><th>Service level</th><th>Share of volume (target)</th></tr></thead>
         <tbody>
-          <tr><td><b>Data classification and PII handling</b></td><td>Guardrail component on every model call</td><td>Redaction and policy logs</td></tr>
-          <tr><td><b>Prompt-injection and jailbreak tests</b></td><td>Evaluation harness in CI</td><td>Test report per release</td></tr>
-          <tr><td><b>Model and prompt versioning</b></td><td>Shared template library and model registry</td><td>Version pins per release</td></tr>
-          <tr><td><b>Traceability and explainability</b></td><td>Tracing component in the scaffold</td><td>Trace from request to response</td></tr>
-          <tr><td><b>Human approval on regulated checks</b></td><td>Approval step in the pipeline, with an evidence packet</td><td>Approver, decision, decision time</td></tr>
-          <tr><td><b>Third-party AI review</b></td><td>Build–buy–partner review with Security, Risk and Legal</td><td>Review record and approved tool list</td></tr>
+          <tr><td><b>Delivery team</b></td><td>Solutions built on an approved pattern that pass every readiness check: release with standard monitoring</td><td class="num">Same week</td><td class="num">~60%</td></tr>
+          <tr><td><b>CoE readiness board</b></td><td>New patterns, customer-facing agents and anything with a failed check: set conditions with Security, Risk and Architecture</td><td class="num">5 business days</td><td class="num">~35%</td></tr>
+          <tr><td><b>Executive AI steering</b></td><td>Priorities, funding, build–buy–partner calls and anything outside risk appetite, with the CoE's recommendation</td><td class="num">Monthly, or ad hoc</td><td class="num">~5%</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="trust-grid" style="margin-top:20px">
-      <div class="gcard packet-demo">
-        <span class="label">What the approver sees · sample</span>
-        <h3>Evidence packet, one screen</h3>
-        <dl class="kv">
-          <dt>Use case</dt><dd>Contract clause extraction · Elevated risk</dd>
-          <dt>Pattern</dt><dd>Document extraction v1.4 (certified)</dd>
-          <dt>Evaluation</dt><dd>97.8% field accuracy (threshold 97%)</dd>
-          <dt>Security</dt><dd>Prompt-injection suite passed</dd>
-          <dt>Rollback</dt><dd>Flag off and version pin, drill in 4 min</dd>
-          <dt>Pipeline view</dt><dd><b>Approve for 10% rollout</b></dd>
-        </dl>
-        <p class="hint">The approver opens any line of evidence and records a decision with a reason. Time to decision is logged.</p>
-      </div>
-      <div class="ladder">
-        <span class="label">Faster, evidence-backed human approval on regulated checks</span>
-        <ol>
-          <li><b>Full review</b><span>A new class of use case starts with a full human review.</span></li>
-          <li><b>Evidence-packet review</b><span>The person decides from the packet and opens detail when something looks off. The floor for regulated and client-facing changes.</span></li>
-          <li><b>Fast-path approval</b><span>For a class with a strong track record, the packet arrives pre-filled; the person still approves, and a sample gets a deep review.</span></li>
-        </ol>
-        <p class="hint">A person approves at every level where regulation requires it. Any escaped defect moves the class back a level.</p>
-      </div>
-    </div>
-    <div class="next"><button type="button" data-go="score">Next: scorecard →</button></div>
+    <div class="next"><button type="button" data-go="trust">Next: human in the loop →</button></div>
   </section>
 
-  <!-- SCORECARD -->
-  <section class="pane" id="score" role="tabpanel" aria-labelledby="t-score" hidden>
+  <!-- HUMAN IN THE LOOP -->
+  <section class="pane" id="trust" role="tabpanel" aria-labelledby="t-trust" hidden>
     <div class="sec-head">
-      <span class="label">For executives</span>
-      <h2>Value and adoption scorecard, every month</h2>
-      <p class="lede">What I would bring to leadership. Move through a sample first year: more capabilities reach production, more new builds start from a certified pattern, and pilot-to-production time falls.</p>
+      <span class="label">Human in the loop, by design</span>
+      <h2>People stay accountable. Agents earn trust with evidence.</h2>
+      <p class="lede">Where risk or regulation requires a person to approve an agent's action, that does not go away. What changes is how the person decides: from re-checking the agent's work to deciding from an objective evidence packet. Every decision is timed and compared with the agent's recommendation, so trust grows from data, not from opinion.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="gcard">
+        <span class="label">What the reviewer sees</span>
+        <h3>Decision packet, one screen</h3>
+        <dl class="kv">
+          <dt>Solution</dt><dd>Dispute resolution assistant · Customer-facing</dd>
+          <dt>Proposed action</dt><dd>Draft decision: accept the cardholder's claim</dd>
+          <dt>Evidence</dt><dd>Transaction record, merchant reply, matching rule cited</dd>
+          <dt>Checks</dt><dd>Policy match ✓ · Amount within limit ✓ · No fraud flag ✓</dd>
+          <dt>Confidence</dt><dd>High · similar cases agreed 96% of the time</dd>
+          <dt>Recommendation</dt><dd><b>Approve and send the drafted reply</b></dd>
+        </dl>
+        <p class="hint">The analyst can open any line of evidence and records Approve, Change or Reject with a reason. Time to decision is logged.</p>
+      </div>
+      <div class="ladder">
+        <span class="label">Review depth, by action type</span>
+        <ol>
+          <li><b>Full review</b><span>Every new agent and action type starts here: a person checks the agent's work in full before anything is sent or changed.</span></li>
+          <li><b>Evidence-packet review</b><span>The person decides from the packet and opens detail when something looks off. The floor for actions that affect customers or money.</span></li>
+          <li><b>Fast-path approval</b><span>For an action type with 97%+ agreement over 200+ decisions and no incidents: the packet arrives pre-filled, a person still approves, and a sample gets a deep review.</span></li>
+        </ol>
+        <p class="hint">Where regulation requires a person, a person decides at every level. Any incident, or agreement dropping below the threshold, moves the action type back a level automatically.</p>
+      </div>
+    </div>
+    <span class="sample-note" style="margin-top:20px">Sample data showing year-one targets, for illustration</span>
+    <div class="charts">
+      <div class="chart"><h3>Median time to decision</h3><p>Minutes for an analyst to decide on an agent's proposed action, by month</p><svg id="c3" viewBox="0 0 460 190" role="img" aria-label="Median decision time falls from 14 minutes in month 1 to 3 minutes in month 12"></svg></div>
+      <div class="chart"><h3>Agreement with the agent</h3><p>Share of human decisions that match the agent's recommendation, by month</p><svg id="c4" viewBox="0 0 460 190" role="img" aria-label="Agreement rises from 78% in month 1 to 96% in month 12"></svg></div>
+    </div>
+    <p class="targets">Disagreements are the most useful data: each one is reviewed, and either the person caught something the agent missed (so the evaluation set grows) or the agent was right (so the packet is made clearer).</p>
+    <div class="next"><button type="button" data-go="dash">Next: value &amp; adoption →</button></div>
+  </section>
+
+  <!-- KPIs -->
+  <section class="pane" id="dash" role="tabpanel" aria-labelledby="t-dash" hidden>
+    <div class="sec-head">
+      <span class="label">For AI leadership and business partners</span>
+      <h2>Is the CoE delivering? Four numbers, every month</h2>
+      <p class="lede">What I would report monthly. Move through a sample first year: more AI solutions reach production, more new builds start from shared patterns, idea-to-production time falls, and adoption grows.</p>
       <span class="sample-note">Sample data showing year-one targets, for illustration</span>
     </div>
     <div class="scrub">
@@ -708,48 +692,14 @@ footer b{color:var(--fg)}
       <output id="mout" for="month">Month 12</output>
     </div>
     <div class="tiles">
-      <div class="tile"><span class="v mono" id="k1">18</span><span class="k">AI capabilities in production with a measured KPI</span><span class="s">started at 3</span></div>
-      <div class="tile"><span class="v mono" id="k2">65%</span><span class="k">New builds starting from a certified pattern</span><span class="s">started at 10%</span></div>
-      <div class="tile"><span class="v mono" id="k3">6 wks</span><span class="k">Median time from pilot to production</span><span class="s">started at 16 weeks</span></div>
-      <div class="tile"><span class="v mono" id="k4">27</span><span class="k">Teams using CoE assets</span><span class="s">started at 4</span></div>
+      <div class="tile"><span class="v mono" id="k1">24</span><span class="k">AI solutions in production, each with an owner and a business KPI</span><span class="s">started at 4</span></div>
+      <div class="tile"><span class="v mono" id="k2">78%</span><span class="k">New builds that start from a shared pattern</span><span class="s">started at 15%</span></div>
+      <div class="tile"><span class="v mono" id="k3">71%</span><span class="k">Intended users active each week across live solutions</span><span class="s">started at 22%</span></div>
+      <div class="tile"><span class="v mono" id="k4">8 wks</span><span class="k">Median time from approved idea to production</span><span class="s">started at 26 weeks</span></div>
     </div>
     <div class="charts">
-      <div class="chart"><h3>Reuse rate</h3><p>Share of new builds that start from a certified pattern, by month</p><svg id="c1" viewBox="0 0 460 190" role="img" aria-label="Reuse rate rises from 10% in month 1 to 65% in month 12"></svg></div>
-      <div class="chart"><h3>Pilot to production</h3><p>Median weeks from pilot start to production, by month</p><svg id="c2" viewBox="0 0 460 190" role="img" aria-label="Median weeks from pilot to production fall from 16 in month 1 to 6 in month 12"></svg></div>
-    </div>
-    <div class="sec-head" style="margin-top:28px"><span class="label">Proposed value measures</span></div>
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>Outcome</th><th>Proposed KPI</th><th>Measured against</th></tr></thead>
-        <tbody>
-          <tr><td><b>Productivity</b></td><td>Hours saved per task; active use, not licences</td><td>A baseline taken before the pilot</td></tr>
-          <tr><td><b>Customer impact</b></td><td>Turnaround time; quality of customer-facing output</td><td>A baseline, with a control group where possible</td></tr>
-          <tr><td><b>Risk reduction</b></td><td>Incidents, escaped defects, open findings</td><td>The prior quarter</td></tr>
-          <tr><td><b>Business outcomes</b></td><td>Cost per transaction; revenue influenced</td><td>Agreed with Finance at intake</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="next"><button type="button" data-go="team">Next: team →</button></div>
-  </section>
-
-  <!-- TEAM -->
-  <section class="pane" id="team" role="tabpanel" aria-labelledby="t-team" hidden>
-    <div class="sec-head">
-      <span class="label">How the team would be organized · proposed</span>
-      <h2>Leaders of leaders, a chapter of architects, and pods of AI engineers</h2>
-      <p class="lede">Four groups, each led by a leader of leaders, with architects working across all of them and AI engineering pods aligned to business priorities.</p>
-      <span class="sample-note">Proposed structure, for illustration</span>
-    </div>
-    <div class="lessons">
-      <article class="lesson"><span class="yr">Group 1 · leader of leaders</span><h3>Agent factory and delivery</h3><ul><li>AI engineering pods aligned to business priorities</li><li>Own delivery from intake to value realization</li><li>Report adoption and outcomes on the scorecard</li></ul></article>
-      <article class="lesson"><span class="yr">Group 2 · leader of leaders</span><h3>Reusable assets and patterns</h3><ul><li>Agent patterns, shared components and the prompt-template library</li><li>Certify, version and retire assets</li><li>Measure reuse and remove duplication</li></ul></article>
-      <article class="lesson"><span class="yr">Group 3 · leader of leaders</span><h3>Production readiness and reliability</h3><ul><li>Evaluation harness and readiness gates</li><li>Observability, error budgets and rollback drills</li><li>Incident reviews that feed new checks</li></ul></article>
-      <article class="lesson"><span class="yr">Group 4 · leader of leaders</span><h3>Responsible AI engineering and enablement</h3><ul><li>Platform controls with Security, Risk, Legal and Compliance</li><li>Third-party AI reviews, build–buy–partner</li><li>Training paths for engineers and business teams</li></ul></article>
-    </div>
-    <div class="pillars" style="margin-top:16px">
-      <div><h3>Architects as a chapter</h3><p>Architects sit in the pods but meet as one chapter, so patterns are decided once and reused everywhere.</p></div>
-      <div><h3>Pods own outcomes</h3><p>Each pod owns a KPI, not just a backlog, and reports it against a baseline.</p></div>
-      <div><h3>Growing talent</h3><p>Clear career paths for AI engineers and architects, with pairing and rotation through the readiness group.</p></div>
+      <div class="chart"><h3>Reuse of shared patterns</h3><p>Share of new builds that start from a shared pattern, by month</p><svg id="c1" viewBox="0 0 460 190" role="img" aria-label="Reuse rises from 15% in month 1 to 78% in month 12"></svg></div>
+      <div class="chart"><h3>Idea to production</h3><p>Median weeks from approved idea to production, by month</p><svg id="c2" viewBox="0 0 460 190" role="img" aria-label="Idea to production falls from 26 weeks in month 1 to 8 weeks in month 12"></svg></div>
     </div>
     <div class="next"><button type="button" data-go="why">Next: why me →</button></div>
   </section>
@@ -758,47 +708,47 @@ footer b{color:var(--fg)}
   <section class="pane" id="why" role="tabpanel" aria-labelledby="t-why" hidden>
     <div class="sec-head">
       <span class="label">Why me</span>
-      <h2>FOUNDRY comes from platforms and controls I have built inside engineering</h2>
-      <p class="lede">The figures are from my resume.</p>
+      <h2>FOUNDRY comes from AI engineering I have built and run</h2>
+      <p class="lede">The figures are from my resume. Twenty-four years of tech leadership, most of it in regulated financial services.</p>
     </div>
     <div class="lessons">
       <article class="lesson">
-        <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; QE</span><h3>S&amp;P Global</h3>
-        <p class="quote">"Reuse is a product decision, not a side effect."</p>
-        <ul><li>Re-architected the PDLC AI-first across two business units, with agents for requirements, code generation, test automation and code review, through to deployment telemetry</li><li>AI developer platform in 6 months, designed to serve 1,200 engineers; ~400 engineers on governed AI in 13 months</li><li>Central reusable-components team and a shared prompt-template library</li><li>Partnered with CISO, Risk, Compliance, Legal, Architecture and Controls; presented AI PDLC standards directly to the AI Governance Committee</li><li>Led a 350+ organization with Senior Directors as direct reports and a $70M+ budget; executive scorecard adopted by Tech and Finance</li></ul>
-        <p class="shows">Shows up in FOUNDRY as <span>Agent factory</span><span>Reusable assets</span><span>Scorecard</span></p>
+        <span class="yr">2025–2026 · VP, Global Head of QE &amp; AI PDLC</span><h3>S&amp;P Global</h3>
+        <p class="quote">"If the governed path isn't the easy one, people route around it."</p>
+        <ul><li>Stood up an AI-first PDLC and AI developer platform built for 1,200 engineers in 6 months, with AI across the lifecycle from requirements and code generation to code review and deployment telemetry</li><li>Brought ~400 engineers onto governed AI workflows in 13 months; reviewed 10+ AI tools against build–buy–partner criteria</li><li>Turned CISO, Risk, Compliance and Legal requirements into platform controls. Kept human checks where regulation required them, gave approvers objective, data-based evidence, and tracked decision time, which built trust in the system</li><li>Led a 350+ global organization and a $70M+ technology budget</li></ul>
+        <p class="shows">Shows up in FOUNDRY as <span>Agent patterns</span><span>Readiness review</span><span>Human in the loop</span></p>
       </article>
       <article class="lesson">
         <span class="yr">2024–2025 · VP, Head of Quality Engineering</span><h3>DoubleVerify</h3>
-        <p class="quote">"If it isn't measured, it isn't ready."</p>
-        <ul><li>AI-assisted testing: 25% less manual effort, 20% shorter test cycles</li><li>KPI dashboards for quality and incident trends</li></ul>
-        <p class="shows">Shows up in FOUNDRY as <span>Evaluation gate</span><span>Scorecard</span></p>
+        <p class="quote">"Agents need gates and evidence before they get autonomy."</p>
+        <ul><li>Built an agentic engineering ecosystem with guardrails and human review gates</li><li>AI-assisted testing and predictive defect analysis: 25% less manual effort, 20% shorter test cycles</li><li>Teams across the UK, Israel, France and Ireland</li></ul>
+        <p class="shows">Shows up in FOUNDRY as <span>Agent controls</span><span>Production readiness</span></p>
       </article>
       <article class="lesson">
         <span class="yr">2019–2024 · QAE Director, CTO Office</span><h3>Audible, an Amazon company</h3>
-        <p class="quote">"Production readiness is earned before launch, not after."</p>
-        <ul><li>Applied AI/ML from 2022 to production defect and Sev2 incident management</li><li>−30% Sev2s, −30% security vulnerabilities, −30% launch risk</li></ul>
-        <p class="shows">Shows up in FOUNDRY as <span>Readiness gates</span><span>Monitor stage</span></p>
+        <p class="quote">"Severity, not volume, is what matters."</p>
+        <ul><li>Applied AI/ML from 2022 to production defect and Sev2 incident management</li><li>Redefined the Sev2 process: 30% fewer Sev2s</li><li>Scaled QA from 4 to 41 people and established 2 offshore capability centers</li></ul>
+        <p class="shows">Shows up in FOUNDRY as <span>Reliability</span><span>Observability</span></p>
       </article>
       <article class="lesson">
         <span class="yr">2015–2019 · Head of Quality Engineering, CIO Office</span><h3>Prudential</h3>
-        <p class="quote">"In regulated work, evidence is part of the product."</p>
-        <ul><li>Zero Sev2s on major regulated-insurance launches</li><li>Built Customer Office QE from zero</li></ul>
-        <p class="shows">Shows up in FOUNDRY as <span>Responsible AI</span><span>Rollback</span></p>
+        <p class="quote">"In financial services, the regulator is part of the design."</p>
+        <ul><li>Built Customer Office QE from zero; revamped a 150+ person Retirement team within federal retirement regulations (IRA, Roth) at 50% lower QA cost</li><li>Zero Sev2s on major launches</li><li>Working knowledge of NIST AI RMF, ISO/IEC 42001 and the EU AI Act</li></ul>
+        <p class="shows">Shows up in FOUNDRY as <span>Release record</span><span>Decision rights</span></p>
       </article>
     </div>
     <details style="margin-top:20px">
       <summary style="cursor:pointer; font-weight:600">How this maps to the role, line by line</summary>
       <div class="tbl-wrap" style="margin-top:12px"><table>
-        <thead><tr><th>The role asks for</th><th>Where I have done it</th></tr></thead>
+        <thead><tr><th>The role asks for</th><th>In FOUNDRY</th><th>Where I have done it</th></tr></thead>
         <tbody>
-          <tr><td>Move AI from experimentation to production-grade, reusable capability</td><td>AI-first PDLC and AI developer platform in 6 months, designed to serve 1,200 engineers; ~400 engineers on governed AI in 13 months (S&amp;P Global)</td></tr>
-          <tr><td>Reusable AI assets, agent patterns and shared components</td><td>Central reusable-components team and a shared prompt-template library; agents across the SDLC from requirements to deployment telemetry (S&amp;P Global)</td></tr>
-          <tr><td>Production readiness: reliability, observability, operational performance</td><td>−30% Sev2s, security vulnerabilities and launch risk; AI/ML for production defect and Sev2 incident management from 2022 (Audible); zero Sev2s on major launches (Prudential)</td></tr>
-          <tr><td>Responsible AI, security, governance and auditability across the lifecycle</td><td>Faster, evidence-backed human approval on regulated checks; controls built with CISO, Risk, Compliance, Legal, Architecture and Controls; AI PDLC standards presented to the AI Governance Committee (S&amp;P Global)</td></tr>
-          <tr><td>Measure adoption, productivity and business outcomes</td><td>Executive scorecard adopted by Tech and Finance (S&amp;P Global); KPI dashboards (DoubleVerify)</td></tr>
-          <tr><td>Partner across platform, security, architecture and risk teams</td><td>10+ AI tools evaluated against build–buy–partner criteria under cybersecurity and controls requirements (S&amp;P Global)</td></tr>
-          <tr><td>Lead a global organization of leaders</td><td>350+ global organization with Senior Directors as direct reports and a $70M+ budget (S&amp;P Global)</td></tr>
+          <tr><td>End-to-end AI engineering delivery, from design to adoption and value</td><td>Six-stage delivery model with owners and service levels</td><td>AI-first PDLC and AI developer platform in 6 months, built for 1,200 engineers (S&amp;P Global)</td></tr>
+          <tr><td>Reusable AI assets, agent patterns, multi-agent orchestration</td><td>Four shared agent patterns with controls built in</td><td>Shared prompt-template library and evaluation gates built into the platform (S&amp;P Global); agentic engineering ecosystem (DoubleVerify)</td></tr>
+          <tr><td>Production readiness: reliability, resiliency, observability</td><td>One readiness gate with five evidence-based checks</td><td>Sev2s down 30% with AI/ML-assisted incident management (Audible); zero Sev2s on major launches (Prudential)</td></tr>
+          <tr><td>Responsible AI, security, governance and auditability in the lifecycle</td><td>Checks, human-in-the-loop rules and a release record</td><td>CISO, Risk, Compliance and Legal requirements turned into platform controls; human checks kept where regulation required them (S&amp;P Global)</td></tr>
+          <tr><td>Adoption and measurable business outcomes</td><td>Monthly value and adoption report</td><td>~400 engineers on governed AI in 13 months; executive scorecard adopted by Tech and Finance (S&amp;P Global)</td></tr>
+          <tr><td>Partnering across Platform, Data, Security, Architecture, Risk and business</td><td>Decision rights and the CoE readiness board</td><td>AI PDLC standards presented to the AI Governance Committee; partnered with CISO, Risk, Compliance, Legal and Architecture (S&amp;P Global)</td></tr>
+          <tr><td>Leading a global organization of leaders and engineers</td><td>A CoE with clear priorities and service levels</td><td>Led a 350+ global organization with Senior Directors as direct reports (S&amp;P Global)</td></tr>
         </tbody>
       </table></div>
     </details>
@@ -808,49 +758,55 @@ footer b{color:var(--fg)}
   <!-- WHEN WE MEET -->
   <section class="pane" id="meet" role="tabpanel" aria-labelledby="t-meet" hidden>
     <div class="sec-head">
-      <span class="label">When we meet · previews I would walk through live</span>
+      <span class="label">When we meet</span>
       <h2>Some of FOUNDRY is better shown than read</h2>
+      <p class="lede">These are previews. I would walk through each one live.</p>
     </div>
-    <div class="locks meet3">
+    <div class="locks">
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Live walkthrough</span>
-        <h3>A use case through the factory</h3>
-        <p>From intake and a certified pattern to the readiness gates, approval and the first month in production.</p>
+        <h3>A multi-agent solution, start to finish</h3>
+        <p>From the shared pattern it starts from, through the readiness gate, to what the release record and monitoring show after launch.</p>
       </div>
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Deep dive</span>
-        <h3>Pilot to production in weeks</h3>
-        <ul><li>Certified patterns first</li><li>Gates as code, tuned by risk</li><li>Stop rules agreed up front</li></ul>
-        <div class="veil-wrap"><p class="veil">How the gates are tuned by risk tier.</p></div>
+        <h3>Building the shared asset library</h3>
+        <ul><li>Which patterns to build first</li><li>How teams contribute back</li><li>Measuring reuse and duplication</li></ul>
+        <div class="veil-wrap"><p class="veil">How a pattern becomes a shared asset, who owns it, and how its evaluation set and controls stay current as models change.</p></div>
+      </div>
+      <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>First 90 days</span>
+        <h3>Portfolio, readiness gate, then value</h3>
+        <ul><li><b>Days 1–30:</b> learn the portfolio, platforms and teams; map what is in production and what is stuck in pilot</li><li><b>Days 31–60:</b> one readiness gate live; first two shared patterns published</li><li><b>Days 61–90:</b> first monthly value and adoption report; a pilot moved to production</li></ul>
+        <div class="veil-wrap"><p class="veil">Which solutions I would start with, how the engineering organization's work changes, and the three numbers I would commit to by day 90.</p></div>
       </div>
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Questions I'd bring</span>
         <h3>What I would want to learn from you</h3>
-        <ol class="qs"><li>Which pilots are closest to production?</li><li>Where does duplication slow teams down?</li><li>How is AI value measured today?</li></ol>
+        <ol class="qs"><li>Which AI solutions are stuck between pilot and production today, and why?</li><li>How much is being built twice across teams?</li><li>How is value measured after launch now?</li></ol>
       </div>
     </div>
-    <div class="lockcard d90"><div><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>First 90 days</span><h3>Listen, certify, then scale</h3></div><div><b>Days 1–30</b>Meet leaders and partners; inventory pilots, assets and tools</div><div><b>Days 31–60</b>Certify first patterns; readiness gates live for one product area</div><div><b>Days 61–90</b>First value and adoption scorecard; team design agreed</div></div>
     <div class="cta">
       <h3>I would welcome the conversation</h3>
       <div><button class="talk" type="button" data-contact>Let&rsquo;s talk</button></div>
-      <p>Thirty minutes is enough to walk through a use case in the factory, the readiness gates, and the first 90 days.</p>
+      <p>Thirty minutes is enough to walk through a live solution, the delivery model, and the first 90 days.</p>
     </div>
   </section>
 
   <footer>
-    <div>© 2026 Sonia Malik. FOUNDRY is an independent prototype of a proposed operating model, with sample data. It is not affiliated with, and uses no systems or data from, any employer or prospective employer.</div>
+    <div>© 2026 Sonia Malik. FOUNDRY is an independent prototype with sample data. It is not affiliated with, and uses no systems or data from, any employer or prospective employer.</div>
   </footer>
 </div>
 
 <button class="side-tab" type="button" id="side-tab" aria-controls="drawer" aria-expanded="false"><span class="av" aria-hidden="true">SM</span><span class="st-txt">About me · Let&rsquo;s talk</span></button>
 <aside class="drawer" id="drawer" aria-label="About Sonia Malik" hidden>
   <button class="dr-close" type="button" id="dr-close" aria-label="Close">&times;</button>
-  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>VP, Global Head of AI PDLC &amp; Quality Engineering, S&amp;P Global</span></div></div>
-  <p class="pf-pitch">I build engineering systems that let AI scale safely. At S&amp;P Global I re-architected the development lifecycle AI-first, with agents across the SDLC, a reusable-components team, a shared prompt-template library, and Risk, Compliance and Legal requirements built into the platform. For an AI Engineering CoE, I would bring the same approach: certified patterns, clear production-readiness gates, and evidence leaders can act on.</p>
+  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>Most recently VP, Global Head of Quality Engineering &amp; AI PDLC, S&amp;P Global</span></div></div>
+  <p class="pf-pitch">I take AI from experiment to production. At S&amp;P Global I stood up an AI-first PDLC and AI developer platform in 6 months, with Risk, Compliance and Legal requirements built into the platform. Where regulation required a human check, we kept it and made it easier: approvers got objective, data-based evidence, we tracked how long each decision took, and over time that built trust in the system. For the AI Center of Excellence, I would build the engineering path that turns AI priorities into reusable, production-grade products, measured by adoption and value.</p>
   <div class="pf-stats">
-    <span><b>6 months</b> to an AI developer platform designed for 1,200 engineers</span>
+    <span><b>6 months</b> to an AI developer platform for 1,200 engineers</span>
     <span><b>~400</b> engineers on governed AI in 13 months</span>
-    <span><b>Faster,</b> evidence-backed human approval on regulated checks</span>
+    <span><b>Regulated checks</b> kept, made faster with data-based evidence</span>
+    <span><b>Decision time</b> tracked, building trust in the system</span>
     <span><b>10+</b> AI tools reviewed</span>
     <span><b>350+</b> people · <b>$70M+</b> budget led</span>
-    <span><b>Regulated:</b> S&amp;P Global, Prudential</span>
+    <span><b>24 years</b> of tech leadership</span>
   </div>
   <button class="talk" type="button" data-contact>Let&rsquo;s talk</button>
 </aside>
@@ -860,7 +816,7 @@ footer b{color:var(--fg)}
     <button class="cm-close" type="button" data-close aria-label="Close">&times;</button>
     <span class="label">Next step</span>
     <h2 id="cm-title">Let&rsquo;s walk through FOUNDRY together</h2>
-    <p>In 30 minutes I can take you through a use case moving through the factory, the readiness gates, and my first 90 days.</p>
+    <p>In 30 minutes I can take you through a live AI solution, the delivery model, and my first 90 days.</p>
     <p class="cm-route">Through your standard process: your recruiting partner can reach me directly to schedule. I am flexible on timing.</p>
     <div class="cm-row"><span class="cm-k">Email</span><span class="cm-v">sonia.malik78@gmail.com</span><button class="cm-copy" type="button" data-cc="sonia.malik78@gmail.com">Copy</button></div>
     <div class="cm-row"><span class="cm-k">Phone</span><span class="cm-v">732-629-1034</span><button class="cm-copy" type="button" data-cc="732-629-1034">Copy</button></div>
@@ -879,7 +835,7 @@ footer b{color:var(--fg)}
     const bar=document.querySelector('.tabbar');
     if(opts.scroll){ const y=bar.getBoundingClientRect().top+window.scrollY; if(window.scrollY>y) window.scrollTo({top:y, behavior:'auto'}); }
     if(opts.focus){ const t=TABS.find(x=>x.dataset.tab===id); if(t) t.focus(); }
-    if(id==='score') drawScore(+document.getElementById('month').value);
+    if(id==='dash' && document.getElementById('month')) drawDash(+document.getElementById('month').value);
   }
   TABS.forEach((t,i)=>{
     t.addEventListener('click',()=>selectTab(t.dataset.tab,{scroll:true}));
@@ -887,148 +843,234 @@ footer b{color:var(--fg)}
   });
   document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>selectTab(b.dataset.go,{scroll:true})));
 
-  // ---------- Agent factory ----------
-  const STAGES=[
-    {k:'INT', n:'Intake', owner:'CoE intake lead, with the business sponsor',
-     checks:['Business problem, KPI and baseline named','Catalog checked for a reusable pattern before any new build','Risk tier and data classification set'],
-     auto:'An intake form scores value, feasibility and risk. A match in the asset catalog routes the team to reuse first.',
-     ev:'Intake record, baseline, risk tier', kpi:'Time from idea to decision'},
-    {k:'BLD', n:'Build', owner:'AI engineering pod, with a CoE architect',
-     checks:['Starts from a certified agent pattern','Prompts kept in the shared template library, versioned','AI-assisted code tagged with tool and model version'],
-     auto:'Scaffolds come from the catalog with guardrails, tracing and evaluation hooks already wired in.',
-     ev:'Pattern ID, template versions, repository', kpi:'Reuse rate, build time'},
-    {k:'EVL', n:'Evaluate', owner:'AI engineering, with Quality Engineering for the harness',
-     checks:['Evaluation set agreed with the business owner','Quality thresholds set by risk tier','Security tests, including prompt injection; red-teaming for higher tiers'],
-     auto:'Evaluations run in CI on every change. Results below threshold block promotion.',
-     ev:'Evaluation report, thresholds version', kpi:'Evaluation pass rate, escaped defects'},
-    {k:'DEP', n:'Deploy', owner:'Platform engineering and the product owner',
-     checks:['Readiness gates passed: reliability, observability, rollback','Human approval where regulation requires it, decided from an evidence packet','Staged rollout with a rollback plan'],
-     auto:'Gates are pipeline checks. Approval is faster because the approver sees evidence, not raw output, and decision time is tracked.',
-     ev:'Readiness checklist, approver, decision time', kpi:'Pilot-to-production time'},
-    {k:'MON', n:'Monitor', owner:'AI engineering on-call, with the business owner',
-     checks:['Quality drift, latency and cost per transaction against budgets','Adoption and value against the baseline','Incidents reviewed, with new checks added'],
-     auto:'Dashboards and alerts ship with the scaffold. A drift alert opens a ticket with the trace attached.',
-     ev:'Dashboards, alert history, incident log', kpi:'Adoption, value vs. baseline, incidents'},
-    {k:'RET', n:'Retire', owner:'CoE portfolio lead',
-     checks:['Adoption or value below the agreed stop rule','Pattern superseded by a newer certified version','Model or vendor reaching end of support'],
-     auto:'Retirement is planned: users migrated, prompts and data archived, licences and infrastructure released.',
-     ev:'Retirement record, migration plan', kpi:'Assets retired, cost released'}
+  // ---------- Three tiers ----------
+  const TIERS=[
+    {k:'t1', n:'RAG', name:'Grounded assistant', risk:1, sub:'Answers questions from approved internal knowledge: policies, product rules, procedures, with citations',
+     b:'Each team builds its own retrieval, picks its own sources and writes its own evaluations, so quality and controls differ by team.',
+     a:'A shared retrieval service with approved sources, owners and refresh dates, masking before retrieval, and a grounding evaluation set every new assistant inherits.',
+     looks:['Approved sources','Grounding','Citations','Sensitive data masking','Freshness'],
+     m:['answers grounded in sources','teams reusing the retrieval service'],
+     lived:'<b>S&amp;P Global:</b> evaluation gates and a shared prompt-template library built into the platform, so teams inherited the controls by default.'},
+    {k:'t2', n:'Agent', name:'Tool-using agent', risk:3, sub:'Calls systems through approved tools: looks up records, drafts updates, opens cases', primary:true,
+     b:'Agents get broad system access in pilots, with tool integrations rebuilt for each use case and no shared rule for when a person must approve.',
+     a:'A shared tool registry with least-privilege permissions, action limits, human-approval rules by action type, full action logs, and a kill switch.',
+     looks:['Tool permissions','Action limits','Human approval rules','Action logs','Prompt injection'],
+     m:['actions with a logged approver','tools reused across agents'],
+     lived:'<b>DoubleVerify and S&amp;P Global:</b> agentic engineering with guardrails; human review kept where regulation required it, with reviewers deciding from objective evidence.'},
+    {k:'t3', n:'Multi-agent', name:'Multi-agent orchestration', risk:3, sub:'Several specialist agents coordinated on one task: gather evidence, check policy, draft, hand off to a person', primary:true,
+     b:'Orchestration is hand-built per project; failures in one agent are hard to trace, and nobody can replay what happened.',
+     a:'A shared orchestration layer with defined hand-offs, step-level tracing and replay, budgets on cost and time, and one human hand-off point.',
+     looks:['Hand-off rules','Step tracing','Replay','Cost and latency budgets','Failure handling'],
+     m:['tasks completed without rework','mean time to trace a failure'],
+     lived:'<b>S&amp;P Global:</b> AI across every stage of the development lifecycle, from requirements and code generation to code review and deployment telemetry.'},
+    {k:'t4', n:'Workflow', name:'Intelligent workflow automation', risk:2, sub:'AI steps inside an existing business workflow: classify, extract, route, summarize',
+     b:'AI steps are bolted onto workflows one at a time, with no common monitoring and no clear owner once the project team moves on.',
+     a:'Reusable AI steps with standard inputs and outputs, monitoring of error and override rates, and an owner for each step after launch.',
+     looks:['Error rates','Override rates','Fallback path','Owner after launch'],
+     m:['steps reused across workflows','hours returned to teams'],
+     lived:'<b>DoubleVerify:</b> AI-assisted test automation and predictive defect analysis cut manual effort 25% and test cycle time 20%.'}
   ];
-  let ssel='EVL';
-  function renderStages(){
-    const L=document.getElementById('stages'); L.innerHTML='';
-    STAGES.forEach((s,i)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-pressed',String(s.k===ssel)); b.innerHTML=`<span class="sn">${i+1}</span><span class="sk">${s.k}</span><b>${s.n}</b>`; b.onclick=()=>{ ssel=s.k; renderStages(); }; L.appendChild(b); });
-    const s=STAGES.find(x=>x.k===ssel);
-    document.getElementById('stagecard').innerHTML=`<div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:flex-start"><div><span class="label">Stage ${STAGES.indexOf(s)+1} of 6</span><h3>${s.n}</h3></div><span class="pill">Owner: ${s.owner}</span></div>
-      <div class="bagrid"><div class="b"><b>What it checks</b><ul class="cl">${s.checks.map(c=>`<li>${c}</li>`).join('')}</ul></div><div class="a"><b>How it runs</b>${s.auto}</div></div>
-      <p class="measure">Evidence: <span>${s.ev}</span> · Feeds the KPI: <span>${s.kpi}</span></p>`;
+  let tsel='t2';
+  function renderTiers(){
+    const L=document.getElementById('tlist'); if(!L) return; L.innerHTML='';
+    TIERS.forEach(t=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-pressed',String(t.k===tsel)); b.innerHTML=`<span><span class="tn">${t.n}</span>${t.name}</span>${t.primary?'<small>Highest risk</small>':''}`; b.onclick=()=>{ tsel=t.k; renderTiers(); }; L.appendChild(b); });
+    const t=TIERS.find(x=>x.k===tsel);
+    document.getElementById('tcard').innerHTML=`<div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start;flex-wrap:wrap"><div><span class="label">${t.n}</span><h3>${t.name}</h3></div>
+      <span class="risk-meter">Typical exposure ${[1,2,3].map(i=>`<i class="${i<=t.risk?'on':''}"></i>`).join('')}</span></div>
+      <p class="ask">${t.sub}</p>
+      <div class="bagrid"><div class="b"><b>Typical today</b>${t.b}</div><div class="a"><b>With FOUNDRY</b>${t.a}</div></div>
+      <div><span class="label">What the readiness checks look for</span><div class="looks" style="margin-top:6px">${t.looks.map(x=>`<span>${x}</span>`).join('')}</div></div>
+      <p class="lived">${t.lived}</p>
+      <p class="measure">Measured by ${t.m.map(x=>`<span>${x}</span>`).join(' · ')}</p>`;
   }
-  renderStages();
+  renderTiers();
 
-  // ---------- Reusable assets ----------
-  const TYPES={pattern:'Agent pattern', comp:'Component', tmpl:'Template', guard:'Guardrail', eval:'Evaluation'};
-  const ST={Certified:'Standard', Beta:'Elevated', Deprecated:'High'};
-  const AS=[
-    {id:'a1', n:'Retrieval-grounded answers', t:'pattern', st:'Certified', r:9, v:'v3.2', owner:'Reusable assets group', d:'Answers grounded in approved sources, with citations, guardrails and tracing wired in.', note:'Most reused pattern; evaluation set shared across teams.'},
-    {id:'a2', n:'Document extraction', t:'pattern', st:'Certified', r:5, v:'v1.4', owner:'Reusable assets group', d:'Extracts fields from documents with confidence scores and human review below a threshold.', note:'Certified after reaching 97%+ field accuracy on the shared set.'},
-    {id:'a3', n:'Tool-calling workflow agent', t:'pattern', st:'Beta', r:2, v:'v0.9', owner:'Agent factory pod', d:'A single agent calling an approved list of tools, with every call logged and rate-limited.', note:'Beta: two pilots; certification after the rollback drill.'},
-    {id:'a4', n:'Prompt-template library', t:'tmpl', st:'Certified', r:14, v:'v5.0', owner:'Reusable assets group', d:'Versioned prompt templates with owners, test cases and change history.', note:'Every production prompt is pinned to a template version.'},
-    {id:'a5', n:'Evaluation harness', t:'eval', st:'Certified', r:11, v:'v2.3', owner:'Production readiness group', d:'Runs evaluation sets in CI and blocks promotion below the threshold for the risk tier.', note:'Thresholds set by risk tier; results feed the scorecard.'},
-    {id:'a6', n:'PII and prompt-injection guardrail', t:'guard', st:'Certified', r:12, v:'v2.1', owner:'Responsible AI engineering', d:'Redacts sensitive data and screens inputs and outputs on every model call.', note:'Built with Security and Privacy; logs kept for audit.'},
-    {id:'a7', n:'Tracing and cost telemetry', t:'comp', st:'Certified', r:10, v:'v1.8', owner:'Production readiness group', d:'Traces each request end to end, with latency, cost and quality signals on one dashboard.', note:'Drift alerts open a ticket with the trace attached.'},
-    {id:'a8', n:'Legacy summarization chain', t:'pattern', st:'Deprecated', r:1, v:'v0.6', owner:'Agent factory pod', d:'An early summarization flow replaced by the retrieval-grounded pattern.', note:'Retirement date set; last team migrating this quarter.'}
-  ];
-  let af='all', asel='a1';
-  function renderAssets(){
-    const F=document.getElementById('afilters'); F.innerHTML='';
-    [['all','All assets'],...Object.entries(TYPES)].forEach(([k,l])=>{ const c=k==='all'?AS.length:AS.filter(a=>a.t===k).length; if(!c) return; const b=document.createElement('button'); b.type='button'; b.className='sub-btn'; b.setAttribute('aria-pressed',String(af===k)); b.innerHTML=`${l} <small>${c}</small>`; b.onclick=()=>{ af=k; const vis=AS.filter(a=>af==='all'||a.t===af); if(!vis.some(a=>a.id===asel)) asel=vis[0].id; renderAssets(); }; F.appendChild(b); });
-    const vis=AS.filter(a=>af==='all'||a.t===af);
-    const T=document.getElementById('arows');
-    T.innerHTML=vis.map(a=>`<tr class="prow${a.id===asel?' sel':''}" data-id="${a.id}" tabindex="0" role="button" aria-pressed="${a.id===asel}"><td><b>${a.n}</b></td><td>${TYPES[a.t]}</td><td><span class="chip ${ST[a.st]}">${a.st}</span></td><td class="kpi">${a.r} team${a.r===1?'':'s'}</td></tr>`).join('');
-    T.querySelectorAll('tr').forEach(r=>{ const go=()=>{ asel=r.dataset.id; renderAssets(); }; r.onclick=go; r.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } }; });
-    const a=AS.find(x=>x.id===asel);
-    document.getElementById('acard').innerHTML=`<span class="label">Asset card</span><h3>${a.n}</h3><p style="font-size:.9rem;color:var(--muted)">${a.d}</p>
-      <dl class="kv"><dt>Type</dt><dd>${TYPES[a.t]}</dd><dt>Version</dt><dd>${a.v}</dd><dt>Owner</dt><dd>${a.owner}</dd><dt>Reused by</dt><dd>${a.r} team${a.r===1?'':'s'}</dd></dl>
-      <div class="verdict ${a.st==='Beta'?'action':a.st==='Deprecated'?'escalate':''}" style="${a.st==='Certified'?'background:var(--ok-bg)':''}"><b>${a.st}</b><span>${a.note}</span></div>`;
-  }
-  renderAssets();
-
-  // ---------- Readiness gates ----------
-  const G=[['EVL','Evaluation'],['REL','Reliability'],['OBS','Observability'],['RBK','Rollback'],['SEC','Security & privacy'],['APR','Human approval']];
-  const LBL={clear:'Pass',action:'Needs action',escalate:'Escalate'};
-  const UCS={
-    support:{tier:'Standard', name:'Support ticket summarizer', d:'Summarizes internal support tickets for agents. Built on the retrieval-grounded pattern.',
-      res:[['clear','Faithfulness 98.6% on 1,200 sample tickets; threshold 97%.','eval: harness v2.3'],
-           ['clear','p95 latency 1.8 s against a 3 s budget; falls back to the manual queue.','load test: 3x peak'],
-           ['clear','Traces, cost per summary and drift alerts wired in.','telemetry v1.8'],
-           ['clear','Feature flag and version pin; rollback drill took 4 minutes.','drill: passed'],
-           ['clear','Guardrail on; prompt-injection suite passed.','guardrail v2.1'],
-           ['action','Internal use: the team lead approves from the evidence packet.','approver: ready']],
-      verdict:['','Ready for approval','All gates passed. One approval from the evidence packet, then a staged rollout.']},
-    extract:{tier:'Elevated', name:'Contract clause extraction', d:'Extracts key clauses from vendor contracts for a legal operations team. Built on the document extraction pattern.',
-      res:[['action','Field accuracy 94.1% against a 97% threshold; errors cluster in renewal terms.','eval: 600 sample contracts'],
-           ['clear','Batch jobs finish within the window; retries tested.','load test: passed'],
-           ['action','No alert on falling extraction confidence.','telemetry: alert missing'],
-           ['clear','Version pin and flag in place; drill passed.','drill: passed'],
-           ['clear','PII redaction verified on sample contracts.','guardrail v2.1'],
-           ['action','A regulated check: a named approver decides once the gates pass.','approver: on hold']],
-      verdict:['action','Two fixes before release','Add renewal-term examples to the evaluation set and the confidence alert, then re-run the gates.']},
-    chat:{tier:'High', name:'Customer-facing help assistant', d:'Answers customer questions on a public help page. Built on the retrieval-grounded and tool-calling patterns.',
-      res:[['clear','Answer quality 97.4% on 2,000 sample questions; threshold 97%.','eval: harness v2.3'],
-           ['clear','p95 latency within budget; graceful hand-off to a human agent.','load test: passed'],
-           ['clear','Traces and drift alerts in place.','telemetry v1.8'],
-           ['clear','Kill switch and version pin; drill passed.','drill: passed'],
-           ['action','Red-team found one jailbreak path; fixed and re-tested.','red team: 1 finding closed'],
-           ['escalate','Customer-facing with regulated disclosures: Responsible AI review with Legal and Compliance.','review: scheduled']],
-      verdict:['escalate','Sent to Responsible AI review','Gates passed; customer-facing disclosures need a review before a 5% canary.']}
+  // ---------- Agent desk ----------
+  const AG=[['REL','Reliability & resiliency'],['OBS','Observability'],['SEC','Security'],['RAI','Responsible AI'],['AUD','Compliance & auditability']];
+  const SUBS={
+    rag:{tier:'Grounded assistant', name:'Fraud analyst assistant', team:'Fraud operations',
+      purpose:'Answers analysts\' questions about fraud rules and case procedures, citing the approved procedure documents.',
+      kv:[['Pattern','Grounded assistant (RAG)'],['Data','Procedure documents, rule descriptions'],['Affects','Analyst work, not the case decision'],['Users','Fraud analysts']],
+      res:[['clear','Runs on the shared retrieval service; failover tested; p95 latency 1.8s against a 3s target.','checked: load test, failover drill'],
+           ['clear','Traces, grounding scores and feedback flow to the shared dashboard.','checked: telemetry config'],
+           ['clear','Inside the enterprise model gateway; prompt-injection tests passed.','checked: gateway config, red-team set v3'],
+           ['action','Two source folders have no owner or refresh date.','checked: source register · 2 unowned folders'],
+           ['clear','Answers labeled as AI-generated; analyst decides every case.','checked: procedure, disclosure text']],
+      verdict:['action','One condition, then release on the standard path','No escalation needed. The team picks how to meet the condition.'],
+      expert:'Standard pattern: the delivery team chooses from the standard paths.',
+      paths:[{t:'Drop the unowned folders, then release', d:'Keep the approved procedure sources and release with monthly grounding review.', rec:true, sla:'Released this week', c:['Approved sources only','Monthly grounding check','Analyst decides']},
+             {t:'Assign owners first', d:'Content owners take on the two folders and set refresh dates, then they stay in scope.', sla:'About 2 weeks', c:['Owners assigned','Refresh dates set']}]},
+    agent:{tier:'Multi-agent', name:'Dispute resolution assistant', team:'Customer operations',
+      purpose:'Specialist agents gather the transaction record and merchant reply, check the dispute rules, and draft a decision and reply for an analyst.',
+      kv:[['Pattern','Multi-agent orchestration'],['Data','Transaction and dispute records'],['Affects','Cardholder outcomes and messages'],['Users','Dispute analysts']],
+      res:[['action','No fallback when the merchant-reply agent times out; the case stalls.','checked: chaos test · 3 of 50 cases stalled'],
+           ['clear','Every step traced and replayable; cost per case within budget.','checked: trace sample, cost report'],
+           ['action','The drafting agent requests write access to case status; it only needs to propose.','checked: tool permission manifest'],
+           ['escalate','Customer-facing: decisions affect cardholders and money.','mapped: NIST AI RMF Map 5.1 · Manage 2.4'],
+           ['clear','Every proposed decision and the analyst\'s choice are logged.','checked: audit log spec']],
+      verdict:['escalate','Goes to the CoE readiness board','Customer-facing with two failed checks. Decision due in 5 business days.'],
+      expert:'The readiness board proposes three ways forward, with the operations and risk leads.',
+      paths:[{t:'Release with analyst approval on every decision', d:'Add a timeout fallback that routes the case to an analyst, remove write access so the agent only proposes, and have an analyst approve every decision and reply. Review agreement after 60 days.', rec:true, sla:'Decided in 4 days', c:['Timeout fallback','Propose-only access','Analyst approves every decision','Full trace']},
+             {t:'Shadow mode first', d:'The agents draft decisions beside analysts for 30 days without anything reaching cardholders, then compare outcomes.', sla:'Live this week', c:['No customer impact','Review at day 30']},
+             {t:'Take to executive AI steering', d:'If the business wants the agent to close low-value disputes on its own, steering decides on risk appetite first.', sla:'Next monthly meeting', c:['Steering decision','Risk and Legal review']}]},
+    model:{tier:'Tool-using agent', name:'Merchant onboarding agent', team:'Merchant services technology',
+      purpose:'Collects and checks merchant documents, pre-fills the onboarding case, and flags gaps for an onboarding specialist.',
+      kv:[['Pattern','Tool-using agent'],['Data','Merchant documents, business registry checks'],['Affects','Onboarding speed, not the approval'],['Users','Onboarding specialists']],
+      res:[['clear','Retries and idempotent tool calls; no duplicate cases in 500 test runs.','checked: test suite, idempotency report'],
+           ['action','Override rate is logged, but no alert is set if specialists start rejecting the pre-fill.','checked: monitoring config'],
+           ['clear','Uses only the shared, approved document and registry tools.','checked: tool registry'],
+           ['clear','Specialist approves every case; agent cannot approve a merchant.','checked: workflow design'],
+           ['clear','Documents and checks retained per the records policy.','checked: retention config']],
+      verdict:['action','One condition, then release on the standard path','Built on an approved pattern. No escalation needed.'],
+      expert:'Standard pattern: the delivery team chooses from the standard paths.',
+      paths:[{t:'Add the override alert, then release', d:'Alert the owner if specialists override more than 15% of pre-fills in a week, and release to all specialists.', rec:true, sla:'Released this week', c:['Override alert','Specialist approves','Weekly review']},
+             {t:'Release to one region first', d:'Run with one team for a month, set the alert threshold from real data, then expand.', sla:'About 1 month', c:['One region','Threshold from data']}]}
   };
-  const ORDER=['support','extract','chat']; let gsel='extract';
-  function renderGates(){
-    const C=document.getElementById('gcases'); C.innerHTML='';
-    ORDER.forEach(k=>{ const u=UCS[k]; const b=document.createElement('button'); b.type='button'; b.className='sub-btn'; b.setAttribute('aria-pressed',String(k===gsel)); b.innerHTML=`<small>${u.tier}</small>${u.name}`; b.onclick=()=>{ gsel=k; renderGates(); }; C.appendChild(b); });
-    const u=UCS[gsel];
-    document.getElementById('gpanel').innerHTML=`<p style="font-size:.9rem;color:var(--muted);margin-bottom:12px"><b style="color:var(--fg)">${u.name}</b> · ${u.tier} risk. ${u.d}</p>
-      <ul class="agents">${G.map(([c,n],i)=>{ const r=u.res[i]; return `<li><span class="ai">${c}</span><span class="an">${n}</span><span class="st ${r[0]}">${LBL[r[0]]}</span><span class="af">${r[1]}<cite>${r[2]}</cite></span></li>`; }).join('')}</ul>
-      <div class="verdict ${u.verdict[0]}" style="${u.verdict[0]===''?'background:var(--ok-bg)':''}"><b>${u.verdict[1]}</b><span>${u.verdict[2]}</span></div>`;
+  const ORDER=['agent','rag','model'];
+  let dsel='agent', dstep=0, dmax=0, dchoice=null, dran=false, dtimers=[];
+  const panel=document.getElementById('dpanel');
+  function clearTimers(){ dtimers.forEach(clearTimeout); dtimers=[]; }
+  function renderSubs(){
+    const S=document.getElementById('subs'); S.innerHTML='';
+    ORDER.forEach(k=>{ const s=SUBS[k]; const b=document.createElement('button'); b.type='button'; b.className='sub-btn'; b.setAttribute('aria-pressed',String(k===dsel)); b.innerHTML=`<small>${s.tier}</small>${s.name}`; b.onclick=()=>{ dsel=k; resetDesk(); }; S.appendChild(b); });
   }
-  renderGates();
+  function resetDesk(){ clearTimers(); dstep=0; dmax=0; dchoice=null; dran=false; renderSubs(); renderDesk(); }
+  function setStepBtns(){
+    document.querySelectorAll('#dsteps button').forEach(b=>{ const i=+b.dataset.step; b.classList.toggle('on',i===dstep); b.classList.toggle('done',i<dmax||(i===dmax&&i===3&&dchoice)); b.disabled=i>dmax; });
+  }
+  function agentRow(i,st,s){
+    const [code,name]=AG[i]; const r=s.res[i];
+    const label={clear:'Clear',action:'Needs action',escalate:'Escalate',pending:'Checking'}[st];
+    const cls=st==='pending'?'run':(st==='wait'?'wait':'');
+    const chip=st==='wait'?'<span class="st pending">Queued</span>':`<span class="st ${st}">${st==='pending'?'<span class="dots">Checking</span>':label}</span>`;
+    const f=(st==='wait'||st==='pending')?'<span class="af">&nbsp;</span>':`<span class="af">${r[1]}<cite>${r[2]}</cite></span>`;
+    return `<li class="${cls}"><span class="ai">${code}</span><span class="an">${name}</span>${chip}${f}</li>`;
+  }
+  function renderDesk(){
+    const s=SUBS[dsel]; setStepBtns(); let h='';
+    if(dstep===0){
+      h=`<div class="panel-grid"><div class="case-card"><span class="label">${s.tier} · ${s.team}</span><h3>${s.name}</h3><p style="color:var(--muted)">${s.purpose}</p>
+        <dl class="kv">${s.kv.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl></div>
+        <div class="review-box"><b>What happens next</b><p style="font-size:.88rem;color:var(--muted)">Five readiness checks run against the engineering standards. Each finding cites its evidence. Solutions on approved patterns take the standard path; people decide anything customer-facing.</p>
+        <div class="actions" style="margin-top:4px"><button class="btn" type="button" id="drun">Run the readiness checks</button></div></div></div>`;
+      panel.innerHTML=h; document.getElementById('drun').onclick=()=>{ dstep=1; dmax=Math.max(dmax,1); renderDesk(); };
+      return;
+    }
+    if(dstep===1){
+      const animate=!dran;
+      panel.innerHTML=`<p class="hint" style="margin-bottom:10px">${s.name} · ${s.tier}</p><ul class="agents" id="alist">${AG.map((_,i)=>agentRow(i, animate?'wait':s.res[i][0], s)).join('')}</ul><div id="vbox"></div>`;
+      const finish=()=>{ dran=true; const v=s.verdict; document.getElementById('vbox').innerHTML=`<div class="verdict ${v[0]}"><b>${v[1]}</b><span>${v[2]}</span></div><div class="actions"><button class="btn" type="button" id="dnext">See the options</button></div>`; document.getElementById('dnext').onclick=()=>{ dstep=2; dmax=Math.max(dmax,2); renderDesk(); }; };
+      if(!animate){ finish(); return; }
+      const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches; const gap=reduce?0:520;
+      const lis=()=>document.querySelectorAll('#alist li');
+      AG.forEach((_,i)=>{
+        dtimers.push(setTimeout(()=>{ const L=lis(); if(L[i]) L[i].outerHTML=agentRow(i,'pending',s); }, i*gap));
+        dtimers.push(setTimeout(()=>{ const L=lis(); if(L[i]) L[i].outerHTML=agentRow(i,s.res[i][0],s); if(i===AG.length-1) finish(); }, i*gap+gap*0.85));
+      });
+      return;
+    }
+    if(dstep===2){
+      panel.innerHTML=`<div class="expert"><span class="av" aria-hidden="true">EX</span><span>${s.expert}</span></div>
+        <div class="paths" role="group" aria-label="Paths forward">${s.paths.map((p,i)=>`<button type="button" class="path" data-i="${i}" aria-pressed="${dchoice===i}"><span class="ph"><b>${p.t}</b>${p.rec?'<span class="rec">Recommended</span>':''}</span><p>${p.d}</p><span class="meta">${p.sla} · ${p.c.join(' · ')}</span></button>`).join('')}</div>
+        <div class="actions"><button class="btn" type="button" id="drec" ${dchoice===null?'disabled style="opacity:.5;cursor:not-allowed"':''}>Record decision</button><span class="hint">The delivery team agrees the conditions with the CoE; the decision goes to the release record.</span></div>`;
+      panel.querySelectorAll('.path').forEach(b=>b.onclick=()=>{ dchoice=+b.dataset.i; renderDesk(); });
+      document.getElementById('drec').onclick=()=>{ if(dchoice===null) return; dstep=3; dmax=3; renderDesk(); };
+      return;
+    }
+    const p=s.paths[dchoice]; const id='REL-'+({rag:'0212',agent:'0218',model:'0221'})[dsel];
+    const rows=[
+      ['Day 0 · 09:02','Intake',`${s.name} submitted for release (${s.tier})`,'Solution design, pattern used, data classes'],
+      ...AG.map(([c,n],i)=>[`Day 0 · 09:0${3+i}`,`${n}`,`${({clear:'Clear',action:'Needs action',escalate:'Escalate'})[s.res[i][0]]}: ${s.res[i][1]}`,s.res[i][2]]),
+      [s.verdict[0]==='escalate'?'Day 2 · 14:30':'Day 0 · 11:40', s.verdict[0]==='escalate'?'CoE readiness board':'Delivery team', `Path chosen: ${p.t}`, p.c.join('; ')],
+      [s.verdict[0]==='escalate'?'Day 2 · 14:31':'Day 0 · 11:41','Observability','Conditions turned into monitored controls','Alerts, human-approval rules and KPIs active']
+    ];
+    panel.innerHTML=`<div class="verdict" style="background:var(--ok-bg)"><b style="color:var(--ok)">Decision recorded: ${p.t}</b><span>${p.sla}. ${s.verdict[0]==='escalate'?'Decided within the 5-day service level.':'Released on the standard path, without an escalation.'}</span></div>
+      <div class="tbl-wrap ledger" style="margin-top:14px"><table><thead><tr><th>When</th><th>Who</th><th>Event</th><th>Evidence</th></tr></thead><tbody>${rows.map((r,i)=>`<tr class="${i>=rows.length-2?'fresh':''}"><td class="num">${r[0]}</td><td><b>${r[1]}</b></td><td>${r[2]}</td><td class="num" style="white-space:normal">${r[3]}</td></tr>`).join('')}</tbody></table></div>
+      <div class="watch">Ledger ${id} · re-check when <span>model or prompt changes</span><span>new tool or data source</span><span>override rate rises</span><span>incident</span></div>
+      <div class="actions"><button class="btn ghost" type="button" id="dother">Try another solution</button></div>`;
+    document.getElementById('dother').onclick=()=>{ dsel=ORDER[(ORDER.indexOf(dsel)+1)%ORDER.length]; resetDesk(); };
+  }
+  if(panel){
+    document.querySelectorAll('#dsteps button').forEach(b=>b.addEventListener('click',()=>{ const i=+b.dataset.step; if(i>dmax) return; if(dstep===1&&!dran){ clearTimers(); dran=true; } dstep=i; renderDesk(); }));
+    document.getElementById('dreset').addEventListener('click',resetDesk);
+    resetDesk();
+  }
 
-  // ---------- Scorecard ----------
-  const P=[3,4,5,6,8,9,11,12,14,15,17,18], R=[10,14,19,24,30,35,41,46,51,56,61,65], W=[16,15,14,13,12,11,10,9,8,7,7,6], TM=[4,5,7,9,11,13,15,18,20,22,25,27];
+  // ---------- Risk posture ----------
+  const DV=[4,5,6,8,10,12,14,16,18,20,22,24], DD=[15,21,28,35,42,49,55,61,66,71,75,78], DP=[22,27,32,37,42,47,52,57,61,65,68,71], DH=[26,24,22,20,18,16,14,12,11,10,9,8];
   function line(svgId, data, yMax, yTicks, fmt, m){
-    const svg=document.getElementById(svgId); if(!svg) return; const Wd=460,H=190,L=38,Rr=44,T=14,B=26;
-    const x=i=>L+i*(Wd-L-Rr)/(data.length-1), y=v=>T+(1-v/yMax)*(H-T-B);
+    const svg=document.getElementById(svgId); if(!svg) return; const W=460,H=190,L=38,R=44,T=14,B=26;
+    const x=i=>L+i*(W-L-R)/(data.length-1), y=v=>T+(1-v/yMax)*(H-T-B);
     let s='';
-    yTicks.forEach(v=>{ s+=`<line class="ax" x1="${L}" x2="${Wd-Rr}" y1="${y(v)}" y2="${y(v)}"/><text class="axt" x="${L-6}" y="${y(v)+3}" text-anchor="end">${fmt(v)}</text>`; });
+    yTicks.forEach(v=>{ s+=`<line class="ax" x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}"/><text class="axt" x="${L-6}" y="${y(v)+3}" text-anchor="end">${fmt(v)}</text>`; });
     [1,3,6,9,12].forEach(k=>{ s+=`<text class="axt" x="${x(k-1)}" y="${H-8}" text-anchor="middle">M${k}</text>`; });
     const shown=data.slice(0,m), pts=shown.map((v,i)=>`${x(i)},${y(v)}`).join(' ');
     if(shown.length>1) s+=`<polygon class="ar" points="${x(0)},${y(0)} ${pts} ${x(shown.length-1)},${y(0)}"/><polyline class="ln" points="${pts}"/>`;
     const li=m-1;
-    s+=`<line class="mk" x1="${x(li)}" x2="${x(li)}" y1="${T}" y2="${H-B}"/><circle class="pt" cx="${x(li)}" cy="${y(data[li])}" r="4.5"/>`;
-    const lx=li>8?x(li)-8:x(li)+8, anchor=li>8?'end':'start';
+    s+=`<line class="mk" x1="${x(li)}" x2="${x(li)}" y1="${T}" y2="${H-B}"/>`;
+    s+=`<circle class="pt" cx="${x(li)}" cy="${y(data[li])}" r="4.5"/>`;
+    const lx = li>8 ? x(li)-8 : x(li)+8, anchor = li>8 ? 'end' : 'start';
     s+=`<text class="ptl" x="${lx}" y="${y(data[li])-8}" text-anchor="${anchor}">${fmt(data[li])}</text>`;
     svg.innerHTML=s;
   }
-  function drawScore(m){
+  function drawDash(m){
+    if(!document.getElementById('mout')) return;
     document.getElementById('mout').textContent='Month '+m;
-    document.getElementById('k1').textContent=P[m-1];
-    document.getElementById('k2').textContent=R[m-1]+'%';
-    document.getElementById('k3').textContent=W[m-1]+' wks';
-    document.getElementById('k4').textContent=TM[m-1];
-    line('c1',R,100,[0,25,50,75,100],v=>v+'%',m);
-    line('c2',W,20,[0,5,10,15,20],v=>v+'w',m);
+    document.getElementById('k1').textContent=DV[m-1];
+    document.getElementById('k2').textContent=DD[m-1]+'%';
+    document.getElementById('k3').textContent=DP[m-1]+'%';
+    document.getElementById('k4').textContent=DH[m-1]+' wks';
+    line('c1',DD,100,[0,25,50,75,100],v=>v+'%',m);
+    line('c2',DH,30,[0,10,20,30],v=>v+'w',m);
   }
-  const mIn=document.getElementById('month'); let timer=null;
+  const mIn=document.getElementById('month');
+  let timer=null;
   function stopPlay(){ if(timer){ clearInterval(timer); timer=null; document.getElementById('play').textContent='Play year'; } }
-  mIn.addEventListener('input',()=>{ stopPlay(); drawScore(+mIn.value); });
-  document.getElementById('play').addEventListener('click',()=>{
-    if(timer){ stopPlay(); return; }
-    let m=1; mIn.value=1; drawScore(1); document.getElementById('play').textContent='Pause';
-    timer=setInterval(()=>{ m++; if(m>12){ stopPlay(); return; } mIn.value=m; drawScore(m); }, 600);
-  });
-  drawScore(12);
+  if(mIn){
+    mIn.addEventListener('input',()=>{ stopPlay(); drawDash(+mIn.value); });
+    document.getElementById('play').addEventListener('click',()=>{
+      if(timer){ stopPlay(); return; }
+      let m=1; mIn.value=1; drawDash(1); document.getElementById('play').textContent='Pause';
+      timer=setInterval(()=>{ m++; if(m>12){ stopPlay(); return; } mIn.value=m; drawDash(m); }, 600);
+    });
+    drawDash(12);
+  }
 
-  // ---------- Initial tab (hash only; query parameters such as ?src= are ignored) ----------
+  // ---------- Operating model ----------
+  const STAGES=[
+    {k:'PR', n:'Prioritize', owner:'Business sponsor, with the CoE',
+     checks:['Business need, owner and the KPI it should move','Baseline measured before work starts','Build, buy or partner, against clear criteria'],
+     auto:'One intake for every AI idea. Ideas are ranked by value and feasibility, and only funded ideas with a baseline move on.', ev:'Intake record, baseline, sponsor', kpi:'Value of the funded portfolio', sla:'Monthly cycle'},
+    {k:'BD', n:'Build on patterns', owner:'CoE engineering team',
+     checks:['Start from a shared agent pattern where one fits','Reuse shared tools, retrieval and evaluation sets','New components designed to be shared'],
+     auto:'Patterns arrive with security, logging and evaluations already built in, so most controls are inherited, not rebuilt.', ev:'Pattern used, components reused', kpi:'Reuse of shared patterns', sla:'Per plan'},
+    {k:'RG', n:'Readiness gate', owner:'CoE readiness board, with Security, Risk and Architecture',
+     checks:['Reliability, resiliency and failover tested','Observability: traces, alerts, dashboards','Security, Responsible AI and auditability checked'],
+     auto:'Automated checks run first; people spend their time on what the checks flag and on anything customer-facing.', ev:'Check results, conditions, approver', kpi:'Time through the gate', sla:'Same week to 5 days'},
+    {k:'RL', n:'Release', owner:'Delivery team and platform engineering',
+     checks:['Staged rollout with a rollback plan','Human-approval rules live where required','Runbook and on-call owner in place'],
+     auto:'Conditions from the gate become platform settings and pipeline checks, so they cannot be skipped.', ev:'Release record, configuration version', kpi:'Releases without rollback', sla:'Per release plan'},
+    {k:'AM', n:'Adopt & measure', owner:'Solution owner, with the business sponsor',
+     checks:['Active users against intended users','KPI against the baseline','Override, error and incident rates'],
+     auto:'Adoption and outcomes report monthly. Low adoption triggers a review with users, not just more training.', ev:'Monthly value report', kpi:'Adoption and value delivered', sla:'Monthly'},
+    {k:'EV', n:'Evolve & retire', owner:'Solution owner',
+     checks:['Model, prompt, tool or data changes trigger a re-check','Improvements go back into the shared pattern','Solutions that stop earning their place are retired'],
+     auto:'Change detection is wired to the registry and pipeline, so a change cannot skip the readiness checks.', ev:'Change record, re-check result', kpi:'Changes checked before release', sla:'Before release'}
+  ];
+  let ssel='RG';
+  function renderStages(){
+    const L=document.getElementById('stages'); if(!L) return; L.innerHTML='';
+    STAGES.forEach((s,i)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-pressed',String(s.k===ssel)); b.innerHTML=`<span class="sn">${i+1}</span><b>${s.n}</b><span class="ssla">${s.sla}</span>`; b.onclick=()=>{ ssel=s.k; renderStages(); }; L.appendChild(b); });
+    const s=STAGES.find(x=>x.k===ssel);
+    document.getElementById('stagecard').innerHTML=`<div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:flex-start"><div><span class="label">Stage ${STAGES.indexOf(s)+1} of 6 · service level ${s.sla}</span><h3>${s.n}</h3></div><span class="pill">Owner: ${s.owner}</span></div>
+      <div class="bagrid"><div class="b"><b>What happens</b><ul class="cl">${s.checks.map(c=>`<li>${c}</li>`).join('')}</ul></div><div class="a"><b>How it runs</b>${s.auto}</div></div>
+      <p class="measure">Evidence: <span>${s.ev}</span> · Feeds the KPI: <span>${s.kpi}</span></p>`;
+  }
+  renderStages();
+  const TT=[14,12.5,11,10,9,8,7,6,5,4,3.5,3], TA=[78,81,84,86,88,90,91,92,93,94,95,96];
+  if(document.getElementById('c3')){ line('c3',TT,15,[0,5,10,15],v=>v+'m',12); line('c4',TA,100,[0,25,50,75,100],v=>v+'%',12); }
+
+  // ---------- Initial tab ----------
   const start=(location.hash||'').replace('#','');
   selectTab(TABS.some(t=>t.dataset.tab===start)?start:'overview');
 
@@ -1053,6 +1095,7 @@ footer b{color:var(--fg)}
   }));
 })();
 </script>
+
 
 </body>
 </html>
