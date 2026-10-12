@@ -515,6 +515,16 @@ td.num{font-variant-numeric:tabular-nums}
 .bmark .b-lamp{fill:var(--accent)}
 .bmark .b-beam{stroke:var(--accent); stroke-width:1.6; stroke-linecap:round; opacity:.6; animation:beam 2.4s ease-in-out infinite alternate}
 @keyframes beam{from{opacity:.15} to{opacity:.75}}
+.summary{border:1px solid var(--accent); background:var(--accent-soft); border-radius:14px; padding:16px 20px; margin-bottom:22px}
+.summary h2{font-family:var(--f-body); font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-ink)}
+.summary ol{margin:8px 0 0; padding-left:20px; display:grid; gap:6px; font-size:.95rem}
+.scen{background:var(--accent);color:#fff;border-radius:14px;padding:14px 18px;margin-top:22px}
+.scen .label{color:#CDEBE2}
+.scen dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin-top:8px;font-size:.92rem}
+.scen dt{font-family:var(--f-mono);font-size:.82rem;color:#FFE9A8;padding-top:2px}
+.scen dd{margin:0;color:#fff}
+.loop{border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-top:18px}
+.loop ol{margin:8px 0 0;padding-left:20px;display:grid;gap:4px;font-size:.92rem}
 </style>
 </head>
 <body>
@@ -546,18 +556,35 @@ td.num{font-variant-numeric:tabular-nums}
 
   <!-- OVERVIEW -->
   <section class="pane" id="overview" role="tabpanel" aria-labelledby="t-overview">
+    <div class="summary">
+      <h2>60-second summary: three things to know</h2>
+      <ol>
+        <li><b>Governance as an operating model:</b> one risk-based path for every model, copilot, agent and RAG workflow, with controls built into delivery.</li>
+        <li><b>Proven at S&amp;P Global:</b> an AI developer platform for 1,200 engineers in 6 months, ~400 engineers on governed AI in 13 months, and approval time on regulated checks cut from 3 days to same day.</li>
+        <li><b>A closed loop:</b> policyholder, claims and reviewer signals feed back into controls, measured every month.</li>
+      </ol>
+      <p style="margin:10px 0 0;font-size:.9rem">24+ years of tech experience. Built from zero at Prudential, TheMarkets.com and SanPulse; revitalized at Pearson, DoubleVerify, Audible and S&amp;P Global.</p>
+    </div>
     <p class="lede">BEACON shows how I would run an enterprise AI governance program day to day: turning policy and risk appetite into intake, review, escalation, monitoring and change management that every AI team uses the same way. Controls live in the platforms and delivery workflows, so they are observable and auditable, and people stay accountable for the decisions that matter. It is an illustrative prototype with sample data, not connected to any company's systems.</p>
     <div class="proof">
       <div><b class="mono">6 months</b><span>to stand up an AI-first PDLC and AI developer platform built for 1,200 engineers</span></div>
       <div><b class="mono">~400</b><span>engineers on governed AI workflows within 13 months</span></div>
-      <div><b class="mono">Faster</b><span>evidence-backed human approval on regulated checks, enforced in the pipeline</span></div>
+      <div><b class="mono">3 days → same day</b><span>approval time on regulated checks, with evidence-backed human approval enforced in the pipeline</span></div>
       <div><b class="mono">350+</b><span>people led in the global QE organization, with a $70M+ technology budget</span></div>
     </div>
     <p class="proof-note">These four figures are from my work at S&amp;P Global. Figures in the Governance KPIs tab are sample data.</p>
+    <div class="scen">
+      <span class="label">How BEACON would catch it · illustrative scenarios, not Guardian data</span>
+      <dl>
+        <dt>tool_scope</dt><dd>A policy servicing agent tries a beneficiary change. The action is outside its approved tool scope: blocked, logged, and routed to a person with the evidence.</dd>
+        <dt>source_freshness</dt><dd>A claims summarizer retrieves from a document set with no owner or refresh date. Grounding review flags it; the source is removed until Data Governance assigns an owner.</dd>
+        <dt>group_gap_pts</dt><dd>An underwriting score update shows a 6-point approval gap between applicant groups vs. a 3-point limit. Release held for fairness review, as NY DFS Circular Letter No. 7 expects.</dd>
+      </dl>
+    </div>
 
     <div class="sec-head" style="margin-top:36px"><span class="label">The idea in three lines</span></div>
     <div class="pillars">
-      <div><h3>Repeatable, not bespoke</h3><p>Every use case goes through the same risk-based path. The depth of review depends on the use case type, data sensitivity and impact.</p></div>
+      <div><h3>Repeatable, not bespoke</h3><p>Every use case follows one risk-based path. Review depth depends on type, data sensitivity and impact.</p></div>
       <div><h3>Controls inside the workflow</h3><p>Guardrails, evaluations, monitoring and human-in-the-loop rules are built into AI platforms and delivery pipelines, so each control leaves evidence.</p></div>
       <div><h3>Trust earned with data</h3><p>People approve where risk or regulation requires it, deciding from an objective evidence packet. Decision time and agreement are tracked over time.</p></div>
     </div>
@@ -643,13 +670,13 @@ td.num{font-variant-numeric:tabular-nums}
         <ul><li>A written, risk-based AI program covering governance, controls and audit across the full life cycle, including data lineage and model inventories</li></ul>
         <p class="shows">In BEACON <span>Six-stage path</span><span>AI inventory</span></p></article>
       <article class="lesson"><span class="yr">July 2024</span><h3>NY DFS Circular Letter No. 7</h3>
-        <ul><li>Fairness testing for AI in underwriting and pricing, before launch and after material changes, with board oversight and a current AI inventory</li></ul>
+        <ul><li>Fairness testing for AI in underwriting and pricing, before launch and after material changes, with board oversight and a current inventory</li></ul>
         <p class="shows">In BEACON <span>Underwriting sample</span><span>Exception register</span></p></article>
       <article class="lesson"><span class="yr">NAIC and NY DFS</span><h3>Third-party AI</h3>
         <ul><li>The insurer owns vendor AI outcomes: due diligence, audit rights and regulator cooperation written into contracts</li></ul>
         <p class="shows">In BEACON <span>Copilot catalog</span><span>Vendor terms</span></p></article>
       <article class="lesson"><span class="yr">Reference point</span><h3>Model risk management</h3>
-        <ul><li>Inventory, independent validation and drift monitoring. Bank guidance SR 26-2 replaced SR 11-7 in April 2026: a reference, not an insurance rule</li></ul>
+        <ul><li>Inventory, independent validation and drift monitoring. Bank guidance SR 26-2 / OCC 2026-13: a reference, not an insurance rule</li></ul>
         <p class="shows">In BEACON <span>Risk tiers</span><span>Drift thresholds</span></p></article>
     </div>
     <p class="targets">Sources: <a href="https://content.naic.org/sites/default/files/cmte-h-big-data-artificial-intelligence-wg-ai-model-bulletin.pdf.pdf" target="_blank" rel="noopener">NAIC bulletin</a> · <a href="https://www.dfs.ny.gov/industry-guidance/circular-letters/cl2024-07" target="_blank" rel="noopener">NY DFS CL No. 7</a> · <a href="https://www.federalreserve.gov/supervisionreg/srletters/SR2602.pdf" target="_blank" rel="noopener">Fed SR 26-2</a></p>
@@ -707,6 +734,16 @@ td.num{font-variant-numeric:tabular-nums}
       <div class="tile"><span class="v mono" id="k3">91%</span><span class="k">Monitoring alerts acted on within service level</span><span class="s">illustrative starting point: 48%</span></div>
       <div class="tile"><span class="v mono" id="k4">9 days</span><span class="k">Median time to remediate a governance finding</span><span class="s">illustrative starting point: 38 days</span></div>
     </div>
+    <div class="loop">
+      <span class="label">Closed feedback loop</span>
+      <ol>
+        <li>Signals come in: policyholder complaints, claims appeals, agent and underwriter feedback, monitoring alerts.</li>
+        <li>Each is traced to the AI use case in the inventory and logged in the exception register with an owner.</li>
+        <li>A fix becomes a new check or a tighter threshold in the pipeline; repeat signals move the pattern back a review level.</li>
+        <li>The monthly forum report shows signals received, closed and prevented.</li>
+      </ol>
+      <p class="hint" style="margin-top:8px">Alongside the four tiles, I would track one Data Governance measure: share of AI use cases with data lineage, owner and sensitivity verified at intake.</p>
+    </div>
     <p class="hint" style="margin-top:12px">In a live walkthrough I&rsquo;d step through the sample year month by month, with coverage and exception trends.</p>
     <div class="next"><button type="button" data-go="why">Next: why me →</button></div>
   </section>
@@ -716,27 +753,32 @@ td.num{font-variant-numeric:tabular-nums}
     <div class="sec-head">
       <span class="label">Why me</span>
       <h2>BEACON comes from governance I have built and run</h2>
-      <p class="lede">The figures are from my resume. My first role in New York, in 2005, was at Guardian Life.</p>
+      <p class="lede">The figures are from my resume. 24+ years of tech experience. Built from zero at Prudential, TheMarkets.com and SanPulse; revitalized at Pearson, DoubleVerify, Audible and S&amp;P Global. My first New York role, in 2005, was at Guardian Life.</p>
     </div>
     <div class="lessons">
       <article class="lesson">
-        <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; QE</span><h3>S&amp;P Global</h3>
-        <ul><li>Built an AI-first PDLC with AI across the lifecycle, from requirements and code generation to code review and deployment telemetry</li><li>Turned CISO, Risk, Compliance and Legal requirements into controls embedded in the platform</li><li>Human approval enforced in the pipeline wherever regulation required it, with approvers deciding faster from data pointers and objective evidence; decision time tracked as a governance KPI</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li></ul>
+        <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; Quality Engineering</span><h3>S&amp;P Global</h3>
+        <ul><li>Built an AI-first PDLC with AI across the lifecycle, from requirements and code generation to code review and deployment telemetry</li><li>Turned CISO, Risk, Compliance and Legal requirements into controls embedded in the platform</li><li>Human approval enforced in the pipeline wherever regulation required it; approval time on regulated checks went from 3 days to same day</li><li>Reviewed 10+ AI developer tools against build–buy–partner criteria; ~400 engineers on governed AI in 13 months</li><li>Engagement up from 85% to 95% in 3 quarters; Dev:QE raised from 2.5:1 to 4:1</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li></ul>
         <p class="shows">Shows up in BEACON as <span>Operating model</span><span>Human in the loop</span><span>KPIs</span></p>
       </article>
       <article class="lesson">
-        <span class="yr">2024–2025 · VP, Head of Quality Engineering</span><h3>DoubleVerify</h3>
+        <span class="yr">2025–2026 · S&amp;P Global</span><h3>What broke, and what I changed</h3>
+        <p>During my own hands-on testing of our AI-first PDLC, I found AI-generated code exposing the full server directory structure in an error response instead of a safe error. Security testing ran static scans (SAST) and only positive dynamic tests (DAST), because test data for failure cases wasn&rsquo;t available. We added negative scenarios to DAST. That uncovered a second risk: log files held details that were being exposed to AI models. Both became permanent pipeline checks, with safe error handling and log scrubbing before any data reaches a model, so approvers decided from evidence instead of chasing it, and approval time on regulated checks went from 3 days to same day.</p>
+        <p class="shows">Shows up in BEACON as <span>Evaluation gates</span><span>PHI masking</span><span>Closed loop</span></p>
+      </article>
+      <article class="lesson">
+        <span class="yr">2024–2025 · VP of Product and Engineering – Head of Quality Engineering</span><h3>DoubleVerify</h3>
         <ul><li>Built an agentic engineering ecosystem with guardrails and human review gates</li><li>AI-assisted testing and predictive defect analysis: 25% less manual effort, 20% shorter test cycles</li><li>KPI dashboards and Sev2 trend analysis for incident prevention</li></ul>
         <p class="shows">Shows up in BEACON as <span>Agent controls</span><span>Monitoring</span></p>
       </article>
       <article class="lesson">
         <span class="yr">2019–2024 · QAE Director, CTO Office</span><h3>Audible, an Amazon company</h3>
-        <ul><li>Applied AI/ML from 2022 to production defect and Sev2 incident management</li><li>Redefined the Sev2 process: 30% fewer Sev2s</li><li>Scaled QA from 4 to 41 people and established 2 offshore capability centers</li></ul>
+        <ul><li>Applied AI/ML from 2022 to production defect and Sev2 incident management</li><li>Redefined the Sev2 process: 30% fewer Sev2s and 30% fewer security vulnerabilities</li><li>Scaled QA from 4 to 41 people and established 2 offshore capability centers</li></ul>
         <p class="shows">Shows up in BEACON as <span>Monitoring</span><span>Remediation</span></p>
       </article>
       <article class="lesson">
         <span class="yr">2015–2019 · Head of Quality Engineering, CIO Office</span><h3>Prudential, and Guardian Life earlier</h3>
-        <ul><li>Built Customer Office QE from zero, with a 10-SDET metrics and measurement team and data-metrics testing frameworks</li><li>Revamped a 150+-person Retirement BU team within federal retirement regulations (IRA, Roth); zero Sev2s on major launches</li><li>Familiar with NIST AI RMF, ISO/IEC 42001 and the EU AI Act</li></ul>
+        <ul><li>Built Customer Office QE from zero, with a 10-SDET metrics and measurement team and data-metrics testing frameworks</li><li>Revamped a 150+-person Retirement BU team at 50% lower QA cost, within federal retirement regulations (IRA, Roth); zero Sev2s on major launches</li><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act</li></ul>
         <p class="shows">Shows up in BEACON as <span>KPIs</span><span>Data controls</span></p>
       </article>
     </div>
@@ -748,7 +790,7 @@ td.num{font-variant-numeric:tabular-nums}
           <tr><td>Governing models, copilots, agents and RAG workflows</td><td>Four kinds of AI, each with its own review and monitoring focus: how I would extend the approach at Guardian</td><td>Governance built into AI-assisted and agentic engineering at enterprise scale: AI across the lifecycle with guardrails (S&amp;P Global); agentic ecosystem with human review gates (DoubleVerify)</td></tr>
           <tr><td>Intake, review, escalation, monitoring and change management</td><td>Six-stage operating model with owners and service levels</td><td>Built the AI PDLC organization and its standards from scratch (S&amp;P Global)</td></tr>
           <tr><td>Controls embedded in platforms and delivery workflows</td><td>Controls embedded in the platform with evidence on every decision</td><td>CISO, Risk, Compliance and Legal requirements turned into platform controls (S&amp;P Global)</td></tr>
-          <tr><td>Human-in-the-loop requirements</td><td>Decision packets, review levels, tracked decision time</td><td>Human approval enforced in the pipeline wherever regulation required it, with approvers deciding faster from data pointers and objective evidence; decision time tracked (S&amp;P Global)</td></tr>
+          <tr><td>Human-in-the-loop requirements</td><td>Decision packets, review levels, tracked decision time</td><td>Human approval enforced in the pipeline wherever regulation required it; approval time on regulated checks went from 3 days to same day (S&amp;P Global)</td></tr>
           <tr><td>KPIs: coverage, exceptions, monitoring, remediation</td><td>Monthly governance KPIs</td><td>Executive scorecard adopted by Tech and Finance (S&amp;P Global); KPI dashboards and Sev2 trends (DoubleVerify)</td></tr>
           <tr><td>Influence across business, technology, risk and legal</td><td>Decision rights and governance forums</td><td>AI PDLC standards presented to the AI Governance Committee (S&amp;P Global)</td></tr>
           <tr><td>Leading governance practitioners</td><td>A governance team with clear priorities and service levels</td><td>Led a 350+ global organization with Senior Directors as direct reports (S&amp;P Global)</td></tr>
@@ -777,7 +819,7 @@ td.num{font-variant-numeric:tabular-nums}
       </div>
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>First 90 days</span>
         <h3>Inventory, operating model, then KPIs</h3>
-        <ul><li><b>Days 1–30:</b> learn the current program and forums; inventory AI across models, copilots, agents and RAG</li><li><b>Days 31–60:</b> standard intake and risk-based review live; exception register in place</li><li><b>Days 61–90:</b> first monthly governance KPI report; service levels live</li></ul>
+        <ul><li><b>Days 1–30:</b> learn the current program and forums; inventory AI across models, copilots, agents and RAG</li><li><b>Days 31–60:</b> standard intake and risk-based review live; exception register in place</li><li><b>Days 61–90:</b> first monthly governance KPI report; service levels live</li><li><b>Day-90 commitments:</b> inventory coverage of 80% or more; every open exception with an owner and end date; median review time reported to the forum</li></ul>
         <div class="veil-wrap"><p class="veil">Which use cases I would start with, how the team's work changes, and the three numbers I would commit to by day 90.</p></div>
       </div>
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Questions I'd bring</span>
@@ -800,13 +842,13 @@ td.num{font-variant-numeric:tabular-nums}
 <button class="side-tab" type="button" id="side-tab" aria-controls="drawer" aria-expanded="false"><span class="av" aria-hidden="true">SM</span><span class="st-txt">About me · Let&rsquo;s talk</span></button>
 <aside class="drawer" id="drawer" aria-label="About Sonia Malik" hidden>
   <button class="dr-close" type="button" id="dr-close" aria-label="Close">&times;</button>
-  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>VP, Global Head of AI PDLC &amp; Quality Engineering, S&amp;P Global</span></div></div>
-  <p class="pf-pitch">I build AI governance that teams use. At S&amp;P Global I built governance into each stage of the AI-enabled development lifecycle, with Risk, Compliance and Legal requirements embedded in the platform and human approval enforced in the pipeline wherever regulation required it, with approvers deciding faster from data pointers and objective evidence. For Guardian, I would extend that approach to every model, copilot, agent and RAG workflow, run as an operating model: risk-based, built into delivery, and measured every month.</p>
+  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>AI Governance Leader</span></div></div>
+  <p class="pf-pitch">I build AI governance that teams use. At S&amp;P Global I built governance into each stage of the AI-enabled development lifecycle, with Risk, Compliance and Legal requirements embedded in the platform and human approval enforced in the pipeline wherever regulation required it, with approvers deciding from data pointers and objective evidence; approval time on regulated checks went from 3 days to same day. Built from zero at Prudential, TheMarkets.com and SanPulse; revitalized at Pearson, DoubleVerify, Audible and S&amp;P Global. For Guardian, I would extend that approach to every model, copilot, agent and RAG workflow, run as an operating model: risk-based, built into delivery, and measured every month.</p>
   <div class="pf-stats">
     <span><b>6 months</b> to an AI developer platform for 1,200 engineers</span>
     <span><b>~400</b> engineers on governed AI in 13 months</span>
-    <span><b>Faster,</b> evidence-backed human approval on regulated checks</span>
-    <span><b>10+</b> AI tools reviewed</span>
+    <span><b>3 days → same day</b> approval time on regulated checks</span>
+    <span><b>10+</b> AI tools reviewed, build–buy–partner</span><span><b>24+ years</b> of tech experience</span>
     <span><b>350+</b> people · <b>$70M+</b> budget led</span>
     <span><b>Insurance:</b> Prudential; Guardian Life (2005)</span>
   </div>
