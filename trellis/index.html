@@ -463,7 +463,7 @@ footer b{color:var(--fg)}
       <h2>60-second summary: three things to know</h2>
       <ol>
         <li><b>Responsible AI as a platform product:</b> teams inherit the controls by default instead of waiting on reviews.</li>
-        <li><b>Proven at S&amp;P Global:</b> an AI developer platform for 1,200 engineers in 6 months, and ~400 engineers on governed AI in 13 months.</li>
+        <li><b>Proven at S&amp;P Global:</b> an AI developer platform for 1,200 engineers in 6 months, ~400 engineers on governed AI in 13 months, and regulated-check approvals cut from 3 days to same day.</li>
         <li><b>A closed loop:</b> customer signals feed prevention, measured every month.</li>
       </ol>
     </div>
@@ -473,7 +473,7 @@ footer b{color:var(--fg)}
       <div><b class="mono">6 months</b><span>to stand up an AI developer platform built for 1,200 engineers, on one approved tool stack</span></div>
       <div><b class="mono">~400</b><span>engineers on governed AI workflows within 13 months, with team engagement up from 85% to 95%</span></div>
       <div><b class="mono">2×</b><span>release cadence in 3 months, with regression lead time cut from 9 days to 4</span></div>
-      <div><b class="mono">Faster</b><span>evidence-backed human approval on regulated checks, enforced in the pipeline</span></div>
+      <div><b class="mono">3 days → same day</b><span>approval time on regulated checks, with evidence-backed human approval enforced in the pipeline</span></div>
     </div>
     <p class="proof-note"><em>These four figures are from my work at S&amp;P Global. Figures in the Dashboard tab are sample data.</em></p>
 
@@ -708,8 +708,13 @@ footer b{color:var(--fg)}
       </article>
       <article class="lesson">
         <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; Quality Engineering</span><h3>S&amp;P Global</h3>
-        <ul><li>AI-first PDLC and AI developer platform in 6 months, built for 1,200 engineers</li><li>Requirements from CISO, Risk, Compliance, and Legal turned into platform controls</li><li>Human approval enforced in the pipeline wherever regulation required it, made faster with data-backed evidence for approvers; decision time tracked; ~400 engineers on governed AI in 13 months</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li><li>Built AI fluency through skills assessment and peer-pairing: engagement 85% to 95%</li><li>Designed the path to risk-based review as evidence builds</li><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act; hands-on prototyping of agent, AI-judge, and human-validation loops</li></ul>
+        <ul><li>AI-first PDLC and AI developer platform in 6 months, built for 1,200 engineers</li><li>Requirements from CISO, Risk, Compliance, and Legal turned into platform controls</li><li>Evidence-backed human approval enforced in the pipeline wherever regulation required it; approval time on regulated checks cut from 3 days to same day; ~400 engineers on governed AI in 13 months</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li><li>Built AI fluency through skills assessment and peer-pairing: engagement 85% to 95%</li><li>Designed the path to risk-based review as evidence builds</li><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act; hands-on prototyping of agent, AI-judge, and human-validation loops</li></ul>
         <p class="shows">Shows up in TRELLIS as <span>Policy-as-code</span><span>Building blocks</span><span>AI fluency</span><span>Adoption metrics</span><span>NIST AI RMF tags</span><span>Judge calibration</span></p>
+      </article>
+      <article class="lesson">
+        <span class="yr">2025–2026 · S&amp;P Global</span><h3>What broke, and what I changed (S&amp;P Global)</h3>
+        <p style="font-size:.88rem; color:var(--muted)">During my own hands-on testing of our AI-first PDLC, I found AI-generated code exposing the full server directory structure in an error response instead of a safe error. Security testing ran static scans (SAST) and only positive dynamic tests (DAST), because test data for failure cases wasn&rsquo;t available. We added negative scenarios to DAST. That uncovered a second risk: log files held details that were being exposed to AI models. Both became permanent pipeline checks, with safe error handling and log scrubbing before any data reaches a model, so approvers decided from evidence instead of chasing it, and approval time on regulated checks went from 3 days to same day.</p>
+        <p class="shows">Shows up in TRELLIS as <span>Evaluation gate</span><span>PII redaction</span><span>Closed loop</span></p>
       </article>
     </div>
     <details style="margin-top:20px">
@@ -720,7 +725,7 @@ footer b{color:var(--fg)}
         <tbody>
           <tr><td>Define responsible AI strategy, principles, guardrails, and policies</td><td>Risk tiers and a control catalog expressed as policy-as-code</td><td>Set AI PDLC standards and presented them directly to the AI Governance Committee (S&amp;P Global)</td></tr>
           <tr><td>Translate regulations and standards into scalable capabilities</td><td>Controls tagged to NIST AI RMF functions; tiers that follow risk-based regulation such as the EU AI Act</td><td>Turned CISO, Risk, Compliance, and Legal requirements into controls embedded in the platform (S&amp;P Global)</td></tr>
-          <tr><td>Technical guardrails, policy enforcement, evaluation frameworks</td><td>Intake tiering, evaluation gates, gateway filters, staged rollout</td><td>Evaluation gates and human approval enforced in the pipeline wherever regulation required it, made faster with data-backed evidence for approvers (S&amp;P Global); guardrails and human review gates in the agentic ecosystem (DoubleVerify)</td></tr>
+          <tr><td>Technical guardrails, policy enforcement, evaluation frameworks</td><td>Intake tiering, evaluation gates, gateway filters, staged rollout</td><td>Evaluation gates and evidence-backed human approval enforced in the pipeline, cutting approval time on regulated checks from 3 days to same day (S&amp;P Global); guardrails and human review gates in the agentic ecosystem (DoubleVerify)</td></tr>
           <tr><td>Model inventory, observability, prompt management</td><td>Registry with model lifecycle (onboarding, re-evaluation, retirement), gateway telemetry, shared prompt library</td><td>Approved AI tool inventory with 10+ tools reviewed, agent monitoring, and a shared prompt-template library (S&amp;P Global)</td></tr>
           <tr><td>Metrics on governance effectiveness and adoption</td><td>Governance dashboard</td><td>~400 engineers on governed AI in 13 months; executive scorecard adopted by Tech and Finance (S&amp;P Global)</td></tr>
           <tr><td>Modern AI: LLMs, foundation models, agentic AI, AI development workflows</td><td>Foundation models onboarded through the registry; least-privilege agents; evaluation packs</td><td>AI-first PDLC with AI across the lifecycle, from requirements and code generation to deployment telemetry (S&amp;P Global); agentic engineering ecosystem with guardrails (DoubleVerify)</td></tr>
@@ -786,7 +791,7 @@ footer b{color:var(--fg)}
   <div class="pf-stats">
       <span><b>6 months</b> to an AI developer platform for 1,200 engineers</span>
       <span><b>~400</b> engineers on governed AI in 13 months</span>
-      <span><b>Faster,</b> evidence-backed human approval on regulated checks</span>
+      <span><b>3 days &rarr; same day:</b> evidence-backed human approval on regulated checks</span>
       <span><b>350+</b> people · <b>$70M+</b> budget led</span>
       <span><b>$50M+</b> revenue from Audible's testing CoE</span>
       <span><b>Built from zero</b> at Prudential, TheMarkets.com, and SanPulse; <b>revitalized</b> at Pearson, DoubleVerify, Audible, and S&amp;P Global</span>
