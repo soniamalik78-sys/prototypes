@@ -432,7 +432,7 @@ footer b{color:var(--fg)}
   <header class="hero">
     <div class="eyebrow">
       <span class="pill">Executive preview · Sonia Malik</span>
-      <span class="pill neutral">Prepared for the VP, Responsible AI application · Enterprise AI Platform</span>
+      <span class="pill neutral">Prepared for American Express · VP, Responsible AI, Enterprise AI Platform</span>
     </div>
     <div class="brand">TRELLIS</div>
     <div class="pron">/ˈtrel-ɪs/ · the frame a plant climbs to grow higher</div>
@@ -459,7 +459,7 @@ footer b{color:var(--fg)}
       <div><b class="mono">6 months</b><span>to stand up an AI developer platform built for 1,200 engineers, on one approved tool stack</span></div>
       <div><b class="mono">~400</b><span>engineers on governed AI workflows within 13 months, with team engagement up from 85% to 95%</span></div>
       <div><b class="mono">2×</b><span>release cadence in 3 months, with regression lead time cut from 9 days to 4</span></div>
-      <div><b class="mono">0</b><span>autonomous production deploys. Human checks stayed where regulation required them, decided from objective evidence</span></div>
+      <div><b class="mono">Faster</b><span>evidence-backed human approval on regulated checks, enforced in the pipeline</span></div>
     </div>
     <p class="proof-note"><em>These four figures are from my work at S&amp;P Global. Figures in the Dashboard tab are sample data.</em></p>
 
@@ -474,7 +474,7 @@ footer b{color:var(--fg)}
     <div class="jump">
       <button type="button" data-go="who"><b>Who it serves</b><span>Eight groups, what changes for each, before and after</span><i>2 min →</i></button>
       <button type="button" data-go="try"><b>Try it</b><span>What happens to three sample use cases</span><i>2 min →</i></button>
-      <button type="button" data-go="engine"><b>Under the hood</b><span>Architecture, policy-as-code, evaluation method</span><i>3 min →</i></button>
+      <button type="button" data-go="engine"><b>Under the hood</b><span>How I would build it: architecture, controls, model lifecycle, team</span><i>3 min →</i></button>
       <button type="button" data-go="dash"><b>Dashboard</b><span>Year-one targets for the steering group</span><i>1 min →</i></button>
       <button type="button" data-go="why"><b>Why me</b><span>What Audible, DoubleVerify, and S&amp;P Global taught me</span><i>2 min →</i></button>
       <button type="button" data-go="meet"><b>When we meet</b><span>What I would walk you through in person</span><i>1 min →</i></button>
@@ -528,9 +528,9 @@ footer b{color:var(--fg)}
   <!-- UNDER THE HOOD -->
   <section class="pane" id="engine" role="tabpanel" aria-labelledby="t-engine" hidden>
     <div class="sec-head">
-      <span class="label">Under the hood</span>
-      <h2>Five checkpoints, enforced by the platform</h2>
-      <p class="lede">Each checkpoint is a platform capability, not a review meeting. Tags show the NIST AI RMF function each one serves.</p>
+      <span class="label">Under the hood · proposed design</span>
+      <h2>How I would build it: five checkpoints, enforced by the platform</h2>
+      <p class="lede">This is the design I would propose, not a description of an existing system; what I have done is in Why me. Each checkpoint is a platform capability, not a review meeting. Tags show the NIST AI RMF function each one serves.</p>
     </div>
     <div class="flow">
       <div class="stage"><span class="step">Checkpoint 1</span><h3>Intake &amp; risk tier</h3>
@@ -556,7 +556,7 @@ footer b{color:var(--fg)}
       <p class="lede">Governance runs in the request path and the delivery pipeline, so it cannot be skipped.</p>
     </div>
     <div class="arch">
-      <svg viewBox="0 0 920 300" role="img" aria-label="Architecture: apps and agents call the AI gateway, which applies identity, redaction, filters, and a kill switch before reaching approved models. A policy engine configures the gateway and the evaluation service. Evaluation results go to an approval workflow and the registry. Telemetry from the gateway and models feeds the registry.">
+      <svg viewBox="0 0 920 300" role="img" aria-label="Architecture: apps and agents call the AI gateway, which applies identity, redaction, filters, and a kill switch before reaching approved models. A policy engine configures the gateway and the evaluation service. Evaluation results go to an approval workflow and the registry. Telemetry from the gateway and models feeds the registry, which tracks each model from onboarding to retirement.">
         <defs>
           <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="ahp"/></marker>
           <marker id="ahr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="ahr"/></marker>
@@ -567,7 +567,7 @@ footer b{color:var(--fg)}
         <g class="nd"><rect x="14" y="124" width="156" height="76" rx="8"/><text class="nt" x="28" y="154">Apps &amp; agents</text><text class="ns" x="28" y="174">Teams build here</text></g>
         <g class="nd run"><rect x="200" y="124" width="210" height="76" rx="8"/><text class="nt" x="214" y="150">AI gateway</text><text class="ns" x="214" y="170">Identity, redaction, filters</text><text class="ns" x="214" y="188">Kill switch per use case</text></g>
         <g class="nd run"><rect x="440" y="124" width="200" height="76" rx="8"/><text class="nt" x="454" y="154">Approved models</text><text class="ns" x="454" y="174">Internal and vendor</text></g>
-        <g class="nd"><rect x="670" y="124" width="236" height="76" rx="8"/><text class="nt" x="684" y="150">Registry</text><text class="ns" x="684" y="170">Use cases, models, prompts, agents,</text><text class="ns" x="684" y="188">data lineage, evals, approvals</text></g>
+        <g class="nd"><rect x="670" y="124" width="236" height="76" rx="8"/><text class="nt" x="684" y="150">Registry</text><text class="ns" x="684" y="170">Use cases, models, prompts, agents,</text><text class="ns" x="684" y="188">lineage, evals, model lifecycle</text></g>
         <g class="nd"><rect x="200" y="232" width="440" height="56" rx="8"/><text class="nt" x="214" y="256">Telemetry &amp; monitoring</text><text class="ns" x="214" y="276">Traces, drift, human overrides, incidents, latency</text></g>
         <path class="aw run" d="M170 162 H198" marker-end="url(#ahr)"/>
         <path class="aw run" d="M410 162 H438" marker-end="url(#ahr)"/>
@@ -584,7 +584,11 @@ footer b{color:var(--fg)}
     <div class="locks" style="margin-top:16px">
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>In the full version</span><h3>Policy-as-code</h3><p>One policy file per use case: risk tier, data lineage, test sets, limits, approvers, rollout, and runtime filters, enforced in CI and at the gateway.</p>
         <div class="veil-wrap"><p class="veil">use_case: dispute-reply-assistant · tier: elevated · lineage: dispute-policy-kb · limits: ungrounded_pct 5, pii_exposures 0 · low_confidence: route_to_human</p></div></div>
-      <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>In the full version</span><h3>Evaluation, rollout, agents, model risk</h3><ul><li>How the AI judge is checked against human labels</li><li>Shadow mode, canary, rollback, and kill switch</li><li>Least-privilege agents and audit trails</li><li>Model risk validation and the AI inventory</li></ul></div>
+      <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>In the full version</span><h3>Evaluation, rollout, agents, model risk</h3><ul><li>How the AI judge is checked against human labels</li><li>Shadow mode, canary, rollback, and kill switch</li><li>Least-privilege agents and audit trails</li><li>Model risk validation under SR 26-2 and OCC Bulletin 2026-13, and the AI inventory</li></ul></div>
+    </div>
+    <div class="facts" style="margin-top:16px">
+        <div><h3>Model lifecycle in the registry</h3><ul><li>Onboarding: each foundation model, internal or vendor, is registered with its model card, evaluation results, and approved uses before the gateway routes traffic to it</li><li>Version change: a new model, prompt, or agent version re-runs the evaluation pack and the judge check before traffic moves</li><li>Retirement: retired versions are blocked at the gateway, and owners of dependent use cases are notified with a migration date</li></ul></div>
+        <div><h3>Fair lending and adverse action</h3><ul><li>For credit use cases, the group_gap check becomes the fair lending test under ECOA and Regulation B, run before launch and monitored in production</li><li>A gap above the limit blocks release and goes to Compliance and Legal with the evidence</li><li>Adverse action: every credit denial needs specific, accurate principal reasons; the platform derives them from the explanation record and checks them before notices go out</li></ul></div>
     </div>
     <div class="sec-head" style="margin-top:36px">
       <h2>Building blocks teams reuse</h2>
@@ -598,6 +602,19 @@ footer b{color:var(--fg)}
       <div><b>Agent tool allow-list</b><span>Scoped identity and permitted tools for each agent, enforced at runtime.</span></div>
       <div><b>Evaluation pack</b><span>Held-out and red-team test sets, judge checks, and limits for each tier.</span></div>
     </div>
+    <div class="sec-head" style="margin-top:36px">
+      <span class="label">Proposed organization</span>
+      <h2>How I would organize the Responsible AI team</h2>
+      <p class="lede">A proposal, sized to the platform&rsquo;s scope: small teams that build responsible AI into the platform as a product, with partners embedded instead of a central review queue.</p>
+    </div>
+    <div class="blocks">
+      <div><b>Platform guardrails engineering</b><span>Builds and runs the policy engine, gateway controls, and building blocks, with a roadmap and service levels.</span></div>
+      <div><b>Evaluation and red-teaming</b><span>Owns test sets, the AI judge and its calibration, and adversarial testing of models and agents.</span></div>
+      <div><b>Policy and regulatory translation</b><span>Turns regulations, standards, and internal policy into versioned controls, working with Legal and Compliance.</span></div>
+      <div><b>Model lifecycle and inventory</b><span>Runs the registry: onboarding, re-evaluation on version change, retirement, and evidence for model risk validation.</span></div>
+      <div><b>Adoption, enablement, and metrics</b><span>Developer experience, training, and the monthly dashboard; tracks friction as closely as risk.</span></div>
+      <div><b>Embedded partners</b><span>Named partners from Risk, Legal, Compliance, Privacy, and InfoSec co-own the control catalog with the team.</span></div>
+    </div>
     <p class="targets">Design targets: guardrails add under 50 ms at p95 per request; a Standard-tier use case goes from intake to approval in under 2 days. How each part behaves when it fails is in "When we meet."</p>
     <div class="next"><button type="button" data-go="dash">Next: dashboard →</button></div>
   </section>
@@ -608,11 +625,11 @@ footer b{color:var(--fg)}
       <span class="label">Is governance working?</span>
       <h2>Measure adoption, friction, and customer impact, not just activity</h2>
       <p class="lede">The dashboard I would bring to the AI steering group each month. Year-one targets: adoption rises, time to approval falls, and problems are caught before customers see them.</p>
-      <span class="sample-note">Sample data showing year-one targets, for illustration</span>
+      <span class="sample-note">Sample data showing year-one targets, for illustration. Starting points are hypothetical and do not describe any company&rsquo;s program.</span>
     </div>
     <div class="tiles">
-      <div class="tile"><span class="v mono" id="k1">82%</span><span class="k">AI use cases on the governed platform path</span><span class="s">started at 18%</span></div>
-      <div class="tile"><span class="v mono" id="k2">6 days</span><span class="k">Median time from intake to approval</span><span class="s">started at 21 days</span></div>
+      <div class="tile"><span class="v mono" id="k1">82%</span><span class="k">AI use cases on the governed platform path</span><span class="s">illustrative starting point: 18%</span></div>
+      <div class="tile"><span class="v mono" id="k2">6 days</span><span class="k">Median time from intake to approval</span><span class="s">illustrative starting point: 21 days</span></div>
       <div class="tile"><span class="v mono" id="k3">7</span><span class="k">Severe issues caught in shadow or canary, before customers saw them</span><span class="s">cumulative; each rolled back automatically</span></div>
       <div class="tile"><span class="v mono" id="k4">1.8%</span><span class="k">Good requests wrongly blocked by guardrails</span><span class="s">friction is tracked, not ignored</span></div>
     </div>
@@ -630,26 +647,22 @@ footer b{color:var(--fg)}
     <div class="lessons">
       <article class="lesson">
         <span class="yr">2019–2024 · QAE Director, CTO Office</span><h3>Audible, an Amazon company</h3>
-        <p class="quote">"Customers feel severity, not volume."</p>
         <ul><li>Applied AI/ML from 2022 to production defect and Sev2 incident management</li><li>Redefined the Sev2 process: 30% fewer Sev2s</li><li>Non-functional testing CoE (performance, security, accessibility) contributing $50M+ in revenue</li><li>Automation First across 17 teams: regression from 5 days to 2</li></ul>
         <p class="shows">Shows up in TRELLIS as <span>Severity-weighted failures</span><span>Incident metrics</span><span>Customer experience &amp; value</span></p>
       </article>
       <article class="lesson">
         <span class="yr">2024–2025 · VP, Head of Quality Engineering</span><h3>DoubleVerify</h3>
-        <p class="quote">"Agents need gates and evidence before they get autonomy."</p>
         <ul><li>Built an agentic engineering ecosystem with guardrails and human review gates</li><li>AI-assisted testing and predictive defect analysis: 25% less manual effort, 20% shorter test cycles</li><li>KPI dashboards and Sev2 trend analysis for incident prevention</li><li>Persona-based customer-journey testing across UK, Israel, France, and Ireland teams</li></ul>
         <p class="shows">Shows up in TRELLIS as <span>Evaluation gate</span><span>Agent permissions</span><span>Monitoring</span></p>
       </article>
       <article class="lesson">
-        <span class="yr">2025–2026 · VP, Global Head of QE &amp; AI PDLC</span><h3>S&amp;P Global</h3>
-        <p class="quote">"If the governed path isn't the easy one, people route around it."</p>
-        <ul><li>AI-first PDLC and AI developer platform in 6 months, built for 1,200 engineers</li><li>Requirements from CISO, Risk, Compliance, and Legal turned into platform controls</li><li>Human checks kept where regulation required them, with approvers deciding from objective evidence and decision times tracked; 0 autonomous production deploys; ~400 engineers on governed AI in 13 months</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li><li>Built AI fluency through skills assessment and peer-pairing: engagement 85% to 95%</li><li>Started at full human approval for a regulated environment, and designed the path to risk-based review as evidence builds</li></ul>
+        <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; QE</span><h3>S&amp;P Global</h3>
+        <ul><li>AI-first PDLC and AI developer platform in 6 months, built for 1,200 engineers</li><li>Requirements from CISO, Risk, Compliance, and Legal turned into platform controls</li><li>Human approval enforced in the pipeline wherever regulation required it, made faster with data-backed evidence for approvers; decision time tracked; ~400 engineers on governed AI in 13 months</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li><li>Built AI fluency through skills assessment and peer-pairing: engagement 85% to 95%</li><li>Designed the path to risk-based review as evidence builds</li></ul>
         <p class="shows">Shows up in TRELLIS as <span>Policy-as-code</span><span>Building blocks</span><span>AI fluency</span><span>Adoption metrics</span></p>
       </article>
       <article class="lesson">
         <span class="yr">Ongoing</span><h3>Self-directed learning</h3>
-        <p class="quote">"Standards are only useful once they run as code."</p>
-        <ul><li>Working knowledge of NIST AI RMF, ISO/IEC 42001, and the EU AI Act</li><li>Model risk management and AI security, including prompt injection</li><li>Hands-on prototyping of agent, AI-judge, and human-validation loops</li><li>Earlier: regulated delivery at Prudential, with zero Sev2s on major launches</li></ul>
+        <ul><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act</li><li>Model risk management and AI security, including prompt injection</li><li>Hands-on prototyping of agent, AI-judge, and human-validation loops</li><li>Earlier: regulated delivery at Prudential, with zero Sev2s on major launches</li></ul>
         <p class="shows">Shows up in TRELLIS as <span>NIST AI RMF tags</span><span>Trust by design</span><span>Judge calibration</span></p>
       </article>
     </div>
@@ -657,15 +670,16 @@ footer b{color:var(--fg)}
       <summary style="cursor:pointer; font-weight:600">How this maps to the role, line by line</summary>
       <div style="margin-top:12px"><div class="tbl-wrap">
       <table>
-        <thead><tr><th>The role asks for</th><th>In TRELLIS</th><th>Where I have done it</th></tr></thead>
+        <thead><tr><th>The role asks for</th><th>In TRELLIS (proposed design)</th><th>Where I have done it</th></tr></thead>
         <tbody>
           <tr><td>Define responsible AI strategy, principles, guardrails, and policies</td><td>Risk tiers and a control catalog expressed as policy-as-code</td><td>Set AI PDLC standards and presented them directly to the AI Governance Committee (S&amp;P Global)</td></tr>
           <tr><td>Translate regulations and standards into scalable capabilities</td><td>Controls tagged to NIST AI RMF functions; tiers that follow risk-based regulation such as the EU AI Act</td><td>Turned CISO, Risk, Compliance, and Legal requirements into controls embedded in the platform (S&amp;P Global)</td></tr>
-          <tr><td>Technical guardrails, policy enforcement, evaluation frameworks</td><td>Intake tiering, evaluation gates, gateway filters, staged rollout</td><td>Evaluation gates and pipeline-enforced human approval, with 0 autonomous production deploys (S&amp;P Global); guardrails and human review gates in the agentic ecosystem (DoubleVerify)</td></tr>
-          <tr><td>Model inventory, observability, prompt management</td><td>Registry, gateway telemetry, shared prompt library</td><td>Approved AI tool inventory with 10+ tools reviewed, agent monitoring, and a shared prompt-template library (S&amp;P Global)</td></tr>
+          <tr><td>Technical guardrails, policy enforcement, evaluation frameworks</td><td>Intake tiering, evaluation gates, gateway filters, staged rollout</td><td>Evaluation gates and human approval enforced in the pipeline wherever regulation required it, made faster with data-backed evidence for approvers (S&amp;P Global); guardrails and human review gates in the agentic ecosystem (DoubleVerify)</td></tr>
+          <tr><td>Model inventory, observability, prompt management</td><td>Registry with model lifecycle (onboarding, re-evaluation, retirement), gateway telemetry, shared prompt library</td><td>Approved AI tool inventory with 10+ tools reviewed, agent monitoring, and a shared prompt-template library (S&amp;P Global)</td></tr>
           <tr><td>Metrics on governance effectiveness and adoption</td><td>Governance dashboard</td><td>~400 engineers on governed AI in 13 months; executive scorecard adopted by Tech and Finance (S&amp;P Global)</td></tr>
-          <tr><td>Influence executives and lead across matrixed organizations</td><td>Monthly steering review</td><td>Led a 350+ person global organization and a $70M+ budget; presented the multi-year strategy to executive leadership (S&amp;P Global)</td></tr>
-          <tr><td>Experience in a highly regulated industry</td><td>Tiers and sign-offs built for regulated decisions</td><td>Delivered within federal retirement regulations (IRA, Roth) with zero Sev2s on major launches (Prudential)</td></tr>
+          <tr><td>Modern AI: LLMs, foundation models, agentic AI, AI development workflows</td><td>Foundation models onboarded through the registry; least-privilege agents; evaluation packs</td><td>AI-first PDLC with AI across the lifecycle, from requirements and code generation to deployment telemetry (S&amp;P Global); agentic engineering ecosystem with guardrails (DoubleVerify)</td></tr>
+          <tr><td>Influence executives and lead across matrixed organizations</td><td>Monthly steering review; proposed Responsible AI team design</td><td>Led a 350+ person global organization and a $70M+ budget; presented the multi-year strategy to executive leadership (S&amp;P Global)</td></tr>
+          <tr><td>Experience in a highly regulated industry</td><td>Tiers and sign-offs built for regulated decisions, including fair lending and adverse-action checks</td><td>Financial services at S&amp;P Global; delivered within federal retirement regulations (IRA, Roth) with zero Sev2s on major launches (Prudential)</td></tr>
         </tbody>
       </table>
     </div></div>
@@ -720,12 +734,12 @@ footer b{color:var(--fg)}
 <button class="side-tab" type="button" id="side-tab" aria-controls="drawer" aria-expanded="false"><span class="av" aria-hidden="true">SM</span><span class="st-txt">About me · Let&rsquo;s talk</span></button>
 <aside class="drawer" id="drawer" aria-label="About Sonia Malik" hidden>
   <button class="dr-close" type="button" id="dr-close" aria-label="Close">&times;</button>
-  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>Most recently VP, Global Head of Quality Engineering &amp; AI PDLC, S&amp;P Global</span></div></div>
+  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>VP, Global Head of AI PDLC &amp; Quality Engineering, S&amp;P Global</span></div></div>
   <p class="pf-pitch">I have led engineering transformation in regulated financial services (S&amp;P Global, Prudential) and in technology-first product companies (Audible, DoubleVerify). For American Express, I would make responsible AI something teams get by default from the platform, measured by adoption as much as by risk.</p>
   <div class="pf-stats">
       <span><b>6 months</b> to an AI developer platform for 1,200 engineers</span>
       <span><b>~400</b> engineers on governed AI in 13 months</span>
-      <span><b>0</b> autonomous deploys · human approval enforced in the pipeline</span>
+      <span><b>Faster,</b> evidence-backed human approval on regulated checks</span>
       <span><b>350+</b> people · <b>$70M+</b> budget led</span>
       <span><b>$50M+</b> revenue from Audible's testing CoE</span>
       <span><b>0 &rarr; 1:</b> teams built at Prudential and Audible (4 &rarr; 41)</span>
@@ -786,7 +800,7 @@ footer b{color:var(--fg)}
   const CONTROLS = {
     Standard:[['auto','Success metric and baseline registered at intake'],['auto','Audit trail and data lineage recorded'],['auto','Personal-data redaction at the AI gateway'],['auto','Prompt-injection red-team suite'],['auto','Registered in the inventory with owner and prompt versions'],['auto','Evaluation gate with Standard limits'],['person','Owner approves release']],
     Elevated:[['auto','Evaluation gate with tighter limits'],['auto','Low-confidence answers routed to a person'],['auto','Fairness check across customer groups'],['auto','Shadow mode and canary rollout, with automatic rollback'],['person','Product and Compliance approve release']],
-    High:[['auto','Strictest evaluation limits'],['auto','Explainability record for each recommendation'],['person','Model risk validation (SR 11-7) before launch'],['person','Legal and Compliance sign-off'],['person','A person approves high-impact actions; the rest are sampled']]
+    High:[['auto','Strictest evaluation limits'],['auto','Explainability record for each recommendation'],['auto','For credit decisions: fair lending test (ECOA, Reg B) and adverse-action reasons'],['person','Model risk validation (SR 26-2) before launch'],['person','Legal and Compliance sign-off'],['person','A person approves high-impact actions; the rest are sampled']]
   };
   const INV0 = [
     {n:'Internal policy Q&A', t:'Standard', o:'HR technology', d:'Month 2'},
