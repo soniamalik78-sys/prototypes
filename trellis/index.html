@@ -424,6 +424,10 @@ footer b{color:var(--fg)}
 .sample-note{justify-self:start}
 .blocks.risks code{font-family:var(--f-mono); font-size:.78rem; color:var(--accent-ink)}
 .closing{font-family:var(--f-display); font-size:clamp(1.1rem,2.2vw,1.35rem); line-height:1.45; margin-top:28px; max-width:62ch}
+.summary{border:1px solid var(--accent); background:var(--accent-soft); border-radius:14px; padding:16px 20px; margin-bottom:22px}
+.summary h2{font-family:var(--f-body); font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-ink)}
+.summary ol{margin:8px 0 0; padding-left:20px; display:grid; gap:6px; font-size:.95rem}
+.tiles.one{grid-template-columns:minmax(0,340px)}
 </style>
 </head>
 <body>
@@ -438,7 +442,7 @@ footer b{color:var(--fg)}
     </div>
     <div class="brand">TRELLIS</div>
     <div class="pron">/ˈtrel-ɪs/ · the frame a plant climbs to grow higher</div>
-    <p class="thesis">Responsible AI, engineered in: the safe path is the fast path.</p>
+    <p class="thesis">Responsible AI, engineered in: safe by default, fast by design.</p>
   </header>
 
   <div class="tabbar">
@@ -455,6 +459,14 @@ footer b{color:var(--fg)}
 
   <!-- OVERVIEW -->
   <section class="pane" id="overview" role="tabpanel" aria-labelledby="t-overview">
+    <div class="summary">
+      <h2>60-second summary: three things to know</h2>
+      <ol>
+        <li><b>Responsible AI as a platform product:</b> teams inherit the controls by default instead of waiting on reviews.</li>
+        <li><b>Proven at S&amp;P Global:</b> an AI developer platform for 1,200 engineers in 6 months, and ~400 engineers on governed AI in 13 months.</li>
+        <li><b>A closed loop:</b> customer signals feed prevention, measured every month.</li>
+      </ol>
+    </div>
     <p class="lede">TRELLIS shows how I would scale AI responsibly through an AI-first PDLC that starts with the customer: every AI capability traces back to a customer outcome, and risk, legal, compliance, privacy, and security requirements become platform capabilities that teams inherit by default. It is an illustrative prototype with sample data, not connected to any company's systems.</p>
     <p class="firms"><i><b>S&amp;P Global</b> AI developer platform for 1,200 engineers in 6 months</i><i><b>Audible</b> 30% fewer Sev2s, CSAT up 15%</i><i><b>DoubleVerify</b> 25% less manual effort, 20% faster test cycles</i></p>
     <div class="proof">
@@ -591,6 +603,8 @@ footer b{color:var(--fg)}
     <div class="facts" style="margin-top:16px">
         <div><h3>Model lifecycle in the registry</h3><ul><li>Onboarding: each foundation model, internal or vendor, is registered with its model card, evaluation results, and approved uses before the gateway routes traffic to it</li><li>Version change: a new model, prompt, or agent version re-runs the evaluation pack and the judge check before traffic moves</li><li>Retirement: retired versions are blocked at the gateway, and owners of dependent use cases are notified with a migration date</li></ul></div>
         <div><h3>Fair lending and adverse action</h3><ul><li>For credit use cases, the group_gap check becomes the fair lending test under ECOA and Regulation B, run before launch and monitored in production</li><li>A gap above the limit blocks release and goes to Compliance and Legal with the evidence</li><li>Adverse action: every credit denial needs specific, accurate principal reasons; the platform derives them from the explanation record and checks them before notices go out</li></ul></div>
+        <div><h3>Vendor AI risk</h3><ul><li>A third-party model or vendor AI feature goes through vendor risk review and the same evaluation pack as internal AI</li><li>Contract terms cover data use, including no training on company data without approval</li><li>Re-evaluation is triggered when the vendor changes its model</li></ul></div>
+        <div><h3>AI incident response</h3><ul><li>Severity levels, each with a named owner and response time</li><li>Escalation to Risk and Legal for higher-severity incidents</li><li>Customer notice and remediation where customers were affected</li><li>A post-incident review turns each incident into a new test case</li></ul></div>
     </div>
     <div class="sec-head" style="margin-top:36px">
       <span class="label">Proposed coverage</span>
@@ -659,6 +673,18 @@ footer b{color:var(--fg)}
       <div class="tile"><span class="v mono" id="k4">1.8%</span><span class="k">Good requests wrongly blocked by guardrails</span><span class="s">friction is tracked, not ignored</span></div>
     </div>
     <p class="hint" style="margin-top:12px">The full version lets you play through the sample year month by month, with adoption and time-to-approval charts.</p>
+    <div class="sec-head" style="margin-top:36px">
+      <span class="label">Proposed design · closed loop</span>
+      <h2>From customer signals to prevention</h2>
+      <p class="lede">What customers experience in production comes back into the platform, so the same problem is less likely to reach them twice.</p>
+    </div>
+    <div class="facts">
+      <div><h3>What feeds the loop</h3><ul><li>Production defects and AI incidents, with their severity</li><li>CSAT and complaint trends for AI-handled interactions</li><li>User insight sessions with customers and colleagues</li></ul></div>
+      <div><h3>What changes as a result</h3><ul><li>Test and evaluation coverage grows: each learning becomes a new test case</li><li>Coding, prompt, and agent patterns are updated in the shared building blocks</li><li>Test environments are updated to match what production revealed</li><li>Non-functional checks (performance, security, accessibility) are aligned with real usage</li></ul></div>
+    </div>
+    <div class="tiles one">
+      <div class="tile"><span class="v mono">3.1</span><span class="k">Customer complaints per 10k AI-handled interactions, falling month by month</span><span class="s">sample data; illustrative starting point: 9.4</span></div>
+    </div>
     <div class="next"><button type="button" data-go="why">Next: why me →</button></div>
   </section>
 
@@ -672,7 +698,7 @@ footer b{color:var(--fg)}
     <div class="lessons">
       <article class="lesson">
         <span class="yr">2019–2024 · QAE Director, CTO Office</span><h3>Audible, an Amazon company</h3>
-        <ul><li>Applied AI/ML from 2022 to production defect and Sev2 incident management</li><li>Redefined the Sev2 process: 30% fewer Sev2s</li><li>Non-functional testing CoE (performance, security, accessibility) contributing $50M+ in revenue</li><li>Automation First across 17 teams: regression from 5 days to 2</li></ul>
+        <ul><li>Applied AI/ML from 2022 to production defect and Sev2 incident management</li><li>Redefined the Sev2 process: 30% fewer Sev2s</li><li>Non-functional testing CoE (performance, security, accessibility) contributing $50M+ in revenue</li><li>Automation First across 17 teams: regression from 5 days to 2, and more frequent releases</li></ul>
         <p class="shows">Shows up in TRELLIS as <span>Severity-weighted failures</span><span>Incident metrics</span><span>Customer experience &amp; value</span></p>
       </article>
       <article class="lesson">
@@ -681,14 +707,9 @@ footer b{color:var(--fg)}
         <p class="shows">Shows up in TRELLIS as <span>Evaluation gate</span><span>Agent permissions</span><span>Monitoring</span></p>
       </article>
       <article class="lesson">
-        <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; QE</span><h3>S&amp;P Global</h3>
-        <ul><li>AI-first PDLC and AI developer platform in 6 months, built for 1,200 engineers</li><li>Requirements from CISO, Risk, Compliance, and Legal turned into platform controls</li><li>Human approval enforced in the pipeline wherever regulation required it, made faster with data-backed evidence for approvers; decision time tracked; ~400 engineers on governed AI in 13 months</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li><li>Built AI fluency through skills assessment and peer-pairing: engagement 85% to 95%</li><li>Designed the path to risk-based review as evidence builds</li></ul>
-        <p class="shows">Shows up in TRELLIS as <span>Policy-as-code</span><span>Building blocks</span><span>AI fluency</span><span>Adoption metrics</span></p>
-      </article>
-      <article class="lesson">
-        <span class="yr">Ongoing</span><h3>Self-directed learning</h3>
-        <ul><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act</li><li>Model risk management and AI security, including prompt injection</li><li>Hands-on prototyping of agent, AI-judge, and human-validation loops</li><li>Earlier: regulated delivery at Prudential, with zero Sev2s on major launches</li></ul>
-        <p class="shows">Shows up in TRELLIS as <span>NIST AI RMF tags</span><span>Trust by design</span><span>Judge calibration</span></p>
+        <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; Quality Engineering</span><h3>S&amp;P Global</h3>
+        <ul><li>AI-first PDLC and AI developer platform in 6 months, built for 1,200 engineers</li><li>Requirements from CISO, Risk, Compliance, and Legal turned into platform controls</li><li>Human approval enforced in the pipeline wherever regulation required it, made faster with data-backed evidence for approvers; decision time tracked; ~400 engineers on governed AI in 13 months</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li><li>Built AI fluency through skills assessment and peer-pairing: engagement 85% to 95%</li><li>Designed the path to risk-based review as evidence builds</li><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act; hands-on prototyping of agent, AI-judge, and human-validation loops</li></ul>
+        <p class="shows">Shows up in TRELLIS as <span>Policy-as-code</span><span>Building blocks</span><span>AI fluency</span><span>Adoption metrics</span><span>NIST AI RMF tags</span><span>Judge calibration</span></p>
       </article>
     </div>
     <details style="margin-top:20px">
@@ -768,7 +789,7 @@ footer b{color:var(--fg)}
       <span><b>Faster,</b> evidence-backed human approval on regulated checks</span>
       <span><b>350+</b> people · <b>$70M+</b> budget led</span>
       <span><b>$50M+</b> revenue from Audible's testing CoE</span>
-      <span><b>0 &rarr; 1:</b> teams built at Prudential and Audible (4 &rarr; 41)</span>
+      <span><b>Built from zero</b> at Prudential, TheMarkets.com, and SanPulse; <b>revitalized</b> at Pearson, DoubleVerify, Audible, and S&amp;P Global</span>
     </div>
   <button class="talk" type="button" data-contact>Let&rsquo;s talk</button>
 </aside>
