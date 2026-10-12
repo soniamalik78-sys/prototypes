@@ -422,6 +422,8 @@ footer b{color:var(--fg)}
 .gcard .moment .dot{grid-row:1 / span 4}
 .gcard .moment h3{font-family:var(--f-body); font-size:.95rem; font-weight:700}
 .sample-note{justify-self:start}
+.blocks.risks code{font-family:var(--f-mono); font-size:.78rem; color:var(--accent-ink)}
+.closing{font-family:var(--f-display); font-size:clamp(1.1rem,2.2vw,1.35rem); line-height:1.45; margin-top:28px; max-width:62ch}
 </style>
 </head>
 <body>
@@ -617,6 +619,19 @@ footer b{color:var(--fg)}
         <div><h3>Fair lending and adverse action</h3><ul><li>For credit use cases, the group_gap check becomes the fair lending test under ECOA and Regulation B, run before launch and monitored in production</li><li>A gap above the limit blocks release and goes to Compliance and Legal with the evidence</li><li>Adverse action: every credit denial needs specific, accurate principal reasons; the platform derives them from the explanation record and checks them before notices go out</li></ul></div>
     </div>
     <div class="sec-head" style="margin-top:36px">
+      <span class="label">Proposed coverage</span>
+      <h2>AI risks we test for</h2>
+      <p class="lede">How the proposed design maps six common AI risks to the checks above.</p>
+    </div>
+    <div class="blocks risks">
+      <div><b>Hallucination</b><span>The <code>ungrounded_pct</code> limit at the evaluation gate, plus the grounded answers with citations block.</span></div>
+      <div><b>Toxicity</b><span>Output filters (<code>usage_policy</code>) at the gateway, with <code>severe_per_1k</code> as the release and rollback limit.</span></div>
+      <div><b>Bias</b><span>The <code>group_gap_pts</code> limit, which becomes the fair lending test for credit use cases.</span></div>
+      <div><b>Drift</b><span>Drift tracked in telemetry and monitoring; the AI judge is re-checked against human labels when a model changes.</span></div>
+      <div><b>Explainability</b><span>An audit trail and data lineage for each decision, plus adverse-action reasons for credit denials.</span></div>
+      <div><b>Prompt injection</b><span>The red-team set, held to the <code>injection_success_pct</code> limit, with gateway filters on every request.</span></div>
+    </div>
+    <div class="sec-head" style="margin-top:36px">
       <h2>Building blocks teams reuse</h2>
       <p class="lede">Each block arrives pre-approved by Risk, Legal, and Security, so using it is faster than building your own. At S&amp;P Global, a central reusable-components team played this role.</p>
     </div>
@@ -627,6 +642,16 @@ footer b{color:var(--fg)}
       <div><b>Human approval step</b><span>A drop-in approval for high-impact actions, with the approver recorded.</span></div>
       <div><b>Agent tool allow-list</b><span>Scoped identity and permitted tools for each agent, enforced at runtime.</span></div>
       <div><b>Evaluation pack</b><span>Held-out and red-team test sets, judge checks, and limits for each tier.</span></div>
+    </div>
+    <div class="sec-head" style="margin-top:36px">
+      <span class="label">Proposed developer experience</span>
+      <h2>The governed path comes to developers, with no ticket needed</h2>
+      <p class="lede">Teams would reach the governed path from the tools they already use.</p>
+    </div>
+    <div class="blocks">
+      <div><b>CLI</b><span>One command scaffolds the policy file for a new use case and runs the evaluation pack locally.</span></div>
+      <div><b>IDE plugin</b><span>Shows the tier, required controls, and latest evaluation results while the code is written.</span></div>
+      <div><b>Pipeline templates</b><span>Drop-in CI steps rerun the evaluation pack on every change and enforce the policy file before release.</span></div>
     </div>
     <div class="sec-head" style="margin-top:36px">
       <span class="label">Proposed organization</span>
@@ -753,6 +778,7 @@ footer b{color:var(--fg)}
         <ol class="qs"><li>Where does governance slow teams down most today?</li><li>How is model risk management engaged for generative AI and agents?</li><li>What does the platform team measure today, and what do you wish it measured?</li></ol>
       </div>
     </div>
+    <p class="closing">Responsible AI can&rsquo;t just be a policy document. It has to be an automated, continuous layer in the developer workflow. TRELLIS is my blueprint for turning principles into testable gates.</p>
     <div class="cta">
       <h3>I would welcome the conversation</h3>
       <div><button class="talk" type="button" data-contact>Let&rsquo;s talk</button></div>
