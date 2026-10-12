@@ -518,6 +518,7 @@ td.num{font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
+
 <div class="watermark" aria-hidden="true"></div>
 <div class="wrap">
   <header class="hero">
@@ -549,7 +550,7 @@ td.num{font-variant-numeric:tabular-nums}
     <div class="proof">
       <div><b class="mono">6 months</b><span>to stand up an AI-first PDLC and AI developer platform built for 1,200 engineers</span></div>
       <div><b class="mono">~400</b><span>engineers on governed AI workflows within 13 months</span></div>
-      <div><b class="mono">0</b><span>autonomous production deploys. Human checks stayed where regulation required them, and approvers decided from objective, data-based evidence</span></div>
+      <div><b class="mono">350+</b><span>people led in the global QE organization, with a $70M+ technology budget</span></div>
       <div><b class="mono">10+</b><span>AI tools reviewed against build–buy–partner criteria under security and controls requirements</span></div>
     </div>
     <p class="proof-note">These four figures are from my work at S&amp;P Global. Figures in the Governance KPIs tab are sample data.</p>
@@ -709,7 +710,7 @@ td.num{font-variant-numeric:tabular-nums}
     </div>
     <div class="lessons">
       <article class="lesson">
-        <span class="yr">2025–2026 · VP, Global Head of QE &amp; AI PDLC</span><h3>S&amp;P Global</h3>
+        <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; QE</span><h3>S&amp;P Global</h3>
         <p class="quote">"If the governed path isn't the easy one, people route around it."</p>
         <ul><li>Built an AI-first PDLC with AI across the lifecycle, from requirements and code generation to code review and deployment telemetry</li><li>Turned CISO, Risk, Compliance and Legal requirements into controls embedded in the platform</li><li>Kept human approval where regulation required it, gave approvers objective, data-based inputs, and tracked decision time, which built trust in the system over time</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li></ul>
         <p class="shows">Shows up in BEACON as <span>Operating model</span><span>Human in the loop</span><span>KPIs</span></p>
@@ -729,7 +730,7 @@ td.num{font-variant-numeric:tabular-nums}
       <article class="lesson">
         <span class="yr">2015–2019 · Head of Quality Engineering, CIO Office</span><h3>Prudential, and Guardian Life earlier</h3>
         <p class="quote">"In insurance, the regulator is part of the design."</p>
-        <ul><li>Built Customer Office QE from zero; revamped a 150+ person Retirement team within federal retirement regulations (IRA, Roth)</li><li>Zero Sev2s on major launches</li><li>Working knowledge of NIST AI RMF, ISO/IEC 42001 and the EU AI Act</li></ul>
+        <ul><li>Built Customer Office QE from zero; revamped a 150+ person Retirement team within federal retirement regulations (IRA, Roth)</li><li>Zero Sev2s on major launches</li><li>Familiar with NIST AI RMF, ISO/IEC 42001 and the EU AI Act</li></ul>
         <p class="shows">Shows up in BEACON as <span>Audit trail</span><span>Decision rights</span></p>
       </article>
     </div>
@@ -793,13 +794,12 @@ td.num{font-variant-numeric:tabular-nums}
 <button class="side-tab" type="button" id="side-tab" aria-controls="drawer" aria-expanded="false"><span class="av" aria-hidden="true">SM</span><span class="st-txt">About me · Let&rsquo;s talk</span></button>
 <aside class="drawer" id="drawer" aria-label="About Sonia Malik" hidden>
   <button class="dr-close" type="button" id="dr-close" aria-label="Close">&times;</button>
-  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>Most recently VP, Global Head of Quality Engineering &amp; AI PDLC, S&amp;P Global</span></div></div>
-  <p class="pf-pitch">I build AI governance that teams use. At S&amp;P Global I built AI into every stage of the development lifecycle, with Risk, Compliance and Legal requirements embedded in the platform. Where regulation required a human check, we kept it and made it easier: approvers got objective, data-based evidence, we tracked how long each decision took, and over time that built trust in the system. For Guardian, I would run AI governance as an operating model: risk-based, built into delivery, and measured every month.</p>
+  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>VP, Global Head of AI PDLC &amp; Quality Engineering, S&amp;P Global</span></div></div>
+  <p class="pf-pitch">I build AI governance that teams use. At S&amp;P Global I built AI into every stage of the development lifecycle, with Risk, Compliance and Legal requirements embedded in the platform and human approval enforced where regulation required it. For Guardian, I would run AI governance as an operating model: risk-based, built into delivery, and measured every month.</p>
   <div class="pf-stats">
     <span><b>6 months</b> to an AI developer platform for 1,200 engineers</span>
     <span><b>~400</b> engineers on governed AI in 13 months</span>
-    <span><b>Regulated checks</b> kept, made faster with data-based evidence</span>
-    <span><b>Decision time</b> tracked, building trust in the system</span>
+    <span><b>Faster,</b> evidence-backed human approval on regulated checks</span>
     <span><b>10+</b> AI tools reviewed</span>
     <span><b>350+</b> people · <b>$70M+</b> budget led</span>
     <span><b>Insurance:</b> Prudential; Guardian Life (2005)</span>
@@ -858,7 +858,7 @@ td.num{font-variant-numeric:tabular-nums}
      a:'Least-privilege tool permissions, action limits, human-in-the-loop rules by action type, full action logs, and a kill switch.',
      looks:['Tool permissions','Action limits','Human approval rules','Action logs','Prompt injection'],
      m:['agent actions with a logged approver','actions blocked by limits'],
-     lived:'<b>DoubleVerify and S&amp;P Global:</b> agentic engineering with guardrails; human review kept where regulation required it, with reviewers deciding from objective evidence.'},
+     lived:'<b>DoubleVerify and S&amp;P Global:</b> agentic engineering with guardrails and human review gates.'},
     {k:'t4', n:'RAG', name:'RAG workflows', risk:2, sub:'Assistants that answer from company documents: policies, claims files, procedures', primary:true,
      b:'Retrieval sources are added ad hoc; stale or unapproved documents feed answers, and grounding is not measured.',
      a:'Approved retrieval sources with owners and refresh dates, masking of sensitive data before retrieval, grounding evaluations before launch and in production.',
@@ -1091,7 +1091,6 @@ td.num{font-variant-numeric:tabular-nums}
   }));
 })();
 </script>
-
 
 </body>
 </html>
