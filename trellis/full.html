@@ -320,7 +320,7 @@ tr.fresh td{animation:grow 1.2s ease-out}
 .drawer .talk{justify-self:start}
 footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); display:grid; gap:8px; font-size:.86rem; color:var(--muted)}
 footer b{color:var(--fg)}
-.copy{background:none; border:1px solid var(--line-strong); border-radius:6px; padding:2px 8px; font-size:.78rem; color:var(--muted); cursor:pointer; margin-left:6px}
+.copy{background:none; border:1px solid var(--line-strong); border-radius:6px; padding:2px 8px; font-size:.78rem; color:var(--muted); cursor:pointer; margin:0 4px 0 10px}
 @media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
 
 /* ---------- Tabbed layout ---------- */
@@ -433,7 +433,6 @@ footer b{color:var(--fg)}
 <body>
 
 
-<div class="watermark" aria-hidden="true"></div>
 <div class="wrap">
   <header class="hero">
     <div class="eyebrow">
@@ -441,8 +440,8 @@ footer b{color:var(--fg)}
       <span class="pill neutral">Prepared for American Express · VP, Responsible AI, Enterprise AI Platform</span>
     </div>
     <div class="brand">TRELLIS</div>
-    <div class="pron">/ˈtrel-ɪs/ · the frame a plant climbs to grow higher</div>
     <p class="thesis">Responsible AI, engineered in: safe by default, fast by design.</p>
+    <p style="margin-top:16px"><button class="talk" type="button" data-go="try">Try it in 2 minutes &rarr;</button></p>
   </header>
 
   <div class="tabbar">
@@ -451,7 +450,6 @@ footer b{color:var(--fg)}
       <button class="tab" role="tab" id="t-who" aria-controls="who" data-tab="who">Who it serves</button>
       <button class="tab" role="tab" id="t-try" aria-controls="try" data-tab="try">Try it</button>
       <button class="tab" role="tab" id="t-engine" aria-controls="engine" data-tab="engine">Under the hood</button>
-      <button class="tab" role="tab" id="t-dash" aria-controls="dash" data-tab="dash">Dashboard</button>
       <button class="tab" role="tab" id="t-why" aria-controls="why" data-tab="why">Why me</button>
       <button class="tab" role="tab" id="t-meet" aria-controls="meet" data-tab="meet">When we meet</button>
     </div>
@@ -471,8 +469,8 @@ footer b{color:var(--fg)}
     <p class="firms"><i><b>S&amp;P Global</b> AI developer platform for 1,200 engineers in 6 months</i><i><b>Audible</b> 30% fewer Sev2s, CSAT up 15%</i><i><b>DoubleVerify</b> 25% less manual effort, 20% faster test cycles</i></p>
     <div class="proof">
       <div><b class="mono">6 months</b><span>to stand up an AI developer platform built for 1,200 engineers, on one approved tool stack</span></div>
-      <div><b class="mono">~400</b><span>engineers on governed AI workflows within 13 months, with team engagement up from 85% to 95%</span></div>
-      <div><b class="mono">2×</b><span>release cadence in 3 months, with regression lead time cut from 9 days to 4</span></div>
+      <div><b class="mono">~400</b><span>engineers on governed AI workflows within 13 months; separately, team engagement rose from 85% to 95% through AI fluency upskilling</span></div>
+      <div><b class="mono">2×</b><span>delivery speed: release cadence doubled in 3 months, with regression lead time cut from 9 days to 4</span></div>
       <div><b class="mono">3 days → same day</b><span>approval time on regulated checks, with evidence-backed human approval enforced in the pipeline</span></div>
     </div>
     <p class="proof-note"><em>These four figures are from my work at S&amp;P Global. Figures in the Dashboard tab are sample data.</em></p>
@@ -489,7 +487,6 @@ footer b{color:var(--fg)}
       <button type="button" data-go="who"><b>Who it serves</b><span>Eight groups, what changes for each, before and after</span><i>2 min →</i></button>
       <button type="button" data-go="try"><b>Try it</b><span>Take a use case through intake, evaluation, review, and rollout</span><i>2 min →</i></button>
       <button type="button" data-go="engine"><b>Under the hood</b><span>How I would build it: architecture, controls, model lifecycle, team</span><i>3 min →</i></button>
-      <button type="button" data-go="dash"><b>Dashboard</b><span>Scrub through a sample first year of governance metrics</span><i>1 min →</i></button>
       <button type="button" data-go="why"><b>Why me</b><span>What Audible, DoubleVerify, and S&amp;P Global taught me</span><i>2 min →</i></button>
       <button type="button" data-go="meet"><b>When we meet</b><span>What I would walk you through in person</span><i>1 min →</i></button>
     </div>
@@ -514,7 +511,7 @@ footer b{color:var(--fg)}
     <div class="sec-head">
       <span class="label">Try it</span>
       <h2>Run a use case through TRELLIS</h2>
-      <p class="lede">Pick a sample use case, change its answers to see the risk tier and controls respond, then take it through evaluation, review, and rollout. Try the fraud agent to see a gate block a release.</p>
+      <p class="lede">Pick a sample use case, change its answers to see the risk tier and controls respond, then take it through evaluation, review, and rollout. Try the card-member servicing agent to see a gate block a release.</p>
     </div>
     <div class="demo">
       <div class="demo-top">
@@ -606,7 +603,7 @@ footer b{color:var(--fg)}
   <span class="k">limits:</span>        <span class="c"># 95% CI upper bound must be within</span>
     <span class="k">ungrounded_pct:</span> 5
     <span class="k">injection_success_pct:</span> 2
-    <span class="k">group_gap_pts:</span> 3       <span class="c"># outcome gap across groups</span>
+    <span class="k">group_gap_pts:</span> 3       <span class="c"># approval-rate gap across groups; adverse impact ratio also checked</span>
     <span class="k">severe_per_1k:</span> 2
     <span class="k">pii_exposures:</span> 0     <span class="c"># zero tolerance</span>
 <span class="k">approvals:</span> [product_owner, compliance]
@@ -628,7 +625,7 @@ footer b{color:var(--fg)}
     </div>
     <div class="facts" style="margin-top:12px">
         <div><h3>Model lifecycle in the registry</h3><ul><li>Onboarding: each foundation model, internal or vendor, is registered with its model card, evaluation results, and approved uses before the gateway routes traffic to it</li><li>Version change: a new model, prompt, or agent version re-runs the evaluation pack and the judge check before traffic moves</li><li>Retirement: retired versions are blocked at the gateway, and owners of dependent use cases are notified with a migration date</li></ul></div>
-        <div><h3>Fair lending and adverse action</h3><ul><li>For credit use cases, the group_gap check becomes the fair lending test under ECOA and Regulation B, run before launch and monitored in production</li><li>A gap above the limit blocks release and goes to Compliance and Legal with the evidence</li><li>Adverse action: every credit denial needs specific, accurate principal reasons; the platform derives them from the explanation record and checks them before notices go out</li></ul></div>
+        <div><h3>Fair lending and adverse action</h3><ul><li>For credit use cases, the group_gap check becomes the fair lending test under ECOA and Regulation B, covering the approval-rate gap across groups and the adverse impact ratio, run before launch and monitored in production</li><li>A gap above the limit blocks release and goes to Compliance and Legal with the evidence</li><li>Adverse action: every credit denial needs specific, accurate principal reasons; the platform derives them from the explanation record and checks them before notices go out</li></ul></div>
         <div><h3>Vendor AI risk</h3><ul><li>A third-party model or vendor AI feature goes through vendor risk review and the same evaluation pack as internal AI</li><li>Contract terms cover data use, including no training on company data without approval</li><li>Re-evaluation is triggered when the vendor changes its model</li></ul></div>
         <div><h3>AI incident response</h3><ul><li>Severity levels, each with a named owner and response time</li><li>Escalation to Risk and Legal for higher-severity incidents</li><li>Customer notice and remediation where customers were affected</li><li>A post-incident review turns each incident into a new test case</li></ul></div>
     </div>
@@ -680,14 +677,9 @@ footer b{color:var(--fg)}
       <div><b>Adoption, enablement, and metrics</b><span>Developer experience, training, and the monthly dashboard; tracks friction as closely as risk.</span></div>
       <div><b>Embedded partners</b><span>Named partners from Risk, Legal, Compliance, Privacy, and InfoSec co-own the control catalog with the team.</span></div>
     </div>
-    <p class="targets">Design targets: guardrails add under 50 ms at p95 per request; a Standard-tier use case goes from intake to approval in under 2 days. How each part behaves when it fails is in "When we meet."</p>
-    <div class="next"><button type="button" data-go="dash">Next: dashboard →</button></div>
-  </section>
-
-  <!-- DASHBOARD -->
-  <section class="pane" id="dash" role="tabpanel" aria-labelledby="t-dash" hidden>
-    <div class="sec-head">
-      <span class="label">Is governance working?</span>
+    <p class="targets">Design goal: guardrails add under 50 ms at p95, validated per use case before rollout; a Standard-tier use case goes from intake to approval in under 2 days. How each part behaves when it fails is in "When we meet."</p>
+    <div class="sec-head" style="margin-top:44px" id="dashboard">
+      <span class="label">Dashboard · is governance working?</span>
       <h2>Measure adoption, friction, and customer impact, not just activity</h2>
       <p class="lede">The dashboard I would bring to the AI steering group each month. Move through a sample first year: adoption rises, time to approval falls, and problems are caught before customers see them.</p>
       <span class="sample-note">Sample data showing year-one targets, for illustration. Starting points are hypothetical and do not describe any company&rsquo;s program.</span>
@@ -708,6 +700,9 @@ footer b{color:var(--fg)}
       <div class="chart"><h3>Adoption of the governed path</h3><p>Share of active AI use cases, by month</p><svg id="c1" viewBox="0 0 460 190" role="img" aria-label="Adoption rises from 18% in month 1 to 82% in month 12"></svg></div>
       <div class="chart"><h3>Time to approval</h3><p>Median days from intake to approval, by month</p><svg id="c2" viewBox="0 0 460 190" role="img" aria-label="Median time to approval falls from 21 days in month 1 to 6 days in month 12"></svg></div>
     </div>
+    <div class="tiles one">
+      <div class="tile"><span class="v mono">14</span><span class="k">AI use cases shipped to customers this year, rising each quarter as the governed path gets faster</span><span class="s">sample data; illustrative starting point: 3 per year. Responsible AI that speeds delivery</span></div>
+    </div>
     <div class="sec-head" style="margin-top:36px">
       <span class="label">Proposed design · closed loop</span>
       <h2>From customer signals to prevention</h2>
@@ -723,6 +718,7 @@ footer b{color:var(--fg)}
     <div class="next"><button type="button" data-go="why">Next: why me →</button></div>
   </section>
 
+
   <!-- WHY ME -->
   <section class="pane" id="why" role="tabpanel" aria-labelledby="t-why" hidden>
     <div class="sec-head">
@@ -732,9 +728,14 @@ footer b{color:var(--fg)}
     </div>
     <div class="lessons">
       <article class="lesson">
-        <span class="yr">2019–2024 · QAE Director, CTO Office</span><h3>Audible, an Amazon company</h3>
-        <ul><li>Applied AI/ML from 2022 to production defect and Sev2 incident management</li><li>Redefined the Sev2 process: 30% fewer Sev2s</li><li>Non-functional testing CoE (performance, security, accessibility) contributing $50M+ in revenue</li><li>Automation First across 17 teams: regression from 5 days to 2, and more frequent releases</li></ul>
-        <p class="shows">Shows up in TRELLIS as <span>Severity-weighted failures</span><span>Incident metrics</span><span>Customer experience &amp; value</span></p>
+        <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; Quality Engineering</span><h3>S&amp;P Global</h3>
+        <ul><li>AI-first PDLC and AI developer platform in 6 months, built for 1,200 engineers</li><li>Requirements from CISO, Risk, Compliance, and Legal turned into platform controls</li><li>Evidence-backed human approval enforced in the pipeline wherever regulation required it; approval time on regulated checks cut from 3 days to same day; ~400 engineers on governed AI in 13 months</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li><li>Built AI fluency through skills assessment and peer-pairing: team engagement up from 85% to 95% through AI fluency upskilling</li><li>Designed the path to risk-based review as evidence builds</li><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act; hands-on prototyping of agent, AI-judge, and human-validation loops</li></ul>
+        <p class="shows">Shows up in TRELLIS as <span>Policy-as-code</span><span>Building blocks</span><span>AI fluency</span><span>Adoption metrics</span><span>NIST AI RMF tags</span><span>Judge calibration</span></p>
+      </article>
+      <article class="lesson">
+        <span class="yr">2025–2026 · S&amp;P Global</span><h3>What broke, and what I changed (S&amp;P Global)</h3>
+        <p style="font-size:.88rem; color:var(--muted)">During my own hands-on testing of our AI-first PDLC, I found AI-generated code exposing the full server directory structure in an error response instead of a safe error. Security testing ran static scans (SAST) and only positive dynamic tests (DAST), because test data for failure cases wasn&rsquo;t available. We added negative scenarios to DAST. That uncovered a second risk: log files held details that were being exposed to AI models. Both became permanent pipeline checks, with safe error handling and log scrubbing before any data reaches a model, so approvers decided from evidence instead of chasing it, and approval time on regulated checks went from 3 days to same day.</p>
+        <p class="shows">Shows up in TRELLIS as <span>Evaluation gate</span><span>PII redaction</span><span>Closed loop</span></p>
       </article>
       <article class="lesson">
         <span class="yr">2024–2025 · VP, Head of Quality Engineering</span><h3>DoubleVerify</h3>
@@ -742,14 +743,9 @@ footer b{color:var(--fg)}
         <p class="shows">Shows up in TRELLIS as <span>Evaluation gate</span><span>Agent permissions</span><span>Monitoring</span></p>
       </article>
       <article class="lesson">
-        <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; Quality Engineering</span><h3>S&amp;P Global</h3>
-        <ul><li>AI-first PDLC and AI developer platform in 6 months, built for 1,200 engineers</li><li>Requirements from CISO, Risk, Compliance, and Legal turned into platform controls</li><li>Evidence-backed human approval enforced in the pipeline wherever regulation required it; approval time on regulated checks cut from 3 days to same day; ~400 engineers on governed AI in 13 months</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li><li>Built AI fluency through skills assessment and peer-pairing: engagement 85% to 95%</li><li>Designed the path to risk-based review as evidence builds</li><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act; hands-on prototyping of agent, AI-judge, and human-validation loops</li></ul>
-        <p class="shows">Shows up in TRELLIS as <span>Policy-as-code</span><span>Building blocks</span><span>AI fluency</span><span>Adoption metrics</span><span>NIST AI RMF tags</span><span>Judge calibration</span></p>
-      </article>
-      <article class="lesson">
-        <span class="yr">2025–2026 · S&amp;P Global</span><h3>What broke, and what I changed (S&amp;P Global)</h3>
-        <p style="font-size:.88rem; color:var(--muted)">During my own hands-on testing of our AI-first PDLC, I found AI-generated code exposing the full server directory structure in an error response instead of a safe error. Security testing ran static scans (SAST) and only positive dynamic tests (DAST), because test data for failure cases wasn&rsquo;t available. We added negative scenarios to DAST. That uncovered a second risk: log files held details that were being exposed to AI models. Both became permanent pipeline checks, with safe error handling and log scrubbing before any data reaches a model, so approvers decided from evidence instead of chasing it, and approval time on regulated checks went from 3 days to same day.</p>
-        <p class="shows">Shows up in TRELLIS as <span>Evaluation gate</span><span>PII redaction</span><span>Closed loop</span></p>
+        <span class="yr">2019–2024 · QAE Director, CTO Office</span><h3>Audible, an Amazon company</h3>
+        <ul><li>Applied AI/ML from 2022 to production defect and Sev2 incident management</li><li>Redefined the Sev2 process: 30% fewer Sev2s, CSAT up 15%</li><li>Non-functional testing CoE (performance, security, accessibility) contributing $50M+ in revenue</li><li>Automation First across 17 teams: regression from 5 days to 2, and more frequent releases</li></ul>
+        <p class="shows">Shows up in TRELLIS as <span>Severity-weighted failures</span><span>Incident metrics</span><span>Customer experience &amp; value</span></p>
       </article>
     </div>
     <details style="margin-top:20px">
@@ -782,24 +778,24 @@ footer b{color:var(--fg)}
     </div>
     <div class="locks">
       <div class="lockcard">
-        <span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Live walkthrough</span>
+        <span class="badge">Live walkthrough</span>
         <h3>A release that fails, end to end</h3>
         <p>One use case from intake to production, including a failed gate, a fix, a canary that misbehaves, and the automatic rollback.</p>
       </div>
       <div class="lockcard">
-        <span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Deep dive</span>
+        <span class="badge">Deep dive</span>
         <h3>When the guardrails themselves fail</h3>
         <ul><li>The AI judge drifts from human labels</li><li>The gateway is down: fail open or fail closed?</li><li>Guardrails block too much good work</li></ul>
-        <div class="veil-wrap"><p class="veil">Detection signal, owner, and automatic response for each failure mode, with the trade-offs behind each choice.</p></div>
+        <p class="hint">Detection signal, owner, and automatic response for each failure mode, with the trade-offs behind each choice.</p>
       </div>
       <div class="lockcard">
-        <span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>First 90 days</span>
+        <span class="badge">First 90 days</span>
         <h3>Listen, pave the first path, then scale</h3>
         <ul><li><b>Days 1–30:</b> meet the risk partners and baseline today's time to approval</li><li><b>Days 31–60:</b> ship tiered intake and an evaluation gate for one high-volume pattern</li><li><b>Days 61–90:</b> dashboard live for the steering group; two more patterns</li></ul>
-        <div class="veil-wrap"><p class="veil">How I would choose the first pattern, who I would meet first, and the three numbers I would commit to by day 90.</p></div>
+        <p class="hint">How I would choose the first pattern, who I would meet first, and the three numbers I would commit to by day 90.</p>
       </div>
       <div class="lockcard">
-        <span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Questions I'd bring</span>
+        <span class="badge">Questions I'd bring</span>
         <h3>What I would want to learn from you</h3>
         <ol class="qs"><li>Where does governance slow teams down most today?</li><li>How is model risk management engaged for generative AI and agents?</li><li>What does the platform team measure today, and what do you wish it measured?</li></ol>
       </div>
@@ -853,23 +849,23 @@ footer b{color:var(--fg)}
     {id:'customer', q:'Output reaches customers', s:'Text or actions a customer sees'},
     {id:'pii', q:'Uses personal or account data', s:'Names, card numbers, transaction history'},
     {id:'autonomous', q:'Acts without a person approving each step', s:'Agents that call tools or send messages'},
-    {id:'decision', q:'Informs a credit, fraud, or eligibility decision', s:'Regulated outcomes for a customer'},
+    {id:'decision', q:'Informs a credit or eligibility decision', s:'Regulated outcomes for a customer'},
     {id:'thirdparty', q:'Uses a third-party model or tool', s:'Outside the approved model gateway'}
   ];
   const CASES = {
-    dispute:{name:'Dispute reply assistant', team:'Servicing technology', purpose:'Drafts replies to customers who dispute a charge. A servicing agent edits and sends each one.', answers:{customer:true,pii:true,autonomous:false,decision:false,thirdparty:false},
+    dispute:{name:'Dispute reply assistant', team:'Servicing technology', purpose:'Drafts replies to customers who dispute a charge. A servicing agent edits and sends each one.', outcome:'Customer outcome: dispute resolved in one contact. Sample baseline 61%, target 80%.', answers:{customer:true,pii:true,autonomous:false,decision:false,thirdparty:false},
       ev:{grounded:[8.0,6.6,9.6], pii:[0,0,0], injection:[0,0,1.3], gap:[1.6,0.9,2.4], policy:[1.1,0.6,1.9], severe:[1.2,0.6,1.9]},
       fixed:{grounded:[2.4,1.7,3.4], severe:[0.6,0.2,1.2]},
       fix:'Ground replies in the dispute-policy knowledge base and cite the policy section used.',
       sample:'Thank you for letting us know about the charge from 14 May. We have opened a dispute and issued a temporary credit while we review it. Under our dispute policy (section 3.2), we will update you within 10 business days.'},
-    code:{name:'Code review assistant', team:'Developer platform', purpose:'Comments on pull requests with suggested fixes. Engineers accept or ignore each suggestion.', answers:{customer:false,pii:false,autonomous:false,decision:false,thirdparty:true},
+    code:{name:'Code review assistant', team:'Developer platform', purpose:'Comments on pull requests with suggested fixes. Engineers accept or ignore each suggestion.', outcome:'Outcome: fewer defects reaching customers. Sample baseline 4.1 escaped defects per release, target 2.5.', answers:{customer:false,pii:false,autonomous:false,decision:false,thirdparty:true},
       ev:{grounded:[3.6,2.7,4.7], pii:[0,0,0], injection:[0.7,0.2,1.9], gap:[0.4,0.1,0.9], policy:[0.9,0.5,1.6], severe:[0.4,0.1,1.0]},
       fixed:{}, fix:'', sample:'Suggested change: validate the merchant ID before the database call (line 42). This input is user-supplied and currently unchecked.'},
-    triage:{name:'Fraud alert triage agent', team:'Risk operations', purpose:'Reviews flagged transactions, gathers context from internal tools, and recommends whether to block the card.', answers:{customer:true,pii:true,autonomous:true,decision:true,thirdparty:false},
+    servicing:{name:'Card-member servicing agent', team:'Card-member servicing', purpose:'Answers card-member questions in chat and can take one low-risk action, such as resending a statement or updating a mailing preference. Anything else goes to a care professional.', outcome:'Customer outcome: request resolved in one contact, without a transfer. Sample baseline 48%, target 70%.', answers:{customer:true,pii:true,autonomous:true,decision:false,thirdparty:false},
       ev:{grounded:[2.1,1.4,2.9], pii:[0,0,0], injection:[3.3,1.8,6.0], gap:[3.4,2.5,4.4], policy:[0.5,0.2,0.9], severe:[0.9,0.4,1.6]},
       fixed:{injection:[0,0,0.9], gap:[1.1,0.6,1.8], severe:[0.2,0.05,0.45]},
-      fix:'Add a tool allow-list and sanitize merchant text before the agent reads it, and rebalance training examples across customer segments.',
-      sample:'Recommendation: hold the card and contact the customer. Three transactions in 9 minutes at merchants new to this account, in a country the customer has not visited. Confidence 0.87. Awaiting analyst approval.'}
+      fix:'Limit the tool allow-list to the two low-risk actions, sanitize customer-entered text before the agent reads it, and rebalance evaluation examples across customer segments.',
+      sample:'Done: I have resent your May statement to the email address on file. If you would also like to stop paper statements, I can update that preference now. Action logged; a sample of actions is reviewed by a care professional.'}
   };
   const CHECKS = [
     {k:'grounded', l:'Wrong or ungrounded answers', u:'%', set:'1,200 held-out cases'},
@@ -927,7 +923,7 @@ footer b{color:var(--fg)}
     const why = t==='High'?'Informs a regulated decision, or acts on its own in front of customers.':t==='Elevated'?'Touches customers, personal data, outside models, or autonomous actions.':'Internal use, no personal data, a person approves every output.';
     return `<div class="panel-grid">
       <div>
-        <div class="case-card"><span class="label">${esc(c.team)}</span><h3>${esc(c.name)}</h3><p class="lede">${esc(c.purpose)}</p></div>
+        <div class="case-card"><span class="label">${esc(c.team)}</span><h3>${esc(c.name)}</h3><p class="lede">${esc(c.purpose)}</p>${c.outcome?`<p class="hint" style="margin-top:8px"><b>${esc(c.outcome)}</b></p>`:''}</div>
         <div style="margin-top:14px">${qs}</div>
         <p class="hint" style="margin-top:8px">Answers are pre-filled from the data catalog, model gateway, and tool permissions; the team confirms them. AI traffic that matches no registered use case is flagged.</p>
       </div>
@@ -1014,7 +1010,7 @@ footer b{color:var(--fg)}
     const bar=document.querySelector('.tabbar');
     if(opts.scroll){ const y=bar.getBoundingClientRect().top+window.scrollY; if(window.scrollY>y) window.scrollTo({top:y, behavior:'auto'}); }
     if(opts.focus){ const t=TABS.find(x=>x.dataset.tab===id); if(t) t.focus(); }
-    if(id==='dash') drawDash(+((document.getElementById('month')||{value:12}).value));
+    if(id==='engine') drawDash(+((document.getElementById('month')||{value:12}).value));
   }
   TABS.forEach((t,i)=>{
     t.addEventListener('click',()=>selectTab(t.dataset.tab,{scroll:true}));
@@ -1028,7 +1024,7 @@ footer b{color:var(--fg)}
       <li><span class="dot">2</span><span class="when">9:04 pm</span><h3>The assistant drafts a reply</h3><p>It answers from the dispute policy, with the section cited, and passed the evaluation gate before launch.</p><span class="ctl">Evaluation gate</span></li>
       <li><span class="dot">3</span><span class="when">9:05 pm</span><h3>It is unsure about one detail</h3><p>Confidence on the refund date is low, so instead of guessing, the draft is flagged for a person to confirm.</p><span class="ctl">Confidence routing</span></li>
       <li><span class="dot">4</span><span class="when">9:07 pm</span><h3>A care professional confirms and sends it</h3><p>A person stays accountable; their edits feed the override-rate metric.</p><span class="ctl">Human review</span></li>
-      <li><span class="dot">5</span><span class="when">9:12 pm</span><h3>The fraud agent flags a related transaction</h3><p>The agent acts only within defined boundaries: it recommends a card block and an analyst approves it. Every tool call, and the data it used, is logged.</p><span class="ctl">Agent permissions</span></li>
+      <li><span class="dot">5</span><span class="when">9:12 pm</span><h3>The servicing agent resends a statement</h3><p>The agent acts only within defined boundaries: one low-risk action on its allow-list; anything else goes to a person. Every tool call, and the data it used, is logged.</p><span class="ctl">Agent permissions</span></li>
       <li class="alert"><span class="dot">6</span><span class="when">Next week</span><h3>A model update gives vaguer answers</h3><p>The canary catches it and rolls back. Customers never get the worse version.</p><span class="ctl">Staged rollout</span></li>
     </ol>`;
   const GROUPS=[
@@ -1126,7 +1122,7 @@ footer b{color:var(--fg)}
   drawDash(12);
 
   // ---------- Initial tab ----------
-  const start=(location.hash||'').replace('#','');
+  let start=(location.hash||'').replace('#',''); if(start==='dash') start='engine';
   selectTab(TABS.some(t=>t.dataset.tab===start)?start:'overview');
 
   // ---------- Floating bar + contact card ----------
@@ -1151,5 +1147,6 @@ footer b{color:var(--fg)}
 })();
 </script>
 
+<script>(function(){ try{ var u=new URL(location.href); if(u.searchParams.has('src')){ u.searchParams.delete('src'); history.replaceState(history.state,'',u.pathname+u.search+u.hash); } }catch(e){} })();</script>
 </body>
 </html>
