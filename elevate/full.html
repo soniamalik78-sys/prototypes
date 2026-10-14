@@ -1,0 +1,107 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>ELEVATE · AI Workforce Enablement Prototype</title>
+<meta name="description" content="ELEVATE: a prototype by Sonia Malik for AI workforce enablement and governed adoption.">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F5F8;--s:#fff;--fg:#14202E;--m:#4F5B69;--line:#D7DEE7;--a:#0A4D8C;--as:#E2EDF8;--w:#8F5E00;--wb:#FBF0D9;--ok:#2E7D4F;--okb:#E3F2E8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Public Sans",Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.banner{background:var(--a);color:#fff;text-align:center;padding:8px;font-weight:600;font-size:14px;letter-spacing:.03em}
+header{padding:44px 0 20px}h1{font:600 52px/1.1 Spectral,Georgia,serif;margin:0;color:var(--a)}
+.lede{font-size:19px;color:var(--m);max-width:760px}h2{font:600 28px Spectral,Georgia,serif;margin:40px 0 12px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tabs button{border:1px solid var(--line);background:var(--s);padding:8px 14px;border-radius:20px;cursor:pointer;font:inherit;font-size:14px}
+.tabs button.on{background:var(--a);color:#fff;border-color:var(--a)}.pane{display:none}.pane.on{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--s);border:1px solid var(--line);border-radius:10px;padding:16px 18px}.card h3{margin:0 0 6px;font-size:17px;color:var(--a)}
+.kpi .n{font:600 30px Spectral,serif;color:var(--a)}.tag{display:inline-block;font-size:12px;background:var(--wb);color:var(--w);border-radius:4px;padding:1px 7px;margin-left:6px;font-weight:600}
+.flow{display:flex;gap:8px;flex-wrap:wrap}.step{flex:1 1 150px;background:var(--as);border-radius:8px;padding:12px}.step.gate{background:var(--wb)}
+table{width:100%;border-collapse:collapse;background:var(--s);font-size:15px}td,th{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}th{background:var(--as)}
+.tw{overflow-x:auto}footer{margin:50px 0 30px;color:var(--m);font-size:14px;border-top:1px solid var(--line);padding-top:14px}
+.meter{height:10px;background:var(--line);border-radius:5px;overflow:hidden}.meter i{display:block;height:100%;background:var(--ok)}
+select{font:inherit;padding:6px;border-radius:6px}
+</style></head><body>
+<div class="banner">Prepared for Prudential · VP, AI Workforce</div>
+<div class="wrap">
+<header><h1>ELEVATE</h1>
+<p class="lede">An operating model for AI workforce enablement: build fluency by role, grow champions, keep safe-use guardrails visible, and prove adoption with outcomes leaders trust.</p>
+<p><b>Sonia Malik</b> · 24+ years of tech experience · returning Prudential alum who built the Customer Office QE organization from zero.</p></header>
+
+<div class="tabs" id="tabs"><button class="on" data-p="ov">Overview</button><button data-p="fl">Fluency by role</button><button data-p="ch">Champions</button><button data-p="gr">Guardrails</button><button data-p="mx">Adoption &amp; ROI</button><button data-p="sc">Scenarios</button><button data-p="pl">First 90 days</button></div>
+
+<section class="pane on" id="ov">
+<h2>60-second summary</h2>
+<p>ELEVATE treats AI adoption as a people transformation first. Each employee gets a role-specific learning path, a nearby champion, clear rules on safe use, and human checkpoints wherever judgment matters. HR, Risk, Compliance and Legal co-own the design so speed and trust grow together.</p>
+<div class="flow">
+<div class="step"><b>1. Assess</b><br>Baseline skills, sentiment and use cases by role</div>
+<div class="step"><b>2. Learn</b><br>Tiered fluency paths: aware, practitioner, builder</div>
+<div class="step gate"><b>3. Guard</b><br>Approved tools, data rules, human review points</div>
+<div class="step"><b>4. Apply</b><br>Champions coach redesigned workflows</div>
+<div class="step"><b>5. Measure</b><br>Adoption, quality, time saved, engagement</div>
+</div>
+<p style="font-size:14px;color:var(--m)">Amber stage marks the human control point partnered with Risk, Compliance and Legal.</p>
+<h2>Proof points</h2>
+<div class="grid">
+<div class="card kpi"><div class="n">~400</div>engineers at S&amp;P Global moved onto governed AI workflows in 13 months</div>
+<div class="card kpi"><div class="n">3 days → same day</div>approval time on regulated checks, with evidence-backed human approval</div>
+<div class="card kpi"><div class="n">−30%</div>Sev2 incidents at Audible through AI/ML incident management; CSAT +15%</div>
+<div class="card kpi"><div class="n">AIGC</div>AI PDLC standards presented to the S&amp;P AI Governance Committee</div>
+</div>
+<div class="card" style="margin-top:14px"><b>Track record:</b> Built from zero at Prudential, TheMarkets.com and SanPulse; revitalized at Pearson, DoubleVerify, Audible and S&amp;P Global. As VP, Global Head of AI PDLC &amp; Quality Engineering at S&amp;P Global, partnered with CISO, Risk, Architecture, Controls, Compliance and Legal. Working knowledge of NIST AI RMF, ISO/IEC 42001 and the NAIC and NYDFS AI guidance for insurers.</div>
+</section>
+
+<section class="pane" id="fl"><h2>AI fluency by role</h2>
+<p>Pick a role to see its path:</p><select id="role"><option value="0">Customer service associate</option><option value="1">Financial professional / advisor support</option><option value="2">Operations &amp; claims</option><option value="3">Engineer</option><option value="4">People leader</option></select>
+<div class="card" id="rp" style="margin-top:12px"></div>
+<div class="tw" style="margin-top:14px"><table><tr><th>Tier</th><th>Who</th><th>Outcome</th></tr>
+<tr><td>Aware</td><td>All employees</td><td>Safe-use basics, data rules, when to escalate</td></tr>
+<tr><td>Practitioner</td><td>Daily users</td><td>Prompting patterns, output checking, workflow redesign</td></tr>
+<tr><td>Builder</td><td>Engineers, analysts</td><td>Agents, evaluation, guardrail testing, secure coding</td></tr></table></div></section>
+
+<section class="pane" id="ch"><h2>Champions network</h2>
+<div class="grid">
+<div class="card"><h3>Ratio</h3>One champion per team, a lead champion per function.</div>
+<div class="card"><h3>Role</h3>Office hours, workflow clinics, feedback to the program.</div>
+<div class="card"><h3>Recognition</h3>Career credit, visible badges, leadership showcase.</div>
+<div class="card"><h3>Loop</h3>Champion insights shape training and guardrails monthly.</div></div>
+<p>The model echoes S&amp;P peer-pairing: people learn fastest from colleagues who do the same job.</p></section>
+
+<section class="pane" id="gr"><h2>Safe-use guardrails</h2>
+<div class="tw"><table><tr><th>Guardrail</th><th>Owner partner</th><th>Human-in-the-loop</th></tr>
+<tr><td>Approved tool catalog</td><td>Technology, Risk</td><td>Exceptions reviewed by named owner</td></tr>
+<tr><td>Data classification rules (no customer PII in public models)</td><td>Privacy, Legal</td><td>Sensitive outputs reviewed before use</td></tr>
+<tr><td>Customer-facing content</td><td>Compliance</td><td>Licensed reviewer approves</td></tr>
+<tr><td>AI-generated code</td><td>CISO, Architecture</td><td>Security tests plus engineer sign-off</td></tr>
+<tr><td>Role and job changes</td><td>HR, Legal</td><td>People decisions stay with managers</td></tr></table></div>
+<div class="card" style="margin-top:14px"><h3>Why hands-on testing matters</h3>At S&amp;P Global, hands-on testing found AI-generated code exposing server directory structure in an error response, and negative DAST scenarios revealed log files exposing details to AI models. Guardrails must be tested, not assumed.</div></section>
+
+<section class="pane" id="mx"><h2>Adoption metrics &amp; ROI</h2>
+<p>Sample dashboard <span class="tag">ILLUSTRATIVE</span></p>
+<div class="grid">
+<div class="card"><b>Weekly active AI users</b><div class="meter"><i style="width:62%"></i></div>62% of target</div>
+<div class="card"><b>Practitioner certified</b><div class="meter"><i style="width:38%"></i></div>38% of target</div>
+<div class="card"><b>Workflows redesigned</b><div class="meter"><i style="width:45%"></i></div>45% of target</div>
+<div class="card"><b>Engagement pulse</b><div class="meter"><i style="width:80%"></i></div>80% favorable</div></div>
+<div class="tw" style="margin-top:14px"><table><tr><th>Layer</th><th>Measures</th></tr>
+<tr><td>Adoption</td><td>Active users, depth of use, champion coverage</td></tr>
+<tr><td>Quality</td><td>Rework, error rates, incidents, review findings</td></tr>
+<tr><td>Value</td><td>Hours released, cycle time, customer satisfaction</td></tr>
+<tr><td>People</td><td>Engagement, internal mobility, reskilling completions</td></tr></table></div></section>
+
+<section class="pane" id="sc"><h2>Scenarios <span class="tag">ILLUSTRATIVE</span></h2>
+<div class="card"><h3>A. Anxious claims team <span class="tag">illustrative</span></h3>Pulse survey shows worry about job loss. Leaders share the redesign plan early, champions run clinics, and released hours go to complex cases. Engagement recovers after a planned dip.</div>
+<div class="card" style="margin-top:10px"><h3>B. Shadow AI tool <span class="tag">illustrative</span></h3>Usage of an unapproved chatbot appears. Instead of blocking only, the program offers an approved alternative plus a short safe-use module.</div>
+<div class="card" style="margin-top:10px"><h3>C. Customer letter drafted by AI <span class="tag">illustrative</span></h3>Draft routes to a licensed reviewer; the edit is logged and feeds better templates.</div></section>
+
+<section class="pane" id="pl"><h2>First 90 days</h2>
+<div class="grid">
+<div class="card"><h3>Days 1–30: Listen</h3>Meet HR, Risk, Compliance, Legal and business leaders; baseline skills and sentiment; inventory current AI use.</div>
+<div class="card"><h3>Days 31–60: Pilot</h3>Launch fluency paths in two functions; recruit first champions; publish guardrails in plain language.</div>
+<div class="card"><h3>Days 61–90: Scale</h3>First adoption and ROI readout to leadership; multi-year roadmap with the Talent function.</div></div></section>
+
+<footer>ELEVATE is a prototype by Sonia Malik · +1 (732) 629-1034 · linkedin.com/in/sonia-malik-b059705<br>Scenarios and dashboard values are illustrative, not Prudential data.</footer>
+</div>
+<script>
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#tabs button,.pane').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById(b.dataset.p).classList.add('on')});
+const R=[["Customer service associate","Aware → Practitioner. Summaries, knowledge search, compliant response drafts; human sends."],["Advisor support","Practitioner. Meeting prep and follow-up drafts; compliance review on client content."],["Operations & claims","Practitioner. Document intake and triage; adjuster decides."],["Engineer","Builder. Governed AI PDLC, evaluation, security testing of AI-generated code."],["People leader","Aware + leadership track. Leading change, workflow redesign, honest conversations about roles."]];
+const s=document.getElementById('role'),p=document.getElementById('rp');function u(){const r=R[s.value];p.innerHTML='<h3>'+r[0]+'</h3>'+r[1]}s.onchange=u;u();
+</script></body></html>
