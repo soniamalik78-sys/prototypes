@@ -104,4 +104,14 @@ select{font:inherit;padding:6px;border-radius:6px}
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#tabs button,.pane').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById(b.dataset.p).classList.add('on')});
 const R=[["Customer service associate","Aware → Practitioner. Summaries, knowledge search, compliant response drafts; human sends."],["Advisor support","Practitioner. Meeting prep and follow-up drafts; compliance review on client content."],["Operations & claims","Practitioner. Document intake and triage; adjuster decides."],["Engineer","Builder. Governed AI PDLC, evaluation, security testing of AI-generated code."],["People leader","Aware + leadership track. Leading change, workflow redesign, honest conversations about roles."]];
 const s=document.getElementById('role'),p=document.getElementById('rp');function u(){const r=R[s.value];p.innerHTML='<h3>'+r[0]+'</h3>'+r[1]}s.onchange=u;u();
-</script></body></html>
+</script><script>
+(function(){var s=new URLSearchParams(location.search).get('src')||'';
+var base=location.pathname.replace(/\/(index|full)\.html$/,'/').replace(/\/$/,'');
+window.goatcounter={path:function(p){return location.pathname+(s?'?src='+s:'')}};
+document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[role="tab"],[data-go],[data-contact],.side-tab');
+if(!t||!window.goatcounter||!window.goatcounter.count)return;
+var n=t.getAttribute('data-tab')||t.getAttribute('data-go')||(t.hasAttribute('data-contact')?'contact':(t.classList.contains('side-tab')?'about':(t.textContent||'').trim().slice(0,40)));
+window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,event:true});},true);})();
+</script>
+<script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body></html>
