@@ -37,7 +37,7 @@ select{font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--li
 .note{font-size:14px;color:var(--m)}
 .ladder .card{border-left:5px solid var(--a)}
 footer{margin:46px 0 30px;color:var(--m);font-size:14px;border-top:1px solid var(--line);padding-top:14px}footer a{color:var(--a)}
-@media (max-width:600px){h1{font-size:40px}h1 small{font-size:21px}.tabs{position:static}}
+@media (max-width:600px){h1{font-size:40px}h1 small{font-size:21px}.tabs{top:0}.tabs button{font-size:13px;padding:7px 12px 7px 7px}}
 .side-tab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:60;writing-mode:vertical-rl;rotate:180deg;background:var(--a);color:#fff;border:none;border-radius:10px 0 0 10px;padding:16px 9px;font:700 14px "Public Sans",Arial,sans-serif;letter-spacing:.02em;cursor:pointer;box-shadow:2px 0 10px rgba(10,30,60,.18)}
 
 .side-tab:hover{background:#08396A}
@@ -65,6 +65,14 @@ body.pf-on .pf-bd{display:block}
 .wrap{padding-left:40px}
 }
 @media print{.side-tab,.pf,.pf-bd{display:none!important}}
+.navhint{font-size:13px;color:var(--a);font-weight:600;margin:18px 0 0}
+.tabs{display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:6px 0 4px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5;border-bottom:1px solid var(--line)}.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;white-space:nowrap;display:flex;align-items:center;gap:7px;border:1.5px solid var(--a);background:var(--s);padding:8px 14px 8px 8px;border-radius:999px;cursor:pointer;font:inherit;font-size:14px;font-weight:600;color:var(--a);box-shadow:0 1px 3px rgba(10,30,60,.12);transition:.15s}
+.tabs button:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(10,30,60,.18)}
+.tabs .num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--as);color:var(--a);font-size:12px}
+.tabs button[aria-selected=true]{background:var(--a);color:#fff}.tabs button[aria-selected=true] .num{background:#fff;color:var(--a)}
+.nextnav{margin:28px 0 6px;text-align:right}.nextbtn{border:0;background:var(--a);color:#fff;font:inherit;font-weight:600;font-size:15px;padding:11px 20px;border-radius:999px;cursor:pointer;box-shadow:0 2px 6px rgba(10,30,60,.2)}
+.g4{grid-template-columns:repeat(4,1fr)}@media (max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}@media (max-width:520px){.g4{grid-template-columns:1fr}}
 </style></head><body>
 <button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
 <div class="pf-bd" id="pf-bd"></div>
@@ -72,10 +80,10 @@ body.pf-on .pf-bd{display:block}
 <button class="x" id="pf-x" aria-label="Close">×</button>
 <h3>Sonia Malik</h3>
 <div class="role">AI Workforce Transformation Leader</div>
-<p style="margin:0">Returning Prudential alum (Retirement, 2015–2019). I lead people through AI-driven change and build the controls that make agents safe to work with, so the People team and Technology can move together.</p>
+<p style="margin:0">Returning Prudential alum (2015–2019). I lead people through AI-driven change and build the controls that make agents safe to work with, so the People team and Technology can move together.</p>
 <ul>
 <li><b>89 → 95%</b> engagement through an AI-led transformation of a 350+ global organization</li>
-<li><b>50+ reskilled</b>, 35+ roles transitioned in a 150+ Retirement team at Prudential</li>
+<li><b>50+ reskilled</b>, 35+ roles transitioned in a 150+ team at Prudential</li>
 <li>Approval time on regulated checks went from <b>3 days to same day</b>, with evidence-backed human approval (S&amp;P Global)</li>
 <li><b>2.5:1 → 4:1</b> Dev:QE through skills assessment and peer-paired reskilling</li>
 <li><b>6 months</b> to build an AI-first product lifecycle organization from scratch</li>
@@ -91,26 +99,27 @@ body.pf-on .pf-bd{display:block}
 <div class="wrap">
 <header>
 <h1>ELEVATE<small>Prudential's first year of human–agent collaboration</small></h1>
-<p class="lede">How I would redesign jobs, teams and talent so people and AI agents do their best work together: led with the People team and the Chief Data &amp; AI Officer, governed from day one, and measured in outcomes the business trusts.</p>
-<p class="who"><b>Sonia Malik</b> · AI Workforce Transformation Leader · returning Prudential alum (Retirement, 2015–2019) · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn</a></p>
+<p class="lede">How I would redesign jobs, teams and talent so people and AI agents do their best work together. Led with the People team and the Chief Data &amp; AI Officer. Governed from day one. Measured in outcomes the business trusts.</p>
+<p class="who"><b>Sonia Malik</b> · AI Workforce Transformation Leader · returning Prudential alum (2015–2019) · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn</a></p>
 </header>
 
+<div class="navhint">Explore 9 sections →</div>
 <div class="tabs" role="tablist">
-<button role="tab" data-tab="overview" aria-selected="true">Overview</button>
-<button role="tab" data-tab="redesign" aria-selected="false">Work redesign</button>
-<button role="tab" data-tab="teams" aria-selected="false">Human + agent</button>
-<button role="tab" data-tab="tech" aria-selected="false">Tech platform</button>
-<button role="tab" data-tab="global" aria-selected="false">Global</button>
-<button role="tab" data-tab="governance" aria-selected="false">Governance</button>
-<button role="tab" data-tab="talent" aria-selected="false">Talent &amp; Academy</button>
-<button role="tab" data-tab="value" aria-selected="false">KPIs &amp; ROI</button>
-<button role="tab" data-tab="year" aria-selected="false">First year</button>
+<button role="tab" data-tab="overview" aria-selected="true"><span class="num">1</span>Overview</button>
+<button role="tab" data-tab="redesign" aria-selected="false"><span class="num">2</span>Work redesign</button>
+<button role="tab" data-tab="teams" aria-selected="false"><span class="num">3</span>Human + agent</button>
+<button role="tab" data-tab="tech" aria-selected="false"><span class="num">4</span>Tech platform</button>
+<button role="tab" data-tab="global" aria-selected="false"><span class="num">5</span>Global</button>
+<button role="tab" data-tab="governance" aria-selected="false"><span class="num">6</span>Governance</button>
+<button role="tab" data-tab="talent" aria-selected="false"><span class="num">7</span>Talent &amp; Academy</button>
+<button role="tab" data-tab="value" aria-selected="false"><span class="num">8</span>KPIs &amp; ROI</button>
+<button role="tab" data-tab="year" aria-selected="false"><span class="num">9</span>First year</button>
 </div>
 
 <!-- OVERVIEW -->
 <section class="pane on" id="overview">
-<h2>The moment</h2>
-<p>Prudential's technology foundation is largely in place. The harder work is redesigning how people work alongside AI agents, especially as the Enterprise Agentic AI Platform enters production and agents take on multi-step workflows.</p>
+<h2>A pivotal moment for Prudential</h2>
+<p>Prudential has the technology foundation in place. What decides the return now is how people and AI agents work together, as the Enterprise Agentic AI Platform goes into production and agents take on multi-step workflows.</p>
 <div class="ctx"><div class="grid">
 <div><b>$76.3M</b><span>FY26 data &amp; AI portfolio</span></div>
 <div><b>300+</b><span>AI use cases across 18 business units</span></div>
@@ -119,27 +128,27 @@ body.pf-on .pf-bd{display:block}
 <div><b>6</b><span>geographies: U.S., Japan, Brazil, Mexico, India, Ireland</span></div>
 </div><p class="note" style="margin:8px 0 0">Figures from Prudential's public job posting for this role.</p></div>
 
-<h2>Why me: I have done this work before</h2>
-<p>Across seven firms I have either built the group from zero or revitalized the whole program on a modernization path with global teams. Built from zero at Prudential, TheMarkets.com and SanPulse; revitalized at Pearson, DoubleVerify, Audible and S&amp;P Global. I am not from HR, but I have led people through this kind of change, side by side with HR.</p>
-<div class="grid">
-<div class="card kpi"><div class="n">150+</div>Retirement team led at Prudential: 50+ reskilled into automation and 35+ roles transitioned through a planned, backup-covered plan</div>
-<div class="card kpi"><div class="n">350+</div>global team led through an AI-led transformation at S&amp;P Global; engagement rose 89% → 95%, partnered with HR</div>
-<div class="card kpi"><div class="n">GCC</div>Built a Global Capability Center at DoubleVerify, an owned engineering hub rather than a vendor center; grew Audible QA from 4 to 41</div>
+<h2>Why me: I have done this work at 7 firms</h2>
+<p>Built from zero at Prudential, TheMarkets.com and SanPulse; revitalized at Pearson, DoubleVerify, Audible and S&amp;P Global, each on a modernization path with global teams. I am not from HR, but I have led people through this kind of change, side by side with HR.</p>
+<div class="grid g4">
+<div class="card kpi"><div class="n">AIGC</div>Presented AI PDLC standards to S&amp;P Global’s AI Governance Committee (AIGC)</div>
+<div class="card kpi"><div class="n">150+</div>team led at Prudential: 50+ reskilled into automation and 35+ roles transitioned through a planned, backup-covered plan</div>
+<div class="card kpi"><div class="n">350+</div>global team led through an AI-led transformation at S&amp;P Global; engagement rose 89% → 95%. I worked hand in hand with HR, learning workforce practices from the inside at a 160-year-old enterprise</div>
+<div class="card kpi"><div class="n">4 countries</div>Led workforce change under UK, Canada, US and India labor laws, plus teams in Ireland, France and Singapore; built a QE → SDET → architect career ladder at Prudential</div>
 <div class="card kpi"><div class="n">Judge agent</div>Builder agent plus an independent AI judge agent: the gap between human and judge scores closes the loop, so judges and agents improve over time</div>
-<div class="card kpi"><div class="n">AIGC</div>Represented AI PDLC standards at S&amp;P Global’s AI Governance Committee</div>
+<div class="card kpi"><div class="n">GCC</div>Built a Global Capability Center at DoubleVerify, an owned engineering hub rather than a vendor center; grew Audible QA from 4 to 41</div>
 <div class="card kpi"><div class="n">3 days → same day</div>approval time on regulated checks, with evidence-backed human approval (S&amp;P Global)</div>
 <div class="card kpi"><div class="n">1,200+</div>developers and QE engineers used the AI-first framework I built in 6 months (S&amp;P Global)</div>
-<div class="card kpi"><div class="n">4 countries</div>Partnered with HR on workforce change under UK, Canada, US and India labor laws; built a QE → SDET → architect career ladder at Prudential</div>
-<div class="card kpi"><div class="n">Tech + Finance</div>accepted my executive scorecard at S&amp;P Global; regulated delivery within IRA/Roth federal rules at Prudential</div>
 </div>
 
 <h2>The first year at a glance</h2>
-<div class="grid">
-<div class="card"><h3>Days 1–30 · Listen</h3>Meet the Chief Talent &amp; Capabilities Officer, the CDAIO, technology leaders and business leaders across the 18 business units and both capability centers. Baseline skills, sentiment and the use-case portfolio.</div>
-<div class="card"><h3>Days 31–90 · Design</h3>Agree the human–agent principles and autonomy levels; stand up the governance pathway; pick 2 job families to redesign first with the agentic platform team.</div>
-<div class="card"><h3>Months 4–6 · Pilot</h3>Redesign the 2 job families with the people who do the work; launch the first new roles and Academy tracks; first scorecard to the AI Steering Committee.</div>
-<div class="card"><h3>Months 7–12 · Scale</h3>Publish the enterprise playbook and localization guides; extend to more job families and geographies; multi-year workforce plan with Talent and the CDAIO.</div>
+<div class="grid g4">
+<div class="card"><h3>Days 1–30 · Listen</h3>Baseline skills, sentiment and use cases with Talent, the CDAIO and business leaders.</div>
+<div class="card"><h3>Days 31–90 · Design</h3>Principles, autonomy levels and governance; pick 2 job families.</div>
+<div class="card"><h3>Months 4–6 · Pilot</h3>Redesign 2 job families; first new roles, Academy tracks and scorecard.</div>
+<div class="card"><h3>Months 7–12 · Scale</h3>Enterprise playbook, localization guides, multi-year workforce plan.</div>
 </div>
+<p class="note"><a href="#" data-go="year" style="color:var(--a)">See the detailed first-year plan →</a></p>
 
 <h2>How ELEVATE works</h2>
 <div class="flow">
@@ -151,6 +160,7 @@ body.pf-on .pf-bd{display:block}
 </div>
 <p class="note">The amber step is where people stay accountable for what agents do.</p>
 
+<div class="nextnav"><button class="nextbtn" data-go="redesign">Next: Work redesign →</button></div>
 </section>
 
 <!-- WORK REDESIGN -->
@@ -161,6 +171,7 @@ body.pf-on .pf-bd{display:block}
 <div class="card" id="rolecard"></div>
 <p class="legend"><span class="lane l-ag">Agent does</span> agent executes; person supervises &nbsp; <span class="lane l-hai">Human + AI</span> person leads, AI assists &nbsp; <span class="lane l-h">Human only</span> judgment, empathy, accountability</p>
 <p class="note">Tasks and splits are examples to show the method, not Prudential data. In practice each role is mapped with the people who do it.</p>
+<div class="nextnav"><button class="nextbtn" data-go="teams">Next: Human + agent →</button></div>
 </section>
 
 <!-- HUMAN-AGENT TEAMS -->
@@ -185,6 +196,7 @@ body.pf-on .pf-bd{display:block}
 <tr><td><b>Human–AI team lead</b></td><td>Leads a blended team; coaches people and sets agent limits</td><td>People leaders</td></tr>
 </tbody></table></div>
 <div class="card" style="margin-top:14px"><h3>Already tested in practice</h3>At S&amp;P Global and DoubleVerify, AI agents did multi-step engineering work (requirements, code, tests, code review, deployment checks) under human review. People reviewed agent work with an AI judge scoring against a custom rubric, so reviewers decided from evidence. Approval time on regulated checks went from 3 days to same day, with evidence-backed human approval (S&amp;P Global).</div>
+<div class="nextnav"><button class="nextbtn" data-go="tech">Next: Tech platform →</button></div>
 </section>
 
 <!-- TECH PLATFORM -->
@@ -215,6 +227,7 @@ body.pf-on .pf-bd{display:block}
 <div class="card"><h3>Where I have built this</h3>At S&amp;P Global and DoubleVerify I ran a builder and judge agent setup for multi-step engineering work: one agent produced the change, an AI judge scored it against a custom rubric, and people reviewed the agent work, deciding from that evidence. Approval time on regulated checks went from 3 days to same day. I presented the AI product lifecycle standards to the S&amp;P AI Governance Committee.</div>
 <div class="card"><h3>First questions for the technology team</h3>Which agents are in production, and at what autonomy level? Where is human approval enforced in code today? What telemetry already exists? How are agent identities and permissions managed?</div>
 </div>
+<div class="nextnav"><button class="nextbtn" data-go="global">Next: Global →</button></div>
 </section>
 
 <!-- GLOBAL -->
@@ -229,7 +242,8 @@ body.pf-on .pf-bd{display:block}
 <div class="card"><h3>India (capability center)</h3>Scale reskilling fast; create career paths from delivery roles into agent supervision and quality roles.</div>
 <div class="card"><h3>Ireland (capability center)</h3>EU AI Act treats AI used for employment and worker management as high-risk: build in its controls from the start.</div>
 </div>
-<div class="card" style="margin-top:14px"><h3>Experience to draw on</h3>Led workforce changes under the labor laws of the UK, Canada, the US and India with HR; built a Global Capability Center at DoubleVerify; worked with teams in Mexico, Ireland, London, Paris and Tel Aviv.</div>
+<div class="card" style="margin-top:14px"><h3>Experience to draw on</h3>Led workforce changes under the labor laws of the UK, Canada, the US and India with HR; built a Global Capability Center at DoubleVerify; worked with teams in Mexico, Ireland, London, Paris, Tel Aviv and Singapore.</div>
+<div class="nextnav"><button class="nextbtn" data-go="governance">Next: Governance →</button></div>
 </section>
 
 <!-- GOVERNANCE -->
@@ -258,6 +272,7 @@ body.pf-on .pf-bd{display:block}
 <div class="card"><h3>Make it safe to try</h3>Sandboxes, champions on every team, and no penalty for honest experiments.</div>
 <div class="card"><h3>Handle every person with care</h3>Consistent policies, individual conversations, and a planned path for every affected role.</div>
 </div>
+<div class="nextnav"><button class="nextbtn" data-go="talent">Next: Talent &amp; Academy →</button></div>
 </section>
 
 <!-- TALENT -->
@@ -276,6 +291,7 @@ body.pf-on .pf-bd{display:block}
 <div class="card"><h3>Career paths</h3>Clear moves into the new roles, with credit for skills gained. I built a technical career ladder (QE → SDET → architect) at Prudential.</div>
 <div class="card"><h3>AI talent deployment</h3>Match scarce AI skills to the highest-value use cases across business units.</div>
 </div>
+<div class="nextnav"><button class="nextbtn" data-go="value">Next: KPIs &amp; ROI →</button></div>
 </section>
 
 <!-- VALUE -->
@@ -303,6 +319,7 @@ body.pf-on .pf-bd{display:block}
 <tr><td>People</td><td>Engagement, internal mobility into new roles, reskilling completions, attrition</td></tr>
 </tbody></table></div>
 <p class="note">At S&amp;P Global I built an executive scorecard that Tech and Finance leadership accepted; the same discipline applies here.</p>
+<div class="nextnav"><button class="nextbtn" data-go="year">Next: First year →</button></div>
 </section>
 
 <!-- FIRST YEAR -->
@@ -315,12 +332,14 @@ body.pf-on .pf-bd{display:block}
 <div class="card"><h3>Months 7–12 · Scale</h3>Publish the enterprise playbook and localization guides; extend to more job families and geographies; multi-year workforce plan with Talent and the CDAIO.</div>
 </div>
 <div class="card" style="margin-top:16px"><b>Let's talk.</b> I would welcome a conversation about this plan. <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact style="color:var(--a)">Connect on LinkedIn</a> · sonia.malik78@gmail.com · 732-629-1034</div>
+<div class="nextnav"><button class="nextbtn" data-go="overview">← Back to Overview</button></div>
 </section>
 
 <footer>ELEVATE is an independent prototype by Sonia Malik, created to show how she would approach this role. It is not affiliated with or endorsed by Prudential. Role examples and scorecard values are illustrative; company figures come from the public job posting.</footer>
 </div>
 <script>
 (function(){
+document.addEventListener('click',function(e){var g=e.target.closest&&e.target.closest('[data-go]');if(!g)return;var t=document.querySelector('[role=tab][data-tab="'+g.dataset.go+'"]');if(t){e.preventDefault();t.click();t.scrollIntoView({inline:'center',block:'nearest'});}});
 var tabs=document.querySelectorAll('[role=tab]');
 tabs.forEach(function(b){b.addEventListener('click',function(){
 tabs.forEach(function(x){x.setAttribute('aria-selected','false')});
