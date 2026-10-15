@@ -113,7 +113,7 @@ body.pf-on .pf-bd{display:block}
 <p class="who"><b>Sonia Malik</b> · AI Workforce Transformation Leader · returning Prudential alum (2015–2019) · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn</a></p>
 </header>
 
-<div class="navhint">Explore 9 sections →</div>
+<div class="navhint">Explore 10 sections →</div>
 <div class="tabwrap"><div class="tabs" role="tablist">
 <button role="tab" data-tab="overview" aria-selected="true"><span class="num">1</span>Overview</button>
 <button role="tab" data-tab="redesign" aria-selected="false"><span class="num">2</span>Work redesign</button>
@@ -124,6 +124,7 @@ body.pf-on .pf-bd{display:block}
 <button role="tab" data-tab="talent" aria-selected="false"><span class="num">7</span>Talent &amp; Academy</button>
 <button role="tab" data-tab="value" aria-selected="false"><span class="num">8</span>KPIs &amp; ROI</button>
 <button role="tab" data-tab="year" aria-selected="false"><span class="num">9</span>First year</button>
+<button role="tab" data-tab="meet" aria-selected="false"><span class="num">10</span>When we meet</button>
 </div></div>
 
 <!-- OVERVIEW -->
@@ -223,9 +224,9 @@ body.pf-on .pf-bd{display:block}
 <h3 style="margin-top:22px">New roles this creates</h3>
 <div class="tw"><table><tbody>
 <tr><th>New role</th><th>What they do</th><th>Natural feeder roles</th></tr>
-<tr><td><b>Agent supervisor</b></td><td>Directs a group of agents, handles exceptions, decides when work goes back to a person</td><td>Senior examiners, team leads, operations specialists</td></tr>
-<tr><td><b>Agent quality reviewer</b></td><td>Samples agent output, maintains scoring rubrics and AI judges, signs off quality</td><td>QA analysts, auditors, compliance reviewers</td></tr>
-<tr><td><b>AI workflow designer</b></td><td>Redesigns processes around agents with the people who do the work</td><td>Process improvement, business analysts</td></tr>
+<tr><td><b>Agent supervisor</b></td><td>Directs a group of agents, handles exceptions, decides when work goes back to a person</td><td>Senior claims examiners, contact-center leads, team leads</td></tr>
+<tr><td><b>Agent quality reviewer</b></td><td>Samples agent output, maintains scoring rubrics and AI judges, signs off quality</td><td>Underwriters, QA analysts, auditors, compliance reviewers</td></tr>
+<tr><td><b>AI workflow designer</b></td><td>Redesigns processes around agents with the people who do the work</td><td>Onboarding and operations analysts, process improvement, business analysts</td></tr>
 <tr><td><b>Human–AI team lead</b></td><td>Leads a blended team; coaches people and sets agent limits</td><td>People leaders</td></tr>
 </tbody></table></div>
 <div class="card" style="margin-top:14px"><h3>Already tested in practice</h3>At S&amp;P Global and DoubleVerify, AI agents did multi-step engineering work (requirements, code, tests, code review, deployment checks) under human review. People reviewed agent work with an AI judge scoring against a custom rubric, so reviewers decided from evidence. Approval time on regulated checks went from 3 days to same day, with evidence-backed human approval (S&amp;P Global).</div>
@@ -365,6 +366,19 @@ body.pf-on .pf-bd{display:block}
 <div class="card"><h3>Months 7–12 · Scale</h3>Publish the enterprise playbook and localization guides; extend to more job families and geographies; multi-year workforce plan with Talent and the CDAIO.</div>
 </div>
 <div class="card" style="margin-top:16px"><b>Let's talk.</b> I would welcome a conversation about this plan. <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact style="color:var(--a)">Connect on LinkedIn</a> · sonia.malik78@gmail.com · 732-629-1034</div>
+<div class="nextnav"><button class="nextbtn" data-go="meet">Next: When we meet →</button></div>
+</section>
+
+<!-- WHEN WE MEET -->
+<section class="pane" id="meet">
+<h2>When we meet</h2>
+<p>I would rather show than tell. Here is what a first conversation could look like.</p>
+<div class="grid">
+<div class="card"><h3>A 15-minute live walkthrough</h3>We take one Prudential job family, for example group claims examiner, and map its tasks together into three lanes: agent does, human + AI, and human only. You see the method on your own work, not a slide.</div>
+<div class="card"><h3>Three questions I'd bring</h3><ul style="margin:6px 0 0 18px;padding:0"><li>Which agents are already in production, and at what autonomy level?</li><li>Where do people review agent work today?</li><li>Which teams feel the change first?</li></ul></div>
+<div class="card"><h3>What you'd leave with</h3>A one-page 90-day plan for one job family, tailored to what you share.</div>
+</div>
+<div class="card" style="margin-top:16px;border-left:4px solid var(--a)"><b>Let's set it up.</b> <a href="mailto:sonia.malik78@gmail.com" data-contact style="color:var(--a)">sonia.malik78@gmail.com</a> · <a href="tel:+17326291034" data-contact style="color:var(--a)">732-629-1034</a> · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact style="color:var(--a)">LinkedIn</a></div>
 <div class="nextnav"><button class="nextbtn" data-go="overview">← Back to Overview</button></div>
 </section>
 
@@ -382,26 +396,43 @@ window.scrollTo({top:document.querySelector('.tabwrap').offsetTop-4,behavior:'sm
 });});
 var A='ag',H='hai',O='h';
 var R=[
-{n:'Claims examiner',s:[
-['Collect and check claim documents',A,'Agent flags missing items; examiner reviews exceptions'],
-['Summarize medical and policy records',A,'Examiner spot-checks summaries'],
-['Draft decision letters',H,'Examiner edits and approves every letter'],
-['Decide complex or contested claims',O,''],
-['Talk with grieving or upset claimants',O,'']],mix:[40,35,25],next:'Senior examiners can move into agent supervisor roles.'},
-{n:'Customer service associate',s:[
-['Answer routine policy and account questions',A,'Associate monitors and takes over on request'],
-['Find answers in procedures',H,'Associate confirms before replying'],
-['Draft follow-up emails',H,'Associate approves each message'],
-['Handle complaints and sensitive situations',O,''],
-['Spot needs and refer to advisors',O,'']],mix:[35,35,30],next:'Strong associates can become agent quality reviewers.'},
-{n:'Underwriting operations analyst',s:[
-['Gather and check application data',A,'Analyst reviews flagged gaps'],
-['Prepare case summaries for underwriters',A,'Analyst samples for accuracy'],
-['Compare cases to guidelines',H,'Analyst confirms the match'],
-['Resolve unusual cases with underwriters',O,''],
-['Explain decisions to distribution partners',H,'Analyst owns the conversation']],mix:[40,40,20],next:'Analysts can move into AI workflow designer roles.'},
+{n:'Group disability & life claims examiner (Group Insurance)',s:[
+['Intake employer and claimant forms; check for missing items',A,'Agent flags gaps; examiner reviews exceptions'],
+['Summarize attending-physician statements and medical records',A,'Examiner spot-checks summaries against source files'],
+['Check eligibility against the group policy and plan terms',H,'Examiner confirms the match before deciding'],
+['Draft approval, denial and request-for-information letters',H,'Examiner edits and approves each letter'],
+['Decide complex, contested or appealed claims',O,''],
+['Talk with claimants and families at difficult moments',O,'']],mix:[35,35,30],next:'Senior claims examiners can move into agent supervisor and agent quality reviewer roles.'},
+{n:'Annuity contact-center associate (Retirement Strategies)',s:[
+['Answer routine contract value, address and document questions',A,'Associate monitors and takes over on request'],
+['Pull contract details and surrender or withdrawal options',H,'Associate confirms figures before sharing'],
+['Draft follow-up letters and call notes',H,'Associate approves each message'],
+['Spot signs of a vulnerable customer or possible fraud',H,'Associate escalates; agent only flags'],
+['Discuss withdrawals, beneficiary changes and complaints',O,''],
+['Refer customers to licensed financial professionals',O,'']],mix:[30,40,30],next:'Contact-center leads can become agent supervisors; strong associates can become agent quality reviewers.'},
+{n:'Individual life underwriter, accelerated underwriting (Individual Life)',s:[
+['Gather application, prescription and motor-vehicle data',A,'Underwriter reviews flagged gaps'],
+['Prepare a case summary and risk flags',A,'Underwriter samples summaries for accuracy'],
+['Apply accelerated-underwriting rules to clean cases',H,'Underwriter confirms decisions the rules suggest'],
+['Order further evidence when a case falls out of the fast path',H,'Underwriter decides what to order'],
+['Decide complex, high-face-amount or borderline cases',O,''],
+['Explain decisions to agents and distribution partners',O,'']],mix:[35,35,30],next:'Underwriters can move into AI workflow designer and rules-and-model reviewer roles.'},
+{n:'Pension risk transfer onboarding analyst (Institutional Retirement)',s:[
+['Ingest plan sponsor census and benefit data',A,'Analyst reviews data-quality exceptions'],
+['Reconcile participant records against plan documents',A,'Analyst samples reconciliations'],
+['Map benefit provisions into the administration setup',H,'Analyst confirms each mapping'],
+['Draft participant welcome and transition communications',H,'Analyst and Compliance approve before release'],
+['Resolve data disputes with plan sponsors and consultants',O,''],
+['Sign off the transition readiness for go-live',O,'']],mix:[35,40,25],next:'Onboarding analysts can become AI workflow designers for institutional operations.'},
+{n:'PGIM investment research analyst (asset management)',s:[
+['Summarize filings, earnings calls and research notes',A,'Analyst spot-checks against sources'],
+['Refresh models with new data and flag changes',A,'Analyst reviews flagged moves'],
+['Draft first versions of research write-ups',H,'Analyst edits and owns the view'],
+['Screen ideas against portfolio criteria',H,'Analyst decides what to pursue'],
+['Form the investment thesis and recommendation',O,''],
+['Meet management teams and present to portfolio managers',O,'']],mix:[30,40,30],next:'Analysts can move into research-agent design and model-risk review roles.'},
 {n:'Software engineer',s:[
-['Write code from approved requirements',A,'Engineer reviews every change'],
+['Write code from approved requirements',A,'Engineer reviews the change with judge scores as evidence'],
 ['Generate and run tests',A,'AI judge scores; engineer signs off'],
 ['Review code for security and quality',H,'Engineer decides with evidence'],
 ['Design systems and make trade-offs',O,''],
@@ -411,7 +442,7 @@ var R=[
 ['Plan team capacity and skills',H,'Leader decides'],
 ['Set agent limits for the team',H,'Leader approves with the agent supervisor'],
 ['Coach, give feedback and support careers',O,''],
-['Lead people through change',O,'']],mix:[20,40,40],next:'Every people leader gets a human–AI team lead track in the Academy.'}];
+['Lead people through change',O,'']],mix:[20,40,40],next:'People leaders get a human–AI team lead track in the Academy.'}];
 var LAB={ag:'Agent does',hai:'Human + AI',h:'Human only'};
 var sel=document.getElementById('role'),card=document.getElementById('rolecard');
 R.forEach(function(r,i){var o=document.createElement('option');o.value=i;o.textContent=r.n;sel.appendChild(o);});
