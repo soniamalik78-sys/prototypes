@@ -16,7 +16,7 @@ h3{margin:0 0 6px;font-size:17px;color:var(--a)}
 .tabs{display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:18px 0 4px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5}.tabs::-webkit-scrollbar{display:none}
 .tabs button{flex:0 0 auto;white-space:nowrap;border:1px solid var(--line);background:var(--s);padding:6px 10px;border-radius:20px;cursor:pointer;font:inherit;font-size:13px;color:var(--fg)}
 .tabs button[aria-selected=true]{background:var(--a);color:#fff;border-color:var(--a)}
-.pane{display:none}.pane.on{display:block}
+.pane{display:none}.pane.on{display:block;background:var(--s);border:1px solid #b8c4d4;border-top:none;border-radius:0 0 10px 10px;padding:6px 24px 18px}.pane>h2:first-child{margin-top:18px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
 .card{background:var(--s);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
 .kpi .n{font:600 28px/1.2 Spectral,serif;color:var(--a);margin-bottom:4px}
@@ -37,7 +37,7 @@ select{font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--li
 .note{font-size:14px;color:var(--m)}
 .ladder .card{border-left:5px solid var(--a)}
 footer{margin:46px 0 30px;color:var(--m);font-size:14px;border-top:1px solid var(--line);padding-top:14px}footer a{color:var(--a)}
-@media (max-width:600px){h1{font-size:40px}h1 small{font-size:21px}.tabs{top:0}.tabs button{font-size:13px;padding:7px 12px 7px 7px}}
+@media (max-width:600px){h1{font-size:40px}h1 small{font-size:21px}.tabs button{font-size:13px;padding:8px 12px 7px}}
 .side-tab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:60;writing-mode:vertical-rl;rotate:180deg;background:var(--a);color:#fff;border:none;border-radius:10px 0 0 10px;padding:16px 9px;font:700 14px "Public Sans",Arial,sans-serif;letter-spacing:.02em;cursor:pointer;box-shadow:2px 0 10px rgba(10,30,60,.18)}
 
 .side-tab:hover{background:#08396A}
@@ -66,11 +66,13 @@ body.pf-on .pf-bd{display:block}
 }
 @media print{.side-tab,.pf,.pf-bd{display:none!important}}
 .navhint{font-size:13px;color:var(--a);font-weight:600;margin:18px 0 0}
-.tabs{display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:6px 0 4px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5;border-bottom:1px solid var(--line)}.tabs::-webkit-scrollbar{display:none}
-.tabs button{flex:0 0 auto;white-space:nowrap;display:flex;align-items:center;gap:7px;border:1.5px solid var(--a);background:var(--s);padding:8px 14px 8px 8px;border-radius:999px;cursor:pointer;font:inherit;font-size:14px;font-weight:600;color:var(--a);box-shadow:0 1px 3px rgba(10,30,60,.12);transition:.15s}
-.tabs button:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(10,30,60,.18)}
-.tabs .num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--as);color:var(--a);font-size:12px}
-.tabs button[aria-selected=true]{background:var(--a);color:#fff}.tabs button[aria-selected=true] .num{background:#fff;color:var(--a)}
+.tabwrap{position:sticky;top:0;z-index:5;background:var(--bg);padding-top:8px}
+.tabwrap:after{content:"";position:absolute;right:0;top:0;bottom:1px;width:44px;pointer-events:none;background:linear-gradient(to right,rgba(255,255,255,0),var(--bg))}
+.tabs{display:flex;gap:2px;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;margin:0;padding:6px 40px 0 4px;border-bottom:1px solid #b8c4d4}.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;white-space:nowrap;position:relative;border:1px solid #c9d2de;border-bottom:none;background:#e9edf2;color:#4a5568;padding:9px 16px 8px;border-radius:9px 9px 0 0;cursor:pointer;font:inherit;font-size:14px;margin-bottom:-1px;top:2px;transition:background .15s,color .15s}
+.tabs button:hover{background:#d5dce6;color:#1d2433}
+.tabs .num{font-size:11px;color:#8a96a8;margin-right:5px;font-weight:400}
+.tabs button[aria-selected=true]{background:var(--s);color:var(--a);font-weight:700;border-color:#b8c4d4;top:0;padding-top:11px;z-index:2;box-shadow:inset 0 3px 0 var(--a),0 -2px 6px rgba(10,30,60,.08);border-bottom:1px solid var(--s)}
 .nextnav{margin:28px 0 6px;text-align:right}.nextbtn{border:0;background:var(--a);color:#fff;font:inherit;font-weight:600;font-size:15px;padding:11px 20px;border-radius:999px;cursor:pointer;box-shadow:0 2px 6px rgba(10,30,60,.2)}
 .g4{grid-template-columns:repeat(4,1fr)}@media (max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}@media (max-width:520px){.g4{grid-template-columns:1fr}}
 </style></head><body>
@@ -104,7 +106,7 @@ body.pf-on .pf-bd{display:block}
 </header>
 
 <div class="navhint">Explore 9 sections →</div>
-<div class="tabs" role="tablist">
+<div class="tabwrap"><div class="tabs" role="tablist">
 <button role="tab" data-tab="overview" aria-selected="true"><span class="num">1</span>Overview</button>
 <button role="tab" data-tab="redesign" aria-selected="false"><span class="num">2</span>Work redesign</button>
 <button role="tab" data-tab="teams" aria-selected="false"><span class="num">3</span>Human + agent</button>
@@ -114,7 +116,7 @@ body.pf-on .pf-bd{display:block}
 <button role="tab" data-tab="talent" aria-selected="false"><span class="num">7</span>Talent &amp; Academy</button>
 <button role="tab" data-tab="value" aria-selected="false"><span class="num">8</span>KPIs &amp; ROI</button>
 <button role="tab" data-tab="year" aria-selected="false"><span class="num">9</span>First year</button>
-</div>
+</div></div>
 
 <!-- OVERVIEW -->
 <section class="pane on" id="overview">
@@ -133,7 +135,7 @@ body.pf-on .pf-bd{display:block}
 <div class="grid g4">
 <div class="card kpi"><div class="n">AIGC</div>Presented AI PDLC standards to S&amp;P Global’s AI Governance Committee (AIGC)</div>
 <div class="card kpi"><div class="n">150+</div>team led at Prudential: 50+ reskilled into automation and 35+ roles transitioned through a planned, backup-covered plan</div>
-<div class="card kpi"><div class="n">350+</div>global team led through an AI-led transformation at S&amp;P Global; engagement rose 89% → 95%. I worked hand in hand with HR, learning workforce practices from the inside at a 160-year-old enterprise</div>
+<div class="card kpi"><div class="n">350+</div>global team led through an AI-led transformation at S&amp;P Global; engagement rose 89% → 95%. I worked hand in hand with HR, learning workforce practices from the inside at a 160+ year-old enterprise</div>
 <div class="card kpi"><div class="n">4 countries</div>Led workforce change under UK, Canada, US and India labor laws, plus teams in Ireland, France and Singapore; built a QE → SDET → architect career ladder at Prudential</div>
 <div class="card kpi"><div class="n">Judge agent</div>Builder agent plus an independent AI judge agent: the gap between human and judge scores closes the loop, so judges and agents improve over time</div>
 <div class="card kpi"><div class="n">GCC</div>Built a Global Capability Center at DoubleVerify, an owned engineering hub rather than a vendor center; grew Audible QA from 4 to 41</div>
@@ -345,7 +347,7 @@ tabs.forEach(function(b){b.addEventListener('click',function(){
 tabs.forEach(function(x){x.setAttribute('aria-selected','false')});
 document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('on')});
 b.setAttribute('aria-selected','true');document.getElementById(b.dataset.tab).classList.add('on');
-window.scrollTo({top:document.querySelector('.tabs').offsetTop-4,behavior:'smooth'});
+window.scrollTo({top:document.querySelector('.tabwrap').offsetTop-4,behavior:'smooth'});
 });});
 var A='ag',H='hai',O='h';
 var R=[
