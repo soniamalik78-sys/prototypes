@@ -13,8 +13,8 @@ h1 small{display:block;font-size:26px;color:var(--fg);margin-top:8px;line-height
 .lede{font-size:18px;color:var(--m);max-width:800px}h2{font:600 27px/1.25 Spectral,Georgia,serif;margin:34px 0 10px}
 h3{margin:0 0 6px;font-size:17px;color:var(--a)}
 .who{font-size:15px}.who a{color:var(--a)}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 4px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5}
-.tabs button{border:1px solid var(--line);background:var(--s);padding:8px 14px;border-radius:20px;cursor:pointer;font:inherit;font-size:14px;color:var(--fg)}
+.tabs{display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:18px 0 4px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5}.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;white-space:nowrap;border:1px solid var(--line);background:var(--s);padding:6px 10px;border-radius:20px;cursor:pointer;font:inherit;font-size:13px;color:var(--fg)}
 .tabs button[aria-selected=true]{background:var(--a);color:#fff;border-color:var(--a)}
 .pane{display:none}.pane.on{display:block}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
@@ -38,7 +38,54 @@ select{font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--li
 .ladder .card{border-left:5px solid var(--a)}
 footer{margin:46px 0 30px;color:var(--m);font-size:14px;border-top:1px solid var(--line);padding-top:14px}footer a{color:var(--a)}
 @media (max-width:600px){h1{font-size:40px}h1 small{font-size:21px}.tabs{position:static}}
+.side-tab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:60;writing-mode:vertical-rl;rotate:180deg;background:var(--a);color:#fff;border:none;border-radius:10px 0 0 10px;padding:16px 9px;font:700 14px "Public Sans",Arial,sans-serif;letter-spacing:.02em;cursor:pointer;box-shadow:2px 0 10px rgba(10,30,60,.18)}
+
+.side-tab:hover{background:#08396A}
+.pf{position:fixed;z-index:80;background:var(--s);color:var(--fg);visibility:hidden;opacity:0;transition:opacity .2s,transform .2s,visibility .2s;font-size:15px;line-height:1.5}
+.pf.show{visibility:visible;opacity:1}
+.pf h3{font:600 24px/1.2 Spectral,Georgia,serif;color:var(--a);margin:0}
+.pf .role{font-weight:700;margin:2px 0 8px}
+.pf .x{position:absolute;top:8px;right:10px;border:none;background:none;font-size:24px;line-height:1;cursor:pointer;color:var(--m)}
+.pf ul{list-style:none;padding:0;margin:12px 0}
+.pf li{background:var(--as);border-radius:8px;padding:7px 10px;margin:6px 0;font-size:14px}
+.pf li b{color:var(--a)}
+.pf .ct{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
+.pf .ct a{color:var(--a);display:block;margin:3px 0}
+.pf-bd{display:none;position:fixed;inset:0;z-index:79;background:rgba(10,25,45,.45)}
+@media (min-width:900px){
+.pf{top:0;bottom:0;left:0;width:340px;overflow:auto;padding:22px 20px;border-right:1px solid var(--line);box-shadow:4px 0 18px rgba(10,30,60,.12);transform:translateX(-100%)}
+.pf.show{transform:translateX(0)}
+body{transition:padding-left .2s}body.pf-on{padding-left:340px}
+}
+@media (max-width:899px){
+.pf{left:50%;top:50%;width:min(420px,calc(100vw - 32px));max-height:82vh;overflow:auto;padding:20px 18px;border-radius:14px;transform:translate(-50%,-46%)}
+.pf.show{transform:translate(-50%,-50%)}
+body.pf-on .pf-bd{display:block}
+.side-tab{font-size:12.5px;padding:12px 7px}
+.wrap{padding-left:40px}
+}
+@media print{.side-tab,.pf,.pf-bd{display:none!important}}
 </style></head><body>
+<button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
+<div class="pf-bd" id="pf-bd"></div>
+<aside class="pf" id="pf" aria-label="About Sonia Malik">
+<button class="x" id="pf-x" aria-label="Close">×</button>
+<h3>Sonia Malik</h3>
+<div class="role">AI Workforce Transformation Leader</div>
+<p style="margin:0">Returning Prudential alum (Customer Office and Retirement, 2015–2019). I lead people through AI-driven change and build the controls that make agents safe to work with, so the People team and Technology can move together.</p>
+<ul>
+<li><b>89 → 95%</b> engagement through an AI-led transformation of a 350+ global organization</li>
+<li><b>50+ reskilled</b>, 35+ roles transitioned in a 150+ Retirement team at Prudential</li>
+<li><b>100%</b> human sign-off on AI-generated changes, scored by an AI judge</li>
+<li><b>2.5:1 → 4:1</b> Dev:QE through skills assessment and peer-paired reskilling</li>
+<li><b>6 months</b> to build an AI-first product lifecycle organization from scratch</li>
+<li><b>4 → 41</b> QA team and 2 offshore capability centers; productivity +20%</li>
+</ul>
+<div class="ct"><b>Let's talk</b>
+<a href="mailto:sonia.malik78@gmail.com" data-contact>sonia.malik78@gmail.com</a>
+<a href="tel:+17326291034" data-contact>732-629-1034</a>
+<a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn profile</a></div>
+</aside>
 <div class="banner">Prepared for Prudential · VP, AI Workforce Transformation Leader</div>
 <div class="wrap">
 <header>
@@ -50,9 +97,10 @@ footer{margin:46px 0 30px;color:var(--m);font-size:14px;border-top:1px solid var
 <div class="tabs" role="tablist">
 <button role="tab" data-tab="overview" aria-selected="true">Overview</button>
 <button role="tab" data-tab="redesign" aria-selected="false">Work redesign</button>
-<button role="tab" data-tab="teams" aria-selected="false">Human–agent teams</button>
-<button role="tab" data-tab="global" aria-selected="false">Global footprint</button>
-<button role="tab" data-tab="governance" aria-selected="false">Governance &amp; change</button>
+<button role="tab" data-tab="teams" aria-selected="false">Human + agent</button>
+<button role="tab" data-tab="tech" aria-selected="false">Tech platform</button>
+<button role="tab" data-tab="global" aria-selected="false">Global</button>
+<button role="tab" data-tab="governance" aria-selected="false">Governance</button>
 <button role="tab" data-tab="talent" aria-selected="false">Talent &amp; Academy</button>
 <button role="tab" data-tab="value" aria-selected="false">KPIs &amp; ROI</button>
 <button role="tab" data-tab="year" aria-selected="false">First year</button>
@@ -123,6 +171,36 @@ footer{margin:46px 0 30px;color:var(--m);font-size:14px;border-top:1px solid var
 <tr><td><b>Human–AI team lead</b></td><td>Leads a blended team; coaches people and sets agent limits</td><td>People leaders</td></tr>
 </tbody></table></div>
 <div class="card" style="margin-top:14px"><h3>Already tested in practice</h3>At S&amp;P Global and DoubleVerify, AI agents did multi-step engineering work (requirements, code, tests, code review, deployment checks) under human review. An AI judge scored every change against a custom rubric so reviewers decided from evidence, and 100% of AI-generated changes had human sign-off.</div>
+</section>
+
+<!-- TECH PLATFORM -->
+<section class="pane" id="tech">
+<h2>The technology underneath the workforce change</h2>
+<p>Work redesign only holds if the platform enforces it. Supervision points, autonomy levels and accountability have to live in software, not only in policy documents. I would build this with Data, Service &amp; Technology and the Enterprise Agentic AI Platform team.</p>
+<h3 style="margin-top:18px">How the pieces connect <span class="tag">ILLUSTRATIVE</span></h3>
+<div class="flow">
+<div class="step"><b>1. People &amp; work data</b>HR records, skills, org structure, task maps</div>
+<div class="step"><b>2. Use-case registry</b>The 300+ use cases, each linked to the roles and tasks it changes</div>
+<div class="step"><b>3. Agentic AI platform</b>Agents, tools and multi-step workflows</div>
+<div class="step gate"><b>4. Control layer</b>Agent identity and permissions, human checkpoints, AI judge, audit trail, stop switch</div>
+<div class="step"><b>5. Telemetry &amp; scorecard</b>Adoption, quality, value and people measures</div>
+</div>
+<p class="note">The amber layer is where the autonomy levels from the Human + agent tab become real in code.</p>
+
+<h3 style="margin-top:22px">What the platform needs to support people safely</h3>
+<div class="grid">
+<div class="card"><h3>Agents with an owner</h3>Every agent has an identity, a named human owner, a job description and permissions scoped to its autonomy level, registered much like a worker in the org chart.</div>
+<div class="card"><h3>Checkpoints as configuration</h3>Approvals, sampling rates and escalation routes are settings in the workflow engine. Moving a workflow up a level is a reviewed change backed by quality evidence.</div>
+<div class="card"><h3>Evaluation built in</h3>Rubric-based AI judges, test sets for each task and drift monitoring. Human override and error rates feed the quality scorecard.</div>
+<div class="card"><h3>Telemetry without surveillance</h3>Measure teams and workflows, not individuals. Minimal data, reviewed with Privacy and Legal, with the logging the EU AI Act expects for high-risk uses in Ireland.</div>
+<div class="card"><h3>Skills graph</h3>Link tasks to skills to people, so Academy tracks and redeployment target the roles that are actually changing.</div>
+<div class="card"><h3>Recognized standards</h3>NIST AI RMF and ISO/IEC 42001 for AI management; OWASP guidance for LLM and agent security; least-privilege tool access for every agent.</div>
+</div>
+
+<div class="grid" style="margin-top:14px">
+<div class="card"><h3>Where I have built this</h3>At S&amp;P Global and DoubleVerify I ran a builder and judge agent setup for multi-step engineering work: one agent produced the change, an AI judge scored it against a custom rubric, and a person signed off on 100% of AI-generated changes. I presented the AI product lifecycle standards to the S&amp;P AI Governance Committee.</div>
+<div class="card"><h3>First questions for the technology team</h3>Which agents are in production, and at what autonomy level? Where is human approval enforced in code today? What telemetry already exists? How are agent identities and permissions managed?</div>
+</div>
 </section>
 
 <!-- GLOBAL -->
@@ -217,7 +295,7 @@ footer{margin:46px 0 30px;color:var(--m);font-size:14px;border-top:1px solid var
 <section class="pane" id="year">
 <h2>The first year</h2>
 <div class="grid">
-<div class="card"><h3>Days 1–30 · Listen</h3>Meet the Chief Talent &amp; Capabilities Officer, the CDAIO and business leaders across the 18 business units and both capability centers. Baseline skills, sentiment and the use-case portfolio.</div>
+<div class="card"><h3>Days 1–30 · Listen</h3>Meet the Chief Talent &amp; Capabilities Officer, the CDAIO, technology leaders and business leaders across the 18 business units and both capability centers. Baseline skills, sentiment and the use-case portfolio.</div>
 <div class="card"><h3>Days 31–90 · Design</h3>Agree the human–agent principles and autonomy levels; stand up the governance pathway; pick 2 job families to redesign first with the agentic platform team.</div>
 <div class="card"><h3>Months 4–6 · Pilot</h3>Redesign the 2 job families with the people who do the work; launch the first new roles and Academy tracks; first scorecard to the AI Steering Committee.</div>
 <div class="card"><h3>Months 7–12 · Scale</h3>Publish the enterprise playbook and localization guides; extend to more job families and geographies; multi-year workforce plan with Talent and the CDAIO.</div>
@@ -288,6 +366,17 @@ document.addEventListener('click',function(e){var t=e.target.closest&&e.target.c
 if(!t||!window.goatcounter||!window.goatcounter.count)return;
 var n=t.getAttribute('data-tab')||t.getAttribute('data-go')||(t.hasAttribute('data-contact')?'contact':(t.classList.contains('side-tab')?'about':(t.textContent||'').trim().slice(0,40)));
 window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,event:true});},true);})();
+</script>
+<script>
+(function(){var tab=document.getElementById('pf-tab'),pf=document.getElementById('pf'),bd=document.getElementById('pf-bd'),open=false,at=0;
+function wide(){return window.matchMedia&&window.matchMedia('(min-width:900px)').matches}
+function set(v){open=v;pf.classList.toggle('show',v);document.body.classList.toggle('pf-on',v);tab.hidden=v;tab.setAttribute('aria-expanded',v?'true':'false');if(v){at=window.scrollY;}}
+tab.addEventListener('click',function(e){e.stopPropagation();set(true);});
+document.getElementById('pf-x').addEventListener('click',function(){set(false);tab.focus();});
+bd.addEventListener('click',function(){set(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&open){set(false);tab.focus();}});
+window.addEventListener('scroll',function(){if(open&&!wide()&&Math.abs(window.scrollY-at)>60)set(false);},{passive:true});
+})();
 </script>
 <script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <style>.watermark{position:fixed;inset:0;pointer-events:none;z-index:70;background-image:url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='460' height='250'><text x='20' y='150' transform='rotate(-22 230 125)' font-family='Arial, sans-serif' font-size='15' fill='%2314202E' fill-opacity='0.08'>© 2026 Sonia Malik · ELEVATE prototype</text></svg>");}@media print{.watermark{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style>
