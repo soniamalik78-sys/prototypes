@@ -6,7 +6,7 @@
 <style>
 :root{--bg:#F3F5F8;--s:#fff;--fg:#14202E;--m:#4F5B69;--line:#D7DEE7;--a:#0A4D8C;--as:#E2EDF8;--w:#8F5E00;--wb:#FBF0D9;--ok:#2E7D4F;--okb:#E3F2E8;--p:#5B3E96;--pb:#ECE6F6}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Public Sans",Arial,sans-serif}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1400px;margin:0 auto;padding:0 28px}
 .banner{background:var(--a);color:#fff;text-align:center;padding:8px 12px;font-weight:600;font-size:14px;letter-spacing:.03em}
 header{padding:40px 0 14px}h1{font:600 50px/1.08 Spectral,Georgia,serif;margin:0;color:var(--a)}
 h1 small{display:block;font-size:26px;color:var(--fg);margin-top:8px;line-height:1.25}
@@ -75,6 +75,14 @@ body.pf-on .pf-bd{display:block}
 .tabs button[aria-selected=true]{background:var(--s);color:var(--a);font-weight:700;border-color:#b8c4d4;top:0;padding-top:11px;z-index:2;box-shadow:inset 0 3px 0 var(--a),0 -2px 6px rgba(10,30,60,.08);border-bottom:1px solid var(--s)}
 .nextnav{margin:28px 0 6px;text-align:right}.nextbtn{border:0;background:var(--a);color:#fff;font:inherit;font-weight:600;font-size:15px;padding:11px 20px;border-radius:999px;cursor:pointer;box-shadow:0 2px 6px rgba(10,30,60,.2)}
 .g4{grid-template-columns:repeat(4,1fr)}@media (max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}@media (max-width:520px){.g4{grid-template-columns:1fr}}
+.ov{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:30px;align-items:start}
+.ovside{position:sticky;top:78px;margin-top:24px}.ovside .card{border-left:4px solid var(--a)}.ovside ul{padding-left:18px;margin:8px 0}.ovside li{margin:7px 0;font-size:15px}
+.ovct{border-top:1px solid var(--line);padding-top:10px;margin-top:8px;display:flex;flex-direction:column;gap:4px}.ovct a{color:var(--a)}
+.disc{font-style:italic;font-size:12.5px;color:#7a8594;margin:8px 0 0}
+.loop{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap}.ls{flex:1 1 140px;background:var(--as);border-radius:8px;padding:10px;font-size:14px}.ls b{display:block}.ls.gate{background:var(--wb)}.la{align-self:center;color:var(--a);font-weight:700;font-size:20px}
+@media (min-width:1200px){.side-tab{display:none}}
+@media (max-width:1199px){.ov{grid-template-columns:1fr}.ovside{position:static}}
+@media (max-width:700px){.la{display:none}}
 </style></head><body>
 <button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
 <div class="pf-bd" id="pf-bd"></div>
@@ -101,7 +109,7 @@ body.pf-on .pf-bd{display:block}
 <div class="wrap">
 <header>
 <h1>ELEVATE<small>Prudential's first year of human–agent collaboration</small></h1>
-<p class="lede">How I would redesign jobs, teams and talent so people and AI agents do their best work together. Led with the People team and the Chief Data &amp; AI Officer. Governed from day one. Measured in outcomes the business trusts.</p>
+<p class="lede">How I would redesign jobs, teams and talent so people and AI agents do their best work together. Governed from day one. Measured in outcomes the business trusts.</p>
 <p class="who"><b>Sonia Malik</b> · AI Workforce Transformation Leader · returning Prudential alum (2015–2019) · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn</a></p>
 </header>
 
@@ -120,6 +128,7 @@ body.pf-on .pf-bd{display:block}
 
 <!-- OVERVIEW -->
 <section class="pane on" id="overview">
+<div class="ov"><div class="ovmain">
 <h2>A pivotal moment for Prudential</h2>
 <p>Prudential has the technology foundation in place. What decides the return now is how people and AI agents work together, as the Enterprise Agentic AI Platform goes into production and agents take on multi-step workflows.</p>
 <div class="ctx"><div class="grid">
@@ -128,7 +137,7 @@ body.pf-on .pf-bd{display:block}
 <div><b>75+</b><span>AI solutions deployed</span></div>
 <div><b>2026</b><span>Agentic AI platform in production</span></div>
 <div><b>6</b><span>geographies: U.S., Japan, Brazil, Mexico, India, Ireland</span></div>
-</div><p class="note" style="margin:8px 0 0">Figures from Prudential's public job posting for this role.</p></div>
+</div><p class="disc">Figures from Prudential's public job posting for this role.</p></div>
 
 <h2>Why me: I have done this work at 7 firms</h2>
 <p>Built from zero at Prudential, TheMarkets.com and SanPulse; revitalized at Pearson, DoubleVerify, Audible and S&amp;P Global, each on a modernization path with global teams. I am not from HR, but I have led people through this kind of change, side by side with HR.</p>
@@ -161,7 +170,29 @@ body.pf-on .pf-bd{display:block}
 <div class="step"><b>5. Measure</b>Adoption, quality, value, people; reported to the AI Steering Committee</div>
 </div>
 <p class="note">The amber step is where people stay accountable for what agents do.</p>
+<h3 style="margin-top:22px">Human in the loop, built to learn</h3>
+<div class="loop">
+<div class="ls"><b>1 · Rubric &amp; data</b>Objective data points, scored against a customized rubric</div><span class="la">→</span>
+<div class="ls"><b>2 · Builder agent</b>Creates the work, using the rubric as input</div><span class="la">→</span>
+<div class="ls"><b>3 · AI judge</b>Scores the output against the same rubric</div><span class="la">→</span>
+<div class="ls gate"><b>4 · Human review</b>A named person reviews and scores</div><span class="la">→</span>
+<div class="ls"><b>5 · Delta tracked</b>Human score vs judge score, over time</div><span class="la">↺</span>
+</div>
+<p class="note">The delta feeds learning back into the rubric, the builder agent and the judge, so both improve over time. Autonomy rises only when the evidence supports it.</p>
 
+
+</div>
+<aside class="ovside"><div class="card">
+<h3>How I would help Prudential</h3>
+<ul>
+<li><b>Redesign roles for human–agent work:</b> task by task, with the people who do it, linked to the 300+ use cases.</li>
+<li><b>Govern agents safely:</b> autonomy levels, named owners and a builder + AI judge loop with human review, as I ran at S&amp;P Global and DoubleVerify.</li>
+<li><b>Reskill and redeploy people:</b> as I did for a 150+ team at Prudential (50+ reskilled, 35+ roles transitioned).</li>
+<li><b>Bring people through the change:</b> hand in hand with HR; engagement rose 89% → 95% across a 350+ global team.</li>
+<li><b>Measure value for the AI Steering Committee:</b> one scorecard across adoption, quality, value and people.</li>
+</ul>
+<div class="ovct"><b>Let's talk</b><a href="mailto:sonia.malik78@gmail.com" data-contact>sonia.malik78@gmail.com</a><a href="tel:+17326291034" data-contact>732-629-1034</a><a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn profile</a></div>
+</div></aside></div>
 <div class="nextnav"><button class="nextbtn" data-go="redesign">Next: Work redesign →</button></div>
 </section>
 
