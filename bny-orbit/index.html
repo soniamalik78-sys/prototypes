@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ORBIT for BNY: governed AI delivery walkthrough | Sonia Malik</title>
+<style>
+:root{--n:#0a2a6b;--c:#f6f2ea;--g:#1e8e5a;--a:#c98a00;--r:#c0392b}
+*{box-sizing:border-box}body{margin:0;background:var(--c);color:#1a1a2e;font-family:system-ui,sans-serif;line-height:1.5}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;color:var(--n)}
+.ban{position:sticky;top:0;z-index:5;background:var(--n);color:#fff;padding:12px 20px}
+.ban .in{max-width:1000px;margin:auto}.lbl{font-size:11px;letter-spacing:.1em;font-weight:700;opacity:.8}
+.q{font-style:italic;margin:4px 0 8px}.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{background:#1d4496;border-radius:6px;padding:4px 9px;font-size:13px}.chip b{background:#8fe3c8;color:var(--n);border-radius:50%;padding:0 6px;margin-right:5px}
+.arr{opacity:.6}.pill{background:#8fe3c8;color:var(--n);border-radius:6px;padding:3px 9px;font-size:13px;font-weight:600}
+.wrap{max-width:1000px;margin:auto;padding:20px}.badge{display:inline-block;background:#5b3fd6;color:#fff;font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px}
+h1{font-size:34px;margin:8px 0 4px}.subh{font-family:Georgia,serif;font-size:21px;color:var(--n);margin:4px 0 16px}
+.tabs{display:flex;flex-wrap:wrap;background:var(--n);border-radius:8px;overflow:hidden}.tabs button{background:none;border:0;color:#cdd8f3;padding:11px 16px;font-size:14px;cursor:pointer}
+.tabs button.on{background:#fff;color:var(--n);font-weight:700}.pane{display:none;padding:14px 0}.pane.on{display:block}
+table{border-collapse:collapse;width:100%;background:#fff}td,th{border:1px solid #ddd;padding:8px;text-align:left;vertical-align:top;font-size:14px}th{background:#e8edf8;color:var(--n)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:12px 0}.card{background:var(--n);color:#fff;border-radius:8px;padding:12px}
+.card .k{font-size:11px;letter-spacing:.08em;opacity:.8;text-transform:uppercase}.card .v{font-family:Georgia,serif;font-size:22px;color:#8fe3c8}
+.wcard{background:#fff;border:1px solid #dcd5c6;border-radius:8px;padding:12px}
+.ctl{display:flex;gap:10px;align-items:center;margin:10px 0}.ctl button{background:var(--n);color:#fff;border:0;border-radius:18px;padding:7px 14px;cursor:pointer}
+input[type=range]{flex:1}.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.st{font-size:11px;font-weight:700;border-radius:10px;padding:2px 8px;color:#fff}.on-t{background:var(--g)}.risk{background:var(--a)}.off{background:var(--r)}
+.loop{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.loop div{background:#fff;border-top:4px solid var(--n);padding:10px;border-radius:6px;font-size:14px}
+.chain{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.chain button{background:#fff;border:1px solid var(--n);color:var(--n);border-radius:16px;padding:6px 12px;cursor:pointer}
+.chain button.on{background:var(--n);color:#fff}#det{background:#fff;border-left:4px solid var(--g);padding:10px 14px;min-height:60px}
+.layer{background:#fff;border:1px solid #dcd5c6;border-radius:6px;padding:9px 12px;margin:6px 0}.layer b{color:var(--n)}
+.note{background:#e8edf8;padding:8px 12px;border-radius:6px;font-size:13px}
+.wm{position:fixed;bottom:0;left:0;right:0;background:var(--n);color:#cdd8f3;text-align:center;font-size:12px;padding:5px}
+@media(max-width:700px){.loop{grid-template-columns:1fr 1fr}h1{font-size:26px}}
+</style></head><body>
+<div class="ban"><div class="in"><div class="lbl">PILOT JOURNEY · CLIENT SERVICE</div><div class="q">“Has my corporate action dividend settled?” An institutional client wants a fast answer, and a wrong one costs trust. The pilot answers in minutes, grounded in the custody ledger, with a person approving regulated replies.</div>
+<div class="chips" id="steps"></div><div class="chips" style="margin-top:8px"><span class="lbl">PILOT TARGETS (ILLUSTRATIVE)</span><span id="tg" class="chips"></span></div></div></div>
+<div class="wrap">
+<span class="badge">WORKING PROTOTYPE</span> <span style="font-size:12px;font-weight:700;color:#5b3fd6">SONIA MALIK · AI-FIRST PDLC</span>
+<h1>Proposing ORBIT: AI that gives BNY's engineers time back and answers clients faster, safely</h1>
+<div class="subh">A dual-agent AI-PDLC: builder agents take the toil, judge agents keep the standard.</div>
+<p class="note">Illustrative work sample based on public information; simulated data. Designed to build on BNY's existing Eliza enterprise AI platform (publicly described by BNY).</p>
+<div class="tabs" id="tabs"></div>
+<div class="pane on" id="p0"><h2>A developer's day, before and after</h2><table><tr><th>Moment</th><th>Before</th><th>With ORBIT</th></tr><tr><td>Morning</td><td>Triages tickets about stale client-facing data by hand.</td><td>Builder agent drafts the fix and tests from the ticket.</td></tr><tr><td>Midday</td><td>Waits days for regulated review.</td><td>Judge agent scores the change; approver decides same day from evidence.</td></tr><tr><td>Afternoon</td><td>Writes regression tests manually.</td><td>Context-aware tests generated and reviewed.</td></tr><tr><td>Release</td><td>Weekly release window.</td><td>Twice-weekly releases, gated by evidence.</td></tr></table>
+<div class="cards"><div class="card"><div class="k">Regulated approvals at S&amp;P</div><div class="v">3 days → same day</div></div><div class="card"><div class="k">Release cadence at S&amp;P</div><div class="v">weekly → 2×</div></div><div class="card"><div class="k">Engineers led at S&amp;P</div><div class="v">350+</div></div></div><h3>The customer moment</h3><p>The assistant drafts “settled” from a stale record. A grounding check compares it with the custody ledger, finds the payment pending, blocks the reply and rewrites it as “pending, expected date shown”. Because it concerns client assets, a service specialist approves before it reaches the client. Sources, model version and approver are logged.</p></div>
+<div class="pane" id="p1"><h2>Executive scorecard: the first 12 months</h2><p class="note">Simulated trajectory. Values are illustrative pilot targets, not results.</p>
+<div class="cards"><div class="card"><div class="k">Developer experience</div><div class="v"><15 min</div>feedback per change</div><div class="card"><div class="k">Client value</div><div class="v">minutes</div>to a grounded answer</div><div class="card"><div class="k">Operational efficiency</div><div class="v">−30%</div>handling effort per inquiry</div><div class="card"><div class="k">Growth</div><div class="v">2×</div>release cadence</div><div class="card"><div class="k">Risk &amp; controls</div><div class="v">0 ungrounded</div>client replies released</div></div>
+<div class="ctl"><button id="play">▶ Play year</button><input type="range" id="m" min="0" max="12" value="0"><b id="ml">Month 0</b></div>
+<div class="kpis" id="kpis"></div><h3>Business scale-out</h3><ul><li>Asset servicing inquiries (pilot)</li><li>Corporate trust and depositary receipts client questions</li><li>Treasury services payment status</li><li>Internal developer platform teams</li></ul></div>
+<div class="pane" id="p2"><h2>The loop</h2><div class="loop"><div><b>1. Customer discovery</b><br>Client inquiry themes ranked by volume and risk.</div><div><b>2. PDLC</b><br>Builder agents ship assistant changes; judge agents and humans gate them.</div><div><b>3. Production</b><br>Grounding checks on every reply; uncertain answers escalate to a person.</div><div><b>4. Continuous learning</b><br>Blocked replies and client feedback feed new tests.</div></div>
+<h3>Traceability chain (click a link)</h3><div class="chain" id="chain"></div><div id="det"></div></div>
+<div class="pane" id="p3"><h2>Architecture &amp; developer experience</h2><div class="layer"><b>Experience:</b> client-service assistant and service-specialist approval console.</div>
+<div class="layer"><b>Builder agents:</b> requirements drafting, AI-assisted code, context-aware tests, release notes.</div>
+<div class="layer"><b>Judge agents:</b> score each change against a custom rubric (accuracy, security, grounding); reviewers decide from that evidence.</div>
+<div class="layer"><b>Evaluation:</b> golden datasets, negative DAST scenarios, regression suites run on every merge.</div>
+<div class="layer"><b>Governance:</b> risk tiers, approved-tool inventory, named human approvers for regulated paths, evidence trail kept for audit.</div>
+<div class="layer"><b>Platform:</b> BNY's Eliza enterprise AI platform (public), approved models, custody ledger as system of record.</div>
+<h3>Developer experience</h3><ul><li>Feedback on a change in minutes, not after a review queue.</li><li>Shared prompt templates and reusable test components, so the governed route is also the fastest.</li><li>Hands-on proof: testing at S&amp;P Global caught AI-generated code exposing server directory structure in an error response, and negative DAST scenarios revealed log files exposing details to AI models.</li></ul></div>
+<div class="pane" id="p4"><h2>Rollout</h2><table><tr><th>Phase</th><th>Delivery</th><th>People</th></tr><tr><td>Days 0–30</td><td>Baseline metrics; pick one journey; risk tiers agreed with risk partners.</td><td>Listen: map tasks with the people who do the work and HR.</td></tr><tr><td>Days 31–90</td><td>Builder and judge agents live for one team; evidence trail on.</td><td>Practitioner training track opens.</td></tr><tr><td>Days 91–180</td><td>Scale to a second client journey; approval workflow published.</td><td>Supervisor track: service leads train as agent supervisors.</td></tr><tr><td>Days 181–365</td><td>Portfolio rollout with governance reporting to risk and audit.</td><td>Human–AI team leads run blended teams; builder track for analysts.</td></tr></table>
+<p class="note">Workforce angle: capacity released by agents flows into training tracks and new roles such as agent supervisor, agent quality reviewer and human–AI team lead. Pace follows risk tolerance and employee readiness; pilots pair one technical and one non-technical job family, chosen by the organization's priorities.</p>
+<p><b>When we meet:</b> 15 minutes. We pick one delivery stream, and you leave with a one-page 90-day plan.</p></div>
+<p style="font-size:12px;color:#666;margin-bottom:40px">Illustrative work sample based on public information; simulated data. Not affiliated with or endorsed by BNY.</p>
+</div><div class="wm">© 2026 Sonia Malik · Illustrative work sample based on public information; simulated data</div>
+<script>
+var D={"steps": ["Client asks in portal", "Assistant drafts answer", "Grounding check vs custody ledger", "Stale record caught", "Specialist approves corrected reply", "Evidence logged"], "targets": ["Same-day regulated replies", "0 ungrounded replies", "\u221230% handling effort", "+15 pts client satisfaction"], "kpis": [{"n": "Grounded reply rate", "s": 82, "e": 99, "u": "%"}, {"n": "Inquiry handling time", "s": 40, "e": 12, "u": " min", "risk": [4, 6]}, {"n": "Regulated approval time", "s": 72, "e": 6, "u": " h"}, {"n": "Release cadence", "s": 1, "e": 2, "u": "\u00d7 / week", "f": 1}], "chain": [["Persona", "Institutional client operations analyst checking a dividend."], ["Requirement", "Settlement answers must match the custody ledger, else escalate."], ["Test", "Golden case: stale record says settled, ledger says pending; expect block."], ["Commit", "Grounding check added to the assistant reply path."], ["Gate", "Judge agent score plus named human approver for client-asset replies."], ["Release", "Shipped in the twice-weekly window with evidence attached."], ["Outcome", "Target: no ungrounded settlement replies reach clients (illustrative)."]]};
+var tabs=['Overview','Exec dashboard','Walkthrough','Architecture & DevEx','Rollout'],tb=document.getElementById('tabs');
+tabs.forEach(function(t,i){var b=document.createElement('button');b.textContent=t;b.setAttribute('role','tab');b.setAttribute('data-tab',t.split(' ')[0].toLowerCase());if(!i)b.className='on';
+b.onclick=function(){[].forEach.call(tb.children,function(x){x.className=''});b.className='on';for(var j=0;j<5;j++)document.getElementById('p'+j).className='pane'+(j==i?' on':'')};tb.appendChild(b)});
+document.getElementById('steps').innerHTML=D.steps.map(function(s,i){return '<span class="chip"><b>'+(i+1)+'</b>'+s+'</span>'}).join('<span class="arr">→</span>');
+document.getElementById('tg').innerHTML=D.targets.map(function(t){return '<span class="pill">'+t+'</span>'}).join('');
+function spark(a,m){var w=120,h=28,mx=Math.max.apply(0,a),mn=Math.min.apply(0,a),r=(mx-mn)||1;return '<svg width="'+w+'" height="'+h+'"><polyline fill="none" stroke="#8fe3c8" stroke-width="2" points="'+a.slice(0,m+1).map(function(v,i){return (i*w/12)+','+(h-2-(v-mn)/r*(h-4))}).join(' ')+'"/></svg>'}
+function draw(m){document.getElementById('ml').textContent='Month '+m+' of 12';document.getElementById('kpis').innerHTML=D.kpis.map(function(k){var v=k.s+(k.e-k.s)*m/12,s=k.risk&&m>=k.risk[0]&&m<=k.risk[1]?'<span class="st risk">at risk</span>':'<span class="st on-t">on track</span>';
+var arr=[];for(var i=0;i<=12;i++)arr.push(k.s+(k.e-k.s)*i/12+(k.risk&&i>=k.risk[0]&&i<=k.risk[1]?(k.e-k.s)*-.08:0));
+return '<div class="card"><div class="k">'+k.n+'</div><div class="v">'+(k.f?v.toFixed(k.f):Math.round(v))+k.u+'</div>'+spark(arr,m)+'<br>'+s+'</div>'}).join('')}
+var sl=document.getElementById('m');sl.oninput=function(){draw(+sl.value)};draw(0);
+var tm=null;document.getElementById('play').onclick=function(){if(tm){clearInterval(tm);tm=null;return}sl.value=0;draw(0);tm=setInterval(function(){if(+sl.value>=12){clearInterval(tm);tm=null;return}sl.value=+sl.value+1;draw(+sl.value)},500)};
+var ch=document.getElementById('chain');D.chain.forEach(function(c,i){var b=document.createElement('button');b.textContent=c[0];b.setAttribute('data-go','chain-'+c[0].toLowerCase());b.onclick=function(){[].forEach.call(ch.children,function(x){x.className=''});b.className='on';document.getElementById('det').innerHTML='<b>'+c[0]+':</b> '+c[1]};ch.appendChild(b);if(i<D.chain.length-1){var s=document.createElement('span');s.className='arr';s.textContent='→';ch.appendChild(s)}});
+ch.children[0].click();
+</script>
+<script>
+(function(){var s=new URLSearchParams(location.search).get('src')||'';
+var base=location.pathname.replace(/\/(index|full)\.html$/,'/').replace(/\/$/,'');
+window.goatcounter={path:function(p){return location.pathname+(s?'?src='+s:'')}};
+document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[role="tab"],[data-go],[data-contact],.side-tab');
+if(!t||!window.goatcounter||!window.goatcounter.count)return;
+var n=t.getAttribute('data-tab')||t.getAttribute('data-go')||(t.textContent||'').trim().slice(0,40);
+window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,event:true});},true);})();
+</script>
+<script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body></html>
