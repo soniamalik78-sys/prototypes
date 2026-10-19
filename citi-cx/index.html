@@ -77,6 +77,42 @@ h1.big{font-size:clamp(28px,4.4vw,44px);line-height:1.12;margin:12px 0 10px;text
 .deeper::before,.deeper::after{content:"";flex:1;height:1px;background:#d6cfbf}
 @media(max-width:700px){.ban #steps{display:none}.ban{padding:8px 16px}.ph-body{height:380px}.hl{font-size:16px}}
 @media(prefers-reduced-motion:reduce){.msg{animation:none}.bar i{transition:none}}
+
+/* watermark + About side tab (same pattern as KEYSTONE / ORBIT) */
+.watermark{position:fixed;inset:0;z-index:60;pointer-events:none;background:#1a1a2e;opacity:.06;-webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='240'><text x='10' y='150' transform='rotate(-22 210 120)' font-family='Arial, sans-serif' font-size='15' fill='black'>© 2026 Sonia Malik · ORBIT prototype</text></svg>");mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='240'><text x='10' y='150' transform='rotate(-22 210 120)' font-family='Arial, sans-serif' font-size='15' fill='black'>© 2026 Sonia Malik · ORBIT prototype</text></svg>");-webkit-mask-repeat:repeat;mask-repeat:repeat}
+@media print{.watermark{opacity:.12}}
+@media(max-width:1180px){.wrap{padding-right:60px}}
+@media(max-width:560px){.wrap{padding-right:52px}}
+.av{flex:0 0 40px;height:40px;border-radius:50%;background:var(--n);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.9rem;letter-spacing:.02em}
+.side-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:70;display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--n);color:#fff;border:none;border-radius:12px 0 0 12px;padding:10px 7px 14px;cursor:pointer;box-shadow:-4px 6px 18px rgba(10,42,107,.25)}
+.side-tab .av{flex:0 0 30px;width:30px;height:30px;background:#fff;color:var(--n);font-size:.74rem}
+.side-tab .st-txt{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.82rem;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+@media(max-width:560px){.side-tab .st-txt{font-size:.74rem}}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(380px,92vw);background:#fff;border-left:1px solid #cbc3b2;box-shadow:-12px 0 30px rgba(10,42,107,.18);padding:22px;overflow:auto;display:grid;gap:14px;align-content:start}
+.drawer[hidden]{display:none!important}
+.dr-close{position:absolute;top:10px;right:12px;background:none;border:none;font-size:1.6rem;line-height:1;color:#7a7f8c;cursor:pointer}
+.dr-head{display:flex;gap:12px;align-items:center;padding-right:28px}
+.dr-head .av{flex:0 0 46px;width:46px;height:46px}
+.dr-head b{display:block;font-size:1.05rem;color:var(--n)}.dr-head span{font-size:.8rem;color:#5a6378}
+.pf-pitch{font-size:.9rem;line-height:1.5;margin:0}
+.pf-stats{display:flex;flex-wrap:wrap;gap:6px}
+.pf-stats span{border:1px solid #dcd5c6;background:var(--c);border-radius:8px;padding:3px 8px;font-size:.76rem}
+.pf-stats b{color:var(--n)}
+.talk{justify-self:start;background:var(--n);color:#fff;border:none;border-radius:999px;padding:8px 16px;font-size:.85rem;font-weight:700;cursor:pointer}
+.cmodal{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:16px}
+.cmodal[hidden]{display:none!important}
+.cm-back{position:absolute;inset:0;background:rgba(10,20,40,.55)}
+.cm-card{position:relative;background:#fff;color:#1a1a2e;border-radius:14px;border-top:4px solid var(--n);width:min(520px,100%);max-height:calc(100% - 32px);overflow:auto;padding:22px;box-shadow:0 20px 50px rgba(0,0,0,.3);display:grid;gap:10px}
+.cm-card h2{font-size:1.4rem;margin:0}.cm-card p{margin:0}
+.cm-close{position:absolute;top:8px;right:10px;background:none;border:none;font-size:1.6rem;line-height:1;color:#7a7f8c;cursor:pointer}
+.cm-route{font-size:.86rem;background:#e8edf8;border-radius:8px;padding:10px 12px}
+.cm-row{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid #dcd5c6}
+.cm-row:last-of-type{border-bottom:none}
+.cm-k{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#7a7f8c}
+.cm-v{font-weight:600;word-break:break-all;user-select:all}
+.cm-copy{background:var(--n);color:#fff;border:none;border-radius:999px;padding:4px 12px;font-size:.78rem;font-weight:700;cursor:pointer}
+.cm-status{font-size:.82rem;color:var(--g);min-height:1.2em}
+.linkbtn{background:none;border:0;padding:0;color:#2b59c3;text-decoration:underline;cursor:pointer;font:inherit}
 </style></head><body>
 <div class="ban"><div class="in"><div class="lbl">PILOT JOURNEY · CARD DISPUTES · ONE CITI</div><div class="chips" id="steps" style="margin-top:6px"></div></div></div>
 <div class="wrap">
@@ -147,9 +183,40 @@ h1.big{font-size:clamp(28px,4.4vw,44px);line-height:1.12;margin:12px 0 10px;text
 <h3>The team I'd build</h3><ul class="roles"><li><b>Conversational &amp; agentic AI products:</b> assistants, evals, guardrails and act-or-hand-off design.</li><li><b>Personalization &amp; journeys:</b> rewards, benefits and relationship growth.</li><li><b>AI workforce transformation:</b> servicing jobs redesigned with HR; people reskilled into new roles.</li></ul>
 <p class="note">Workforce angle: capacity released by agents flows into training tracks and new roles such as agent supervisor, conversation quality reviewer and human–AI team lead. Pace follows risk tolerance and employee readiness. At Prudential: 50+ people reskilled and 35+ roles transitioned, led with HR under UK, Canada, US and India labor law.</p>
 <p><b>Interactive 90-Day Execution Blueprint</b> (customer journeys within 3 clicks): <a href="../citi-cx-orbit/?src=citi-cx-li" data-go="citi-cx-orbit">What a Citi customer experiences differently</a></p>
-<p><b>When we meet:</b> 15 minutes. We pick one customer journey, and you leave with a one-page 90-day plan. <a href="https://www.linkedin.com/in/sonia-malik-b059705" data-contact>Message me on LinkedIn</a></p></div>
+<p><b>When we meet:</b> 15 minutes. We pick one customer journey, and you leave with a one-page 90-day plan. <button type="button" class="linkbtn" data-contact>Get in touch</button></p></div>
 <p style="font-size:12px;color:#666;margin-bottom:40px">Illustrative work sample based on public information; simulated data. Not affiliated with or endorsed by Citi.</p>
-</div><div class="wm">© 2026 Sonia Malik · Illustrative work sample based on public information; simulated data</div>
+</div><div class="watermark" aria-hidden="true"></div>
+<button class="side-tab" type="button" id="side-tab" aria-controls="drawer" aria-expanded="false"><span class="av" aria-hidden="true">SM</span><span class="st-txt">About me · Let&rsquo;s talk</span></button>
+<aside class="drawer" id="drawer" aria-label="About Sonia Malik" hidden>
+  <button class="dr-close" type="button" id="dr-close" aria-label="Close">&times;</button>
+  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>VP, Global Head of AI PDLC &amp; Quality Engineering, S&amp;P Global</span></div></div>
+  <p class="pf-pitch">I build customer experiences that ship safely in regulated firms. At S&amp;P Global I turned customer journeys into the MVP and feature roadmap, built unified customer analytics with an A/B-tested migration, and chaired the AI Governance Committee. For Citi, I would bring the same approach to One Citi: AI that resolves what customers actually need, across the whole relationship.</p>
+  <div class="pf-stats">
+    <span><b>3 days &rarr; same day</b> regulated AI sign-off</span>
+    <span><b>~400</b> engineers on governed AI in 13 months</span>
+    <span><b>10</b> scrum teams' product owners led</span>
+    <span><b>+30%</b> Prudential customer base, cross-sell contributed</span>
+    <span><b>$50M+</b> Audible CoE revenue contribution</span>
+    <span><b>350+</b> people &middot; <b>$70M+</b> budget led</span>
+    <span><b>Regulated:</b> S&amp;P Global, Prudential</span>
+  </div>
+  <button class="talk" type="button" data-contact>Let&rsquo;s talk</button>
+</aside>
+<div class="cmodal" id="cmodal" hidden>
+  <div class="cm-back" data-close></div>
+  <div class="cm-card" role="dialog" aria-modal="true" aria-labelledby="cm-title">
+    <button class="cm-close" type="button" data-close aria-label="Close">&times;</button>
+    <span class="lbl" style="color:#0a2a6b">NEXT STEP</span>
+    <h2 id="cm-title">Let&rsquo;s walk through ORBIT together</h2>
+    <p>In 30 minutes I can take you through the One Citi dispute journey, the loop from customer discovery to production learning, and my first 90 days.</p>
+    <p class="cm-route">Through your standard process: your recruiting partner can reach me directly to schedule. I am flexible on timing.</p>
+    <div class="cm-row"><span class="cm-k">Email</span><span class="cm-v">sonia.malik78@gmail.com</span><button class="cm-copy" type="button" data-cc="sonia.malik78@gmail.com">Copy</button></div>
+    <div class="cm-row"><span class="cm-k">Phone</span><span class="cm-v">732-629-1034</span><button class="cm-copy" type="button" data-cc="732-629-1034">Copy</button></div>
+    <div class="cm-row"><span class="cm-k">LinkedIn</span><span class="cm-v">linkedin.com/in/sonia-malik-b059705</span><button class="cm-copy" type="button" data-cc="https://www.linkedin.com/in/sonia-malik-b059705">Copy</button></div>
+    <div class="cm-status" id="cm-status" aria-live="polite"></div>
+  </div>
+</div>
+<div class="wm">© 2026 Sonia Malik · Illustrative work sample based on public information; simulated data</div>
 <script>
 var D={"steps":["Customer flags $212 charge","Agent names the real merchant","Fraud check decides self-service","Credit before rent autopay","Bills moved to new card","Reason and evidence logged"],
 "targets":["Low-risk disputes decided same day","Overdraft fees avoided","−15–25% cost per contact","Ungrounded replies blocked"],
@@ -236,5 +303,24 @@ var n=t.getAttribute('data-tab')||t.getAttribute('data-go')||(t.hasAttribute('da
 window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,event:true});},true);})();
 </script>
 <script>(function(){var q=new URLSearchParams(location.search).get('src');if(q)document.querySelectorAll('a[data-go="citi-cx-orbit"]').forEach(function(a){a.href='../citi-cx-orbit/?src='+encodeURIComponent(q)})})();</script>
+<script>
+(function(){
+  var dr=document.getElementById('drawer'),stab=document.getElementById('side-tab'),cm=document.getElementById('cmodal'),cmRet=null;
+  function openDrawer(){dr.hidden=false;stab.setAttribute('aria-expanded','true');document.getElementById('dr-close').focus();}
+  function closeDrawer(){dr.hidden=true;stab.setAttribute('aria-expanded','false');stab.focus();}
+  stab.addEventListener('click',function(){dr.hidden?openDrawer():closeDrawer();});
+  document.getElementById('dr-close').addEventListener('click',closeDrawer);
+  function openContact(){cmRet=document.activeElement;cm.hidden=false;document.getElementById('cm-status').textContent='';cm.querySelector('.cm-close').focus();}
+  function closeContact(){cm.hidden=true;if(cmRet)cmRet.focus();}
+  [].forEach.call(document.querySelectorAll('[data-contact]'),function(b){b.addEventListener('click',function(e){e.preventDefault();openContact();});});
+  [].forEach.call(cm.querySelectorAll('[data-close]'),function(el){el.addEventListener('click',closeContact);});
+  document.addEventListener('keydown',function(ev){if(ev.key!=='Escape')return;if(!cm.hidden)closeContact();else if(!dr.hidden)closeDrawer();});
+  [].forEach.call(cm.querySelectorAll('.cm-copy'),function(b){b.addEventListener('click',function(){
+    var t=b.getAttribute('data-cc'),st=document.getElementById('cm-status');
+    function sel(){var v=b.previousElementSibling,r=document.createRange();r.selectNodeContents(v);var g=getSelection();g.removeAllRanges();g.addRange(r);st.textContent='Selected. Press Ctrl+C or Cmd+C to copy.';}
+    try{navigator.clipboard.writeText(t).then(function(){st.textContent='Copied: '+t;}).catch(sel);}catch(e){sel();}
+  });});
+})();
+</script>
 <script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body></html>
