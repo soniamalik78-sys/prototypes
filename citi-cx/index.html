@@ -65,7 +65,7 @@ h1{font-size:clamp(28px,3.6vw,40px);line-height:1.15;margin:8px 0 12px}
 @media(prefers-reduced-motion:reduce){.msg,.bs li{animation:none}}
 </style></head><body>
 
-<div class="top"><div class="in"><span><b>Sonia Malik</b> · a prototype for Citi's Head of AI Customer Experience role</span><span>Card servicing · about 2 minutes</span></div></div>
+<div class="top"><div class="in"><span><b>Sonia Malik</b> · a prototype for Citi's Head of AI Customer Experience role</span><span>Executive preview · about 2 minutes · <a href="full.html" id="full-link-top" data-go="full-walkthrough" style="color:#8fe3c8">Full walkthrough</a></span></div></div>
 
 <div class="wrap">
 <section class="hero" aria-label="One customer moment">
@@ -119,7 +119,7 @@ h1{font-size:clamp(28px,3.6vw,40px);line-height:1.15;margin:8px 0 12px}
 </div>
 
 <section class="ask" aria-label="Next step">
-  <div><h2>15 minutes, one journey</h2><p>We pick the customer journey that matters most to you, and you leave with a one-page 90-day plan for it.</p></div>
+  <div><h2>15 minutes, one journey</h2><p>We pick the customer journey that matters most to you, and I walk you through the <a id="full-link" href="full.html" data-go="full-walkthrough" style="color:#8fe3c8;font-weight:700">full walkthrough</a>: the loop from customer discovery to production learning, the scorecard and the first 90 days. You leave with a one-page 90-day plan.</p></div>
   <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>Message me on LinkedIn</a>
 </section>
 
@@ -172,5 +172,6 @@ if(!t||!window.goatcounter||!window.goatcounter.count)return;
 var n=t.getAttribute('data-tab')||t.getAttribute('data-go')||(t.hasAttribute('data-contact')?'contact':(t.textContent||'').trim().slice(0,40));
 window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,event:true});},true);})();
 </script>
+<script>(function(){var q=new URLSearchParams(location.search).get('src');['full-link','full-link-top'].forEach(function(id){var a=document.getElementById(id);if(q&&a)a.href='full.html?src='+encodeURIComponent(q);});})();</script>
 <script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body></html>
