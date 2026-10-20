@@ -25,7 +25,7 @@
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:var(--bg);color:var(--fg);font-family:"Public Sans","Segoe UI",Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1060px;margin:0 auto;padding:0 20px 72px}
+.wrap{max-width:1260px;margin:0 auto;padding:0 28px 72px}
 h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500;margin:0;text-wrap:balance}
 h1{font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.05;letter-spacing:.01em}
 h2{font-size:clamp(1.4rem,3vw,1.8rem);line-height:1.2;margin-bottom:6px}
@@ -39,8 +39,9 @@ button{font:inherit}
 .mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
 .note{font-size:.8rem;color:var(--faint)}
 /* hero */
-.hero{padding:44px 0 26px;border-bottom:1px solid var(--line);position:relative}
-.hero::after{content:"";position:absolute;right:0;top:26px;width:180px;height:180px;border-radius:50%;
+.hero{padding:34px 0 26px;border-bottom:1px solid var(--line);position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:36px;align-items:center}
+@media(max-width:980px){.hero{grid-template-columns:1fr;gap:22px}}
+.hero::after{display:none;content:"";position:absolute;right:0;top:26px;width:180px;height:180px;border-radius:50%;
   background:repeating-linear-gradient(90deg,transparent 0 17px,var(--line) 17px 18px);opacity:.55;pointer-events:none;
   -webkit-mask-image:radial-gradient(circle,#000 55%,transparent 72%);mask-image:radial-gradient(circle,#000 55%,transparent 72%)}
 .eyebrow{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-bottom:14px}
@@ -50,7 +51,7 @@ button{font:inherit}
 /* tabs */
 .tabs{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:10px 0 0}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto;border:1px solid var(--line);border-bottom:none;background:var(--surface);color:var(--muted);padding:8px 13px;border-radius:9px 9px 0 0;cursor:pointer;font-size:.9rem;font-weight:600}
+.tab{flex:1 0 auto;border:1px solid var(--line);border-bottom:none;background:var(--surface);color:var(--muted);padding:8px 12px;border-radius:9px 9px 0 0;cursor:pointer;font-size:.88rem;font-weight:600;white-space:nowrap}
 .tab[aria-selected="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
 :root[data-theme="dark"] .tab[aria-selected="true"]{color:#0E141B}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tab[aria-selected="true"]{color:#0E141B}}
@@ -107,6 +108,27 @@ tr:last-child td{border-bottom:none}
 .bar{height:10px;border-radius:6px;background:var(--sunk);overflow:hidden;margin-top:6px}
 .bar>i{display:block;height:100%;background:var(--teal)}
 input[type=range]{width:100%;accent-color:var(--accent)}
+
+/* live demo console */
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 40px rgba(11,60,109,.12);overflow:hidden}
+.demo-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;background:var(--accent);color:#fff}
+.demo-h b{font-size:.92rem}.demo-h span{font-size:.76rem;opacity:.85}
+:root[data-theme="dark"] .demo-h{color:#0E141B}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .demo-h{color:#0E141B}}
+.feed{padding:12px 14px;min-height:330px;display:flex;flex-direction:column;gap:8px}
+.ev{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:start;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.ev.in{opacity:1;transform:none}
+.ev time{font-family:ui-monospace,Menlo,monospace;font-size:.76rem;color:var(--faint);padding-top:3px}
+.ev .bub{border-radius:10px;padding:8px 10px;font-size:.86rem;line-height:1.4;border:1px solid var(--line);background:var(--sunk)}
+.ev.sys .bub{background:var(--accent-soft);border-color:transparent}
+.ev.bad .bub{background:var(--bad-bg);border-color:transparent}
+.ev.ok .bub{background:var(--ok-bg);border-color:transparent}
+.ev .who{display:block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-bottom:2px}
+.demo-f{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--line);flex-wrap:wrap}
+.clock{display:flex;gap:16px}
+.clock div b{display:block;font-family:Georgia,serif;font-size:1.25rem;color:var(--accent-ink);line-height:1}
+.clock div span{font-size:.72rem;color:var(--muted)}
+.replay{border:1px solid var(--accent);background:transparent;color:var(--accent-ink);border-radius:999px;padding:5px 12px;font-weight:600;font-size:.82rem;cursor:pointer}
 /* watermark + side tab + drawer */
 .watermark{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;
  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='240'><text x='10' y='150' transform='rotate(-22 210 120)' font-family='Arial' font-size='15' fill='%2314202E'>© 2026 Sonia Malik · work sample · sample data</text></svg>");background-repeat:repeat}
@@ -137,23 +159,34 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 
 <div class="wrap">
 <header class="hero">
+<div>
   <div class="eyebrow"><span class="pill">Work sample · Sonia Malik</span><span class="label">Prepared for State Street · Head of Technology Governance &amp; Program Management, SVP</span></div>
   <h1>MERIDIAN</h1>
   <p class="tagline">One line of sight across every regulatory and risk commitment.</p>
   <p class="sub">A proposed operating model for independent program governance: every finding owned, every dependency visible, every commitment evidenced and reported the same way to CIO leadership, committees and regulators.</p>
   <p class="note" style="margin-top:8px">Based on the public job posting only. All programs, findings and figures in the interactive tabs are sample data.</p>
+  <div class="chips" style="margin-top:14px"><span class="chip">Watch: a vendor slip caught and decided in one morning →</span></div>
+</div>
+<div class="demo" aria-label="Sample: one morning in the portfolio console">
+  <div class="demo-h"><b>Portfolio console · Week 9</b><span>Sample · illustrative</span></div>
+  <div class="feed" id="feed" aria-live="polite"></div>
+  <div class="demo-f">
+    <div class="clock"><div><b id="clk">0:00</b><span>slip to decision</span></div><div><b>Weeks</b><span>in a monthly status cycle</span></div></div>
+    <button class="replay" id="replay" type="button">↻ Replay</button>
+  </div>
+</div>
 </header>
 
 <nav class="tabs" role="tablist" aria-label="Sections">
   <button class="tab" role="tab" data-tab="overview" aria-selected="true">Overview</button>
-  <button class="tab" role="tab" data-tab="trace">Finding to closure</button>
-  <button class="tab" role="tab" data-tab="deps">Dependency map</button>
-  <button class="tab" role="tab" data-tab="report">Reporting pack</button>
+  <button class="tab" role="tab" data-tab="trace">Trace a finding</button>
+  <button class="tab" role="tab" data-tab="deps">Dependencies</button>
+  <button class="tab" role="tab" data-tab="report">Reporting</button>
   <button class="tab" role="tab" data-tab="model">Operating model</button>
   <button class="tab" role="tab" data-tab="resource">Resourcing</button>
-  <button class="tab" role="tab" data-tab="plan">First 90 days</button>
+  <button class="tab" role="tab" data-tab="plan">90 days</button>
   <button class="tab" role="tab" data-tab="why">Why me</button>
-  <button class="tab" role="tab" data-tab="meet">When we meet</button>
+  <button class="tab" role="tab" data-tab="meet">Let's meet</button>
 </nav>
 
 <!-- OVERVIEW -->
@@ -376,6 +409,31 @@ input[type=range]{width:100%;accent-color:var(--accent)}
     document.getElementById('covText').innerHTML='Coverage <b>'+pct+'%</b> of committed work ('+avail.toLocaleString()+' of 1,800 person-days). '+(pct>=100?'<span class="rag g">Covered</span> Commitments resourced; review the cost and the handover plan for consultants.':'<span class="rag '+(pct>=90?'a':'r')+'">Gap of '+(1800-avail).toLocaleString()+' person-days</span> Either add capacity, re-sequence lower-risk work, or agree revised dates through the escalation rules.');}
   r.addEventListener('input',cov); cov();
 
+
+  // live demo: one morning in the console
+  var EV=[
+    ['09:02','','Third party','Vendor notice: identity platform go-live moves 4 weeks.'],
+    ['09:03','sys','MERIDIAN','Dependency check: 3 programs now forecast past committed dates: privileged access (B), third-party controls (D), resilience testing (F).'],
+    ['09:04','bad','Escalation rule','F is linked to a committed regulator milestone. Second line and the Head of GTS Transformation, Risk & Governance notified within 24 hours.'],
+    ['09:40','sys','PMO','Three recovery options prepared with cost and risk: add 2 identity engineers from the consulting pool; interim manual control with evidence; re-sequence F test scope.'],
+    ['11:15','','CIO leadership','Decision: interim control plus 2 engineers. Owners and dates updated in the register.'],
+    ['11:16','ok','MERIDIAN','Committee pack and regulator note regenerated from the same register. No committed regulatory date missed.']
+  ];
+  var feed=document.getElementById('feed'), clk=document.getElementById('clk'), timers=[];
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function play(){
+    timers.forEach(clearTimeout); timers=[]; feed.innerHTML=''; clk.textContent='0:00';
+    EV.forEach(function(e,i){
+      var d=document.createElement('div'); d.className='ev '+e[1];
+      d.innerHTML='<time>'+e[0]+'</time><div class="bub"><span class="who">'+e[2]+'</span>'+e[3]+'</div>';
+      feed.appendChild(d);
+      var show=function(){d.classList.add('in'); var m=(parseInt(e[0].split(':')[0])*60+parseInt(e[0].split(':')[1]))-(9*60+2); clk.textContent=Math.floor(m/60)+':'+('0'+(m%60)).slice(-2);};
+      if(reduce) show(); else timers.push(setTimeout(show,500+i*1500));
+    });
+  }
+  document.getElementById('replay').addEventListener('click',play);
+  play();
+
   // drawer
   var dr=document.getElementById('drawer'), st=document.getElementById('sideTab');
   st.addEventListener('click',function(){var o=dr.hidden; dr.hidden=!o; st.setAttribute('aria-expanded',o?'true':'false'); if(o) document.getElementById('drawerX').focus();});
@@ -386,8 +444,8 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 <script>
   // GoatCounter: count page + tab clicks, carry ?src=
   window.goatcounter={path:function(p){return location.pathname+location.search}};
-  document.addEventListener('click',function(e){var t=e.target.closest('[role=tab],[data-go],.side-tab');if(!t||!window.goatcounter||!window.goatcounter.count)return;
-    var n=(t.dataset.tab||t.dataset.go||'about');window.goatcounter.count({path:'prototypes/meridian/tab/'+n+location.search,title:'Tab: '+n,event:true});});
+  document.addEventListener('click',function(e){var t=e.target.closest('[role=tab],[data-go],.side-tab,.replay');if(!t||!window.goatcounter||!window.goatcounter.count)return;
+    var n=(t.dataset.tab||t.dataset.go||(t.classList.contains('replay')?'replay':'about'));window.goatcounter.count({path:'prototypes/meridian/tab/'+n+location.search,title:'Tab: '+n,event:true});});
 </script>
 <script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
