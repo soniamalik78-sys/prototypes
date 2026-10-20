@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MERIDIAN · Sonia Malik</title>
+<meta name="description" content="A proposed operating model for independent technology governance and regulatory program management at State Street. Work sample by Sonia Malik; sample data.">
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --bg:#F4F6F9; --surface:#FFFFFF; --sunk:#E9EEF4; --fg:#14202E; --muted:#4F5D6E; --faint:#7A8696;
+  --line:#D9E0E8; --line-strong:#BAC6D3;
+  --accent:#0B3C6D; --accent-soft:#E3ECF6; --accent-ink:#0A3460; --teal:#0F7B7B;
+  --ok:#22744A; --ok-bg:#E2F2E8; --warn:#8A5A00; --warn-bg:#FBF0D6; --bad:#B0333B; --bad-bg:#F8E2E3;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E141B; --surface:#151D27; --sunk:#1C2633; --fg:#E8EEF5; --muted:#A9B6C5; --faint:#8090A2;
+  --line:#2A3646; --line-strong:#3A4A5E; --accent:#8DB8E6; --accent-soft:#1B2A3C; --accent-ink:#B5D2F1; --teal:#62C3C0;
+  --ok:#6FCB95; --ok-bg:#16301F; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E141B; --surface:#151D27; --sunk:#1C2633; --fg:#E8EEF5; --muted:#A9B6C5; --faint:#8090A2;
+  --line:#2A3646; --line-strong:#3A4A5E; --accent:#8DB8E6; --accent-soft:#1B2A3C; --accent-ink:#B5D2F1; --teal:#62C3C0;
+  --ok:#6FCB95; --ok-bg:#16301F; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:"Public Sans","Segoe UI",Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px 72px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.05;letter-spacing:.01em}
+h2{font-size:clamp(1.4rem,3vw,1.8rem);line-height:1.2;margin-bottom:6px}
+h3{font-size:1.08rem;line-height:1.3}
+p{margin:0 0 10px}
+a{color:var(--accent-ink)}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.label{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+.muted{color:var(--muted)}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+.note{font-size:.8rem;color:var(--faint)}
+/* hero */
+.hero{padding:44px 0 26px;border-bottom:1px solid var(--line);position:relative}
+.hero::after{content:"";position:absolute;right:0;top:26px;width:180px;height:180px;border-radius:50%;
+  background:repeating-linear-gradient(90deg,transparent 0 17px,var(--line) 17px 18px);opacity:.55;pointer-events:none;
+  -webkit-mask-image:radial-gradient(circle,#000 55%,transparent 72%);mask-image:radial-gradient(circle,#000 55%,transparent 72%)}
+.eyebrow{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-bottom:14px}
+.pill{display:inline-flex;gap:6px;align-items:center;font-size:.78rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink)}
+.sub{font-size:1.06rem;color:var(--muted);max-width:68ch;margin-top:10px}
+.tagline{font-family:Georgia,serif;font-style:italic;color:var(--teal);margin-top:6px}
+/* tabs */
+.tabs{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:10px 0 0}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);border-bottom:none;background:var(--surface);color:var(--muted);padding:8px 13px;border-radius:9px 9px 0 0;cursor:pointer;font-size:.9rem;font-weight:600}
+.tab[aria-selected="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+:root[data-theme="dark"] .tab[aria-selected="true"]{color:#0E141B}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tab[aria-selected="true"]{color:#0E141B}}
+.pane{display:none;padding:26px 0 0}
+.pane.on{display:block}
+/* cards */
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.card h3{margin-bottom:4px}
+.stat{font-family:Georgia,serif;font-size:1.65rem;color:var(--accent-ink);line-height:1.1}
+.stat small{display:block;font-family:"Public Sans",Arial,sans-serif;font-size:.84rem;color:var(--muted);margin-top:4px;line-height:1.35}
+.go{display:flex;justify-content:space-between;gap:10px;align-items:center;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;cursor:pointer;color:var(--fg)}
+.go:hover{border-color:var(--accent)}
+.go b{display:block}
+.go span.t{font-size:.85rem;color:var(--muted)}
+.go i{font-style:normal;color:var(--faint);font-size:.82rem;white-space:nowrap}
+.callout{background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:8px;padding:12px 14px;margin:14px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.78rem;padding:2px 9px;border-radius:999px;border:1px solid var(--line-strong);color:var(--muted);background:var(--surface)}
+.rag{display:inline-block;font-size:.74rem;font-weight:700;padding:1px 8px;border-radius:999px}
+.rag.g{background:var(--ok-bg);color:var(--ok)} .rag.a{background:var(--warn-bg);color:var(--warn)} .rag.r{background:var(--bad-bg);color:var(--bad)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:620px}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--sunk);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:none}
+/* stepper */
+.steps{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.step{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:5px 12px;font-size:.84rem;font-weight:600;cursor:pointer}
+.step[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.stepbody{min-height:150px}
+.ctrls{display:flex;gap:8px;margin-top:12px}
+.btn{border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:999px;padding:7px 15px;font-weight:600;cursor:pointer;font-size:.88rem}
+.btn.ghost{background:transparent;color:var(--accent-ink)}
+/* dependency map */
+.dep{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+.node{text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:var(--r);padding:12px;cursor:pointer;color:var(--fg)}
+.node .wk{font-size:.8rem;color:var(--muted)}
+.node.sel{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.node.up{border-color:var(--teal)}
+.node.down{border-color:var(--warn)}
+.node.risk{background:var(--warn-bg)}
+.node.late{background:var(--bad-bg)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.8rem;color:var(--muted);margin:10px 0}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;border:2px solid var(--c)}
+/* audience switch */
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
+.seg button{border:1px solid var(--line-strong);background:var(--surface);color:var(--fg);border-radius:8px;padding:6px 12px;cursor:pointer;font-weight:600;font-size:.86rem}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px}
+.kpi b{display:block;font-size:1.35rem;font-family:Georgia,serif;color:var(--accent-ink)}
+.kpi span{font-size:.8rem;color:var(--muted)}
+.bar{height:10px;border-radius:6px;background:var(--sunk);overflow:hidden;margin-top:6px}
+.bar>i{display:block;height:100%;background:var(--teal)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+/* watermark + side tab + drawer */
+.watermark{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='240'><text x='10' y='150' transform='rotate(-22 210 120)' font-family='Arial' font-size='15' fill='%2314202E'>© 2026 Sonia Malik · work sample · sample data</text></svg>");background-repeat:repeat}
+.side-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:70;display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--accent);color:#fff;border:none;border-radius:12px 0 0 12px;padding:10px 7px 14px;cursor:pointer;box-shadow:-4px 6px 18px rgba(11,60,109,.25)}
+.side-tab .av{width:30px;height:30px;border-radius:50%;background:#fff;color:#0B3C6D;display:grid;place-items:center;font-weight:700;font-size:.74rem}
+.side-tab .st{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.8rem;font-weight:700;white-space:nowrap}
+@media(max-width:1180px){.wrap{padding-right:58px}}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(380px,92vw);background:var(--surface);border-left:1px solid var(--line);box-shadow:-12px 0 30px rgba(0,0,0,.18);padding:22px;overflow:auto}
+.drawer[hidden]{display:none}
+.drawer .x{position:absolute;top:8px;right:12px;background:none;border:none;font-size:1.6rem;color:var(--faint);cursor:pointer}
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);font-size:.8rem;color:var(--faint)}
+@media(max-width:560px){body{font-size:15px}.wrap{padding:0 16px 64px}.wrap{padding-right:50px}.hero::after{display:none}}
+</style>
+</head>
+<body>
+<div class="watermark" aria-hidden="true"></div>
+<button class="side-tab" id="sideTab" aria-controls="drawer" aria-expanded="false"><span class="av">SM</span><span class="st">About me · Let's talk</span></button>
+<aside class="drawer" id="drawer" hidden aria-label="About Sonia Malik">
+  <button class="x" id="drawerX" aria-label="Close">&times;</button>
+  <p class="label">Sonia Malik</p>
+  <h3>Technology transformation and governance leader, regulated financial services</h3>
+  <p class="muted" style="margin-top:8px">I run large, multi-site technology programs with the governance built in: decision rights, evidence, and reporting that risk partners and executives can rely on.</p>
+  <div class="chips" style="margin:10px 0">
+    <span class="chip">350+ people · $70M+ budget</span><span class="chip">3 days → same day regulated sign-off</span><span class="chip">US · UK · Canada · India · Israel · Europe</span><span class="chip">S&amp;P Global · Prudential · Audible (Amazon) · DoubleVerify</span>
+  </div>
+  <p style="margin-top:12px"><b>Email</b> <span class="mono">sonia.malik78@gmail.com</span><br><b>Phone</b> <span class="mono">732-629-1034</span><br><b>LinkedIn</b> <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">sonia-malik-b059705</a></p>
+</aside>
+
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow"><span class="pill">Work sample · Sonia Malik</span><span class="label">Prepared for State Street · Head of Technology Governance &amp; Program Management, SVP</span></div>
+  <h1>MERIDIAN</h1>
+  <p class="tagline">One line of sight across every regulatory and risk commitment.</p>
+  <p class="sub">A proposed operating model for independent program governance: every finding owned, every dependency visible, every commitment evidenced and reported the same way to CIO leadership, committees and regulators.</p>
+  <p class="note" style="margin-top:8px">Based on the public job posting only. All programs, findings and figures in the interactive tabs are sample data.</p>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button class="tab" role="tab" data-tab="overview" aria-selected="true">Overview</button>
+  <button class="tab" role="tab" data-tab="trace">Finding to closure</button>
+  <button class="tab" role="tab" data-tab="deps">Dependency map</button>
+  <button class="tab" role="tab" data-tab="report">Reporting pack</button>
+  <button class="tab" role="tab" data-tab="model">Operating model</button>
+  <button class="tab" role="tab" data-tab="resource">Resourcing</button>
+  <button class="tab" role="tab" data-tab="plan">First 90 days</button>
+  <button class="tab" role="tab" data-tab="why">Why me</button>
+  <button class="tab" role="tab" data-tab="meet">When we meet</button>
+</nav>
+
+<!-- OVERVIEW -->
+<section class="pane on" id="overview" role="tabpanel">
+  <h2>The idea in three lines</h2>
+  <div class="grid" style="margin-top:10px">
+    <div class="card"><p class="label">1 · One register</p><h3>Every commitment, one owner, one date</h3><p class="muted">Findings, regulatory commitments and remediation milestones live in a single register, each with an accountable owner, success criteria and the evidence needed to close it.</p></div>
+    <div class="card"><p class="label">2 · Dependencies first</p><h3>No surprises on the critical path</h3><p class="muted">Programs are mapped by what they depend on, so a slip in one shows up as a risk to the others weeks before a milestone is missed, not after.</p></div>
+    <div class="card"><p class="label">3 · Independent reporting</p><h3>Same facts, every audience</h3><p class="muted">One evidence-backed data set feeds CIO leadership, the committees and regulator updates, in the format the CAO office sets, so no two reports disagree.</p></div>
+  </div>
+  <div class="callout"><b>What success looks like in year one:</b> every commitment on track or escalated with a recovery plan, closures accepted by second and third line on first submission, and committee packs produced from one source in days, not weeks.</div>
+  <h2 style="margin-top:22px">From my own work</h2>
+  <div class="grid" style="margin-top:10px">
+    <div class="card stat">3 days → same day<small>regulated sign-off, with evidence-backed human approval, as chair of S&amp;P Global's AI Governance Committee</small></div>
+    <div class="card stat">350+ · $70M+<small>people and technology budget led across two business units at S&amp;P Global</small></div>
+    <div class="card stat">7 countries<small>teams across the US, UK, Canada, India, Israel, France and Ireland; role changes run with HR under four countries' labor law</small></div>
+    <div class="card stat">150+ engineers<small>regulated Retirement revamp at Prudential; UAT run across 5 business units</small></div>
+  </div>
+  <h2 style="margin-top:22px">Where to go next</h2>
+  <div style="display:grid;gap:8px;margin-top:10px">
+    <button class="go" data-go="trace"><div><b>Finding to closure</b><span class="t">Follow one sample finding from intake to independent validation</span></div><i>2 min →</i></button>
+    <button class="go" data-go="deps"><div><b>Dependency map</b><span class="t">Click a program, then simulate a slip and watch the impact</span></div><i>2 min →</i></button>
+    <button class="go" data-go="report"><div><b>Reporting pack</b><span class="t">One data set, switched between leadership, committee and regulator views</span></div><i>1 min →</i></button>
+    <button class="go" data-go="plan"><div><b>First 90 days</b><span class="t">How I would stand this up</span></div><i>1 min →</i></button>
+  </div>
+</section>
+
+<!-- TRACE -->
+<section class="pane" id="trace" role="tabpanel">
+  <h2>Finding to closure</h2>
+  <p class="muted">A sample finding, followed through seven steps. Each step leaves evidence, so closure is a fact, not an opinion.</p>
+  <div class="callout"><span class="label">Sample finding</span><br><b>Privileged access reviews are not evidenced for three critical applications.</b> Raised by internal audit; regulator interest likely. Committed remediation date: end of quarter 3 (sample).</div>
+  <div class="steps" id="steps"></div>
+  <div class="card stepbody" id="stepBody" aria-live="polite"></div>
+  <div class="ctrls"><button class="btn ghost" id="prevStep">← Back</button><button class="btn" id="nextStep">Next step →</button></div>
+</section>
+
+<!-- DEPENDENCIES -->
+<section class="pane" id="deps" role="tabpanel">
+  <h2>Dependency map</h2>
+  <p class="muted">Six sample remediation programs. Select one to see what it depends on and what depends on it. Then simulate a four-week slip.</p>
+  <div class="legend"><span style="--c:var(--accent)">Selected</span><span style="--c:var(--teal)">It depends on</span><span style="--c:var(--warn)">Depends on it</span></div>
+  <div class="dep" id="depGrid"></div>
+  <div class="ctrls" style="flex-wrap:wrap"><button class="btn" id="slipBtn">Simulate 4-week slip on selected</button><button class="btn ghost" id="resetBtn">Reset</button></div>
+  <div class="card" id="depOut" style="margin-top:12px" aria-live="polite"><span class="muted">Select a program to begin.</span></div>
+</section>
+
+<!-- REPORT -->
+<section class="pane" id="report" role="tabpanel">
+  <h2>Reporting pack</h2>
+  <p class="muted">The same sample portfolio, shown the way each audience needs it. Committee names are taken from the job posting; formats would follow the CAO office's standards.</p>
+  <div class="seg" id="aud"></div>
+  <div class="kpis" id="audKpis"></div>
+  <div class="card" id="audBody" aria-live="polite"></div>
+</section>
+
+<!-- OPERATING MODEL -->
+<section class="pane" id="model" role="tabpanel">
+  <h2>Operating model</h2>
+  <p class="muted">Who does what, how often, and when an issue moves up. Thresholds are a starting proposal to agree with CIO leadership and second line.</p>
+  <h3 style="margin:14px 0 8px">Roles</h3>
+  <div class="tbl"><table>
+    <tr><th>Who</th><th>Accountable for</th><th>Rhythm</th></tr>
+    <tr><td><b>Remediation owner</b> (first line)</td><td>Fixing the gap, producing the evidence, hitting the milestone</td><td>Weekly update to the register</td></tr>
+    <tr><td><b>Program managers</b> across GTS</td><td>Plans, dependencies and risks for their program, using one standard</td><td>Weekly working session</td></tr>
+    <tr><td><b>Governance &amp; PM office</b> (this team)</td><td>Independent view: dependency map, critical path, quality of evidence, reporting</td><td>Weekly portfolio review; monthly committee pack</td></tr>
+    <tr><td><b>Second line</b> (risk, compliance)</td><td>Challenge, and validation that closure evidence meets the finding</td><td>Before every closure; monthly</td></tr>
+    <tr><td><b>Third line</b> (internal audit)</td><td>Independent re-testing of closed items on a sample basis</td><td>Per audit plan</td></tr>
+    <tr><td><b>Country leaders</b></td><td>Local regulatory commitments and timing across jurisdictions</td><td>Monthly; ad hoc on local deadlines</td></tr>
+    <tr><td><b>Third parties</b> and consultants</td><td>Delivery against named milestones, on the same register and standard</td><td>Weekly; quarterly scorecard</td></tr>
+  </table></div>
+  <h3 style="margin:18px 0 8px">Escalation rules (proposal)</h3>
+  <div class="tbl"><table>
+    <tr><th>Trigger</th><th>Goes to</th><th>Within</th></tr>
+    <tr><td>Milestone forecast to slip up to 2 weeks, no regulatory date at risk</td><td>Program steering</td><td>5 business days</td></tr>
+    <tr><td>Slip over 2 weeks, or a dependency blocks another program</td><td>CIO leadership team, with a recovery plan</td><td>48 hours</td></tr>
+    <tr><td>Any regulatory or committee commitment at risk</td><td>Head of GTS Transformation, Risk &amp; Governance, and second line</td><td>24 hours</td></tr>
+    <tr><td>Closure evidence rejected twice</td><td>Owner's executive, with a root-cause note</td><td>Next weekly review</td></tr>
+  </table></div>
+</section>
+
+<!-- RESOURCING -->
+<section class="pane" id="resource" role="tabpanel">
+  <h2>Resourcing the commitments</h2>
+  <p class="muted">Sample: the work committed this quarter, against the people available. Move the slider to add consulting capacity and see coverage change. The point: capacity gaps are visible before they become missed dates.</p>
+  <div class="card" style="margin-top:12px">
+    <p class="label">Committed work this quarter (sample)</p>
+    <p class="mono" style="margin:0">1,800 person-days</p>
+    <p class="label" style="margin-top:12px">Full-time staff available</p>
+    <p class="mono" style="margin:0">1,320 person-days</p>
+    <p class="label" style="margin-top:12px"><label for="cons">Consultants added: <span id="consN" class="mono">4</span></label></p>
+    <input type="range" id="cons" min="0" max="12" value="4" aria-describedby="covText">
+    <div class="bar" aria-hidden="true"><i id="covBar"></i></div>
+    <p id="covText" style="margin-top:8px" aria-live="polite"></p>
+  </div>
+  <div class="callout">Third parties are managed on the same register and evidence standard as internal teams, with a quarterly scorecard on milestone delivery and evidence quality.</div>
+</section>
+
+<!-- PLAN -->
+<section class="pane" id="plan" role="tabpanel">
+  <h2>First 90 days</h2>
+  <div class="tbl" style="margin-top:10px"><table>
+    <tr><th style="width:18%">Days</th><th>What I would do</th><th style="width:30%">What you would see</th></tr>
+    <tr><td><b>0–30</b><br>Listen and inventory</td><td>Meet CIO leadership, second and third line, country leaders and program managers. Pull every open finding, regulatory commitment and remediation milestone into one register with owners and dates.</td><td>One register, and a first honest view of what is at risk</td></tr>
+    <tr><td><b>31–60</b><br>Map and standardize</td><td>Build the dependency map and critical path across programs. Agree evidence standards with second line, escalation rules with CIO leadership, and the reporting format with the CAO office.</td><td>Critical path and escalation rules agreed; reporting pack v1</td></tr>
+    <tr><td><b>61–90</b><br>Run the cycle</td><td>Run the first full committee cycle from the register. Start third-party scorecards. Track closure acceptance by second line and the trend in at-risk items.</td><td>First committee pack from one source; closure quality trending up</td></tr>
+  </table></div>
+</section>
+
+<!-- WHY ME -->
+<section class="pane" id="why" role="tabpanel">
+  <h2>Why me</h2>
+  <div class="grid" style="margin-top:10px">
+    <div class="card"><h3>Governance that speeds delivery</h3><p class="muted">At S&amp;P Global I chaired the AI Governance Committee, setting decision rights, standards and review cadence that the CISO, compliance and audit relied on. Evidence-backed human approval moved regulated sign-off from 3 days to same day.</p></div>
+    <div class="card"><h3>Large programs across businesses</h3><p class="muted">I led a 350+ person organization and a $70M+ budget across two business units, presented the multi-year strategy to executive leadership, and reported progress on an executive scorecard adopted by Technology and Finance.</p></div>
+    <div class="card"><h3>Cross-border teams and third parties</h3><p class="muted">Teams in the US, UK, Canada, India, Israel, France and Ireland; 100+ contractors at DoubleVerify; two offshore centers at Audible (Amazon). I ran role changes with HR under UK, Canada, US and India labor law.</p></div>
+    <div class="card"><h3>Regulated financial services</h3><p class="muted">At Prudential I revamped a 150+ engineer regulated Retirement organization and ran UAT across 5 business units. At S&amp;P Global, privacy, security and regulatory requirements became defaults in the delivery path.</p></div>
+  </div>
+  <div class="callout"><b>Where I would be learning:</b> I haven't been the accountable lead on a regulator-facing remediation program such as an MRIA response. I have run the governance that risk, compliance and audit relied on, and I would lean on second line and the CAO office early to learn State Street's standards.</div>
+</section>
+
+<!-- MEET -->
+<section class="pane" id="meet" role="tabpanel">
+  <h2>When we meet</h2>
+  <p>Thirty minutes. Bring one live program, and I will walk you through how I would map its dependencies, set its evidence standard and report it, so you can judge the approach on your own material.</p>
+  <div class="card" style="margin-top:12px"><p style="margin:0"><b>Sonia Malik</b><br>sonia.malik78@gmail.com · 732-629-1034<br><a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">linkedin.com/in/sonia-malik-b059705</a></p></div>
+</section>
+
+<div class="foot">© 2026 Sonia Malik. Work sample based on the public job posting only; it reflects no confidential knowledge of State Street and is not affiliated with or endorsed by State Street. All interactive data is illustrative.</div>
+</div>
+
+<script>
+(function(){
+  // tabs
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function show(id,push){
+    tabs.forEach(function(t){t.setAttribute('aria-selected',t.dataset.tab===id?'true':'false')});
+    [].forEach.call(document.querySelectorAll('.pane'),function(p){p.classList.toggle('on',p.id===id)});
+    if(push){try{history.replaceState(null,'',location.pathname+location.search+'#'+id)}catch(e){}}
+    var nav=document.querySelector('.tabs'); if(window.scrollY>nav.offsetTop) window.scrollTo({top:nav.offsetTop,behavior:'smooth'});
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab,true)})});
+  [].forEach.call(document.querySelectorAll('[data-go]'),function(b){b.addEventListener('click',function(){show(b.dataset.go,true)})});
+  var h=(location.hash||'').slice(1); if(h&&document.getElementById(h)) show(h,false);
+
+  // stepper
+  var S=[
+    ['Intake','The finding enters the register the day it is raised: a single ID, the source (internal audit), severity, the regulatory relevance and a named first-line owner. Nothing lives only in an email or a slide.'],
+    ['Root cause','The owner and the program manager agree the root cause, not just the symptom: here, review evidence is produced by hand in three different tools, so it is inconsistent and hard to retrieve.'],
+    ['Plan','A remediation plan with milestones, success criteria and the exact evidence that will prove closure: quarterly reviews completed in one tool, with reviewer sign-off and exceptions resolved.'],
+    ['Dependencies','The plan is checked against the dependency map. It needs the identity-platform upgrade in another program to land first, so that milestone is linked and watched on the critical path.'],
+    ['Delivery','Weekly progress against milestones. When the upgrade forecast slips two weeks, the rule triggers an escalation to the CIO leadership team with a recovery option, before the committed date is at risk.'],
+    ['Evidence & validation','The owner submits the evidence pack. Second line checks it against the original finding before closure is accepted; internal audit may later re-test a sample.'],
+    ['Closure & reporting','Closure is recorded with its evidence and appears in the next committee pack and any regulator update, from the same register, so every report tells the same story.']
+  ];
+  var cur=0, sw=document.getElementById('steps'), sb=document.getElementById('stepBody');
+  S.forEach(function(s,i){var b=document.createElement('button');b.className='step';b.textContent=(i+1)+' · '+s[0];b.addEventListener('click',function(){go(i)});sw.appendChild(b)});
+  function go(i){cur=Math.max(0,Math.min(S.length-1,i));[].forEach.call(sw.children,function(b,j){b.setAttribute('aria-pressed',j===cur?'true':'false')});
+    sb.innerHTML='<p class="label">Step '+(cur+1)+' of '+S.length+'</p><h3>'+S[cur][0]+'</h3><p class="muted" style="margin-top:6px">'+S[cur][1]+'</p>';
+    document.getElementById('nextStep').textContent=cur===S.length-1?'Start again ↺':'Next step →';}
+  document.getElementById('nextStep').addEventListener('click',function(){go(cur===S.length-1?0:cur+1)});
+  document.getElementById('prevStep').addEventListener('click',function(){go(cur-1)});
+  go(0);
+
+  // dependency map
+  var P=[
+    {id:'A',n:'Identity platform upgrade',w:10,dep:[],st:'g'},
+    {id:'B',n:'Privileged access remediation',w:14,dep:['A'],st:'g'},
+    {id:'C',n:'Data lineage for regulatory reports',w:18,dep:[],st:'a'},
+    {id:'D',n:'Third-party risk controls',w:18,dep:['B'],st:'g'},
+    {id:'E',n:'Regulatory reporting controls',w:24,dep:['C','B'],st:'g'},
+    {id:'F',n:'Resilience & recovery testing',w:22,dep:['D'],st:'g'}
+  ];
+  var DUE={A:12,B:16,C:20,D:20,E:26,F:24}; // committed weeks (sample)
+  var sel=null, slip={};
+  var grid=document.getElementById('depGrid'), out=document.getElementById('depOut');
+  function byId(i){return P.filter(function(p){return p.id===i})[0]}
+  function ups(id,acc){acc=acc||[];byId(id).dep.forEach(function(d){if(acc.indexOf(d)<0){acc.push(d);ups(d,acc)}});return acc}
+  function downs(id,acc){acc=acc||[];P.forEach(function(p){if(p.dep.indexOf(id)>=0&&acc.indexOf(p.id)<0){acc.push(p.id);downs(p.id,acc)}});return acc}
+  function fc(p){var add=slip[p.id]||0; p.dep.forEach(function(d){var dp=byId(d); var lag=Math.max(0,fc(dp)+4-p.w); add=Math.max(add,lag)}); return p.w+add}
+  function render(){
+    grid.innerHTML='';
+    var U=sel?ups(sel):[], D=sel?downs(sel):[];
+    P.forEach(function(p){
+      var f=fc(p), due=DUE[p.id], st=f>due?'r':(f>p.w?'a':p.st);
+      var b=document.createElement('button'); b.className='node'+(p.id===sel?' sel':'')+(U.indexOf(p.id)>=0?' up':'')+(D.indexOf(p.id)>=0?' down':'')+(st==='r'?' late':st==='a'&&f>p.w?' risk':'');
+      b.setAttribute('aria-pressed',p.id===sel?'true':'false');
+      b.innerHTML='<b>'+p.id+' · '+p.n+'</b><div class="wk">Forecast week <span class="mono">'+f+'</span> · committed week <span class="mono">'+due+'</span></div><div style="margin-top:6px"><span class="rag '+st+'">'+(st==='g'?'On track':st==='a'?'At risk':'Will miss date')+'</span></div>'+(p.dep.length?'<div class="note" style="margin-top:4px">Needs '+p.dep.join(', ')+'</div>':'');
+      b.addEventListener('click',function(){sel=p.id;render()});
+      grid.appendChild(b);
+    });
+    if(!sel){out.innerHTML='<span class="muted">Select a program to begin.</span>';return}
+    var s=byId(sel), late=P.filter(function(p){return fc(p)>DUE[p.id]}).map(function(p){return p.id+' '+p.n});
+    out.innerHTML='<p style="margin:0"><b>'+s.id+' · '+s.n+'</b></p><p class="muted" style="margin:4px 0 0">Depends on: '+(U.length?U.join(', '):'nothing')+' · Depended on by: '+(D.length?D.join(', '):'nothing')+'</p>'+
+      (late.length?'<p style="margin:8px 0 0"><span class="rag r">Escalate</span> Committed dates now at risk: '+late.join('; ')+'. Under the escalation rules this reaches the CIO leadership team within 48 hours with a recovery plan, and second line within 24 hours if a regulatory date is involved.</p>':'<p style="margin:8px 0 0"><span class="rag g">No committed date at risk</span> '+(Object.keys(slip).length?'The slip is absorbed by slack in the plan.':'Try simulating a slip.')+'</p>');
+  }
+  document.getElementById('slipBtn').addEventListener('click',function(){if(!sel){out.innerHTML='<span class="muted">Select a program first.</span>';return} slip[sel]=(slip[sel]||0)+4; render()});
+  document.getElementById('resetBtn').addEventListener('click',function(){slip={};sel=null;render()});
+  render();
+
+  // reporting pack
+  var A={
+    'CIO leadership':{k:[['42','open commitments'],['35','on track'],['5','at risk'],['2','will miss without action']],b:'<p><b>Focus:</b> decisions needed this week. Two dependency conflicts need a call: the identity upgrade (A) is gating privileged access (B), and lineage work (C) is short of data engineers.</p><p class="muted">Format: one page, critical path first, then decisions requested with owners and dates.</p>'},
+    'CRC':{k:[['42','commitments'],['88%','closures accepted first time'],['3','overdue'],['−4','net at-risk vs last month']],b:'<p><b>Focus:</b> risk position and trend. Closure quality, overdue items with recovery dates, and any finding whose risk rating changed.</p><p class="muted">Format per CAO standard; numbers from the same register as every other view.</p>'},
+    'TRC':{k:[['6','programs'],['2','dependency conflicts'],['1','critical path change'],['4','third parties on watch']],b:'<p><b>Focus:</b> technology risk delivery. Program-level status, dependency conflicts and third-party performance against milestones.</p>'},
+    'TORC':{k:[['3','jurisdictions with dates this quarter'],['1','date at risk'],['12','closures due'],['100%','with evidence plan']],b:'<p><b>Focus:</b> operational and regional commitments. Country-level dates, local regulator expectations and how each maps to the global programs.</p>'},
+    'Regulator update':{k:[['18','commitments in scope'],['16','on schedule'],['2','with agreed revised dates'],['0','surprises']],b:'<p><b>Focus:</b> commitments made, progress against them, and validated closures, stated plainly. Any change in date is explained with its cause and the recovery plan, agreed with second line before it goes out.</p>'}
+  };
+  var seg=document.getElementById('aud'), kp=document.getElementById('audKpis'), ab=document.getElementById('audBody');
+  Object.keys(A).forEach(function(k,i){var b=document.createElement('button');b.textContent=k;b.addEventListener('click',function(){pick(k)});seg.appendChild(b)});
+  function pick(k){[].forEach.call(seg.children,function(b){b.setAttribute('aria-pressed',b.textContent===k?'true':'false')});
+    kp.innerHTML=A[k].k.map(function(x){return '<div class="kpi"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>'}).join('');
+    ab.innerHTML='<p class="label">'+k+' view · sample data</p>'+A[k].b;}
+  pick('CIO leadership');
+
+  // resourcing
+  var r=document.getElementById('cons');
+  function cov(){var c=+r.value, avail=1320+c*60, pct=Math.min(100,Math.round(avail/1800*100));
+    document.getElementById('consN').textContent=c; document.getElementById('covBar').style.width=pct+'%';
+    document.getElementById('covText').innerHTML='Coverage <b>'+pct+'%</b> of committed work ('+avail.toLocaleString()+' of 1,800 person-days). '+(pct>=100?'<span class="rag g">Covered</span> Commitments resourced; review the cost and the handover plan for consultants.':'<span class="rag '+(pct>=90?'a':'r')+'">Gap of '+(1800-avail).toLocaleString()+' person-days</span> Either add capacity, re-sequence lower-risk work, or agree revised dates through the escalation rules.');}
+  r.addEventListener('input',cov); cov();
+
+  // drawer
+  var dr=document.getElementById('drawer'), st=document.getElementById('sideTab');
+  st.addEventListener('click',function(){var o=dr.hidden; dr.hidden=!o; st.setAttribute('aria-expanded',o?'true':'false'); if(o) document.getElementById('drawerX').focus();});
+  document.getElementById('drawerX').addEventListener('click',function(){dr.hidden=true;st.setAttribute('aria-expanded','false');st.focus()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!dr.hidden){dr.hidden=true;st.setAttribute('aria-expanded','false')}});
+})();
+</script>
+<script>
+  // GoatCounter: count page + tab clicks, carry ?src=
+  window.goatcounter={path:function(p){return location.pathname+location.search}};
+  document.addEventListener('click',function(e){var t=e.target.closest('[role=tab],[data-go],.side-tab');if(!t||!window.goatcounter||!window.goatcounter.count)return;
+    var n=(t.dataset.tab||t.dataset.go||'about');window.goatcounter.count({path:'prototypes/meridian/tab/'+n+location.search,title:'Tab: '+n,event:true});});
+</script>
+<script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
