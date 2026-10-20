@@ -166,9 +166,9 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   <p class="sub"><b>Why "MERIDIAN":</b> a meridian is the fixed reference line navigators measure every position against. Here it is one register that every program, finding and commitment is measured against, so everyone works from the same facts.</p>
   <p class="sub">A proposed operating model for independent program governance: every finding owned, every dependency visible, every commitment evidenced and reported the same way to CIO leadership, committees and regulators.</p>
   <p class="note" style="margin-top:8px">Based on the public job posting only. All programs, findings and figures in the interactive tabs are sample data.</p>
-  <div class="chips" style="margin-top:14px"><span class="chip">Watch: a vendor slip caught and decided in one morning →</span></div>
+  <div style="margin-top:14px"><button type="button" class="replay" id="watch">▶ Watch: a vendor slip caught and decided in one morning</button></div>
 </div>
-<div class="demo" aria-label="Sample: one morning in the portfolio console">
+<div class="demo" id="demo" aria-label="Sample: one morning in the portfolio console">
   <div class="demo-h"><b>Portfolio console · Week 9</b><span>Sample · illustrative</span></div>
   <div class="feed" id="feed" aria-live="polite"></div>
   <div class="demo-f">
@@ -433,6 +433,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
     });
   }
   document.getElementById('replay').addEventListener('click',play);
+  document.getElementById('watch').addEventListener('click',function(){var d=document.getElementById('demo');var r=d.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight){d.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}play();});
   play();
 
   // drawer
