@@ -12,12 +12,12 @@
 <style>
 /* Layout: single reading column (max 1040px), grid-textured hero, tabbed panes; readiness review is a 4-step stepper; tables scroll inside their own box. */
 :root{
-  --bg:#F2F5F5; --surface:#FFFFFF; --sunk:#E6ECEC; --fg:#162022; --muted:#55615F; --faint:#7A8684;
+  --bg:#F3F5F9; --surface:#FFFFFF; --sunk:#E6ECF4; --fg:#333333; --muted:#55615F; --faint:#7A8684;
   --line:#D5DEDD; --line-strong:#B8C6C4;
-  --accent:#14656B; --accent-soft:#E0EEEE; --accent-ink:#0F4F54;
-  --vine:#6A4F8A;
-  --ok:#2E7D4F; --ok-bg:#E3F2E8; --warn:#8F5E00; --warn-bg:#FBF0D9; --bad:#B3373F; --bad-bg:#F9E3E4;
-  --lattice:rgba(20,101,107,0.10);
+  --accent:#1F3A5F; --accent-soft:#E6ECF4; --accent-ink:#333333;
+  --vine:#5A6B7D;
+  --ok:#2E7D4F; --ok-bg:#E3F2E8; --warn:#8F5E00; --warn-bg:#FBF0D9; --bad:#B26A00; --bad-bg:#FDF1DD;
+  --lattice:rgba(31,58,95,0.08);
   --f-display:"Fraunces", Georgia, "Times New Roman", serif;
   --f-body:"Public Sans", "Segoe UI", Arial, sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
@@ -26,14 +26,14 @@
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --bg:#101718; --surface:#172022; --sunk:#1F2A2C; --fg:#E4ECEB; --muted:#A5B3B1; --faint:#7F8E8C;
   --line:#2B3638; --line-strong:#3F4D4F;
-  --accent:#6FC7CB; --accent-soft:#163538; --accent-ink:#9DDCDF; --vine:#B9A2D8;
-  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F;
+  --accent:#8FB0D9; --accent-soft:#1B2A3D; --accent-ink:#C9D6E6; --vine:#9AA9B8;
+  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#F7B24E; --bad-bg:#3A2C12;
   --lattice:rgba(111,199,203,0.09); color-scheme:dark; } }
 :root[data-theme="dark"]{
   --bg:#101718; --surface:#172022; --sunk:#1F2A2C; --fg:#E4ECEB; --muted:#A5B3B1; --faint:#7F8E8C;
   --line:#2B3638; --line-strong:#3F4D4F;
-  --accent:#6FC7CB; --accent-soft:#163538; --accent-ink:#9DDCDF; --vine:#B9A2D8;
-  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F;
+  --accent:#8FB0D9; --accent-soft:#1B2A3D; --accent-ink:#C9D6E6; --vine:#9AA9B8;
+  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#F7B24E; --bad-bg:#3A2C12;
   --lattice:rgba(111,199,203,0.09); color-scheme:dark; }
 
 *{box-sizing:border-box}
@@ -324,7 +324,7 @@ footer b{color:var(--fg)}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:0 0 auto; background:none; border:none; border-bottom:3px solid transparent; padding:14px 14px 11px; font-size:.9rem; font-weight:600; color:var(--muted); cursor:pointer; white-space:nowrap}
 .tab:hover{color:var(--fg)}
-.tab[aria-selected="true"]{color:var(--fg); border-bottom-color:var(--accent)}
+.tab[aria-selected="true"]{color:var(--fg); border-bottom-color:#F79E1B}
 .tab .lock{font-size:.7rem; margin-left:4px; color:var(--faint)}
 .pane{padding-block:36px 8px}
 .pane[hidden]{display:none!important}
