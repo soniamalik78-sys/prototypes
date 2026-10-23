@@ -519,6 +519,33 @@ td.num{font-variant-numeric:tabular-nums}
 /* RUNWAY layout tweaks */
 .thesis{max-width:none}
 .tab{padding:14px 11px 11px; font-size:.88rem}
+
+/* A day on the runway: self-playing console */
+.persona{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:4px solid #F79E1B;border-radius:12px;padding:12px 14px;margin:14px 0}
+.persona .pav{flex:0 0 40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.persona p{margin:0;font-size:.9rem}.persona small{display:block;color:var(--muted);font-size:.76rem}
+.dq{display:grid;grid-template-columns:1fr;gap:6px;margin:10px 0}
+.dq div{display:flex;justify-content:space-between;gap:10px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:.85rem}
+.dq div.pick{border-color:var(--accent);background:var(--accent-soft);font-weight:600}
+.dq em{font-style:normal;color:var(--muted);font-size:.76rem}
+.rwdemo{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 40px rgba(31,58,95,.12);overflow:hidden;margin-top:14px}
+.rwdemo-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;background:var(--accent);color:#fff}
+.rwdemo-h b{font-size:.92rem}.rwdemo-h span{font-size:.76rem;opacity:.85}
+:root[data-theme="dark"] .rwdemo-h{color:#0E141B}
+.rwfeed{padding:12px 14px;min-height:420px;display:flex;flex-direction:column;gap:8px}
+.rwev{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:start;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.rwev.in{opacity:1;transform:none}
+.rwev time{font-family:var(--f-mono,ui-monospace,monospace);font-size:.76rem;color:var(--faint);padding-top:3px}
+.rwev .bub{border-radius:10px;padding:8px 10px;font-size:.86rem;line-height:1.4;border:1px solid var(--line);background:var(--sunk)}
+.rwev.sys .bub{background:var(--accent-soft);border-color:transparent}
+.rwev.hum .bub{background:var(--surface);border-left:3px solid #F79E1B}
+.rwev.ok .bub{background:var(--ok-bg);border-color:transparent}
+.rwev .who{display:block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-bottom:2px}
+.rwev .pl{display:inline-block;font-size:.66rem;font-weight:700;border:1px solid var(--line-strong);border-radius:999px;padding:0 6px;margin-left:6px;color:var(--muted);text-transform:none;letter-spacing:0}
+.rwdemo-f{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--line);flex-wrap:wrap}
+.rwclock{display:flex;gap:18px}.rwclock b{display:block;font-family:var(--f-mono,monospace);font-size:1.2rem;color:var(--accent);line-height:1}.rwclock span{font-size:.72rem;color:var(--muted)}
+.rwbtn{border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:6px 14px;font-weight:600;font-size:.84rem;cursor:pointer}
+.rwbtn.solid{background:var(--accent);color:#fff}
 </style>
 </head>
 <body>
@@ -538,6 +565,7 @@ td.num{font-variant-numeric:tabular-nums}
   <div class="tabbar">
     <div class="tabs" role="tablist" aria-label="RUNWAY sections" id="tabs">
       <button class="tab" role="tab" id="t-overview" aria-controls="overview" data-tab="overview">Overview</button>
+      <button class="tab" role="tab" id="t-day" aria-controls="day" data-tab="day">A day on the runway</button>
       <button class="tab" role="tab" id="t-types" aria-controls="types" data-tab="types">Capabilities</button>
       <button class="tab" role="tab" id="t-desk" aria-controls="desk" data-tab="desk">Tool governance</button>
       <button class="tab" role="tab" id="t-ops" aria-controls="ops" data-tab="ops">Developer journey</button>
@@ -568,6 +596,7 @@ td.num{font-variant-numeric:tabular-nums}
 
     <div class="sec-head" style="margin-top:36px"><span class="label">Where to go next</span></div>
     <div class="jump">
+      <button type="button" data-go="day"><b>A day on the runway</b><span>Watch one ticket go from a developer&rsquo;s work queue to production</span><i>2 min →</i></button>
       <button type="button" data-go="types"><b>Workbench capabilities</b><span>Four capabilities that make one developer journey</span><i>2 min →</i></button>
       <button type="button" data-go="desk"><b>Tool governance review</b><span>Take a sample tool request through five governance checks</span><i>3 min →</i></button>
       <button type="button" data-go="ops">
@@ -576,6 +605,33 @@ td.num{font-variant-numeric:tabular-nums}
       <button type="button" data-go="dash"><b>Workbench scorecard</b><span>First commit, AI adoption, satisfaction and tools retired, every month</span><i>1 min →</i></button>
       <button type="button" data-go="why"><b>Why me</b><span>What S&amp;P Global, DoubleVerify, Audible and Prudential taught me</span><i>2 min →</i></button>
     </div>
+  </section>
+
+
+  <!-- A DAY ON THE RUNWAY -->
+  <section class="pane" id="day" role="tabpanel" aria-labelledby="t-day" hidden>
+    <div class="sec-head">
+      <span class="label">End to end, one work item</span>
+      <h2>A day on the runway: one ticket from Priya&rsquo;s work queue to production</h2>
+      <p class="lede">Follow a single change through all five planes of the Workbench: work queue, golden path, governed AI assistance, quality and security gates, preview environment, policy-as-code release, production and the insights that feed back. The developer is the customer.</p>
+    </div>
+    <div class="persona"><span class="pav" aria-hidden="true">P</span><p><b>Priya, payments API engineer</b> <small>Illustrative persona, not a real person. All tickets, timings and metrics in this demo are sample data.</small></p></div>
+    <p class="hint" style="margin:0">Priya&rsquo;s work queue this morning (sample)</p>
+    <div class="dq" aria-label="Sample work queue">
+      <div class="pick"><span>PAY-482 · Add idempotency keys to the refunds API</span><em>picked · priority 1</em></div>
+      <div><span>PAY-479 · Retire deprecated currency-format helper</span><em>queued</em></div>
+      <div><span>PAY-471 · Flaky contract test on settlement service</span><em>auto-triaged by Quality Systems</em></div>
+    </div>
+    <div><button type="button" class="rwbtn solid" id="rw-watch">&#9654; Watch: PAY-482 from work queue to production</button></div>
+    <div class="rwdemo" id="rw-demo" aria-label="Sample: one work item through the Developer Workbench">
+      <div class="rwdemo-h"><b>Developer Workbench console &middot; PAY-482</b><span>Sample &middot; illustrative</span></div>
+      <div class="rwfeed" id="rw-feed" aria-live="polite"></div>
+      <div class="rwdemo-f">
+        <div class="rwclock"><div><b id="rw-clk">0:00</b><span>elapsed (illustrative)</span></div><div><b id="rw-plane">&ndash;</b><span>current plane</span></div></div>
+        <button class="rwbtn" id="rw-replay" type="button">&#8635; Replay</button>
+      </div>
+    </div>
+    <p class="proof-note" style="margin-top:12px">Vendor-neutral by design: each step names a capability, not a product. Timings and metric values are illustrative only and are not results from any company.</p>
   </section>
 
   <!-- CAPABILITIES -->
@@ -725,7 +781,7 @@ td.num{font-variant-numeric:tabular-nums}
       </article>
       <article class="lesson">
         <span class="yr">2019–2024 · QAE Director, CTO Office</span><h3>Audible, an Amazon company</h3>
-        <ul><li>Common delivery and automation standards adopted by all 17 teams; regression from 5 days to 2</li><li>Applied AI/ML from 2022 to production defect and Sev2 incident management: 30% fewer Sev2s</li><li>Scaled QA from 4 to 41 people and established 2 offshore capability centers</li></ul>
+        <ul><li>Common delivery and automation standards adopted by all 17 teams; regression from 5 days to 2</li><li>Applied AI/ML from 2022 to production defect and Sev2 incident management: 30% fewer Sev2s</li><li>Scaled QA from 4 to 41 engineers and established 2 offshore capability centers</li></ul>
         <p class="shows">Shows up in RUNWAY as <span>Golden paths</span><span>Operate</span></p>
       </article>
       <article class="lesson">
@@ -1103,5 +1159,43 @@ var n=t.getAttribute('data-tab')||t.getAttribute('data-go')||(t.hasAttribute('da
 window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,event:true});},true);})();
 </script>
 <script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script>
+(function(){
+  var EV=[
+    ['09:00','','Developer Experience','Priya picks PAY-482 from her work queue in the IDE plugin. The ticket arrives with linked service, owner, runbook and scorecard from the developer portal.','Developer Experience'],
+    ['09:04','sys','Platform Control','Golden-path template for &ldquo;API change, payments domain&rdquo; applied: branch, pipeline, test scaffolding and policy bundle come pre-wired. No tickets to request access.','Platform Control'],
+    ['09:20','sys','AI Coding &middot; model gateway','Approved assistant, routed through the model gateway, drafts the idempotency-key handler and unit tests. Secrets and license filters run on the prompt and the output.','Capability'],
+    ['09:22','sys','Evaluation gate','AI output checked: tests compile and pass, no secrets, no restricted licenses, change within the pull-request size limit. Commit labeled AI-assisted.','Capability'],
+    ['09:35','hum','Human approval','Priya reviews the evidence packet, edits the retry logic, and confirms she understands the change. Agents propose; engineers decide.','Capability'],
+    ['09:41','sys','CI/CD &middot; Quality Systems','Smart test selection runs the tests affected by this change. SAST, SCA/SBOM and secrets scanning pass. Quality score clears the gate (sample threshold).','Capability'],
+    ['09:55','sys','Environments','Preview environment spun up with virtualized test data. DAST and the refunds contract tests run against it; a peer reviews and approves the pull request.','Infrastructure'],
+    ['10:10','sys','Policy as code &middot; release gate','Release policy evaluated automatically: approvals, scan results, change risk and evidence attached. Audit record written as a by-product, not a form.','Platform Control'],
+    ['10:12','ok','Production','Progressive rollout to production with automatic rollback on error budget breach. PAY-482 closes in the work queue.','Infrastructure'],
+    ['10:30','ok','Developer Insights','Telemetry updates the monthly view: lead time and change failure (DORA), a one-tap DevEx pulse from Priya, and AI ROI for the assisted change. Signals feed back to improve the golden path.','Developer Insights']
+  ];
+  var feed=document.getElementById('rw-feed'); if(!feed) return;
+  var clk=document.getElementById('rw-clk'), pl=document.getElementById('rw-plane'), timers=[];
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function mins(t){var p=t.split(':');return (+p[0])*60+(+p[1]);}
+  function play(){
+    timers.forEach(clearTimeout); timers=[]; feed.innerHTML=''; clk.textContent='0:00'; pl.textContent='\u2013';
+    EV.forEach(function(e,i){
+      var d=document.createElement('div'); d.className='rwev '+e[1];
+      d.innerHTML='<time>'+e[0]+'</time><div class="bub"><span class="who">'+e[2]+'<span class="pl">'+e[4]+' plane</span></span>'+e[3]+'</div>';
+      feed.appendChild(d);
+      var show=function(){d.classList.add('in'); var m=mins(e[0])-mins(EV[0][0]); clk.textContent=Math.floor(m/60)+':'+('0'+(m%60)).slice(-2); pl.textContent=e[4];};
+      if(reduce) show(); else timers.push(setTimeout(show,400+i*1400));
+    });
+  }
+  document.getElementById('rw-replay').addEventListener('click',play);
+  document.getElementById('rw-watch').addEventListener('click',function(){var d=document.getElementById('rw-demo');d.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});play();});
+  var tab=document.getElementById('t-day'), played=false;
+  function maybe(){ if(!document.getElementById('day').hidden && !played){played=true;play();} }
+  tab.addEventListener('click',function(){setTimeout(maybe,0);});
+  document.querySelectorAll('[data-go="day"]').forEach(function(b){b.addEventListener('click',function(){setTimeout(maybe,0);});});
+  maybe();
+})();
+</script>
 </body>
 </html>
