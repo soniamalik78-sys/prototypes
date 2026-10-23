@@ -521,6 +521,17 @@ td.num{font-variant-numeric:tabular-nums}
 .tab{padding:14px 11px 11px; font-size:.88rem}
 
 /* A day on the runway: self-playing console */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,470px);gap:28px;align-items:start}
+.hero-grid .thesis{max-width:34ch}
+.hero-r .rwdemo{margin-top:0}
+.hero-r .rwfeed{min-height:0;height:330px;overflow-y:auto;scroll-behavior:smooth;padding:10px 12px;gap:6px}
+.hero-r .rwev{grid-template-columns:40px 1fr;gap:8px}
+.hero-r .rwev .bub{font-size:.78rem;padding:6px 8px}
+.hero-r .rwclock b{font-size:1.05rem}.hero-r .rwdemo-h b{white-space:nowrap}
+.hero-cap{font-size:.8rem;color:var(--muted);margin-top:8px}
+.linkish{background:none;border:none;padding:0;color:var(--accent);font-weight:600;cursor:pointer;font-size:inherit;text-decoration:underline}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-r .rwfeed{height:300px}}
+
 .persona{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:4px solid #F79E1B;border-radius:12px;padding:12px 14px;margin:14px 0}
 .persona .pav{flex:0 0 40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
 .persona p{margin:0;font-size:.9rem}.persona small{display:block;color:var(--muted);font-size:.76rem}
@@ -556,10 +567,22 @@ td.num{font-variant-numeric:tabular-nums}
       <span class="pill">Prototype by Sonia Malik</span>
       <span class="pill neutral">Applying for Vice President, Software Engineering – Developer Workbench · Mastercard</span>
     </div>
+    <div class="hero-grid"><div class="hero-l">
     <div class="brand"><svg class="fmark" viewBox="0 0 40 44" aria-hidden="true"><path class="f-hex" d="M15 4 H25 L34 42 H6 Z"/><rect class="f-core" x="19" y="9" width="2" height="5" rx="1"/><rect class="f-core" x="19" y="19" width="2" height="6" rx="1"/><rect class="f-core" x="18.7" y="30" width="2.6" height="8" rx="1.2"/></svg>RUNWAY</div>
     <div class="pron">Introducing RUNWAY, a framework I am proposing for the Developer Workbench: one AI-native developer experience, from first commit to production</div>
     <p class="thesis">Scattered tools become one productized developer experience: golden paths, AI built in, governed by default, measured by developers&rsquo; outcomes.</p>
     <p class="thesis" style="font-size:.92rem;opacity:.85"><b>Why "RUNWAY":</b> a runway is the one prepared path every flight uses to take off: cleared, lit, checked and controlled. Here, every change follows one paved path from first commit to production, with the checks built in, so teams take off faster and more safely.</p>
+    </div><div class="hero-r">
+    <div class="rwdemo" id="rw-demo" aria-label="Sample: one work item through the Developer Workbench">
+      <div class="rwdemo-h"><b>Workbench console &middot; PAY-482</b><span>Sample &middot; illustrative</span></div>
+      <div class="rwfeed" id="rw-feed" aria-live="polite"></div>
+      <div class="rwdemo-f">
+        <div class="rwclock"><div><b id="rw-clk">0:00</b><span>elapsed (illustrative)</span></div><div><b id="rw-plane">&ndash;</b><span>current plane</span></div></div>
+        <button class="rwbtn" id="rw-replay" type="button">&#8635; Replay</button>
+      </div>
+    </div>
+    <p class="hero-cap">One ticket from a developer&rsquo;s work queue to production, through all five planes. <button type="button" class="linkish" data-go="day">See the steps &rarr;</button></p>
+    </div></div>
   </header>
 
   <div class="tabbar">
@@ -612,25 +635,17 @@ td.num{font-variant-numeric:tabular-nums}
   <section class="pane" id="day" role="tabpanel" aria-labelledby="t-day" hidden>
     <div class="sec-head">
       <span class="label">End to end, one work item</span>
-      <h2>A day on the runway: one ticket from Priya&rsquo;s work queue to production</h2>
+      <h2>A day on the runway: one ticket from Developer A&rsquo;s work queue to production</h2>
       <p class="lede">Follow a single change through all five planes of the Workbench: work queue, golden path, governed AI assistance, quality and security gates, preview environment, policy-as-code release, production and the insights that feed back. The developer is the customer.</p>
     </div>
-    <div class="persona"><span class="pav" aria-hidden="true">P</span><p><b>Priya, payments API engineer</b> <small>Illustrative persona, not a real person. All tickets, timings and metrics in this demo are sample data.</small></p></div>
-    <p class="hint" style="margin:0">Priya&rsquo;s work queue this morning (sample)</p>
+    <div class="persona"><span class="pav" aria-hidden="true">A</span><p><b>Developer A &middot; payments API engineer</b> <small>Illustrative persona, not a real person. All tickets, timings and metrics in this demo are sample data.</small></p></div>
+    <p class="hint" style="margin:0">Developer A&rsquo;s work queue this morning (sample)</p>
     <div class="dq" aria-label="Sample work queue">
       <div class="pick"><span>PAY-482 · Add idempotency keys to the refunds API</span><em>picked · priority 1</em></div>
       <div><span>PAY-479 · Retire deprecated currency-format helper</span><em>queued</em></div>
       <div><span>PAY-471 · Flaky contract test on settlement service</span><em>auto-triaged by Quality Systems</em></div>
     </div>
-    <div><button type="button" class="rwbtn solid" id="rw-watch">&#9654; Watch: PAY-482 from work queue to production</button></div>
-    <div class="rwdemo" id="rw-demo" aria-label="Sample: one work item through the Developer Workbench">
-      <div class="rwdemo-h"><b>Developer Workbench console &middot; PAY-482</b><span>Sample &middot; illustrative</span></div>
-      <div class="rwfeed" id="rw-feed" aria-live="polite"></div>
-      <div class="rwdemo-f">
-        <div class="rwclock"><div><b id="rw-clk">0:00</b><span>elapsed (illustrative)</span></div><div><b id="rw-plane">&ndash;</b><span>current plane</span></div></div>
-        <button class="rwbtn" id="rw-replay" type="button">&#8635; Replay</button>
-      </div>
-    </div>
+    <div><button type="button" class="rwbtn solid" id="rw-watch">&#9654; Watch it play in the console at the top of the page</button></div>
     <p class="proof-note" style="margin-top:12px">Vendor-neutral by design: each step names a capability, not a product. Timings and metric values are illustrative only and are not results from any company.</p>
   </section>
 
@@ -1163,16 +1178,16 @@ window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,e
 <script>
 (function(){
   var EV=[
-    ['09:00','','Developer Experience','Priya picks PAY-482 from her work queue in the IDE plugin. The ticket arrives with linked service, owner, runbook and scorecard from the developer portal.','Developer Experience'],
+    ['09:00','','Developer Experience','Developer A picks PAY-482 from her work queue in the IDE plugin. The ticket arrives with linked service, owner, runbook and scorecard from the developer portal.','Developer Experience'],
     ['09:04','sys','Platform Control','Golden-path template for &ldquo;API change, payments domain&rdquo; applied: branch, pipeline, test scaffolding and policy bundle come pre-wired. No tickets to request access.','Platform Control'],
     ['09:20','sys','AI Coding &middot; model gateway','Approved assistant, routed through the model gateway, drafts the idempotency-key handler and unit tests. Secrets and license filters run on the prompt and the output.','Capability'],
     ['09:22','sys','Evaluation gate','AI output checked: tests compile and pass, no secrets, no restricted licenses, change within the pull-request size limit. Commit labeled AI-assisted.','Capability'],
-    ['09:35','hum','Human approval','Priya reviews the evidence packet, edits the retry logic, and confirms she understands the change. Agents propose; engineers decide.','Capability'],
+    ['09:35','hum','Human approval','Developer A reviews the evidence packet, edits the retry logic, and confirms she understands the change. Agents propose; engineers decide.','Capability'],
     ['09:41','sys','CI/CD &middot; Quality Systems','Smart test selection runs the tests affected by this change. SAST, SCA/SBOM and secrets scanning pass. Quality score clears the gate (sample threshold).','Capability'],
     ['09:55','sys','Environments','Preview environment spun up with virtualized test data. DAST and the refunds contract tests run against it; a peer reviews and approves the pull request.','Infrastructure'],
     ['10:10','sys','Policy as code &middot; release gate','Release policy evaluated automatically: approvals, scan results, change risk and evidence attached. Audit record written as a by-product, not a form.','Platform Control'],
     ['10:12','ok','Production','Progressive rollout to production with automatic rollback on error budget breach. PAY-482 closes in the work queue.','Infrastructure'],
-    ['10:30','ok','Developer Insights','Telemetry updates the monthly view: lead time and change failure (DORA), a one-tap DevEx pulse from Priya, and AI ROI for the assisted change. Signals feed back to improve the golden path.','Developer Insights']
+    ['10:30','ok','Developer Insights','Telemetry updates the monthly view: lead time and change failure (DORA), a one-tap DevEx pulse from Developer A, and AI ROI for the assisted change. Signals feed back to improve the golden path.','Developer Insights']
   ];
   var feed=document.getElementById('rw-feed'); if(!feed) return;
   var clk=document.getElementById('rw-clk'), pl=document.getElementById('rw-plane'), timers=[];
@@ -1184,17 +1199,13 @@ window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,e
       var d=document.createElement('div'); d.className='rwev '+e[1];
       d.innerHTML='<time>'+e[0]+'</time><div class="bub"><span class="who">'+e[2]+'<span class="pl">'+e[4]+' plane</span></span>'+e[3]+'</div>';
       feed.appendChild(d);
-      var show=function(){d.classList.add('in'); var m=mins(e[0])-mins(EV[0][0]); clk.textContent=Math.floor(m/60)+':'+('0'+(m%60)).slice(-2); pl.textContent=e[4];};
+      var show=function(){d.classList.add('in'); var m=mins(e[0])-mins(EV[0][0]); clk.textContent=Math.floor(m/60)+':'+('0'+(m%60)).slice(-2); pl.textContent=e[4]; feed.scrollTop=feed.scrollHeight;};
       if(reduce) show(); else timers.push(setTimeout(show,400+i*1400));
     });
   }
   document.getElementById('rw-replay').addEventListener('click',play);
-  document.getElementById('rw-watch').addEventListener('click',function(){var d=document.getElementById('rw-demo');d.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});play();});
-  var tab=document.getElementById('t-day'), played=false;
-  function maybe(){ if(!document.getElementById('day').hidden && !played){played=true;play();} }
-  tab.addEventListener('click',function(){setTimeout(maybe,0);});
-  document.querySelectorAll('[data-go="day"]').forEach(function(b){b.addEventListener('click',function(){setTimeout(maybe,0);});});
-  maybe();
+  document.getElementById('rw-watch').addEventListener('click',function(){var d=document.getElementById('rw-demo');window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});play();});
+  play();
 })();
 </script>
 </body>
