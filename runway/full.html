@@ -320,9 +320,9 @@ footer b{color:var(--fg)}
 
 /* ---------- Tabbed layout ---------- */
 .tabbar{position:sticky; top:env(safe-area-inset-top,0px); z-index:40; background:var(--bg); border-bottom:1px solid var(--line); margin-inline:-20px; padding-inline:20px}
-.tabs{display:flex; gap:2px; overflow-x:auto; scrollbar-width:none}
+.tabs{display:flex; flex-wrap:wrap; gap:0; overflow:visible}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto; background:none; border:none; border-bottom:3px solid transparent; padding:14px 14px 11px; font-size:.9rem; font-weight:600; color:var(--muted); cursor:pointer; white-space:nowrap}
+.tab{flex:0 0 auto; background:none; border:none; border-bottom:3px solid transparent; padding:12px 7px 9px; font-size:.82rem; font-weight:600; color:var(--muted); cursor:pointer; white-space:nowrap}
 .tab:hover{color:var(--fg)}
 .tab[aria-selected="true"]{color:var(--fg); border-bottom-color:var(--accent)}
 .tab .lock{font-size:.7rem; margin-left:4px; color:var(--faint)}
@@ -518,7 +518,7 @@ td.num{font-variant-numeric:tabular-nums}
 
 /* RUNWAY layout tweaks */
 .thesis{max-width:none}
-.tab{padding:14px 11px 11px; font-size:.88rem}
+.tab{padding:12px 7px 9px; font-size:.82rem}
 
 /* A day on the runway: self-playing console */
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,470px);gap:28px;align-items:start}
@@ -529,7 +529,9 @@ td.num{font-variant-numeric:tabular-nums}
 .hero-r .rwev .bub{font-size:.78rem;padding:6px 8px}
 .hero-r .rwclock b{font-size:1.05rem}.hero-r .rwdemo-h b{white-space:nowrap}
 .hero-cap{font-size:.8rem;color:var(--muted);margin-top:8px}
-.linkish{background:none;border:none;padding:0;color:var(--accent);font-weight:600;cursor:pointer;font-size:inherit;text-decoration:underline}
+.why-strip{display:inline-block;margin:6px 0 0;padding:6px 12px;border-left:3px solid #F79E1B;background:rgba(31,58,95,.05);font-size:.85rem;color:var(--muted)}
+.why-strip b{color:#1F3A5F;margin-right:6px}
+.linkish{position:relative;z-index:5;background:none;border:none;padding:0;color:var(--accent);font-weight:600;cursor:pointer;font-size:inherit;text-decoration:underline}
 @media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-r .rwfeed{height:300px}}
 
 .persona{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:4px solid #F79E1B;border-radius:12px;padding:12px 14px;margin:14px 0}
@@ -572,7 +574,7 @@ td.num{font-variant-numeric:tabular-nums}
     <div class="brand"><svg class="fmark" viewBox="0 0 40 44" aria-hidden="true"><path class="f-hex" d="M15 4 H25 L34 42 H6 Z"/><rect class="f-core" x="19" y="9" width="2" height="5" rx="1"/><rect class="f-core" x="19" y="19" width="2" height="6" rx="1"/><rect class="f-core" x="18.7" y="30" width="2.6" height="8" rx="1.2"/></svg>RUNWAY</div>
     <div class="pron">Introducing RUNWAY, a framework I am proposing for the Developer Workbench: one AI-native developer experience, from first commit to production</div>
     <p class="thesis">Scattered tools become one productized developer experience: golden paths, AI built in, governed by default, measured by developers&rsquo; outcomes.</p>
-    <p class="thesis" style="font-size:.92rem;opacity:.85"><b>Why "RUNWAY":</b> a runway is the one prepared path every flight uses to take off: cleared, lit, checked and controlled. Here, every change follows one paved path from first commit to production, with the checks built in, so teams take off faster and more safely.</p>
+    <p class="why-strip"><b>Why &ldquo;RUNWAY&rdquo;</b> One prepared path every change takes off from: cleared, lit, checked.</p>
     </div><div class="hero-r">
     <div class="rwdemo" id="rw-demo" aria-label="Sample: one work item through the Developer Workbench">
       <div class="rwdemo-h"><b>Workbench console &middot; PAY-482</b><span>Sample &middot; illustrative</span></div>
@@ -582,17 +584,17 @@ td.num{font-variant-numeric:tabular-nums}
         <button class="rwbtn" id="rw-replay" type="button">&#8635; Replay</button>
       </div>
     </div>
-    <p class="hero-cap">One ticket from a developer&rsquo;s work queue to production, through all five planes. <button type="button" class="linkish" data-go="day">See the steps &rarr;</button></p>
+    <p class="hero-cap">One ticket from a developer&rsquo;s work queue to production, through all five planes. <button type="button" class="linkish" data-reveal="day">See the steps &rarr;</button></p>
     </div></div>
   </header>
 
   <div class="tabbar">
     <div class="tabs" role="tablist" aria-label="RUNWAY sections" id="tabs">
       <button class="tab" role="tab" id="t-overview" aria-controls="overview" data-tab="overview">Overview</button>
-      <button class="tab" role="tab" id="t-day" aria-controls="day" data-tab="day">A day on the runway</button>
+      <button class="tab" role="tab" id="t-day" aria-controls="day" data-tab="day">Day on the runway</button>
       <button class="tab" role="tab" id="t-types" aria-controls="types" data-tab="types">Capabilities</button>
-      <button class="tab" role="tab" id="t-desk" aria-controls="desk" data-tab="desk">Tool governance</button>
-      <button class="tab" role="tab" id="t-ops" aria-controls="ops" data-tab="ops">Developer journey</button>
+      <button class="tab" role="tab" id="t-desk" aria-controls="desk" data-tab="desk">Governance</button>
+      <button class="tab" role="tab" id="t-ops" aria-controls="ops" data-tab="ops">Journey</button>
       <button class="tab" role="tab" id="t-trust" aria-controls="trust" data-tab="trust">Human in the loop</button>
       <button class="tab" role="tab" id="t-dash" aria-controls="dash" data-tab="dash">Scorecard</button>
       <button class="tab" role="tab" id="t-why" aria-controls="why" data-tab="why">Why me</button>
@@ -901,7 +903,7 @@ td.num{font-variant-numeric:tabular-nums}
     opts=opts||{};
     TABS.forEach(t=>{ const on=t.dataset.tab===id; t.setAttribute('aria-selected',String(on)); t.tabIndex=on?0:-1; document.getElementById(t.dataset.tab).hidden=!on; });
     const bar=document.querySelector('.tabbar');
-    if(opts.scroll){ const y=bar.getBoundingClientRect().top+window.scrollY; if(window.scrollY>y) window.scrollTo({top:y, behavior:'auto'}); }
+    if(opts.scroll){ const y=bar.getBoundingClientRect().top+window.scrollY; if(opts.reveal||window.scrollY>y) window.scrollTo({top:y, behavior:'auto'}); }
     if(opts.focus){ const t=TABS.find(x=>x.dataset.tab===id); if(t) t.focus(); }
     if(id==='dash' && document.getElementById('month')) drawDash(+document.getElementById('month').value);
   }
@@ -909,6 +911,7 @@ td.num{font-variant-numeric:tabular-nums}
     t.addEventListener('click',()=>selectTab(t.dataset.tab,{scroll:true}));
     t.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); const n=TABS[(i+(e.key==='ArrowRight'?1:-1)+TABS.length)%TABS.length]; selectTab(n.dataset.tab,{focus:true}); } });
   });
+  document.querySelectorAll('[data-reveal]').forEach(b=>b.addEventListener('click',()=>selectTab(b.dataset.reveal,{scroll:true,reveal:true})));
   document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>selectTab(b.dataset.go,{scroll:true})));
 
   // ---------- Three tiers ----------
