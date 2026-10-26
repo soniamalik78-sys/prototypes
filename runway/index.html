@@ -767,13 +767,14 @@ td.num{font-variant-numeric:tabular-nums}
         <span class="label">Review depth, by change type</span>
         <ol>
           <li><b>Full review</b><span>Every new agent and change type starts here: an engineer reviews the full diff before anything merges.</span></li>
-          <li><b>Evidence-packet review</b><span>The reviewer decides from the packet and opens the diff when something looks off. The floor for changes to payment flows, security code or customer data.</span></li>
+          <li><b>Evidence-packet review (coherence gate)</b><span>The reviewer decides from the packet and opens the diff when something looks off, and confirms they understand the change before it merges. The floor for changes to payment flows, security code or customer data.</span></li>
           <li><b>Fast-path approval</b><span>For a change type with 97%+ agreement over 200+ reviews and no incidents: tests and scans run first, a person still approves, and a sample gets a deep review.</span></li>
         </ol>
         <p class="hint">Agents never merge on their own. Any incident, or agreement dropping below the threshold, moves the change type back a level automatically.</p>
       </div>
     </div>
     <p class="hint" style="margin-top:16px">The full version charts a sample first year: median review time falls from 14 to 3 minutes while agreement with the agent rises from 78% to 96%.</p>
+    <p class="targets"><b>Guardrails against review overload:</b> 2&ndash;3 concurrent agent streams per engineer and pull-request size limits, so every change stays reviewable and reviews do not become the new bottleneck.</p>
     <p class="targets">Disagreements are the most useful data: each one is reviewed, and either the reviewer caught something the agent missed (so the tests and evaluation set grow) or the agent was right (so the packet gets clearer).</p>
     <div class="next"><button type="button" data-go="dash">Next: scorecard →</button></div>
   </section>
