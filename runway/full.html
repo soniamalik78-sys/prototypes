@@ -5,36 +5,36 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>RUNWAY Developer Workbench</title>
-<meta name="description" content="Introducing RUNWAY: a framework proposed by Sonia Malik for one AI-native developer workbench, from first commit to production."><meta property="og:type" content="website"><meta property="og:title" content="Introducing RUNWAY: a proposed framework for one AI-native developer workbench | Sonia Malik"><meta property="og:description" content="Interactive work sample by Sonia Malik: scattered developer tools and AI experiments become one productized developer experience, built on golden paths and governed by default."><meta property="og:url" content="https://soniamalik78-sys.github.io/prototypes/runway/"><meta property="og:image" content="https://soniamalik78-sys.github.io/prototypes/runway/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="627"><meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Introducing RUNWAY: a framework proposed by Sonia Malik for one AI-assisted developer experience, from a new engineer&rsquo;s first day to production."><meta property="og:type" content="website"><meta property="og:title" content="Introducing RUNWAY: a proposed framework for one AI-native developer workbench | Sonia Malik"><meta property="og:description" content="Interactive work sample by Sonia Malik: scattered developer tools and AI experiments become one productized developer experience, built on golden paths and governed by default."><meta property="og:url" content="https://soniamalik78-sys.github.io/prototypes/runway/"><meta property="og:image" content="https://soniamalik78-sys.github.io/prototypes/runway/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="627"><meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* Layout: single reading column (max 1040px), grid-textured hero, tabbed panes; readiness review is a 4-step stepper; tables scroll inside their own box. */
 :root{
-  --bg:#F2F5F5; --surface:#FFFFFF; --sunk:#E6ECEC; --fg:#162022; --muted:#55615F; --faint:#7A8684;
-  --line:#D5DEDD; --line-strong:#B8C6C4;
-  --accent:#14656B; --accent-soft:#E0EEEE; --accent-ink:#0F4F54;
-  --vine:#6A4F8A;
-  --ok:#2E7D4F; --ok-bg:#E3F2E8; --warn:#8F5E00; --warn-bg:#FBF0D9; --bad:#B3373F; --bad-bg:#F9E3E4;
-  --lattice:rgba(20,101,107,0.10);
+  --bg:#F4F5F7; --surface:#FFFFFF; --sunk:#E8EAEE; --fg:#1C1F24; --muted:#555B63; --faint:#7A8089;
+  --line:#D9DCE1; --line-strong:#BCC1C9;
+  --accent:#0A3D91; --accent-soft:#E3EAF6; --accent-ink:#082F70;
+  --vine:#3A3F47;
+  --ok:#2E7D4F; --ok-bg:#E3F2E8; --warn:#8F5E00; --warn-bg:#FBF0D9; --bad:#B45309; --bad-bg:#FDEBD7;
+  --lattice:rgba(10,61,145,0.08);
   --f-display:"Fraunces", Georgia, "Times New Roman", serif;
   --f-body:"Public Sans", "Segoe UI", Arial, sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
   --r:10px;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#101718; --surface:#172022; --sunk:#1F2A2C; --fg:#E4ECEB; --muted:#A5B3B1; --faint:#7F8E8C;
-  --line:#2B3638; --line-strong:#3F4D4F;
-  --accent:#6FC7CB; --accent-soft:#163538; --accent-ink:#9DDCDF; --vine:#B9A2D8;
-  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F;
-  --lattice:rgba(111,199,203,0.09); color-scheme:dark; } }
+  --bg:#111418; --surface:#181C21; --sunk:#20252B; --fg:#E6E8EB; --muted:#A8AEB6; --faint:#7F8690;
+  --line:#2C3239; --line-strong:#404750;
+  --accent:#8FB0E6; --accent-soft:#16243A; --accent-ink:#B5CBF0; --vine:#B8BDC6;
+  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#F0A35E; --bad-bg:#3A2A18;
+  --lattice:rgba(143,176,230,0.08); color-scheme:dark; } }
 :root[data-theme="dark"]{
-  --bg:#101718; --surface:#172022; --sunk:#1F2A2C; --fg:#E4ECEB; --muted:#A5B3B1; --faint:#7F8E8C;
-  --line:#2B3638; --line-strong:#3F4D4F;
-  --accent:#6FC7CB; --accent-soft:#163538; --accent-ink:#9DDCDF; --vine:#B9A2D8;
-  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F;
-  --lattice:rgba(111,199,203,0.09); color-scheme:dark; }
+  --bg:#111418; --surface:#181C21; --sunk:#20252B; --fg:#E6E8EB; --muted:#A8AEB6; --faint:#7F8690;
+  --line:#2C3239; --line-strong:#404750;
+  --accent:#8FB0E6; --accent-soft:#16243A; --accent-ink:#B5CBF0; --vine:#B8BDC6;
+  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#F0A35E; --bad-bg:#3A2A18;
+  --lattice:rgba(143,176,230,0.08); color-scheme:dark; }
 
 *{box-sizing:border-box}
 body{background:var(--bg); color:var(--fg); font-family:var(--f-body); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
@@ -288,7 +288,7 @@ tr.fresh td{animation:grow 1.2s ease-out}
 .cm-row{display:grid; grid-template-columns:76px minmax(0,1fr) auto; gap:10px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line)}
 .cm-row:last-of-type{border-bottom:none}
 .cm-k{font-size:.72rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--faint)}
-.cm-v{font-weight:600; word-break:break-all; user-select:all}
+.cm-v{font-weight:600; word-break:break-all; user-select:all} a.cm-v{color:var(--accent-ink); text-decoration:underline}
 .cm-copy{background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:4px 12px; font-size:.78rem; font-weight:700; cursor:pointer}
 .cm-status{font-size:.82rem; color:var(--ok); min-height:1.2em}
 
@@ -572,8 +572,8 @@ td.num{font-variant-numeric:tabular-nums}
     </div>
     <div class="hero-grid"><div class="hero-l">
     <div class="brand"><svg class="fmark" viewBox="0 0 40 44" aria-hidden="true"><path class="f-hex" d="M15 4 H25 L34 42 H6 Z"/><rect class="f-core" x="19" y="9" width="2" height="5" rx="1"/><rect class="f-core" x="19" y="19" width="2" height="6" rx="1"/><rect class="f-core" x="18.7" y="30" width="2.6" height="8" rx="1.2"/></svg>RUNWAY</div>
-    <div class="pron">Introducing RUNWAY, a framework I am proposing for the Developer Workbench: one AI-native developer experience, from first commit to production</div>
-    <p class="thesis">Scattered tools become one productized developer experience: golden paths, AI built in, governed by default, measured by developers&rsquo; outcomes.</p>
+    <div class="pron">Introducing RUNWAY: one developer experience for the Mastercard Developer Workbench, from a new engineer&rsquo;s first day to production</div>
+    <p class="thesis">Scattered tools become one productized developer experience: golden paths, AI built in, governed by default, measured by developers&rsquo; outcomes. Built for engineers shipping payments software, with security and PCI controls inside the golden paths.</p>
     <p class="why-strip"><b>Why &ldquo;RUNWAY&rdquo;</b> One prepared path every change takes off from: cleared, lit, checked.</p>
     </div><div class="hero-r">
     <div class="rwdemo" id="rw-demo" aria-label="Sample: one work item through the Developer Workbench">
@@ -604,12 +604,12 @@ td.num{font-variant-numeric:tabular-nums}
 
   <!-- OVERVIEW -->
   <section class="pane" id="overview" role="tabpanel" aria-labelledby="t-overview">
-    <p class="lede">RUNWAY is the framework I am proposing for leading the Developer Workbench: one AI-native developer experience from a new engineer&rsquo;s first day to production, built on golden paths, governed by default, and measured by what changes for developers. Engineers are the customers. Tools, AI assistants, environments, testing, pipelines and insights come together as one product. It is an illustrative prototype with sample data, not connected to any company&rsquo;s systems.</p>
+    <p class="lede">RUNWAY is the framework I am proposing for leading the Developer Workbench: one AI-assisted developer experience from a new engineer&rsquo;s first day to production, built on golden paths, governed by default, and measured by what changes for developers. Engineers are the customers. Tools, AI assistants, environments, testing, pipelines and insights come together as one product. It is an illustrative prototype with sample data, not connected to any company&rsquo;s systems.</p>
     <div class="proof">
       <div><b class="mono">6 months</b><span>to stand up an AI developer platform designed to serve ~1,200 engineers</span></div>
-      <div><b class="mono">350+</b><span>engineers on governed AI workflows within 13 months</span></div>
+      <div><b class="mono">3 days → same day</b><span>regulated sign-off within 8 months, with human review only where regulation requires it</span></div>
       <div><b class="mono">9 → 4 days</b><span>regression lead time, then daily; releases from weekly to twice-weekly</span></div>
-      <div><b class="mono">10+</b><span>AI tools reviewed; the approved inventory prevented tool sprawl and duplicate spend</span></div>
+      <div><b class="mono">+30%</b><span>features delivered per PI over 3 PIs, across 10 scrum teams using creator and judge agents</span></div>
     </div>
     <p class="proof-note">These four figures are from my work at S&amp;P Global. Figures in the Scorecard tab are sample data.</p>
 
@@ -728,7 +728,7 @@ td.num{font-variant-numeric:tabular-nums}
           <dt>Proposed by</dt><dd>Coding agent, from a linked ticket</dd>
           <dt>Evidence</dt><dd>Diff summary, library release notes, linked ticket</dd>
           <dt>Checks</dt><dd>Tests 412/412 ✓ · Security scan clean ✓ · Coverage unchanged ✓ · No secrets ✓</dd>
-          <dt>Confidence</dt><dd>High · similar changes merged without rework 96% of the time</dd>
+          <dt>Confidence</dt><dd>High · similar changes merged without rework 96% of the time (sample)</dd>
           <dt>Recommendation</dt><dd><b>Approve and merge</b></dd>
         </dl>
         <p class="hint">The reviewer can open the diff or any line of evidence and records Approve, Change or Reject with a reason. Review time is logged.</p>
@@ -738,7 +738,7 @@ td.num{font-variant-numeric:tabular-nums}
         <ol>
           <li><b>Full review</b><span>Every new agent and change type starts here: an engineer reviews the full diff before anything merges.</span></li>
           <li><b>Evidence-packet review</b><span>The reviewer decides from the packet and opens the diff when something looks off. The floor for changes to payment flows, security code or customer data.</span></li>
-          <li><b>Fast-path approval</b><span>For a change type with 97%+ agreement over 200+ reviews and no incidents: tests and scans run first, a person still approves, and a sample gets a deep review.</span></li>
+          <li><b>Fast-path approval</b><span>For a change type with 97%+ agreement over 200+ reviews (sample threshold) and no incidents: tests and scans run first, a person still approves, and a sample gets a deep review.</span></li>
         </ol>
         <p class="hint">Agents never merge on their own. Any incident, or agreement dropping below the threshold, moves the change type back a level automatically.</p>
       </div>
@@ -746,7 +746,7 @@ td.num{font-variant-numeric:tabular-nums}
     <span class="sample-note" style="margin-top:20px">Sample data showing year-one targets, for illustration</span>
     <div class="charts">
       <div class="chart"><h3>Median review time</h3><p>Minutes for an engineer to review an agent-proposed pull request, by month</p><svg id="c3" viewBox="0 0 460 190" role="img" aria-label="Median review time falls from 14 minutes in month 1 to 3 minutes in month 12"></svg></div>
-      <div class="chart"><h3>Agreement with the agent</h3><p>Share of reviews that accept the agent&rsquo;s change without edits, by month</p><svg id="c4" viewBox="0 0 460 190" role="img" aria-label="Agreement rises from 78% in month 1 to 96% in month 12"></svg></div>
+      <div class="chart"><h3>Agreement with the agent</h3><p>Share of reviews that accept the agent&rsquo;s change without edits, by month (sample data)</p><svg id="c4" viewBox="0 0 460 190" role="img" aria-label="Agreement rises from 78% in month 1 to 96% in month 12"></svg></div>
     </div>
     <p class="targets">Disagreements are the most useful data: each one is reviewed, and either the reviewer caught something the agent missed (so the tests and evaluation set grow) or the agent was right (so the packet gets clearer).</p>
     <div class="next"><button type="button" data-go="dash">Next: scorecard →</button></div>
@@ -784,17 +784,17 @@ td.num{font-variant-numeric:tabular-nums}
     <div class="sec-head">
       <span class="label">Why me</span>
       <h2>RUNWAY comes from developer platforms I have built and run</h2>
-      <p class="lede">The figures are from my resume. Twenty-four years of tech leadership, most of it in regulated financial services.</p>
+      <p class="lede">The figures are from my resume. 24+ years in engineering and transformation leadership, most of it in regulated financial services.</p>
     </div>
     <div class="lessons">
       <article class="lesson">
         <span class="yr">2025–2026 · VP, Head of Quality Engineering · Chair, AI Governance Committee</span><h3>S&amp;P Global</h3>
-        <ul><li>Stood up an AI developer platform in 6 months, designed to serve ~1,200 engineers, with AI across the lifecycle from requirements and code generation to code review and deployment telemetry</li><li>Brought 350+ engineers onto governed AI workflows in 13 months; reviewed 10+ AI tools, and the approved inventory prevented tool sprawl and duplicate spend</li><li>Regression lead time from 9 days to 4, then daily; releases from weekly to twice-weekly. Negative security testing caught AI-generated code exposing server directory structure; the fix became a standing guardrail</li><li>Turned CISO, Risk, Compliance and Legal requirements into platform controls. Human approval enforced in the pipeline wherever regulation required it, made faster with data-backed evidence for approvers; decision time tracked as a governance KPI</li><li>Led a 350+ global organization and a $70M+ technology budget</li></ul>
+        <ul><li>Stood up an AI developer platform in 6 months, designed to serve ~1,200 engineers, with AI across the lifecycle from requirements and code generation to code review and deployment telemetry</li><li>Repositioned central QA as a 32-engineer platform team (automation, performance, security and accessibility testing, center of excellence) building shared frameworks that delivery teams chose to adopt; replaced 8&ndash;10 separate tools with in-house platform tools under an approved tool list</li><li>Brought a first wave of 350+ engineers onto governed AI workflows within 13 months</li><li>Creator agents drafted MVPs, features and BDD stories from customer journeys, judge agents scored them, engineers approved: features delivered per PI rose 30% over 3 PIs across the 10 scrum teams where I also held product leadership</li><li>Regression lead time from 9 days to 4, then daily; releases from weekly to twice-weekly. Negative security testing caught AI-generated code exposing server directory structure; the fix became a standing guardrail</li><li>Turned CISO, Risk, Compliance and Legal requirements into platform controls; regulated sign-off went from 3 days to same day within 8 months, with human review only where regulation requires it</li><li>Led a 350+ engineer organization through Senior Directors on a $70M+ budget</li></ul>
         <p class="shows">Shows up in RUNWAY as <span>AI-assisted coding</span><span>Tool governance</span><span>Human in the loop</span></p>
       </article>
       <article class="lesson">
         <span class="yr">2024–2025 · VP, Head of Quality Engineering</span><h3>DoubleVerify</h3>
-        <ul><li>Built an agentic engineering ecosystem with guardrails and human review gates</li><li>AI-assisted testing and predictive defect analysis: 25% less manual effort, 20% shorter test cycles</li><li>Teams across the UK, Israel, France and Ireland</li></ul>
+        <ul><li>Owned engineering productivity and the AI-first delivery lifecycle on a $35M budget</li><li>AI-assisted testing and predictive defect analysis: 25% less manual effort, 20% shorter test cycles</li><li>Teams across the UK, Israel, France and Ireland</li></ul>
         <p class="shows">Shows up in RUNWAY as <span>AI coding guardrails</span><span>Built-in quality</span></p>
       </article>
       <article class="lesson">
@@ -804,7 +804,7 @@ td.num{font-variant-numeric:tabular-nums}
       </article>
       <article class="lesson">
         <span class="yr">2015–2019 · Head of Quality Engineering, CIO Office</span><h3>Prudential</h3>
-        <ul><li>Built Customer Office QE from zero; revamped a 150+ person Retirement team within federal retirement regulations (IRA, Roth) at 50% lower QA cost</li><li>Zero Sev2s on major launches</li><li>Quality and release standards in a regulated insurer</li></ul>
+        <ul><li>Built Customer Office QE from zero; revamped a 150+ person Retirement team within federal retirement regulations (IRA, Roth) at 50% lower QA cost</li><li>Quality and release standards in a regulated insurer</li></ul>
         <p class="shows">Shows up in RUNWAY as <span>Built-in quality</span><span>Decision rights</span></p>
       </article>
     </div>
@@ -814,8 +814,8 @@ td.num{font-variant-numeric:tabular-nums}
         <thead><tr><th>The role asks for</th><th>In RUNWAY</th><th>Where I have done it</th></tr></thead>
         <tbody>
           <tr><td>A unified, AI-enabled developer experience from onboarding to production</td><td>Six-stage developer journey and four workbench capabilities</td><td>AI developer platform in 6 months, designed to serve ~1,200 engineers (S&amp;P Global)</td></tr>
-          <tr><td>Adoption of AI-assisted and agentic development, with governance, security and measurement</td><td>AI-assisted coding capability; agents propose, engineers decide</td><td>350+ engineers on governed AI workflows in 13 months; chaired the AI Governance Committee (S&amp;P Global)</td></tr>
-          <tr><td>Tooling governance, standards, rationalization and cost transparency</td><td>Tool governance review and the tool catalog</td><td>Reviewed 10+ AI tools; the approved inventory prevented tool sprawl and duplicate spend (S&amp;P Global)</td></tr>
+          <tr><td>Adoption of AI-assisted and agentic development, with governance, security and measurement</td><td>AI-assisted coding capability; agents propose, engineers decide</td><td>First wave of 350+ engineers on governed AI workflows in 13 months; chaired the AI Governance Committee (S&amp;P Global)</td></tr>
+          <tr><td>Tooling governance, standards, rationalization and cost transparency</td><td>Tool governance review and the tool catalog</td><td>Replaced 8&ndash;10 separate tools with in-house platform tools under an approved tool list (S&amp;P Global)</td></tr>
           <tr><td>Quality engineering, testing workflows and secure software delivery</td><td>Built-in quality and secure delivery</td><td>Regression 9 &rarr; 4 days, then daily; releases weekly to twice-weekly (S&amp;P Global); regression 5 &rarr; 2 days across 17 teams (Audible)</td></tr>
           <tr><td>Data, telemetry and metrics for productivity and adoption</td><td>Monthly Workbench scorecard</td><td>Executive scorecard adopted by Technology and Finance (S&amp;P Global)</td></tr>
           <tr><td>Partnering with security, risk, compliance, architecture and finance</td><td>Decision rights and the tooling council</td><td>CISO, Risk, Compliance, Legal and Architecture requirements turned into platform controls (S&amp;P Global)</td></tr>
@@ -869,14 +869,14 @@ td.num{font-variant-numeric:tabular-nums}
 <aside class="drawer" id="drawer" aria-label="About Sonia Malik" hidden>
   <button class="dr-close" type="button" id="dr-close" aria-label="Close">&times;</button>
   <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>VP, Head of Quality Engineering, S&amp;P Global</span></div></div>
-  <p class="pf-pitch">I build the platforms engineers use to ship. At S&amp;P Global I stood up an AI developer platform in 6 months, with Security, Risk and Compliance requirements built in as controls, and brought 350+ engineers onto governed AI workflows. For the Developer Workbench, I would turn scattered tools into one productized developer experience, governed by default and measured by developer outcomes.</p>
+  <p class="pf-pitch">I build the platforms engineers use to ship. At S&amp;P Global I stood up an AI developer platform in 6 months, with Security, Risk and Compliance requirements built in as controls, and brought a first wave of 350+ engineers onto governed AI workflows. For the Developer Workbench, I would turn scattered tools into one productized developer experience, governed by default and measured by developer outcomes.</p>
   <div class="pf-stats">
     <span><b>6 months</b> to an AI developer platform designed to serve ~1,200 engineers</span>
-    <span><b>350+</b> engineers on governed AI in 13 months</span>
-    <span><b>Faster,</b> evidence-backed human approval on regulated checks</span>
-    <span><b>10+</b> AI tools reviewed</span>
-    <span><b>350+</b> people · <b>$70M+</b> budget led</span>
-    <span><b>24 years</b> of tech leadership</span>
+    <span><b>3 days &rarr; same day</b> regulated sign-off</span>
+    <span><b>+30%</b> features per PI with creator and judge agents</span>
+    <span><b>32-engineer</b> platform team; 8&ndash;10 tools replaced</span>
+    <span><b>350+</b> engineers · <b>$70M+</b> budget led</span>
+    <span><b>24+ years</b> in engineering and transformation leadership</span>
   </div>
   <button class="talk" type="button" data-contact>Let&rsquo;s talk</button>
 </aside>
@@ -888,9 +888,9 @@ td.num{font-variant-numeric:tabular-nums}
     <h2 id="cm-title">Let&rsquo;s walk through RUNWAY together</h2>
     <p>In 30 minutes I can take you through a developer journey, the tool governance model, and my first 90 days.</p>
     <p class="cm-route">Through your standard process: your recruiting partner can reach me directly to schedule. I am flexible on timing.</p>
-    <div class="cm-row"><span class="cm-k">Email</span><span class="cm-v">sonia.malik78@gmail.com</span><button class="cm-copy" type="button" data-cc="sonia.malik78@gmail.com">Copy</button></div>
+    <div class="cm-row"><span class="cm-k">Email</span><a class="cm-v" href="mailto:sonia.malik78@gmail.com">sonia.malik78@gmail.com</a><button class="cm-copy" type="button" data-cc="sonia.malik78@gmail.com">Copy</button></div>
     <div class="cm-row"><span class="cm-k">Phone</span><span class="cm-v">732-629-1034</span><button class="cm-copy" type="button" data-cc="732-629-1034">Copy</button></div>
-    <div class="cm-row"><span class="cm-k">LinkedIn</span><span class="cm-v">linkedin.com/in/sonia-malik-b059705</span><button class="cm-copy" type="button" data-cc="https://www.linkedin.com/in/sonia-malik-b059705">Copy</button></div>
+    <div class="cm-row"><span class="cm-k">LinkedIn</span><a class="cm-v" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">linkedin.com/in/sonia-malik-b059705</a><button class="cm-copy" type="button" data-cc="https://www.linkedin.com/in/sonia-malik-b059705">Copy</button></div>
     <div class="cm-status" id="cm-status" aria-live="polite"></div>
   </div>
 </div>
@@ -921,7 +921,7 @@ td.num{font-variant-numeric:tabular-nums}
      a:'One approved assistant and agent set through the enterprise model gateway, with secure-use rules, pull-request-only changes for agents, labels on AI-assisted commits, and usage telemetry.',
      looks:['Data handling','Secrets and license scans','Pull-request-only agents','Prompt injection','Usage and cost'],
      m:['weekly active users','AI-assisted changes merged without rework'],
-     lived:'<b>S&amp;P Global:</b> AI across the lifecycle, from requirements and code generation to code-review agents and deployment telemetry; 350+ engineers on governed AI workflows in 13 months.'},
+     lived:'<b>S&amp;P Global:</b> AI across the lifecycle, from requirements and code generation to code-review agents and deployment telemetry; a first wave of 350+ engineers on governed AI workflows in 13 months.'},
     {k:'t2', n:'Onboard', name:'Paved-road environments & templates', risk:1, sub:'From laptop to first commit: development environments, service templates and access in one flow',
      b:'New engineers wait days for access and set up tools by hand from wiki pages. Every team&rsquo;s service template is different.',
      a:'Golden-path templates with CI, security scanning and observability already wired in, ready cloud and local environments, and access requested in one place.',
