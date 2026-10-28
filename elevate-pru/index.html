@@ -774,14 +774,14 @@ draw();})();
 <script>
 (function(){
 var EV=[
-['09:12','','Customer request','A customer asks online for $15,000 from her annuity for her daughter\'s tuition.<small><b>Benefit:</b> one request, any hour</small>','Customer'],
-['09:12','ag','Service agent','Verifies the contract and pulls current values, surrender charges and tax notes from every system.<small><b>Benefit:</b> no hunting across systems · <b>KPI:</b> time to first answer (sample)</small>','Agent does'],
-['09:13','sys','Drafting agent + AI judge','Drafts two withdrawal options in plain language. An AI judge checks them against product rules and required disclosures.<small><b>Benefit:</b> drafts in seconds, already checked</small>','Human + AI'],
-['09:14','chk','Checkpoint','Large withdrawal soon after an address change. The agent flags it; a named associate decides. Agents propose; people decide.<small><b>Benefit:</b> trust built in · <b>KPI:</b> flags reviewed, overrides tracked (sample)</small>','Checkpoint'],
-['09:16','hum','Maria · Retirement service','Reviews the evidence, confirms the figures, verifies the customer and approves the pre-filled e-signature forms.<small><b>Benefit:</b> still reviewed, faster · <b>KPI:</b> first-contact resolution (sample)</small>','Human + AI'],
-['09:18','ok','Customer answered','Options and forms sent for e-signature; funds arrive in 2 business days.<small><b>Benefit:</b> same-day answer, not about 5 days (illustrative)</small>','Agent does'],
-['09:25','hum','Maria · Human only','Offers a call with a financial professional about tuition planning. The relationship stays with people; time saved goes here.<small><b>Benefit:</b> capacity reinvested · <b>KPI:</b> hours moved to customer work (sample)</small>','Human only'],
-['09:30','ok','Scorecard','The AI Steering Committee scorecard updates: hours reinvested, override rate, customer satisfaction. Lessons feed the shared template for the next division.<small><b>Benefit:</b> proof it helped, reused across divisions</small>','Measure &amp; reuse']];
+['09:12','','Customer','Asks for $15,000 from her annuity for tuition.<small><b>Benefit:</b> one request, any hour</small>','Customer'],
+['09:12','ag','Service agent','Pulls the contract, values and tax notes.<small><b>Benefit:</b> no hunting across systems</small>','Agent does'],
+['09:13','sys','Agent + AI judge','Drafts two options; AI judge checks the rules.<small><b>Benefit:</b> draft in seconds</small>','Human + AI'],
+['09:14','chk','Checkpoint','Large withdrawal after an address change: flagged for a person.<small><b>Agents propose; people decide</b></small>','Checkpoint'],
+['09:16','hum','Maria, associate','Confirms figures and approves the forms.<small><b>Benefit:</b> still reviewed, faster</small>','Human + AI'],
+['09:18','ok','Customer answered','Same day, not about 5 days (illustrative).<small><b>Benefit:</b> faster speed to customer</small>','Agent does'],
+['09:25','hum','Maria','Offers a tuition-planning call with an advisor.<small><b>Benefit:</b> time saved goes to people</small>','Human only'],
+['09:30','ok','Scorecard','Hours reinvested and satisfaction update; reused next division.<small><b>Benefit:</b> proof it helped</small>','Measure &amp; reuse']];
 var f=document.getElementById('cnf');if(!f)return;var ck=document.getElementById('cnc'),ln=document.getElementById('cnl');
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function mn(t){var p=t.split(':');return +p[0]*60+ +p[1];}
@@ -793,7 +793,7 @@ var m=mn(e[0])-mn(EV[0][0]);ck.textContent='0:'+('0'+m).slice(-2);ln.innerHTML=e
 if(!reduce)requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('in');f.scrollTop=f.scrollHeight;});});}
 function play(){gen++;if(tm)clearTimeout(tm);var my=gen,i=0;f.innerHTML='';ck.textContent='0:00';ln.textContent='–';
 if(reduce){for(var k=0;k<EV.length;k++)render(k);return;}
-(function tick(){if(my!==gen)return;if(i>=EV.length)return;render(i++);tm=setTimeout(tick,1700);})();}
+(function tick(){if(my!==gen)return;if(i>=EV.length)return;render(i++);tm=setTimeout(tick,3200);})();}
 function start(){if(started)return;started=true;play();}
 document.getElementById('cnr').addEventListener('click',function(){started=true;play();});
 document.getElementById('seej').addEventListener('click',function(){var t=document.querySelector('[role=tab][data-tab="overview"]');if(t)t.click();var j=document.getElementById('journey');if(j)j.scrollIntoView({behavior:'smooth',block:'start'});});
