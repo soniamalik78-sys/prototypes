@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>BEACON AI Governance</title>
-<meta name="description" content="BEACON: a prototype by Sonia Malik of an AI governance operating model for models, copilots, agents and RAG workflows.">
+<title>BEACON · One claim journey through PDLC and ADLC | Sonia Malik</title>
+<meta name="description" content="BEACON: a prototype by Sonia Malik of an AI governance operating model that extends governance built into agentic engineering to models, copilots, agents and RAG workflows.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -64,6 +64,7 @@ button{font-family:inherit}
 .brand{font-family:var(--f-display); font-size:clamp(3rem,9vw,5.6rem); line-height:.95; letter-spacing:.02em; font-weight:500;}
 .pron{font-family:var(--f-mono); font-size:.85rem; color:var(--faint); margin-top:8px;}
 .thesis{font-family:var(--f-display); font-size:clamp(1.25rem,2.6vw,1.6rem); line-height:1.35; max-width:30ch; margin-top:22px;}
+@media (min-width:1100px){.thesis{max-width:none; white-space:nowrap; font-size:.78rem; letter-spacing:-.005em}}
 .hero .lede{margin-top:14px}
 .hero-meta{display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:26px; font-size:.9rem; color:var(--muted)}
 .hero-meta b{color:var(--fg); font-weight:600}
@@ -525,21 +526,202 @@ td.num{font-variant-numeric:tabular-nums}
 .scen dd{margin:0;color:#fff}
 .loop{border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-top:18px}
 .loop ol{margin:8px 0 0;padding-left:20px;display:grid;gap:4px;font-size:.92rem}
+
+/* ===== Side rails: utilize left/right real estate (desktop) ===== */
+:root{ --rail-l:140px; --rail-r:252px; --orange:#E87722; --navy:#1F3A5F; --charcoal:#333; }
+.stage-rail, .about-rail{ display:none; }
+.shell{ display:block; }
+@media (min-width:1280px){
+  .shell{
+    display:grid;
+    grid-template-columns: var(--rail-l) minmax(0,1040px) var(--rail-r);
+    gap: 22px 18px;
+    max-width: 1460px;
+    margin: 0 auto;
+    padding: 12px 16px 48px;
+    align-items: start;
+  }
+  .shell > .wrap{
+    max-width: none;
+    margin: 0;
+    padding-inline: 0;
+    padding-block: 0 48px;
+    grid-column: 2;
+  }
+  .stage-rail, .about-rail{ display:flex; }
+  /* About always visible on desktop → hide floating tab */
+  .side-tab{ display:none !important; }
+  /* Undo old drawer clearance padding */
+  .wrap{ padding-right: 0 !important; }
+  .tabbar{ margin-right: 0 !important; padding-right: 0 !important; }
+}
+@media (min-width:1280px) and (max-width:1399px){
+  :root{ --rail-l:120px; --rail-r:220px; }
+  .shell{ gap: 14px 12px; max-width: 1380px; }
+}
+
+/* Left: slim sticky stage tracker */
+.stage-rail{
+  flex-direction:column; gap:6px;
+  position:sticky; top:20px;
+  padding:14px 10px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 4px 18px rgba(31,58,95,.06);
+  z-index:40;
+  max-height: calc(100vh - 40px);
+  overflow:auto;
+}
+.stage-rail .sr-label{
+  font-size:.65rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--faint); margin:0 0 6px 2px;
+}
+.stage-rail button{
+  display:grid; grid-template-columns:22px 1fr; gap:6px; align-items:center;
+  width:100%; text-align:left; border:none; background:transparent;
+  padding:7px 6px; border-radius:8px; cursor:pointer; color:var(--muted);
+  font-size:.72rem; line-height:1.25; font-family:inherit;
+}
+.stage-rail button .sn{
+  width:22px; height:22px; border-radius:6px; display:grid; place-items:center;
+  font-family:var(--f-mono); font-size:.68rem; font-weight:600;
+  background:var(--sunk); color:var(--muted);
+}
+.stage-rail button b{ font-weight:600; color:var(--fg); font-size:.74rem; }
+.stage-rail button:hover{ background:var(--accent-soft); }
+.stage-rail button[aria-current="true"]{ background:var(--accent-soft); color:var(--accent-ink); }
+.stage-rail button[aria-current="true"] .sn{ background:var(--navy); color:#fff; }
+.stage-rail button[aria-current="true"][data-gate="HUMAN"] .sn{ background:var(--orange); color:#fff; }
+.stage-rail button .sg{ display:block; font-size:.62rem; color:var(--faint); font-weight:500; }
+.stage-rail button[aria-current="true"] .sg{ color:var(--accent-ink); }
+
+/* Right: sticky About Sonia */
+.about-rail{
+  flex-direction:column; gap:12px;
+  position:sticky; top:20px;
+  padding:18px 16px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 4px 18px rgba(31,58,95,.06);
+  z-index:40;
+  max-height: calc(100vh - 40px);
+  overflow:auto;
+}
+.about-rail .ar-head{ display:flex; gap:10px; align-items:center; }
+.about-rail .ar-av{
+  flex:0 0 44px; width:44px; height:44px; border-radius:50%;
+  background:var(--navy); color:#fff; display:grid; place-items:center;
+  font-weight:700; font-size:.85rem; letter-spacing:.02em;
+}
+.about-rail h2{ font-family:var(--f-display); font-size:1.15rem; color:var(--navy); margin:0; }
+.about-rail .ar-sub{ font-size:.78rem; color:var(--charcoal); line-height:1.35; margin:0; }
+.about-rail .ar-fit{
+  font-size:.78rem; color:var(--accent-ink); background:var(--accent-soft);
+  border-radius:8px; padding:8px 10px; margin:0; line-height:1.35;
+}
+.about-rail .ar-fit b{ color:var(--navy); }
+.about-rail .ar-loop{
+  font-size:.76rem; color:var(--muted); line-height:1.4; margin:0;
+  padding:8px 0 0; border-top:1px solid var(--line);
+}
+.about-rail .ar-stats{ display:grid; gap:8px; margin:0; padding:0; list-style:none; }
+.about-rail .ar-stats li{
+  display:grid; gap:2px; padding:8px 10px; background:var(--sunk);
+  border-radius:8px; border:1px solid var(--line);
+}
+.about-rail .ar-stats .n{
+  font-family:var(--f-mono); font-size:.82rem; font-weight:600; color:var(--navy);
+}
+.about-rail .ar-stats .k{ font-size:.7rem; color:var(--muted); line-height:1.3; }
+.about-rail .ar-btns{ display:grid; gap:8px; margin-top:2px; }
+.about-rail .ar-btns a{
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  padding:9px 12px; border-radius:8px; font-size:.82rem; font-weight:600;
+  text-decoration:none; text-align:center;
+}
+.about-rail .ar-btns a.primary{
+  background:var(--navy); color:#fff;
+}
+.about-rail .ar-btns a.primary.is-placeholder{ opacity:.85; }
+.about-rail .ar-btns a.ghost{
+  background:transparent; color:var(--navy); border:1px solid var(--line-strong);
+}
+.about-rail .ar-btns a.ghost:hover, .about-rail .ar-btns a.primary:hover{ filter:brightness(1.05); }
+.about-rail .ar-note{ font-size:.65rem; color:var(--faint); margin:0; line-height:1.3; }
+
+/* Mobile / narrow: compact stage chips under tab bar (optional strip) */
+.stage-chips{
+  display:none; gap:6px; overflow-x:auto; padding:8px 0 4px;
+  -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+}
+.stage-chips button{
+  flex:0 0 auto; border:1px solid var(--line-strong); background:var(--surface);
+  color:var(--muted); border-radius:999px; padding:5px 10px; font-size:.72rem;
+  font-family:inherit; cursor:pointer; white-space:nowrap;
+}
+.stage-chips button b{ color:var(--fg); font-weight:600; }
+.stage-chips button[aria-current="true"]{
+  background:var(--accent-soft); border-color:var(--accent); color:var(--accent-ink);
+}
+@media (max-width:1279px){
+  .stage-chips{ display:flex; }
+}
+
+/* What BEACON offers you — role personas */
+.persona-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
+@media (max-width:820px){ .persona-grid{grid-template-columns:1fr} }
+.persona{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  padding:16px 16px 14px; display:grid; gap:8px; align-content:start;
+}
+.persona .prole{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--accent-ink); background:var(--accent-soft); padding:3px 10px; border-radius:999px; width:fit-content;
+}
+.persona h3{font-family:var(--f-display); font-size:1.05rem; color:var(--navy,#1F3A5F); margin:0}
+.persona .pain{font-size:.88rem; color:var(--muted); margin:0; line-height:1.4}
+.persona .pain b{color:var(--fg)}
+.persona .gives, .persona .gets{margin:0; padding:0; list-style:none; display:grid; gap:4px}
+.persona .gives li, .persona .gets li{
+  font-size:.84rem; color:var(--fg); padding-left:14px; position:relative; line-height:1.35;
+}
+.persona .gives li::before, .persona .gets li::before{
+  content:""; position:absolute; left:0; top:.55em; width:6px; height:6px; border-radius:50%; background:var(--accent);
+}
+.persona .gets li::before{ background:var(--orange,#E87722); }
+.persona .plabel{font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); margin-top:4px}
+/* end side rails */
 </style>
 </head>
 <body>
 
 <div class="watermark" aria-hidden="true"></div>
+
+<div class="shell">
+<nav class="stage-rail" id="stage-rail" aria-label="Claim journey stages">
+  <div class="sr-label">For you</div>
+  <button type="button" data-go-tab="offers" aria-current="false"><span class="sn" style="background:var(--accent-soft);color:var(--accent-ink)">★</span><span><b>Who it serves</b><span class="sg">Roles</span></span></button>
+  <div class="sr-label" style="margin-top:8px">Journey</div>
+  <button type="button" data-stage="D1" aria-current="false"><span class="sn">1</span><span><b>Discover</b><span class="sg">Exception</span></span></button>
+  <button type="button" data-stage="D2" aria-current="false"><span class="sn">2</span><span><b>Design</b><span class="sg">Exception</span></span></button>
+  <button type="button" data-stage="D3" aria-current="false"><span class="sn">3</span><span><b>Build</b><span class="sg">Exception</span></span></button>
+  <button type="button" data-stage="D4" aria-current="false"><span class="sn">4</span><span><b>Evaluate</b><span class="sg">Exception</span></span></button>
+  <button type="button" data-stage="D5" data-gate="HUMAN" aria-current="true"><span class="sn">5</span><span><b>Release</b><span class="sg">Human sign-off</span></span></button>
+  <button type="button" data-stage="D6" aria-current="false"><span class="sn">6</span><span><b>Run &amp; improve</b><span class="sg">Exception</span></span></button>
+</nav>
 <div class="wrap">
   <header class="hero">
     <div class="eyebrow">
-      <span class="pill">Prototype by Sonia Malik</span>
-      <span class="pill neutral">Applying for Head of AI Governance · Guardian Life</span>
+      <span class="pill">Executive preview · Sonia Malik</span>
+      <span class="pill neutral">For Head of AI Platform Engineering – Execution Plane · Guardian Life</span>
     </div>
     <div class="brand"><svg class="bmark" viewBox="0 0 40 44" aria-hidden="true"><path class="b-beam" d="M20 9 L2 2 M20 9 L38 2"/><path class="b-tower" d="M14 42 L16.5 14 H23.5 L26 42 Z"/><rect class="b-lamp" x="15" y="6" width="10" height="7" rx="1.5"/><path class="b-band" d="M15.6 24 H24.4 M15 33 H25"/></svg>BEACON</div>
-    <div class="pron">AI governance that runs as an operating model, not a review queue</div>
+    <div class="pron">One customer journey, governed end to end — through PDLC and ADLC</div>
     <div class="acro" style="font-size:.9rem;letter-spacing:.02em;color:var(--ink,#333);margin-top:10px"><span style="color:#1F3A5F"><b>B</b>uild · <b>E</b>valuate · <b>A</b>pprove · <b>C</b>ontrol · <b>O</b>bserve · <b>N</b>urture</span> <span style="font-style:italic;color:#333">&nbsp;— A beacon, not a barrier.</span></div>
-    <p class="thesis">One governance program for every model, copilot, agent and RAG workflow: risk-based, built into delivery, and measured every month.</p>
+    <p class="thesis">Illustrative walkthrough: a policyholder filing a disability claim, stage by stage through the product development lifecycle (PDLC) and the AI-driven development lifecycle (ADLC). Controls live in the platform. Governance is a strength built in — not a separate ask.</p>
   </header>
   <section class="govflow" aria-label="Governance flow" style="margin:18px 0 8px;padding:0">
     <svg class="gov-flow" viewBox="0 0 960 330" role="img" aria-labelledby="gf-t gf-d" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:Helvetica,Arial,sans-serif">
@@ -586,40 +768,52 @@ td.num{font-variant-numeric:tabular-nums}
     <div class="tabs" role="tablist" aria-label="BEACON sections" id="tabs">
       <button class="tab" role="tab" id="t-overview" aria-controls="overview" data-tab="overview">Overview</button>
       <button class="tab" role="tab" id="t-types" aria-controls="types" data-tab="types">Four kinds of AI</button>
-      <button class="tab" role="tab" id="t-desk" aria-controls="desk" data-tab="desk">Governance desk</button>
-      <button class="tab" role="tab" id="t-ops" aria-controls="ops" data-tab="ops">Operating model</button>
+      <button class="tab" role="tab" id="t-offers" aria-controls="offers" data-tab="offers">Who it serves</button>
+      <button class="tab" role="tab" id="t-desk" aria-controls="desk" data-tab="desk">Claim journey</button>
+      <button class="tab" role="tab" id="t-ops" aria-controls="ops" data-tab="ops">Six stages</button>
       <button class="tab" role="tab" id="t-trust" aria-controls="trust" data-tab="trust">Human in the loop</button>
-      <button class="tab" role="tab" id="t-dash" aria-controls="dash" data-tab="dash">Governance KPIs</button>
+      <button class="tab" role="tab" id="t-dash" aria-controls="dash" data-tab="dash">Journey KPIs</button>
       <button class="tab" role="tab" id="t-why" aria-controls="why" data-tab="why">Why me</button>
       <button class="tab" role="tab" id="t-meet" aria-controls="meet" data-tab="meet">When we meet</button>
     </div>
   </div>
+
+    <div class="stage-chips" id="stage-chips" aria-label="Claim journey stages">
+      <button type="button" data-go-tab="offers"><b>★</b> Who it serves</button>
+      <button type="button" data-stage="D1" aria-current="false"><b>1</b> Discover</button>
+      <button type="button" data-stage="D2" aria-current="false"><b>2</b> Design</button>
+      <button type="button" data-stage="D3" aria-current="false"><b>3</b> Build</button>
+      <button type="button" data-stage="D4" aria-current="false"><b>4</b> Evaluate</button>
+      <button type="button" data-stage="D5" aria-current="true"><b>5</b> Release</button>
+      <button type="button" data-stage="D6" aria-current="false"><b>6</b> Run &amp; improve</button>
+    </div>
+
 
   <!-- OVERVIEW -->
   <section class="pane" id="overview" role="tabpanel" aria-labelledby="t-overview">
     <div class="summary">
       <h2>60-second summary: three things to know</h2>
       <ol>
-        <li><b>Governance as an operating model:</b> one risk-based path for every model, copilot, agent and RAG workflow, with controls built into delivery.</li>
-        <li><b>Proven at S&amp;P Global:</b> an AI developer platform designed to serve ~1,200 engineers in 6 months, 350+ engineers on governed AI in 13 months, and approval time on regulated checks cut from 3 days to same day.</li>
-        <li><b>A closed loop:</b> policyholder, claims and reviewer signals feed back into controls, measured every month.</li>
+        <li><b>One journey:</b> a policyholder filing a disability claim, run through six PDLC / ADLC stages — Discover, Design, Build, Evaluate, Release, Run &amp; improve — with the customer moment first at every stage.</li>
+        <li><b>Proven at S&amp;P Global:</b> ~1,200 people using the AI developer framework; 350+ engineers on governed AI in 13 months; regulated sign-off from 3 days to same day; features per PI up 30% and NPS up 5 points.</li>
+        <li><b>Platform fit:</b> built for Head of AI Platform Engineering – Execution Plane. Governance (BEACON) is a strength inside the platform, not a separate role ask.</li>
       </ol>
-      <p style="margin:10px 0 0;font-size:.9rem">24+ years of tech experience. Built Prudential&rsquo;s Customer Office QE group; revitalized and scaled QE at Pearson, Audible, DoubleVerify and S&amp;P Global.</p>
+      <p style="margin:10px 0 0;font-size:.9rem">24+ years in engineering and transformation leadership. Led QE for Prudential&rsquo;s Customer Office; revitalized and scaled QE at Pearson, Audible, DoubleVerify and S&amp;P Global. First US role: Guardian Life, 2005.</p>
     </div>
-    <p class="lede">BEACON is the framework I am proposing for running an enterprise AI governance program day to day: turning policy and risk appetite into intake, review, escalation, monitoring and change management that every AI team uses the same way. Controls live in the platforms and delivery workflows, so they are observable and auditable, and people stay accountable for the decisions that matter. It is an illustrative prototype with sample data, not connected to any company's systems.</p>
+    <p class="lede">BEACON is the control layer inside an AI execution platform: Build · Evaluate · Approve · Control · Observe · Nurture. This page walks one illustrative disability-claim journey through the same six stages as the Guardian brief — customer moment, agent action, human accountability, KPI. Sample data only; not connected to any company&rsquo;s systems.</p>
     <div class="proof">
-      <div><b class="mono">6 months</b><span>to stand up an AI-first PDLC and AI developer platform designed to serve ~1,200 engineers</span></div>
-      <div><b class="mono">350+</b><span>engineers on governed AI workflows within 13 months</span></div>
-      <div><b class="mono">3 days → same day</b><span>approval time on regulated checks, with evidence-backed human approval enforced in the pipeline</span></div>
-      <div><b class="mono">10+</b><span>AI tools reviewed against build–buy–partner criteria under security and controls requirements</span></div>
+      <div><b class="mono">~1,200</b><span>people using the AI developer framework (S&amp;P Global)</span></div>
+      <div><b class="mono">350+ · 13 months</b><span>engineers on governed AI workflows</span></div>
+      <div><b class="mono">3 days → same day</b><span>regulated sign-off, with evidence-backed human approval in the pipeline</span></div>
+      <div><b class="mono">+30% · NPS +5</b><span>features delivered per PI over 3 PIs, journey-led (S&amp;P Global)</span></div>
     </div>
-    <p class="proof-note">These four figures are from my work at S&amp;P Global. Figures in the Governance KPIs tab are sample data.</p>
+    <p class="proof-note">These four figures are from my work at S&amp;P Global. Journey KPIs in the KPIs tab match the Guardian brief — no new numbers.</p>
     <div class="scen">
-      <span class="label">How BEACON would catch it · illustrative scenarios, not Guardian data</span>
+      <span class="label">How BEACON would catch it on this claim · illustrative, not Guardian data</span>
       <dl>
-        <dt>tool_scope</dt><dd>A policy servicing agent tries a beneficiary change. The action is outside its approved tool scope: blocked, logged, and routed to a person with the evidence.</dd>
+        <dt>tool_scope</dt><dd>A claims intake agent tries a payment call before examiner approval. Outside approved tool scope: blocked, logged, and routed to a person with the evidence.</dd>
         <dt>source_freshness</dt><dd>A claims summarizer retrieves from a document set with no owner or refresh date. Grounding review flags it; the source is removed until Data Governance assigns an owner.</dd>
-        <dt>group_gap_pts</dt><dd>An underwriting score update shows a 6-point approval gap between applicant groups vs. a 3-point limit. Release held for fairness review, as NY DFS Circular Letter No. 7 expects.</dd>
+        <dt>human_denial</dt><dd>The agent recommends a denial. Denials never auto-fire: the examiner decides from the evidence packet. That is a hard human sign-off, not governance by exception.</dd>
       </dl>
     </div>
 
@@ -633,10 +827,11 @@ td.num{font-variant-numeric:tabular-nums}
     <div class="sec-head" style="margin-top:36px"><span class="label">Where to go next</span></div>
     <div class="jump">
       <button type="button" data-go="types"><b>Four kinds of AI</b><span>Models, copilots, agents and RAG workflows, each governed for its own risks</span><i>2 min →</i></button>
-      <button type="button" data-go="desk"><b>Governance desk</b><span>Take a sample use case through intake, review and a decision</span><i>3 min →</i></button>
-      <button type="button" data-go="ops"><b>Operating model</b><span>Intake to retirement, with owners, service levels and decision rights</span><i>2 min →</i></button>
+      <button type="button" data-go="offers"><b>Who BEACON serves</b><span>Product Owners, Dev Leaders, Developers, QE, Risk</span><i>2 min →</i></button>
+      <button type="button" data-go="desk"><b>Claim journey desk</b><span>One disability claim through the six stages</span><i>3 min →</i></button>
+      <button type="button" data-go="ops"><b>Six stages</b><span>Discover → Run &amp; improve · customer, agent, control, KPI</span><i>3 min →</i></button>
       <button type="button" data-go="trust"><b>Human in the loop</b><span>How people decide faster and better as evidence builds</span><i>2 min →</i></button>
-      <button type="button" data-go="dash"><b>Governance KPIs</b><span>Coverage, exceptions, monitoring and remediation, every month</span><i>1 min →</i></button>
+      <button type="button" data-go="dash"><b>Journey KPIs</b><span>The same measures as the Guardian brief</span><i>1 min →</i></button>
       <button type="button" data-go="why"><b>Why me</b><span>What S&amp;P Global, DoubleVerify, Audible and Prudential taught me</span><i>2 min →</i></button>
     </div>
   </section>
@@ -646,44 +841,174 @@ td.num{font-variant-numeric:tabular-nums}
     <div class="sec-head">
       <span class="label">One program, four risk profiles</span>
       <h2>Models, copilots, agents and RAG workflows need different controls</h2>
-      <p class="lede">The governance path is the same for all four, but what reviewers and monitors look for changes. Agents and RAG workflows need the closest attention, because they act on tools and depend on the content they retrieve. "Typical today" describes a typical enterprise, not any specific company.</p>
+      <p class="lede">The governance path is the same for all four, but what reviewers and monitors look for changes. Agents and RAG workflows need the closest attention, because they act on tools and depend on the content they retrieve. This is how I would extend the governance I built into AI-assisted and agentic engineering to all four. "Typical today" describes a typical enterprise, not any specific company.</p>
     </div>
     <div class="who2">
       <div class="glist" id="tlist" role="group" aria-label="Kinds of AI"></div>
       <div class="gcard" id="tcard" aria-live="polite"></div>
     </div>
-    <div class="next"><button type="button" data-go="desk">Next: governance desk →</button></div>
+    <div class="next"><button type="button" data-go="desk">Next: claim journey →</button></div>
   </section>
 
-  <!-- GOVERNANCE DESK -->
+
+  <!-- WHO IT SERVES -->
+  <section class="pane" id="offers" role="tabpanel" aria-labelledby="t-offers" hidden>
+    <div class="sec-head">
+      <span class="label">Along the disability-claim journey</span>
+      <h2>What BEACON offers you</h2>
+      <p class="lede">Same journey, different seat. Each role gets a clear pain point, what BEACON puts in their hands (creator and judge agents, human sign-off, governance by exception, customer-feedback loop), and what they walk away with — qualitative outcomes only.</p>
+    </div>
+    <div class="persona-grid">
+      <article class="persona">
+        <span class="prole">Product Owners</span>
+        <h3>Own the claimant outcome, not a ticket pile</h3>
+        <p class="pain"><b>Pain:</b> Features ship without a journey KPI; partner and in-house pull in different directions; denials and complaints surface late.</p>
+        <div class="plabel">What BEACON gives you</div>
+        <ul class="gives">
+          <li>Creator agents draft MVP and BDD stories from the claimant KPI; judge agents flag gaps before your review</li>
+          <li>One scorecard for partner and in-house on the same Discover → Run path</li>
+          <li>Customer-feedback loop (NPS, complaints, examiner edits) that reopens the backlog with evidence</li>
+        </ul>
+        <div class="plabel">What you get</div>
+        <ul class="gets">
+          <li>Clearer scope against a claimant outcome</li>
+          <li>Fewer late surprises at Release</li>
+          <li>A backlog that learns from real claimants</li>
+        </ul>
+      </article>
+      <article class="persona">
+        <span class="prole">Dev Leaders</span>
+        <h3>Speed with control, without a review queue</h3>
+        <p class="pain"><b>Pain:</b> Governance arrives as a gate after the build; tool sprawl and unclear human-in-the-loop rules slow every release.</p>
+        <div class="plabel">What BEACON gives you</div>
+        <ul class="gives">
+          <li>Controls as platform defaults on Build and Evaluate — not a separate committee ask</li>
+          <li>Governance by exception: people pulled in on alerts, not every transaction</li>
+          <li>Hard human sign-off only where it matters (examiner decides; denials never auto-fire)</li>
+        </ul>
+        <div class="plabel">What you get</div>
+        <ul class="gets">
+          <li>Faster path from Design to Release with evidence attached</li>
+          <li>Shared agent runtimes, tool scope and eval gates your teams inherit</li>
+          <li>An operating rhythm your directors can run</li>
+        </ul>
+      </article>
+      <article class="persona">
+        <span class="prole">Developers</span>
+        <h3>Ship the claim path with agents that stay in bounds</h3>
+        <p class="pain"><b>Pain:</b> Unclear which tools an agent may call; reviews ask for evidence you never captured; rework after drift or fairness holds.</p>
+        <div class="plabel">What BEACON gives you</div>
+        <ul class="gives">
+          <li>Creator agents for code, tests and reviews; judge agents for grounding and fairness before you promote</li>
+          <li>Safe tool lists and schemas on Build; out-of-scope actions blocked and logged</li>
+          <li>Release packet the examiner sees — your work ends in a decision, not a dump of logs</li>
+        </ul>
+        <div class="plabel">What you get</div>
+        <ul class="gets">
+          <li>Less rework from late control findings</li>
+          <li>Clear boundaries for agent tool use</li>
+          <li>Feedback from production (Observe / Nurture) that becomes the next test case</li>
+        </ul>
+      </article>
+      <article class="persona">
+        <span class="prole">QE</span>
+        <h3>Judge the journey before the claimant feels it</h3>
+        <p class="pain"><b>Pain:</b> Eval is a late checklist; failures are waived; fairness and grounding are tribal knowledge.</p>
+        <div class="plabel">What BEACON gives you</div>
+        <ul class="gives">
+          <li>Judge / eval agents replay past claims against examiner decisions before go-live</li>
+          <li>Failures become new test cases — not exceptions to skip</li>
+          <li>Customer-feedback and examiner edits close the loop into the next Evaluate pass</li>
+        </ul>
+        <div class="plabel">What you get</div>
+        <ul class="gets">
+          <li>A signed eval packet Risk and Product can stand behind</li>
+          <li>Quality gates that travel with the platform, not a side spreadsheet</li>
+          <li>A seat at Release and Run &amp; improve, not only at the end</li>
+        </ul>
+      </article>
+      <article class="persona">
+        <span class="prole">Risk &amp; Compliance</span>
+        <h3>Evidence by default; attention by exception</h3>
+        <p class="pain"><b>Pain:</b> AI use cases arrive without lineage or HITL rules; every change feels like a full review; audit asks for a trail that was never written.</p>
+        <div class="plabel">What BEACON gives you</div>
+        <ul class="gives">
+          <li>Risk tier and control checks at Discover / Design; DFS and NAIC requirements written into the design</li>
+          <li>Human sign-off hard-gated at Release; governance by exception elsewhere (Rullo: review alerts, not every transaction)</li>
+          <li>Action logs, eval evidence and open exceptions with owners — ready for audit</li>
+        </ul>
+        <div class="plabel">What you get</div>
+        <ul class="gets">
+          <li>Proportionate review depth instead of a universal queue</li>
+          <li>A durable evidence trail without slowing routine patterns</li>
+          <li>Partnership with the Execution Plane, not a handoff after launch</li>
+        </ul>
+      </article>
+    </div>
+    <div class="next"><button type="button" data-go="desk">Next: claim journey →</button></div>
+  </section>
+
+  <!-- CLAIM JOURNEY DESK -->
   <section class="pane" id="desk" role="tabpanel" aria-labelledby="t-desk" hidden>
     <div class="sec-head">
-      <span class="label">Try it</span>
-      <h2>The governance desk</h2>
-      <p class="lede">Pick a sample use case. Five reviews run against policy-as-code, each citing its evidence. The governance team proposes a way forward, and the decision lands in the audit trail.</p>
+      <span class="label">One journey · illustrative, not Guardian data</span>
+      <h2>A policyholder filing a disability claim</h2>
+      <p class="lede">The same six stages as the Guardian brief. Each card leads with the <b>customer moment</b>, then the <b>agent action</b>, then the <b>control</b>. Hard human sign-offs are marked; everything else is governance by exception.</p>
     </div>
-    <div class="demo">
-      <div class="demo-top">
-        <div class="cases" role="group" aria-label="Sample use cases" id="subs"></div>
-        <button class="reset" id="dreset" type="button">Start over</button>
+    <div class="locks">
+      <div class="lockcard" data-jcard="D1">
+        <span class="badge" id="j-D1" data-jstage="D1">1 · Discover</span>
+        <h3>Customer moment</h3>
+        <p>Policyholder needs clarity on eligibility, timeline and next steps after an unexpected stop from work.</p>
+        <p><b>Agent:</b> journey agent maps goal, intent and baseline; surfaces the end-to-end bet (intake → decision → payment).</p>
+        <p><b>Control · B Build:</b> business owner registers use case, purpose and risk tier. Partner and in-house share one outcome scorecard.</p>
       </div>
-      <div class="steps" id="dsteps">
-        <button type="button" data-step="0"><b>Step 1</b>Intake</button>
-        <button type="button" data-step="1"><b>Step 2</b>Reviews</button>
-        <button type="button" data-step="2"><b>Step 3</b>Path forward</button>
-        <button type="button" data-step="3"><b>Step 4</b>Audit trail</button>
+      <div class="lockcard" data-jcard="D2">
+        <span class="badge" id="j-D2" data-jstage="D2">2 · Design</span>
+        <h3>Customer moment</h3>
+        <p>Claimant should file once, see status, and know a person decides denials.</p>
+        <p><b>Agent:</b> creator agents draft MVP and BDD stories from the journey KPI; judge agent flags gaps before humans review.</p>
+        <p><b>Control · B Build:</b> product + claims lead approve stories and tool scope (read-only first). DFS / NAIC requirements written into the design.</p>
       </div>
-      <div class="panel" id="dpanel" aria-live="polite"></div>
+      <div class="lockcard" data-jcard="D3">
+        <span class="badge" id="j-D3" data-jstage="D3">3 · Build</span>
+        <h3>Customer moment</h3>
+        <p>Intake, identity, document gather and medical review must work as one path.</p>
+        <p><b>Agent:</b> code, test and review agents implement intake runtime, RAG over policy docs, MCP tools, A2A medical handoff.</p>
+        <p><b>Control · C Control:</b> engineers own schemas and safe tool lists; health data masked; out-of-scope actions blocked.</p>
+      </div>
+      <div class="lockcard" data-jcard="D4">
+        <span class="badge" id="j-D4" data-jstage="D4">4 · Evaluate</span>
+        <h3>Customer moment</h3>
+        <p>Before go-live, the path must be as fair and grounded for this claimant as for the last hundred.</p>
+        <p><b>Agent:</b> judge / eval agents replay past claims; grounding, fairness and non-functional checks.</p>
+        <p><b>Control · E Evaluate:</b> QE + risk sign the eval packet. Failures become new test cases — not exceptions to skip.</p>
+      </div>
+      <div class="lockcard" data-jcard="D5" style="border-color:#E87722;border-width:2px">
+        <span class="badge" id="j-D5" data-jstage="D5" style="background:#E87722;color:#fff">5 · Release · HUMAN SIGN-OFF</span>
+        <h3>Customer moment</h3>
+        <p>Examiner opens one screen: recommended benefit, duration, rationale and evidence — then decides.</p>
+        <p><b>Agent:</b> assembles the evidence packet; payment and notice tools stay locked until approval. Denials never auto-fire.</p>
+        <p><b>Control · A Approve:</b> examiner decides. This is a hard human sign-off. Routine low-risk patterns elsewhere use <b>governance by exception</b> — review depth rises on alerts, not every transaction (<a href="https://www.insurancebusinessmag.com/us/news/breaking-news/ai-agents-are-already-calling-insurers-warns-guardian-life-tech-chief-593051.aspx" target="_blank" rel="noopener">Steve Rullo, Insurance Business, Oct 9, 2026</a>).</p>
+      </div>
+      <div class="lockcard" data-jcard="D6">
+        <span class="badge" id="j-D6" data-jstage="D6">6 · Run &amp; improve · EXCEPTION</span>
+        <h3>Customer moment</h3>
+        <p>Claimant is paid and notified; the next claimant should get a better experience from what this one taught.</p>
+        <p><b>Agent:</b> observe agents trace every step; drift and incident alerts; examiner edits become new test cases.</p>
+        <p><b>Control · O Observe / N Nurture:</b> ops + risk own open exceptions with owners and dates. Skills converge on the same journey KPI.</p>
+        <div style="margin-top:8px"><button class="talk" type="button" data-contact>Ask for a walkthrough</button></div>
+      </div>
     </div>
-    <div class="next"><button type="button" data-go="ops">Next: operating model →</button></div>
+    <div class="next"><button type="button" data-go="ops">Next: six stages in detail →</button></div>
   </section>
 
   <!-- OPERATING MODEL -->
   <section class="pane" id="ops" role="tabpanel" aria-labelledby="t-ops" hidden>
     <div class="sec-head">
-      <span class="label">From strategy to daily practice</span>
-      <h2>Six stages, each with an owner, a service level and evidence</h2>
-      <p class="lede">Select a stage to see what happens in it. The path covers the whole life of an AI system, from intake to retirement, and connects to the data management and data governance controls already in place.</p>
+      <span class="label">PDLC · ADLC · one disability claim</span>
+      <h2>Six stages: customer moment → agent → control → KPI</h2>
+      <p class="lede">Select a stage. Each card matches the Guardian brief. Hard human sign-offs are labeled; other stages use governance by exception (Rullo: review exceptions, not every transaction).</p>
     </div>
     <div class="stages" id="stages" role="group" aria-label="Stages"></div>
     <div class="gcard" id="stagecard" aria-live="polite" style="margin-top:14px"></div>
@@ -692,34 +1017,50 @@ td.num{font-variant-numeric:tabular-nums}
       <table>
         <thead><tr><th>Who decides</th><th>What they decide</th><th>Service level</th><th>Share of volume (target)</th></tr></thead>
         <tbody>
-          <tr><td><b>Standard path</b></td><td>Low-risk use cases that match an approved pattern: approve with standard controls and record the evidence</td><td class="num">2 business days</td><td class="num">~65%</td></tr>
-          <tr><td><b>AI governance team</b></td><td>Elevated cases: set conditions, human-in-the-loop rules and monitoring, agreed with the delivery team</td><td class="num">5 business days</td><td class="num">~30%</td></tr>
-          <tr><td><b>Enterprise governance forum</b></td><td>High-impact or novel cases, policy exceptions and changes to risk appetite, with the team's recommendation</td><td class="num">Monthly, or ad hoc</td><td class="num">~5%</td></tr>
+          <tr><td><b>Governance by exception</b></td><td>Routine patterns with a track record: automated checks run; people are pulled in on alerts and deviations — not every transaction (<a href="https://www.insurancebusinessmag.com/us/news/breaking-news/ai-agents-are-already-calling-insurers-warns-guardian-life-tech-chief-593051.aspx" target="_blank" rel="noopener">Rullo, Insurance Business</a>)</td><td class="num">Per alert</td><td class="num">Most volume</td></tr>
+          <tr><td><b>Human sign-off (hard gate)</b></td><td>Claim decisions and all denials: examiner decides from the evidence packet; payment tools stay locked until approval</td><td class="num">At decision</td><td class="num">Every claim</td></tr>
+          <tr><td><b>Elevated / forum</b></td><td>Novel patterns, fairness holds, policy exceptions and risk-appetite changes</td><td class="num">5 days / monthly</td><td class="num">Exceptions</td></tr>
         </tbody>
       </table>
     </div>
+    <div class="sec-head" style="margin-top:32px;margin-bottom:12px"><span class="label">Built for insurance regulation</span><p class="hint">How BEACON maps to the guidance a New York insurer answers to. My reading of public guidance, not legal advice.</p></div>
+    <div class="lessons">
+      <article class="lesson"><span class="yr">Adopted Dec 2023</span><h3>NAIC Model Bulletin on AI</h3>
+        <ul><li>A written, risk-based AI program covering governance, controls and audit across the full life cycle, including data lineage and model inventories</li></ul>
+        <p class="shows">In BEACON <span>Six-stage path</span><span>AI inventory</span></p></article>
+      <article class="lesson"><span class="yr">July 2024</span><h3>NY DFS Circular Letter No. 7</h3>
+        <ul><li>Fairness testing for AI in underwriting and pricing, before launch and after material changes, with board oversight and a current inventory</li></ul>
+        <p class="shows">In BEACON <span>Underwriting sample</span><span>Exception register</span></p></article>
+      <article class="lesson"><span class="yr">NAIC and NY DFS</span><h3>Third-party AI</h3>
+        <ul><li>The insurer owns vendor AI outcomes: due diligence, audit rights and regulator cooperation written into contracts</li></ul>
+        <p class="shows">In BEACON <span>Copilot catalog</span><span>Vendor terms</span></p></article>
+      <article class="lesson"><span class="yr">Reference point</span><h3>Model risk management</h3>
+        <ul><li>Inventory, independent validation and drift monitoring. Bank guidance SR 26-2 / OCC 2026-13: a reference, not an insurance rule</li></ul>
+        <p class="shows">In BEACON <span>Risk tiers</span><span>Drift thresholds</span></p></article>
+    </div>
+    <p class="targets">Sources: <a href="https://content.naic.org/sites/default/files/cmte-h-big-data-artificial-intelligence-wg-ai-model-bulletin.pdf.pdf" target="_blank" rel="noopener">NAIC bulletin</a> · <a href="https://www.dfs.ny.gov/industry-guidance/circular-letters/cl2024-07" target="_blank" rel="noopener">NY DFS CL No. 7</a> · <a href="https://www.federalreserve.gov/supervisionreg/srletters/SR2602.pdf" target="_blank" rel="noopener">Fed SR 26-2</a></p>
     <div class="next"><button type="button" data-go="trust">Next: human in the loop →</button></div>
   </section>
 
   <!-- HUMAN IN THE LOOP -->
   <section class="pane" id="trust" role="tabpanel" aria-labelledby="t-trust" hidden>
     <div class="sec-head">
-      <span class="label">Human in the loop, by design</span>
+      <span class="label">Human sign-off vs governance by exception</span>
       <h2>People stay accountable. The system earns their trust with evidence.</h2>
-      <p class="lede">Where risk or regulation requires a person to decide, that does not go away. What changes is how the person decides: from reading raw output to deciding from an objective evidence packet. Every decision is timed and compared with the system's recommendation, so trust grows from data, not from opinion.</p>
+      <p class="lede">On this claim journey, the examiner&rsquo;s decision is a <b>hard human sign-off</b> — denials never auto-fire. Everywhere else, review depth follows <b>governance by exception</b>: people are flagged on alerts and deviations rather than every transaction, as Steve Rullo has said publicly (<a href="https://www.insurancebusinessmag.com/us/news/breaking-news/ai-agents-are-already-calling-insurers-warns-guardian-life-tech-chief-593051.aspx" target="_blank" rel="noopener">Insurance Business, Oct 9, 2026</a>). The person decides from an evidence packet; time and agreement are tracked.</p>
     </div>
     <div class="trust-grid">
       <div class="gcard">
         <span class="label">What the reviewer sees</span>
         <h3>Decision packet, one screen</h3>
         <dl class="kv">
-          <dt>Use case</dt><dd>Claims document summarizer · Elevated</dd>
-          <dt>Kind of AI</dt><dd>RAG workflow on approved policy documents</dd>
+          <dt>Use case</dt><dd>Disability claim recommendation · Elevated · human sign-off</dd>
+          <dt>Kind of AI</dt><dd>Agent + RAG on approved policy and claim documents</dd>
           <dt>Checks</dt><dd>4 of 5 passed · 1 needs action</dd>
           <dt>Evaluation</dt><dd>Grounded answers 97.8% (limit 97%)</dd>
           <dt>Data</dt><dd>Claim files · PHI masked before retrieval</dd>
           <dt>History</dt><dd>11 similar use cases approved, 0 incidents</dd>
-          <dt>Recommendation</dt><dd><b>Approve with monthly drift review</b></dd>
+          <dt>Recommendation</dt><dd><b>Examiner decides · payment locked until approve</b></dd>
         </dl>
         <p class="hint">The reviewer can open any line of evidence and records Approve, Reject or Ask for changes with a reason. Time to decision is logged.</p>
       </div>
@@ -730,53 +1071,48 @@ td.num{font-variant-numeric:tabular-nums}
           <li><b>Evidence-packet review</b><span>The reviewer decides from the packet and opens detail when something looks off. The floor for customer-facing and decision-supporting AI.</span></li>
           <li><b>Fast-path approval</b><span>For a pattern with 97%+ agreement over 200+ decisions and no incidents: the packet arrives pre-filled, a person still approves, and a sample gets a deep review.</span></li>
         </ol>
-        <p class="hint">A person decides at every level. Any incident, or agreement dropping below the threshold, moves the pattern back a level automatically.</p>
+        <p class="hint">A person decides at every level. Any incident, or agreement dropping below the threshold, moves the pattern back a level automatically. To guard against rubber-stamping, a blind sample of cases is reviewed independently each month, and any drop in independent agreement moves the pattern back a level.</p>
       </div>
     </div>
-    <span class="sample-note" style="margin-top:20px">Sample data showing year-one targets, for illustration</span>
-    <div class="charts">
-      <div class="chart"><h3>Median time to decision</h3><p>Minutes for a reviewer to decide on a standard use case, by month</p><svg id="c3" viewBox="0 0 460 190" role="img" aria-label="Median decision time falls from 52 minutes in month 1 to 12 minutes in month 12"></svg></div>
-      <div class="chart"><h3>Agreement with the recommendation</h3><p>Share of human decisions that match the system's recommendation, by month</p><svg id="c4" viewBox="0 0 460 190" role="img" aria-label="Agreement rises from 79% in month 1 to 96% in month 12"></svg></div>
-    </div>
+    <p class="hint" style="margin-top:16px">In a live walkthrough I&rsquo;d walk examiner time-to-decide and agreement rate against the journey KPIs — no invented year-one targets here.</p>
     <p class="targets">Disagreements are the most useful data: each one is reviewed, and either the person caught something the checks missed (so a check is added) or the check was right (so the packet is made clearer).</p>
-    <div class="next"><button type="button" data-go="dash">Next: governance KPIs →</button></div>
+    <div class="next"><button type="button" data-go="dash">Next: journey KPIs →</button></div>
   </section>
 
   <!-- KPIs -->
   <section class="pane" id="dash" role="tabpanel" aria-labelledby="t-dash" hidden>
     <div class="sec-head">
-      <span class="label">For enterprise governance forums</span>
-      <h2>Is governance working? Four numbers, every month</h2>
-      <p class="lede">What I would bring to the enterprise governance forums. Move through a sample first year: coverage rises, open exceptions fall, monitoring alerts are acted on faster, and findings are fixed sooner.</p>
-      <span class="sample-note">Sample data showing year-one targets, for illustration</span>
-    </div>
-    <div class="scrub">
-      <button class="play" type="button" id="play">Play year</button>
-      <label for="month">Month</label>
-      <input type="range" id="month" min="1" max="12" value="12">
-      <output id="mout" for="month">Month 12</output>
+      <span class="label">Same measures as the Guardian brief</span>
+      <h2>Journey KPIs — what we would put on the scorecard</h2>
+      <p class="lede">Identical to the brief. No new numbers. Customer KPIs measure the claimant; governance KPIs measure the controls.</p>
+      <span class="sample-note">Names of measures only. Proven S&amp;P figures stay on the Overview tab.</span>
     </div>
     <div class="tiles">
-      <div class="tile"><span class="v mono" id="k1">94%</span><span class="k">AI use cases in the inventory with governance applied</span><span class="s">illustrative starting point: 41%</span></div>
-      <div class="tile"><span class="v mono" id="k2">6</span><span class="k">Open policy exceptions, each with an owner and end date</span><span class="s">illustrative starting point: 27</span></div>
-      <div class="tile"><span class="v mono" id="k3">91%</span><span class="k">Monitoring alerts acted on within service level</span><span class="s">illustrative starting point: 48%</span></div>
-      <div class="tile"><span class="v mono" id="k4">9 days</span><span class="k">Median time to remediate a governance finding</span><span class="s">illustrative starting point: 38 days</span></div>
+      <div class="tile"><span class="v mono" id="k1" style="font-size:1.1rem">Days to decision</span><span class="k">Claimant time from file to examiner decision</span><span class="s">Discover · Release · Run</span></div>
+      <div class="tile"><span class="v mono" id="k2" style="font-size:1.1rem">Claimant NPS</span><span class="k">Plus complaint rate and payment accuracy</span><span class="s">Discover · Run &amp; improve</span></div>
+      <div class="tile"><span class="v mono" id="k3" style="font-size:1.1rem">Examiner acceptance</span><span class="k">Acceptance rate · time to decide · % human denials</span><span class="s">Release · hard sign-off</span></div>
+      <div class="tile"><span class="v mono" id="k4" style="font-size:1.1rem">Open exceptions</span><span class="k">Policy exceptions with owner and date · eval pass · fairness delta</span><span class="s">Evaluate · Observe</span></div>
     </div>
-    <div class="charts">
-      <div class="chart"><h3>Governance coverage</h3><p>Share of inventoried AI use cases with governance applied, by month</p><svg id="c1" viewBox="0 0 460 190" role="img" aria-label="Coverage rises from 41% in month 1 to 94% in month 12"></svg></div>
-      <div class="chart"><h3>Open exceptions</h3><p>Policy exceptions open at month end</p><svg id="c2" viewBox="0 0 460 190" role="img" aria-label="Open exceptions fall from 27 in month 1 to 6 in month 12"></svg></div>
+    <div class="loop" style="margin-top:14px">
+      <span class="label">By stage (from the brief)</span>
+      <ol>
+        <li><b>Discover:</b> baseline days-to-decision; Claimant NPS; complaint rate</li>
+        <li><b>Design:</b> % stories tied to a journey KPI; scope cycle time</li>
+        <li><b>Build:</b> release quality score; % builds with human review at risk points</li>
+        <li><b>Evaluate:</b> eval pass rate; fairness delta; Sev launch risk</li>
+        <li><b>Release:</b> time to decide; examiner acceptance rate; % human denials</li>
+        <li><b>Run &amp; improve:</b> days to decision; payment accuracy; open policy exceptions; Claimant NPS</li>
+      </ol>
     </div>
     <div class="loop">
       <span class="label">Closed feedback loop</span>
       <ol>
-        <li>Signals come in: policyholder complaints, claims appeals, agent and underwriter feedback, monitoring alerts.</li>
-        <li>Each is traced to the AI use case in the inventory and logged in the exception register with an owner.</li>
-        <li>A fix becomes a new check or a tighter threshold in the pipeline; repeat signals move the pattern back a review level.</li>
-        <li>The monthly forum report shows signals received, closed and prevented.</li>
+        <li>Signals come in: policyholder complaints, claims appeals, examiner edits, monitoring alerts.</li>
+        <li>Each is traced to the claim journey stage and logged in the exception register with an owner.</li>
+        <li>A fix becomes a new check or a tighter threshold; examiner edits become new test cases (Nurture).</li>
+        <li>The scorecard shows days to decision, Claimant NPS, open exceptions and examiner acceptance.</li>
       </ol>
-      <p class="hint" style="margin-top:8px">Alongside the four tiles, I would track one Data Governance measure: share of AI use cases with data lineage, owner and sensitivity verified at intake.</p>
     </div>
-    
     <div class="next"><button type="button" data-go="why">Next: why me →</button></div>
   </section>
 
@@ -784,14 +1120,13 @@ td.num{font-variant-numeric:tabular-nums}
   <section class="pane" id="why" role="tabpanel" aria-labelledby="t-why" hidden>
     <div class="sec-head">
       <span class="label">Why me</span>
-      <h2>BEACON comes from governance I have built and run</h2>
-      <p class="lede">The figures are from my resume. 24+ years of tech experience. Built Prudential&rsquo;s Customer Office QE group; revitalized and scaled QE at Pearson, Audible, DoubleVerify and S&amp;P Global. My first New York role, in 2005, was at Guardian Life.</p>
+      <h2>BEACON comes from platforms and governance I have built and run</h2>
+      <p class="lede">The figures are from my resume. 24+ years of tech experience. Led QE for Prudential&rsquo;s Customer Office; revitalized and scaled QE at Pearson, Audible, DoubleVerify and S&amp;P Global. My first New York role, in 2005, was at Guardian Life.</p>
     </div>
     <div class="lessons">
       <article class="lesson">
         <span class="yr">2025–2026 · VP, Head of Quality Engineering · Chair, AI Governance Committee</span><h3>S&amp;P Global</h3>
-        <p class="quote">"If the governed path isn't the easy one, people route around it."</p>
-        <ul><li>Built an AI-first PDLC with AI across the lifecycle, from requirements and code generation to code review and deployment telemetry</li><li>Turned CISO, Risk, Compliance and Legal requirements into controls embedded in the platform</li><li>Kept human approval where regulation required it; approval time on regulated checks went from 3 days to same day</li><li>Reviewed 10+ AI developer tools against build–buy–partner criteria; 350+ engineers on governed AI in 13 months</li><li>Engagement up from 85% to 95% in 3 quarters; Dev:QE raised from 2.5:1 to 4:1</li><li>Led a 350+ global organization with a $70M+ budget</li><li>Chaired the AI Governance Committee</li></ul>
+        <ul><li>Built an AI-first PDLC with AI across the lifecycle, from requirements and code generation to code review and deployment telemetry</li><li>Turned CISO, Risk, Compliance and Legal requirements into controls embedded in the platform</li><li>Human approval enforced in the pipeline wherever regulation required it; approval time on regulated checks went from 3 days to same day</li><li>Reviewed 10+ AI developer tools against build–buy–partner criteria; 350+ engineers on governed AI in 13 months</li><li>Engagement up from 85% to 95% in 3 quarters; Dev:QE raised from 2.5:1 to 4:1</li><li>Chaired the AI Governance Committee</li></ul>
         <p class="shows">Shows up in BEACON as <span>Operating model</span><span>Human in the loop</span><span>KPIs</span></p>
       </article>
       <article class="lesson">
@@ -801,35 +1136,32 @@ td.num{font-variant-numeric:tabular-nums}
       </article>
       <article class="lesson">
         <span class="yr">2024–2025 · VP of Product and Engineering – Head of Quality Engineering</span><h3>DoubleVerify</h3>
-        <p class="quote">"Agents need gates and evidence before they get autonomy."</p>
         <ul><li>Built an agentic engineering ecosystem with guardrails and human review gates</li><li>AI-assisted testing and predictive defect analysis: 25% less manual effort, 20% shorter test cycles</li><li>KPI dashboards and Sev2 trend analysis for incident prevention</li></ul>
         <p class="shows">Shows up in BEACON as <span>Agent controls</span><span>Monitoring</span></p>
       </article>
       <article class="lesson">
         <span class="yr">2019–2024 · QAE Director, CTO Office</span><h3>Audible, an Amazon company</h3>
-        <p class="quote">"Severity, not volume, is what matters."</p>
         <ul><li>Applied AI/ML from 2022 to production defect and Sev2 incident management</li><li>Redefined the Sev2 process: 30% fewer Sev2s and 30% fewer security vulnerabilities</li><li>Scaled QA from 4 to 41 people and established 2 offshore capability centers</li></ul>
-        <p class="shows">Shows up in BEACON as <span>Risk-based escalation</span><span>Remediation</span></p>
+        <p class="shows">Shows up in BEACON as <span>Monitoring</span><span>Remediation</span></p>
       </article>
       <article class="lesson">
         <span class="yr">2015–2019 · Head of Quality Engineering, CIO Office</span><h3>Prudential, and Guardian Life earlier</h3>
-        <p class="quote">"In insurance, the regulator is part of the design."</p>
-        <ul><li>Built Customer Office QE from zero; revamped a 150+ person Retirement team at 50% lower QA cost, within federal retirement regulations (IRA, Roth)</li><li>Zero Sev2s on major launches</li><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act</li></ul>
-        <p class="shows">Shows up in BEACON as <span>Audit trail</span><span>Decision rights</span></p>
+        <ul><li>Built the Customer Office QE group of 40+ engineers, with a 10-SDET metrics and measurement team and data-metrics testing frameworks</li><li>Revamped a 150+-person Retirement BU team at 50% lower QA cost, within federal retirement regulations (IRA, Roth); no Sev2s on major launches</li><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act</li></ul>
+        <p class="shows">Shows up in BEACON as <span>KPIs</span><span>Data controls</span></p>
       </article>
     </div>
     <details style="margin-top:20px">
-      <summary style="cursor:pointer; font-weight:600">How this maps to the role, line by line</summary>
+      <summary style="cursor:pointer; font-weight:600">How this maps to Head of AI Platform Engineering – Execution Plane</summary>
       <div class="tbl-wrap" style="margin-top:12px"><table>
-        <thead><tr><th>The role asks for</th><th>In BEACON</th><th>Where I have done it</th></tr></thead>
+        <thead><tr><th>Execution Plane needs</th><th>In BEACON on this journey</th><th>Where I have done it</th></tr></thead>
         <tbody>
-          <tr><td>Governing models, copilots, agents and RAG workflows</td><td>Four kinds of AI, each with its own review and monitoring focus</td><td>AI across the lifecycle with guardrails (S&amp;P Global); agentic ecosystem with human review gates (DoubleVerify)</td></tr>
-          <tr><td>Intake, review, escalation, monitoring and change management</td><td>Six-stage operating model with owners and service levels</td><td>Built the AI PDLC organization and its standards from scratch (S&amp;P Global)</td></tr>
-          <tr><td>Controls embedded in platforms and delivery workflows</td><td>Policy-as-code checks with evidence on every decision</td><td>CISO, Risk, Compliance and Legal requirements turned into platform controls (S&amp;P Global)</td></tr>
-          <tr><td>Human-in-the-loop requirements</td><td>Decision packets, review levels, tracked decision time</td><td>Human approval kept where regulation required it; approval time on regulated checks went from 3 days to same day (S&amp;P Global)</td></tr>
-          <tr><td>KPIs: coverage, exceptions, monitoring, remediation</td><td>Monthly governance KPIs</td><td>Executive scorecard adopted by Tech and Finance (S&amp;P Global); KPI dashboards and Sev2 trends (DoubleVerify)</td></tr>
-          <tr><td>Influence across business, technology, risk and legal</td><td>Decision rights and governance forums</td><td>Chaired the AI Governance Committee (S&amp;P Global)</td></tr>
-          <tr><td>Leading governance practitioners</td><td>A governance team with clear priorities and service levels</td><td>Led a 350+ global organization with Senior Directors as direct reports (S&amp;P Global)</td></tr>
+          <tr><td>Agent runtimes, model gateways, MCP, RAG, observability</td><td>Build stage on the claim: intake runtime, RAG, MCP tools, A2A medical handoff, tracing</td><td>AI-first PDLC and AI developer platform; ~1,200 people using the framework (S&amp;P Global)</td></tr>
+          <tr><td>Governance as platform defaults</td><td>BEACON controls at every stage; human sign-off at Release; exception-based Observe</td><td>CISO, Risk, Compliance and Legal requirements turned into platform controls; regulated sign-off 3 days → same day (S&amp;P Global)</td></tr>
+          <tr><td>Journey-led delivery with creator / judge agents</td><td>Discover → Design → Evaluate on the disability claim</td><td>Features per PI up 30%; NPS up 5; 350+ engineers on governed AI in 13 months (S&amp;P Global)</td></tr>
+          <tr><td>Human-in-the-loop where risk requires it</td><td>Examiner packet; denials never auto-fire</td><td>Human approval enforced in the pipeline wherever regulation required it (S&amp;P Global)</td></tr>
+          <tr><td>Partner and in-house on one scorecard</td><td>Discover / Build: one outcome scorecard for partner and in-house</td><td>Global capability center and third-party delivery KPIs (DoubleVerify); HCL early career</td></tr>
+          <tr><td>Customer-centric outcomes</td><td>Claimant NPS, days to decision, payment accuracy</td><td>Rutgers Mini MBA, Customer Centricity; Prudential unified customer dashboard (3% → 5%)</td></tr>
+          <tr><td>Leading platform and engineering practitioners</td><td>Six-stage path with clear owners</td><td>Led a 350+ global organization with Senior Directors as direct reports (S&amp;P Global)</td></tr>
         </tbody>
       </table></div>
     </details>
@@ -845,8 +1177,8 @@ td.num{font-variant-numeric:tabular-nums}
     </div>
     <div class="locks">
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Live walkthrough</span>
-        <h3>An agent use case, start to finish</h3>
-        <p>An agent that can take actions in a policy system: tool permissions, human-in-the-loop rules, monitoring, and what the audit trail shows an examiner.</p>
+        <h3>The disability claim, start to finish</h3>
+        <p>Discover through Run &amp; improve: tool permissions, examiner sign-off, exception monitoring, and what the audit trail shows.</p>
       </div>
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Deep dive</span>
         <h3>Governing RAG workflows</h3>
@@ -854,13 +1186,13 @@ td.num{font-variant-numeric:tabular-nums}
         <div class="veil-wrap"><p class="veil">How retrieval sources are approved, how stale or unapproved content is caught, and how grounding is tested before and after launch.</p></div>
       </div>
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>First 90 days</span>
-        <h3>Inventory, operating model, then KPIs</h3>
-        <ul><li><b>Days 1–30:</b> learn the current program and forums; inventory AI across models, copilots, agents and RAG</li><li><b>Days 31–60:</b> standard intake and risk-based review live; exception register in place</li><li><b>Days 61–90:</b> first monthly governance KPI report; service levels live</li><li><b>Day-90 commitments:</b> inventory coverage of 80% or more; every open exception with an owner and end date; median review time reported to the forum</li></ul>
-        <div class="veil-wrap"><p class="veil">Which use cases I would start with, how the team's work changes, and the three numbers I would commit to by day 90.</p></div>
+        <h3>One claim journey live on the platform</h3>
+        <ul><li><b>Days 1–30:</b> listen; pick the disability-claim bet with its business owner; baseline days-to-decision and Claimant NPS</li><li><b>Days 31–60:</b> Build path live — intake, risk tiering, eval set, read-only tools first</li><li><b>Days 61–90:</b> small-group pilot; monthly scorecard (journey KPIs from the brief)</li></ul>
+        <div class="veil-wrap"><p class="veil">Which stage I would start with, how examiner work changes, and the claimant KPIs on the first scorecard.</p></div>
       </div>
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Questions I'd bring</span>
         <h3>What I would want to learn from you</h3>
-        <ol class="qs"><li>Where does governance feel bespoke or slow to delivery teams today?</li><li>How far along are agents and RAG workflows, and who owns them?</li><li>Which KPIs do the governance forums look at now?</li></ol>
+        <ol class="qs"><li>Where does the claim journey break today between intake, decision and payment?</li><li>How is ownership split between the AI control plane and the execution plane?</li><li>Which claimant KPIs does leadership already trust?</li></ol>
       </div>
     </div>
     <div class="cta">
@@ -875,13 +1207,37 @@ td.num{font-variant-numeric:tabular-nums}
   </footer>
 </div>
 
+<aside class="about-rail" id="about-rail" aria-label="About Sonia Malik">
+  <div class="ar-head">
+    <div class="ar-av" aria-hidden="true">SM</div>
+    <div>
+      <h2>Sonia Malik</h2>
+      <p class="ar-sub">Leader of leaders · 24+ years in engineering and transformation leadership</p>
+    </div>
+  </div>
+  <p class="ar-fit"><b>Head of AI Platform Engineering – Execution Plane</b> fit · BEACON is the control layer inside the platform, not a separate governance ask.</p>
+  <ul class="ar-stats">
+    <li><span class="n">350+ · 13 months</span><span class="k">Engineers on governed AI workflows (S&amp;P Global)</span></li>
+    <li><span class="n">3 days → same day</span><span class="k">Regulated sign-off with evidence-backed human approval</span></li>
+    <li><span class="n">NPS +5</span><span class="k">Journey-led delivery; features per PI up 30%</span></li>
+  </ul>
+  <p class="ar-loop">AI <b>creator</b> + <b>judge</b> agents with human validation — then continuous improvement from customer feedback analysis.</p>
+  <div class="ar-btns">
+    <a class="primary" id="resume-link" href="Sonia_Malik_Resume.pdf" target="_blank" rel="noopener">Resume PDF</a>
+    <a class="ghost" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">LinkedIn</a>
+    <button class="talk" type="button" data-contact style="width:100%;justify-content:center">Let&rsquo;s talk</button>
+  </div>
+  <p class="ar-note">Approved S&amp;P figures only. Sample journey data elsewhere on this page.</p>
+</aside>
+</div><!-- /.shell -->
+
 <button class="side-tab" type="button" id="side-tab" aria-controls="drawer" aria-expanded="false"><span class="av" aria-hidden="true">SM</span><span class="st-txt">About me · Let&rsquo;s talk</span></button>
 <aside class="drawer" id="drawer" aria-label="About Sonia Malik" hidden>
   <button class="dr-close" type="button" id="dr-close" aria-label="Close">&times;</button>
-  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>AI Governance Leader</span></div></div>
-  <p class="pf-pitch">I build AI governance that teams use. At S&amp;P Global I built AI into every stage of the development lifecycle, with Risk, Compliance and Legal requirements embedded in the platform and human approval enforced where regulation required it; approval time on regulated checks went from 3 days to same day. Built Prudential&rsquo;s Customer Office QE group; revitalized and scaled QE at Pearson, Audible, DoubleVerify and S&amp;P Global. For Guardian, I would run AI governance as an operating model: risk-based, built into delivery, and measured every month.</p>
+  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>AI Platform &amp; Governance Leader</span></div></div>
+  <p class="pf-pitch">I build AI governance that teams use. At S&amp;P Global I built governance into each stage of the AI-enabled development lifecycle, with Risk, Compliance and Legal requirements embedded in the platform and human approval enforced in the pipeline wherever regulation required it, with approvers deciding from data pointers and objective evidence; approval time on regulated checks went from 3 days to same day. Led QE for Prudential&rsquo;s Customer Office; revitalized and scaled QE at Pearson, Audible, DoubleVerify and S&amp;P Global. For Guardian&rsquo;s Execution Plane, I would run that control layer inside the platform — one disability-claim journey at a time, risk-based, measured on claimant KPIs.</p>
   <div class="pf-stats">
-    <span><b>6 months</b> to an AI developer platform designed to serve ~1,200 engineers</span>
+    <span><b>6 months</b> to an AI developer platform ~1,200 people using the AI developer framework</span>
     <span><b>350+</b> engineers on governed AI in 13 months</span>
     <span><b>3 days → same day</b> approval time on regulated checks</span>
     <span><b>10+</b> AI tools reviewed, build–buy–partner</span><span><b>24+ years</b> of tech experience</span>
@@ -1031,7 +1387,7 @@ td.num{font-variant-numeric:tabular-nums}
     if(dstep===0){
       h=`<div class="panel-grid"><div class="case-card"><span class="label">${s.tier} · ${s.team}</span><h3>${s.name}</h3><p style="color:var(--muted)">${s.purpose}</p>
         <dl class="kv">${s.kv.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl></div>
-        <div class="review-box"><b>What happens next</b><p style="font-size:.88rem;color:var(--muted)">Five reviews run against policy-as-code. Each finding cites its evidence. Routine cases take the standard path; people decide anything high-impact.</p>
+        <div class="review-box"><b>What happens next</b><p style="font-size:.88rem;color:var(--muted)">Five reviews run against automated control checks. Each finding cites its evidence. Routine cases take the standard path; people decide anything high-impact.</p>
         <div class="actions" style="margin-top:4px"><button class="btn" type="button" id="drun">Run the reviews</button></div></div></div>`;
       panel.innerHTML=h; document.getElementById('drun').onclick=()=>{ dstep=1; dmax=Math.max(dmax,1); renderDesk(); };
       return;
@@ -1094,14 +1450,13 @@ td.num{font-variant-numeric:tabular-nums}
     svg.innerHTML=s;
   }
   function drawDash(m){
+    /* Journey KPI tab no longer uses month animation; keep stub for any leftover controls */
     if(!document.getElementById('mout')) return;
     document.getElementById('mout').textContent='Month '+m;
-    document.getElementById('k1').textContent=DV[m-1]+'%';
-    document.getElementById('k2').textContent=DD[m-1];
-    document.getElementById('k3').textContent=DP[m-1]+'%';
-    document.getElementById('k4').textContent=DH[m-1]+' days';
-    line('c1',DV,100,[0,25,50,75,100],v=>v+'%',m);
-    line('c2',DD,30,[0,10,20,30],v=>String(v),m);
+    if(document.getElementById('c1')){
+      line('c1',DV,100,[0,25,50,75,100],v=>v+'%',m);
+      line('c2',DD,30,[0,10,20,30],v=>String(v),m);
+    }
   }
   const mIn=document.getElementById('month');
   let timer=null;
@@ -1118,37 +1473,95 @@ td.num{font-variant-numeric:tabular-nums}
 
   // ---------- Operating model ----------
   const STAGES=[
-    {k:'IN', n:'Intake', owner:'Delivery team, with the AI governance team',
-     checks:['Use case type: model, copilot, agent or RAG workflow','Data used and its sensitivity; who is affected','Business owner, purpose and success measure'],
-     auto:'One intake form for every AI use case. The risk tier is derived from the answers, and the use case enters the inventory.', ev:'Intake record, derived tier, owner', kpi:'Inventory coverage', sla:'Same day'},
-    {k:'RV', n:'Risk-based review', owner:'AI governance team, with Security, Compliance, Legal and Data Governance',
-     checks:['Depth set by tier: standard, elevated or high','Evaluations: accuracy, grounding, fairness as relevant','Human-in-the-loop rules and tool permissions for agents'],
-     auto:'Policy-as-code checks run first; reviewers spend their time on what the checks flag.', ev:'Check results, reviewer, conditions', kpi:'Time to decision', sla:'2–5 business days'},
-    {k:'ES', n:'Escalation', owner:'Enterprise governance forum',
-     checks:['High-impact or novel use cases','Requests outside risk appetite','Disagreements between delivery and governance'],
-     auto:'The governance team brings a recommendation and options, not just the issue.', ev:'Forum decision, rationale, conditions', kpi:'Escalations closed with a path forward', sla:'Next monthly forum'},
-    {k:'EM', n:'Embed controls', owner:'AI Platforms and the delivery team',
-     checks:['Guardrails, logging and access built into the platform','Human approval steps in the workflow where required','Data controls aligned with data governance'],
-     auto:'Conditions become platform settings and pipeline checks, so they are observable and durable.', ev:'Control IDs, configuration version', kpi:'Controls automated vs. manual', sla:'Before launch'},
-    {k:'MO', n:'Monitor', owner:'Model and use case owners, with the AI governance team',
-     checks:['Drift, grounding and error rates against thresholds','Agent actions, overrides and incidents','Usage outside approved scope'],
-     auto:'Alerts open findings automatically, with an owner and a due date.', ev:'Alerts, findings, remediation', kpi:'Alerts acted on within service level', sla:'Per alert severity'},
-    {k:'CH', n:'Change & retire', owner:'Use case owner',
-     checks:['Model, prompt, data source or tool changes trigger re-review','Material changes go back through review','Retired systems leave the inventory with records kept'],
-     auto:'Change detection is wired to the registry and delivery pipeline, so a change cannot skip review.', ev:'Change record, re-review result', kpi:'Changes reviewed before release', sla:'Before release'}
+    {k:'D1', n:'Discover', owner:'Business owner + AI platform', gate:'Exception',
+     cust:'Policyholder needs clarity on eligibility, timeline and next steps after an unexpected stop from work.',
+     agent:'Journey agent maps goal, intent and baseline from past claims; surfaces the end-to-end bet (intake → decision → payment).',
+     ctrl:'B · Build: register use case, purpose and risk tier (customer-facing). Partner and in-house share one outcome scorecard.',
+     kpi:'Baseline days-to-decision; Claimant NPS; complaint rate', pdlc:'PDLC: problem & KPI'},
+    {k:'D2', n:'Design', owner:'Product + claims lead', gate:'Exception',
+     cust:'Claimant should file once, see status, and know a person decides denials.',
+     agent:'Creator agents draft MVP scope and BDD stories from the journey KPI; judge agent flags gaps before humans review.',
+     ctrl:'B · Build: approve stories and tool scope (read-only first). Privacy and DFS/NAIC requirements written into the design.',
+     kpi:'% stories tied to a journey KPI; scope cycle time', pdlc:'PDLC: MVP & stories'},
+    {k:'D3', n:'Build', owner:'AI Platforms + delivery', gate:'Exception',
+     cust:'Intake, identity, document gather and medical review must work as one path.',
+     agent:'Code, test and review agents implement intake runtime, RAG over policy docs, MCP tools, A2A medical handoff.',
+     ctrl:'C · Control: engineers own schemas and safe tool lists; health data masked; out-of-scope actions blocked.',
+     kpi:'Release quality score; % builds with human review at risk points', pdlc:'PDLC: code & integrate'},
+    {k:'D4', n:'Evaluate', owner:'QE + risk', gate:'Exception',
+     cust:'Before go-live, the path must be as fair and grounded for this claimant as for the last hundred.',
+     agent:'Judge / eval agents replay past claims; compare to examiner decisions; grounding, fairness and non-functional checks.',
+     ctrl:'E · Evaluate: QE + risk sign the eval packet. Failures become new test cases, not exceptions to skip.',
+     kpi:'Eval pass rate; fairness delta; Sev launch risk', pdlc:'PDLC: test & fair'},
+    {k:'D5', n:'Release', owner:'Claims examiner', gate:'HUMAN SIGN-OFF',
+     cust:'Examiner opens one screen: recommended benefit, duration, rationale and evidence — then decides.',
+     agent:'Agent assembles the evidence packet; payment and notice tools stay locked until approval. Denials never auto-fire.',
+     ctrl:'A · Approve: examiner decides. Hard human sign-off. Elsewhere, governance by exception (Rullo): review alerts, not every transaction.',
+     kpi:'Time to decide; examiner acceptance rate; % human denials', pdlc:'PDLC: deploy with gates'},
+    {k:'D6', n:'Run & improve', owner:'Ops + risk + platform', gate:'Exception',
+     cust:'Claimant is paid and notified; the next claimant should get a better experience from what this one taught.',
+     agent:'Observe agents trace every step; drift and incident alerts; examiner edits become new test cases.',
+     ctrl:'O · Observe / N · Nurture: open exceptions with owners and dates. Skills converge on the same journey KPI.',
+     kpi:'Days to decision; payment accuracy; open policy exceptions; Claimant NPS', pdlc:'PDLC: operate & learn'}
   ];
-  let ssel='RV';
+  let ssel='D5';
   function renderStages(){
     const L=document.getElementById('stages'); if(!L) return; L.innerHTML='';
-    STAGES.forEach((s,i)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-pressed',String(s.k===ssel)); b.innerHTML=`<span class="sn">${i+1}</span><b>${s.n}</b><span class="ssla">${s.sla}</span>`; b.onclick=()=>{ ssel=s.k; renderStages(); }; L.appendChild(b); });
+    STAGES.forEach((s,i)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-pressed',String(s.k===ssel)); b.innerHTML=`<span class="sn">${i+1}</span><b>${s.n}</b><span class="ssla">${s.gate}</span>`; b.onclick=()=>{ ssel=s.k; renderStages(); }; L.appendChild(b); });
     const s=STAGES.find(x=>x.k===ssel);
-    document.getElementById('stagecard').innerHTML=`<div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:flex-start"><div><span class="label">Stage ${STAGES.indexOf(s)+1} of 6 · service level ${s.sla}</span><h3>${s.n}</h3></div><span class="pill">Owner: ${s.owner}</span></div>
-      <div class="bagrid"><div class="b"><b>What happens</b><ul class="cl">${s.checks.map(c=>`<li>${c}</li>`).join('')}</ul></div><div class="a"><b>How it runs</b>${s.auto}</div></div>
-      <p class="measure">Evidence: <span>${s.ev}</span> · Feeds the KPI: <span>${s.kpi}</span></p>`;
+    const gateCls=s.gate==='HUMAN SIGN-OFF'?'style="background:#E87722;color:#fff"':'';
+    document.getElementById('stagecard').innerHTML=`<div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:flex-start"><div><span class="label">Stage ${STAGES.indexOf(s)+1} of 6 · ${s.pdlc}</span><h3>${s.n}</h3></div><span class="pill" ${gateCls}>${s.gate} · ${s.owner}</span></div>
+      <div class="bagrid"><div class="b"><b>Customer moment</b><p style="margin:6px 0 0;font-size:.9rem">${s.cust}</p></div><div class="a"><b>What AI agents do (ADLC)</b><p style="margin:6px 0 0;font-size:.9rem">${s.agent}</p></div></div>
+      <div style="margin-top:10px;padding:10px 12px;background:var(--sunk);border-radius:8px"><b>Control · BEACON</b><p style="margin:6px 0 0;font-size:.9rem">${s.ctrl}</p></div>
+      <p class="measure">KPI: <span>${s.kpi}</span></p>`;
   }
   renderStages();
   const TT=[52,46,40,35,30,26,22,19,16,14,13,12], TA=[79,82,84,86,88,90,91,92,93,94,95,96];
   if(document.getElementById('c3')){ line('c3',TT,60,[0,20,40,60],v=>v+'m',12); line('c4',TA,100,[0,25,50,75,100],v=>v+'%',12); }
+
+
+  // ---------- Side rails: stage tracker ----------
+  function setStageCurrent(k){
+    document.querySelectorAll('#stage-rail button[data-stage], #stage-chips button[data-stage]').forEach(b=>{
+      b.setAttribute('aria-current', String(b.dataset.stage===k));
+    });
+  }
+  function goStage(k){
+    if(typeof ssel!=='undefined' && STAGES.some(s=>s.k===k)){ ssel=k; renderStages(); }
+    setStageCurrent(k);
+    selectTab('desk',{scroll:true});
+    requestAnimationFrame(()=>{
+      const el=document.getElementById('j-'+k) || document.querySelector('[data-jcard="'+k+'"]');
+      if(el){ el.scrollIntoView({behavior:'smooth', block:'center'}); }
+    });
+  }
+  document.querySelectorAll('#stage-rail button[data-stage], #stage-chips button[data-stage]').forEach(b=>{
+    b.addEventListener('click',()=>goStage(b.dataset.stage));
+  });
+  document.querySelectorAll('[data-go-tab]').forEach(b=>{
+    b.addEventListener('click',()=>{ selectTab(b.getAttribute('data-go-tab'),{scroll:true}); });
+  });
+
+  const stagesHost=document.getElementById('stages');
+  if(stagesHost){
+    stagesHost.addEventListener('click', e=>{
+      const btn=e.target.closest('button');
+      if(!btn) return;
+      // after renderStages click handler fires, sync on next tick
+      setTimeout(()=>setStageCurrent(ssel), 0);
+    });
+  }
+  if('IntersectionObserver' in window){
+    const cards=[...document.querySelectorAll('[data-jcard]')];
+    const io=new IntersectionObserver((entries)=>{
+      const desk=document.getElementById('desk');
+      if(!desk || desk.hidden) return;
+      const vis=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if(vis) setStageCurrent(vis.target.getAttribute('data-jcard'));
+    },{root:null, rootMargin:'-30% 0px -45% 0px', threshold:[0.15,0.4,0.7]});
+    cards.forEach(c=>io.observe(c));
+  }
+  setStageCurrent(typeof ssel!=='undefined'?ssel:'D5');
 
   // ---------- Initial tab ----------
   const start=(location.hash||'').replace('#','');
