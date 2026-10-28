@@ -96,6 +96,46 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 .s60{padding:10px 16px!important;margin:14px 0 4px!important}.s60g{font-size:13.5px!important}
 .ctx{font-size:.92em}
 @media (max-width:900px){.dg{grid-template-columns:1fr 1fr}}@media (max-width:520px){.dg{grid-template-columns:1fr}}
+.jx{background:var(--s);border:1px solid #b8c4d4;border-radius:12px;padding:14px 18px 16px;margin:16px 0 18px;box-shadow:0 2px 10px rgba(10,30,60,.06)}
+.jx h3{font:600 22px/1.25 Spectral,Georgia,serif;color:var(--a);margin:0 0 2px}
+.jx .sub{font-size:14px;color:var(--m);margin:0 0 10px}
+.jbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:10px}
+.jpills{display:flex;flex-wrap:wrap;gap:6px}
+.jpills button,.jtog button{font:inherit;font-size:13.5px;border:1px solid var(--line);background:#fff;color:var(--fg);border-radius:999px;padding:6px 12px;cursor:pointer}
+.jpills button[aria-pressed=true]{background:var(--a);border-color:var(--a);color:#fff;font-weight:700}
+.jtog{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.jtog button{border:0;border-radius:0;padding:6px 14px}
+.jtog button[aria-pressed=true]{background:var(--ok);color:#fff;font-weight:700}
+.jtog button.bf[aria-pressed=true]{background:#7a8594}
+.jq{font-size:15px;margin:2px 0 10px}.jq b{color:var(--a)}
+.jst{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;counter-reset:st}
+.js{position:relative;text-align:left;font:inherit;border:2px solid transparent;border-radius:10px;padding:10px 10px 9px;cursor:pointer;background:var(--as);min-height:96px}
+.js[aria-pressed=true]{border-color:var(--a);box-shadow:0 3px 10px rgba(10,77,140,.18)}
+.js .k{display:block;font-size:11.5px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.05em}
+.js .t{display:block;font-weight:700;font-size:14.5px;line-height:1.3;margin:2px 0 6px;color:var(--fg)}
+.js .tm{display:block;font-size:13px;color:var(--m)}
+.js.ag{background:var(--pb)}.js.hai{background:var(--as)}.js.h{background:var(--okb)}
+.js .gt{position:absolute;top:8px;right:8px;font-size:11px;font-weight:700;background:var(--wb);color:var(--w);border-radius:4px;padding:1px 6px}
+.jd{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:10px;margin-top:10px}
+.jd>div{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14.5px;background:#fff}
+.jd b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--a);margin-bottom:3px}
+.jsum{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.jsum>div{background:var(--a);color:#e8f1fb;border-radius:10px;padding:9px 12px;font-size:13.5px}
+.jsum b{display:block;font:600 21px/1.2 Spectral,Georgia,serif;color:#fff}
+.jfoot{font-size:12.5px;color:var(--m);margin:8px 0 0}
+@media (max-width:900px){.jst{grid-template-columns:1fr 1fr}.jd,.jsum{grid-template-columns:1fr}}
+.more{border:1px solid var(--line);border-radius:10px;margin:10px 0;background:#fff}
+.more>summary{cursor:pointer;padding:12px 16px;font-weight:700;color:var(--a);font-size:16px;list-style:none}
+.more>summary::-webkit-details-marker{display:none}
+.more>summary:before{content:"+";display:inline-block;width:18px;font-weight:700}
+.more[open]>summary:before{content:"−"}
+.more>.mb{padding:0 16px 14px}
+.lk{color:var(--a);font-weight:700;white-space:nowrap}
+.cs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.cs>div{background:var(--a);color:#e8f1fb;border-radius:10px;padding:10px 12px;font-size:13.5px}.cs b{display:block;font:600 24px/1.15 Spectral,Georgia,serif;color:#fff}
+@media (max-width:900px){.cs{grid-template-columns:1fr 1fr}}
+@media (min-width:900px){.tabs{flex-wrap:wrap;overflow:visible;padding-right:4px;row-gap:4px}.tabwrap:after{display:none}.tabs button{padding:7px 9px 6px;font-size:13px}.tabs .num{margin-right:3px}}
+.meetbtn{display:inline-block;margin-left:auto;background:var(--ok);color:#fff;border:0;border-radius:999px;padding:7px 16px;font:inherit;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none}
+.navrow{display:flex;align-items:center;gap:10px;margin:8px 0 0}
 </style></head><body>
 <button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
 <div class="pf-bd" id="pf-bd"></div>
@@ -122,7 +162,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <div class="wrap">
 <header>
 <h1>ELEVATE<small>Prudential's first year of human–agent collaboration</small></h1>
-<p class="lede">Prudential, 150 years in, is reimagining work for an AI world from the ground up. ELEVATE redesigns jobs, teams and talent so people and AI agents do their best work together, amplifying what people can do.</p><div class="chips"><span>Better developer experience</span><span>Happier customers, faster answers</span><span>Less busywork for claims and service teams</span><span>Governed from day one</span></div>
+<p class="lede">Prudential, 150 years in, is reimagining work for an AI world from the ground up. ELEVATE redesigns jobs, teams and talent so people and AI agents do their best work together, amplifying what people can do.</p><div class="chips"><span>Better developer experience</span><span>Happier customers, faster answers</span><span>Less busywork across Retirement, Group, Individual Life, Wealth and PGIM</span><span>Governed from day one</span></div>
 <p class="who"><b>Sonia Malik</b> · AI Workforce Transformation Leader · returning Prudential alum (Retirement, 2015–2019) · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn</a></p>
 </header>
 <section class="deliver" aria-label="What I would deliver in year one">
@@ -136,35 +176,46 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <div class="proof"><span class="pl">Why me in one line</span><span><b>150+ engineers</b> led at Prudential</span><span><b>350+ engineers</b> led globally through AI change</span><span><b>~1,200 engineers</b> my AI-first framework was designed to serve</span><span><b>3 days → same day</b> regulated approvals</span></div>
 </section>
 
-<div class="navhint">Explore 11 sections →</div>
+<div class="navrow"><div class="navhint" style="margin:0!important">Explore 11 sections →</div><a href="#" class="meetbtn" data-go="meet">When we meet: a 15-minute live walkthrough →</a></div>
 <div class="tabwrap"><div class="tabs" role="tablist">
 <button role="tab" data-tab="overview" aria-selected="true"><span class="num">1</span>Overview</button>
 <button role="tab" data-tab="framework" aria-selected="false"><span class="num">2</span>Framework</button>
 <button role="tab" data-tab="redesign" aria-selected="false"><span class="num">3</span>Work redesign</button>
-<button role="tab" data-tab="teams" aria-selected="false"><span class="num">4</span>Human + agent</button>
-<button role="tab" data-tab="tech" aria-selected="false"><span class="num">5</span>Tech platform</button>
+<button role="tab" data-tab="teams" aria-selected="false"><span class="num">4</span>Human + AI</button>
+<button role="tab" data-tab="tech" aria-selected="false"><span class="num">5</span>Platform</button>
 <button role="tab" data-tab="global" aria-selected="false"><span class="num">6</span>Global</button>
 <button role="tab" data-tab="governance" aria-selected="false"><span class="num">7</span>Governance</button>
-<button role="tab" data-tab="talent" aria-selected="false"><span class="num">8</span>Talent &amp; Academy</button>
+<button role="tab" data-tab="talent" aria-selected="false"><span class="num">8</span>Talent</button>
 <button role="tab" data-tab="value" aria-selected="false"><span class="num">9</span>KPIs &amp; ROI</button>
 <button role="tab" data-tab="year" aria-selected="false"><span class="num">10</span>First year</button>
-<button role="tab" data-tab="meet" aria-selected="false"><span class="num">11</span>When we meet</button>
+<button role="tab" data-tab="meet" aria-selected="false"><span class="num">11</span>Let's meet</button>
 </div></div>
 
 <!-- OVERVIEW -->
 <section class="pane on" id="overview">
-<div class="ov"><div class="ovmain">
-<div class="s60"><h3>In 60 seconds</h3><div class="s60g"><div><b>Problem</b>Agents are entering production, but jobs, teams and skills were designed for people alone. Without redesign, value stalls and trust is put at risk.</div><div><b>Approach</b>ELEVATE: redesign work role by role, govern agents with people accountable, reskill and redeploy, and measure what changes.</div><div><b>Year one</b>2 pilot job families redesigned by month 6 and 6–8 by month 12, at least one each in retirement, group insurance and PGIM; a reusable playbook so other teams can self-serve; one scorecard for the AI Steering Committee.</div><div><b>Let's talk</b>15 minutes with the hiring team: we pick one Prudential job family and redesign it live, so you see exactly how I would lead this, before day one.</div></div></div>
-<div class="card" style="margin:16px 0 18px;border-left:4px solid var(--a)"><h3>What I heard, and how ELEVATE answers it</h3>
+<div class="ov"><div class="ovmain"><div class="jx" id="journey" aria-label="Interactive journey">
+<h3>Try it: one Prudential journey, redesigned with ELEVATE</h3>
+<p class="sub">Pick a business, switch between today and with ELEVATE, and click any step. <span class="tag">ILLUSTRATIVE</span></p>
+<div class="jbar"><div class="jpills" id="jpills" role="group" aria-label="Business"></div>
+<div class="jtog" role="group" aria-label="View"><button type="button" class="bf" data-mode="before" aria-pressed="false">Today</button><button type="button" data-mode="after" aria-pressed="true">With ELEVATE</button></div></div>
+<p class="jq" id="jq"></p>
+<div class="jst" id="jst"></div>
+<div class="jd" id="jd"></div>
+<div class="jsum" id="jsum"></div>
+<p class="jfoot"><span class="lane l-ag">Agent does</span> <span class="lane l-hai">Human + AI</span> <span class="lane l-h">Human only</span> &nbsp;<span class="tag" style="margin:0">CHECKPOINT</span> a named person decides. Times are illustrative, to be baselined with each business in Days 1–30.</p>
+</div>
+<div class="card" style="margin:0 0 14px;border-left:4px solid var(--a)"><h3>What I heard, and how ELEVATE answers it</h3>
 <div class="tw"><table><tbody>
-<tr><th>What Prudential needs</th><th>How ELEVATE answers it</th></tr>
-<tr><td>Someone to <b>build the framework</b> and lead the transformation, not just advise</td><td>A working framework with HR, technology and non-technology components, built once and run by the teams (see Framework)</td></tr>
-<tr><td><b>KPIs and OKRs</b> that show value</td><td>One scorecard: adoption, quality, value and people, with OKRs per division (see KPIs &amp; ROI)</td></tr>
-<tr><td><b>Reuse across divisions</b></td><td>Built once, reused across Group, Retirement and Wealth and the capability centers in India and Ireland, the horizontal model I first set up in Prudential's Customer Office</td></tr>
-<tr><td>Transformation that is <b>more than automation</b></td><td>Agents take on busywork; people move to higher-value work. We measure capacity redeployed to growth, not only cost saved</td></tr>
-<tr><td>A clear way to decide <b>what goes agentic first</b></td><td>Score each area of work on ROI, people readiness, business criticality and customer experience, with data readiness as the foundation</td></tr>
+<tr><th style="width:30%">What Prudential needs</th><th>How ELEVATE answers it</th></tr>
+<tr><td>Someone to <b>build the framework</b> and lead the transformation, not just advise</td><td>A working framework with HR, technology and non-technology components, built once and run by the teams. <a href="#" data-go="framework" class="lk">See the Framework tab →</a></td></tr>
+<tr><td>A clear way to decide <b>what goes agentic first</b></td><td>Score each area of work on ROI, people readiness, business criticality and customer experience, with data readiness as the foundation. <a href="#" data-go="framework" class="lk">See the scoring →</a></td></tr>
+<tr><td><b>KPIs and OKRs</b> that show value</td><td>A brief C-suite scorecard (adoption, quality, value, people) on one page, backed by operational detail that VPs and Directors act on each week: by division, job family and workflow, each with an owner, a threshold and the next action. <a href="#" data-go="value" class="lk">See KPIs &amp; ROI →</a></td></tr>
+<tr><td><b>Reuse across divisions</b></td><td>A horizontal model: one shared playbook, templates, agent controls and Academy tracks, built once with the India and Ireland capability centers. Retirement, Group Insurance, Individual Life, Wealth and PGIM adopt it and adapt locally, so each division starts from what the last one built. I first set up this horizontal model in Prudential's Customer Office and scaled it across two business units at S&amp;P Global. <a href="#" data-go="framework" class="lk">See how it is reused →</a></td></tr>
+<tr><td>Transformation that is <b>more than automation</b></td><td>Agents take on busywork; people move to higher-value work. We measure capacity redeployed to growth, not only cost saved.</td></tr>
 </tbody></table></div></div>
-<h2>A pivotal moment for Prudential</h2>
+<details class="more"><summary>In 60 seconds: problem, approach, year one</summary><div class="mb"><div class="s60"><h3>In 60 seconds</h3><div class="s60g"><div><b>Problem</b>Agents are entering production, but jobs, teams and skills were designed for people alone. Without redesign, value stalls and trust is put at risk.</div><div><b>Approach</b>ELEVATE: redesign work role by role, govern agents with people accountable, reskill and redeploy, and measure what changes.</div><div><b>Year one</b>2 pilot job families redesigned by month 6 and 6–8 by month 12, at least one each in retirement, group insurance and PGIM; a reusable playbook so other teams can self-serve; one scorecard for the AI Steering Committee.</div><div><b>Let's talk</b>15 minutes with the hiring team: we pick one Prudential job family and redesign it live, so you see exactly how I would lead this, before day one.</div></div></div>
+</div></details>
+<details class="more"><summary>Prudential context and stated AI priorities</summary><div class="mb"><h2>A pivotal moment for Prudential</h2>
 <p class="strat">Prudential is concentrating on retirement, asset management and select protection, and on running the enterprise more efficiently. ELEVATE turns that strategy into how work gets done: people and AI agents together, with trust protected.</p><p class="disc" style="margin:-4px 0 8px">Prudential details are drawn from public sources, including the job posting and company announcements.</p>
 <div class="grid outs"><div class="card"><b>Capacity to growth</b><br>Hours released by agents redeployed to retirement, asset management and protection growth work</div><div class="card"><b>Quality &amp; trust</b><br>Customer outcomes and controls protected, with people accountable for what agents do</div><div class="card"><b>People with us</b><br>Employees engaged and reskilled through the change, not left behind by it</div></div>
 <div class="card" style="margin:0 0 14px"><h3>Aligned with Prudential's stated AI priorities</h3>
@@ -184,7 +235,8 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <div><b>U.S.-first</b><span>with capability centers in India and Ireland; Japan as strategy confirms</span></div>
 </div><p class="disc"><span style="font-weight:700;font-style:normal">External public baseline, to validate in Days 1–30.</span> Prudential details are drawn from public sources, including the job posting and company announcements.</p></div>
 
-<h2>Why me: I have done this work at 7 firms</h2>
+</div></details>
+<details class="more"><summary>Why me: I have done this work at 7 firms</summary><div class="mb"><h2>Why me: I have done this work at 7 firms</h2>
 <p>Built or revitalized Quality Engineering at Prudential, TheMarkets.com, SanPulse, Pearson, DoubleVerify, Audible and S&amp;P Global, each on a modernization path with global teams. This role needs someone who can build the AI and bring people along. I do both: I create the platforms, and I lead the human side of change, the hardest and most important part, hand in hand with HR.</p>
 <div class="grid g4">
 <div class="card kpi"><div class="n">150+ engineers</div>led across Customer Office and Retirement at Prudential; 50+ reskilled, 35+ roles transitioned</div>
@@ -209,7 +261,8 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <p class="note" style="margin:8px 0 0">I bring the platform and change experience; I would learn the HR craft from the experts on the team.</p>
 </div>
 
-<h2>The first year at a glance</h2>
+</div></details>
+<details class="more"><summary>The first year, and where released capacity goes</summary><div class="mb"><h2>The first year at a glance</h2>
 <div class="grid g4">
 <div class="card"><h3>Days 1–30 · Listen</h3>Baseline skills, sentiment and use cases with Talent, the CDAIO and business leaders.</div>
 <div class="card"><h3>Days 31–90 · Design</h3>Principles, autonomy levels and governance; pick 2 pilot job families.</div>
@@ -229,7 +282,8 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <div class="card" style="margin-top:16px;border-left:4px solid var(--p)"><h3>Works beyond engineering</h3>Task deconstruction (agent does, human + AI, human only) applies to any job. Non-technical roles are mapped with the people who do them and HR subject-matter experts. My people-side proof is not only technical: at Prudential, across Customer Office and Retirement, 50+ people reskilled and 35+ roles transitioned with care; at S&amp;P Global, engagement recovered after the expected dip, working hand in hand with HR.</div>
 
 
-<h2>How ELEVATE works</h2>
+</div></details>
+<details class="more"><summary>How ELEVATE works, with a human in the loop</summary><div class="mb"><h2>How ELEVATE works</h2>
 <div class="flow">
 <div class="step"><b>1. Discover</b>Map each job into tasks; link tasks to the 300+ use cases in flight</div>
 <div class="step"><b>2. Redesign</b>Split tasks: agent does, human with AI, human only</div>
@@ -249,6 +303,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <p class="note">The delta feeds learning back into the rubric, the builder agent and the judge, so both improve over time. Autonomy rises only when the evidence supports it.</p>
 
 
+</div></details>
 </div>
 <aside class="ovside"><div class="card">
 <h3>How I would help Prudential</h3>
@@ -292,6 +347,14 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <li>One scorecard and OKRs for the AI Steering Committee</li></ul></div>
 </div>
 
+<h3 style="margin-top:22px">The horizontal model: build once, adopt everywhere</h3>
+<div class="flow">
+<div class="step"><b>Build once, centrally</b>Playbook, templates, agent controls, rubrics and Academy tracks, with the India and Ireland capability centers</div>
+<div class="step"><b>First division pilots</b>Two job families, measured on the scorecard</div>
+<div class="step"><b>Next divisions adopt</b>Retirement, Group Insurance, Individual Life, Wealth and PGIM reuse and adapt locally</div>
+<div class="step gate"><b>Shared governance</b>One pathway and one scorecard for every division</div>
+<div class="step"><b>Improve the core</b>What each division learns goes back into the shared templates</div>
+</div>
 <h3 style="margin-top:22px">What goes agentic first</h3>
 <p>Score each area of work before redesigning it. Work that scores high on ROI and readiness, with manageable risk and a clear customer benefit, goes first. Work where judgment and empathy matter most stays with people, with AI in a supporting role.</p>
 <div class="tw"><table><tbody>
@@ -462,6 +525,23 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 
 <!-- VALUE -->
 <section class="pane" id="value">
+<h2>Two views of the same numbers</h2>
+<h3 style="margin-top:6px">C-suite scorecard: one page, monthly <span class="tag">ILLUSTRATIVE</span></h3>
+<div class="cs">
+<div><b>Adoption</b>Share of target job families redesigned and live</div>
+<div><b>Value</b>Hours released and redeployed to growth work</div>
+<div><b>Quality &amp; trust</b>Agent error and override rates within limits</div>
+<div><b>People</b>Engagement, internal moves into new roles</div>
+</div>
+<h3 style="margin-top:16px">Operational detail: what VPs and Directors act on each week <span class="tag">ILLUSTRATIVE</span></h3>
+<div class="tw"><table><tbody>
+<tr><th>Measure</th><th>Cut by</th><th>Owner</th><th>Threshold</th><th>Action when off track</th></tr>
+<tr><td>Agent drafts accepted without edits</td><td>Workflow, team</td><td>Director, business operations</td><td>Below agreed rate for 2 weeks</td><td>Review rubric with agent quality reviewers; step autonomy down a level if needed</td></tr>
+<tr><td>Cycle time per case</td><td>Division, job family</td><td>VP, business line</td><td>No improvement after 6 weeks</td><td>Re-map tasks; check data readiness and handoffs</td></tr>
+<tr><td>Hours released vs redeployed</td><td>Job family</td><td>VP with HR business partner</td><td>Released hours not redeployed within a quarter</td><td>Open Academy seats and internal moves; adjust workforce plan</td></tr>
+<tr><td>Override and exception rate</td><td>Agent, workflow</td><td>Agent supervisor</td><td>Above limit</td><td>Pause or roll back; incident review with Risk</td></tr>
+<tr><td>Team pulse and attrition</td><td>Team</td><td>People leader</td><td>Drop beyond expected dip</td><td>Listening session; champions support; pace change</td></tr>
+</tbody></table></div>
 <h2>From use case to measurable value</h2>
 <div class="flow">
 <div class="step"><b>Use cases</b>300+ in flight</div>
@@ -517,6 +597,61 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 
 <footer>ELEVATE is an independent prototype by Sonia Malik, created to show how she would approach this role. It is not affiliated with or endorsed by Prudential. Role examples and scorecard values are illustrative; Prudential details are drawn from public sources, including the job posting and company announcements.</footer>
 </div>
+<script>
+(function(){
+var J={
+ret:{n:'Retirement',q:'An annuity customer asks to take a withdrawal',sum:['5 days','1 day','Associates spend released time on complex cases and retention conversations'],role:'Agent supervisor',st:[
+['Request','Customer calls or goes online','Agent verifies the contract and pulls values','Associate monitors and takes over on request','ag',0,'Up to 1 day in queue','Minutes'],
+['Options','Customer wants to understand choices','Agent drafts options, surrender charges and tax notes','Associate confirms figures before sharing','hai',0,'1–2 days','Same call'],
+['Safeguards','Possible vulnerable customer or fraud','Agent flags signals','Associate decides whether to escalate','hai',1,'Often missed','Flagged every time'],
+['Paperwork','Forms and signatures','Agent pre-fills forms and checks completeness','Associate approves','hai',0,'2 days of back-and-forth','Same day'],
+['Next best step','Customer may need advice','Agent drafts the follow-up letter','Associate offers a referral to a financial professional','h',0,'Rarely offered','Offered in every case']]},
+grp:{n:'Group Insurance',q:'An employee files a short-term disability claim',sum:['10 days','4 days','Examiners spend released time on complex and contested claims'],role:'Agent quality reviewer',st:[
+['Intake','Employer and claimant forms arrive','Agent checks forms and flags missing items','Examiner reviews exceptions','ag',0,'2–3 days','Same day'],
+['Medical records','Doctor statements and records','Agent summarizes records with sources','Examiner spot-checks summaries','ag',0,'3 days','Hours'],
+['Eligibility','Plan terms and coverage','Agent matches claim to plan terms','Examiner confirms the match','hai',1,'2 days','1 day'],
+['Decision','Approve, deny or ask for more','Agent prepares the evidence packet','Examiner decides; denials always by a person','h',1,'2 days','1 day'],
+['Communication','Claimant hears the outcome','Agent drafts the letter','Examiner edits and approves; calls at difficult moments','hai',0,'1 day','Same day']]},
+ind:{n:'Individual Life',q:'A financial professional submits a new life application',sum:['3 weeks','1 week','Underwriters spend released time on complex, high-face-amount cases'],role:'AI workflow designer',st:[
+['Quick quote','Financial professional needs an answer fast','Just Ask-style assistant answers product and quote questions in seconds','Professional reviews and shares','ag',0,'Hours searching systems','Seconds'],
+['Evidence','Application, prescription and records data','Agent gathers data and flags gaps','Underwriter reviews flagged gaps','ag',0,'1–2 weeks','Days'],
+['Risk summary','Case is assessed','Agent drafts the risk summary and flags','Underwriter samples for accuracy','hai',1,'3 days','1 day'],
+['Decision','Accelerated or full underwriting','Agent applies rules to clean cases','Underwriter decides complex or borderline cases','h',1,'3–5 days','1–2 days'],
+['Policy delivery','Customer receives the policy','Agent assembles documents','Professional explains coverage to the customer','hai',0,'Days','Same day']]},
+wea:{n:'Wealth',q:'A financial professional prepares for a client review',sum:['4 hours prep','1 hour prep','Professionals spend released time with more clients'],role:'Human–AI team lead',st:[
+['Prep','Client meeting next week','Agent builds a briefing: holdings, life events, open items','Professional reviews','ag',0,'2 hours','15 minutes'],
+['Scenarios','Retirement income options','Agent models scenarios','Professional chooses what fits the client','hai',0,'1 hour','20 minutes'],
+['Suitability','Recommendation must be suitable','Agent checks against rules and documents evidence','Compliance reviewer samples; professional attests','hai',1,'Manual checklist','Evidence attached'],
+['Conversation','Client meeting','Agent stays out of the room','Professional advises: judgment and trust','h',0,'Same','Same'],
+['Follow-up','Notes and next steps','Agent drafts notes, tasks and the follow-up email','Professional approves','ag',0,'1 hour','10 minutes']]},
+pgim:{n:'PGIM',q:'An institutional client gets its quarterly review',sum:['2 weeks','1 week','Analysts spend released time on research and client insight'],role:'Agent quality reviewer',st:[
+['Data refresh','Quarter closes','Agent refreshes performance and attribution data','Analyst reviews exceptions','ag',0,'3 days','Hours'],
+['Commentary','Market and portfolio view','Agent drafts first commentary from sources','Analyst edits and owns the view','hai',0,'4 days','1–2 days'],
+['Review','Portfolio manager sign-off','Agent checks facts against sources','Portfolio manager approves','hai',1,'2 days','1 day'],
+['Client meeting','Relationship conversation','Agent prepares likely questions','Portfolio manager presents and answers','h',0,'Same','Same'],
+['Follow-ups','Requests and RFP questions','Agent drafts answers from the approved library','Analyst and Compliance approve','hai',1,'1 week','2–3 days']]}
+};
+var keys=['ret','grp','ind','wea','pgim'],cur='ret',mode='after',sel=0;
+var pills=document.getElementById('jpills'),st=document.getElementById('jst'),jd=document.getElementById('jd'),js=document.getElementById('jsum'),jq=document.getElementById('jq');
+if(!pills)return;
+keys.forEach(function(k){var b=document.createElement('button');b.type='button';b.textContent=J[k].n;b.setAttribute('aria-pressed',k===cur);b.onclick=function(){cur=k;sel=0;draw();};pills.appendChild(b);});
+document.querySelectorAll('.jtog button').forEach(function(b){b.onclick=function(){mode=b.dataset.mode;draw();};});
+var LN={ag:'Agent does',hai:'Human + AI',h:'Human only'};
+function draw(){var d=J[cur];
+[].forEach.call(pills.children,function(b,i){b.setAttribute('aria-pressed',keys[i]===cur);});
+document.querySelectorAll('.jtog button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.mode===mode);});
+jq.innerHTML='<b>'+d.n+':</b> '+d.q;
+st.innerHTML='';d.st.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.className='js '+(mode==='after'?x[4]:'');b.setAttribute('aria-pressed',i===sel);
+b.innerHTML='<span class="k">Step '+(i+1)+'</span><span class="t">'+x[0]+'</span><span class="tm">'+(mode==='after'?x[7]:x[6])+'</span>'+(mode==='after'&&x[5]?'<span class="gt">CHECKPOINT</span>':'');
+b.onclick=function(){sel=i;draw();};st.appendChild(b);});
+var x=d.st[sel];
+if(mode==='after'){jd.innerHTML='<div><b>Customer moment</b>'+x[1]+'</div><div><b>Agent does</b>'+x[2]+'</div><div><b>Person does · '+LN[x[4]]+'</b>'+x[3]+(x[5]?'<br><span class="tag" style="margin:4px 0 0">CHECKPOINT: a named person decides</span>':'')+'</div>';}
+else{jd.innerHTML='<div><b>Customer moment</b>'+x[1]+'</div><div><b>Today</b>People search several systems and re-key data; time goes to busywork</div><div><b>Time</b>'+x[6]+'</div>';}
+js.innerHTML='<div><b>'+(mode==='after'?d.sum[1]:d.sum[0])+'</b>time to outcome '+(mode==='after'?'with ELEVATE (from '+d.sum[0]+' today)':'today')+'</div><div><b>'+(mode==='after'?(function(n){return n+(n===1?' checkpoint':' checkpoints')})(d.st.filter(function(s){return s[5]}).length):'Ad hoc')+'</b>'+(mode==='after'?'where a named person decides':'review, varies by team')+'</div><div><b>'+(mode==='after'?d.role:'—')+'</b>'+(mode==='after'?'new role this creates. '+d.sum[2]:'roles unchanged; capacity stays tied up in busywork')+'</div>';
+}
+draw();
+})();
+</script>
 <script>
 (function(){
 document.addEventListener('click',function(e){var g=e.target.closest&&e.target.closest('[data-go]');if(!g)return;var t=document.querySelector('[role=tab][data-tab="'+g.dataset.go+'"]');if(t){e.preventDefault();t.click();t.scrollIntoView({inline:'center',block:'nearest'});}});
