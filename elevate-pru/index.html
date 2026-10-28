@@ -300,7 +300,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <rect x="30" y="52" width="66" height="62" rx="6" fill="#fff" stroke="#0A4D8C"/><text x="63" y="74" text-anchor="middle" font-size="8.4" font-weight="bold" fill="#0A4D8C">Retirement</text><text x="63" y="86" text-anchor="middle" font-size="8" fill="#14202E">service</text><text x="63" y="100" text-anchor="middle" font-size="7.6" fill="#4F5B69">human + AI</text><text x="63" y="109" text-anchor="middle" font-size="7.6" fill="#4F5B69">team</text><rect x="108" y="52" width="66" height="62" rx="6" fill="#fff" stroke="#0A4D8C"/><text x="141" y="74" text-anchor="middle" font-size="8.4" font-weight="bold" fill="#0A4D8C">Group</text><text x="141" y="86" text-anchor="middle" font-size="8" fill="#14202E">claims</text><text x="141" y="100" text-anchor="middle" font-size="7.6" fill="#4F5B69">human + AI</text><text x="141" y="109" text-anchor="middle" font-size="7.6" fill="#4F5B69">team</text><rect x="186" y="52" width="66" height="62" rx="6" fill="#fff" stroke="#0A4D8C"/><text x="219" y="74" text-anchor="middle" font-size="8.4" font-weight="bold" fill="#0A4D8C">Individual Life</text><text x="219" y="86" text-anchor="middle" font-size="8" fill="#14202E">underwriting</text><text x="219" y="100" text-anchor="middle" font-size="7.6" fill="#4F5B69">human + AI</text><text x="219" y="109" text-anchor="middle" font-size="7.6" fill="#4F5B69">team</text><rect x="264" y="52" width="66" height="62" rx="6" fill="#fff" stroke="#0A4D8C"/><text x="297" y="74" text-anchor="middle" font-size="8.4" font-weight="bold" fill="#0A4D8C">Wealth</text><text x="297" y="86" text-anchor="middle" font-size="8" fill="#14202E">&amp; PGIM</text><text x="297" y="100" text-anchor="middle" font-size="7.6" fill="#4F5B69">human + AI</text><text x="297" y="109" text-anchor="middle" font-size="7.6" fill="#4F5B69">team</text>
 <rect x="20" y="122" width="320" height="34" rx="6" fill="#5B3E96"/><text x="180" y="137" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">People &amp; Capabilities</text><text x="180" y="150" text-anchor="middle" fill="#ece6f6" font-size="8.3">role redesign · Innovation Academy · career paths</text>
 <line x1="344" y1="83" x2="384" y2="83" stroke="#4F5B69" stroke-width="1.5" marker-end="url(#oma)"/>
-<rect x="388" y="60" width="116" height="46" rx="6" fill="#FBF0D9" stroke="#8F5E00"/><text x="446" y="78" text-anchor="middle" font-size="9" font-weight="bold" fill="#8F5E00">Governance</text><text x="446" y="90" text-anchor="middle" font-size="8" fill="#14202E">checkpoints · named</text><text x="446" y="100" text-anchor="middle" font-size="8" fill="#14202E">owner per agent</text>
+<rect x="388" y="60" width="116" height="46" rx="6" fill="#FBF0D9" stroke="#8F5E00"/><text x="446" y="78" text-anchor="middle" font-size="9" font-weight="bold" fill="#8F5E00">Governance</text><text x="446" y="90" text-anchor="middle" font-size="8" fill="#14202E">checkpoints</text><text x="446" y="100" text-anchor="middle" font-size="8" fill="#14202E">named owner per agent</text>
 <line x1="504" y1="83" x2="530" y2="83" stroke="#4F5B69" stroke-width="1.5" marker-end="url(#oma)"/>
 <rect x="534" y="60" width="90" height="46" rx="6" fill="#2E7D4F"/><text x="579" y="80" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="bold">Customer</text><text x="579" y="93" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="bold">outcomes</text>
 <path d="M579,60 L579,27 L344,27" fill="none" stroke="#2E7D4F" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#oma)"/>
@@ -793,9 +793,9 @@ var EV=[
 ['09:12','ag','Agent','Contract and values: pulled.<small>No system hunting</small>','Agent does'],
 ['09:13','sys','Agent + AI judge','Two options, rule-checked.<small>Drafted in seconds</small>','Human + AI'],
 ['09:14','chk','Checkpoint','Risk flag: a person decides.<small>Agents propose, people decide</small>','Checkpoint'],
-['09:16','hum','Maria','Reviewed. Approved.<small>Trusted and faster</small>','Human + AI'],
+['09:16','hum','Service associate','Reviewed. Approved.<small>Trusted and faster</small>','Human + AI'],
 ['09:18','ok','Customer','Answered same day.<small>Not 5 days (illustrative)</small>','Agent does'],
-['09:25','hum','Maria','"Let\'s plan for tuition."<small>Time back for people</small>','Human only'],
+['09:25','hum','Service associate','"Let\'s plan for tuition."<small>Time back for people</small>','Human only'],
 ['09:30','ok','Scorecard','Value logged. Reused next.<small>Proof it works</small>','Measure &amp; reuse']];
 var f=document.getElementById('cnf');if(!f)return;var ck=document.getElementById('cnc'),ln=document.getElementById('cnl');
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -929,6 +929,24 @@ document.getElementById('popx').onclick=function(){d.close();};
 d.addEventListener('click',function(e){if(e.target===d)d.close();});
 document.getElementById('popfull').onclick=function(){d.close();var t=document.querySelector('[role=tab][data-tab="'+cur+'"]');if(t)t.click();var w=document.querySelector('.tabwrap'),pz=document.getElementById(cur);if(w&&pz)scrollTo({top:pz.getBoundingClientRect().top+scrollY-w.offsetHeight-6});};
 d.addEventListener('close',function(){b.innerHTML='';});
+})();
+</script>
+<script>
+(function(){
+var SM={a:1,an:1,and:1,as:1,at:1,but:1,by:1,for:1,in:1,of:1,on:1,or:1,per:1,the:1,to:1,vs:1,via:1,with:1,from:1,into:1,not:1,nor:1};
+function tc(t){var first=true;return t.replace(/([A-Za-z][A-Za-z'’]*(?:-[A-Za-z][A-Za-z'’]*)*)|([·:—–→(]|\S)/g,function(m,w,sep){
+ if(!w){if(/[·:—(]/.test(m))first=true;return m;}
+ var out=w;if(w==='e-signature')out='E-Signature';
+ else if(!(SM[w]&&!first))out=w.split('-').map(function(x){return /^[a-z]/.test(x)?x.charAt(0).toUpperCase()+x.slice(1):x;}).join('-');
+ first=false;return out;}).replace(/\b(a|an|and|as|at|but|by|for|in|of|on|or|per|the|to|vs|via|with|from|into|not)(\s*[→?]?\s*)$/,function(m,w,t){return w.charAt(0).toUpperCase()+w.slice(1)+t;});}
+var SEL='h1 small,h2,h3,summary,.chips span,.tabs button,#moretabs button,.pgrp button,.jpills button,.jtog button,.lh,.dh,.dt,.step,.at,.fw3 .ph,.st,.ln,.ce small,th,.opm svg text,.pd b,.js .t,.js .k,.jsum b,.cs b,.cs>div,.poptop b,.govb b,.navhint,.nextbtn,.meetbtn,.cnk span,.cnk b,.cnh b,.cnh span,.opl';
+function run(root){(root.matches&&root.matches(SEL)?[root]:[]).concat([].slice.call((root.querySelectorAll?root:document).querySelectorAll(SEL))).forEach(function(el){
+ var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),n;while(n=w.nextNode()){if(n.parentElement.closest('a[href^="mailto"],a[href^="tel"]'))continue;var v=n.nodeValue;if(!/[a-z]/.test(v))continue;if(!n.parentElement.closest('svg,h2,h3,th')&&v.trim().split(/\s+/).length>9)continue;
+ var r=tc(v);if(r!==v)n.nodeValue=r;}});}
+window.__tc=run;
+var busy=false;function all(){if(busy)return;busy=true;run(document.body);busy=false;}
+all();
+new MutationObserver(function(ms){if(busy)return;busy=true;ms.forEach(function(m){m.addedNodes.forEach(function(x){if(x.nodeType===1)run(x);else if(x.nodeType===3&&x.parentElement)run(x.parentElement);});if(m.type==='characterData'&&m.target.parentElement)run(m.target.parentElement);});busy=false;}).observe(document.body,{childList:true,subtree:true,characterData:true});
 })();
 </script>
 </body></html>
