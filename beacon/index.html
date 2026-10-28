@@ -670,16 +670,30 @@ td.num{font-variant-numeric:tabular-nums}
 }
 
 /* What BEACON offers you — role personas */
+.persona-filters{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 14px}
+.persona-filters button{
+  font:inherit; font-size:.78rem; font-weight:600; letter-spacing:.02em;
+  padding:7px 12px; border-radius:999px; border:1px solid var(--line);
+  background:var(--surface); color:var(--muted); cursor:pointer;
+}
+.persona-filters button[aria-pressed="true"]{
+  background:var(--navy,#1F3A5F); color:#fff; border-color:var(--navy,#1F3A5F);
+}
 .persona-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
 @media (max-width:820px){ .persona-grid{grid-template-columns:1fr} }
 .persona{
   background:var(--surface); border:1px solid var(--line); border-radius:14px;
   padding:16px 16px 14px; display:grid; gap:8px; align-content:start;
 }
+.persona[hidden]{display:none !important}
 .persona .prole{
   display:inline-flex; align-items:center; gap:6px;
   font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
   color:var(--accent-ink); background:var(--accent-soft); padding:3px 10px; border-radius:999px; width:fit-content;
+}
+.persona .pstage{
+  font-size:.68rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--faint); margin-left:4px;
 }
 .persona h3{font-family:var(--f-display); font-size:1.05rem; color:var(--navy,#1F3A5F); margin:0}
 .persona .pain{font-size:.88rem; color:var(--muted); margin:0; line-height:1.4}
@@ -693,6 +707,26 @@ td.num{font-variant-numeric:tabular-nums}
 }
 .persona .gets li::before{ background:var(--orange,#E87722); }
 .persona .plabel{font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); margin-top:4px}
+.persona.persona-csuite{ grid-column:1 / -1; border-color:rgba(31,58,95,.25); background:linear-gradient(180deg,#fff 0%, #f7f9fc 100%); }
+.okr-note{
+  font-size:.78rem; color:var(--muted); background:var(--accent-soft); border:1px dashed rgba(232,119,34,.45);
+  border-radius:10px; padding:8px 12px; margin:4px 0 0;
+}
+.okr-note b{color:var(--orange,#E87722)}
+.okr-grid{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin-top:6px}
+@media (max-width:900px){ .okr-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:520px){ .okr-grid{grid-template-columns:1fr} }
+.okr-card{
+  background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 10px 8px; display:grid; gap:6px;
+}
+.okr-card .ok{font-size:.68rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--navy,#1F3A5F)}
+.okr-card .bar{height:8px; background:#e8edf3; border-radius:999px; overflow:hidden}
+.okr-card .bar > i{display:block; height:100%; background:var(--accent); border-radius:999px}
+.okr-card .bar.q > i{background:var(--orange,#E87722)}
+.okr-card .bar.cx > i{background:#2a6f97}
+.okr-card .bar.rk > i{background:#5c6b7a}
+.okr-card .bar.ad > i{background:#3d7a5a}
+.okr-card .hint{font-size:.72rem; color:var(--muted); line-height:1.3}
 /* end side rails */
 </style>
 </head>
@@ -854,15 +888,22 @@ td.num{font-variant-numeric:tabular-nums}
   <!-- WHO IT SERVES -->
   <section class="pane" id="offers" role="tabpanel" aria-labelledby="t-offers" hidden>
     <div class="sec-head">
-      <span class="label">Along the disability-claim journey</span>
+      <span class="label">Along the disability-claim journey · full PDLC</span>
       <h2>What BEACON offers you</h2>
-      <p class="lede">Same journey, different seat. Each role gets a clear pain point, what BEACON puts in their hands (creator and judge agents, human sign-off, governance by exception, customer-feedback loop), and what they walk away with — qualitative outcomes only.</p>
+      <p class="lede">Same journey, different seat — from Discover through Run &amp; improve. Each role sees a pain point, what BEACON puts in their hands (creator and judge agents, human sign-off, governance by exception, customer-feedback loop), and qualitative outcomes. Filter by lifecycle stage to scan.</p>
     </div>
-    <div class="persona-grid">
-      <article class="persona">
-        <span class="prole">Product Owners</span>
+    <div class="persona-filters" role="group" aria-label="Filter personas by lifecycle stage">
+      <button type="button" data-pfilter="all" aria-pressed="true">All roles</button>
+      <button type="button" data-pfilter="discover" aria-pressed="false">Discover &amp; Design</button>
+      <button type="button" data-pfilter="build" aria-pressed="false">Build &amp; Evaluate</button>
+      <button type="button" data-pfilter="release" aria-pressed="false">Release &amp; Run</button>
+      <button type="button" data-pfilter="leadership" aria-pressed="false">Leadership</button>
+    </div>
+    <div class="persona-grid" id="persona-grid">
+      <article class="persona" data-pgroup="discover">
+        <span class="prole">Product Managers / Owners <span class="pstage">Discover · Design</span></span>
         <h3>Own the claimant outcome, not a ticket pile</h3>
-        <p class="pain"><b>Pain:</b> Features ship without a journey KPI; partner and in-house pull in different directions; denials and complaints surface late.</p>
+        <p class="pain"><b>Pain:</b> Features ship without a journey KPI; partner and in-house pull apart; denials and complaints surface late.</p>
         <div class="plabel">What BEACON gives you</div>
         <ul class="gives">
           <li>Creator agents draft MVP and BDD stories from the claimant KPI; judge agents flag gaps before your review</li>
@@ -876,10 +917,44 @@ td.num{font-variant-numeric:tabular-nums}
           <li>A backlog that learns from real claimants</li>
         </ul>
       </article>
-      <article class="persona">
-        <span class="prole">Dev Leaders</span>
+      <article class="persona" data-pgroup="discover">
+        <span class="prole">UX / Design <span class="pstage">Discover · Design</span></span>
+        <h3>Design the claim moment, not just screens</h3>
+        <p class="pain"><b>Pain:</b> Flows ignore examiner and claimant friction; AI drafts land without a human path; accessibility and tone are afterthoughts.</p>
+        <div class="plabel">What BEACON gives you</div>
+        <ul class="gives">
+          <li>Creator agents sketch journey variants from intake → decision; judge agents check clarity and grounding against policy</li>
+          <li>Human sign-off points designed in (examiner decides; denials never auto-fire)</li>
+          <li>Customer-feedback and examiner edits feed the next design pass</li>
+        </ul>
+        <div class="plabel">What you get</div>
+        <ul class="gets">
+          <li>Flows tied to a claimant KPI, not a feature list</li>
+          <li>Clear handoffs where people stay in the loop</li>
+          <li>Evidence that the experience improves after go-live</li>
+        </ul>
+      </article>
+      <article class="persona" data-pgroup="discover build">
+        <span class="prole">Architects <span class="pstage">Design · Build</span></span>
+        <h3>One execution plane, not tool sprawl</h3>
+        <p class="pain"><b>Pain:</b> Agent runtimes, tools and data access multiply; control is bolted on later; lineage for claim decisions is unclear.</p>
+        <div class="plabel">What BEACON gives you</div>
+        <ul class="gives">
+          <li>Shared patterns for creator/judge agents, tool scope and schemas on Build</li>
+          <li>Controls as platform defaults — risk tier, HITL and audit trail written into Design</li>
+          <li>Governance by exception hooks so alerts surface without a review queue on every call</li>
+        </ul>
+        <div class="plabel">What you get</div>
+        <ul class="gets">
+          <li>A coherent target for partner and in-house teams</li>
+          <li>Less one-off agent wiring per squad</li>
+          <li>Decision lineage ready for Risk and audit</li>
+        </ul>
+      </article>
+      <article class="persona" data-pgroup="build leadership">
+        <span class="prole">Dev Leaders <span class="pstage">Build · Release</span></span>
         <h3>Speed with control, without a review queue</h3>
-        <p class="pain"><b>Pain:</b> Governance arrives as a gate after the build; tool sprawl and unclear human-in-the-loop rules slow every release.</p>
+        <p class="pain"><b>Pain:</b> Governance arrives as a gate after the build; unclear human-in-the-loop rules slow every release.</p>
         <div class="plabel">What BEACON gives you</div>
         <ul class="gives">
           <li>Controls as platform defaults on Build and Evaluate — not a separate committee ask</li>
@@ -889,12 +964,12 @@ td.num{font-variant-numeric:tabular-nums}
         <div class="plabel">What you get</div>
         <ul class="gets">
           <li>Faster path from Design to Release with evidence attached</li>
-          <li>Shared agent runtimes, tool scope and eval gates your teams inherit</li>
+          <li>Shared agent runtimes and eval gates your teams inherit</li>
           <li>An operating rhythm your directors can run</li>
         </ul>
       </article>
-      <article class="persona">
-        <span class="prole">Developers</span>
+      <article class="persona" data-pgroup="build">
+        <span class="prole">Developers <span class="pstage">Build</span></span>
         <h3>Ship the claim path with agents that stay in bounds</h3>
         <p class="pain"><b>Pain:</b> Unclear which tools an agent may call; reviews ask for evidence you never captured; rework after drift or fairness holds.</p>
         <div class="plabel">What BEACON gives you</div>
@@ -907,11 +982,11 @@ td.num{font-variant-numeric:tabular-nums}
         <ul class="gets">
           <li>Less rework from late control findings</li>
           <li>Clear boundaries for agent tool use</li>
-          <li>Feedback from production (Observe / Nurture) that becomes the next test case</li>
+          <li>Feedback from Observe / Nurture that becomes the next test case</li>
         </ul>
       </article>
-      <article class="persona">
-        <span class="prole">QE</span>
+      <article class="persona" data-pgroup="build">
+        <span class="prole">QE <span class="pstage">Evaluate</span></span>
         <h3>Judge the journey before the claimant feels it</h3>
         <p class="pain"><b>Pain:</b> Eval is a late checklist; failures are waived; fairness and grounding are tribal knowledge.</p>
         <div class="plabel">What BEACON gives you</div>
@@ -927,8 +1002,42 @@ td.num{font-variant-numeric:tabular-nums}
           <li>A seat at Release and Run &amp; improve, not only at the end</li>
         </ul>
       </article>
-      <article class="persona">
-        <span class="prole">Risk &amp; Compliance</span>
+      <article class="persona" data-pgroup="build">
+        <span class="prole">Data / ML Engineers <span class="pstage">Build · Evaluate · Run</span></span>
+        <h3>Models and features that serve the claim decision</h3>
+        <p class="pain"><b>Pain:</b> Features and models drift from the journey KPI; eval is offline; production feedback never becomes a new case.</p>
+        <div class="plabel">What BEACON gives you</div>
+        <ul class="gives">
+          <li>Creator agents for feature and eval harness work; judge agents for grounding, fairness and drift before promote</li>
+          <li>Human sign-off on material model changes; governance by exception on routine patterns</li>
+          <li>Observe / Nurture feeds (examiner edits, complaints) that reopen Evaluate with evidence</li>
+        </ul>
+        <div class="plabel">What you get</div>
+        <ul class="gets">
+          <li>Eval tied to examiner decisions, not only offline metrics</li>
+          <li>Clear promote / hold criteria your partners share</li>
+          <li>A closed loop from production back into the next build</li>
+        </ul>
+      </article>
+      <article class="persona" data-pgroup="release">
+        <span class="prole">SRE / Ops / Release <span class="pstage">Release · Run</span></span>
+        <h3>Ship safely; watch the claim path in production</h3>
+        <p class="pain"><b>Pain:</b> Releases lack an evidence packet; monitors ignore claimant and examiner signals; incidents do not become controls.</p>
+        <div class="plabel">What BEACON gives you</div>
+        <ul class="gives">
+          <li>Release packets with eval evidence and open exceptions with owners</li>
+          <li>Observe hooks for latency, error, fairness alerts — governance by exception, not a war room for every call</li>
+          <li>Nurture path: incidents and examiner overrides become new Evaluate cases</li>
+        </ul>
+        <div class="plabel">What you get</div>
+        <ul class="gets">
+          <li>Clearer go / no-go with Risk and Product at the table</li>
+          <li>Production signals that map to the claim journey</li>
+          <li>Fewer repeat incidents from the same gap</li>
+        </ul>
+      </article>
+      <article class="persona" data-pgroup="release discover">
+        <span class="prole">Risk / Compliance / Model Governance <span class="pstage">Design · Evaluate · Release</span></span>
         <h3>Evidence by default; attention by exception</h3>
         <p class="pain"><b>Pain:</b> AI use cases arrive without lineage or HITL rules; every change feels like a full review; audit asks for a trail that was never written.</p>
         <div class="plabel">What BEACON gives you</div>
@@ -943,6 +1052,68 @@ td.num{font-variant-numeric:tabular-nums}
           <li>A durable evidence trail without slowing routine patterns</li>
           <li>Partnership with the Execution Plane, not a handoff after launch</li>
         </ul>
+      </article>
+      <article class="persona" data-pgroup="release">
+        <span class="prole">Customer Service / Claims Ops <span class="pstage">Run &amp; improve</span></span>
+        <h3>Examiners stay in charge of the decision</h3>
+        <p class="pain"><b>Pain:</b> AI suggestions without a clear packet; overrides are lost; claimants feel delay and opaque denials.</p>
+        <div class="plabel">What BEACON gives you</div>
+        <ul class="gives">
+          <li>Judge agents prepare a release packet the examiner can accept, edit or send back</li>
+          <li>Hard human sign-off — examiner decides; denials never auto-fire</li>
+          <li>Edits, complaints and NPS feed Nurture so the next claim path improves</li>
+        </ul>
+        <div class="plabel">What you get</div>
+        <ul class="gets">
+          <li>Less time hunting context; more time deciding</li>
+          <li>Overrides that teach the system instead of vanishing</li>
+          <li>A clearer story for the claimant when something changes</li>
+        </ul>
+      </article>
+      <article class="persona persona-csuite" data-pgroup="leadership">
+        <span class="prole">C-suite · CIO / CTO / COO / CDO <span class="pstage">OKRs &amp; scorecards</span></span>
+        <h3>See progress on the claim journey — not a tool inventory</h3>
+        <p class="pain"><b>Pain:</b> AI spend without a shared outcome; boards ask for control and speed at once; partner and in-house results do not roll up.</p>
+        <div class="plabel">What BEACON gives you</div>
+        <ul class="gives">
+          <li>One Execution Plane story: Discover → Run &amp; improve on a policyholder disability claim</li>
+          <li>Creator / judge agents with human sign-off and governance by exception (Rullo) as the operating model</li>
+          <li>Customer-feedback loop that ties NPS, complaints and examiner edits to the next investment</li>
+        </ul>
+        <div class="plabel">What you get</div>
+        <ul class="gets">
+          <li>A single narrative for GLIC leadership, Risk and Delivery</li>
+          <li>Proportionate control without slowing routine patterns</li>
+          <li>OKR-style progress you can review without inventing a second PMO</li>
+        </ul>
+        <p class="okr-note"><b>Illustrative only</b> — sample OKR progress and scorecard view for discussion. Not Guardian metrics; no fabricated real numbers. Bars show relative emphasis, not measured results.</p>
+        <div class="okr-grid" aria-label="Illustrative OKR progress and scorecard">
+          <div class="okr-card">
+            <div class="ok">Speed to market</div>
+            <div class="bar" style="--p:62%"><i style="width:62%"></i></div>
+            <div class="hint">Design → Release with evidence packet — illustrative pace</div>
+          </div>
+          <div class="okr-card">
+            <div class="ok">Quality</div>
+            <div class="bar q"><i style="width:74%"></i></div>
+            <div class="hint">Eval gates and fewer waived failures — illustrative</div>
+          </div>
+          <div class="okr-card">
+            <div class="ok">Customer experience</div>
+            <div class="bar cx"><i style="width:58%"></i></div>
+            <div class="hint">Claimant clarity + examiner packet — illustrative</div>
+          </div>
+          <div class="okr-card">
+            <div class="ok">Risk</div>
+            <div class="bar rk"><i style="width:80%"></i></div>
+            <div class="hint">HITL + exception reviews + audit trail — illustrative</div>
+          </div>
+          <div class="okr-card">
+            <div class="ok">Adoption</div>
+            <div class="bar ad"><i style="width:55%"></i></div>
+            <div class="hint">Partner + in-house on one plane — illustrative</div>
+          </div>
+        </div>
       </article>
     </div>
     <div class="next"><button type="button" data-go="desk">Next: claim journey →</button></div>
@@ -1541,6 +1712,23 @@ td.num{font-variant-numeric:tabular-nums}
   document.querySelectorAll('[data-go-tab]').forEach(b=>{
     b.addEventListener('click',()=>{ selectTab(b.getAttribute('data-go-tab'),{scroll:true}); });
   });
+  // Persona lifecycle filters
+  (function(){
+    const grid = document.getElementById('persona-grid');
+    if(!grid) return;
+    const cards = [...grid.querySelectorAll('.persona')];
+    const filters = [...document.querySelectorAll('.persona-filters [data-pfilter]')];
+    function apply(f){
+      filters.forEach(b=>b.setAttribute('aria-pressed', b.getAttribute('data-pfilter')===f ? 'true':'false'));
+      cards.forEach(c=>{
+        const g = (c.getAttribute('data-pgroup')||'');
+        const show = f==='all' || g.split(/\s+/).includes(f);
+        c.hidden = !show;
+      });
+    }
+    filters.forEach(b=>b.addEventListener('click',()=>apply(b.getAttribute('data-pfilter'))));
+  })();
+
 
   const stagesHost=document.getElementById('stages');
   if(stagesHost){
