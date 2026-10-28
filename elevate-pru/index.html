@@ -233,6 +233,10 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 @media (max-width:899px){.hero{grid-template-columns:minmax(0,1fr)}.hr2{padding-top:0}.cnf{height:300px}.hero .lead2{grid-template-columns:1fr}.cnh b{white-space:normal}}
 @keyframes fl{0%{box-shadow:0 0 0 4px rgba(46,125,79,.55)}100%{box-shadow:0 0 0 4px rgba(46,125,79,0)}}.pane.flash{animation:fl 1.6s ease-out}
 .cnbt{display:flex;gap:6px}.cnr.solid{background:var(--a);color:#fff}.cnst{font-size:11.5px;color:var(--m)}
+.ce .bb{font-size:15.5px;font-weight:600;line-height:1.3;padding:8px 11px}
+.ce small{display:table;margin-top:4px;font-size:11.5px;font-weight:700;color:var(--ok);background:var(--okb);border-radius:999px;padding:1px 9px}
+.ce.ok small{background:#fff}.ce.chk small{color:#8F5E00;background:var(--wb)}
+.cnb{flex-wrap:wrap}.cnk span{white-space:nowrap}
 </style></head><body>
 <button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
 <div class="pf-bd" id="pf-bd"></div>
@@ -272,7 +276,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <div class="cn" id="cn" aria-label="Sample: one Retirement request through ELEVATE">
 <div class="cnh"><b>Service console · Retirement withdrawal</b><span>Sample · illustrative</span></div>
 <div class="cnf" id="cnf" aria-live="polite"></div>
-<div class="cnb"><div class="cnk"><div><b id="cnc">0:00</b><span>elapsed (illustrative)</span></div><div><b id="cnl">–</b><span>current lane</span></div></div><div class="cnbt"><button type="button" class="cnr" id="cnp">❚❚ Pause</button><button type="button" class="cnr solid" id="cnn">Next ›</button><button type="button" class="cnr" id="cnr">↻</button></div></div>
+<div class="cnb"><div class="cnk"><div><b id="cnc">0:00</b><span>elapsed</span></div><div><b id="cnl">–</b><span>current lane</span></div></div><div class="cnbt"><button type="button" class="cnr" id="cnp">❚❚ Pause</button><button type="button" class="cnr solid" id="cnn">Next ›</button><button type="button" class="cnr" id="cnr">↻</button></div></div>
 </div>
 <p class="cncap">One customer request from first ask to resolution, through every ELEVATE lane. About 5 days before ELEVATE (illustrative). <button type="button" class="linkish" id="seej">See the journey →</button></p>
 </div></div>
@@ -775,14 +779,14 @@ draw();})();
 <script>
 (function(){
 var EV=[
-['09:12','','Customer','Asks for $15,000 from her annuity for tuition.<small><b>Benefit:</b> one request, any hour</small>','Customer'],
-['09:12','ag','Service agent','Pulls the contract, values and tax notes.<small><b>Benefit:</b> no hunting across systems</small>','Agent does'],
-['09:13','sys','Agent + AI judge','Drafts two options; AI judge checks the rules.<small><b>Benefit:</b> draft in seconds</small>','Human + AI'],
-['09:14','chk','Checkpoint','Large withdrawal after an address change: flagged for a person.<small><b>Agents propose; people decide</b></small>','Checkpoint'],
-['09:16','hum','Maria, associate','Confirms figures and approves the forms.<small><b>Benefit:</b> still reviewed, faster</small>','Human + AI'],
-['09:18','ok','Customer answered','Same day, not about 5 days (illustrative).<small><b>Benefit:</b> faster speed to customer</small>','Agent does'],
-['09:25','hum','Maria','Offers a tuition-planning call with an advisor.<small><b>Benefit:</b> time saved goes to people</small>','Human only'],
-['09:30','ok','Scorecard','Hours reinvested and satisfaction update; reused next division.<small><b>Benefit:</b> proof it helped</small>','Measure &amp; reuse']];
+['09:12','','Customer','"I need $15K for tuition."<small>One ask, any hour</small>','Customer'],
+['09:12','ag','Agent','Contract and values: pulled.<small>No system hunting</small>','Agent does'],
+['09:13','sys','Agent + AI judge','Two options, rule-checked.<small>Drafted in seconds</small>','Human + AI'],
+['09:14','chk','Checkpoint','Risk flag: a person decides.<small>Agents propose, people decide</small>','Checkpoint'],
+['09:16','hum','Maria','Reviewed. Approved.<small>Trusted and faster</small>','Human + AI'],
+['09:18','ok','Customer','Answered same day.<small>Not 5 days (illustrative)</small>','Agent does'],
+['09:25','hum','Maria','"Let\'s plan for tuition."<small>Time back for people</small>','Human only'],
+['09:30','ok','Scorecard','Value logged. Reused next.<small>Proof it works</small>','Measure &amp; reuse']];
 var f=document.getElementById('cnf');if(!f)return;var ck=document.getElementById('cnc'),ln=document.getElementById('cnl');
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function mn(t){var p=t.split(':');return +p[0]*60+ +p[1];}
