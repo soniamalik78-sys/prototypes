@@ -115,7 +115,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 .js .t{display:block;font-weight:700;font-size:14.5px;line-height:1.3;margin:2px 0 6px;color:var(--fg)}
 .js .tm{display:block;font-size:13px;color:var(--m)}
 .js.ag{background:var(--pb)}.js.hai{background:var(--as)}.js.h{background:var(--okb)}
-.js .gt{position:absolute;top:8px;right:8px;font-size:11px;font-weight:700;background:var(--wb);color:var(--w);border-radius:4px;padding:1px 6px}
+.js .gt{display:inline-block;margin-top:4px;font-size:10.5px;font-weight:700;background:var(--wb);color:var(--w);border-radius:4px;padding:1px 6px}
 .jd{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:10px;margin-top:10px}
 .jd>div{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14.5px;background:#fff}
 .jd b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--a);margin-bottom:3px}
@@ -175,6 +175,23 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 .lc.lca{border-left:5px solid var(--ok)}.lc.lcb{border-left:5px solid var(--p)}
 .lc b{font-size:16px;color:var(--fg)}.lc span{font-size:13px;color:var(--m);margin-left:6px}.lc p{margin:3px 0 0;font-size:14px;line-height:1.4}
 @media (max-width:900px){.lead2{grid-template-columns:1fr}.lh{max-width:none}}
+.wk{background:#fff;border:1px solid #b8c4d4;border-radius:12px;padding:10px 12px;margin-bottom:12px;border-top:4px solid var(--ok)}
+.wkh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}.wkt{font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--ok)}.wkl{font-size:11.5px;color:var(--m)}
+.ph{border:6px solid #1d2433;border-radius:18px;background:#f6f8fb;height:250px;overflow:hidden;display:flex;flex-direction:column}
+.phb{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:5px 9px;border-bottom:1px solid var(--line);font-size:11px;color:var(--m)}.phb b{color:var(--a);font-size:13px}
+.phm{flex:1;overflow-y:auto;padding:7px;display:flex;flex-direction:column;gap:5px;scroll-behavior:smooth}
+.mb{max-width:88%;border-radius:10px;padding:5px 8px;font-size:12.5px;line-height:1.35;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.mb.on{opacity:1;transform:none}
+.mb small{display:block;font-size:10px;font-weight:700;letter-spacing:.04em;margin-bottom:1px}
+.mc{align-self:flex-end;background:var(--a);color:#fff}.mc small{color:#cfe0f5}
+.ma{align-self:flex-start;background:var(--pb);color:var(--fg)}.ma small{color:var(--p)}
+.mh{align-self:flex-start;background:var(--okb);color:var(--fg)}.mh small{color:var(--ok)}
+.mf{align-self:center;background:var(--wb);color:var(--w);font-size:11.5px;font-weight:700;text-align:center}
+.bts{margin-top:8px;background:var(--as);border-radius:8px;padding:7px 9px;min-height:66px}.btl{font-size:10.5px;font-weight:700;letter-spacing:.08em;color:var(--a);margin-bottom:2px}
+#bts{font-size:12.5px;line-height:1.4}
+.wkc{display:flex;gap:10px;align-items:center;margin-top:8px;font-size:11.5px;color:var(--m)}.wkc b{display:block;font:600 19px/1.1 Spectral,Georgia,serif;color:var(--a)}
+.wkr{margin-left:auto;border:0;background:var(--a);color:#fff;border-radius:999px;padding:6px 12px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+@media (min-width:1200px){.ovside{max-height:calc(100vh - 110px);overflow:auto}}
 </style></head><body>
 <button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
 <div class="pf-bd" id="pf-bd"></div>
@@ -357,7 +374,13 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 
 </div></details>
 </div>
-<aside class="ovside"><div class="card">
+<aside class="ovside"><div class="wk" id="watch">
+<div class="wkh"><span class="wkt">WATCH IT WORK</span><span class="wkl">Retirement · illustrative</span></div>
+<div class="ph"><div class="phb"><b>Prudential</b><span>Annuity · example</span></div><div class="phm" id="phm"></div></div>
+<div class="bts"><div class="btl">BEHIND THE SCREEN</div><div id="bts"></div></div>
+<div class="wkc"><div><b id="wkt">0:00</b>with ELEVATE</div><div><b>5 days</b>before ELEVATE</div><button type="button" id="wkr" class="wkr">↻ Replay</button></div>
+</div>
+<div class="card">
 <h3>How I would help Prudential</h3>
 <ul>
 <li><b>Redesign roles</b> task by task, with the people who do them</li>
@@ -688,6 +711,23 @@ G.forEach(function(g,gi){var w=document.createElement('div');w.className='pgrp';
 function draw(){pg.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',(+b.dataset.g===cur[0]&&+b.dataset.p===cur[1]));});var p=G[cur[0]][1][cur[1]];
 pd.innerHTML='<div><b>Who</b>'+p[1]+'</div><div><b>What they use</b>'+p[2]+'</div><div><b>What changes · KPI they own</b>'+p[3]+'.<br><span style="color:var(--m)">'+p[4]+'</span><br><a href="#" class="lk" data-go="'+p[5]+'">See how →</a></div>';}
 draw();})();
+</script>
+<script>
+(function(){
+var S=[
+['mc','Customer · 9:12 pm','I need $15,000 from my annuity for my daughter\'s tuition. How fast can I get it?','<span class="lane l-ag">Agent does</span> Verifies the contract and pulls current values in seconds.'],
+['ma','Prudential assistant','Here are your two options, with any surrender charges and tax notes. An associate will confirm the figures.','<span class="lane l-hai">Human + AI</span> Agent drafts the options; an associate confirms them before they are final.'],
+['mf','','Checkpoint: large withdrawal soon after an address change','<span class="tag" style="margin:0">CHECKPOINT</span> Agent flags the signal. A named associate decides whether to escalate. The agent never decides alone.'],
+['mh','Maria · Retirement service','Hi, I\'m Maria. I\'ve confirmed your figures and verified it\'s you. Your forms are pre-filled for e-signature.','<span class="lane l-hai">Human + AI</span> Agent pre-fills the forms; Maria reviews and approves.'],
+['mh','Maria · Retirement service','Done: funds arrive in 2 business days. Would a call with a financial professional about tuition planning help?','<span class="lane l-h">Human only</span> The referral and the relationship stay with people. Time saved goes here: capacity reinvested.']];
+var box=document.getElementById('phm'),bt=document.getElementById('bts'),tm=document.getElementById('wkt'),rb=document.getElementById('wkr');
+if(!box)return;var timers=[];
+function run(){timers.forEach(clearTimeout);timers=[];box.innerHTML='';bt.innerHTML='A customer asks for money from their annuity.';tm.textContent='0:00';
+S.forEach(function(x,i){timers.push(setTimeout(function(){var d=document.createElement('div');d.className='mb '+x[0];d.innerHTML=(x[1]?'<small>'+x[1]+'</small>':'')+x[2];box.appendChild(d);requestAnimationFrame(function(){d.classList.add('on');});box.scrollTop=box.scrollHeight;bt.innerHTML=x[3];tm.textContent=['0:20','1:05','1:40','3:30','6:00'][i];},900+i*2300));});}
+rb.addEventListener('click',run);
+var started=false;function go(){if(!started){started=true;run();}}
+if('IntersectionObserver' in window){new IntersectionObserver(function(e){if(e[0].isIntersecting)go();}).observe(document.getElementById('watch'));}else go();
+})();
 </script>
 <script>
 (function(){
