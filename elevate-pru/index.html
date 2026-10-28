@@ -237,6 +237,16 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 .ce small{display:table;margin-top:4px;font-size:11.5px;font-weight:700;color:var(--ok);background:var(--okb);border-radius:999px;padding:1px 9px}
 .ce.ok small{background:#fff}.ce.chk small{color:#8F5E00;background:var(--wb)}
 .cnb{flex-wrap:wrap}.cnk span{white-space:nowrap}
+.pop{width:min(1000px,94vw);max-height:88vh;padding:0;border:0;border-radius:14px;box-shadow:0 24px 70px rgba(10,30,60,.35);overflow:hidden;background:#fff}
+.pop::backdrop{background:rgba(14,28,46,.55)}
+.pop[open]{display:flex;flex-direction:column}
+.poptop{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 16px;background:var(--a);color:#fff;font-size:15px}
+.poptop span{display:flex;gap:8px;align-items:center}
+.popfull{border:1px solid #fff;background:transparent;color:#fff;border-radius:999px;padding:4px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.popx{border:0;background:#fff;color:var(--a);border-radius:50%;width:30px;height:30px;font-size:15px;font-weight:700;cursor:pointer}
+.popb{overflow:auto;padding:4px 20px 18px}
+.popin{display:block!important}
+.popin>h2:first-child{margin-top:12px}
 </style></head><body>
 <button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
 <div class="pf-bd" id="pf-bd"></div>
@@ -269,8 +279,8 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 </header>
 <div class="xb"><div class="x1"><b>What excites me:</b> returning to build, not advise, Prudential's people + AI operating model, in a culture of learning with real room to innovate.</div><div class="x2"><b>Redeploy first:</b> success = hours reinvested in growth and new roles; cost is secondary.</div></div>
 <div class="lead2"><div class="lh">Built for the two leaders this role reports to</div>
-<div class="lc lca"><b>Amie Watson</b><span>Chief Talent &amp; Capabilities Officer</span><p>People first: roles redesigned with the people who do the work, career paths and internal mobility into new roles, inclusive change led with HR. <a href="#talent" data-go="talent" class="lk">Talent →</a></p></div>
-<div class="lc lcb"><b>Bob Bastian</b><span>Chief Data &amp; AI Officer</span><p>Data and trust first: data readiness before agents, governance before agentic, a named person accountable for every agent, value beyond cost. <a href="#framework" data-go="framework" class="lk">Framework →</a></p></div>
+<div class="lc lca"><b>Amie Watson</b><span>Chief Talent &amp; Capabilities Officer</span><p>People first: roles redesigned with the people who do the work, career paths and internal mobility into new roles, inclusive change led with HR. <a href="#talent" data-pop="talent" class="lk">Talent →</a></p></div>
+<div class="lc lcb"><b>Bob Bastian</b><span>Chief Data &amp; AI Officer</span><p>Data and trust first: data readiness before agents, governance before agentic, a named person accountable for every agent, value beyond cost. <a href="#framework" data-pop="framework" class="lk">Framework →</a></p></div>
 </div>
 </div><div class="hr2">
 <div class="cn" id="cn" aria-label="Sample: one Retirement request through ELEVATE">
@@ -907,4 +917,18 @@ window.addEventListener('scroll',function(){if(open&&!wide()&&Math.abs(window.sc
 <script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <style>.watermark{position:fixed;inset:0;pointer-events:none;z-index:70;background-image:url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='460' height='250'><text x='20' y='150' transform='rotate(-22 230 125)' font-family='Arial, sans-serif' font-size='15' fill='%2314202E' fill-opacity='0.08'>© 2026 Sonia Malik · ELEVATE prototype</text></svg>");}@media print{.watermark{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style>
 <div class="watermark" aria-hidden="true"></div>
+<dialog id="pop" class="pop" aria-labelledby="poph"><div class="poptop"><b id="poph"></b><span><button type="button" class="popfull" id="popfull">Open as tab</button><button type="button" class="popx" id="popx" aria-label="Close">✕</button></span></div><div class="popb" id="popb"></div></dialog>
+<script>
+(function(){var d=document.getElementById('pop');if(!d||!d.showModal)return;var b=document.getElementById('popb'),h=document.getElementById('poph'),cur='';
+var T={talent:'Talent: roles, skills and career paths',framework:'The ELEVATE framework'};
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-pop]');if(!a)return;var src=document.getElementById(a.dataset.pop);if(!src)return;e.preventDefault();cur=a.dataset.pop;
+var c=src.cloneNode(true);c.querySelectorAll('[id]').forEach(function(x){x.removeAttribute('id');});c.querySelectorAll('.nextnav').forEach(function(x){x.remove();});
+c.removeAttribute('id');c.className='popin';b.innerHTML='';b.appendChild(c);h.textContent=T[cur]||'';d.showModal();b.scrollTop=0;
+if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:location.pathname+'/pop/'+cur,title:'Pop: '+cur,event:true});});
+document.getElementById('popx').onclick=function(){d.close();};
+d.addEventListener('click',function(e){if(e.target===d)d.close();});
+document.getElementById('popfull').onclick=function(){d.close();var t=document.querySelector('[role=tab][data-tab="'+cur+'"]');if(t)t.click();var w=document.querySelector('.tabwrap'),pz=document.getElementById(cur);if(w&&pz)scrollTo({top:pz.getBoundingClientRect().top+scrollY-w.offsetHeight-6});};
+d.addEventListener('close',function(){b.innerHTML='';});
+})();
+</script>
 </body></html>
