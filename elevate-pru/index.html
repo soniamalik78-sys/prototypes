@@ -177,7 +177,6 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 @media (max-width:900px){.lead2{grid-template-columns:1fr}.lh{max-width:none}}
 .wk{background:#fff;border:1px solid #b8c4d4;border-radius:12px;padding:10px 12px;margin-bottom:12px;border-top:4px solid var(--ok)}
 .wkh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}.wkt{font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--ok)}.wkl{font-size:11.5px;color:var(--m)}
-.ph{border:6px solid #1d2433;border-radius:18px;background:#f6f8fb;height:250px;overflow:hidden;display:flex;flex-direction:column}
 .phb{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:5px 9px;border-bottom:1px solid var(--line);font-size:11px;color:var(--m)}.phb b{color:var(--a);font-size:13px}
 .phm{flex:1;overflow-y:auto;padding:7px;display:flex;flex-direction:column;gap:5px;scroll-behavior:smooth}
 .mb{max-width:88%;border-radius:10px;padding:5px 8px;font-size:12.5px;line-height:1.35;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
@@ -232,6 +231,8 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 .hero .lead2{grid-template-columns:1fr 1fr}.hero .lh{grid-column:1/-1;max-width:none;font-size:16px}
 @media (max-width:1199px){.hero{grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:20px}.cnh span{display:none}.cnk{gap:14px}.cnk b{font-size:15px;white-space:nowrap}.cnr{padding:6px 11px;white-space:nowrap}}
 @media (max-width:899px){.hero{grid-template-columns:minmax(0,1fr)}.hr2{padding-top:0}.cnf{height:300px}.hero .lead2{grid-template-columns:1fr}.cnh b{white-space:normal}}
+@keyframes fl{0%{box-shadow:0 0 0 4px rgba(46,125,79,.55)}100%{box-shadow:0 0 0 4px rgba(46,125,79,0)}}.pane.flash{animation:fl 1.6s ease-out}
+.cnbt{display:flex;gap:6px}.cnr.solid{background:var(--a);color:#fff}.cnst{font-size:11.5px;color:var(--m)}
 </style></head><body>
 <button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
 <div class="pf-bd" id="pf-bd"></div>
@@ -271,7 +272,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <div class="cn" id="cn" aria-label="Sample: one Retirement request through ELEVATE">
 <div class="cnh"><b>Service console · Retirement withdrawal</b><span>Sample · illustrative</span></div>
 <div class="cnf" id="cnf" aria-live="polite"></div>
-<div class="cnb"><div class="cnk"><div><b id="cnc">0:00</b><span>elapsed (illustrative)</span></div><div><b id="cnl">–</b><span>current lane</span></div></div><button type="button" class="cnr" id="cnr">↻ Replay</button></div>
+<div class="cnb"><div class="cnk"><div><b id="cnc">0:00</b><span>elapsed (illustrative)</span></div><div><b id="cnl">–</b><span>current lane</span></div></div><div class="cnbt"><button type="button" class="cnr" id="cnp">❚❚ Pause</button><button type="button" class="cnr solid" id="cnn">Next ›</button><button type="button" class="cnr" id="cnr">↻</button></div></div>
 </div>
 <p class="cncap">One customer request from first ask to resolution, through every ELEVATE lane. About 5 days before ELEVATE (illustrative). <button type="button" class="linkish" id="seej">See the journey →</button></p>
 </div></div>
@@ -785,15 +786,20 @@ var EV=[
 var f=document.getElementById('cnf');if(!f)return;var ck=document.getElementById('cnc'),ln=document.getElementById('cnl');
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function mn(t){var p=t.split(':');return +p[0]*60+ +p[1];}
-var gen=0,tm=null,started=false;
 function render(i){var e=EV[i],d=document.createElement('div');d.className='ce '+e[1]+(reduce?' in':'');
 d.innerHTML='<time>'+e[0]+'</time><div class="bb"><span class="wh">'+e[2]+'<span class="ln">'+e[4]+'</span></span>'+e[3]+'</div>';
 f.appendChild(d);f.querySelectorAll('.ce.cur').forEach(function(x){x.classList.remove('cur');});d.classList.add('cur');
 var m=mn(e[0])-mn(EV[0][0]);ck.textContent='0:'+('0'+m).slice(-2);ln.innerHTML=e[4];f.scrollTop=f.scrollHeight;
 if(!reduce)requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('in');f.scrollTop=f.scrollHeight;});});}
-function play(){gen++;if(tm)clearTimeout(tm);var my=gen,i=0;f.innerHTML='';ck.textContent='0:00';ln.textContent='–';
-if(reduce){for(var k=0;k<EV.length;k++)render(k);return;}
-(function tick(){if(my!==gen)return;if(i>=EV.length)return;render(i++);tm=setTimeout(tick,3200);})();}
+var gen=0,tm=null,started=false,i=0,paused=false,DL=6000;
+var pb=document.getElementById('cnp');
+function sched(){if(tm)clearTimeout(tm);tm=null;if(paused||i>=EV.length){if(i>=EV.length)pb.innerHTML='▶ Play';return;}tm=setTimeout(function(){render(i++);sched();},DL);}
+function step(){if(i<EV.length){render(i++);}sched();}
+function play(){if(tm)clearTimeout(tm);i=0;paused=false;pb.innerHTML='❚❚ Pause';f.innerHTML='';ck.textContent='0:00';ln.textContent='–';
+if(reduce){for(var k=0;k<EV.length;k++)render(k);i=EV.length;return;}
+render(i++);sched();}
+pb.addEventListener('click',function(){started=true;if(i>=EV.length){play();return;}paused=!paused;pb.innerHTML=paused?'▶ Play':'❚❚ Pause';sched();});
+document.getElementById('cnn').addEventListener('click',function(){started=true;if(i>=EV.length){play();return;}paused=true;pb.innerHTML='▶ Play';step();});
 function start(){if(started)return;started=true;play();}
 document.getElementById('cnr').addEventListener('click',function(){started=true;play();});
 document.getElementById('seej').addEventListener('click',function(){var t=document.querySelector('[role=tab][data-tab="overview"]');if(t)t.click();var j=document.getElementById('journey');if(j)j.scrollIntoView({behavior:'smooth',block:'start'});});
@@ -803,7 +809,7 @@ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es
 </script>
 <script>
 (function(){
-document.addEventListener('click',function(e){var g=e.target.closest&&e.target.closest('[data-go]');if(!g)return;var t=document.querySelector('[role=tab][data-tab="'+g.dataset.go+'"]');if(t){e.preventDefault();t.click();t.scrollIntoView({inline:'center',block:'nearest'});}});
+document.addEventListener('click',function(e){var g=e.target.closest&&e.target.closest('[data-go]');if(!g)return;var t=document.querySelector('[role=tab][data-tab="'+g.dataset.go+'"]');if(t){e.preventDefault();t.click();var w=document.querySelector('.tabwrap'),pz=document.getElementById(g.dataset.go);if(w&&pz){var y=pz.getBoundingClientRect().top+scrollY-w.offsetHeight-6;scrollTo({top:y,behavior:'auto'});}var tb=t.parentNode;if(tb&&tb.scrollWidth>tb.clientWidth)tb.scrollLeft=t.offsetLeft-tb.clientWidth/2+t.offsetWidth/2;var pn=document.getElementById(g.dataset.go);if(pn){pn.classList.remove('flash');void pn.offsetWidth;pn.classList.add('flash');}}});
 var dp=document.getElementById('deeper'),mt=document.getElementById('moretabs');
 if(dp)dp.addEventListener('click',function(){var on=!mt.classList.contains('on');mt.classList.toggle('on',on);dp.setAttribute('aria-expanded',on);dp.textContent=on?'Deeper read ▴':'Deeper read ▾';});
 var tabs=document.querySelectorAll('[role=tab]');
