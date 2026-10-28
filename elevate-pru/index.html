@@ -148,6 +148,19 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 .pd>div{border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:14.5px;background:#fff}
 .pd b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--p);margin-bottom:3px}
 @media (max-width:900px){.pd{grid-template-columns:1fr}}
+@media (min-width:1200px){.ov{grid-template-columns:260px minmax(0,1fr) 300px;gap:22px}
+.ovleft{position:sticky;top:96px;margin-top:24px;max-height:calc(100vh - 110px);overflow:auto}.ovside{top:96px}
+.ovleft .px{border-left:4px solid var(--p);margin:0;padding:12px 14px}
+.ovleft .px h3{font-size:19px}.ovleft .px .sub{font-size:13px}
+.ovleft .pg{flex-direction:column;gap:8px}
+.ovleft .pgrp{gap:4px}.ovleft .pgrp>span{width:100%;margin:0}
+.ovleft .pgrp button{font-size:12.5px;padding:4px 10px}
+.ovleft .pd{grid-template-columns:1fr;gap:6px}.ovleft .pd>div{font-size:13.5px;padding:7px 10px}
+.ovside .card{padding:14px 16px}.ovside li{font-size:14px}
+.jst{grid-template-columns:repeat(5,minmax(0,1fr))}.js .t{font-size:13.5px}
+}
+@media (max-width:1199px){.ovleft{order:2}.ovmain{order:1}.ovside{order:3}}
+.ovleft,.ovmain,.ovside{min-width:0}
 </style></head><body>
 <button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
 <div class="pf-bd" id="pf-bd"></div>
@@ -205,22 +218,21 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 
 <!-- OVERVIEW -->
 <section class="pane on" id="overview">
-<div class="ov"><div class="ovmain"><div class="jx" id="journey" aria-label="Interactive journey">
-<h3>Try it: one Prudential journey, redesigned with ELEVATE</h3>
-<p class="sub">Pick a business, switch between today and with ELEVATE, and click any step. <span class="tag">ILLUSTRATIVE</span></p>
-<div class="jbar"><div class="jpills" id="jpills" role="group" aria-label="Business"></div>
-<div class="jtog" role="group" aria-label="View"><button type="button" class="bf" data-mode="before" aria-pressed="false">Today</button><button type="button" data-mode="after" aria-pressed="true">With ELEVATE</button></div></div>
-<p class="jq" id="jq"></p>
-<div class="jst" id="jst"></div>
-<div class="jd" id="jd"></div>
-<div class="jsum" id="jsum"></div>
-<p class="jfoot"><span class="lane l-ag">Agent does</span> <span class="lane l-hai">Human + AI</span> <span class="lane l-h">Human only</span> &nbsp;<span class="tag" style="margin:0">CHECKPOINT</span> a named person decides. Times are illustrative, to be baselined with each business in Days 1–30.</p>
-</div>
-<div class="px" id="personas">
+<div class="ov"><aside class="ovleft"><div class="px" id="personas">
 <h3>Who ELEVATE serves</h3>
 <p class="sub">From the C-suite to the frontline, including every role in the product development lifecycle. Pick a role.</p>
 <div class="pg" id="pg"></div>
 <div class="pd" id="pd"></div>
+</div></aside><div class="ovmain"><div class="jx" id="journey" aria-label="Interactive journey">
+<h3>Try it: one Prudential journey, redesigned with ELEVATE</h3>
+<p class="sub">Pick a business, switch between before and with ELEVATE, and click any step. <span class="tag">ILLUSTRATIVE</span></p>
+<div class="jbar"><div class="jpills" id="jpills" role="group" aria-label="Business"></div>
+<div class="jtog" role="group" aria-label="View"><button type="button" class="bf" data-mode="before" aria-pressed="false">Before ELEVATE</button><button type="button" data-mode="after" aria-pressed="true">With ELEVATE</button></div></div>
+<p class="jq" id="jq"></p>
+<div class="jst" id="jst"></div>
+<div class="jd" id="jd"></div>
+<div class="jsum" id="jsum"></div>
+<p class="jfoot"><span class="lane l-ag">Agent does</span> <span class="lane l-hai">Human + AI</span> <span class="lane l-h">Human only</span> &nbsp;<span class="tag" style="margin:0">CHECKPOINT</span> a named person decides. Times are illustrative industry patterns, not Prudential data; each business is baselined in Days 1–30.</p>
 </div>
 <div class="card" style="margin:0 0 14px;border-left:4px solid var(--a)"><h3>What I heard, and how ELEVATE answers it</h3>
 <div class="tw"><table><tbody>
@@ -664,8 +676,8 @@ b.innerHTML='<span class="k">Step '+(i+1)+'</span><span class="t">'+x[0]+'</span
 b.onclick=function(){sel=i;draw();};st.appendChild(b);});
 var x=d.st[sel];
 if(mode==='after'){jd.innerHTML='<div><b>Customer moment</b>'+x[1]+'</div><div><b>Agent does</b>'+x[2]+'</div><div><b>Person does · '+LN[x[4]]+'</b>'+x[3]+(x[5]?'<br><span class="tag" style="margin:4px 0 0">CHECKPOINT: a named person decides</span>':'')+'</div>';}
-else{jd.innerHTML='<div><b>Customer moment</b>'+x[1]+'</div><div><b>Today</b>People search several systems and re-key data; time goes to manual, repetitive work</div><div><b>Time</b>'+x[6]+'</div>';}
-js.innerHTML='<div><b>'+(mode==='after'?d.sum[1]:d.sum[0])+'</b>'+(mode==='after'?'faster time to outcome with ELEVATE (from '+d.sum[0]+' today)':'time to outcome today')+'</div><div><b>'+(mode==='after'?(function(n){return n+(n===1?' checkpoint':' checkpoints')})(d.st.filter(function(s){return s[5]}).length):'Ad hoc')+'</b>'+(mode==='after'?'where a named person decides: trust built in':'review, varies by team')+'</div><div><b>'+(mode==='after'?d.role:'—')+'</b>'+(mode==='after'?'new role this creates. '+d.sum[2]:'roles unchanged; capacity stays tied up in manual work')+'</div>';
+else{jd.innerHTML='<div><b>Customer moment</b>'+x[1]+'</div><div><b>Before ELEVATE (typical)</b>People search several systems and re-key data; time goes to manual, repetitive work</div><div><b>Time</b>'+x[6]+'</div>';}
+js.innerHTML='<div><b>'+(mode==='after'?d.sum[1]:d.sum[0])+'</b>'+(mode==='after'?'faster time to outcome with ELEVATE (from '+d.sum[0]+' before)':'time to outcome before ELEVATE')+'</div><div><b>'+(mode==='after'?(function(n){return n+(n===1?' checkpoint':' checkpoints')})(d.st.filter(function(s){return s[5]}).length):'Ad hoc')+'</b>'+(mode==='after'?'where a named person decides: trust built in':'review varies by team')+'</div><div><b>'+(mode==='after'?d.role:'—')+'</b>'+(mode==='after'?'new role this creates. '+d.sum[2]:'roles unchanged; capacity stays tied up in manual work')+'</div>';
 }
 draw();
 })();
