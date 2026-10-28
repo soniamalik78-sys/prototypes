@@ -200,6 +200,38 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 .jst{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media (max-width:879px){.ovmain{order:1}.ovside{order:2}.ovleft{order:3}}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:26px;align-items:start}
+.hero .xb{grid-template-columns:1fr}
+.hr2{padding-top:18px}
+.cn{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 40px rgba(10,77,140,.13);overflow:hidden}
+.cnh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;background:var(--a);color:#fff}.cnh b{font-size:14.5px;white-space:nowrap}.cnh span{font-size:12px;opacity:.85}
+.cnf{height:340px;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.ce{display:grid;grid-template-columns:42px 1fr;gap:8px;align-items:start;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.ce.in{opacity:1;transform:none}
+.ce time{font:12px ui-monospace,Menlo,monospace;color:#7a8594;padding-top:3px}
+.ce .bb{border-radius:10px;padding:7px 9px;font-size:13px;line-height:1.4;border:1px solid var(--line);background:#f6f8fb}
+.ce.sys .bb{background:var(--as);border-color:transparent}.ce.ag .bb{background:var(--pb);border-color:transparent}
+.ce.hum .bb{background:#fff;border-left:3px solid var(--ok)}
+.ce.chk .bb{background:#fff;border:1px solid #e6cf9e;border-left:4px solid #E8890C}
+.ce.ok .bb{background:var(--okb);border-color:transparent}
+.ce.cur .bb{box-shadow:0 2px 10px rgba(10,77,140,.16)}
+.ce .wh{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5d6875;margin-bottom:2px}
+.ce .ln{display:inline-block;font-size:10.5px;font-weight:700;border:1px solid #b8c4d4;border-radius:999px;padding:0 6px;margin-left:6px;color:var(--m);text-transform:none;letter-spacing:0;background:#fff}
+.ce small{display:block;font-size:11.5px;color:var(--m);margin-top:2px}.ce small b{color:var(--fg)}
+.cnb{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 14px;border-top:1px solid var(--line)}
+.cnk{display:flex;gap:20px}.cnk b{display:block;font:600 18px/1.1 ui-monospace,Menlo,monospace;color:var(--a)}.cnk span{font-size:11.5px;color:var(--m)}
+.cnr{border:1px solid var(--a);background:#fff;color:var(--a);border-radius:999px;padding:6px 14px;font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.cncap{font-size:13px;color:var(--m);margin:8px 0 0}
+.linkish{background:none;border:0;padding:0;color:var(--a);font:inherit;font-weight:700;cursor:pointer;text-decoration:underline}
+.opm{margin:14px 0 4px;border-top:1px solid var(--line);padding-top:12px}
+.opl{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m)}
+.opm h2{margin:2px 0 8px}
+.opm figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.opm svg{display:block;max-width:920px;margin:auto;font-family:Inter,Arial,sans-serif}
+.opm figcaption{font-size:13.5px;color:var(--m);margin-top:8px;text-align:center}
+.hero .lead2{grid-template-columns:1fr 1fr}.hero .lh{grid-column:1/-1;max-width:none;font-size:16px}
+@media (max-width:1199px){.hero{grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:20px}.cnh span{display:none}.cnk{gap:14px}.cnk b{font-size:15px;white-space:nowrap}.cnr{padding:6px 11px;white-space:nowrap}}
+@media (max-width:899px){.hero{grid-template-columns:minmax(0,1fr)}.hr2{padding-top:0}.cnf{height:300px}.hero .lead2{grid-template-columns:1fr}.cnh b{white-space:normal}}
 </style></head><body>
 <button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
 <div class="pf-bd" id="pf-bd"></div>
@@ -224,6 +256,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 </aside>
 <div class="banner">Prepared for Prudential · VP, AI Workforce Transformation Leader</div>
 <div class="wrap">
+<div class="hero"><div class="hl">
 <header>
 <h1>ELEVATE<small>Prudential's first year of human–agent collaboration</small></h1>
 <p class="lede">Prudential, 150 years in, reimagining work for an AI world: people and AI agents doing their best work together.</p><div class="chips"><span>Higher engineering productivity</span><span>Enhanced customer experience, faster speed to market</span><span>Efficiency build-up across Retirement, Group, Individual Life, Wealth and PGIM</span><span>Trusted AI, governed from day one</span></div>
@@ -234,6 +267,36 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <div class="lc lca"><b>Amie Watson</b><span>Chief Talent &amp; Capabilities Officer</span><p>People first: roles redesigned with the people who do the work, career paths and internal mobility into new roles, inclusive change led with HR. <a href="#talent" data-go="talent" class="lk">Talent →</a></p></div>
 <div class="lc lcb"><b>Bob Bastian</b><span>Chief Data &amp; AI Officer</span><p>Data and trust first: data readiness before agents, governance before agentic, a named person accountable for every agent, value beyond cost. <a href="#framework" data-go="framework" class="lk">Framework →</a></p></div>
 </div>
+</div><div class="hr2">
+<div class="cn" id="cn" aria-label="Sample: one Retirement request through ELEVATE">
+<div class="cnh"><b>Service console · Retirement withdrawal</b><span>Sample · illustrative</span></div>
+<div class="cnf" id="cnf" aria-live="polite"></div>
+<div class="cnb"><div class="cnk"><div><b id="cnc">0:00</b><span>elapsed (illustrative)</span></div><div><b id="cnl">–</b><span>current lane</span></div></div><button type="button" class="cnr" id="cnr">↻ Replay</button></div>
+</div>
+<p class="cncap">One customer request from first ask to resolution, through every ELEVATE lane. About 5 days before ELEVATE (illustrative). <button type="button" class="linkish" id="seej">See the journey →</button></p>
+</div></div>
+<section class="opm" aria-label="The people + AI operating model behind ELEVATE">
+<span class="opl">Proven at S&amp;P Global, applied to Prudential</span>
+<h2>The people + AI operating model behind ELEVATE</h2>
+<figure>
+<svg viewBox="0 0 640 214" width="100%" role="img" aria-label="Operating model: Customer Centricity and People and Capabilities bars around human plus AI teams in each division, flowing through governance checkpoints to customer outcomes, with feedback to both bars, on a shared foundation">
+<defs><marker id="oma" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#4F5B69"/></marker></defs>
+<rect x="20" y="10" width="320" height="34" rx="6" fill="#0A4D8C"/><text x="180" y="25" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">Customer Centricity</text><text x="180" y="38" text-anchor="middle" fill="#e2edf8" font-size="8.3">customer journeys in every division</text>
+<rect x="30" y="52" width="66" height="62" rx="6" fill="#fff" stroke="#0A4D8C"/><text x="63" y="74" text-anchor="middle" font-size="8.4" font-weight="bold" fill="#0A4D8C">Retirement</text><text x="63" y="86" text-anchor="middle" font-size="8" fill="#14202E">service</text><text x="63" y="100" text-anchor="middle" font-size="7.6" fill="#4F5B69">human + AI</text><text x="63" y="109" text-anchor="middle" font-size="7.6" fill="#4F5B69">team</text><rect x="108" y="52" width="66" height="62" rx="6" fill="#fff" stroke="#0A4D8C"/><text x="141" y="74" text-anchor="middle" font-size="8.4" font-weight="bold" fill="#0A4D8C">Group</text><text x="141" y="86" text-anchor="middle" font-size="8" fill="#14202E">claims</text><text x="141" y="100" text-anchor="middle" font-size="7.6" fill="#4F5B69">human + AI</text><text x="141" y="109" text-anchor="middle" font-size="7.6" fill="#4F5B69">team</text><rect x="186" y="52" width="66" height="62" rx="6" fill="#fff" stroke="#0A4D8C"/><text x="219" y="74" text-anchor="middle" font-size="8.4" font-weight="bold" fill="#0A4D8C">Individual Life</text><text x="219" y="86" text-anchor="middle" font-size="8" fill="#14202E">underwriting</text><text x="219" y="100" text-anchor="middle" font-size="7.6" fill="#4F5B69">human + AI</text><text x="219" y="109" text-anchor="middle" font-size="7.6" fill="#4F5B69">team</text><rect x="264" y="52" width="66" height="62" rx="6" fill="#fff" stroke="#0A4D8C"/><text x="297" y="74" text-anchor="middle" font-size="8.4" font-weight="bold" fill="#0A4D8C">Wealth</text><text x="297" y="86" text-anchor="middle" font-size="8" fill="#14202E">&amp; PGIM</text><text x="297" y="100" text-anchor="middle" font-size="7.6" fill="#4F5B69">human + AI</text><text x="297" y="109" text-anchor="middle" font-size="7.6" fill="#4F5B69">team</text>
+<rect x="20" y="122" width="320" height="34" rx="6" fill="#5B3E96"/><text x="180" y="137" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">People &amp; Capabilities</text><text x="180" y="150" text-anchor="middle" fill="#ece6f6" font-size="8.3">role redesign · Innovation Academy · career paths</text>
+<line x1="344" y1="83" x2="384" y2="83" stroke="#4F5B69" stroke-width="1.5" marker-end="url(#oma)"/>
+<rect x="388" y="60" width="116" height="46" rx="6" fill="#FBF0D9" stroke="#8F5E00"/><text x="446" y="78" text-anchor="middle" font-size="9" font-weight="bold" fill="#8F5E00">Governance</text><text x="446" y="90" text-anchor="middle" font-size="8" fill="#14202E">checkpoints · named</text><text x="446" y="100" text-anchor="middle" font-size="8" fill="#14202E">owner per agent</text>
+<line x1="504" y1="83" x2="530" y2="83" stroke="#4F5B69" stroke-width="1.5" marker-end="url(#oma)"/>
+<rect x="534" y="60" width="90" height="46" rx="6" fill="#2E7D4F"/><text x="579" y="80" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="bold">Customer</text><text x="579" y="93" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="bold">outcomes</text>
+<path d="M579,60 L579,27 L344,27" fill="none" stroke="#2E7D4F" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#oma)"/>
+<path d="M579,106 L579,139 L344,139" fill="none" stroke="#2E7D4F" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#oma)"/>
+<text x="478" y="20" text-anchor="middle" font-size="8" fill="#2E7D4F">NPS · CSAT · hours reinvested → continuous improvement</text>
+<text x="478" y="153" text-anchor="middle" font-size="8" fill="#2E7D4F">skills gaps · overrides · engagement → back to people</text>
+<rect x="20" y="166" width="604" height="40" rx="6" fill="#E2EDF8" stroke="#0A4D8C"/><text x="322" y="182" text-anchor="middle" font-size="8.2" fill="#14202E"><tspan font-weight="bold">Shared foundation, built once:</tspan> data readiness · agentic platform · AI judges · reusable templates</text><text x="322" y="197" text-anchor="middle" font-size="8.2" fill="#14202E">India and Ireland capability centers · change champions · one scorecard</text>
+</svg>
+<figcaption>Adapted from the AI-assisted delivery model I designed and led at S&amp;P Global (350+ engineers on governed AI in 13 months). For Prudential, the second bar is people: every team redesigned with HR, and every outcome feeding back to both bars. <a href="#framework" data-go="framework" class="lk">Framework →</a></figcaption>
+</figure>
+</section>
 <section class="deliver" aria-label="What I would deliver in year one">
 <h2 class="dh">What I would deliver in year one</h2>
 <div class="dg">
@@ -376,13 +439,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 
 </div></details>
 </div>
-<aside class="ovside"><div class="wk" id="watch">
-<div class="wkh"><span class="wkt">WATCH IT WORK</span><span class="wkl">Retirement · illustrative</span></div>
-<div class="ph"><div class="phb"><b>Prudential</b><span>Annuity · example</span></div><div class="phm" id="phm"></div></div>
-<div class="bts"><div class="btl">BEHIND THE SCREEN</div><div id="bts"></div></div>
-<div class="wkc"><div><b id="wkt">0:00</b>with ELEVATE</div><div><b>5 days</b>before ELEVATE</div><button type="button" id="wkr" class="wkr">↻ Replay</button></div>
-</div>
-<div class="card">
+<aside class="ovside"><div class="card">
 <h3>How I would help Prudential</h3>
 <ul>
 <li><b>Redesign roles</b> task by task, with the people who do them</li>
@@ -716,19 +773,32 @@ draw();})();
 </script>
 <script>
 (function(){
-var S=[
-['mc','Customer · 9:12 pm','I need $15,000 from my annuity for my daughter\'s tuition. How fast can I get it?','<span class="lane l-ag">Agent does</span> Verifies the contract and pulls current values in seconds.'],
-['ma','Prudential assistant','Here are your two options, with any surrender charges and tax notes. An associate will confirm the figures.','<span class="lane l-hai">Human + AI</span> Agent drafts the options; an associate confirms them before they are final.'],
-['mf','','Checkpoint: large withdrawal soon after an address change','<span class="tag" style="margin:0">CHECKPOINT</span> Agent flags the signal. A named associate decides whether to escalate. The agent never decides alone.'],
-['mh','Maria · Retirement service','Hi, I\'m Maria. I\'ve confirmed your figures and verified it\'s you. Your forms are pre-filled for e-signature.','<span class="lane l-hai">Human + AI</span> Agent pre-fills the forms; Maria reviews and approves.'],
-['mh','Maria · Retirement service','Done: funds arrive in 2 business days. Would a call with a financial professional about tuition planning help?','<span class="lane l-h">Human only</span> The referral and the relationship stay with people. Time saved goes here: capacity reinvested.']];
-var box=document.getElementById('phm'),bt=document.getElementById('bts'),tm=document.getElementById('wkt'),rb=document.getElementById('wkr');
-if(!box)return;var timers=[];
-function run(){timers.forEach(clearTimeout);timers=[];box.innerHTML='';bt.innerHTML='A customer asks for money from their annuity.';tm.textContent='0:00';
-S.forEach(function(x,i){timers.push(setTimeout(function(){var d=document.createElement('div');d.className='mb '+x[0];d.innerHTML=(x[1]?'<small>'+x[1]+'</small>':'')+x[2];box.appendChild(d);requestAnimationFrame(function(){d.classList.add('on');});box.scrollTop=box.scrollHeight;bt.innerHTML=x[3];tm.textContent=['0:20','1:05','1:40','3:30','6:00'][i];},900+i*2300));});}
-rb.addEventListener('click',run);
-var started=false;function go(){if(!started){started=true;run();}}
-if('IntersectionObserver' in window){new IntersectionObserver(function(e){if(e[0].isIntersecting)go();}).observe(document.getElementById('watch'));}else go();
+var EV=[
+['09:12','','Customer request','A customer asks online for $15,000 from her annuity for her daughter\'s tuition.<small><b>Benefit:</b> one request, any hour</small>','Customer'],
+['09:12','ag','Service agent','Verifies the contract and pulls current values, surrender charges and tax notes from every system.<small><b>Benefit:</b> no hunting across systems · <b>KPI:</b> time to first answer (sample)</small>','Agent does'],
+['09:13','sys','Drafting agent + AI judge','Drafts two withdrawal options in plain language. An AI judge checks them against product rules and required disclosures.<small><b>Benefit:</b> drafts in seconds, already checked</small>','Human + AI'],
+['09:14','chk','Checkpoint','Large withdrawal soon after an address change. The agent flags it; a named associate decides. Agents propose; people decide.<small><b>Benefit:</b> trust built in · <b>KPI:</b> flags reviewed, overrides tracked (sample)</small>','Checkpoint'],
+['09:16','hum','Maria · Retirement service','Reviews the evidence, confirms the figures, verifies the customer and approves the pre-filled e-signature forms.<small><b>Benefit:</b> still reviewed, faster · <b>KPI:</b> first-contact resolution (sample)</small>','Human + AI'],
+['09:18','ok','Customer answered','Options and forms sent for e-signature; funds arrive in 2 business days.<small><b>Benefit:</b> same-day answer, not about 5 days (illustrative)</small>','Agent does'],
+['09:25','hum','Maria · Human only','Offers a call with a financial professional about tuition planning. The relationship stays with people; time saved goes here.<small><b>Benefit:</b> capacity reinvested · <b>KPI:</b> hours moved to customer work (sample)</small>','Human only'],
+['09:30','ok','Scorecard','The AI Steering Committee scorecard updates: hours reinvested, override rate, customer satisfaction. Lessons feed the shared template for the next division.<small><b>Benefit:</b> proof it helped, reused across divisions</small>','Measure &amp; reuse']];
+var f=document.getElementById('cnf');if(!f)return;var ck=document.getElementById('cnc'),ln=document.getElementById('cnl');
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function mn(t){var p=t.split(':');return +p[0]*60+ +p[1];}
+var gen=0,tm=null,started=false;
+function render(i){var e=EV[i],d=document.createElement('div');d.className='ce '+e[1]+(reduce?' in':'');
+d.innerHTML='<time>'+e[0]+'</time><div class="bb"><span class="wh">'+e[2]+'<span class="ln">'+e[4]+'</span></span>'+e[3]+'</div>';
+f.appendChild(d);f.querySelectorAll('.ce.cur').forEach(function(x){x.classList.remove('cur');});d.classList.add('cur');
+var m=mn(e[0])-mn(EV[0][0]);ck.textContent='0:'+('0'+m).slice(-2);ln.innerHTML=e[4];f.scrollTop=f.scrollHeight;
+if(!reduce)requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('in');f.scrollTop=f.scrollHeight;});});}
+function play(){gen++;if(tm)clearTimeout(tm);var my=gen,i=0;f.innerHTML='';ck.textContent='0:00';ln.textContent='–';
+if(reduce){for(var k=0;k<EV.length;k++)render(k);return;}
+(function tick(){if(my!==gen)return;if(i>=EV.length)return;render(i++);tm=setTimeout(tick,1700);})();}
+function start(){if(started)return;started=true;play();}
+document.getElementById('cnr').addEventListener('click',function(){started=true;play();});
+document.getElementById('seej').addEventListener('click',function(){var t=document.querySelector('[role=tab][data-tab="overview"]');if(t)t.click();var j=document.getElementById('journey');if(j)j.scrollIntoView({behavior:'smooth',block:'start'});});
+var c=document.getElementById('cn');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es.some(function(x){return x.isIntersecting;})){io.disconnect();setTimeout(start,400);}},{threshold:0.3});io.observe(c);}else start();
 })();
 </script>
 <script>
