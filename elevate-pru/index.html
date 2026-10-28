@@ -136,6 +136,18 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 @media (min-width:900px){.tabs{flex-wrap:wrap;overflow:visible;padding-right:4px;row-gap:4px}.tabwrap:after{display:none}.tabs button{padding:7px 9px 6px;font-size:13px}.tabs .num{margin-right:3px}}
 .meetbtn{display:inline-block;margin-left:auto;background:var(--ok);color:#fff;border:0;border-radius:999px;padding:7px 16px;font:inherit;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none}
 .navrow{display:flex;align-items:center;gap:10px;margin:8px 0 0}
+.px{background:var(--s);border:1px solid #b8c4d4;border-radius:12px;padding:12px 18px 14px;margin:0 0 16px}
+.px h3{font:600 20px/1.25 Spectral,Georgia,serif;color:var(--a);margin:0 0 2px}
+.px .sub{font-size:14px;color:var(--m);margin:0 0 8px}
+.pg{display:flex;flex-wrap:wrap;gap:10px 16px;margin-bottom:8px}
+.pgrp{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.pgrp>span{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--m);margin-right:2px}
+.pgrp button{font:inherit;font-size:13px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;cursor:pointer;color:var(--fg)}
+.pgrp button[aria-pressed=true]{background:var(--p);border-color:var(--p);color:#fff;font-weight:700}
+.pd{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pd>div{border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:14.5px;background:#fff}
+.pd b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--p);margin-bottom:3px}
+@media (max-width:900px){.pd{grid-template-columns:1fr}}
 </style></head><body>
 <button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
 <div class="pf-bd" id="pf-bd"></div>
@@ -203,6 +215,12 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <div class="jd" id="jd"></div>
 <div class="jsum" id="jsum"></div>
 <p class="jfoot"><span class="lane l-ag">Agent does</span> <span class="lane l-hai">Human + AI</span> <span class="lane l-h">Human only</span> &nbsp;<span class="tag" style="margin:0">CHECKPOINT</span> a named person decides. Times are illustrative, to be baselined with each business in Days 1–30.</p>
+</div>
+<div class="px" id="personas">
+<h3>Who ELEVATE serves</h3>
+<p class="sub">From the C-suite to the frontline, including every role in the product development lifecycle. Pick a role.</p>
+<div class="pg" id="pg"></div>
+<div class="pd" id="pd"></div>
 </div>
 <div class="card" style="margin:0 0 14px;border-left:4px solid var(--a)"><h3>What I heard, and how ELEVATE answers it</h3>
 <div class="tw"><table><tbody>
@@ -651,6 +669,26 @@ js.innerHTML='<div><b>'+(mode==='after'?d.sum[1]:d.sum[0])+'</b>'+(mode==='after
 }
 draw();
 })();
+</script>
+<script>
+(function(){
+var G=[['Leaders',[
+['C-suite sponsors','Chief Data &amp; AI Officer and Chief Talent &amp; Capabilities Officer','The one-page C-suite scorecard and the AI Steering Committee pack','Set priorities and risk appetite; decide which divisions move first','Value, adoption, quality and people, monthly','value'],
+['VPs and Directors','Leaders in Retirement, Group Insurance, Individual Life, Wealth and PGIM','The operational scorecard and the "what goes agentic first" scoring','Choose the job families to redesign; act on weekly thresholds','Cycle time, capacity reinvested in growth, customer outcomes','value']]],
+['Business',[
+['Frontline teams','Claims examiners, service associates, underwriters, financial professionals, investment analysts','Agents that handle repetitive steps, an Academy track and a path into new roles','More time for complex cases, customers and judgment calls','Time to outcome, customer satisfaction, quality','redesign'],
+['People leaders','Managers who become human–AI team leads','Role redesign maps, team pulse and agent limits for their team','Coach people through the change; decide when work goes back to a person','Engagement, adoption, override rates','teams']]],
+['PDLC',[
+['Product owners and analysts','Product owners, business analysts, AI workflow designers','Journey-to-MVP: creator and judge agents draft features and stories; people approve','Start every change from the customer journey and its KPI','Features delivered per increment, journey KPIs','framework'],
+['Engineers, QE and data scientists','Software engineers, quality engineers, data and ML specialists','The agentic platform, evaluation gates, reusable templates and AI judges','Build once and reuse across divisions; release with evidence, not opinion','Release quality, defect escape, time to production','tech']]],
+['Enablers',[
+['HR and Talent','HR business partners, Talent &amp; Capabilities, Innovation Academy','Skills graph, career paths, competency framework and internal mobility','Move people into the roles AI creates','Internal moves, reskilling completions, retention','talent'],
+['Risk and Compliance','Risk, Compliance, Legal, Privacy, Ethics','One governance pathway, named owners, checkpoints and the audit trail','Review by exception, with evidence ready','Review coverage, exceptions closed, incidents','governance']]]];
+var pg=document.getElementById('pg'),pd=document.getElementById('pd');if(!pg)return;var cur=[0,0];
+G.forEach(function(g,gi){var w=document.createElement('div');w.className='pgrp';w.innerHTML='<span>'+g[0]+'</span>';g[1].forEach(function(p,pi){var b=document.createElement('button');b.type='button';b.innerHTML=p[0];b.dataset.g=gi;b.dataset.p=pi;b.onclick=function(){cur=[gi,pi];draw();};w.appendChild(b);});pg.appendChild(w);});
+function draw(){pg.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',(+b.dataset.g===cur[0]&&+b.dataset.p===cur[1]));});var p=G[cur[0]][1][cur[1]];
+pd.innerHTML='<div><b>Who</b>'+p[1]+'</div><div><b>What they use</b>'+p[2]+'</div><div><b>What changes · KPI they own</b>'+p[3]+'.<br><span style="color:var(--m)">'+p[4]+'</span><br><a href="#" class="lk" data-go="'+p[5]+'">See how →</a></div>';}
+draw();})();
 </script>
 <script>
 (function(){
