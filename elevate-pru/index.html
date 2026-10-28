@@ -169,6 +169,12 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 .govb{margin-top:10px;background:var(--wb);border-radius:10px;padding:9px 14px;font-size:15px}.govb b{color:var(--w)}
 .atiles{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.at{border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center;font-size:14px;color:var(--m)}.at b{display:block;color:var(--a);font-size:16px;margin-bottom:2px}.at.f{background:var(--as)}.at.g{background:var(--wb)}
 @media (max-width:900px){.atiles{grid-template-columns:repeat(3,1fr)}}@media (max-width:520px){.atiles{grid-template-columns:1fr 1fr}}
+.lead2{display:grid;grid-template-columns:auto 1fr 1fr;gap:10px;align-items:stretch;margin:8px 0 6px}
+.lh{font:600 17px/1.25 Spectral,Georgia,serif;color:var(--a);align-self:center;max-width:150px}
+.lc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 14px}
+.lc.lca{border-left:5px solid var(--ok)}.lc.lcb{border-left:5px solid var(--p)}
+.lc b{font-size:16px;color:var(--fg)}.lc span{font-size:13px;color:var(--m);margin-left:6px}.lc p{margin:3px 0 0;font-size:14px;line-height:1.4}
+@media (max-width:900px){.lead2{grid-template-columns:1fr}.lh{max-width:none}}
 </style></head><body>
 <button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
 <div class="pf-bd" id="pf-bd"></div>
@@ -199,6 +205,10 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <p class="who"><b>Sonia Malik</b> · AI Workforce Transformation Leader · returning Prudential alum (Customer Office &amp; Retirement, 2015–2019) · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn</a></p>
 </header>
 <div class="xb"><div class="x1"><b>What excites me:</b> returning to build, not advise, Prudential's people + AI operating model.</div><div class="x2"><b>Redeploy first:</b> success = hours reinvested in growth and new roles; cost is secondary.</div></div>
+<div class="lead2"><div class="lh">Built for the two leaders this role reports to</div>
+<div class="lc lca"><b>Amie Watson</b><span>Chief Talent &amp; Capabilities Officer</span><p>People first: roles redesigned with the people who do the work, career paths and internal mobility into new roles, inclusive change led with HR. <a href="#" data-go="talent" class="lk">Talent →</a></p></div>
+<div class="lc lcb"><b>Bob Bastian</b><span>Chief Data &amp; AI Officer</span><p>Data and trust first: data readiness before agents, governance before agentic, a named person accountable for every agent, value beyond cost. <a href="#" data-go="framework" class="lk">Framework →</a></p></div>
+</div>
 <section class="deliver" aria-label="What I would deliver in year one">
 <h2 class="dh">What I would deliver in year one</h2>
 <div class="dg">
@@ -662,7 +672,7 @@ draw();
 <script>
 (function(){
 var G=[['Leaders',[
-['C-suite sponsors','Chief Data &amp; AI Officer and Chief Talent &amp; Capabilities Officer','The one-page C-suite scorecard and the AI Steering Committee pack','Set priorities and risk appetite; decide which divisions move first','Value, adoption, quality and people, monthly','value'],
+['C-suite sponsors','Chief Talent &amp; Capabilities Officer and Chief Data &amp; AI Officer','The one-page C-suite scorecard and the AI Steering Committee pack','Set priorities and risk appetite; decide which divisions move first','Value, adoption, quality and people, monthly','value'],
 ['VPs and Directors','Leaders in Retirement, Group Insurance, Individual Life, Wealth and PGIM','The operational scorecard and the "what goes agentic first" scoring','Choose the job families to redesign; act on weekly thresholds','Cycle time, capacity reinvested in growth, customer outcomes','value']]],
 ['Business',[
 ['Frontline teams','Claims examiners, service associates, underwriters, financial professionals, investment analysts','Agents that handle repetitive steps, an Academy track and a path into new roles','More time for complex cases, customers and judgment calls','Time to outcome, customer satisfaction, quality','redesign'],
