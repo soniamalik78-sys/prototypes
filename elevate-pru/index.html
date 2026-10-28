@@ -1,799 +1,439 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ELEVATE · Human–Agent Collaboration · Sonia Malik</title>
-<meta name="description" content="ELEVATE: a prototype by Sonia Malik showing how she would approach the first year of human–agent collaboration at Prudential.">
-<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#F3F5F8;--s:#fff;--fg:#14202E;--m:#4F5B69;--line:#D7DEE7;--a:#0A4D8C;--as:#E2EDF8;--w:#8F5E00;--wb:#FBF0D9;--ok:#2E7D4F;--okb:#E3F2E8;--p:#5B3E96;--pb:#ECE6F6}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Public Sans",Arial,sans-serif}
-.wrap{max-width:1400px;margin:0 auto;padding:0 28px}
-.banner{background:var(--a);color:#fff;text-align:center;padding:8px 12px;font-weight:600;font-size:14px;letter-spacing:.03em}
-header{padding:40px 0 14px}h1{font:600 50px/1.08 Spectral,Georgia,serif;margin:0;color:var(--a)}
-h1 small{display:block;font-size:26px;color:var(--fg);margin-top:8px;line-height:1.25}
-.lede{font-size:18px;color:var(--m);max-width:none;margin-bottom:8px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}.chips span{font-size:13px;background:var(--as);color:var(--a);border-radius:999px;padding:4px 12px;font-weight:600}h2{font:600 27px/1.25 Spectral,Georgia,serif;margin:34px 0 10px}
-h3{margin:0 0 6px;font-size:17px;color:var(--a)}
-.who{font-size:15px}.who a{color:var(--a)}
-.tabs{display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:18px 0 4px;position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5}.tabs::-webkit-scrollbar{display:none}
-.tabs button{flex:0 0 auto;white-space:nowrap;border:1px solid var(--line);background:var(--s);padding:6px 10px;border-radius:20px;cursor:pointer;font:inherit;font-size:13px;color:var(--fg)}
-.tabs button[aria-selected=true]{background:var(--a);color:#fff;border-color:var(--a)}
-.pane{display:none}.pane.on{display:block;background:var(--s);border:1px solid #b8c4d4;border-top:none;border-radius:0 0 10px 10px;padding:6px 24px 18px}.pane>h2:first-child{margin-top:18px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-.card{background:var(--s);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
-.kpi .n{font:600 28px/1.2 Spectral,serif;color:var(--a);margin-bottom:4px}
-.ctx{background:var(--as);border-radius:10px;padding:14px 18px;margin:16px 0}
-.ctx .grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
-.ctx b{display:block;font:600 24px Spectral,serif;color:var(--a)}.ctx span{font-size:14px;color:var(--m)}
-.tag{display:inline-block;font-size:11.5px;background:var(--wb);color:var(--w);border-radius:4px;padding:1px 7px;margin-left:6px;font-weight:700;letter-spacing:.03em;vertical-align:middle}
-.flow{display:flex;gap:8px;flex-wrap:wrap}.step{flex:1 1 160px;background:var(--as);border-radius:8px;padding:12px;font-size:15px}.step.gate{background:var(--wb)}
-.step b{display:block}
-table{width:100%;border-collapse:collapse;background:var(--s);font-size:15px}td,th{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}th{background:var(--as)}
-.tw{overflow-x:auto}
-.lane{display:inline-block;font-size:12.5px;font-weight:700;border-radius:4px;padding:2px 8px;white-space:nowrap}
+*{box-sizing:border-box}body{margin:0;font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--fg);background:var(--bg)}
+a{color:var(--a)}.wrap{max-width:1080px;margin:0 auto;padding:16px 20px 48px}
+.banner{background:#8F5E00;color:#fff;font-size:12px;padding:6px 12px;text-align:center}
+.hero{background:var(--s);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:12px 0}
+.hero h1{margin:0 0 6px;font-size:22px;color:var(--a)}
+.hero .sub{color:var(--m);margin:0 0 10px;font-size:14px}
+.strip{background:var(--as);border-left:4px solid var(--a);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0}
+.strip b{color:var(--a)}.strip ul{margin:6px 0 0;padding-left:18px}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--wb);color:var(--w);padding:2px 7px;border-radius:4px;margin-left:6px}
+.tag.ok{background:var(--okb);color:var(--ok)}
+.tabwrap{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;border-bottom:1px solid var(--line);margin:8px 0 14px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button,[role=tab]{border:1px solid var(--line);background:var(--s);color:var(--fg);padding:7px 12px;border-radius:999px;cursor:pointer;font-size:13px}
+.tabs button[aria-selected=true],[role=tab][aria-selected=true]{background:var(--a);color:#fff;border-color:var(--a)}
+.deep{margin-left:auto}
+.pane{display:none}.pane.on{display:block}
+h2{font-size:18px;margin:0 0 8px;color:var(--a)}
+h3{font-size:15px;margin:14px 0 6px;color:var(--fg)}
+.grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--s);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.card b{color:var(--a)}
+ul.tight{margin:4px 0;padding-left:18px}ul.tight li{margin:3px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}th{color:var(--m);font-weight:600}
+.lane{display:inline-block;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px}
 .l-ag{background:var(--pb);color:var(--p)}.l-hai{background:var(--as);color:var(--a)}.l-h{background:var(--okb);color:var(--ok)}
-.bar{display:flex;height:14px;border-radius:7px;overflow:hidden;margin:8px 0 4px}.bar i{display:block}
-.legend{font-size:13px;color:var(--m)}
-select{font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--line);background:var(--s);color:var(--fg)}
-.meter{height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:6px 0}.meter i{display:block;height:100%;background:var(--ok)}
-.note{font-size:14px;color:var(--m)}
-.ladder .card{border-left:5px solid var(--a)}
-footer{margin:46px 0 30px;color:var(--m);font-size:14px;border-top:1px solid var(--line);padding-top:14px}footer a{color:var(--a)}
-@media (max-width:600px){h1{font-size:40px}h1 small{font-size:21px}.tabs button{font-size:13px;padding:8px 12px 7px}}
-.side-tab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:60;writing-mode:vertical-rl;rotate:180deg;background:var(--a);color:#fff;border:none;border-radius:10px 0 0 10px;padding:16px 9px;font:700 14px "Public Sans",Arial,sans-serif;letter-spacing:.02em;cursor:pointer;box-shadow:2px 0 10px rgba(10,30,60,.18)}
-
-.side-tab:hover{background:#08396A}
-.pf{position:fixed;z-index:80;background:var(--s);color:var(--fg);visibility:hidden;opacity:0;transition:opacity .2s,transform .2s,visibility .2s;font-size:15px;line-height:1.5}
-.pf.show{visibility:visible;opacity:1}
-.pf h3{font:600 24px/1.2 Spectral,Georgia,serif;color:var(--a);margin:0}
-.pf .role{font-weight:700;margin:2px 0 8px}
-.pf .x{position:absolute;top:8px;right:10px;border:none;background:none;font-size:24px;line-height:1;cursor:pointer;color:var(--m)}
-.pf ul{list-style:none;padding:0;margin:12px 0}
-.pf li{background:var(--as);border-radius:8px;padding:7px 10px;margin:6px 0;font-size:14px}
-.pf li b{color:var(--a)}
-.pf .ct{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
-.pf .ct a{color:var(--a);display:block;margin:3px 0}
-.pf-bd{display:none;position:fixed;inset:0;z-index:79;background:rgba(10,25,45,.45)}
-@media (min-width:900px){
-.pf{top:0;bottom:0;left:0;width:340px;overflow:auto;padding:22px 20px;border-right:1px solid var(--line);box-shadow:4px 0 18px rgba(10,30,60,.12);transform:translateX(-100%)}
-.pf.show{transform:translateX(0)}
-body{transition:padding-left .2s}body.pf-on{padding-left:340px}
-}
-@media (max-width:899px){
-.pf{left:50%;top:50%;width:min(420px,calc(100vw - 32px));max-height:82vh;overflow:auto;padding:20px 18px;border-radius:14px;transform:translate(-50%,-46%)}
-.pf.show{transform:translate(-50%,-50%)}
-body.pf-on .pf-bd{display:block}
-.side-tab{font-size:12.5px;padding:12px 7px}
-.wrap{padding-left:40px}
-}
-@media print{.side-tab,.pf,.pf-bd{display:none!important}}
-.navhint{font-size:13px;color:var(--a);font-weight:600;margin:18px 0 0}
-.tabwrap{position:sticky;top:0;z-index:5;background:var(--bg);padding-top:8px}
-.tabwrap:after{content:"";position:absolute;right:0;top:0;bottom:1px;width:44px;pointer-events:none;background:linear-gradient(to right,rgba(255,255,255,0),var(--bg))}
-.tabs{display:flex;gap:2px;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;margin:0;padding:6px 40px 0 4px;border-bottom:1px solid #b8c4d4}.tabs::-webkit-scrollbar{display:none}
-.tabs button{flex:0 0 auto;white-space:nowrap;position:relative;border:1px solid #c9d2de;border-bottom:none;background:#e9edf2;color:#4a5568;padding:9px 16px 8px;border-radius:9px 9px 0 0;cursor:pointer;font:inherit;font-size:14px;margin-bottom:-1px;top:2px;transition:background .15s,color .15s}
-.tabs button:hover{background:#d5dce6;color:#1d2433}
-.tabs .num{font-size:11px;color:#8a96a8;margin-right:5px;font-weight:400}
-.tabs button[aria-selected=true]{background:var(--s);color:var(--a);font-weight:700;border-color:#b8c4d4;top:0;padding-top:11px;z-index:2;box-shadow:inset 0 3px 0 var(--a),0 -2px 6px rgba(10,30,60,.08);border-bottom:1px solid var(--s)}
-.nextnav{margin:28px 0 6px;text-align:right}.nextbtn{border:0;background:var(--a);color:#fff;font:inherit;font-weight:600;font-size:15px;padding:11px 20px;border-radius:999px;cursor:pointer;box-shadow:0 2px 6px rgba(10,30,60,.2)}
-.g4{grid-template-columns:repeat(4,1fr)}@media (max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}@media (max-width:520px){.g4{grid-template-columns:1fr}}
-.ov{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:30px;align-items:start}
-.ovside{position:sticky;top:78px;margin-top:24px}.ovside .card{border-left:4px solid var(--a)}.ovside ul{padding-left:18px;margin:8px 0}.ovside li{margin:7px 0;font-size:15px}
-.ovct{border-top:1px solid var(--line);padding-top:10px;margin-top:8px;display:flex;flex-direction:column;gap:4px}.ovct a{color:var(--a)}
-.disc{font-style:italic;font-size:12.5px;color:#7a8594;margin:8px 0 0}
-.loop{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap}.ls{flex:1 1 140px;background:var(--as);border-radius:8px;padding:10px;font-size:14px}.ls b{display:block}.ls.gate{background:var(--wb)}.la{align-self:center;color:var(--a);font-weight:700;font-size:20px}
-@media (min-width:1200px){.side-tab{display:none}}
-@media (max-width:1199px){.ov{grid-template-columns:1fr}.ovside{position:static}}
-@media (max-width:700px){.la{display:none}}
-.s60{background:var(--a);color:#fff;border-radius:12px;padding:16px 20px;margin:20px 0 6px}.s60 h3{margin:0 0 10px;color:#fff;font-size:17px}.s60g{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;font-size:14.5px}.s60g b{display:block;color:#bfe0ff;margin-bottom:3px;text-transform:uppercase;font-size:12px;letter-spacing:.06em}
-.strat{font-size:17px;font-weight:600;color:var(--fg)}.outs .card{border-top:3px solid var(--ok)}.outs b{color:var(--a);font-size:17px}
-@media (max-width:900px){.s60g{grid-template-columns:1fr 1fr}}@media (max-width:520px){.s60g{grid-template-columns:1fr}}
-header{padding:18px 0 6px}h1{font:600 36px/1.08 Spectral,Georgia,serif;margin:0;color:var(--a)}h1 small{font-size:22px!important}
-header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}header .who{margin:4px 0 0;font-size:14px}
-.deliver{background:var(--s);border:1px solid var(--line);border-radius:12px;padding:12px 18px 12px;margin:8px 0 2px;box-shadow:0 2px 10px rgba(10,30,60,.06)}
-.dh{font-size:21px!important;margin:0 0 8px!important}
-.dg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.dt{background:var(--a);color:#e8f1fb;border-radius:10px;padding:10px 14px;font-size:14px;line-height:1.35}.dt b{display:block;font:600 26px/1.15 Spectral,Georgia,serif;color:#fff;margin-bottom:3px}
-.proof{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin-top:10px;font-size:13px;color:var(--m)}.proof .pl{font-weight:700;color:var(--a);text-transform:uppercase;font-size:12px;letter-spacing:.06em}.proof b{color:var(--fg)}
-.navhint{margin:8px 0 0!important}
-.s60{padding:10px 16px!important;margin:14px 0 4px!important}.s60g{font-size:13.5px!important}
-.ctx{font-size:.92em}
-@media (max-width:900px){.dg{grid-template-columns:1fr 1fr}}@media (max-width:520px){.dg{grid-template-columns:1fr}}
-.jx{background:var(--s);border:1px solid #b8c4d4;border-radius:12px;padding:14px 18px 16px;margin:16px 0 18px;box-shadow:0 2px 10px rgba(10,30,60,.06)}
-.jx h3{font:600 22px/1.25 Spectral,Georgia,serif;color:var(--a);margin:0 0 2px}
-.jx .sub{font-size:14px;color:var(--m);margin:0 0 10px}
-.jbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:10px}
-.jpills{display:flex;flex-wrap:wrap;gap:6px}
-.jpills button,.jtog button{font:inherit;font-size:13.5px;border:1px solid var(--line);background:#fff;color:var(--fg);border-radius:999px;padding:6px 12px;cursor:pointer}
-.jpills button[aria-pressed=true]{background:var(--a);border-color:var(--a);color:#fff;font-weight:700}
-.jtog{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
-.jtog button{border:0;border-radius:0;padding:6px 14px}
-.jtog button[aria-pressed=true]{background:var(--ok);color:#fff;font-weight:700}
-.jtog button.bf[aria-pressed=true]{background:#7a8594}
-.jq{font-size:15px;margin:2px 0 10px}.jq b{color:var(--a)}
-.jst{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;counter-reset:st}
-.js{position:relative;text-align:left;font:inherit;border:2px solid transparent;border-radius:10px;padding:10px 10px 9px;cursor:pointer;background:var(--as);min-height:96px}
-.js[aria-pressed=true]{border-color:var(--a);box-shadow:0 3px 10px rgba(10,77,140,.18)}
-.js .k{display:block;font-size:11.5px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.05em}
-.js .t{display:block;font-weight:700;font-size:14.5px;line-height:1.3;margin:2px 0 6px;color:var(--fg)}
-.js .tm{display:block;font-size:13px;color:var(--m)}
-.js.ag{background:var(--pb)}.js.hai{background:var(--as)}.js.h{background:var(--okb)}
-.js .gt{position:absolute;top:8px;right:8px;font-size:11px;font-weight:700;background:var(--wb);color:var(--w);border-radius:4px;padding:1px 6px}
-.jd{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:10px;margin-top:10px}
-.jd>div{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14.5px;background:#fff}
-.jd b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--a);margin-bottom:3px}
-.jsum{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
-.jsum>div{background:var(--a);color:#e8f1fb;border-radius:10px;padding:9px 12px;font-size:13.5px}
-.jsum b{display:block;font:600 21px/1.2 Spectral,Georgia,serif;color:#fff}
-.jfoot{font-size:12.5px;color:var(--m);margin:8px 0 0}
-@media (max-width:900px){.jst{grid-template-columns:1fr 1fr}.jd,.jsum{grid-template-columns:1fr}}
-.more{border:1px solid var(--line);border-radius:10px;margin:10px 0;background:#fff}
-.more>summary{cursor:pointer;padding:12px 16px;font-weight:700;color:var(--a);font-size:16px;list-style:none}
-.more>summary::-webkit-details-marker{display:none}
-.more>summary:before{content:"+";display:inline-block;width:18px;font-weight:700}
-.more[open]>summary:before{content:"−"}
-.more>.mb{padding:0 16px 14px}
-.lk{color:var(--a);font-weight:700;white-space:nowrap}
-.cs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.cs>div{background:var(--a);color:#e8f1fb;border-radius:10px;padding:10px 12px;font-size:13.5px}.cs b{display:block;font:600 24px/1.15 Spectral,Georgia,serif;color:#fff}
-@media (max-width:900px){.cs{grid-template-columns:1fr 1fr}}
-@media (min-width:900px){.tabs{flex-wrap:wrap;overflow:visible;padding-right:4px;row-gap:4px}.tabwrap:after{display:none}.tabs button{padding:7px 9px 6px;font-size:13px}.tabs .num{margin-right:3px}}
-.meetbtn{display:inline-block;margin-left:auto;background:var(--ok);color:#fff;border:0;border-radius:999px;padding:7px 16px;font:inherit;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none}
-.navrow{display:flex;align-items:center;gap:10px;margin:8px 0 0}
-.px{background:var(--s);border:1px solid #b8c4d4;border-radius:12px;padding:12px 18px 14px;margin:0 0 16px}
-.px h3{font:600 20px/1.25 Spectral,Georgia,serif;color:var(--a);margin:0 0 2px}
-.px .sub{font-size:14px;color:var(--m);margin:0 0 8px}
-.pg{display:flex;flex-wrap:wrap;gap:10px 16px;margin-bottom:8px}
-.pgrp{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
-.pgrp>span{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--m);margin-right:2px}
-.pgrp button{font:inherit;font-size:13px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;cursor:pointer;color:var(--fg)}
-.pgrp button[aria-pressed=true]{background:var(--p);border-color:var(--p);color:#fff;font-weight:700}
-.pd{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.pd>div{border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:14.5px;background:#fff}
-.pd b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--p);margin-bottom:3px}
-@media (max-width:900px){.pd{grid-template-columns:1fr}}
-@media (min-width:1200px){.ov{grid-template-columns:260px minmax(0,1fr) 300px;gap:22px}
-.ovleft{position:sticky;top:96px;margin-top:24px;max-height:calc(100vh - 110px);overflow:auto}.ovside{top:96px}
-.ovleft .px{border-left:4px solid var(--p);margin:0;padding:12px 14px}
-.ovleft .px h3{font-size:19px}.ovleft .px .sub{font-size:13px}
-.ovleft .pg{flex-direction:column;gap:8px}
-.ovleft .pgrp{gap:4px}.ovleft .pgrp>span{width:100%;margin:0}
-.ovleft .pgrp button{font-size:12.5px;padding:4px 10px}
-.ovleft .pd{grid-template-columns:1fr;gap:6px}.ovleft .pd>div{font-size:13.5px;padding:7px 10px}
-.ovside .card{padding:14px 16px}.ovside li{font-size:14px}
-.jst{grid-template-columns:repeat(5,minmax(0,1fr))}.js .t{font-size:13.5px}
-}
-@media (max-width:1199px){.ovleft{order:2}.ovmain{order:1}.ovside{order:3}}
-.ovleft,.ovmain,.ovside{min-width:0}
-</style></head><body>
-<button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
-<div class="pf-bd" id="pf-bd"></div>
-<aside class="pf" id="pf" aria-label="About Sonia Malik">
-<button class="x" id="pf-x" aria-label="Close">×</button>
-<h3>Sonia Malik</h3>
-<div class="role">AI Workforce Transformation Leader</div>
-<p style="margin:0">Returning Prudential alum (Customer Office &amp; Retirement, 2015–2019). I lead people through AI-driven change and build the controls that make agents safe to work with, so the People team and Technology can move together.</p>
-<ul>
-<li><b>350+ engineers</b> led through an AI-led transformation; engagement recovered after the expected first-quarter dip</li>
-<li><b>50+ reskilled</b>, 35+ roles transitioned across 150+ engineers at Prudential</li>
-<li>Approval time on regulated checks went from <b>3 days to same day</b>, with evidence-backed human approval (S&amp;P Global)</li>
-<li><b>2.5:1 → 4:1</b> Dev:QE through skills assessment and peer-paired reskilling</li>
-<li><b>6 months</b> to stand up an AI-first product lifecycle and platform, designed to serve ~1,200 engineers across two business units</li>
-<li>Built a <b>Global Capability Center</b> at DoubleVerify; grew Audible QA from 4 to 41</li>
-<li>Builder + independent <b>AI judge agent</b>; human-vs-judge score gap trains both over time</li>
-</ul>
-<div class="ct"><b>Let's talk</b>
-<a href="mailto:sonia.malik78@gmail.com" data-contact>sonia.malik78@gmail.com</a>
-<a href="tel:+17326291034" data-contact>732-629-1034</a>
-<a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn profile</a></div>
-</aside>
-<div class="banner">Prepared for Prudential · VP, AI Workforce Transformation Leader</div>
+.chk{background:var(--wb);color:var(--w);font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px;margin-left:4px}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.pills button,.jtog button{border:1px solid var(--line);background:var(--s);padding:6px 10px;border-radius:8px;cursor:pointer;font-size:12px}
+.pills button[aria-pressed=true],.jtog button[aria-pressed=true]{background:var(--a);color:#fff;border-color:var(--a)}
+.jtog{display:inline-flex;gap:4px;margin:6px 0}
+.steps{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.steps button{border:1px dashed var(--line);background:var(--s);padding:8px 10px;border-radius:8px;cursor:pointer;font-size:12px;text-align:left;min-width:120px}
+.steps button[aria-pressed=true]{border-style:solid;border-color:var(--a);background:var(--as)}
+.jdetail{background:var(--s);border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:8px;min-height:90px}
+.bar{display:flex;height:10px;border-radius:5px;overflow:hidden;margin:6px 0}.bar i{display:block;height:100%}
+.legend{font-size:12px;color:var(--m)}
+.who button{display:block;width:100%;text-align:left;border:0;background:transparent;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:13px}
+.who button[aria-pressed=true]{background:var(--as);color:var(--a);font-weight:600}
+.pgrp{margin-bottom:8px}.pgrp>span{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--m);display:block;margin:4px 0}
+.details{margin:10px 0;background:var(--s);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.details summary{cursor:pointer;font-weight:600;color:var(--a);padding:6px 0}
+.foot{margin-top:24px;font-size:12px;color:var(--m);border-top:1px solid var(--line);padding-top:10px}
+.excites{background:var(--pb);border-left:4px solid var(--p);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0}
+.kpi{font-size:20px;font-weight:700;color:var(--a)}
+@media(max-width:700px){.wrap{padding:12px}.hero h1{font-size:18px}}
+</style>
+</head>
+<body>
 <div class="wrap">
-<header>
-<h1>ELEVATE<small>Prudential's first year of human–agent collaboration</small></h1>
-<p class="lede">Prudential, 150 years in, is reimagining work for an AI world from the ground up. ELEVATE redesigns jobs, teams and talent so people and AI agents do their best work together, amplifying what people can do.</p><div class="chips"><span>Higher engineering productivity</span><span>Enhanced customer experience, faster speed to market</span><span>Efficiency build-up across Retirement, Group, Individual Life, Wealth and PGIM</span><span>Trusted AI, governed from day one</span></div>
-<p class="who"><b>Sonia Malik</b> · AI Workforce Transformation Leader · returning Prudential alum (Customer Office &amp; Retirement, 2015–2019) · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn</a></p>
+
+<header class="hero">
+  <h1>ELEVATE · Human–agent collaboration for Prudential</h1>
+  <p class="sub">Sonia Malik · AI Workforce Transformation Leader · Pru alum, Customer Office &amp; Retirement (2015–2019)</p>
+  <div class="excites">
+    <b>What excites me.</b> Returning as a Prudential alum to <b>build</b> — not advise — the first People + CDAIO human–agent operating model: redesign with the people who do the work, govern from day one, redeploy capacity to growth.
+  </div>
+  <div class="strip" id="sixty">
+    <b>In 60 seconds</b>
+    <ul>
+      <li><b>Problem:</b> Agents hit production while jobs were designed for people alone.</li>
+      <li><b>Approach:</b> Redesign role by role (agent / human+AI / human-only); named owners; builder + AI judge + human review; Academy into new roles.</li>
+      <li><b>Year one:</b> 2 pilots by month 6; up to 6–8 by month 12; one Steering scorecard. <span class="tag">To validate with Prudential in Days 1–30</span></li>
+      <li><b>Primary KR:</b> hours <b>redeployed</b> to growth/Academy/new roles — cost secondary. Redeploy first.</li>
+    </ul>
+  </div>
 </header>
-<section class="deliver" aria-label="What I would deliver in year one">
-<h2 class="dh">What I would deliver in year one</h2>
-<div class="dg">
-<div class="dt"><b>Up to 6–8</b>job families redesigned by month 12, as readiness allows; first pilots: one technical and one non-technical job family, chosen by Prudential's priorities</div>
-<div class="dt"><b>Capacity unlocked</b>efficiency gains reinvested in growth work, measured on one shared scorecard</div>
-<div class="dt"><b>Trusted AI</b>governed agents with human review and a learning loop: autonomy grows only as evidence supports it</div>
-<div class="dt"><b>People with us</b>engagement protected through the change: people reskilled, redeployed and brought along, as I did for 350+ engineers</div>
-</div>
-<div class="proof"><span class="pl">Why me in one line</span><span><b>150+ engineers</b> led at Prudential</span><span><b>350+ engineers</b> led globally through AI change</span><span><b>~1,200 engineers</b> my AI-first framework was designed to serve</span><span><b>3 days → same day</b> regulated approvals</span></div>
+
+<nav class="tabwrap" aria-label="Primary path">
+  <div class="tabs" role="tablist">
+    <button role="tab" data-tab="overview" aria-selected="true">1 Overview</button>
+    <button role="tab" data-tab="framework">2 Framework</button>
+    <button role="tab" data-tab="redesign">3 Redesign journey</button>
+    <button role="tab" data-tab="talent">4 Talent &amp; Academy</button>
+    <button role="tab" data-tab="value">5 KPIs &amp; ROI</button>
+    <button role="tab" data-tab="deeper" class="deep">Deeper read ▾</button>
+  </div>
+</nav>
+
+<!-- ========== 1 OVERVIEW ========== -->
+<section class="pane on" id="overview" role="tabpanel">
+  <h2>What I heard → ELEVATE answers</h2>
+  <table>
+    <tr><th>Need</th><th>Answer</th></tr>
+    <tr><td>Build, don’t advise</td><td>HR + tech + non-tech components, run by the teams</td></tr>
+    <tr><td>Agentic first?</td><td>ROI, people readiness, criticality, CX; <b>data readiness = foundation</b></td></tr>
+    <tr><td>KPIs / OKRs</td><td>C-suite scorecard + weekly ops (owner, threshold, action)</td></tr>
+    <tr><td>Reuse</td><td>One playbook: Retirement, Group, Individual Life, Wealth, PGIM (+ India/Ireland)</td></tr>
+    <tr><td>Not just automation</td><td><b>Redeploy first</b> — primary KR = hours redeployed; cost secondary</td></tr>
+  </table>
+
+  <h3>Who ELEVATE serves</h3>
+  <div class="grid" style="grid-template-columns:220px 1fr">
+    <div class="card who" id="pg"></div>
+    <div class="card" id="pd"></div>
+  </div>
+
+  <h3>Why me</h3>
+  <div class="grid">
+    <div class="card"><div class="kpi">350+</div>on governed AI in 13 months (S&amp;P); engagement recovered after expected dip (qualitative)</div>
+    <div class="card"><div class="kpi">~1,200</div>framework <b>designed to serve</b> across two BUs — not “used by”</div>
+    <div class="card"><div class="kpi">3d → same day</div>regulated sign-off, evidence-backed human approval (S&amp;P)</div>
+    <div class="card"><div class="kpi">50+ / 35+</div>reskilled / roles moved across 150+ at Prudential (2015–2019)</div>
+  </div>
+  <p class="legend">Also: Chair AIGC (S&amp;P); Dev:QE 2.5:1→4:1; 17 promos (2 Director); Audible Sev2s −30%, SEO 5th→3rd; DV GCC.</p>
 </section>
 
-<div class="navrow"><div class="navhint" style="margin:0!important">Explore 11 sections →</div><a href="#" class="meetbtn" data-go="meet">When we meet: a 15-minute live walkthrough →</a></div>
-<div class="tabwrap"><div class="tabs" role="tablist">
-<button role="tab" data-tab="overview" aria-selected="true"><span class="num">1</span>Overview</button>
-<button role="tab" data-tab="framework" aria-selected="false"><span class="num">2</span>Framework</button>
-<button role="tab" data-tab="redesign" aria-selected="false"><span class="num">3</span>Work redesign</button>
-<button role="tab" data-tab="teams" aria-selected="false"><span class="num">4</span>Human + AI</button>
-<button role="tab" data-tab="tech" aria-selected="false"><span class="num">5</span>Platform</button>
-<button role="tab" data-tab="global" aria-selected="false"><span class="num">6</span>Global</button>
-<button role="tab" data-tab="governance" aria-selected="false"><span class="num">7</span>Governance</button>
-<button role="tab" data-tab="talent" aria-selected="false"><span class="num">8</span>Talent</button>
-<button role="tab" data-tab="value" aria-selected="false"><span class="num">9</span>KPIs &amp; ROI</button>
-<button role="tab" data-tab="year" aria-selected="false"><span class="num">10</span>First year</button>
-<button role="tab" data-tab="meet" aria-selected="false"><span class="num">11</span>Let's meet</button>
-</div></div>
+<!-- ========== 2 FRAMEWORK ========== -->
+<section class="pane" id="framework" role="tabpanel">
+  <h2>Framework — build once, reuse</h2>
+  <div class="grid">
+    <div class="card"><b>HR / Talent</b><ul class="tight"><li>Redesign: agent / human+AI / human-only</li><li>New roles + Academy → mobility</li><li>Promoters / neutrals / detractors; J-curve</li></ul></div>
+    <div class="card"><b>Technology</b><ul class="tight"><li>Data readiness gate first</li><li>Named owner, stop switch, permissions</li><li>Builder + AI judge + human review</li></ul></div>
+    <div class="card"><b>Non-tech / Ops</b><ul class="tight"><li>Reuse maps across 5 divisions</li><li>CDAIO + People decision rights</li><li>Customer KPI on every pilot</li></ul></div>
+    <div class="card"><b>Governance</b><ul class="tight"><li>Human accountability every path</li><li>One Risk/Ethics/Privacy/Compliance pathway</li><li>Evidence trail for regulated sign-off</li></ul></div>
+  </div>
 
-<!-- OVERVIEW -->
-<section class="pane on" id="overview">
-<div class="ov"><aside class="ovleft"><div class="px" id="personas">
-<h3>Who ELEVATE serves</h3>
-<p class="sub">From the C-suite to the frontline, including every role in the product development lifecycle. Pick a role.</p>
-<div class="pg" id="pg"></div>
-<div class="pd" id="pd"></div>
-</div></aside><div class="ovmain"><div class="jx" id="journey" aria-label="Interactive journey">
-<h3>Try it: one Prudential journey, redesigned with ELEVATE</h3>
-<p class="sub">Pick a business, switch between before and with ELEVATE, and click any step. <span class="tag">ILLUSTRATIVE</span></p>
-<div class="jbar"><div class="jpills" id="jpills" role="group" aria-label="Business"></div>
-<div class="jtog" role="group" aria-label="View"><button type="button" class="bf" data-mode="before" aria-pressed="false">Before ELEVATE</button><button type="button" data-mode="after" aria-pressed="true">With ELEVATE</button></div></div>
-<p class="jq" id="jq"></p>
-<div class="jst" id="jst"></div>
-<div class="jd" id="jd"></div>
-<div class="jsum" id="jsum"></div>
-<p class="jfoot"><span class="lane l-ag">Agent does</span> <span class="lane l-hai">Human + AI</span> <span class="lane l-h">Human only</span> &nbsp;<span class="tag" style="margin:0">CHECKPOINT</span> a named person decides. Times are illustrative industry patterns, not Prudential data; each business is baselined in Days 1–30.</p>
-</div>
-<div class="card" style="margin:0 0 14px;border-left:4px solid var(--a)"><h3>What I heard, and how ELEVATE answers it</h3>
-<div class="tw"><table><tbody>
-<tr><th style="width:30%">What Prudential needs</th><th>How ELEVATE answers it</th></tr>
-<tr><td>Someone to <b>build the framework</b> and lead the transformation, not just advise</td><td>A working framework with HR, technology and non-technology components, built once and run by the teams. <a href="#" data-go="framework" class="lk">See the Framework tab →</a></td></tr>
-<tr><td>A clear way to decide <b>what goes agentic first</b></td><td>Score each area of work on ROI, people readiness, business criticality and customer experience, with data readiness as the foundation. <a href="#" data-go="framework" class="lk">See the scoring →</a></td></tr>
-<tr><td><b>KPIs and OKRs</b> that show value</td><td>A brief C-suite scorecard (adoption, quality, value, people) on one page, backed by operational detail that VPs and Directors act on each week: by division, job family and workflow, each with an owner, a threshold and the next action. <a href="#" data-go="value" class="lk">See KPIs &amp; ROI →</a></td></tr>
-<tr><td><b>Reuse across divisions</b></td><td>A horizontal model: one shared playbook, templates, agent controls and Academy tracks, built once with the India and Ireland capability centers. Retirement, Group Insurance, Individual Life, Wealth and PGIM adopt it and adapt locally, so each division starts from what the last one built. I first set up this horizontal model in Prudential's Customer Office and scaled it across two business units at S&amp;P Global. <a href="#" data-go="framework" class="lk">See how it is reused →</a></td></tr>
-<tr><td>Transformation that is <b>more than automation</b></td><td>Efficiency gains are reinvested: agents take on repetitive work, people move to higher-value work, and we measure capacity redeployed to growth, not only cost saved.</td></tr>
-</tbody></table></div></div>
-<details class="more"><summary>In 60 seconds: problem, approach, year one</summary><div class="mb"><div class="s60"><h3>In 60 seconds</h3><div class="s60g"><div><b>Problem</b>Agents are entering production, but jobs, teams and skills were designed for people alone. Without redesign, value stalls and trust is put at risk.</div><div><b>Approach</b>ELEVATE: redesign work role by role, govern agents with people accountable, reskill and redeploy, and measure what changes.</div><div><b>Year one</b>2 pilot job families redesigned by month 6 and 6–8 by month 12, at least one each in retirement, group insurance and PGIM; a reusable playbook so other teams can self-serve; one scorecard for the AI Steering Committee.</div><div><b>Let's talk</b>15 minutes with the hiring team: we pick one Prudential job family and redesign it live, so you see exactly how I would lead this, before day one.</div></div></div>
-</div></details>
-<details class="more"><summary>Prudential context and stated AI priorities</summary><div class="mb"><h2>A pivotal moment for Prudential</h2>
-<p class="strat">Prudential is concentrating on retirement, asset management and select protection, and on running the enterprise more efficiently. ELEVATE turns that strategy into how work gets done: people and AI agents together, with trust protected.</p><p class="disc" style="margin:-4px 0 8px">Prudential details are drawn from public sources, including the job posting and company announcements.</p>
-<div class="grid outs"><div class="card"><b>Capacity to growth</b><br>Hours released by agents redeployed to retirement, asset management and protection growth work</div><div class="card"><b>Quality &amp; trust</b><br>Customer outcomes and controls protected, with people accountable for what agents do</div><div class="card"><b>People with us</b><br>Employees engaged and reskilled through the change, not left behind by it</div></div>
-<div class="card" style="margin:0 0 14px"><h3>Aligned with Prudential's stated AI priorities</h3>
-<div class="grid g4" style="margin-top:6px">
-<div><b>A stronger data foundation</b><br>Data readiness is the gate in ELEVATE's "what goes agentic first" scoring</div>
-<div><b>AI that helps employees do their work better</b><br>Every role redesign starts with the people who do the work, and released time goes to higher-value work</div>
-<div><b>What matters most to customers</b><br>Customer experience is one of the four deciding factors, and every pilot carries a customer KPI</div>
-<div><b>Governance before agentic, people accountable</b><br>Autonomy levels, named owners and human review are designed in before agents act</div>
-</div>
-<p class="disc" style="margin:8px 0 0">Priorities as stated publicly by Prudential's Chief Data &amp; AI Officer (CDO Magazine, April 2026; TechTarget, 2025; FT Future of Asset Management panel, October 2026).</p></div>
-<p>Prudential has the technology foundation in place. What decides the return now is how people and AI agents work together, as the Enterprise Agentic AI Platform goes into production and agents take on multi-step workflows.</p>
-<div class="ctx"><div class="grid">
-<div><b>$76.3M</b><span>FY26 data &amp; AI portfolio</span></div>
-<div><b>300+</b><span>AI use cases across 18 business units</span></div>
-<div><b>75+</b><span>AI solutions deployed</span></div>
-<div><b>2026</b><span>Agentic AI platform in production</span></div>
-<div><b>U.S.-first</b><span>with capability centers in India and Ireland; Japan as strategy confirms</span></div>
-</div><p class="disc"><span style="font-weight:700;font-style:normal">External public baseline, to validate in Days 1–30.</span> Prudential details are drawn from public sources, including the job posting and company announcements.</p></div>
+  <h3>Agentic-first scoring</h3><p class="legend">Discover → Redesign → Govern → Transition → Measure</p>
+  <table>
+    <tr><th>Factor</th><th>Question</th><th>Decides</th></tr>
+    <tr><td><b>Data readiness</b></td><td>Available, owned, trustworthy?</td><td>Fix data first if not</td></tr>
+    <tr><td>ROI</td><td>Value/capacity released?</td><td>Priority</td></tr>
+    <tr><td>People readiness</td><td>Skills &amp; appetite?</td><td>Pace + Academy</td></tr>
+    <tr><td>Criticality</td><td>Risk of the work?</td><td>Autonomy + review</td></tr>
+    <tr><td>CX</td><td>Speed vs human touch?</td><td>Lane choice</td></tr>
+  </table>
 
-</div></details>
-<details class="more"><summary>Why me: I have done this work at 7 firms</summary><div class="mb"><h2>Why me: I have done this work at 7 firms</h2>
-<p>Built or revitalized Quality Engineering at Prudential, TheMarkets.com, SanPulse, Pearson, DoubleVerify, Audible and S&amp;P Global, each on a modernization path with global teams. This role needs someone who can build the AI and bring people along. I do both: I create the platforms, and I lead the human side of change, the hardest and most important part, hand in hand with HR.</p>
-<div class="grid g4">
-<div class="card kpi"><div class="n">150+ engineers</div>led across Customer Office and Retirement at Prudential; 50+ reskilled, 35+ roles transitioned</div>
-<div class="card kpi"><div class="n">350+ engineers</div>in a global team led through an AI-led transformation at S&amp;P Global, all on governed AI workflows within 13 months; engagement recovered after the expected dip. I worked hand in hand with HR, learning workforce practices from the inside at a 160+ year-old enterprise</div>
-<div class="card kpi"><div class="n">4 countries</div>Led workforce change under UK, Canada, US and India labor laws, plus teams in Ireland, France and Singapore; built a QE → SDET → architect career ladder at Prudential</div>
-<div class="card kpi"><div class="n">Business teams</div>Led people change alongside the business and operations teams I partnered with in Prudential’s Customer Office and Retirement, with HR: 50+ reskilled, 35+ roles transitioned</div>
-<div class="card kpi"><div class="n">AIGC</div>Chaired S&amp;P Global’s AI Governance Committee (AIGC), setting AI PDLC standards</div>
-<div class="card kpi"><div class="n">Judge agent</div>Builder agent plus an independent AI judge agent: the gap between human and judge scores closes the loop, so judges and agents improve over time</div>
-<div class="card kpi"><div class="n">GCC</div>Built a Global Capability Center at DoubleVerify, an owned engineering hub rather than a vendor center; grew Audible QA from 4 to 41</div>
-<div class="card kpi"><div class="n">3 days → same day</div>approval time on regulated checks, with evidence-backed human approval (S&amp;P Global)</div>
-<div class="card kpi"><div class="n">~1,200</div>engineers across two business units: the AI-first framework I stood up in 6 months was designed to serve them (S&amp;P Global)</div></div>
+  </section>
 
-<div class="card learn" id="learn" style="margin-top:22px;border-left:4px solid var(--ok)">
-<h3>What I would learn first</h3>
-<p style="margin:4px 0 8px">This plan is a starting hypothesis. Prudential's people, culture and priorities will shape it.</p>
-<ul style="margin:0 0 0 18px;padding:0">
-<li>How the People team and Talent already run workforce planning and the Innovation Academy</li>
-<li>Which roles and teams feel agent work first, heard from the people doing those jobs</li>
-<li>HR, works-council and regulatory practices in each location</li>
-<li>What has already worked or stalled in Prudential's AI programs</li>
-</ul>
-<p class="note" style="margin:8px 0 0">I bring the platform and change experience; I would learn the HR craft from the experts on the team.</p>
-</div>
+<!-- ========== 3 REDESIGN JOURNEY ========== -->
+<section class="pane" id="redesign" role="tabpanel">
+  <h2>One journey, redesigned <span class="tag">Illustrative</span></h2>
+  <p class="legend">Illustrative patterns — not Pru data. Baseline <b>to validate with Prudential in Days 1–30</b>.</p>
+  <div class="pills" id="jpills"></div>
+  <div class="jtog">
+    <button type="button" data-mode="before">Before ELEVATE</button>
+    <button type="button" data-mode="after" aria-pressed="true">With ELEVATE</button>
+  </div>
+  <p id="jq"></p>
+  <div class="steps" id="jst"></div>
+  <div class="jdetail" id="jd"></div>
+  <p id="jsum" class="legend"></p>
 
-</div></details>
-<details class="more"><summary>The first year, and where released capacity goes</summary><div class="mb"><h2>The first year at a glance</h2>
-<div class="grid g4">
-<div class="card"><h3>Days 1–30 · Listen</h3>Baseline skills, sentiment and use cases with Talent, the CDAIO and business leaders.</div>
-<div class="card"><h3>Days 31–90 · Design</h3>Principles, autonomy levels and governance; pick 2 pilot job families.</div>
-<div class="card"><h3>Months 4–6 · Pilot</h3>2 pilots by month 6, one technical and one non-technical; first new roles, Academy tracks and scorecard.</div>
-<div class="card"><h3>Months 7–12 · Scale</h3>Up to 6–8 job families by month 12 as readiness allows; reusable self-serve playbook.</div>
-</div>
-<p class="note">This 12-month plan is a starting hypothesis. It moves at the speed of Prudential's risk tolerance and employee readiness, with job grading, HR and compliance alignment built in: 2 pilots by month 6 (one technical and one non-technical job family, chosen by Prudential's priorities); up to 6–8 job families by month 12, as readiness allows.</p>
-<p class="note"><a href="#" data-go="year" style="color:var(--a)">See the detailed first-year plan →</a></p>
-<h3 style="margin-top:22px">Where released capacity goes</h3>
-<div class="loop">
-<div class="ls"><b>Released capacity</b>Hours agents take on</div><span class="la">→</span>
-<div class="ls"><b>Innovation Academy track</b>Practitioner · Supervisor · Builder</div><span class="la">→</span>
-<div class="ls gate"><b>New roles</b>Agent supervisor · Agent quality reviewer · AI workflow designer · Human–AI team lead</div><span class="la">→</span>
-<div class="ls"><b>Growth &amp; customer work</b>Complex cases, advice, new business</div>
-</div>
-<p class="note">Feeder examples: senior claims examiners → agent supervisor; contact-center leads → human–AI team lead; QA and audit → agent quality reviewer; business analysts → AI workflow designer.</p>
-<div class="card" style="margin-top:16px;border-left:4px solid var(--p)"><h3>Works beyond engineering</h3>Task deconstruction (agent does, human + AI, human only) applies to any job. Non-technical roles are mapped with the people who do them and HR subject-matter experts. My people-side proof is not only technical: at Prudential, across Customer Office and Retirement, 50+ people reskilled and 35+ roles transitioned with care; at S&amp;P Global, engagement recovered after the expected dip, working hand in hand with HR.</div>
-
-
-</div></details>
-<details class="more"><summary>How ELEVATE works, with a human in the loop</summary><div class="mb"><h2>How ELEVATE works</h2>
-<div class="flow">
-<div class="step"><b>1. Discover</b>Map each job into tasks; link tasks to the 300+ use cases in flight</div>
-<div class="step"><b>2. Redesign</b>Split tasks: agent does, human with AI, human only</div>
-<div class="step gate"><b>3. Govern</b>Supervision points, accountability and review with Risk, Ethics, Privacy, Compliance, Legal</div>
-<div class="step"><b>4. Transition</b>Reskill, redeploy and support people through the change</div>
-<div class="step"><b>5. Measure</b>Adoption, quality, value, people; reported to the AI Steering Committee</div>
-</div>
-<p class="note">The amber step is where people stay accountable for what agents do.</p>
-<h3 style="margin-top:22px">Human in the loop, built to learn</h3>
-<div class="loop">
-<div class="ls"><b>1 · Rubric &amp; data</b>Objective data points, scored against a customized rubric</div><span class="la">→</span>
-<div class="ls"><b>2 · Builder agent</b>Creates the work, using the rubric as input</div><span class="la">→</span>
-<div class="ls"><b>3 · AI judge</b>Scores the output against the same rubric</div><span class="la">→</span>
-<div class="ls gate"><b>4 · Human review</b>A named person reviews and scores</div><span class="la">→</span>
-<div class="ls"><b>5 · Delta tracked</b>Human score vs judge score, over time</div><span class="la">↺</span>
-</div>
-<p class="note">The delta feeds learning back into the rubric, the builder agent and the judge, so both improve over time. Autonomy rises only when the evidence supports it.</p>
-
-
-</div></details>
-</div>
-<aside class="ovside"><div class="card">
-<h3>How I would help Prudential</h3>
-<ul>
-<li><b>Redesign roles for human–agent work:</b> task by task, with the people who do it, linked to the 300+ use cases.</li>
-<li><b>Govern agents safely:</b> autonomy levels, named owners and a builder + AI judge loop with human review, as I ran at S&amp;P Global and DoubleVerify.</li>
-<li><b>Reskill and redeploy people:</b> as I did for 150+ engineers at Prudential (50+ reskilled, 35+ roles transitioned).</li>
-<li><b>Bring people through the change:</b> hand in hand with HR; engagement recovered after the expected dip across 350+ engineers globally.</li>
-<li><b>Measure value for the AI Steering Committee:</b> one scorecard across adoption, quality, value and people.</li>
-</ul>
-<div class="ovct"><b>Let's talk</b><a href="mailto:sonia.malik78@gmail.com" data-contact>sonia.malik78@gmail.com</a><a href="tel:+17326291034" data-contact>732-629-1034</a><a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn profile</a></div>
-</div></aside></div>
-<div class="nextnav"><button class="nextbtn" data-go="framework">Next: Framework →</button></div>
 </section>
 
-<!-- FRAMEWORK -->
-<section class="pane" id="framework">
-<h2>The ELEVATE framework: built once, reused across divisions</h2>
-<p>Three sets of components that work together. Each division (Group, Retirement, Wealth) and each capability center uses the same framework and adapts it locally, instead of starting from scratch.</p>
-<div class="grid">
-<div class="card" style="border-top:4px solid var(--a)"><h3>HR components</h3><ul style="margin:6px 0 0 18px;padding:0">
-<li>Job and role redesign: agent does, human + AI, human only</li>
-<li>New roles: agent supervisor, agent quality reviewer, AI workflow designer, human–AI team lead</li>
-<li>Skills assessment: self-assessment, 360 feedback and hands-on challenges</li>
-<li>Career paths, competency framework and internal mobility into new roles</li>
-<li>Innovation Academy tracks: Aware, Practitioner, Supervisor, Builder</li>
-<li>Workforce transitions handled with care, under local labor law</li></ul></div>
-<div class="card" style="border-top:4px solid var(--p)"><h3>Technology components</h3><ul style="margin:6px 0 0 18px;padding:0">
-<li>Data foundation and data readiness checks</li>
-<li>Agentic AI platform with agent identity, owners and permissions</li>
-<li>Human checkpoints and autonomy levels set as configuration</li>
-<li>Builder agent + AI judge + human review, with the gap tracked</li>
-<li>Telemetry for teams and workflows, not individuals</li>
-<li>Reusable templates so each division builds on the last</li></ul></div>
-<div class="card" style="border-top:4px solid var(--ok)"><h3>Non-technology components</h3><ul style="margin:6px 0 0 18px;padding:0">
-<li>Operating model and decision rights with the CDAIO office and the People team</li>
-<li>Governance: Risk, Ethics, Privacy, Compliance and Legal in one pathway</li>
-<li>Change management: champions, promoters, neutrals and detractors</li>
-<li>Communication: what changes, what doesn't, how people grow</li>
-<li>Customer centricity: every pilot carries a customer KPI</li>
-<li>One scorecard and OKRs for the AI Steering Committee</li></ul></div>
-</div>
-
-<h3 style="margin-top:22px">The horizontal model: build once, adopt everywhere</h3>
-<div class="flow">
-<div class="step"><b>Build once, centrally</b>Playbook, templates, agent controls, rubrics and Academy tracks, with the India and Ireland capability centers</div>
-<div class="step"><b>First division pilots</b>Two job families, measured on the scorecard</div>
-<div class="step"><b>Next divisions adopt</b>Retirement, Group Insurance, Individual Life, Wealth and PGIM reuse and adapt locally</div>
-<div class="step gate"><b>Shared governance</b>One pathway and one scorecard for every division</div>
-<div class="step"><b>Improve the core</b>What each division learns goes back into the shared templates</div>
-</div>
-<h3 style="margin-top:22px">What goes agentic first</h3>
-<p>Score each area of work before redesigning it. Work that scores high on ROI and readiness, with manageable risk and a clear customer benefit, goes first. Work where judgment and empathy matter most stays with people, with AI in a supporting role.</p>
-<div class="tw"><table><tbody>
-<tr><th>Factor</th><th>The question</th><th>What it decides</th></tr>
-<tr><td><b>Foundation: data readiness</b></td><td>Is the data the work depends on available, owned and trustworthy?</td><td>If not, fix the data first</td></tr>
-<tr><td><b>ROI</b></td><td>How much value and capacity would agents release?</td><td>Priority order</td></tr>
-<tr><td><b>People readiness</b></td><td>Does the team have the skills and appetite to work with agents?</td><td>Pace, and which Academy track comes first</td></tr>
-<tr><td><b>Business criticality</b></td><td>How much risk does the work carry?</td><td>Autonomy level and how much human review</td></tr>
-<tr><td><b>Customer experience</b></td><td>Would agents make it faster and better for customers, or does the human touch matter more?</td><td>Agent does, human + AI, or human only</td></tr>
-</tbody></table></div>
-
-<h3 style="margin-top:22px">OKRs, one example per division <span class="tag">ILLUSTRATIVE</span></h3>
-<div class="tw"><table><tbody>
-<tr><th>Division</th><th>Objective</th><th>Key results (examples)</th></tr>
-<tr><td>Group Insurance</td><td>Faster, more caring claims</td><td>Time to claim decision · share of agent drafts accepted without edits · claimant satisfaction</td></tr>
-<tr><td>Retirement</td><td>More time for customers at key moments</td><td>Hours released and redeployed · first-contact resolution · associates moved into new roles</td></tr>
-<tr><td>Wealth</td><td>More productive financial professionals</td><td>Time to answer · adoption by advisors · client meetings per week</td></tr>
-<tr><td>Capability centers</td><td>Shared building blocks, reused</td><td>Templates reused across divisions · time to launch the next pilot · Academy completions</td></tr>
-</tbody></table></div>
-<p class="note">Key results are examples to show the structure, not Prudential targets.</p>
-
-<div class="grid" style="margin-top:14px">
-<div class="card"><h3>Why built once works</h3>At Prudential I set up Quality Engineering in Customer Office as a horizontal, reusable framework that teams across the business adopted. At S&amp;P Global the same approach gave one AI-first framework, designed to serve ~1,200 engineers across two business units, and brought 350+ engineers onto governed AI workflows within 13 months.</div>
-<div class="card"><h3>A Prudential pattern to scale</h3>Just Ask, built by Individual Life from what sales teams said they needed, gives financial professionals answers in seconds so they have more time for clients, and won four honors at the 2026 US Customer Experience Awards. ELEVATE would make that pattern repeatable: start from what people need, measure the time given back, and redeploy it to customers.</div>
-</div>
-<p class="disc" style="margin-top:8px">Just Ask details from Prudential's July 16, 2026 announcement.</p>
-<div class="nextnav"><button class="nextbtn" data-go="redesign">Next: Work redesign →</button></div>
+<!-- ========== 4 TALENT ========== -->
+<section class="pane" id="talent" role="tabpanel">
+  <h2>Talent &amp; Innovation Academy</h2>
+  <div class="strip"><b>Redeploy first.</b> Agent hours → Academy (Practitioner · Supervisor · Builder) → new roles → growth work. Primary KR = hours redeployed; cost secondary.</div>
+  <table>
+    <tr><th>Fluency</th><th>Who</th><th>Can do</th></tr>
+    <tr><td>Aware</td><td>All</td><td>Safe use; escalate</td></tr>
+    <tr><td>Practitioner</td><td>Daily AI users</td><td>Redesign tasks; check AI (L1–2)</td></tr>
+    <tr><td>Supervisor</td><td>Supervisors, reviewers, leads</td><td>Run L3–4; exceptions</td></tr>
+    <tr><td>Builder</td><td>Eng / data / AI</td><td>Build agents, judges, guardrails</td></tr>
+  </table>
+  <h3>New roles</h3>
+  <ul class="tight">
+    <li><b>Agent supervisor</b> ← senior examiners, contact leads</li>
+    <li><b>Agent quality reviewer</b> ← underwriters, QA, audit</li>
+    <li><b>AI workflow designer</b> ← ops analysts, BAs</li>
+    <li><b>Human–AI team lead</b> ← people leaders</li>
+  </ul>
+  <p class="legend">Promoters / neutrals / detractors; J-curve (no %). Paths with skill credit (QE→SDET→architect at Pru).</p>
 </section>
 
-<!-- WORK REDESIGN -->
-<section class="pane" id="redesign">
-<h2>Work redesign, one role at a time <span class="tag">ILLUSTRATIVE</span></h2>
-<p>Pick a role. Each job is broken into tasks, and each task goes to one of three lanes. Supervision points show where a person reviews agent work.</p>
-<p><label for="role"><b>Role:</b></label> <select id="role"></select> <span class="note">Examples span claims, contact center, underwriting, PGIM and engineering.</span></p>
-<div class="card" id="rolecard"></div>
-<p class="legend"><span class="lane l-ag">Agent does</span> agent executes; person supervises &nbsp; <span class="lane l-hai">Human + AI</span> person leads, AI assists &nbsp; <span class="lane l-h">Human only</span> judgment, empathy, accountability</p>
-<p class="note">Tasks and splits are examples to show the method, not Prudential data. In practice each role is mapped with the people who do it.</p>
-<div class="nextnav"><button class="nextbtn" data-go="teams">Next: Human + agent →</button></div>
+<!-- ========== 5 KPIs ========== -->
+<section class="pane" id="value" role="tabpanel">
+  <h2>KPIs &amp; ROI <span class="tag">Illustrative</span></h2>
+  <p class="legend">Examples only — <b>to validate with Prudential in Days 1–30</b>. Does not assert Pru’s current state.</p>
+  <h3>C-suite scorecard</h3>
+  <div class="grid">
+    <div class="card"><b>Adoption</b><br>Job families redesigned and live</div>
+    <div class="card"><b>Value (primary KR)</b><br>Hours <b>redeployed</b> — cost secondary</div>
+    <div class="card"><b>Quality &amp; trust</b><br>Error/override within limits; review coverage</div>
+    <div class="card"><b>People</b><br>Internal moves; reskilling completions; qualitative J-curve (no % quoted)</div>
+  </div>
+  <h3>Year-one bars <span class="tag">Illustrative</span></h3>
+  <ul class="tight">
+    <li><b>Adoption:</b> up to 6–8 job families by month 12 (1 tech + 1 non-tech pilot first)</li>
+    <li><b>Capacity:</b> hours redeployed to growth — not only cost takeout</li>
+    <li><b>Quality:</b> human review + learning loop</li>
+    <li><b>Speed (S&amp;P):</b> regulated sign-off 3 days → same day</li>
+    <li><b>Sentiment:</b> promoters / neutrals / detractors; plan for the J-curve</li>
+  </ul>
+  <h3>Division OKRs <span class="tag">Illustrative</span></h3>
+  <table>
+    <tr><th>Division</th><th>Objective</th><th>Key results (examples)</th></tr>
+    <tr><td>Group</td><td>Faster, caring claims</td><td>Decision time · drafts accepted · satisfaction</td></tr>
+    <tr><td>Retirement</td><td>More time at key moments</td><td>Hours redeployed · FCR · new-role moves</td></tr>
+    <tr><td>Wealth</td><td>More productive advisors</td><td>Time to answer · adoption · meetings/week</td></tr>
+    <tr><td>Capability centers</td><td>Shared building blocks</td><td>Template reuse · next-pilot time · Academy</td></tr>
+  </table>
 </section>
 
-<!-- HUMAN-AGENT TEAMS -->
-<section class="pane" id="teams">
-<h2>Human–agent teams</h2>
-<p>When some team members are AI agents, three questions decide whether it works: who directs the work, who checks it, and who is accountable when it goes wrong.</p>
-<h3 style="margin-top:18px">Autonomy levels and accountability</h3>
-<div class="grid ladder">
-<div class="card"><h3>Level 1 · Assist</h3>AI suggests; a person acts. Accountability: the person.</div>
-<div class="card"><h3>Level 2 · Draft</h3>Agent prepares the work; a person approves every item. Accountability: the approver.</div>
-<div class="card"><h3>Level 3 · Act within limits</h3>Agent completes routine cases inside set limits; a supervisor samples work and handles exceptions. Accountability: the agent supervisor.</div>
-<div class="card"><h3>Level 4 · Multi-step autonomy</h3>Agent runs a whole workflow; a named business owner owns outcomes, with monitoring, alerts and a stop switch. Accountability: the business owner.</div>
-</div>
-<p class="note">A workflow moves up a level only when quality evidence supports it, and steps back down after an incident.</p>
+<!-- ========== DEEPER READ ========== -->
+<section class="pane" id="deeper" role="tabpanel">
+  <h2>Deeper read</h2>
+  <p class="legend">Optional detail for diligence. Primary path above is the 2-minute forward.</p>
 
-<h3 style="margin-top:22px">New roles this creates</h3>
-<div class="tw"><table><tbody>
-<tr><th>New role</th><th>What they do</th><th>Natural feeder roles</th></tr>
-<tr><td><b>Agent supervisor</b></td><td>Directs a group of agents, handles exceptions, decides when work goes back to a person</td><td>Senior claims examiners, contact-center leads, team leads</td></tr>
-<tr><td><b>Agent quality reviewer</b></td><td>Samples agent output, maintains scoring rubrics and AI judges, signs off quality</td><td>Underwriters, QA analysts, auditors, compliance reviewers</td></tr>
-<tr><td><b>AI workflow designer</b></td><td>Redesigns processes around agents with the people who do the work</td><td>Onboarding and operations analysts, process improvement, business analysts</td></tr>
-<tr><td><b>Human–AI team lead</b></td><td>Leads a blended team; coaches people and sets agent limits</td><td>People leaders</td></tr>
-</tbody></table></div>
-<div class="card" style="margin-top:14px"><h3>Already tested in practice</h3>At S&amp;P Global and DoubleVerify, AI agents did multi-step engineering work (requirements, code, tests, code review, deployment checks) under human review. People reviewed agent work with an AI judge scoring against a custom rubric, so reviewers decided from evidence. Approval time on regulated checks went from 3 days to same day, with evidence-backed human approval (S&amp;P Global).</div>
-<div class="nextnav"><button class="nextbtn" data-go="tech">Next: Tech platform →</button></div>
+  <details class="details">
+    <summary>Role redesign — task lanes by job family <span class="tag">Illustrative</span></summary>
+    <p><label>Role: <select id="role"></select></label></p>
+    <div class="card" id="rolecard"></div>
+  </details>
+  <details class="details" open>
+    <summary>Human–agent teams &amp; autonomy levels</summary>
+    <ul class="tight">
+      <li><b>L1 Assist</b> — AI suggests; person acts</li>
+      <li><b>L2 Draft</b> — agent prepares; person approves every item</li>
+      <li><b>L3 Act within limits</b> — agent completes routine; supervisor samples</li>
+      <li><b>L4 Multi-step</b> — named business owner; monitoring + stop switch</li>
+    </ul>
+    <p>Move up only on quality evidence; step down after an incident. Builder + AI judge + human review closes the loop.</p>
+  </details>
+
+  <details class="details">
+    <summary>Technology platform (with Data &amp; Agentic AI teams)</summary>
+    <ul class="tight">
+      <li>People &amp; work data → use-case registry → agentic platform → <b>control layer</b> (identity, checkpoints, judge, audit, stop) → scorecard</li>
+      <li>Standards: NIST AI RMF, ISO/IEC 42001; OWASP for LLM/agent security</li>
+      <li>Proven at S&amp;P / DoubleVerify: multi-step engineering under human review; 3 days → same day regulated sign-off</li>
+    </ul>
+  </details>
+
+  <details class="details">
+    <summary>Global footprint</summary>
+    <ul class="tight">
+      <li><b>United States</b> — largest workforce; start pilots here</li>
+      <li><b>India &amp; Ireland</b> — capability centers; Ireland: EU AI Act high-risk employment controls from day one</li>
+      <li><b>Japan</b> — as strategy confirms; consensus-led change</li>
+      <li><b>Brazil &amp; Mexico</b> — markets in scope; pacing and works-council / local labor with Legal and local HR <span class="tag">To validate with Prudential in Days 1–30</span></li>
+    </ul>
+    <p class="legend">Led change under UK, Canada, US, India labor laws; GCC at DoubleVerify; teams in Mexico, Ireland, London, Paris, Tel Aviv, Singapore.</p>
+  </details>
+
+  <details class="details">
+    <summary>Governance pathway</summary>
+    <p>Intake → tier people impact → joint review (People, CDAIO, Risk, Ethics, Privacy, Compliance, Legal) → high-impact to AI Steering Committee → monitor quality, fairness, people. Represent People on Steering with one shared scorecard.</p>
+  </details>
+
+  <details class="details">
+    <summary>First-year hypothesis</summary>
+    <ul class="tight">
+      <li><b>Days 1–30 Listen</b> — baseline skills, sentiment, use cases with Talent, CDAIO, business leaders</li>
+      <li><b>Days 31–90 Design</b> — principles, autonomy, governance; pick 2 pilot job families</li>
+      <li><b>Months 4–6 Pilot</b> — 2 pilots (1 tech, 1 non-tech); first new roles, Academy, scorecard</li>
+      <li><b>Months 7–12 Scale</b> — up to 6–8 job families as readiness allows; reusable playbook</li>
+    </ul>
+    <p class="legend">Starting hypothesis — moves at Prudential’s risk tolerance and employee readiness. <span class="tag">To validate with Prudential in Days 1–30</span></p>
+  </details>
+
+  <details class="details">
+    <summary>When we meet</summary>
+    <p>15-minute live walkthrough: pick one Prudential job family, map tasks into three lanes together. Leave with a one-page 90-day plan for that family.</p>
+    <p>sonia.malik78@gmail.com · 732-629-1034 · <a href="https://www.linkedin.com/in/" rel="noopener">LinkedIn</a></p>
+  </details>
+
+  <details class="details">
+    <summary>Public Prudential context (external baseline only)</summary>
+    <p>Figures such as portfolio size, use-case counts, or platform status drawn from public sources are an <b>external baseline only</b> — <span class="tag">To validate with Prudential in Days 1–30</span>. This draft does not assert Prudential’s current internal state.</p>
+  </details>
 </section>
 
-<!-- TECH PLATFORM -->
-<section class="pane" id="tech">
-<h2>The technology underneath the workforce change</h2>
-<p>Work redesign only holds if the platform enforces it. Supervision points, autonomy levels and accountability have to live in software, not only in policy documents. I would build this with Data, Service &amp; Technology and the Enterprise Agentic AI Platform team.</p>
-<h3 style="margin-top:18px">How the pieces connect <span class="tag">ILLUSTRATIVE</span></h3>
-<div class="flow">
-<div class="step"><b>1. People &amp; work data</b>HR records, skills, org structure, task maps</div>
-<div class="step"><b>2. Use-case registry</b>The 300+ use cases, each linked to the roles and tasks it changes</div>
-<div class="step"><b>3. Agentic AI platform</b>Agents, tools and multi-step workflows</div>
-<div class="step gate"><b>4. Control layer</b>Agent identity and permissions, human checkpoints, AI judge, audit trail, stop switch</div>
-<div class="step"><b>5. Telemetry &amp; scorecard</b>Adoption, quality, value and people measures</div>
-</div>
-<p class="note">The amber layer is where the autonomy levels from the Human + agent tab become real in code.</p>
-
-<h3 style="margin-top:22px">What the platform needs to support people safely</h3>
-<div class="grid">
-<div class="card"><h3>Agents with an owner</h3>Every agent has an identity, a named human owner, a job description and permissions scoped to its autonomy level, registered much like a worker in the org chart.</div>
-<div class="card"><h3>Checkpoints as configuration</h3>Approvals, sampling rates and escalation routes are settings in the workflow engine. Moving a workflow up a level is a reviewed change backed by quality evidence.</div>
-<div class="card"><h3>Evaluation built in</h3>Rubric-based AI judges, test sets for each task and drift monitoring. Human override and error rates feed the quality scorecard.</div>
-<div class="card"><h3>Telemetry without surveillance</h3>Measure teams and workflows, not individuals. Minimal data, reviewed with Privacy and Legal, with the logging the EU AI Act expects for high-risk uses in Ireland.</div>
-<div class="card"><h3>Skills graph</h3>Link tasks to skills to people, so Academy tracks and redeployment target the roles that are actually changing.</div>
-<div class="card"><h3>Recognized standards</h3>NIST AI RMF and ISO/IEC 42001 for AI management; OWASP guidance for LLM and agent security; least-privilege tool access for every agent.</div>
+<footer class="foot">
+  Evidence base: S&amp;P: framework <b>designed to serve ~1,200</b> across 2 BUs; 350+ first wave. Pru alum 2015–2019. Engagement = J-curve only (no % targets).
+</footer>
 </div>
 
-<div class="grid" style="margin-top:14px">
-<div class="card"><h3>Where I have built this</h3>At S&amp;P Global and DoubleVerify I ran a builder and judge agent setup for multi-step engineering work: one agent produced the change, an AI judge scored it against a custom rubric, and people reviewed the agent work, deciding from that evidence. Approval time on regulated checks went from 3 days to same day. I chaired the S&amp;P AI Governance Committee, which set the AI product lifecycle standards.</div>
-<div class="card"><h3>First questions for the technology team</h3>Which agents are in production, and at what autonomy level? Where is human approval enforced in code today? What telemetry already exists? How are agent identities and permissions managed?</div>
-</div>
-<div class="nextnav"><button class="nextbtn" data-go="global">Next: Global →</button></div>
-</section>
-
-<!-- GLOBAL -->
-<section class="pane" id="global">
-<h2>One framework: U.S.-first, with capability centers in India and Ireland</h2>
-<p>The enterprise playbook stays the same; consultation, pacing and support change by location. Markets in scope follow Prudential's strategy, and all regulatory points are to be validated with Legal and local HR.</p>
-<div class="grid">
-<div class="card"><h3>United States</h3>Largest workforce and most use cases: start here with pilots in retirement, group insurance and PGIM. Align with state rules on AI in employment decisions.</div>
-<div class="card"><h3>India (capability center)</h3>Scale reskilling fast; create career paths from delivery roles into agent supervision and quality roles.</div>
-<div class="card"><h3>Ireland (capability center)</h3>EU AI Act treats AI used for employment and worker management as high-risk: build in its controls from the start.</div>
-<div class="card"><h3>Japan and select Europe</h3>As strategy confirms: consensus-led change that involves line managers early, at a pace aligned with each business's own plans.</div>
-</div>
-<div class="card" style="margin-top:14px"><h3>Experience to draw on</h3>Led workforce changes under the labor laws of the UK, Canada, the US and India with HR; built a Global Capability Center at DoubleVerify; worked with teams in Mexico, Ireland, London, Paris, Tel Aviv and Singapore.</div>
-<div class="nextnav"><button class="nextbtn" data-go="governance">Next: Governance →</button></div>
-</section>
-
-<!-- GOVERNANCE -->
-<section class="pane" id="governance">
-<h2>Governance for AI-enabled work redesign</h2>
-<p>Every talent- and work-related AI initiative follows one pathway, scaled to its impact on people.</p>
-<div class="flow">
-<div class="step"><b>1. Intake</b>Initiative, roles affected, use case link</div>
-<div class="step"><b>2. Tier</b>People impact: low, medium, high</div>
-<div class="step gate"><b>3. Joint review</b>People team, CDAIO office, Risk, Ethics, Privacy, Compliance, Legal</div>
-<div class="step"><b>4. Decide</b>High-impact changes go to the AI Steering Committee</div>
-<div class="step"><b>5. Monitor</b>Quality, fairness and people measures after launch</div>
-</div>
-
-<h2>Co-owned with the Chief Data &amp; AI Officer</h2>
-<div class="grid">
-<div class="card"><h3>One roadmap</h3>Platform releases and workforce plans on a single timeline, so people are ready when agents arrive.</div>
-<div class="card"><h3>Monthly joint review</h3>Platform adoption data next to workforce data: skills, sentiment, capacity.</div>
-<div class="card"><h3>Quarterly steering</h3>Represent the People organization on the AI Steering Committee with one shared scorecard.</div>
-</div>
-
-<h2>Leading people through the change</h2>
-<div class="grid">
-<div class="card"><h3>Say it early and plainly</h3>Share what changes, what doesn't, and how people grow. Frame AI as career-building, not a threat.</div>
-<div class="card"><h3>Plan for the dip</h3>Engagement usually drops first. At S&amp;P it dipped in the first quarter and recovered once people saw AI as career-building.</div>
-<div class="card"><h3>Make it safe to try</h3>Sandboxes, champions on every team, and no penalty for honest experiments.</div>
-<div class="card"><h3>Map promoters, neutrals and detractors</h3>Empower promoters early as change champions, bring neutrals along with proof from their own teams, and address the status quo where it holds the change back.</div>
-<div class="card"><h3>Handle every person with care</h3>Consistent policies, individual conversations, and a planned path for every affected role.</div>
-</div>
-<div class="nextnav"><button class="nextbtn" data-go="talent">Next: Talent &amp; Academy →</button></div>
-</section>
-
-<!-- TALENT -->
-<section class="pane" id="talent">
-<h2>Talent architecture and the Innovation Academy</h2>
-<div class="tw"><table><tbody>
-<tr><th>Fluency level</th><th>Who</th><th>What they can do</th></tr>
-<tr><td>Aware</td><td>All employees</td><td>Use approved tools safely; know data rules and when to escalate</td></tr>
-<tr><td>Practitioner</td><td>Daily AI users</td><td>Redesign their own tasks; check AI output; work with agents at levels 1–2</td></tr>
-<tr><td>Supervisor</td><td>Agent supervisors, quality reviewers, team leads</td><td>Run agents at levels 3–4; manage exceptions, quality and accountability</td></tr>
-<tr><td>Builder</td><td>Engineers, data and AI specialists</td><td>Build and evaluate agents, AI judges and guardrails</td></tr>
-</tbody></table></div>
-<h3 style="margin-top:22px">Where released capacity goes</h3>
-<div class="loop">
-<div class="ls"><b>Released capacity</b>Hours agents take on</div><span class="la">→</span>
-<div class="ls"><b>Innovation Academy track</b>Practitioner · Supervisor · Builder</div><span class="la">→</span>
-<div class="ls gate"><b>New roles</b>Agent supervisor · Agent quality reviewer · AI workflow designer · Human–AI team lead</div><span class="la">→</span>
-<div class="ls"><b>Growth &amp; customer work</b>Complex cases, advice, new business</div>
-</div>
-<p class="note">Feeder examples: senior claims examiners → agent supervisor; contact-center leads → human–AI team lead; QA and audit → agent quality reviewer; business analysts → AI workflow designer.</p>
-<div class="grid" style="margin-top:14px">
-<div class="card"><h3>Innovation Academy tracks</h3>One track per fluency level, with role-specific labs built from real Prudential workflows.</div>
-<div class="card"><h3>Champions network</h3>One champion per team. People learn fastest from colleagues who do the same job, as with peer-paired reskilling at S&amp;P.</div>
-<div class="card"><h3>Career paths</h3>Clear moves into the new roles, with credit for skills gained. I built a technical career ladder (QE → SDET → architect) at Prudential.</div>
-<div class="card"><h3>AI talent deployment</h3>Match scarce AI skills to the highest-value use cases across business units.</div>
-</div>
-<div class="card" style="margin-top:14px;border-left:4px solid var(--ok)"><h3>A talent assessment people actually enjoyed</h3>At S&amp;P Global, every engineer assessed their own skills, we gathered 360 feedback, and we validated skills in practice through an escape-room challenge, with iPads for the winners and bragging rights for anyone who beat my score or our CTO's. It surfaced the 32+ engineers who became our platform team and built the framework with me, and it gave everyone a clear, fair picture of where to grow. At Prudential, the same idea would map skills to the new roles and feed internal mobility, so people move into the work AI creates.</div>
-<div class="nextnav"><button class="nextbtn" data-go="value">Next: KPIs &amp; ROI →</button></div>
-</section>
-
-<!-- VALUE -->
-<section class="pane" id="value">
-<h2>Two views of the same numbers</h2>
-<h3 style="margin-top:6px">C-suite scorecard: one page, monthly <span class="tag">ILLUSTRATIVE</span></h3>
-<div class="cs">
-<div><b>Adoption</b>Share of target job families redesigned and live</div>
-<div><b>Value</b>Hours released and redeployed to growth work</div>
-<div><b>Quality &amp; trust</b>Agent error and override rates within limits</div>
-<div><b>People</b>Engagement, internal moves into new roles</div>
-</div>
-<h3 style="margin-top:16px">Operational detail: what VPs and Directors act on each week <span class="tag">ILLUSTRATIVE</span></h3>
-<div class="tw"><table><tbody>
-<tr><th>Measure</th><th>Cut by</th><th>Owner</th><th>Threshold</th><th>Action when off track</th></tr>
-<tr><td>Agent drafts accepted without edits</td><td>Workflow, team</td><td>Director, business operations</td><td>Below agreed rate for 2 weeks</td><td>Review rubric with agent quality reviewers; step autonomy down a level if needed</td></tr>
-<tr><td>Cycle time per case</td><td>Division, job family</td><td>VP, business line</td><td>No improvement after 6 weeks</td><td>Re-map tasks; check data readiness and handoffs</td></tr>
-<tr><td>Hours released vs redeployed</td><td>Job family</td><td>VP with HR business partner</td><td>Released hours not redeployed within a quarter</td><td>Open Academy seats and internal moves; adjust workforce plan</td></tr>
-<tr><td>Override and exception rate</td><td>Agent, workflow</td><td>Agent supervisor</td><td>Above limit</td><td>Pause or roll back; incident review with Risk</td></tr>
-<tr><td>Team pulse and attrition</td><td>Team</td><td>People leader</td><td>Drop beyond expected dip</td><td>Listening session; champions support; pace change</td></tr>
-</tbody></table></div>
-<h2>From use case to measurable value</h2>
-<div class="flow">
-<div class="step"><b>Use cases</b>300+ in flight</div>
-<div class="step"><b>Redesigned roles</b>Tasks moved between lanes</div>
-<div class="step"><b>Capacity released</b>Hours freed, measured</div>
-<div class="step"><b>Redeployed</b>To complex, customer and growth work</div>
-<div class="step"><b>Outcomes</b>Productivity, quality, customer, people</div>
-</div>
-<h2>Sample scorecard <span class="tag">ILLUSTRATIVE</span></h2>
-<div class="grid">
-<div class="card"><b>Roles redesigned</b> <span class="tag">ILLUSTRATIVE</span><div class="meter"><i style="width:35%"></i></div>35% of planned job families · <i>Illustrative targets</i></div>
-<div class="card"><b>Human review coverage</b> <span class="tag">ILLUSTRATIVE</span><div class="meter"><i style="width:100%"></i></div>Target: all agent work at levels 2–4 reviewed or sampled · <i>Illustrative targets</i></div>
-<div class="card"><b>Capacity redeployed</b> <span class="tag">ILLUSTRATIVE</span><div class="meter"><i style="width:55%"></i></div>55% of released hours moved to higher-value work · <i>Illustrative targets</i></div>
-<div class="card"><b>Engagement pulse</b> <span class="tag">ILLUSTRATIVE</span><div class="meter"><i style="width:82%"></i></div>82% favorable in redesigned teams · <i>Illustrative targets</i></div>
-</div>
-<div class="tw" style="margin-top:14px"><table><tbody>
-<tr><th>Layer</th><th>Measures</th></tr>
-<tr><td>Adoption</td><td>Active use by role, fluency levels reached, champion coverage</td></tr>
-<tr><td>Quality</td><td>Agent error and override rates, exceptions, review findings</td></tr>
-<tr><td>Value</td><td>Hours released and redeployed, cycle time, cost to serve, customer satisfaction</td></tr>
-<tr><td>People</td><td>Engagement, internal mobility into new roles, reskilling completions, attrition</td></tr>
-</tbody></table></div>
-<p class="note">At S&amp;P Global I built an executive scorecard that Tech and Finance leadership accepted; the same discipline applies here.</p>
-<div class="nextnav"><button class="nextbtn" data-go="year">Next: First year →</button></div>
-</section>
-
-<!-- FIRST YEAR -->
-<section class="pane" id="year">
-<h2>The first year</h2>
-<p>This 12-month plan is a starting hypothesis. It moves at the speed of Prudential's risk tolerance and employee readiness, with job grading, HR and compliance alignment built in: 2 pilots by month 6 (one technical and one non-technical job family, chosen by Prudential's priorities); up to 6–8 job families by month 12, as readiness allows.</p>
-<div class="grid">
-<div class="card"><h3>Days 1–30 · Listen</h3>Meet the Chief Talent &amp; Capabilities Officer, the CDAIO, technology leaders and business leaders across the 18 business units and both capability centers. Baseline skills, sentiment and the use-case portfolio.</div>
-<div class="card"><h3>Days 31–90 · Design</h3>Agree the human–agent principles and autonomy levels; stand up the governance pathway; pick 2 pilot job families to redesign first with the agentic platform team.</div>
-<div class="card"><h3>Months 4–6 · Pilot</h3>Redesign the 2 pilot job families with the people who do the work, by month 6; launch the first new roles and Academy tracks; first scorecard to the AI Steering Committee.</div>
-<div class="card"><h3>Months 7–12 · Scale</h3>Reach up to 6–8 job families by month 12 as readiness allows, at least one each in retirement, group insurance and PGIM; publish a reusable playbook so other teams can self-serve; multi-year workforce plan with Talent and the CDAIO.</div>
-</div>
-<div class="card" style="margin-top:16px"><b>Let's talk.</b> I would welcome a conversation about this plan. <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact style="color:var(--a)">Connect on LinkedIn</a> · sonia.malik78@gmail.com · 732-629-1034</div>
-<div class="nextnav"><button class="nextbtn" data-go="meet">Next: When we meet →</button></div>
-</section>
-
-<!-- WHEN WE MEET -->
-<section class="pane" id="meet">
-<h2>When we meet</h2>
-<p>I would rather show than tell, and I'd come ready to learn from yours. Here is what a first conversation could look like.</p>
-<div class="grid">
-<div class="card"><h3>A 15-minute live walkthrough</h3>We take one Prudential job family, for example group claims examiner, and map its tasks together into three lanes: agent does, human + AI, and human only. You see the method on your own work, not a slide.</div>
-<div class="card"><h3>Three questions I'd bring</h3><ul style="margin:6px 0 0 18px;padding:0"><li>Which agents are already in production, and at what autonomy level?</li><li>Where do people review agent work today?</li><li>Which teams feel the change first?</li></ul></div>
-<div class="card"><h3>What you'd leave with</h3>You walk away with a one-page 90-day plan to redesign one job family, built from your priorities, as the first step toward 6–8 job families by month 12.</div>
-</div>
-<div class="card" style="margin-top:16px;border-left:4px solid var(--a)"><b>Let's set it up.</b> <a href="mailto:sonia.malik78@gmail.com" data-contact style="color:var(--a)">sonia.malik78@gmail.com</a> · <a href="tel:+17326291034" data-contact style="color:var(--a)">732-629-1034</a> · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact style="color:var(--a)">LinkedIn</a></div>
-<div class="nextnav"><button class="nextbtn" data-go="overview">← Back to Overview</button></div>
-</section>
-
-<footer>ELEVATE is an independent prototype by Sonia Malik, created to show how she would approach this role. It is not affiliated with or endorsed by Prudential. Role examples and scorecard values are illustrative; Prudential details are drawn from public sources, including the job posting and company announcements.</footer>
-</div>
 <script>
 (function(){
-var J={
-ret:{n:'Retirement',q:'An annuity customer asks to take a withdrawal',sum:['5 days','1 day','Associate capacity reinvested in complex cases and retention conversations'],role:'Agent supervisor',st:[
-['Request','Customer calls or goes online','Agent verifies the contract and pulls values','Associate monitors and takes over on request','ag',0,'Up to 1 day in queue','Minutes'],
-['Options','Customer wants to understand choices','Agent drafts options, surrender charges and tax notes','Associate confirms figures before sharing','hai',0,'1–2 days','Same call'],
-['Safeguards','Possible vulnerable customer or fraud','Agent flags signals','Associate decides whether to escalate','hai',1,'Often missed','Flagged every time'],
-['Paperwork','Forms and signatures','Agent pre-fills forms and checks completeness','Associate approves','hai',0,'2 days of back-and-forth','Same day'],
-['Next best step','Customer may need advice','Agent drafts the follow-up letter','Associate offers a referral to a financial professional','h',0,'Rarely offered','Offered in every case']]},
-grp:{n:'Group Insurance',q:'An employee files a short-term disability claim',sum:['10 days','4 days','Examiner capacity reinvested in complex and contested claims'],role:'Agent quality reviewer',st:[
-['Intake','Employer and claimant forms arrive','Agent checks forms and flags missing items','Examiner reviews exceptions','ag',0,'2–3 days','Same day'],
-['Medical records','Doctor statements and records','Agent summarizes records with sources','Examiner spot-checks summaries','ag',0,'3 days','Hours'],
-['Eligibility','Plan terms and coverage','Agent matches claim to plan terms','Examiner confirms the match','hai',1,'2 days','1 day'],
-['Decision','Approve, deny or ask for more','Agent prepares the evidence packet','Examiner decides; denials always by a person','h',1,'2 days','1 day'],
-['Communication','Claimant hears the outcome','Agent drafts the letter','Examiner edits and approves; calls at difficult moments','hai',0,'1 day','Same day']]},
-ind:{n:'Individual Life',q:'A financial professional submits a new life application',sum:['3 weeks','1 week','Underwriting capacity reinvested in complex, high-face-amount cases and faster speed to market'],role:'AI workflow designer',st:[
-['Quick quote','Financial professional needs an answer fast','Just Ask-style assistant answers product and quote questions in seconds','Professional reviews and shares','ag',0,'Hours searching systems','Seconds'],
-['Evidence','Application, prescription and records data','Agent gathers data and flags gaps','Underwriter reviews flagged gaps','ag',0,'1–2 weeks','Days'],
-['Risk summary','Case is assessed','Agent drafts the risk summary and flags','Underwriter samples for accuracy','hai',1,'3 days','1 day'],
-['Decision','Accelerated or full underwriting','Agent applies rules to clean cases','Underwriter decides complex or borderline cases','h',1,'3–5 days','1–2 days'],
-['Policy delivery','Customer receives the policy','Agent assembles documents','Professional explains coverage to the customer','hai',0,'Days','Same day']]},
-wea:{n:'Wealth',q:'A financial professional prepares for a client review',sum:['4 hours prep','1 hour prep','Advisor capacity reinvested in more client conversations and growth'],role:'Human–AI team lead',st:[
-['Prep','Client meeting next week','Agent builds a briefing: holdings, life events, open items','Professional reviews','ag',0,'2 hours','15 minutes'],
-['Scenarios','Retirement income options','Agent models scenarios','Professional chooses what fits the client','hai',0,'1 hour','20 minutes'],
-['Suitability','Recommendation must be suitable','Agent checks against rules and documents evidence','Compliance reviewer samples; professional attests','hai',1,'Manual checklist','Evidence attached'],
-['Conversation','Client meeting','Agent stays out of the room','Professional advises: judgment and trust','h',0,'Same','Same'],
-['Follow-up','Notes and next steps','Agent drafts notes, tasks and the follow-up email','Professional approves','ag',0,'1 hour','10 minutes']]},
-pgim:{n:'PGIM',q:'An institutional client gets its quarterly review',sum:['2 weeks','1 week','Analyst capacity reinvested in research and client insight'],role:'Agent quality reviewer',st:[
-['Data refresh','Quarter closes','Agent refreshes performance and attribution data','Analyst reviews exceptions','ag',0,'3 days','Hours'],
-['Commentary','Market and portfolio view','Agent drafts first commentary from sources','Analyst edits and owns the view','hai',0,'4 days','1–2 days'],
-['Review','Portfolio manager sign-off','Agent checks facts against sources','Portfolio manager approves','hai',1,'2 days','1 day'],
-['Client meeting','Relationship conversation','Agent prepares likely questions','Portfolio manager presents and answers','h',0,'Same','Same'],
-['Follow-ups','Requests and RFP questions','Agent drafts answers from the approved library','Analyst and Compliance approve','hai',1,'1 week','2–3 days']]}
-};
-var keys=['ret','grp','ind','wea','pgim'],cur='ret',mode='after',sel=0;
-var pills=document.getElementById('jpills'),st=document.getElementById('jst'),jd=document.getElementById('jd'),js=document.getElementById('jsum'),jq=document.getElementById('jq');
-if(!pills)return;
-keys.forEach(function(k){var b=document.createElement('button');b.type='button';b.textContent=J[k].n;b.setAttribute('aria-pressed',k===cur);b.onclick=function(){cur=k;sel=0;draw();};pills.appendChild(b);});
-document.querySelectorAll('.jtog button').forEach(function(b){b.onclick=function(){mode=b.dataset.mode;draw();};});
-var LN={ag:'Agent does',hai:'Human + AI',h:'Human only'};
-function draw(){var d=J[cur];
-[].forEach.call(pills.children,function(b,i){b.setAttribute('aria-pressed',keys[i]===cur);});
-document.querySelectorAll('.jtog button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.mode===mode);});
-jq.innerHTML='<b>'+d.n+':</b> '+d.q;
-st.innerHTML='';d.st.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.className='js '+(mode==='after'?x[4]:'');b.setAttribute('aria-pressed',i===sel);
-b.innerHTML='<span class="k">Step '+(i+1)+'</span><span class="t">'+x[0]+'</span><span class="tm">'+(mode==='after'?x[7]:x[6])+'</span>'+(mode==='after'&&x[5]?'<span class="gt">CHECKPOINT</span>':'');
-b.onclick=function(){sel=i;draw();};st.appendChild(b);});
-var x=d.st[sel];
-if(mode==='after'){jd.innerHTML='<div><b>Customer moment</b>'+x[1]+'</div><div><b>Agent does</b>'+x[2]+'</div><div><b>Person does · '+LN[x[4]]+'</b>'+x[3]+(x[5]?'<br><span class="tag" style="margin:4px 0 0">CHECKPOINT: a named person decides</span>':'')+'</div>';}
-else{jd.innerHTML='<div><b>Customer moment</b>'+x[1]+'</div><div><b>Before ELEVATE (typical)</b>People search several systems and re-key data; time goes to manual, repetitive work</div><div><b>Time</b>'+x[6]+'</div>';}
-js.innerHTML='<div><b>'+(mode==='after'?d.sum[1]:d.sum[0])+'</b>'+(mode==='after'?'faster time to outcome with ELEVATE (from '+d.sum[0]+' before)':'time to outcome before ELEVATE')+'</div><div><b>'+(mode==='after'?(function(n){return n+(n===1?' checkpoint':' checkpoints')})(d.st.filter(function(s){return s[5]}).length):'Ad hoc')+'</b>'+(mode==='after'?'where a named person decides: trust built in':'review varies by team')+'</div><div><b>'+(mode==='after'?d.role:'—')+'</b>'+(mode==='after'?'new role this creates. '+d.sum[2]:'roles unchanged; capacity stays tied up in manual work')+'</div>';
-}
-draw();
-})();
-</script>
-<script>
-(function(){
-var G=[['Leaders',[
-['C-suite sponsors','Chief Data &amp; AI Officer and Chief Talent &amp; Capabilities Officer','The one-page C-suite scorecard and the AI Steering Committee pack','Set priorities and risk appetite; decide which divisions move first','Value, adoption, quality and people, monthly','value'],
-['VPs and Directors','Leaders in Retirement, Group Insurance, Individual Life, Wealth and PGIM','The operational scorecard and the "what goes agentic first" scoring','Choose the job families to redesign; act on weekly thresholds','Cycle time, capacity reinvested in growth, customer outcomes','value']]],
-['Business',[
-['Frontline teams','Claims examiners, service associates, underwriters, financial professionals, investment analysts','Agents that handle repetitive steps, an Academy track and a path into new roles','More time for complex cases, customers and judgment calls','Time to outcome, customer satisfaction, quality','redesign'],
-['People leaders','Managers who become human–AI team leads','Role redesign maps, team pulse and agent limits for their team','Coach people through the change; decide when work goes back to a person','Engagement, adoption, override rates','teams']]],
-['PDLC',[
-['Product owners and analysts','Product owners, business analysts, AI workflow designers','Journey-to-MVP: creator and judge agents draft features and stories; people approve','Start every change from the customer journey and its KPI','Features delivered per increment, journey KPIs','framework'],
-['Engineers, QE and data scientists','Software engineers, quality engineers, data and ML specialists','The agentic platform, evaluation gates, reusable templates and AI judges','Build once and reuse across divisions; release with evidence, not opinion','Release quality, defect escape, time to production','tech']]],
-['Enablers',[
-['HR and Talent','HR business partners, Talent &amp; Capabilities, Innovation Academy','Skills graph, career paths, competency framework and internal mobility','Move people into the roles AI creates','Internal moves, reskilling completions, retention','talent'],
-['Risk and Compliance','Risk, Compliance, Legal, Privacy, Ethics','One governance pathway, named owners, checkpoints and the audit trail','Review by exception, with evidence ready','Review coverage, exceptions closed, incidents','governance']]]];
-var pg=document.getElementById('pg'),pd=document.getElementById('pd');if(!pg)return;var cur=[0,0];
-G.forEach(function(g,gi){var w=document.createElement('div');w.className='pgrp';w.innerHTML='<span>'+g[0]+'</span>';g[1].forEach(function(p,pi){var b=document.createElement('button');b.type='button';b.innerHTML=p[0];b.dataset.g=gi;b.dataset.p=pi;b.onclick=function(){cur=[gi,pi];draw();};w.appendChild(b);});pg.appendChild(w);});
-function draw(){pg.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',(+b.dataset.g===cur[0]&&+b.dataset.p===cur[1]));});var p=G[cur[0]][1][cur[1]];
-pd.innerHTML='<div><b>Who</b>'+p[1]+'</div><div><b>What they use</b>'+p[2]+'</div><div><b>What changes · KPI they own</b>'+p[3]+'.<br><span style="color:var(--m)">'+p[4]+'</span><br><a href="#" class="lk" data-go="'+p[5]+'">See how →</a></div>';}
-draw();})();
-</script>
-<script>
-(function(){
-document.addEventListener('click',function(e){var g=e.target.closest&&e.target.closest('[data-go]');if(!g)return;var t=document.querySelector('[role=tab][data-tab="'+g.dataset.go+'"]');if(t){e.preventDefault();t.click();t.scrollIntoView({inline:'center',block:'nearest'});}});
+/* tabs */
 var tabs=document.querySelectorAll('[role=tab]');
 tabs.forEach(function(b){b.addEventListener('click',function(){
-tabs.forEach(function(x){x.setAttribute('aria-selected','false')});
-document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('on')});
-b.setAttribute('aria-selected','true');document.getElementById(b.dataset.tab).classList.add('on');
-window.scrollTo({top:document.querySelector('.tabwrap').offsetTop-4,behavior:'smooth'});
+  tabs.forEach(function(x){x.setAttribute('aria-selected','false')});
+  document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('on')});
+  b.setAttribute('aria-selected','true');
+  document.getElementById(b.dataset.tab).classList.add('on');
 });});
+document.addEventListener('click',function(e){
+  var g=e.target.closest&&e.target.closest('[data-go]');
+  if(!g)return;
+  var t=document.querySelector('[role=tab][data-tab="'+g.dataset.go+'"]');
+  if(t){e.preventDefault();t.click();}
+});
+
+/* Who ELEVATE serves */
+var G=[['Leaders',[
+  ['C-suite sponsors','Chief Data & AI Officer and Chief Talent & Capabilities Officer','One-page C-suite scorecard + AI Steering pack','Set priorities and risk appetite','Value, adoption, quality, people (monthly)','value'],
+  ['VPs and Directors','Leaders in Retirement, Group, Individual Life, Wealth, PGIM','Ops scorecard + agentic-first scoring','Choose job families; act on weekly thresholds','Cycle time, hours redeployed, customer outcomes','value']
+]],['Business',[
+  ['Frontline teams','Claims, service, underwriting, financial professionals, analysts','Agents on repetitive steps + Academy path into new roles','More time for complex cases and customers','Time to outcome, CX, quality','redesign'],
+  ['People leaders','Managers → human–AI team leads','Role maps, team pulse, agent limits','Coach through change; decide when work returns to a person','Adoption, overrides (qualitative pulse)','talent']
+]],['PDLC',[
+  ['Product owners & analysts','POs, BAs, AI workflow designers','Journey-to-MVP with creator/judge agents; people approve','Start from customer journey + KPI','Features per increment, journey KPIs','framework'],
+  ['Engineers, QE, data/ML','Software, QE, data and ML specialists','Platform, eval gates, reusable templates, AI judges','Build once; release with evidence','Release quality, time to production','deeper']
+]],['Enablers',[
+  ['HR and Talent','HRBPs, Talent & Capabilities, Innovation Academy','Skills graph, career paths, internal mobility','Move people into roles AI creates','Internal moves, reskilling completions','talent'],
+  ['Risk and Compliance','Risk, Compliance, Legal, Privacy, Ethics','One pathway, named owners, checkpoints, audit trail','Review by exception with evidence','Review coverage, exceptions closed','deeper']
+]]];
+var pg=document.getElementById('pg'),pd=document.getElementById('pd'),cur=[0,0];
+G.forEach(function(g,gi){var w=document.createElement('div');w.className='pgrp';w.innerHTML='<span>'+g[0]+'</span>';
+  g[1].forEach(function(p,pi){var b=document.createElement('button');b.type='button';b.textContent=p[0];b.onclick=function(){cur=[gi,pi];drawWho();};w.appendChild(b);});
+  pg.appendChild(w);});
+function drawWho(){
+  pg.querySelectorAll('button').forEach(function(b,i){/* set pressed via walk */});
+  var idx=0;pg.querySelectorAll('button').forEach(function(b){
+    var gi=+b.parentElement?0:0;});
+  pg.querySelectorAll('.pgrp').forEach(function(w,gi){w.querySelectorAll('button').forEach(function(b,pi){
+    b.setAttribute('aria-pressed',gi===cur[0]&&pi===cur[1]);
+    b.onclick=function(){cur=[gi,pi];drawWho();};
+  });});
+  var p=G[cur[0]][1][cur[1]];
+  pd.innerHTML='<div><b>Who</b><br>'+p[1]+'</div><div style="margin-top:8px"><b>What they use</b><br>'+p[2]+'</div><div style="margin-top:8px"><b>What changes</b><br>'+p[3]+'<br><span style="color:var(--m)">KPI: '+p[4]+'</span><br><a href="#" class="lk" data-go="'+p[5]+'">See how →</a></div>';
+}
+drawWho();
+
+/* Journey */
+var J={
+ret:{n:'Retirement',q:'An annuity customer asks to take a withdrawal',sum:['5 days','1 day','Associate capacity redeployed to complex cases and retention'],role:'Agent supervisor',st:[
+['Request','Customer calls or goes online','Agent verifies the contract and pulls values','Associate monitors and takes over on request','ag','Up to 1 day in queue','Minutes'],
+['Options','Customer wants choices','Agent drafts options, charges, tax notes','Associate confirms figures','hai','1–2 days','Same call'],
+['Safeguards','Vulnerable customer or fraud','Agent flags signals','Associate decides escalation','hai','Often missed','Flagged every time'],
+['Paperwork','Forms and signatures','Agent pre-fills and checks completeness','Associate approves','hai','2 days back-and-forth','Same day'],
+['Advice handoff','May need a professional','Agent drafts follow-up','Associate offers referral','h','Rarely offered','Offered in every case']]},
+grp:{n:'Group Insurance',q:'An employee files a short-term disability claim',sum:['10 days','4 days','Examiner capacity redeployed to complex/contested claims'],role:'Agent quality reviewer',st:[
+['Intake','Employer and claimant forms','Agent checks forms; flags gaps','Examiner reviews exceptions','ag','2–3 days','Same day'],
+['Medical','Doctor statements and records','Agent summarizes with sources','Examiner spot-checks','ag','3 days','Hours'],
+['Eligibility','Plan terms','Agent matches claim to plan','Examiner confirms','hai','2 days','1 day'],
+['Decision','Approve, deny, or ask more','Agent prepares evidence packet','Examiner decides; denials always human','h','2 days','1 day'],
+['Communication','Claimant hears outcome','Agent drafts letter','Examiner edits/approves; calls at hard moments','hai','1 day','Same day']]},
+ind:{n:'Individual Life',q:'A financial professional submits a new life application',sum:['3 weeks','1 week','Underwriting capacity redeployed to complex/high-face cases'],role:'AI workflow designer',st:[
+['Quick quote','Needs a fast answer','Assistant answers product/quote questions in seconds','Professional reviews and shares','ag','Hours searching','Seconds'],
+['Evidence','App, Rx, records','Agent gathers data; flags gaps','Underwriter reviews flags','ag','1–2 weeks','Days'],
+['Risk summary','Case assessed','Agent drafts summary and flags','Underwriter samples accuracy','hai','3 days','1 day'],
+['Decision','Accelerated or full','Agent applies rules to clean cases','Underwriter decides complex/borderline','h','3–5 days','1–2 days'],
+['Delivery','Policy to customer','Agent assembles documents','Professional explains coverage','hai','Days','Same day']]},
+wea:{n:'Wealth',q:'A financial professional prepares for a client review',sum:['4 hours prep','1 hour prep','Advisor capacity redeployed to more client conversations'],role:'Human–AI team lead',st:[
+['Prep','Meeting next week','Agent builds briefing','Professional reviews','ag','2 hours','15 minutes'],
+['Scenarios','Retirement income options','Agent models scenarios','Professional chooses fit','hai','1 hour','20 minutes'],
+['Suitability','Must be suitable','Agent checks rules; documents evidence','Compliance samples; professional attests','hai','Manual checklist','Evidence attached'],
+['Conversation','Client meeting','Agent stays out','Professional advises','h','Same','Same'],
+['Follow-up','Notes and next steps','Agent drafts notes/email','Professional approves','ag','1 hour','10 minutes']]},
+pgim:{n:'PGIM',q:'An institutional client gets its quarterly review',sum:['2 weeks','1 week','Analyst capacity redeployed to research and client insight'],role:'Agent quality reviewer',st:[
+['Data refresh','Quarter closes','Agent refreshes performance data','Analyst reviews exceptions','ag','3 days','Hours'],
+['Commentary','Market and portfolio view','Agent drafts from sources','Analyst edits and owns','hai','4 days','1–2 days'],
+['Review','PM sign-off','Agent checks facts vs sources','Portfolio manager approves','hai','2 days','1 day'],
+['Client meeting','Relationship conversation','Agent prepares likely questions','PM presents','h','Same','Same'],
+['Follow-ups','RFP / requests','Agent drafts from approved library','Analyst + Compliance approve','hai','1 week','2–3 days']]}
+};
+var keys=['ret','grp','ind','wea','pgim'],jcur='ret',mode='after',sel=0;
+var pills=document.getElementById('jpills'),st=document.getElementById('jst'),jd=document.getElementById('jd'),js=document.getElementById('jsum'),jq=document.getElementById('jq');
+keys.forEach(function(k){var b=document.createElement('button');b.type='button';b.textContent=J[k].n;b.setAttribute('aria-pressed',k===jcur);b.onclick=function(){jcur=k;sel=0;drawJ();};pills.appendChild(b);});
+document.querySelectorAll('.jtog button').forEach(function(b){b.onclick=function(){mode=b.dataset.mode;drawJ();};});
+var LN={ag:'Agent does',hai:'Human + AI',h:'Human only'};
+function drawJ(){
+  var d=J[jcur];
+  [].forEach.call(pills.children,function(b,i){b.setAttribute('aria-pressed',keys[i]===jcur);});
+  document.querySelectorAll('.jtog button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.mode===mode);});
+  jq.innerHTML='<b>'+d.n+':</b> '+d.q+' <span class="tag">Illustrative</span>';
+  st.innerHTML='';
+  d.st.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',i===sel);
+    b.innerHTML='<b>'+x[0]+'</b><br>'+(mode==='before'?x[5]:x[6]);
+    b.onclick=function(){sel=i;drawJ();};st.appendChild(b);});
+  var x=d.st[sel];
+  if(mode==='before'){
+    jd.innerHTML='<b>'+x[0]+' — Before</b><br>'+x[1]+'<br><br><b>Time (illustrative):</b> '+x[5]+'<br><span class="lane l-h">Human only / manual</span>';
+  }else{
+    jd.innerHTML='<b>'+x[0]+' — With ELEVATE</b><br><b>Agent:</b> '+x[2]+'<br><b>Human:</b> '+x[3]+
+      ' <span class="chk">CHECKPOINT</span><br><br><span class="lane l-'+x[4]+'">'+LN[x[4]]+'</span> · <b>Time (illustrative):</b> '+x[6];
+  }
+  js.innerHTML='Cycle (illustrative): '+d.sum[0]+' → '+d.sum[1]+'. '+d.sum[2]+'. Career path example: '+d.role+'.';
+}
+drawJ();
+
+/* Role redesign */
 var A='ag',H='hai',O='h';
 var R=[
 {n:'Group disability & life claims examiner (Group Insurance)',s:[
-['Intake employer and claimant forms; check for missing items',A,'Agent flags gaps; examiner reviews exceptions'],
-['Summarize attending-physician statements and medical records',A,'Examiner spot-checks summaries against source files'],
-['Check eligibility against the group policy and plan terms',H,'Examiner confirms the match before deciding'],
-['Draft approval, denial and request-for-information letters',H,'Examiner edits and approves each letter'],
-['Decide complex, contested or appealed claims',O,''],
-['Talk with claimants and families at difficult moments',O,'']],mix:[35,35,30],next:'Senior claims examiners can move into agent supervisor and agent quality reviewer roles.'},
-{n:'Annuity contact-center associate (Retirement Strategies)',s:[
-['Answer routine contract value, address and document questions',A,'Associate monitors and takes over on request'],
-['Pull contract details and surrender or withdrawal options',H,'Associate confirms figures before sharing'],
-['Draft follow-up letters and call notes',H,'Associate approves each message'],
-['Spot signs of a vulnerable customer or possible fraud',H,'Associate escalates; agent only flags'],
-['Discuss withdrawals, beneficiary changes and complaints',O,''],
-['Refer customers to licensed financial professionals',O,'']],mix:[30,40,30],next:'Contact-center leads can become agent supervisors; strong associates can become agent quality reviewers.'},
-{n:'Individual life underwriter, accelerated underwriting (Individual Life)',s:[
-['Gather application, prescription and motor-vehicle data',A,'Underwriter reviews flagged gaps'],
-['Prepare a case summary and risk flags',A,'Underwriter samples summaries for accuracy'],
-['Apply accelerated-underwriting rules to clean cases',H,'Underwriter confirms decisions the rules suggest'],
-['Order further evidence when a case falls out of the fast path',H,'Underwriter decides what to order'],
-['Decide complex, high-face-amount or borderline cases',O,''],
-['Explain decisions to agents and distribution partners',O,'']],mix:[35,35,30],next:'Underwriters can move into AI workflow designer and rules-and-model reviewer roles.'},
-{n:'Pension risk transfer onboarding analyst (Institutional Retirement)',s:[
-['Ingest plan sponsor census and benefit data',A,'Analyst reviews data-quality exceptions'],
-['Reconcile participant records against plan documents',A,'Analyst samples reconciliations'],
-['Map benefit provisions into the administration setup',H,'Analyst confirms each mapping'],
-['Draft participant welcome and transition communications',H,'Analyst and Compliance approve before release'],
-['Resolve data disputes with plan sponsors and consultants',O,''],
-['Sign off the transition readiness for go-live',O,'']],mix:[35,40,25],next:'Onboarding analysts can become AI workflow designers for institutional operations.'},
-{n:'PGIM investment research analyst (asset management)',s:[
-['Summarize filings, earnings calls and research notes',A,'Analyst spot-checks against sources'],
-['Refresh models with new data and flag changes',A,'Analyst reviews flagged moves'],
-['Draft first versions of research write-ups',H,'Analyst edits and owns the view'],
-['Screen ideas against portfolio criteria',H,'Analyst decides what to pursue'],
-['Form the investment thesis and recommendation',O,''],
-['Meet management teams and present to portfolio managers',O,'']],mix:[30,40,30],next:'Analysts can move into research-agent design and model-risk review roles.'},
+['Intake forms; check missing items',A,'Agent flags gaps; examiner reviews exceptions'],
+['Summarize physician statements',A,'Examiner spot-checks vs source'],
+['Check eligibility vs plan terms',H,'Examiner confirms before deciding'],
+['Draft approval/denial/RFI letters',H,'Examiner edits and approves each'],
+['Decide complex/contested/appealed',O,''],
+['Talk with claimants at hard moments',O,'']],mix:[35,35,30],next:'Senior examiners → agent supervisor / quality reviewer'},
+{n:'Annuity contact-center associate (Retirement)',s:[
+['Routine contract/value questions',A,'Associate monitors; takes over on request'],
+['Pull surrender/withdrawal options',H,'Associate confirms figures'],
+['Draft letters and call notes',H,'Associate approves each'],
+['Spot vulnerable customer / fraud',H,'Associate escalates; agent only flags'],
+['Discuss withdrawals, complaints',O,''],
+['Refer to licensed professionals',O,'']],mix:[30,40,30],next:'Leads → agent supervisor; strong associates → quality reviewer'},
+{n:'Individual life underwriter (accelerated)',s:[
+['Gather app, Rx, MVR data',A,'Underwriter reviews flagged gaps'],
+['Prepare case summary and risk flags',A,'Underwriter samples summaries'],
+['Apply accelerated rules to clean cases',H,'Underwriter confirms'],
+['Order further evidence when out of path',H,'Underwriter decides'],
+['Decide complex / high-face / borderline',O,''],
+['Explain to agents and distribution',O,'']],mix:[35,35,30],next:'Underwriters → AI workflow designer / rules reviewer'},
+{n:'PGIM investment research analyst',s:[
+['Summarize filings, calls, notes',A,'Analyst spot-checks sources'],
+['Refresh models; flag changes',A,'Analyst reviews flagged moves'],
+['Draft first research write-ups',H,'Analyst edits and owns the view'],
+['Screen ideas vs portfolio criteria',H,'Analyst decides'],
+['Form investment thesis',O,''],
+['Meet management; present to PMs',O,'']],mix:[30,40,30],next:'Analysts → research-agent design / model-risk review'},
 {n:'Software engineer',s:[
-['Write code from approved requirements',A,'Engineer reviews the change with judge scores as evidence'],
+['Write code from approved requirements',A,'Engineer reviews with judge scores'],
 ['Generate and run tests',A,'AI judge scores; engineer signs off'],
-['Review code for security and quality',H,'Engineer decides with evidence'],
-['Design systems and make trade-offs',O,''],
-['Work with the business on what to build',O,'']],mix:[40,30,30],next:'Proven at S&P: approval time on regulated checks went from 3 days to same day, with evidence-backed human approval.'},
+['Review code for security/quality',H,'Engineer decides with evidence'],
+['Design systems and trade-offs',O,''],
+['Partner with business on what to build',O,'']],mix:[40,30,30],next:'S&P proof: regulated sign-off 3 days → same day'},
 {n:'People leader',s:[
-['Prepare reports and meeting summaries',A,'Leader reviews before sharing'],
+['Prepare reports and summaries',A,'Leader reviews before sharing'],
 ['Plan team capacity and skills',H,'Leader decides'],
-['Set agent limits for the team',H,'Leader approves with the agent supervisor'],
-['Coach, give feedback and support careers',O,''],
-['Lead people through change',O,'']],mix:[20,40,40],next:'People leaders get a human–AI team lead track in the Academy.'}];
+['Set agent limits for the team',H,'Leader approves with agent supervisor'],
+['Coach, feedback, careers',O,''],
+['Lead people through change',O,'']],mix:[20,40,40],next:'People leaders → human–AI team lead Academy track'}];
 var LAB={ag:'Agent does',hai:'Human + AI',h:'Human only'};
-var sel=document.getElementById('role'),card=document.getElementById('rolecard');
-R.forEach(function(r,i){var o=document.createElement('option');o.value=i;o.textContent=r.n;sel.appendChild(o);});
-function draw(){var r=R[sel.value];
-var rows=r.s.map(function(t){return '<tr><td>'+t[0]+'</td><td><span class="lane l-'+t[1]+'">'+LAB[t[1]]+'</span></td><td>'+(t[2]||'—')+'</td></tr>';}).join('');
-card.innerHTML='<h3>'+r.n+'</h3><div class="tw"><table><tbody><tr><th>Task</th><th>Lane</th><th>Supervision point</th></tr>'+rows+'</tbody></table></div>'+
-'<p style="margin:12px 0 0"><b>Share of time after redesign</b></p><div class="bar"><i style="width:'+r.mix[0]+'%;background:var(--p)"></i><i style="width:'+r.mix[1]+'%;background:var(--a)"></i><i style="width:'+r.mix[2]+'%;background:var(--ok)"></i></div>'+
-'<div class="legend">Agent does '+r.mix[0]+'% · Human + AI '+r.mix[1]+'% · Human only '+r.mix[2]+'%</div><p style="margin:10px 0 0"><b>Career path:</b> '+r.next+'</p>';}
-sel.addEventListener('change',function(){draw();if(window.goatcounter&&window.goatcounter.count){var s=new URLSearchParams(location.search).get('src')||'';window.goatcounter.count({path:location.pathname.replace(/\/$/,'')+'/role/'+R[sel.value].n.replace(/\s+/g,'-')+(s?'?src='+s:''),title:'Role: '+R[sel.value].n,event:true});}});
-draw();
+var rsel=document.getElementById('role'),card=document.getElementById('rolecard');
+R.forEach(function(r,i){var o=document.createElement('option');o.value=i;o.textContent=r.n;rsel.appendChild(o);});
+function drawR(){var r=R[rsel.value];
+  var rows=r.s.map(function(t){return '<tr><td>'+t[0]+'</td><td><span class="lane l-'+t[1]+'">'+LAB[t[1]]+'</span></td><td>'+(t[2]||'—')+'</td></tr>';}).join('');
+  card.innerHTML='<h3 style="margin-top:0">'+r.n+'</h3><div class="tw"><table><tr><th>Task</th><th>Lane</th><th>Supervision</th></tr>'+rows+'</table></div>'+
+    '<p style="margin:10px 0 0"><b>Share of time after redesign</b> <span class="tag">Illustrative</span></p>'+
+    '<div class="bar"><i style="width:'+r.mix[0]+'%;background:var(--p)"></i><i style="width:'+r.mix[1]+'%;background:var(--a)"></i><i style="width:'+r.mix[2]+'%;background:var(--ok)"></i></div>'+
+    '<div class="legend">Agent '+r.mix[0]+'% · Human+AI '+r.mix[1]+'% · Human only '+r.mix[2]+'%</div><p><b>Career path:</b> '+r.next+'</p>';}
+rsel.addEventListener('change',drawR);drawR();
 })();
 </script>
-<script>
-(function(){var s=new URLSearchParams(location.search).get('src')||'';
-var base=location.pathname.replace(/\/(index|full)\.html$/,'/').replace(/\/$/,'');
-window.goatcounter={path:function(p){return location.pathname+(s?'?src='+s:'')}};
-document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[role="tab"],[data-go],[data-contact],.side-tab');
-if(!t||!window.goatcounter||!window.goatcounter.count)return;
-var n=t.getAttribute('data-tab')||t.getAttribute('data-go')||(t.hasAttribute('data-contact')?'contact':(t.classList.contains('side-tab')?'about':(t.textContent||'').trim().slice(0,40)));
-window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,event:true});},true);})();
-</script>
-<script>
-(function(){var tab=document.getElementById('pf-tab'),pf=document.getElementById('pf'),bd=document.getElementById('pf-bd'),open=false,at=0;
-function wide(){return window.matchMedia&&window.matchMedia('(min-width:900px)').matches}
-function set(v){open=v;pf.classList.toggle('show',v);document.body.classList.toggle('pf-on',v);tab.hidden=v;tab.setAttribute('aria-expanded',v?'true':'false');if(v){at=window.scrollY;}}
-tab.addEventListener('click',function(e){e.stopPropagation();set(true);});
-document.getElementById('pf-x').addEventListener('click',function(){set(false);tab.focus();});
-bd.addEventListener('click',function(){set(false);});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'&&open){set(false);tab.focus();}});
-window.addEventListener('scroll',function(){if(open&&!wide()&&Math.abs(window.scrollY-at)>60)set(false);},{passive:true});
-})();
-</script>
-<script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<style>.watermark{position:fixed;inset:0;pointer-events:none;z-index:70;background-image:url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='460' height='250'><text x='20' y='150' transform='rotate(-22 230 125)' font-family='Arial, sans-serif' font-size='15' fill='%2314202E' fill-opacity='0.08'>© 2026 Sonia Malik · ELEVATE prototype</text></svg>");}@media print{.watermark{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style>
-<div class="watermark" aria-hidden="true"></div>
-</body></html>
+</body>
+</html>
