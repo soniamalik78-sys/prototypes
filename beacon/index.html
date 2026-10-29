@@ -2102,7 +2102,7 @@ function render(k){var e=EV[k],d=document.createElement('div');d.className='bce 
 d.innerHTML='<time>'+e[0]+'</time><div class="bb"><span class="wh">'+e[2]+'<span class="ln">'+e[4]+'</span></span>'+e[3]+'</div>';
 f.appendChild(d);var m=mn(e[0])-mn(EV[0][0]);ck.textContent='0:'+('0'+m).slice(-2);ln.innerHTML=e[4];f.scrollTop=f.scrollHeight;
 if(!reduce)requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('in');f.scrollTop=f.scrollHeight;});});}
-var tm=null,i=0,paused=false,started=false,DL=6000;
+var tm=null,i=0,paused=false,started=false,DL=4000;
 function sched(){if(tm)clearTimeout(tm);tm=null;if(i>=EV.length){pb.innerHTML='▶ Play';return;}if(paused)return;tm=setTimeout(function(){render(i++);sched();},DL);}
 function play(){if(tm)clearTimeout(tm);i=0;paused=false;pb.innerHTML='❚❚ Pause';f.innerHTML='';ck.textContent='0:00';ln.textContent='–';if(reduce){for(var k=0;k<EV.length;k++)render(k);i=EV.length;return;}render(i++);sched();}
 pb.addEventListener('click',function(){started=true;if(i>=EV.length){play();return;}paused=!paused;pb.innerHTML=paused?'▶ Play':'❚❚ Pause';sched();});
@@ -2115,12 +2115,12 @@ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es
 <script>
 (function(){
 var arts=[].slice.call(document.querySelectorAll('#persona-grid article.persona'));if(!arts.length)return;
-var GL={discover:'Discover & Design',build:'Build & Evaluate',release:'Release & Run',leadership:'Leadership'};
+var GL={leadership:'Leadership',discover:'Discover & Design',build:'Build & Evaluate',release:'Release & Run'};
 var P=arts.map(function(a){var r=a.querySelector('.prole'),st=a.querySelector('.pstage');var name=r?r.childNodes[0].textContent.trim():'';
 var pain=a.querySelector('.pain');var gets=[].slice.call(a.querySelectorAll('.gets li')).slice(0,2).map(function(l){return l.textContent.trim();});
 var gives=a.querySelector('.gives li');
 return {g:a.getAttribute('data-pgroup')||'discover',name:name,st:st?st.textContent.trim():'',h:(a.querySelector('h3')||{}).textContent||'',pain:pain?pain.textContent.replace(/^Pain:\s*/,'').trim():'',give:gives?gives.textContent.trim():'',gets:gets};});
-var cur=0;
+var cur=Math.max(0,P.findIndex(function(p){return p.g==='leadership';}));
 var shortPain=function(t){var x=t.split(';')[0];return x.length>110?x.slice(0,107)+'…':x;};
 function draw(){
  document.querySelectorAll('[data-who-groups]').forEach(function(box){
