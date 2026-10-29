@@ -786,6 +786,31 @@ td.num{font-variant-numeric:tabular-nums}
   .shell { --about-w: 240px; }
 }
 
+
+.hero-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:24px;align-items:start}
+.hero-l{min-width:0}
+.bcn{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 40px rgba(31,58,95,.13);overflow:hidden}
+.bcn-h{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;background:#1F3A5F;color:#fff}.bcn-h b{font-size:.9rem}.bcn-h span{font-size:.72rem;opacity:.85}
+.bcn-f{height:330px;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.bce{display:grid;grid-template-columns:40px 1fr;gap:8px;align-items:start;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.bce.in{opacity:1;transform:none}
+.bce time{font:12px var(--f-mono);color:var(--faint);padding-top:3px}
+.bce .bb{border-radius:10px;padding:8px 11px;border:1px solid var(--line);background:#f6f8fb;font-size:.95rem;font-weight:600;line-height:1.3;color:#191C22}
+.bce.ag .bb{background:#ECE6F6;border-color:transparent}.bce.sys .bb{background:#E5ECF6;border-color:transparent}
+.bce.hum .bb{background:#fff;border-left:3px solid #2E7D4F}
+.bce.chk .bb{background:#fff;border:1px solid #e6cf9e;border-left:4px solid #E87722}
+.bce.ok .bb{background:#E3F2E8;border-color:transparent}
+.bce .wh{display:block;font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#575E6B;margin-bottom:2px}
+.bce .ln{display:inline-block;font-size:.62rem;font-weight:700;border:1px solid #BCC4D1;border-radius:999px;padding:0 6px;margin-left:6px;color:#575E6B;text-transform:none;letter-spacing:0;background:#fff}
+.bce small{display:table;margin-top:4px;font-size:.7rem;font-weight:700;color:#2E7D4F;background:#E3F2E8;border-radius:999px;padding:1px 9px}
+.bce.ok small{background:#fff}.bce.chk small{color:#8F5E00;background:#FBF0D9}
+.bcn-b{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:9px 14px;border-top:1px solid var(--line)}
+.bcn-k{display:flex;gap:16px}.bcn-k b{display:block;font:600 15px/1.1 var(--f-mono);color:#1F3A5F;white-space:nowrap}.bcn-k span{font-size:.7rem;color:var(--muted)}
+.bcn-bt{display:flex;gap:6px}.bcn-r{border:1px solid #1F3A5F;background:#fff;color:#1F3A5F;border-radius:999px;padding:5px 12px;font:inherit;font-weight:700;font-size:.8rem;cursor:pointer;white-space:nowrap}.bcn-r.solid{background:#1F3A5F;color:#fff}
+.bcn-cap{font-size:.8rem;color:var(--muted);margin:8px 0 0}.bcn-cap a{color:#1F3A5F;font-weight:700}
+.rw-grid dd{font-size:.98rem;font-weight:600;color:#191C22}
+@media (max-width:1200px){.hero-g{grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:18px}.bcn-h span{display:none}}
+@media (max-width:860px){.hero-g{grid-template-columns:1fr}.bcn-f{height:300px}}
 </style>
 </head>
 <body>
@@ -805,7 +830,7 @@ td.num{font-variant-numeric:tabular-nums}
   <button type="button" data-stage="D6" aria-current="false"><span class="sn">6</span><span><b>Run &amp; improve</b><span class="sg">Auto-checked</span></span></button>
 </nav>
 <div class="wrap">
-  <header class="hero">
+  <header class="hero"><div class="hero-g"><div class="hero-l">
     <div class="eyebrow">
       <span class="pill">Executive preview · Sonia Malik</span>
       <span class="pill neutral">For Guardian Life leaders</span>
@@ -814,6 +839,15 @@ td.num{font-variant-numeric:tabular-nums}
     <div class="pron">One customer journey on an AI execution platform, with controls built in — through PDLC and ADLC</div>
     <div class="acro" style="font-size:.9rem;letter-spacing:.02em;color:var(--ink,#333);margin-top:10px"><span style="color:#1F3A5F"><b>B</b>uild · <b>E</b>valuate · <b>A</b>pprove · <b>C</b>ontrol · <b>O</b>bserve · <b>N</b>urture</span> <span style="font-style:italic;color:#333">&nbsp;— A beacon, not a barrier.</span></div>
     <p class="thesis">Illustrative walkthrough: a policyholder filing a disability claim, stage by stage through the product development lifecycle (PDLC) and the AI-driven development lifecycle (ADLC). Controls live in the platform.</p>
+    </div><div class="hero-r">
+    <div class="bcn" id="bcn" aria-label="Sample: one disability claim through BEACON">
+      <div class="bcn-h"><b>Claim console · Disability claim</b><span>Sample · illustrative</span></div>
+      <div class="bcn-f" id="bcn-f" aria-live="polite"></div>
+      <div class="bcn-b"><div class="bcn-k"><div><b id="bcn-c">0:00</b><span>elapsed</span></div><div><b id="bcn-l">–</b><span>current lane</span></div></div>
+      <div class="bcn-bt"><button type="button" class="bcn-r" id="bcn-p">❚❚ Pause</button><button type="button" class="bcn-r solid" id="bcn-n">Next ›</button><button type="button" class="bcn-r" id="bcn-rp" aria-label="Replay">↻</button></div></div>
+    </div>
+    <p class="bcn-cap">One claim, filed to paid, with a person deciding where it matters. <a href="#claim-runway">See the six stages ↓</a></p>
+    </div></div>
   </header>
 
   <!-- CLAIM RUNWAY DEMO (above the fold) -->
@@ -1592,7 +1626,7 @@ td.num{font-variant-numeric:tabular-nums}
     opts=opts||{};
     TABS.forEach(t=>{ const on=t.dataset.tab===id; t.setAttribute('aria-selected',String(on)); t.tabIndex=on?0:-1; document.getElementById(t.dataset.tab).hidden=!on; });
     const bar=document.querySelector('.tabbar');
-    if(opts.scroll){ const y=bar.getBoundingClientRect().top+window.scrollY; if(window.scrollY>y) window.scrollTo({top:y, behavior:'auto'}); }
+    if(opts.scroll){ const y=bar.getBoundingClientRect().top+window.scrollY-8; window.scrollTo({top:y, behavior:'smooth'}); }
     if(opts.focus){ const t=TABS.find(x=>x.dataset.tab===id); if(t) t.focus(); }
     if(id==='dash' && document.getElementById('month')) drawDash(+document.getElementById('month').value);
   }
@@ -1943,12 +1977,12 @@ window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,e
 /* Claim runway + Operating Model: People + AI interactivity */
 (function(){
   const stages=[
-    {name:'Discover', sub:'Problem & KPI', cust:'Policyholder needs clarity on eligibility, timeline and next steps after an unexpected stop from work.', agent:'Journey agent maps goal, intent and baseline from past claims; surfaces the few end-to-end bets (intake → decision → payment).', ctrl:'Gate pass · B Build: business owner registers use case, purpose and risk tier. Controls live in the platform.', kpi:'Baseline days-to-decision; Claimant NPS; complaint rate'},
-    {name:'Design', sub:'MVP & stories', cust:'Claimant should file once, see status, and know a person decides denials.', agent:'Creator agents draft MVP scope, BDD stories and acceptance criteria from the journey KPI; judge agent flags gaps before humans review.', ctrl:'Gate pass · B Build: product + claims lead approve stories and tool scope (read-only first).', kpi:'% stories tied to a journey KPI; scope cycle time'},
-    {name:'Build', sub:'Code & integrate', cust:'Behind the scenes: intake, identity, document gather and medical review must work as one path.', agent:'Platform and delivery teams use code, test and review agents on the chain: intake runtime, retrieval over policy docs, safe tool calls, agent-to-agent medical handoff.', ctrl:'Gate pass · C Control: schemas and safe tool lists; health data masked; out-of-scope actions blocked.', kpi:'Release quality score; % builds with human review at risk points'},
-    {name:'Evaluate', sub:'Test & fair', cust:'Before go-live, the path must be as fair and grounded for this claimant as for the last hundred.', agent:'Judge / eval agents replay past claims; compare to examiner decisions; run grounding, fairness and non-functional checks.', ctrl:'Gate pass · E Evaluate: QE + risk sign the eval packet. Failures become new test cases.', kpi:'Eval pass rate; fairness delta; Sev launch risk'},
-    {name:'Release', sub:'Deploy with gates', cust:'Examiner opens one screen: recommended benefit, duration, rationale and evidence — then decides.', agent:'Agent assembles the evidence packet; payment and notice tools stay locked until approval. Denials never auto-fire.', ctrl:'Human approval · A Approve: examiner decides. High-impact cases require evidence-backed human sign-off.', kpi:'Time to decide; examiner acceptance rate; % human denials'},
-    {name:'Run & improve', sub:'Operate & learn', cust:'Claimant is paid and notified; the next claimant should get a better experience from what this one taught.', agent:'Observe agents trace every step; drift and incident alerts; examiner edits become training and test cases.', ctrl:'Gate pass · O Observe / N Nurture: ops + risk own open exceptions with owners and dates.', kpi:'Days to decision; payment accuracy; open policy exceptions; Claimant NPS'}
+    {name:'Discover', sub:'Problem & KPI', cust:'"Am I covered, and how long will this take?"', agent:'Maps the journey and baseline from past claims.', ctrl:'Owner registers the use case and risk tier.', kpi:'Days to decision · Claimant NPS'},
+    {name:'Design', sub:'MVP & stories', cust:'File once, see status, a person decides denials.', agent:'Creator agents draft stories; a judge flags gaps.', ctrl:'Product + claims lead approve; tools read-only first.', kpi:'Stories tied to a journey KPI'},
+    {name:'Build', sub:'Code & integrate', cust:'Intake, documents and medical review work as one path.', agent:'Code, test and review agents build the chain.', ctrl:'Safe tool lists; health data masked.', kpi:'Release quality score'},
+    {name:'Evaluate', sub:'Test & fair', cust:'As fair for this claimant as for the last hundred.', agent:'Judge agents replay past claims vs. examiner decisions.', ctrl:'QE + risk sign the eval packet.', kpi:'Eval pass rate · fairness gap'},
+    {name:'Release', sub:'Deploy with gates', cust:'Examiner sees benefit, rationale and evidence on one screen.', agent:'Builds the evidence packet; payment stays locked.', ctrl:'Examiner decides. Denials never auto-fire.', kpi:'Time to decide · % human denials'},
+    {name:'Run & improve', sub:'Operate & learn', cust:'Paid and notified; the next claim goes better.', agent:'Traces every step; examiner edits become test cases.', ctrl:'Ops + risk own every open exception.', kpi:'Payment accuracy · Claimant NPS'}
   ];
   const track=document.getElementById('rw-track');
   if(!track) return;
@@ -2031,6 +2065,33 @@ window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,e
   });
 })();
 
+</script>
+<script>
+(function(){
+var EV=[
+['09:02','','Claimant','"I can\'t work after surgery."<small>File once, any hour</small>','Customer'],
+['09:03','ag','Intake agent','Documents read, policy matched.<small>No re-keying</small>','Agent does'],
+['09:05','sys','Medical agent + AI judge','Summary scored against the rubric.<small>Checked before a person sees it</small>','Agent + AI judge'],
+['09:06','chk','Checkpoint','Denial path? A person decides.<small>Denials never auto-fire</small>','Checkpoint'],
+['09:12','hum','Examiner','Approved from the evidence packet.<small>Faster, still reviewed</small>','Human decides'],
+['09:13','ok','Payment agent','Unlocked after approval. Claimant notified.<small>Same-day decision (illustrative)</small>','Agent does'],
+['09:20','ok','Observe','Every step logged; edits improve the next claim.<small>Audit-ready</small>','Measure &amp; learn']];
+var f=document.getElementById('bcn-f');if(!f)return;var ck=document.getElementById('bcn-c'),ln=document.getElementById('bcn-l'),pb=document.getElementById('bcn-p');
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function mn(t){var p=t.split(':');return +p[0]*60+ +p[1];}
+function render(k){var e=EV[k],d=document.createElement('div');d.className='bce '+e[1]+(reduce?' in':'');
+d.innerHTML='<time>'+e[0]+'</time><div class="bb"><span class="wh">'+e[2]+'<span class="ln">'+e[4]+'</span></span>'+e[3]+'</div>';
+f.appendChild(d);var m=mn(e[0])-mn(EV[0][0]);ck.textContent='0:'+('0'+m).slice(-2);ln.innerHTML=e[4];f.scrollTop=f.scrollHeight;
+if(!reduce)requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('in');f.scrollTop=f.scrollHeight;});});}
+var tm=null,i=0,paused=false,started=false,DL=6000;
+function sched(){if(tm)clearTimeout(tm);tm=null;if(i>=EV.length){pb.innerHTML='▶ Play';return;}if(paused)return;tm=setTimeout(function(){render(i++);sched();},DL);}
+function play(){if(tm)clearTimeout(tm);i=0;paused=false;pb.innerHTML='❚❚ Pause';f.innerHTML='';ck.textContent='0:00';ln.textContent='–';if(reduce){for(var k=0;k<EV.length;k++)render(k);i=EV.length;return;}render(i++);sched();}
+pb.addEventListener('click',function(){started=true;if(i>=EV.length){play();return;}paused=!paused;pb.innerHTML=paused?'▶ Play':'❚❚ Pause';sched();});
+document.getElementById('bcn-n').addEventListener('click',function(){started=true;if(i>=EV.length){play();return;}paused=true;pb.innerHTML='▶ Play';render(i++);sched();});
+document.getElementById('bcn-rp').addEventListener('click',function(){started=true;play();});
+var c=document.getElementById('bcn');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es.some(function(x){return x.isIntersecting;})){io.disconnect();if(!started){started=true;setTimeout(play,500);}}},{threshold:0.3});io.observe(c);}else play();
+})();
 </script>
 </body>
 </html>
