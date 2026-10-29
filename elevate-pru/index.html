@@ -247,6 +247,14 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 .popb{overflow:auto;padding:4px 20px 18px}
 .popin{display:block!important}
 .popin>h2:first-child{margin-top:12px}
+.tk{background:#fff;border:1px solid var(--line);border-left:4px solid var(--p);border-radius:12px;padding:10px 14px;margin:8px 0 6px}
+.tkh .lk{font-size:13.5px}.tk{margin-top:16px}.tkh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}.tk h3{margin:0 0 8px;font:600 18px/1.25 Spectral,Georgia,serif;color:var(--a)}
+.tkf{display:flex;align-items:stretch;gap:4px}
+.tks{flex:1;background:var(--as);border-radius:8px;padding:7px 9px;font-size:12.5px;line-height:1.3;color:var(--m)}.tks b{display:block;font-size:14px;color:var(--fg);margin-bottom:2px}
+.tks.ag{background:var(--pb)}.tks.ev{background:var(--wb)}.tks.hu{background:var(--okb)}
+.tka{align-self:center;color:#8a8f99;font-weight:700}
+.tkl{font-size:12.5px;color:var(--m);margin-top:7px}
+@media (max-width:899px){.tkf{flex-direction:column}.tka{transform:rotate(90deg);align-self:center;line-height:1}}
 </style></head><body>
 <button class="side-tab" id="pf-tab" aria-expanded="false" aria-controls="pf">How I'd help Prudential →</button>
 <div class="pf-bd" id="pf-bd"></div>
@@ -278,10 +286,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <p class="who"><b>Sonia Malik</b> · AI Workforce Transformation Leader · 24+ years in engineering and transformation leadership · returning Prudential alum (Customer Office &amp; Retirement, 2015–2019) · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn</a></p>
 </header>
 <div class="xb"><div class="x1"><b>What excites me:</b> returning to build, not advise, Prudential's people + AI operating model, in a culture of learning with real room to innovate.</div><div class="x2"><b>Redeploy first:</b> success = hours reinvested in growth and new roles; cost is secondary.</div></div>
-<div class="lead2"><div class="lh">Built for the two leaders this role reports to</div>
-<div class="lc lca"><b>Amie Watson</b><span>Chief Talent &amp; Capabilities Officer</span><p>People first: roles redesigned with the people who do the work, career paths and internal mobility into new roles, inclusive change led with HR. <a href="#talent" data-pop="talent" class="lk">Talent →</a></p></div>
-<div class="lc lcb"><b>Bob Bastian</b><span>Chief Data &amp; AI Officer</span><p>Data and trust first: data readiness before agents, governance before agentic scale, a named person accountable for every agent, value beyond cost. <a href="#framework" data-pop="framework" class="lk">Framework →</a></p></div>
-</div>
+
 </div><div class="hr2">
 <div class="cn" id="cn" aria-label="Sample: one Retirement request through ELEVATE">
 <div class="cnh"><b>Service console · Retirement withdrawal</b><span>Sample · illustrative</span></div>
@@ -290,6 +295,16 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 </div>
 <p class="cncap">One customer request from first ask to resolution, through every ELEVATE lane. About 5 days before ELEVATE (illustrative). <button type="button" class="linkish" id="seej">See the journey →</button></p>
 </div></div>
+<div class="tk"><div class="tkh"><h3>How the Tech Works: Objective Evidence, People Decide</h3><a href="#tech" data-go="tech" class="lk">Tech Platform →</a></div>
+<div class="tkf">
+<div class="tks"><b>Rubric &amp; Data</b>Standards and journey KPI set up front</div><span class="tka">›</span>
+<div class="tks ag"><b>Creator Agent</b>Drafts the work: options, stories, code</div><span class="tka">›</span>
+<div class="tks ag"><b>AI Judge</b>Scores it against the rubric</div><span class="tka">›</span>
+<div class="tks ev"><b>Objective Evidence</b>Scores, sources and checks in one packet</div><span class="tka">›</span>
+<div class="tks hu"><b>Human Decides</b>A named owner approves, edits or stops</div>
+</div>
+<div class="tkl">↺ Human edits feed back, so the rubric and agents improve · Proven at S&amp;P Global: 3 days → same day regulated sign-off; features per PI up 30%</div>
+</div>
 <section class="opm" aria-label="The people + AI operating model behind ELEVATE">
 <span class="opl">Proven at S&amp;P Global, applied to Prudential</span>
 <h2>The people + AI operating model behind ELEVATE</h2>
@@ -939,9 +954,9 @@ function tc(t){var first=true;return t.replace(/([A-Za-z][A-Za-z'’]*(?:-[A-Za-
  var out=w;if(w==='e-signature')out='E-Signature';
  else if(!(SM[w]&&!first))out=w.split('-').map(function(x){return /^[a-z]/.test(x)?x.charAt(0).toUpperCase()+x.slice(1):x;}).join('-');
  first=false;return out;}).replace(/\b(a|an|and|as|at|but|by|for|in|of|on|or|per|the|to|vs|via|with|from|into|not)(\s*[→?]?\s*)$/,function(m,w,t){return w.charAt(0).toUpperCase()+w.slice(1)+t;});}
-var SEL='h1 small,h2,h3,summary,.chips span,.tabs button,#moretabs button,.pgrp button,.jpills button,.jtog button,.lh,.dh,.dt,.step,.at,.fw3 .ph,.st,.ln,.ce small,th,.opm svg text,.pd b,.js .t,.js .k,.jsum b,.cs b,.cs>div,.poptop b,.govb b,.navhint,.nextbtn,.meetbtn,.cnk span,.cnk b,.cnh b,.cnh span,.opl';
+var SEL='h1 small,h2,h3,summary,.chips span,.tabs button,#moretabs button,.pgrp button,.jpills button,.jtog button,.lh,.dh,.dt,.step,.at,.fw3 .ph,.st,.ln,.ce small,th,.opm svg text,.pd b,.js .t,.js .k,.jsum b,.cs b,.cs>div,.poptop b,.govb b,.navhint,.nextbtn,.meetbtn,.cnk span,.cnk b,.cnh b,.cnh span,.opl,.tks,.xb b';
 function run(root){(root.matches&&root.matches(SEL)?[root]:[]).concat([].slice.call((root.querySelectorAll?root:document).querySelectorAll(SEL))).forEach(function(el){
- var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),n;while(n=w.nextNode()){if(n.parentElement.closest('a[href^="mailto"],a[href^="tel"]'))continue;var v=n.nodeValue;if(!/[a-z]/.test(v))continue;if(!n.parentElement.closest('svg,h2,h3,th')&&v.trim().split(/\s+/).length>9)continue;
+ var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),n;while(n=w.nextNode()){if(n.parentElement.closest('a[href^="mailto"],a[href^="tel"]'))continue;var v=n.nodeValue;if(!/[a-z]/.test(v))continue;if(!n.parentElement.closest('svg,h2,h3,th,.chips')&&v.trim().split(/\s+/).length>9)continue;
  var r=tc(v);if(r!==v)n.nodeValue=r;}});}
 window.__tc=run;
 var busy=false;function all(){if(busy)return;busy=true;run(document.body);busy=false;}
