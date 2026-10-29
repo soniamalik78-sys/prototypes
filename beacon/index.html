@@ -12,7 +12,7 @@
 <style>
 /* Layout: single reading column (max 1040px), compass-ring hero, tabbed panes; agent desk is a 4-step stepper; tables scroll inside their own box. */
 :root{
-  --bg:#F3F4F6; --surface:#FFFFFF; --sunk:#E8EBF0; --fg:#191C22; --muted:#575E6B; --faint:#7D8492;
+  --bg:#F7F8FA; --surface:#FFFFFF; --sunk:#EEF1F5; --fg:#191C22; --muted:#575E6B; --faint:#7D8492;
   --line:#D8DDE5; --line-strong:#BCC4D1;
   --accent:#2D4F86; --accent-soft:#E5ECF6; --accent-ink:#22406F;
   --vine:#7A5A1E;
@@ -21,15 +21,15 @@
   --f-display:"Fraunces", Georgia, "Times New Roman", serif;
   --f-body:"Public Sans", "Segoe UI", Arial, sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-  --r:10px;
+  --r:10px; color-scheme:light;
 }
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+@media (prefers-color-scheme: dark){ :root[data-theme="__off__"]{
   --bg:#12151B; --surface:#1A1E26; --sunk:#232833; --fg:#E7EAF0; --muted:#A9B0BE; --faint:#828A99;
   --line:#2E3440; --line-strong:#434B5A;
   --accent:#8FB1E8; --accent-soft:#1F2C44; --accent-ink:#B5CCF2; --vine:#D9B26A;
   --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#E87722; --bad-bg:#3A2A1C;
   --lattice:rgba(143,177,232,0.09); color-scheme:dark; } }
-:root[data-theme="dark"]{
+:root[data-theme="__off2__"]{
   --bg:#12151B; --surface:#1A1E26; --sunk:#232833; --fg:#E7EAF0; --muted:#A9B0BE; --faint:#828A99;
   --line:#2E3440; --line-strong:#434B5A;
   --accent:#8FB1E8; --accent-soft:#1F2C44; --accent-ink:#B5CCF2; --vine:#D9B26A;
@@ -252,7 +252,7 @@ tr.fresh td{animation:grow 1.2s ease-out}
 .moment p{font-size:.85rem; color:var(--muted)}
 .moment .ctl{justify-self:start; font-size:.72rem; font-weight:600; padding:2px 8px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink)}
 .moment-foot{margin-top:16px; font-size:.88rem; color:var(--muted); max-width:70ch}
-.watermark{position:fixed; inset:0; z-index:60; pointer-events:none; background:var(--fg); opacity:.06;
+.watermark{position:fixed; inset:0; z-index:60; pointer-events:none; background:var(--fg); opacity:.035;
   -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='240'><text x='10' y='150' transform='rotate(-22 210 120)' font-family='Arial, sans-serif' font-size='15' fill='black'>© 2026 Sonia Malik · BEACON prototype</text></svg>"); mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='240'><text x='10' y='150' transform='rotate(-22 210 120)' font-family='Arial, sans-serif' font-size='15' fill='black'>© 2026 Sonia Malik · BEACON prototype</text></svg>"); -webkit-mask-repeat:repeat; mask-repeat:repeat}
 @media print{ .watermark{opacity:.12} }
 
