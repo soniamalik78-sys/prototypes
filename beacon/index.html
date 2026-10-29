@@ -2102,7 +2102,7 @@ function render(k){var e=EV[k],d=document.createElement('div');d.className='bce 
 d.innerHTML='<time>'+e[0]+'</time><div class="bb"><span class="wh">'+e[2]+'<span class="ln">'+e[4]+'</span></span>'+e[3]+'</div>';
 f.appendChild(d);var m=mn(e[0])-mn(EV[0][0]);ck.textContent='0:'+('0'+m).slice(-2);ln.innerHTML=e[4];f.scrollTop=f.scrollHeight;
 if(!reduce)requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('in');f.scrollTop=f.scrollHeight;});});}
-var tm=null,i=0,paused=false,started=false,DL=4000;
+var tm=null,i=0,paused=false,started=false,DL=3000;
 function sched(){if(tm)clearTimeout(tm);tm=null;if(i>=EV.length){pb.innerHTML='▶ Play';return;}if(paused)return;tm=setTimeout(function(){render(i++);sched();},DL);}
 function play(){if(tm)clearTimeout(tm);i=0;paused=false;pb.innerHTML='❚❚ Pause';f.innerHTML='';ck.textContent='0:00';ln.textContent='–';if(reduce){for(var k=0;k<EV.length;k++)render(k);i=EV.length;return;}render(i++);sched();}
 pb.addEventListener('click',function(){started=true;if(i>=EV.length){play();return;}paused=!paused;pb.innerHTML=paused?'▶ Play':'❚❚ Pause';sched();});
