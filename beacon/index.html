@@ -811,6 +811,27 @@ td.num{font-variant-numeric:tabular-nums}
 .rw-grid dd{font-size:.98rem;font-weight:600;color:#191C22}
 @media (max-width:1200px){.hero-g{grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:18px}.bcn-h span{display:none}}
 @media (max-width:860px){.hero-g{grid-template-columns:1fr}.bcn-f{height:300px}}
+
+@media (min-width:1280px){ :root{ --rail-l:250px; } }
+@media (min-width:1280px) and (max-width:1399px){ :root{ --rail-l:230px; --rail-r:210px; } }
+.who-rail{padding:14px 14px !important;gap:8px !important}
+.wr-h{font-family:var(--f-display);font-size:1.15rem;color:#1F3A5F;line-height:1.2}
+.wr-sub{font-size:.74rem;color:var(--muted);font-family:var(--f-body)}
+.wr-groups{display:flex;flex-direction:column;gap:8px}
+.wr-g>span{display:block;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:0 0 4px}
+.wr-g div{display:flex;flex-wrap:wrap;gap:4px}
+.who-rail .wr-g button,.who-inline .wr-g button{display:inline-block;width:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 10px;font:inherit;font-size:.74rem;font-weight:600;color:#191C22;cursor:pointer;line-height:1.3;grid-template-columns:none}
+.who-rail .wr-g button[aria-pressed=true],.who-inline .wr-g button[aria-pressed=true]{background:#1F3A5F;border-color:#1F3A5F;color:#fff}
+.wr-detail{border:1px solid var(--line);border-left:4px solid #E87722;border-radius:10px;padding:9px 11px;background:#fff;font-size:.8rem;line-height:1.4}
+.wr-detail .st{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#E87722}
+.wr-detail h4{margin:2px 0 6px;font-size:.92rem;color:#1F3A5F;font-family:var(--f-body);line-height:1.3}
+.wr-detail b{color:#191C22}
+.wr-detail ul{margin:3px 0 0;padding-left:15px}.wr-detail li{margin:2px 0}
+.who-inline{display:none}
+@media (max-width:1279px){.who-inline{display:block;margin:14px 0 4px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.who-inline .wr-groups{flex-direction:row;flex-wrap:wrap;gap:6px 16px;margin:8px 0}
+.who-inline .wr-detail{display:grid;grid-template-columns:1.2fr 1fr;gap:4px 16px}.who-inline .wr-detail .st,.who-inline .wr-detail h4{grid-column:1/-1}}
+@media (max-width:640px){.who-inline .wr-detail{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -818,16 +839,11 @@ td.num{font-variant-numeric:tabular-nums}
 <div class="watermark" aria-hidden="true"></div>
 
 <div class="shell">
-<nav class="stage-rail" id="stage-rail" aria-label="Claim journey stages">
-  <div class="sr-label">For you</div>
-  <button type="button" data-go-tab="offers" aria-current="false"><span class="sn" style="background:var(--accent-soft);color:var(--accent-ink)">★</span><span><b>Who it serves</b><span class="sg">Roles</span></span></button>
-  <div class="sr-label" style="margin-top:8px">Journey</div>
-  <button type="button" data-stage="D1" aria-current="false"><span class="sn">1</span><span><b>Discover</b><span class="sg">Auto-checked</span></span></button>
-  <button type="button" data-stage="D2" aria-current="false"><span class="sn">2</span><span><b>Design</b><span class="sg">Auto-checked</span></span></button>
-  <button type="button" data-stage="D3" aria-current="false"><span class="sn">3</span><span><b>Build</b><span class="sg">Auto-checked</span></span></button>
-  <button type="button" data-stage="D4" aria-current="false"><span class="sn">4</span><span><b>Evaluate</b><span class="sg">Auto-checked</span></span></button>
-  <button type="button" data-stage="D5" data-gate="HUMAN" aria-current="true"><span class="sn">5</span><span><b>Release</b><span class="sg">Human sign-off</span></span></button>
-  <button type="button" data-stage="D6" aria-current="false"><span class="sn">6</span><span><b>Run &amp; improve</b><span class="sg">Auto-checked</span></span></button>
+<nav class="stage-rail who-rail" id="stage-rail" aria-label="Who BEACON serves">
+  <div class="wr-h">Who BEACON serves</div>
+  <div class="wr-sub">Same claim journey, different seat. Pick a role.</div>
+  <div class="wr-groups" data-who-groups></div>
+  <div class="wr-detail" data-who-detail></div>
 </nav>
 <div class="wrap">
   <header class="hero"><div class="hero-g"><div class="hero-l">
@@ -850,6 +866,11 @@ td.num{font-variant-numeric:tabular-nums}
     </div></div>
   </header>
 
+  <section class="who-inline" aria-label="Who BEACON serves">
+    <div class="wr-h">Who BEACON serves <span class="wr-sub">· pick a role</span></div>
+    <div class="wr-groups" data-who-groups></div>
+    <div class="wr-detail" data-who-detail></div>
+  </section>
   <!-- CLAIM RUNWAY DEMO (above the fold) -->
   <section class="claim-runway" id="claim-runway" aria-label="Interactive claim runway through six PDLC stages">
     <div class="rw-head">
@@ -978,7 +999,6 @@ td.num{font-variant-numeric:tabular-nums}
     <div class="tabs" role="tablist" aria-label="BEACON sections" id="tabs">
       <button class="tab" role="tab" id="t-overview" aria-controls="overview" data-tab="overview">Overview</button>
       <button class="tab" role="tab" id="t-types" aria-controls="types" data-tab="types">Four kinds of AI</button>
-      <button class="tab" role="tab" id="t-offers" aria-controls="offers" data-tab="offers">Who it serves</button>
       <button class="tab" role="tab" id="t-desk" aria-controls="desk" data-tab="desk">Claim journey</button>
       <button class="tab" role="tab" id="t-ops" aria-controls="ops" data-tab="ops">Six stages</button>
       <button class="tab" role="tab" id="t-trust" aria-controls="trust" data-tab="trust">Human in the loop</button>
@@ -989,7 +1009,6 @@ td.num{font-variant-numeric:tabular-nums}
   </div>
 
     <div class="stage-chips" id="stage-chips" aria-label="Claim journey stages">
-      <button type="button" data-go-tab="offers"><b>★</b> Who it serves</button>
       <button type="button" data-stage="D1" aria-current="false"><b>1</b> Discover</button>
       <button type="button" data-stage="D2" aria-current="false"><b>2</b> Design</button>
       <button type="button" data-stage="D3" aria-current="false"><b>3</b> Build</button>
@@ -2091,6 +2110,30 @@ document.getElementById('bcn-n').addEventListener('click',function(){started=tru
 document.getElementById('bcn-rp').addEventListener('click',function(){started=true;play();});
 var c=document.getElementById('bcn');
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es.some(function(x){return x.isIntersecting;})){io.disconnect();if(!started){started=true;setTimeout(play,500);}}},{threshold:0.3});io.observe(c);}else play();
+})();
+</script>
+<script>
+(function(){
+var arts=[].slice.call(document.querySelectorAll('#persona-grid article.persona'));if(!arts.length)return;
+var GL={discover:'Discover & Design',build:'Build & Evaluate',release:'Release & Run',leadership:'Leadership'};
+var P=arts.map(function(a){var r=a.querySelector('.prole'),st=a.querySelector('.pstage');var name=r?r.childNodes[0].textContent.trim():'';
+var pain=a.querySelector('.pain');var gets=[].slice.call(a.querySelectorAll('.gets li')).slice(0,2).map(function(l){return l.textContent.trim();});
+var gives=a.querySelector('.gives li');
+return {g:a.getAttribute('data-pgroup')||'discover',name:name,st:st?st.textContent.trim():'',h:(a.querySelector('h3')||{}).textContent||'',pain:pain?pain.textContent.replace(/^Pain:\s*/,'').trim():'',give:gives?gives.textContent.trim():'',gets:gets};});
+var cur=0;
+var shortPain=function(t){var x=t.split(';')[0];return x.length>110?x.slice(0,107)+'…':x;};
+function draw(){
+ document.querySelectorAll('[data-who-groups]').forEach(function(box){
+  var html='';Object.keys(GL).forEach(function(k){var items=P.map(function(p,i){return [p,i];}).filter(function(x){return x[0].g===k;});if(!items.length)return;
+   html+='<div class="wr-g"><span>'+GL[k]+'</span><div>'+items.map(function(x){return '<button type="button" data-who="'+x[1]+'" aria-pressed="'+(x[1]===cur)+'">'+x[0].name+'</button>';}).join('')+'</div></div>';});
+  box.innerHTML=html;});
+ var p=P[cur];
+ document.querySelectorAll('[data-who-detail]').forEach(function(d){
+  d.innerHTML='<div class="st">'+p.st+'</div><h4>'+p.h+'</h4><div><b>Pain:</b> '+shortPain(p.pain)+'</div><div><b>BEACON gives you:</b> '+shortPain(p.give)+'</div><div><b>You get:</b><ul>'+p.gets.map(function(g){return '<li>'+g+'</li>';}).join('')+'</ul></div>';});
+}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-who]');if(!b)return;cur=+b.getAttribute('data-who');draw();
+ if(window.goatcounter&&window.goatcounter.count){var s=new URLSearchParams(location.search).get('src')||'';window.goatcounter.count({path:location.pathname.replace(/\/$/,'')+'/who/'+encodeURIComponent(P[cur].name)+(s?'?src='+s:''),title:'Who: '+P[cur].name,event:true});}});
+draw();
 })();
 </script>
 </body>
