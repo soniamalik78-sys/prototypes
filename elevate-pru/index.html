@@ -9,7 +9,7 @@
 .wrap{max-width:1400px;margin:0 auto;padding:0 28px}
 .banner{background:var(--a);color:#fff;text-align:center;padding:8px 12px;font-weight:600;font-size:14px;letter-spacing:.03em}
 header{padding:40px 0 14px}h1{font:600 50px/1.08 Spectral,Georgia,serif;margin:0;color:var(--a)}
-h1 small{display:block;font-size:26px;color:var(--fg);margin-top:8px;line-height:1.25}
+h1 small{display:block;font-size:22px;color:var(--fg);margin-top:8px;line-height:1.3;font-weight:600}.hnote{font:italic 15px/1.45 Inter,system-ui,sans-serif;color:var(--m);margin:10px 0 0;max-width:38em;padding-left:12px;border-left:3px solid var(--w)}
 .lede{font-size:18px;color:var(--m);max-width:none;margin-bottom:8px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}.chips span{font-size:13px;background:var(--as);color:var(--a);border-radius:999px;padding:4px 12px;font-weight:600}h2{font:600 27px/1.25 Spectral,Georgia,serif;margin:34px 0 10px}
 h3{margin:0 0 6px;font-size:17px;color:var(--a)}
 .who{font-size:15px}.who a{color:var(--a)}
@@ -37,7 +37,7 @@ select{font:inherit;padding:7px 10px;border-radius:8px;border:1px solid var(--li
 .note{font-size:14px;color:var(--m)}
 .ladder .card{border-left:5px solid var(--a)}
 footer{margin:46px 0 30px;color:var(--m);font-size:14px;border-top:1px solid var(--line);padding-top:14px}footer a{color:var(--a)}
-@media (max-width:600px){h1{font-size:40px}h1 small{font-size:21px}.tabs button{font-size:13px;padding:8px 12px 7px}}
+@media (max-width:600px){h1{font-size:40px}h1 small{font-size:18px!important}.hnote{font-size:13.5px;margin-top:8px}.tabs button{font-size:13px;padding:8px 12px 7px}}
 .side-tab{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:60;writing-mode:vertical-rl;rotate:180deg;background:var(--a);color:#fff;border:none;border-radius:10px 0 0 10px;padding:16px 9px;font:700 14px "Public Sans",Arial,sans-serif;letter-spacing:.02em;cursor:pointer;box-shadow:2px 0 10px rgba(10,30,60,.18)}
 
 .side-tab:hover{background:#08396A}
@@ -199,7 +199,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 .jst{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media (max-width:879px){.ovmain{order:1}.ovside{order:2}.ovleft{order:3}}
-.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:26px;align-items:start}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:18px 26px;align-items:start}.hero>.hl{grid-column:1;grid-row:1}.hero>.hr2{grid-column:2;grid-row:1 / span 2;align-self:start;padding-top:0}.hero>.tk{grid-column:1;grid-row:2;margin-top:0;align-self:start}
 .hero .xb{grid-template-columns:1fr}
 .hr2{padding-top:18px}
 .cn{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 40px rgba(10,77,140,.13);overflow:hidden}
@@ -230,7 +230,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 .opm figcaption{font-size:13.5px;color:var(--m);margin-top:8px;text-align:center}
 .hero .lead2{grid-template-columns:1fr 1fr}.hero .lh{grid-column:1/-1;max-width:none;font-size:16px}
 @media (max-width:1199px){.hero{grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:20px}.cnh span{display:none}.cnk{gap:14px}.cnk b{font-size:15px;white-space:nowrap}.cnr{padding:6px 11px;white-space:nowrap}}
-@media (max-width:899px){.hero{grid-template-columns:minmax(0,1fr)}.hr2{padding-top:0}.cnf{height:300px}.hero .lead2{grid-template-columns:1fr}.cnh b{white-space:normal}}
+@media (max-width:899px){.hero{grid-template-columns:minmax(0,1fr)}.hero>.hl,.hero>.hr2,.hero>.tk{grid-column:1;grid-row:auto}.hr2{padding-top:0}.cnf{height:300px}.hero .lead2{grid-template-columns:1fr}.cnh b{white-space:normal}}
 @keyframes fl{0%{box-shadow:0 0 0 4px rgba(46,125,79,.55)}100%{box-shadow:0 0 0 4px rgba(46,125,79,0)}}.pane.flash{animation:fl 1.6s ease-out}
 .cnbt{display:flex;gap:6px}.cnr.solid{background:var(--a);color:#fff}.cnst{font-size:11.5px;color:var(--m)}
 .ce .bb{font-size:15.5px;font-weight:600;line-height:1.3;padding:8px 11px}
@@ -249,7 +249,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 .popin>h2:first-child{margin-top:12px}
 .tk{background:#fff;border:1px solid var(--line);border-left:4px solid var(--p);border-radius:12px;padding:10px 14px;margin:8px 0 6px}
 .tkh .lk{font-size:13.5px}.tk{margin-top:16px}.tkh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}.tk h3{margin:0 0 8px;font:600 18px/1.25 Spectral,Georgia,serif;color:var(--a)}
-.tkf{display:flex;align-items:stretch;gap:4px}
+.tkf{display:flex;align-items:stretch;gap:4px;flex-wrap:wrap}.hero>.tk .tks{flex:1 1 100px;min-width:0}
 .tks{flex:1;background:var(--as);border-radius:8px;padding:7px 9px;font-size:12.5px;line-height:1.3;color:var(--m)}.tks b{display:block;font-size:14px;color:var(--fg);margin-bottom:2px}
 .tks.ag{background:var(--pb)}.tks.ev{background:var(--wb)}.tks.hu{background:var(--okb)}
 .tka{align-self:center;color:#8a8f99;font-weight:700}
@@ -281,7 +281,8 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <div class="wrap">
 <div class="hero"><div class="hl">
 <header>
-<h1>ELEVATE<small>Prudential's first year of human–agent collaboration</small></h1>
+<h1>ELEVATE<small>A proposal for Prudential by Sonia Malik</small></h1>
+<p class="hnote">A starting point, not a final plan. What I learn in the role, starting with my first 30 days of listening and learning, will reshape it.</p>
 <p class="lede">Prudential, 150 years in, reimagining work for an AI world: people and AI agents doing their best work together.</p><div class="chips"><span>Higher engineering productivity</span><span>Enhanced customer experience, faster speed to market</span><span>Efficiency gains across Retirement, Group, Individual Life, Wealth and PGIM</span><span>Trusted AI, governed from day one</span></div>
 <p class="who"><b>Sonia Malik</b> · AI Workforce Transformation Leader · 24+ years in engineering and transformation leadership · returning Prudential alum (Customer Office &amp; Retirement, 2015–2019) · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener" data-contact>LinkedIn</a></p>
 </header>
@@ -294,8 +295,8 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <div class="cnb"><div class="cnk"><div><b id="cnc">0:00</b><span>elapsed</span></div><div><b id="cnl">–</b><span>current lane</span></div></div><div class="cnbt"><button type="button" class="cnr" id="cnp">❚❚ Pause</button><button type="button" class="cnr solid" id="cnn">Next ›</button><button type="button" class="cnr" id="cnr">↻</button></div></div>
 </div>
 <p class="cncap">One customer request from first ask to resolution, through every ELEVATE lane. About 5 days before ELEVATE (illustrative). <button type="button" class="linkish" id="seej">See the journey →</button></p>
-</div></div>
-<div class="tk"><div class="tkh"><h3>How the Tech Works: Objective Evidence, People Decide</h3><a href="#tech" data-go="tech" class="lk">Tech Platform →</a></div>
+</div>
+<div class="tk"><div class="tkh"><h3>How Decisions Get Made: AI Brings the Evidence, People Decide</h3><a href="#tech" data-go="tech" class="lk">Platform →</a></div>
 <div class="tkf">
 <div class="tks"><b>Rubric &amp; Data</b>Standards and journey KPI set up front</div><span class="tka">›</span>
 <div class="tks ag"><b>Creator Agent</b>Drafts the work: options, stories, code</div><span class="tka">›</span>
@@ -304,6 +305,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <div class="tks hu"><b>Human Decides</b>A named owner approves, edits or stops</div>
 </div>
 <div class="tkl">↺ Human edits feed back, so the rubric and agents improve · Proven at S&amp;P Global: 3 days → same day regulated sign-off; features per PI up 30%</div>
+</div>
 </div>
 <section class="opm" aria-label="The people + AI operating model behind ELEVATE">
 <span class="opl">Proven at S&amp;P Global, applied to Prudential</span>
@@ -561,7 +563,7 @@ header .lede{font-size:16.5px;margin:6px 0 4px}header .chips{margin:0 0 4px}head
 <tr><td><b>Human–AI team lead</b></td><td>Leads a blended team; coaches people and sets agent limits</td><td>People leaders</td></tr>
 </tbody></table></div>
 <div class="card" style="margin-top:14px"><h3>Already tested in practice</h3>At S&amp;P Global and DoubleVerify, AI agents did multi-step engineering work (requirements, code, tests, code review, deployment checks) under human review. People reviewed agent work with an AI judge scoring against a custom rubric, so reviewers decided from evidence. Approval time on regulated checks went from 3 days to same day, with evidence-backed human approval (S&amp;P Global).</div>
-<div class="nextnav"><button class="nextbtn" data-go="tech">Next: Tech platform →</button></div>
+<div class="nextnav"><button class="nextbtn" data-go="tech">Next: Platform →</button></div>
 </section>
 
 <!-- TECH PLATFORM -->
