@@ -1,0 +1,107 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ANCHOR · AI-Native Fund Operations · Sonia Malik</title>
+<style>
+:root{--bg:#F4F6F9;--s:#fff;--fg:#14202E;--m:#4F5B69;--line:#D7DEE7;--a:#0B3B5C;--as:#E3EDF5;--ag:#5B3E96;--agb:#ECE6F6;--hu:#2E7D4F;--hub:#E3F2E8;--w:#8F5E00;--wb:#FBF0D9}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.wrap{max-width:1240px;margin:0 auto;padding:22px 24px 30px}
+.kick{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--m);margin:0}
+h1{font:600 34px/1.15 Georgia,serif;color:var(--a);margin:4px 0 4px}
+.lede{color:var(--m);margin:0 0 14px;font-size:16px}
+.grid{display:grid;grid-template-columns:1.25fr 1fr;gap:16px}
+.card{background:var(--s);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h2{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--a);margin:0 0 10px}
+.tog{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-bottom:10px}
+.tog button{border:0;background:#fff;padding:6px 14px;font:inherit;font-size:13px;cursor:pointer}
+.tog button[aria-pressed=true]{background:var(--a);color:#fff;font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.st{border-radius:9px;padding:9px 9px;font-size:13px;min-height:92px;background:var(--as)}
+.st b{display:block;font-size:13.5px;margin-bottom:3px}
+.st i{display:inline-block;font-style:normal;font-size:10.5px;font-weight:700;border-radius:999px;padding:1px 7px;margin-top:5px;background:#fff}
+.st.ag{background:var(--agb)}.st.hu{background:var(--hub)}.st.ck{background:var(--wb);border:1px solid #e6cf9e}.st.mn{background:#eef0f3;color:#3b4552}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.sum div{background:var(--a);color:#dfe9f2;border-radius:9px;padding:8px 10px;font-size:12.5px}
+.sum b{display:block;color:#fff;font:600 20px/1.2 Georgia,serif}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--m);padding:5px 6px;border-bottom:2px solid var(--line)}
+td{padding:6px 6px;border-bottom:1px solid #e8edf2}
+td.c{text-align:center}
+.h{display:inline-block;width:22px;height:14px;border-radius:3px;vertical-align:middle}
+.h3{background:#2E7D4F}.h2{background:#8cc5a3}.h1{background:#dde6dd}
+tr.go td:first-child b{color:var(--hu)}
+.pri{white-space:nowrap;font-size:11px;font-weight:700;color:#fff;background:var(--hu);border-radius:999px;padding:1px 8px}
+.pri.n{background:#7a8594}
+.row2{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px}
+.ph b{display:block;color:var(--a)}.ph{font-size:13.5px}
+.ph ul{margin:4px 0 0;padding-left:16px}.ph li{margin:2px 0}
+.gov{display:flex;align-items:center;gap:5px;flex-wrap:wrap;font-size:12.5px}
+.gov span{background:var(--as);border-radius:7px;padding:5px 8px}.gov span.k{background:var(--wb)}
+.gov em{color:#8a8f99;font-style:normal;font-weight:700}
+.foot{font-size:12px;color:var(--m);margin-top:14px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.wm{position:fixed;inset:0;pointer-events:none;z-index:9;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='240'><text x='10' y='150' transform='rotate(-22 210 120)' font-family='Arial' font-size='14' fill='rgba(11,59,92,0.05)'>© 2026 Sonia Malik · illustrative</text></svg>")}
+@media (max-width:980px){.grid,.row2{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}}
+</style></head><body><div class="wm" aria-hidden="true"></div>
+<div class="wrap">
+<p class="kick">Illustrative sketch · Sonia Malik · for discussion</p>
+<h1>ANCHOR: From Services to an AI-Native Operations Platform</h1>
+<p class="lede">One process at a time: map it, baseline it, let agents take the repetitive steps, keep people on the exceptions, and track every benefit against ROI.</p>
+
+<div class="grid">
+<div class="card">
+<h2>Pilot Journey · Investor Onboarding</h2>
+<div class="tog" role="group" aria-label="Before or after"><button type="button" id="bBefore" aria-pressed="false">Before</button><button type="button" id="bAfter" aria-pressed="true">With Agents</button></div>
+<div class="steps" id="steps"></div>
+<div class="sum" id="sum"></div>
+</div>
+
+<div class="card">
+<h2>Process Catalogue · What to Automate First</h2>
+<table>
+<tr><th>Process</th><th>Volume</th><th>Rules-Based</th><th>Data Ready</th><th>Risk</th><th></th></tr>
+<tr class="go"><td><b>Investor Onboarding (KYC/AML)</b></td><td class="c"><span class="h h3"></span></td><td class="c"><span class="h h3"></span></td><td class="c"><span class="h h2"></span></td><td class="c">Med</td><td><span class="pri">Pilot 1</span></td></tr>
+<tr class="go"><td><b>Investor Query Triage</b></td><td class="c"><span class="h h3"></span></td><td class="c"><span class="h h2"></span></td><td class="c"><span class="h h3"></span></td><td class="c">Low</td><td><span class="pri">Pilot 2</span></td></tr>
+<tr><td>Bank Reconciliations</td><td class="c"><span class="h h3"></span></td><td class="c"><span class="h h3"></span></td><td class="c"><span class="h h2"></span></td><td class="c">Med</td><td><span class="pri n">Wave 2</span></td></tr>
+<tr><td>Capital Call &amp; Distribution Notices</td><td class="c"><span class="h h2"></span></td><td class="c"><span class="h h3"></span></td><td class="c"><span class="h h2"></span></td><td class="c">High</td><td><span class="pri n">Wave 2</span></td></tr>
+<tr><td>Waterfall Calculations</td><td class="c"><span class="h h1"></span></td><td class="c"><span class="h h2"></span></td><td class="c"><span class="h h1"></span></td><td class="c">High</td><td><span class="pri n">Later</span></td></tr>
+<tr><td>Investor Reporting</td><td class="c"><span class="h h2"></span></td><td class="c"><span class="h h2"></span></td><td class="c"><span class="h h2"></span></td><td class="c">Med</td><td><span class="pri n">Wave 2</span></td></tr>
+</table>
+<p style="font-size:12px;color:var(--m);margin:8px 0 0">Scores are placeholders, to be set with operations teams in the first 30 days.</p>
+</div>
+</div>
+
+<div class="row2">
+<div class="card ph"><h2>First 90 Days</h2>
+<b>Days 1–30 · Listen &amp; Baseline</b>Walk the floor in onboarding and client services; build the process catalogue; baseline cycle time, touches, errors, client satisfaction.
+<b style="margin-top:6px">Days 31–60 · Two Pilots</b>Business case per pilot; agree governance and benefit tracking with the AI Committee.
+<b style="margin-top:6px">Days 61–90 · Prove &amp; Scale</b>Report results against ROI; publish target-state processes; start the data taxonomy for wave 2.</div>
+
+<div class="card ph"><h2>Benefits Tracked Against ROI</h2>
+<ul>
+<li><b>Capacity</b>Hours released and redeployed to client work</li>
+<li><b>Speed</b>Cycle time per onboarding and per query</li>
+<li><b>Quality</b>Errors and exceptions caught before clients see them</li>
+<li><b>Client</b>Satisfaction and response time</li>
+</ul></div>
+
+<div class="card"><h2>Governance with the AI Committee</h2>
+<div class="gov"><span>Intake</span><em>›</em><span>Risk Tier</span><em>›</em><span class="k">Approve</span><em>›</em><span>Pilot</span><em>›</em><span>Measure</span></div>
+<p style="font-size:13px;margin:10px 0 0">A creator agent drafts, an AI judge checks against the rules, and a <b>named person decides</b> on objective evidence. Every step is logged for audit.</p>
+<p style="font-size:12.5px;color:var(--m);margin:8px 0 0">Proven at S&amp;P Global: regulated sign-off 3 days → same day; 350+ engineers on governed AI in 13 months.</p>
+</div>
+</div>
+
+<div class="foot"><span>© 2026 Sonia Malik · Illustrative sketch from public information; not Gen II data or systems.</span><span>sonia.malik78@gmail.com · 732-629-1034</span></div>
+</div>
+<script>
+(function(){
+var B=[['mn','Documents In','Investor emails documents; staff log them by hand','Manual'],['mn','KYC/AML Checks','Analyst checks every document line by line','Manual'],['mn','Chase Gaps','Back-and-forth emails for missing items','Manual'],['mn','Approve','Supervisor reviews the full file','Manual'],['mn','Account Live','Investor notified','Manual']];
+var A=[['ag','Documents In','Agent reads, classifies and logs every document','Agent Does'],['ag','KYC/AML Checks','Agent screens and pre-fills; AI judge checks against rules','Agent + AI Judge'],['ck','Exceptions Only','Mismatch flagged to an analyst with the evidence','Checkpoint'],['hu','Approve','Named analyst decides from the evidence packet','Human Decides'],['hu','Account Live','Investor notified; benefits logged to the tracker','Measured']];
+var S={b:[['Days','to onboard (baseline)'],['Many','manual touches'],['Sampled','quality checks']],a:[['Faster','target set at baseline'],['Fewer','touches; people on exceptions'],['Every','file checked, logged for audit']]};
+var st=document.getElementById('steps'),sm=document.getElementById('sum'),bb=document.getElementById('bBefore'),ba=document.getElementById('bAfter');
+function draw(after){var L=after?A:B;st.innerHTML=L.map(function(x){return '<div class="st '+x[0]+'"><b>'+x[1]+'</b>'+x[2]+'<br><i>'+x[3]+'</i></div>';}).join('');
+sm.innerHTML=(after?S.a:S.b).map(function(x){return '<div><b>'+x[0]+'</b>'+x[1]+'</div>';}).join('');bb.setAttribute('aria-pressed',!after);ba.setAttribute('aria-pressed',after);}
+bb.onclick=function(){draw(false)};ba.onclick=function(){draw(true)};draw(true);
+})();
+(function(){var s=new URLSearchParams(location.search).get('src')||'';window.goatcounter={path:function(){return location.pathname+(s?'?src='+s:'')}};})();
+</script>
+<script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body></html>
