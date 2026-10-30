@@ -1,0 +1,1466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ELEVATE Executive Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: single reading column (max 1040px) with a lattice-textured hero; demo is a 4-step stepper with a working panel; tables scroll inside their own box. */
+:root{
+  --bg:#F6F8FB; --surface:#FFFFFF; --sunk:#EDF1F6; --fg:#191C22; --muted:#575E6B; --faint:#7D8492;
+  --line:#D8DDE5; --line-strong:#BCC4D1;
+  --accent:#1F4E8C; --accent-soft:#E6EEF8; --accent-ink:#173B6B;
+  --vine:#4F7DB8;
+  --ok:#2E7D4F; --ok-bg:#E3F2E8; --warn:#9A6400; --warn-bg:#FBF0D9; --bad:#B3373F; --bad-bg:#F9E3E4;
+  --lattice:rgba(31,78,140,0.08);
+  --f-display:"Newsreader", Georgia, "Times New Roman", serif;
+  --f-body:"Public Sans", "Segoe UI", Arial, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){ :root[data-theme="__off__"]{
+  --bg:#111816; --surface:#18211E; --sunk:#1F2A26; --fg:#E6ECE9; --muted:#A7B3AE; --faint:#84918B;
+  --line:#2C3934; --line-strong:#3D4C46;
+  --accent:#5DBFA6; --accent-soft:#1C3631; --accent-ink:#8FD9C5; --vine:#9BC66A;
+  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F;
+  --lattice:rgba(93,191,166,0.09); color-scheme:dark; } }
+:root[data-theme="__off__"]{
+  --bg:#111816; --surface:#18211E; --sunk:#1F2A26; --fg:#E6ECE9; --muted:#A7B3AE; --faint:#84918B;
+  --line:#2C3934; --line-strong:#3D4C46;
+  --accent:#5DBFA6; --accent-soft:#1C3631; --accent-ink:#8FD9C5; --vine:#9BC66A;
+  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F;
+  --lattice:rgba(93,191,166,0.09); color-scheme:dark; }
+
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--fg); font-family:var(--f-body); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1040px; margin:0 auto; padding-inline:20px; padding-block:0 64px;}
+h1,h2,h3{font-family:var(--f-display); font-weight:500; text-wrap:balance; margin:0;}
+h2{font-size:clamp(1.5rem,3vw,1.9rem); line-height:1.2;}
+h3{font-size:1.15rem; line-height:1.3;}
+p{margin:0}
+.lede{color:var(--muted); max-width:66ch;}
+.label{font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--faint);}
+.mono{font-family:var(--f-mono); font-variant-numeric:tabular-nums;}
+a{color:var(--accent-ink)}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:4px}
+
+/* Hero with lattice */
+.hero{position:relative; padding-block:56px 40px; border-bottom:1px solid var(--line);}
+.hero::before{content:""; position:absolute; inset:0; z-index:-1;
+  background:
+    repeating-linear-gradient(45deg, transparent 0 27px, var(--lattice) 27px 28px),
+    repeating-linear-gradient(-45deg, transparent 0 27px, var(--lattice) 27px 28px);
+  -webkit-mask-image:linear-gradient(to bottom, #000 0%, transparent 100%); mask-image:linear-gradient(to bottom, #000 0%, transparent 100%);}
+.hero{isolation:isolate}
+.eyebrow{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin-bottom:18px;}
+.pill{display:inline-flex; align-items:center; gap:6px; font-size:.75rem; font-weight:600; padding:3px 10px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink);}
+.pill.neutral{background:var(--sunk); color:var(--muted)}
+.brand{font-family:var(--f-display); font-size:clamp(3rem,9vw,5.6rem); line-height:.95; letter-spacing:.02em; font-weight:500;}
+.pron{font-family:var(--f-mono); font-size:.85rem; color:var(--faint); margin-top:8px;}
+.thesis{font-family:var(--f-display); font-size:clamp(1.25rem,2.6vw,1.6rem); line-height:1.35; max-width:none; margin-top:22px;}
+.firms{margin-top:12px; font-size:.84rem; color:var(--muted); line-height:1.6; max-width:80ch}
+.firms b{color:var(--fg); font-weight:600; margin-right:4px}
+.firms{display:flex; flex-wrap:wrap; gap:4px 18px}
+.firms i{font-style:normal; white-space:nowrap}
+@media (max-width:560px){ .firms i{white-space:normal} }
+.proof-note em{font-style:italic}
+.hero .lede{margin-top:14px}
+.hero-meta{display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:26px; font-size:.9rem; color:var(--muted)}
+.hero-meta b{color:var(--fg); font-weight:600}
+
+section{padding-block:52px 8px}
+.sec-head{display:grid; gap:10px; margin-bottom:24px}
+
+/* Lifecycle */
+.flow{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; position:relative}
+@media (max-width:900px){ .flow{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:480px){ .flow{grid-template-columns:1fr} }
+.stage{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:16px 16px 18px; display:grid; gap:8px; align-content:start; min-width:0}
+.stage .step{font-family:var(--f-mono); font-size:.75rem; color:var(--accent-ink)}
+.stage h3{font-size:1.1rem}
+.stage ul{margin:0; padding-left:18px; color:var(--muted); font-size:.88rem; display:grid; gap:4px}
+.nist{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px}
+.nist span{font-family:var(--f-mono); font-size:.7rem; padding:1px 7px; border-radius:6px; border:1px solid var(--line-strong); color:var(--muted)}
+.vine{margin-top:14px; height:6px; border-radius:6px; background:linear-gradient(90deg, var(--vine), var(--accent)); opacity:.75}
+.flow-note{margin-top:12px; font-size:.88rem; color:var(--muted)}
+
+/* Demo */
+.demo{background:var(--surface); border:1px solid var(--line); border-radius:14px; overflow:hidden}
+.demo-top{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; padding:16px 18px; border-bottom:1px solid var(--line); background:var(--sunk)}
+.cases{display:flex; flex-wrap:wrap; gap:8px}
+.case-btn{border:1px solid var(--line-strong); background:var(--surface); color:var(--fg); border-radius:999px; padding:6px 14px; font-size:.85rem; cursor:pointer}
+.case-btn[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:var(--surface)}
+.reset{background:none; border:none; color:var(--muted); font-size:.85rem; cursor:pointer; text-decoration:underline}
+.steps{display:flex; flex-wrap:wrap; gap:0; border-bottom:1px solid var(--line)}
+.steps button{flex:1 1 140px; background:none; border:none; border-bottom:3px solid transparent; padding:12px 14px; text-align:left; cursor:pointer; color:var(--faint); font-size:.85rem}
+.steps button b{display:block; font-family:var(--f-mono); font-weight:500; font-size:.72rem}
+.steps button.done{color:var(--muted)}
+.steps button.done b::after{content:" ✓"; color:var(--ok)}
+.steps button.on{color:var(--fg); border-bottom-color:var(--accent)}
+.steps button:disabled{cursor:not-allowed; opacity:.55}
+.panel{padding:22px 20px 24px}
+.panel-grid{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:22px}
+@media (max-width:820px){ .panel-grid{grid-template-columns:1fr} }
+.case-card{display:grid; gap:6px}
+.case-card h3{font-size:1.3rem}
+.kv{display:grid; grid-template-columns:auto 1fr; gap:4px 14px; font-size:.88rem; margin-top:8px}
+.kv dt{color:var(--faint)} .kv dd{margin:0}
+.q{display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid var(--line)}
+.q:last-child{border-bottom:none}
+.q label{flex:1; font-size:.92rem; cursor:pointer}
+.q small{display:block; color:var(--faint); font-size:.8rem}
+.switch{appearance:none; -webkit-appearance:none; width:38px; height:22px; border-radius:22px; background:var(--line-strong); position:relative; cursor:pointer; flex:0 0 auto; margin-top:2px; transition:background .15s}
+.switch::after{content:""; position:absolute; top:3px; left:3px; width:16px; height:16px; border-radius:50%; background:var(--surface); transition:transform .15s}
+.switch:checked{background:var(--accent)}
+.switch:checked::after{transform:translateX(16px)}
+.tier{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; padding:14px 16px; border-radius:var(--r); border:1px solid var(--line)}
+.tier .t{font-family:var(--f-display); font-size:1.6rem}
+.tier.Standard{background:var(--ok-bg)} .tier.Standard .t{color:var(--ok)}
+.tier.Elevated{background:var(--warn-bg)} .tier.Elevated .t{color:var(--warn)}
+.tier.High{background:var(--bad-bg)} .tier.High .t{color:var(--bad)}
+.tier p{font-size:.85rem; color:var(--muted); flex-basis:100%}
+.controls{list-style:none; margin:14px 0 0; padding:0; display:grid; gap:6px}
+.controls li{display:flex; gap:10px; align-items:flex-start; font-size:.88rem}
+.tag{flex:0 0 auto; font-family:var(--f-mono); font-size:.68rem; padding:2px 7px; border-radius:6px; margin-top:2px}
+.tag.auto{background:var(--accent-soft); color:var(--accent-ink)}
+.tag.person{background:var(--sunk); color:var(--muted); border:1px solid var(--line-strong)}
+.controls li.new{animation:grow .4s ease-out}
+@keyframes grow{from{background:var(--accent-soft)} to{background:transparent}}
+.actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; align-items:center}
+.btn{background:var(--accent); color:var(--surface); border:none; border-radius:8px; padding:10px 16px; font-size:.9rem; font-weight:600; cursor:pointer}
+.btn.ghost{background:none; color:var(--accent-ink); border:1px solid var(--accent)}
+.btn.warn{background:var(--bad)}
+.hint{font-size:.82rem; color:var(--faint)}
+
+.metric{display:grid; grid-template-columns:minmax(120px,190px) minmax(0,1fr) 92px; gap:12px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line); font-size:.88rem}
+@media (max-width:520px){ .metric{grid-template-columns:1fr 84px} .metric .bar{grid-column:1 / -1; grid-row:2} }
+.bar{position:relative; height:10px; background:var(--sunk); border-radius:6px}
+.bar i{position:absolute; inset:0 auto 0 0; border-radius:6px; background:var(--ok); transition:width .6s ease}
+.bar i.fail{background:var(--bad)}
+.bar s{position:absolute; top:-4px; width:2px; height:18px; background:var(--fg); text-decoration:none}
+.score{font-family:var(--f-mono); text-align:right; font-variant-numeric:tabular-nums}
+.score.fail{color:var(--bad)} .score.pass{color:var(--ok)}
+.gate{margin-top:16px; padding:12px 14px; border-radius:var(--r); font-weight:600; font-size:.92rem}
+.gate.pass{background:var(--ok-bg); color:var(--ok)} .gate.fail{background:var(--bad-bg); color:var(--bad)}
+.judge-note{font-size:.82rem; color:var(--muted); margin-top:6px}
+.review-box{border:1px solid var(--line); border-radius:var(--r); padding:16px; display:grid; gap:10px}
+.sample{font-family:var(--f-display); font-size:1.05rem; line-height:1.5; background:var(--sunk); border-left:3px solid var(--accent); padding:12px 14px; border-radius:0 8px 8px 0}
+.checks{display:grid; gap:6px; font-size:.86rem}
+.checks div{display:flex; gap:8px}
+.checks span{color:var(--ok); font-weight:700}
+.result{margin-top:14px; padding:12px 14px; border-radius:var(--r); background:var(--accent-soft); color:var(--accent-ink); font-size:.9rem}
+
+/* Tables */
+.tbl-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--r); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:.88rem; min-width:640px}
+th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+th{font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); font-weight:700; background:var(--sunk)}
+tr:last-child td{border-bottom:none}
+tr.fresh td{animation:grow 1.2s ease-out}
+.chip{display:inline-block; font-size:.72rem; font-weight:600; padding:2px 8px; border-radius:999px}
+.chip.Standard{background:var(--ok-bg); color:var(--ok)} .chip.Elevated{background:var(--warn-bg); color:var(--warn)} .chip.High{background:var(--bad-bg); color:var(--bad)}
+.chip.live{background:var(--accent-soft); color:var(--accent-ink)}
+
+/* Metrics */
+.sample-note{display:inline-block; font-size:.8rem; background:var(--sunk); color:var(--muted); padding:4px 10px; border-radius:6px}
+.tiles{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:16px}
+@media (max-width:820px){ .tiles{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.tile{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; display:grid; gap:2px; min-width:0}
+.tile .v{font-family:var(--f-display); font-size:2rem; line-height:1.1}
+.tile .k{font-size:.84rem; color:var(--muted)}
+.tile .s{font-size:.75rem; color:var(--faint)}
+.charts{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:12px}
+@media (max-width:820px){ .charts{grid-template-columns:1fr} }
+.chart{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px 16px 10px; min-width:0}
+.chart h3{font-family:var(--f-body); font-size:.92rem; font-weight:600}
+.chart p{font-size:.8rem; color:var(--faint)}
+.chart svg{width:100%; height:auto; display:block; margin-top:6px}
+.ax{stroke:var(--line); stroke-width:1}
+.axt{fill:var(--faint); font-family:var(--f-mono); font-size:10px}
+.ln{fill:none; stroke:var(--accent); stroke-width:2.2}
+.ar{fill:var(--accent); opacity:.12}
+.pt{fill:var(--accent)}
+.ptl{fill:var(--fg); font-family:var(--f-mono); font-size:11px; font-weight:500}
+
+/* Plan */
+.plan{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px}
+@media (max-width:820px){ .plan{grid-template-columns:1fr} }
+.plan div{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:16px; display:grid; gap:8px; align-content:start}
+.plan .when{font-family:var(--f-mono); font-size:.78rem; color:var(--accent-ink)}
+.plan p{font-size:.9rem; color:var(--muted)}
+
+/* Under the hood */
+.arch{overflow-x:auto; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px}
+.arch svg{min-width:760px; width:100%; height:auto; display:block}
+.nd rect{fill:var(--surface); stroke:var(--line-strong); stroke-width:1.2}
+.nd.run rect{fill:var(--accent-soft); stroke:var(--accent)}
+.nt{fill:var(--fg); font-family:var(--f-body); font-size:14px; font-weight:600}
+.ns{fill:var(--muted); font-family:var(--f-body); font-size:11.5px}
+.aw{stroke:var(--faint); stroke-width:1.4; fill:none}
+.aw.run{stroke:var(--accent); stroke-width:2}
+.ahp{fill:var(--faint)} .ahr{fill:var(--accent)}
+.arch-legend{display:flex; flex-wrap:wrap; gap:8px 20px; font-size:.8rem; color:var(--muted); margin-top:10px}
+.arch-legend i{display:inline-block; width:18px; height:3px; vertical-align:middle; margin-right:6px; background:var(--faint)}
+.arch-legend i.run{background:var(--accent)}
+.engine{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; margin-top:16px}
+@media (max-width:820px){ .engine{grid-template-columns:1fr} }
+.code{background:var(--sunk); border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; overflow-x:auto; min-width:0}
+.code pre{margin:0; font-family:var(--f-mono); font-size:.78rem; line-height:1.6; color:var(--fg); white-space:pre}
+.code .c{color:var(--faint)} .code .k{color:var(--accent-ink)}
+.code-cap{font-size:.8rem; color:var(--faint); margin-bottom:8px}
+.facts{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; min-width:0}
+@media (max-width:560px){ .facts{grid-template-columns:1fr} }
+.facts div{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px; display:grid; gap:6px; align-content:start; min-width:0}
+.facts h3{font-family:var(--f-body); font-size:.92rem; font-weight:700}
+.facts ul{margin:0; padding-left:16px; font-size:.84rem; color:var(--muted); display:grid; gap:4px}
+.targets{font-size:.8rem; color:var(--faint); margin-top:10px}
+.calib{display:flex; gap:10px; align-items:flex-start; font-size:.86rem; padding:10px 12px; border:1px solid var(--line); border-radius:var(--r); background:var(--sunk); margin-bottom:12px}
+.ev td.st{font-weight:700; white-space:nowrap} .ev td.st.pass{color:var(--ok)} .ev td.st.fail{color:var(--bad)}
+.ev td.num{font-family:var(--f-mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+.ev table{min-width:560px}
+.eval-foot{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; margin-top:14px; align-items:start}
+@media (max-width:820px){ .eval-foot{grid-template-columns:1fr} }
+.chip.shadow{background:var(--warn-bg); color:var(--warn)}
+/* Who it serves */
+.who{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px}
+@media (max-width:900px){ .who{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:560px){ .who{grid-template-columns:1fr} }
+.who article{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:16px; display:grid; gap:10px; align-content:start; min-width:0}
+.who article.primary{border-color:var(--accent)}
+.who .top .pill{white-space:nowrap; flex:0 0 auto}
+.who .top{display:flex; justify-content:space-between; gap:8px; align-items:flex-start}
+.who h3{font-size:1.1rem}
+.who .ask{font-family:var(--f-display); font-style:italic; font-size:1rem; line-height:1.4; color:var(--fg)}
+.ba{display:grid; gap:6px; font-size:.86rem}
+.ba div{display:grid; grid-template-columns:56px minmax(0,1fr); gap:8px; align-items:baseline}
+.ba b{font-size:.68rem; letter-spacing:.06em; text-transform:uppercase}
+.ba .b b{color:var(--faint)} .ba .b span{color:var(--muted)}
+.ba .a b{color:var(--accent-ink)}
+.measure{font-size:.76rem; color:var(--muted); border-top:1px solid var(--line); padding-top:8px}
+.measure span{font-family:var(--f-mono); color:var(--accent-ink)}
+/* One customer moment */
+.moment{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; position:relative}
+.moment::before{content:""; position:absolute; left:6%; right:6%; top:15px; height:2px; background:var(--line-strong)}
+@media (max-width:900px){ .moment{grid-template-columns:1fr} .moment::before{left:15px; right:auto; top:8px; bottom:8px; width:2px; height:auto} }
+.moment li{position:relative; display:grid; gap:6px; align-content:start; min-width:0}
+.moment .dot{width:30px; height:30px; border-radius:50%; background:var(--surface); border:2px solid var(--accent); display:grid; place-items:center; font-family:var(--f-mono); font-size:.75rem; color:var(--accent-ink); position:relative}
+.moment li.alert .dot{border-color:var(--bad); color:var(--bad)}
+@media (max-width:900px){ .moment li{grid-template-columns:30px minmax(0,1fr); column-gap:14px} .moment li > :not(.dot){grid-column:2} .moment .dot{grid-row:1 / span 4} }
+.moment .when{font-family:var(--f-mono); font-size:.74rem; color:var(--faint)}
+.moment h3{font-family:var(--f-body); font-size:.95rem; font-weight:700; line-height:1.35}
+.moment p{font-size:.85rem; color:var(--muted)}
+.moment .ctl{justify-self:start; font-size:.72rem; font-weight:600; padding:2px 8px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink)}
+.moment-foot{margin-top:16px; font-size:.88rem; color:var(--muted); max-width:70ch}
+.watermark{position:fixed; inset:0; z-index:60; pointer-events:none; background:var(--fg); opacity:.06;
+  -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='240'><text x='10' y='150' transform='rotate(-22 210 120)' font-family='Arial, sans-serif' font-size='15' fill='black'>© 2026 Sonia Malik · ELEVATE prototype</text></svg>"); mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='240'><text x='10' y='150' transform='rotate(-22 210 120)' font-family='Arial, sans-serif' font-size='15' fill='black'>© 2026 Sonia Malik · ELEVATE prototype</text></svg>"); -webkit-mask-repeat:repeat; mask-repeat:repeat}
+@media print{ .watermark{opacity:.12} }
+
+/* ---------- Floating profile bar + contact card ---------- */
+.wrap{padding-bottom:120px}
+.pf{position:fixed; left:50%; transform:translateX(-50%); bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; width:min(760px, calc(100% - 24px)); background:var(--surface); border:1px solid var(--line-strong); border-radius:16px; box-shadow:0 10px 30px rgba(15,30,60,.18); padding:10px 12px}
+.pf[hidden]{display:none!important}
+.pf-row{display:flex; align-items:center; gap:12px}
+.av{flex:0 0 40px; height:40px; border-radius:50%; background:var(--accent); color:var(--surface); display:grid; place-items:center; font-weight:700; font-size:.9rem; letter-spacing:.02em}
+.pf-min{flex:1 1 auto; min-width:0; display:grid; line-height:1.3}
+.pf-min b{font-size:.92rem}
+.pf-min span{font-size:.8rem; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.pf-btn{flex:0 0 auto; background:none; border:1px solid var(--line-strong); color:var(--fg); border-radius:999px; padding:6px 12px; font-size:.8rem; font-weight:600; cursor:pointer}
+.talk{flex:0 0 auto; background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:8px 16px; font-size:.85rem; font-weight:700; cursor:pointer; white-space:nowrap}
+.pf-x{flex:0 0 auto; background:none; border:none; color:var(--faint); font-size:1.3rem; line-height:1; cursor:pointer; padding:2px 6px}
+.pf-more{margin-top:10px; padding-top:10px; border-top:1px solid var(--line); display:grid; gap:8px; max-height:50vh; overflow:auto}
+.pf-more[hidden]{display:none!important}
+.pf-title{font-size:.82rem; color:var(--accent-ink); font-weight:600}
+.pf-pitch{font-size:.9rem; line-height:1.5}
+.pf-stats{display:flex; flex-wrap:wrap; gap:6px}
+.pf-stats span{border:1px solid var(--line); background:var(--sunk); border-radius:8px; padding:3px 8px; font-size:.76rem; color:var(--fg)}
+.pf-stats b{color:var(--accent-ink)}
+.pf-mini{position:fixed; right:16px; bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; display:flex; align-items:center; gap:8px; background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:6px 14px 6px 6px; font-size:.85rem; font-weight:700; cursor:pointer; box-shadow:0 8px 22px rgba(15,30,60,.22)}
+.pf-mini[hidden]{display:none!important}
+.pf-mini .av{flex-basis:30px; height:30px; background:var(--surface); color:var(--accent-ink); font-size:.75rem}
+@media (max-width:560px){ .pf-min span{display:none} .pf-btn{display:none} }
+.cmodal{position:fixed; inset:0; z-index:120; display:flex; align-items:center; justify-content:center; padding:16px}
+.cmodal[hidden]{display:none!important}
+.cm-back{position:absolute; inset:0; background:rgba(10,20,18,.55)}
+.cm-card{position:relative; background:var(--surface); color:var(--fg); border-radius:14px; border-top:4px solid var(--accent); width:min(520px,100%); max-height:calc(100% - 32px); overflow:auto; padding:22px; box-shadow:0 20px 50px rgba(0,0,0,.3); display:grid; gap:10px}
+.cm-close{position:absolute; top:8px; right:10px; background:none; border:none; font-size:1.6rem; line-height:1; color:var(--faint); cursor:pointer}
+.cm-card h2{font-size:1.4rem}
+.cm-route{font-size:.86rem; background:var(--accent-soft); border-radius:8px; padding:10px 12px}
+.cm-row{display:grid; grid-template-columns:76px minmax(0,1fr) auto; gap:10px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line)}
+.cm-row:last-of-type{border-bottom:none}
+.cm-k{font-size:.72rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--faint)}
+.cm-v{font-weight:600; word-break:break-all; user-select:all}
+.cm-copy{background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:4px 12px; font-size:.78rem; font-weight:700; cursor:pointer}
+.cm-status{font-size:.82rem; color:var(--ok); min-height:1.2em}
+
+.blocks{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px}
+@media (max-width:820px){ .blocks{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:480px){ .blocks{grid-template-columns:1fr} }
+.blocks div{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--vine); border-radius:var(--r); padding:12px 14px; display:grid; gap:4px; min-width:0}
+.blocks b{font-size:.92rem} .blocks span{font-size:.84rem; color:var(--muted)}
+/* Side drawer */
+.wrap{padding-bottom:64px}
+@media (max-width:1180px){ .wrap{padding-right:60px} .tabbar{margin-right:-60px; padding-right:60px} }
+@media (max-width:560px){ .wrap{padding-right:52px} .tabbar{margin-right:-52px; padding-right:52px} }
+.side-tab{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:70; display:flex; flex-direction:column; align-items:center; gap:10px; background:var(--accent); color:var(--surface); border:none; border-radius:12px 0 0 12px; padding:10px 7px 14px; cursor:pointer; box-shadow:-4px 6px 18px rgba(15,30,60,.18)}
+.side-tab .av{flex:0 0 30px; width:30px; height:30px; background:var(--surface); color:var(--accent-ink); font-size:.74rem}
+.side-tab .st-txt{writing-mode:vertical-rl; transform:rotate(180deg); font-size:.82rem; font-weight:700; letter-spacing:.02em; white-space:nowrap}
+@media (max-width:560px){ .side-tab .st-txt{font-size:.74rem} }
+.drawer{position:fixed; top:0; right:0; bottom:0; z-index:90; width:min(380px, 92vw); background:var(--surface); border-left:1px solid var(--line-strong); box-shadow:-12px 0 30px rgba(15,30,60,.18); padding:calc(22px + env(safe-area-inset-top,0px)) 22px calc(22px + env(safe-area-inset-bottom,0px)); overflow:auto; display:grid; gap:14px; align-content:start}
+.drawer[hidden]{display:none!important}
+.dr-close{position:absolute; top:calc(10px + env(safe-area-inset-top,0px)); right:12px; background:none; border:none; font-size:1.6rem; line-height:1; color:var(--faint); cursor:pointer}
+.dr-head{display:flex; gap:12px; align-items:center; padding-right:28px}
+.dr-head .av{flex:0 0 46px; width:46px; height:46px}
+.dr-head b{display:block; font-size:1.05rem}
+.dr-head span{font-size:.8rem; color:var(--muted)}
+.drawer .talk{justify-self:start}
+footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line); display:grid; gap:8px; font-size:.86rem; color:var(--muted)}
+footer b{color:var(--fg)}
+.copy{background:none; border:1px solid var(--line-strong); border-radius:6px; padding:2px 8px; font-size:.78rem; color:var(--muted); cursor:pointer; margin:0 4px 0 10px}
+@media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
+
+/* ---------- Tabbed layout ---------- */
+.tabbar{position:sticky; top:env(safe-area-inset-top,0px); z-index:40; background:var(--bg); border-bottom:1px solid var(--line); margin-inline:-20px; padding-inline:20px}
+.tabs{display:flex; gap:2px; overflow-x:auto; scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto; background:none; border:none; border-bottom:3px solid transparent; padding:14px 14px 11px; font-size:.9rem; font-weight:600; color:var(--muted); cursor:pointer; white-space:nowrap}
+.tab:hover{color:var(--fg)}
+.tab[aria-selected="true"]{color:var(--fg); border-bottom-color:var(--accent)}
+.tab .lock{font-size:.7rem; margin-left:4px; color:var(--faint)}
+.pane{padding-block:36px 8px}
+.pane[hidden]{display:none!important}
+.hero{padding-block:40px 30px}
+.next{display:flex; justify-content:flex-end; margin-top:28px}
+.next button{background:none; border:1px solid var(--accent); color:var(--accent-ink); border-radius:999px; padding:8px 16px; font-size:.88rem; font-weight:600; cursor:pointer}
+
+/* Overview */
+.proof{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:22px}
+@media (max-width:820px){ .proof{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.proof div{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; display:grid; gap:2px; min-width:0}
+.proof b{font-family:var(--f-display); font-weight:500; font-size:1.9rem; line-height:1.1}
+.proof span{font-size:.84rem; color:var(--muted)}
+.proof-note{font-size:.78rem; color:var(--faint); margin-top:8px}
+.pillars{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px}
+@media (max-width:820px){ .pillars{grid-template-columns:1fr} }
+.pillars div{border-top:3px solid var(--accent); background:var(--surface); border-radius:0 0 var(--r) var(--r); padding:14px 16px; display:grid; gap:6px; border-left:1px solid var(--line); border-right:1px solid var(--line); border-bottom:1px solid var(--line)}
+.pillars h3{font-size:1.1rem}
+.pillars p{font-size:.88rem; color:var(--muted)}
+.jump{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px}
+@media (max-width:820px){ .jump{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:480px){ .jump{grid-template-columns:1fr} }
+.jump button{text-align:left; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:14px 16px; cursor:pointer; display:grid; gap:4px; color:var(--fg)}
+.jump button:hover{border-color:var(--accent)}
+.jump b{font-size:.95rem}
+.jump span{font-size:.82rem; color:var(--muted)}
+.jump i{font-style:normal; font-size:.78rem; color:var(--accent-ink); font-weight:600}
+
+/* Who it serves, interactive */
+.who2{display:grid; grid-template-columns:minmax(0,260px) minmax(0,1fr); gap:16px; align-items:start}
+@media (max-width:820px){ .who2{grid-template-columns:1fr} }
+.glist{display:grid; gap:6px}
+@media (max-width:820px){ .glist{display:flex; overflow-x:auto; gap:8px; padding-bottom:4px} .glist button{flex:0 0 auto} }
+.glist button{text-align:left; background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:10px 12px; cursor:pointer; color:var(--fg); font-size:.88rem; font-weight:600; display:flex; justify-content:space-between; gap:8px; align-items:center}
+.glist button[aria-pressed="true"]{border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink)}
+.glist small{font-size:.68rem; font-weight:700; color:var(--accent-ink); text-transform:uppercase; letter-spacing:.05em}
+.gcard{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px; display:grid; gap:14px; min-width:0}
+.gcard h3{font-size:1.4rem}
+.gcard .ask{font-family:var(--f-display); font-style:italic; font-size:1.15rem; line-height:1.4}
+.bagrid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:12px}
+@media (max-width:560px){ .bagrid{grid-template-columns:1fr} }
+.bagrid div{border-radius:var(--r); padding:12px 14px; font-size:.9rem; display:grid; gap:4px}
+.bagrid .b{background:var(--sunk); color:var(--muted)}
+.bagrid .a{background:var(--accent-soft); color:var(--fg)}
+.bagrid b{font-size:.68rem; letter-spacing:.06em; text-transform:uppercase}
+.bagrid .a b{color:var(--accent-ink)}
+.lived{border-left:3px solid var(--vine); padding:4px 0 4px 12px; font-size:.88rem; color:var(--muted)}
+.lived b{color:var(--fg)}
+.gcard .measure{border-top:1px solid var(--line); padding-top:10px}
+
+/* Dashboard slider */
+.scrub{display:flex; flex-wrap:wrap; gap:12px 18px; align-items:center; margin:6px 0 4px}
+.scrub label{font-size:.85rem; color:var(--muted)}
+.scrub input[type=range]{flex:1 1 240px; accent-color:var(--accent)}
+.scrub output{font-family:var(--f-mono); font-size:.95rem; min-width:9ch}
+.play{background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:7px 14px; font-size:.85rem; font-weight:600; cursor:pointer}
+.mk{stroke:var(--fg); stroke-width:1; stroke-dasharray:3 3; opacity:.5}
+
+/* Why me */
+.lessons{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
+@media (max-width:820px){ .lessons{grid-template-columns:1fr} }
+.lesson{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:16px; display:grid; gap:8px; align-content:start; min-width:0}
+.lesson .yr{font-family:var(--f-mono); font-size:.75rem; color:var(--faint)}
+.lesson h3{font-size:1.15rem}
+.lesson .quote{font-family:var(--f-display); font-style:italic; font-size:1.02rem; line-height:1.4; color:var(--accent-ink)}
+.lesson ul{margin:0; padding-left:18px; font-size:.86rem; color:var(--muted); display:grid; gap:3px}
+.lesson .shows{font-size:.8rem; color:var(--muted); border-top:1px solid var(--line); padding-top:8px}
+.lesson .shows span{display:inline-block; margin:2px 4px 0 0; padding:1px 8px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink); font-weight:600; font-size:.72rem}
+
+/* When we meet (locked previews) */
+.locks{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
+@media (max-width:820px){ .locks{grid-template-columns:1fr} }
+.lockcard{position:relative; background:var(--surface); border:1px dashed var(--line-strong); border-radius:var(--r); padding:18px; display:grid; gap:8px; align-content:start; overflow:hidden}
+.lockcard .badge{justify-self:start; display:inline-flex; gap:6px; align-items:center; font-size:.72rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--accent-ink); background:var(--accent-soft); padding:3px 9px; border-radius:999px}
+.lockcard h3{font-size:1.15rem}
+.lockcard p{font-size:.88rem; color:var(--muted)}
+.lockcard ul{margin:0; padding-left:18px; font-size:.86rem; color:var(--fg); display:grid; gap:3px}
+.veil{position:relative; font-size:.86rem; color:var(--muted); padding:10px 12px; border-radius:8px; background:var(--sunk); filter:blur(3.5px); user-select:none}
+.veil-wrap{position:relative}
+.veil-wrap::after{content:"Shared in conversation"; position:absolute; inset:0; display:grid; place-items:center; font-size:.78rem; font-weight:700; color:var(--accent-ink)}
+.cta{margin-top:20px; background:var(--accent-soft); border:1px solid var(--accent); border-radius:14px; padding:20px; display:grid; gap:8px}
+.cta h3{font-size:1.3rem}
+.cta p{font-size:.92rem; color:var(--fg)}
+.qs{display:grid; gap:8px; margin:0; padding-left:20px; font-size:.92rem}
+
+.gcard .moment{grid-template-columns:1fr; gap:12px}
+.gcard .moment::before{left:15px; right:auto; top:8px; bottom:8px; width:2px; height:auto}
+.gcard .moment li{grid-template-columns:30px minmax(0,1fr); column-gap:14px}
+.gcard .moment li > :not(.dot){grid-column:2}
+.gcard .moment .dot{grid-row:1 / span 4}
+.gcard .moment h3{font-family:var(--f-body); font-size:.95rem; font-weight:700}
+.sample-note{justify-self:start}
+.blocks.risks code{font-family:var(--f-mono); font-size:.78rem; color:var(--accent-ink)}
+.closing{font-family:var(--f-display); font-size:clamp(1.1rem,2.2vw,1.35rem); line-height:1.45; margin-top:28px; max-width:62ch}
+.summary{border:1px solid var(--accent); background:var(--accent-soft); border-radius:14px; padding:16px 20px; margin-bottom:22px}
+.summary h2{font-family:var(--f-body); font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-ink)}
+.summary ol{margin:8px 0 0; padding-left:20px; display:grid; gap:6px; font-size:.95rem}
+.tiles.one{grid-template-columns:minmax(0,340px)}
+.scen{background:var(--accent);color:#fff;border-radius:14px;padding:14px 18px;margin-top:22px}
+.scen .label{color:#D6E3F5}
+.scen dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin-top:8px;font-size:.92rem}
+.scen dt{font-family:var(--f-mono);font-size:.82rem;color:#FFE9A8;padding-top:2px}
+.scen dd{margin:0;color:#fff}
+.scen code{font-family:var(--f-mono);font-size:.82rem;color:#FFE9A8}
+@media (max-width:560px){ .scen dl{grid-template-columns:1fr; gap:2px} .scen dd{margin-bottom:8px} }
+
+.talk.ghost{background:transparent;color:var(--accent-ink);border:1px solid var(--accent)}
+.fx-uc{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 12px}
+.fx-uc button{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:6px 14px;font-size:.86rem;font-weight:600;cursor:pointer}
+.fx-uc button small{display:block;font-weight:400;font-size:.72rem;color:var(--muted)}
+.fx-uc button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.fx-uc button[aria-pressed=true] small{color:#E3ECF8}
+.fx-steps{list-style:none;padding:0;margin:0 0 10px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.fx-steps button{width:100%;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:var(--r);padding:8px 10px;cursor:pointer;font-size:.8rem;line-height:1.3;min-height:58px}
+.fx-steps button b{display:block;font-family:var(--f-mono);font-size:.7rem;color:var(--faint)}
+.fx-steps button.done{border-color:var(--accent-soft);background:var(--accent-soft)}
+.fx-steps button[aria-current=step]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset}
+.fx-card{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:var(--r);padding:14px 18px;display:grid;grid-template-columns:1.3fr 1fr;gap:6px 22px}
+.fx-card h3{grid-column:1/-1}
+.fx-card .fx-who{font-size:.85rem;color:var(--muted)}
+.fx-card .fx-kv{font-size:.86rem}
+.fx-card .fx-kv b{color:var(--accent-ink)}
+.fx-card .fx-who,.fx-card .fx-kv{display:block}
+.fx-card .fx-who b,.fx-card .fx-kv b,.fx-card .fx-kv span,.fx-card .fx-kv small{display:inline;margin:0;padding:0;width:auto;font-size:inherit}
+.fx-card .fx-kv small{font-size:.75rem;color:var(--muted)}
+.fx-card .tag{display:inline-block;font-family:var(--f-mono);font-size:.72rem;background:var(--accent-soft);color:var(--accent-ink);border-radius:6px;padding:2px 8px;margin:4px 6px 0 0}
+.fx-ctl{display:flex;gap:10px;justify-content:flex-end;margin-top:10px}
+.fx-ctl #fx-prev{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:6px 14px;cursor:pointer}
+.fx-loop{margin-top:14px;font-size:.9rem;color:var(--muted);background:var(--sunk);border-radius:var(--r);padding:8px 12px}
+.fx-tbl{overflow-x:auto;margin-top:12px}
+.fx-tbl table{border-collapse:collapse;width:100%;font-size:.88rem;background:var(--surface)}
+.fx-tbl th{text-align:left;background:var(--accent);color:#fff;padding:7px 10px}
+.fx-tbl td{padding:7px 10px;border-bottom:1px solid var(--line)}
+.fx-proof{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.fx-proof div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.fx-proof b{color:var(--accent-ink)}
+.fx-proof p{font-size:.88rem;margin-top:3px}
+@media (max-width:820px){.fx-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.fx-card{grid-template-columns:1fr}.fx-proof{grid-template-columns:1fr}}
+
+/* ===== Real-estate layout ported from BEACON ===== */
+/* ===== Side rails: utilize left/right real estate (desktop) ===== */
+:root{ --rail-l:140px; --rail-r:252px; --orange:#D9781E; --navy:#1F3A5F; --charcoal:#333; }
+.stage-rail, .about-rail{ display:none; }
+.shell{ display:block; }
+@media (min-width:1280px){
+  .shell{
+    display:grid;
+    grid-template-columns: var(--rail-l) minmax(0,1040px) var(--rail-r);
+    gap: 22px 18px;
+    max-width: 1460px;
+    margin: 0 auto;
+    padding: 12px 16px 48px;
+    align-items: start;
+  }
+  .shell > .wrap{
+    max-width: none;
+    margin: 0;
+    padding-inline: 0;
+    padding-block: 0 48px;
+    grid-column: 2;
+  }
+  .stage-rail, .about-rail{ display:flex; }
+  /* About always visible on desktop → hide floating tab */
+  .side-tab{ display:none !important; }
+  /* Undo old drawer clearance padding */
+  .wrap{ padding-right: 0 !important; }
+  .tabbar{ margin-right: 0 !important; padding-right: 0 !important; }
+}
+@media (min-width:1280px) and (max-width:1399px){
+  :root{ --rail-l:120px; --rail-r:220px; }
+  .shell{ gap: 14px 12px; max-width: 1380px; }
+}
+
+/* Left: slim sticky stage tracker */
+.stage-rail{
+  flex-direction:column; gap:6px;
+  position:sticky; top:20px;
+  padding:14px 10px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 4px 18px rgba(31,58,95,.06);
+  z-index:40;
+  max-height: calc(100vh - 40px);
+  overflow:auto;
+}
+.stage-rail .sr-label{
+  font-size:.65rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--faint); margin:0 0 6px 2px;
+}
+.stage-rail button{
+  display:grid; grid-template-columns:22px 1fr; gap:6px; align-items:center;
+  width:100%; text-align:left; border:none; background:transparent;
+  padding:7px 6px; border-radius:8px; cursor:pointer; color:var(--muted);
+  font-size:.72rem; line-height:1.25; font-family:inherit;
+}
+.stage-rail button .sn{
+  width:22px; height:22px; border-radius:6px; display:grid; place-items:center;
+  font-family:var(--f-mono); font-size:.68rem; font-weight:600;
+  background:var(--sunk); color:var(--muted);
+}
+.stage-rail button b{ font-weight:600; color:var(--fg); font-size:.74rem; }
+.stage-rail button:hover{ background:var(--accent-soft); }
+.stage-rail button[aria-current="true"]{ background:var(--accent-soft); color:var(--accent-ink); }
+.stage-rail button[aria-current="true"] .sn{ background:var(--navy); color:#fff; }
+.stage-rail button[aria-current="true"][data-gate="HUMAN"] .sn{ background:var(--orange); color:#fff; }
+.stage-rail button .sg{ display:block; font-size:.62rem; color:var(--faint); font-weight:500; }
+.stage-rail button[aria-current="true"] .sg{ color:var(--accent-ink); }
+
+/* Right: sticky About Sonia */
+.about-rail{
+  flex-direction:column; gap:12px;
+  position:sticky; top:20px;
+  padding:18px 16px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 4px 18px rgba(31,58,95,.06);
+  z-index:40;
+  max-height: calc(100vh - 40px);
+  overflow:auto;
+}
+.about-rail .ar-head{ display:flex; gap:10px; align-items:center; }
+.about-rail .ar-av{
+  flex:0 0 44px; width:44px; height:44px; border-radius:50%;
+  background:var(--navy); color:#fff; display:grid; place-items:center;
+  font-weight:700; font-size:.85rem; letter-spacing:.02em;
+}
+.about-rail h2{ font-family:var(--f-display); font-size:1.15rem; color:var(--navy); margin:0; }
+.about-rail .ar-sub{ font-size:.78rem; color:var(--charcoal); line-height:1.35; margin:0; }
+.about-rail .ar-fit{
+  font-size:.78rem; color:var(--accent-ink); background:var(--accent-soft);
+  border-radius:8px; padding:8px 10px; margin:0; line-height:1.35;
+}
+.about-rail .ar-fit b{ color:var(--navy); }
+.about-rail .ar-loop{
+  font-size:.76rem; color:var(--muted); line-height:1.4; margin:0;
+  padding:8px 0 0; border-top:1px solid var(--line);
+}
+.about-rail .ar-stats{ display:grid; gap:8px; margin:0; padding:0; list-style:none; }
+.about-rail .ar-stats li{
+  display:grid; gap:2px; padding:8px 10px; background:var(--sunk);
+  border-radius:8px; border:1px solid var(--line);
+}
+.about-rail .ar-stats .n{
+  font-family:var(--f-mono); font-size:.82rem; font-weight:600; color:var(--navy);
+}
+.about-rail .ar-stats .k{ font-size:.7rem; color:var(--muted); line-height:1.3; }
+.about-rail .ar-btns{ display:grid; gap:8px; margin-top:2px; }
+.about-rail .ar-btns a{
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  padding:9px 12px; border-radius:8px; font-size:.82rem; font-weight:600;
+  text-decoration:none; text-align:center;
+}
+.about-rail .ar-btns a.primary{
+  background:var(--navy); color:#fff;
+}
+.about-rail .ar-btns a.primary.is-placeholder{ opacity:.85; }
+.about-rail .ar-btns a.ghost{
+  background:transparent; color:var(--navy); border:1px solid var(--line-strong);
+}
+.about-rail .ar-btns a.ghost:hover, .about-rail .ar-btns a.primary:hover{ filter:brightness(1.05); }
+.about-rail .ar-note{ font-size:.65rem; color:var(--faint); margin:0; line-height:1.3; }
+
+/* Mobile / narrow: compact stage chips under tab bar (optional strip) */
+.stage-chips{
+  display:none; gap:6px; overflow-x:auto; padding:8px 0 4px;
+  -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+}
+.stage-chips button{
+  flex:0 0 auto; border:1px solid var(--line-strong); background:var(--surface);
+  color:var(--muted); border-radius:999px; padding:5px 10px; font-size:.72rem;
+  font-family:inherit; cursor:pointer; white-space:nowrap;
+}
+.stage-chips button b{ color:var(--fg); font-weight:600; }
+.stage-chips button[aria-current="true"]{
+  background:var(--accent-soft); border-color:var(--accent); color:var(--accent-ink);
+}
+@media (max-width:1279px){
+  .stage-chips{ display:flex; }
+}
+
+/* What BEACON offers you — role personas */
+.persona-filters{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 14px}
+.persona-filters button{
+  font:inherit; font-size:.78rem; font-weight:600; letter-spacing:.02em;
+  padding:7px 12px; border-radius:999px; border:1px solid var(--line);
+  background:var(--surface); color:var(--muted); cursor:pointer;
+}
+.persona-filters button[aria-pressed="true"]{
+  background:var(--navy,#1F3A5F); color:#fff; border-color:var(--navy,#1F3A5F);
+}
+.persona-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
+@media (max-width:820px){ .persona-grid{grid-template-columns:1fr} }
+.persona{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  padding:16px 16px 14px; display:grid; gap:8px; align-content:start;
+}
+.persona[hidden]{display:none !important}
+.persona .prole{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--accent-ink); background:var(--accent-soft); padding:3px 10px; border-radius:999px; width:fit-content;
+}
+.persona .pstage{
+  font-size:.68rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--faint); margin-left:4px;
+}
+.persona h3{font-family:var(--f-display); font-size:1.05rem; color:var(--navy,#1F3A5F); margin:0}
+.persona .pain{font-size:.88rem; color:var(--muted); margin:0; line-height:1.4}
+.persona .pain b{color:var(--fg)}
+.persona .gives, .persona .gets{margin:0; padding:0; list-style:none; display:grid; gap:4px}
+.persona .gives li, .persona .gets li{
+  font-size:.84rem; color:var(--fg); padding-left:14px; position:relative; line-height:1.35;
+}
+.persona .gives li::before, .persona .gets li::before{
+  content:""; position:absolute; left:0; top:.55em; width:6px; height:6px; border-radius:50%; background:var(--accent);
+}
+.persona .gets li::before{ background:var(--orange,#D9781E); }
+.persona .plabel{font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); margin-top:4px}
+.persona.persona-csuite{ grid-column:1 / -1; border-color:rgba(31,58,95,.25); background:linear-gradient(180deg,#fff 0%, #f7f9fc 100%); }
+.okr-note{
+  font-size:.78rem; color:var(--muted); background:var(--accent-soft); border:1px dashed rgba(217,120,30,.45);
+  border-radius:10px; padding:8px 12px; margin:4px 0 0;
+}
+.okr-note b{color:var(--orange,#D9781E)}
+.okr-grid{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin-top:6px}
+@media (max-width:900px){ .okr-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:520px){ .okr-grid{grid-template-columns:1fr} }
+.okr-card{
+  background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 10px 8px; display:grid; gap:6px;
+}
+.okr-card .ok{font-size:.68rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--navy,#1F3A5F)}
+.okr-card .bar{height:8px; background:#e8edf3; border-radius:999px; overflow:hidden}
+.okr-card .bar > i{display:block; height:100%; background:var(--accent); border-radius:999px}
+.okr-card .bar.q > i{background:var(--orange,#D9781E)}
+.okr-card .bar.cx > i{background:#2a6f97}
+.okr-card .bar.rk > i{background:#5c6b7a}
+.okr-card .bar.ad > i{background:#3d7a5a}
+.okr-card .hint{font-size:.72rem; color:var(--muted); line-height:1.3}
+/* end side rails */
+
+/* Claim runway demo + Operating Model: People + AI */
+.claim-runway{margin:16px 0 12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px 16px;box-shadow:0 1px 0 rgba(31,58,95,.04)}
+.claim-runway .rw-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:10px}
+.claim-runway .rw-head h2{font-size:1.05rem;color:var(--navy,#1F3A5F);margin:0}
+.claim-runway .rw-note{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--orange,#D9781E)}
+.rw-track{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;padding:28px 4px 8px;margin:0}
+.rw-track::before{content:"";position:absolute;left:4%;right:4%;top:42px;height:3px;background:linear-gradient(90deg,#1F3A5F 0%,#D9781E 100%);border-radius:2px;opacity:.35}
+.rw-stop{position:relative;z-index:1;text-align:center;padding:0;border:0;background:transparent;cursor:pointer;font:inherit;color:inherit}
+.rw-stop .dot{display:grid;place-items:center;width:28px;height:28px;margin:0 auto 6px;border-radius:50%;background:#EEF2F7;border:2px solid #1F3A5F;color:#1F3A5F;font-size:.72rem;font-weight:700;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.rw-stop[aria-current="true"] .dot,.rw-stop.is-done .dot{background:#1F3A5F;color:#fff}
+.rw-stop[aria-current="true"] .dot{border-color:#D9781E;box-shadow:0 0 0 3px rgba(217,120,30,.25);transform:scale(1.08)}
+.rw-stop .nm{display:block;font-size:.72rem;font-weight:700;color:#1F3A5F;line-height:1.2}
+.rw-stop .sg{display:block;font-size:.65rem;color:var(--muted);margin-top:2px}
+.rw-token{position:absolute;top:30px;left:0;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:#D9781E;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2);z-index:2;transition:left .55s ease;pointer-events:none}
+.rw-panel{margin-top:10px;background:#f7f9fc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-height:7.5rem}
+.rw-panel .rw-stage{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#D9781E;margin:0 0 4px}
+.rw-panel h3{font-size:1rem;color:#1F3A5F;margin:0 0 8px;font-family:var(--f-display)}
+.rw-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;font-size:.86rem}
+.rw-grid dt{font-weight:700;color:#1F3A5F;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;margin:0}
+.rw-grid dd{margin:2px 0 0;color:var(--fg);line-height:1.35}
+.rw-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.rw-controls button{appearance:none;border:1px solid #1F3A5F;background:#1F3A5F;color:#fff;border-radius:999px;padding:7px 14px;font-size:.85rem;font-weight:600;cursor:pointer}
+.rw-controls button.secondary{background:transparent;color:#1F3A5F}
+.rw-controls button:focus-visible{outline:3px solid #D9781E;outline-offset:2px}
+.rw-controls .rw-live{font-size:.78rem;color:var(--muted);margin-left:auto}
+@media (max-width:640px){
+  .rw-track{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 6px;padding-top:22px}
+  .rw-track::before{display:none}
+  .rw-token{display:none}
+  .rw-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion: reduce){
+  .rw-token{transition:none}
+  .rw-stop .dot{transition:none}
+}
+.model-i-wrap{margin:12px 0 18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px 16px}
+.model-i-wrap .mi-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 12px;margin-bottom:8px}
+.model-i-wrap h2{font-size:1.05rem;color:#1F3A5F;margin:0}
+.model-i-wrap .mi-note{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#D9781E}
+.model-i-wrap .mi-sub{font-size:.88rem;color:var(--muted);margin:0 0 10px;max-width:70ch}
+.model-i-wrap figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px}
+.model-i-wrap svg .hit{cursor:pointer}
+.model-i-wrap svg .hit:focus{outline:2px solid #D9781E;outline-offset:2px}
+.model-i-wrap .mi-tip{margin-top:10px;font-size:.86rem;color:var(--fg);background:#f7f9fc;border-left:3px solid #D9781E;padding:8px 10px;border-radius:0 8px 8px 0;min-height:2.8rem}
+.model-i-wrap .mi-foundation{font-size:.8rem;color:#333;margin:8px 0 0;text-align:center}
+.model-i-wrap .mi-foundation b{color:#1F3A5F}
+
+
+/* intro wrap fix */
+.hero .pron, .hero .thesis, .hero .acro { max-width: min(62ch, 100%); overflow-wrap: anywhere; word-break: break-word; }
+.hero .pron { font-size: clamp(1.05rem, 1.6vw, 1.35rem); line-height: 1.35; }
+.hero .thesis { white-space: normal; font-family: var(--f-body, inherit); color: var(--muted, #4F5B69); font-size: .95rem; line-height: 1.45; max-width: min(68ch, 100%); }
+@media (min-width: 1200px) and (max-width: 1480px) {
+  .hero .pron, .hero .thesis, .hero .acro { max-width: 52ch; }
+  .shell { --about-w: 240px; }
+}
+
+
+.hero-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:24px;align-items:start}
+.hero-l{min-width:0}
+.bcn{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 40px rgba(31,58,95,.13);overflow:hidden}
+.bcn-h{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;background:#1F3A5F;color:#fff}.bcn-h b{font-size:.9rem}.bcn-h span{font-size:.72rem;opacity:.85}
+.bcn-f{height:330px;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.bce{display:grid;grid-template-columns:40px 1fr;gap:8px;align-items:start;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.bce.in{opacity:1;transform:none}
+.bce time{font:12px var(--f-mono);color:var(--faint);padding-top:3px}
+.bce .bb{border-radius:10px;padding:8px 11px;border:1px solid var(--line);background:#f6f8fb;font-size:.95rem;font-weight:600;line-height:1.3;color:#191C22}
+.bce.ag .bb{background:#ECE6F6;border-color:transparent}.bce.sys .bb{background:#E5ECF6;border-color:transparent}
+.bce.hum .bb{background:#fff;border-left:3px solid #2E7D4F}
+.bce.chk .bb{background:#fff;border:1px solid #e6cf9e;border-left:4px solid #D9781E}
+.bce.ok .bb{background:#E3F2E8;border-color:transparent}
+.bce .wh{display:block;font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#575E6B;margin-bottom:2px}
+.bce .ln{display:inline-block;font-size:.62rem;font-weight:700;border:1px solid #BCC4D1;border-radius:999px;padding:0 6px;margin-left:6px;color:#575E6B;text-transform:none;letter-spacing:0;background:#fff}
+.bce small{display:table;margin-top:4px;font-size:.7rem;font-weight:700;color:#2E7D4F;background:#E3F2E8;border-radius:999px;padding:1px 9px}
+.bce.ok small{background:#fff}.bce.chk small{color:#8F5E00;background:#FBF0D9}
+.bcn-b{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:9px 14px;border-top:1px solid var(--line)}
+.bcn-k{display:flex;gap:16px}.bcn-k b{display:block;font:600 15px/1.1 var(--f-mono);color:#1F3A5F;white-space:nowrap}.bcn-k span{font-size:.7rem;color:var(--muted)}
+.bcn-bt{display:flex;gap:6px}.bcn-r{border:1px solid #1F3A5F;background:#fff;color:#1F3A5F;border-radius:999px;padding:5px 12px;font:inherit;font-weight:700;font-size:.8rem;cursor:pointer;white-space:nowrap}.bcn-r.solid{background:#1F3A5F;color:#fff}
+.bcn-cap{font-size:.8rem;color:var(--muted);margin:8px 0 0}.bcn-cap a{color:#1F3A5F;font-weight:700}
+.rw-grid dd{font-size:.98rem;font-weight:600;color:#191C22}
+@media (max-width:1200px){.hero-g{grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:18px}.bcn-h span{display:none}}
+@media (max-width:860px){.hero-g{grid-template-columns:1fr}.bcn-f{height:300px}}
+
+@media (min-width:1280px){ :root{ --rail-l:250px; } }
+@media (min-width:1280px) and (max-width:1399px){ :root{ --rail-l:230px; --rail-r:210px; } }
+.who-rail{padding:14px 14px !important;gap:8px !important}
+.wr-h{font-family:var(--f-display);font-size:1.15rem;color:#1F3A5F;line-height:1.2}
+.wr-sub{font-size:.74rem;color:var(--muted);font-family:var(--f-body)}
+.wr-groups{display:flex;flex-direction:column;gap:8px}
+.wr-g>span{display:block;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:0 0 4px}
+.wr-g div{display:flex;flex-wrap:wrap;gap:4px}
+.who-rail .wr-g button,.who-inline .wr-g button{display:inline-block;width:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 10px;font:inherit;font-size:.74rem;font-weight:600;color:#191C22;cursor:pointer;line-height:1.3;grid-template-columns:none}
+.who-rail .wr-g button[aria-pressed=true],.who-inline .wr-g button[aria-pressed=true]{background:#1F3A5F;border-color:#1F3A5F;color:#fff}
+.wr-detail{border:1px solid var(--line);border-left:4px solid #D9781E;border-radius:10px;padding:9px 11px;background:#fff;font-size:.8rem;line-height:1.4}
+.wr-detail .st{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#D9781E}
+.wr-detail h4{margin:2px 0 6px;font-size:.92rem;color:#1F3A5F;font-family:var(--f-body);line-height:1.3}
+.wr-detail b{color:#191C22}
+.wr-detail ul{margin:3px 0 0;padding-left:15px}.wr-detail li{margin:2px 0}
+.who-inline{display:none}
+@media (max-width:1279px){.who-inline{display:block;margin:14px 0 4px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.who-inline .wr-groups{flex-direction:row;flex-wrap:wrap;gap:6px 16px;margin:8px 0}
+.who-inline .wr-detail{display:grid;grid-template-columns:1.2fr 1fr;gap:4px 16px}.who-inline .wr-detail .st,.who-inline .wr-detail h4{grid-column:1/-1}}
+@media (max-width:640px){.who-inline .wr-detail{grid-template-columns:1fr}}
+.hdec{margin-top:18px;background:#fff;border:1px solid var(--line);border-left:4px solid #D9781E;border-radius:12px;padding:10px 12px}
+.hd-t{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1F3A5F;margin-bottom:6px}
+.hd-f{display:flex;align-items:stretch;gap:4px}
+.hd-f span{flex:1 1 0;min-width:0;border-radius:8px;padding:5px 6px;font-size:.72rem;font-weight:700;color:#191C22;background:#E5ECF6;line-height:1.25}
+.hd-f span.l{background:#fff;border:1.5px dashed #D9781E}.hd-f span.c{background:#fff;border:1px solid #1F3A5F}.hd-f span.a{background:#ECE6F6}.hd-f span.e{background:#FBF0D9}.hd-f span.h{background:#E3F2E8}
+.hd-f i{display:block;font-style:normal;font-weight:500;font-size:.72rem;color:#575E6B}
+.hd-loop{margin-top:7px;border-top:1px dashed #BCC4D1;padding-top:6px;font-size:.76rem;color:#3b4552;line-height:1.35}.hd-loop span{color:#D9781E;font-weight:700;font-size:.95rem;margin-right:2px}
+.hd-f em{align-self:center;font-style:normal;color:#8a8f99;font-weight:700}
+.hproof{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.hproof div{background:#1F3A5F;color:#dfe7f1;border-radius:10px;padding:8px 10px;font-size:.74rem;line-height:1.3}
+.hproof b{display:block;color:#fff;font-size:.95rem;margin-bottom:2px}
+@media (min-width:1280px){.hproof{display:none}}
+@media (max-width:640px){.hproof{grid-template-columns:1fr}.hd-f{flex-wrap:wrap}.hd-f span{flex:1 1 40%}.hd-f em{display:none}}
+.brand{display:flex; align-items:center; gap:.18em}
+.tmark{width:.7em; height:.8em; flex:0 0 auto}
+.tmark path{fill:none; stroke:var(--line-strong); stroke-width:2.2; stroke-linecap:round}
+.tmark .v{stroke:var(--accent); stroke-width:2.4}
+.tmark circle{fill:var(--vine)}
+.hero-l .brand{font-size:clamp(2.6rem,5vw,4.1rem)}
+.hero .pron{font-family:var(--f-display); color:#1F3A5F; font-weight:500; letter-spacing:0; margin-top:10px}
+.hd-f span{font-size:.68rem;padding:5px}
+.tl{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.tl-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.tl-h b{font-size:.9rem;color:#1F3A5F}.tl-h span{font-size:.72rem;color:var(--muted)}
+.tl-s{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;align-items:end;height:118px}
+.tl-s li{display:flex;flex-direction:column;justify-content:flex-end;height:100%;font-size:.7rem;line-height:1.25}
+.tl-s i{display:block;height:var(--h);border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#4F7DB8,#1F3A5F);margin-bottom:6px;opacity:.9}
+.tl-s li:first-child i{background:#D6E0EE}.tl-s li:nth-child(2) i{background:#A9BEDC}
+.tl-s b{color:#1F3A5F;font-size:.76rem}.tl-s span{color:var(--muted)}
+.tl-f{margin:10px 0 0;font-size:.76rem;color:#333;border-top:1px dashed var(--line-strong);padding-top:8px}
+.tl-f button{appearance:none;border:0;background:none;padding:0;font:inherit;font-weight:700;color:#1F3A5F;cursor:pointer;text-decoration:underline}
+.sc{margin-top:12px;background:#1F3A5F;border-radius:12px;padding:10px 12px;color:#fff}
+.sc-h{display:flex;justify-content:space-between;align-items:baseline}.sc-h b{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}.sc-h span{font-size:.7rem;color:#C9D6EA}
+.sc-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.sc-g div{background:rgba(255,255,255,.08);border-radius:8px;padding:8px}
+.sc-g b{display:block;font-family:var(--f-display);font-size:1.15rem;line-height:1.1;margin-bottom:3px}
+.sc-g span{font-size:.72rem;color:#DCE5F2;line-height:1.3;display:block}
+@media (max-width:520px){.sc-g{grid-template-columns:1fr}}
+.hero-cta{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
+.jd{margin:14px 0 6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.jd .jd-h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;align-items:baseline}
+.jd h2{font-size:1.05rem;color:#1F3A5F;margin:0}
+.jd .jd-n{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#D9781E}
+.jd-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+.jd-g button{appearance:none;text-align:left;font:inherit;border:1px solid var(--line);border-top:3px solid #1F3A5F;border-radius:10px;background:#fff;padding:9px 10px;cursor:pointer;display:flex;flex-direction:column;gap:3px}
+.jd-g button:hover{border-color:#1F3A5F}
+.jd-g b{font-size:.8rem;color:#1F3A5F;line-height:1.25}
+.jd-g span{font-size:.76rem;color:var(--muted);line-height:1.35}
+.jd-g i{font-style:normal;font-size:.72rem;font-weight:700;color:#D9781E;margin-top:auto}
+@media (max-width:900px){.jd-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.jd-g{grid-template-columns:1fr}}
+
+</style>
+</head><body>
+<div class="watermark" aria-hidden="true"></div>
+
+<div class="shell">
+<nav class="stage-rail who-rail" id="stage-rail" aria-label="Who ELEVATE serves">
+  <div class="wr-h">Who ELEVATE serves</div>
+  <div class="wr-sub">Same program, different seat. Pick a role.</div>
+  <div class="wr-groups" data-who-groups></div>
+  <div class="wr-detail" data-who-detail></div>
+</nav>
+<div class="wrap">
+  <header class="hero"><div class="hero-g"><div class="hero-l">
+    <div class="eyebrow">
+      <span class="pill">Executive preview · Sonia Malik</span>
+      <span class="pill neutral">Prepared for Wells Fargo Technology · Principal Engineer, AI Enablement &amp; Adoption</span>
+    </div>
+    <div class="brand"><svg class="tmark" viewBox="0 0 36 44" aria-hidden="true"><path d="M4 40 H12 V30 H20 V20 H28 V10"/><path class="v" d="M22 4 L30 4 L30 12"/><circle cx="6" cy="40" r="2.6"/></svg>ELEVATE</div>
+    <div class="pron">From first prompt to daily practice, safely.</div>
+    <div class="acro" style="font-size:.9rem;letter-spacing:.02em;margin-top:10px"><span style="color:#1F3A5F"><b>Build it · teach it · make it the easy path</b></span> <span style="font-style:italic;color:#333">&nbsp;· adoption is a people change first.</span></div>
+    <p class="thesis">One sample: an engineering team adopts an AI agent for incident write-ups. Sample data, not Wells Fargo data.</p>
+    <div class="hdec" aria-label="How adoption happens">
+      <div class="hd-t">How adoption happens</div>
+      <div class="hd-f"><span class="c">Listen<i>one real pain</i></span><em>›</em><span class="a">Build<i>reference agent</i></span><em>›</em><span class="a">Lab<i>hands-on</i></span><em>›</em><span class="e">Guardrails<i>eval · security</i></span><em>›</em><span class="h">Engineer<i>decides</i></span><em>›</em><span class="l">Reuse<i>next team</i></span></div>
+      <div class="hd-loop"><span>↺</span> Used weekly → publish it. Not used → back to the team, not more training.</div>
+    </div>
+    <div class="hproof">
+      <div><b>350+ in 13 months</b>engineers on governed AI (S&amp;P Global)</div>
+      <div><b>85% → 95%</b>engagement in 3 quarters through AI upskilling</div>
+      <div><b>100+ scrum teams</b>adopted one reusable framework</div>
+    </div>
+    <div class="sc" aria-label="Year-one scorecard (sample targets)">
+      <div class="sc-h"><b>Year-one scorecard</b><span>Sample targets</span></div>
+      <div class="sc-g">
+        <div><b>6 in 10</b><span>engineers using AI weekly in real work, by team</span></div>
+        <div><b>10–12</b><span>reference implementations, each with a lab and playbook</span></div>
+        <div><b>1 in 2</b><span>new use cases start from a shared agent or prompt</span></div>
+      </div>
+    </div>
+    <p class="hero-cta"><button class="talk" type="button" data-go="lab">Follow one asset &rarr;</button><button class="talk ghost" type="button" data-go="learn">See the learning paths &rarr;</button></p>
+    </div><div class="hero-r">
+    <div class="bcn" id="bcn" aria-label="Sample: one engineering team adopting an incident write-up agent">
+      <div class="bcn-h"><b>Enablement console · Payments Tech team</b><span>Sample · illustrative</span></div>
+      <div class="bcn-f" id="bcn-f" aria-live="polite"></div>
+      <div class="bcn-b"><div class="bcn-k"><div><b id="bcn-c">0:00</b><span>elapsed</span></div><div><b id="bcn-l">–</b><span>current lane</span></div></div>
+      <div class="bcn-bt"><button type="button" class="bcn-r" id="bcn-p">❚❚ Pause</button><button type="button" class="bcn-r solid" id="bcn-n">Next ›</button><button type="button" class="bcn-r" id="bcn-rp" aria-label="Replay">↻</button></div></div>
+    </div>
+    <p class="bcn-cap">The agent drafts; the engineer decides. <a href="#claim-runway">Six stages ↓</a></p>
+    <div class="tl" aria-label="Adoption ladder: fluency is earned">
+      <div class="tl-h"><b>Fluency is earned</b><span>Each team moves up at its own pace</span></div>
+      <ol class="tl-s">
+        <li style="--h:28%"><i></i><b>Aware</b><span>demo, safe-use basics</span></li>
+        <li style="--h:50%"><i></i><b>Try</b><span>hands-on lab</span></li>
+        <li style="--h:72%"><i></i><b>Use</b><span>weekly, in real work</span></li>
+        <li style="--h:94%"><i></i><b>Build</b><span>shares an asset</span></li>
+      </ol>
+      <p class="tl-f"><b>Never skipped:</b> security, data protection, human review. <button type="button" data-go="adopt">See the lifecycle →</button></p>
+    </div>
+    </div></div>
+  </header>
+
+  <section class="who-inline" aria-label="Who ELEVATE serves">
+    <div class="wr-h">Who ELEVATE serves <span class="wr-sub">· pick a role</span></div>
+    <div class="wr-groups" data-who-groups></div>
+    <div class="wr-detail" data-who-detail></div>
+  </section>
+
+  <!-- ADOPTION RUNWAY -->
+  <section class="claim-runway" id="claim-runway" aria-label="Interactive adoption runway through six stages">
+    <div class="rw-head">
+      <h2>Adoption runway · incident write-up agent</h2>
+      <span class="rw-note">Illustrative · sample KPI, not Wells Fargo data</span>
+    </div>
+    <div class="rw-track" id="rw-track" role="list">
+      <div class="rw-token" id="rw-token" aria-hidden="true"></div>
+      <button type="button" class="rw-stop" role="listitem" data-rw="0" aria-current="true"><span class="dot">1</span><span class="nm">Listen</span><span class="sg">One real pain</span></button>
+      <button type="button" class="rw-stop" role="listitem" data-rw="1"><span class="dot">2</span><span class="nm">Prototype</span><span class="sg">Built with the team</span></button>
+      <button type="button" class="rw-stop" role="listitem" data-rw="2"><span class="dot">3</span><span class="nm">Guardrails</span><span class="sg">Auto-checked</span></button>
+      <button type="button" class="rw-stop" role="listitem" data-rw="3"><span class="dot">4</span><span class="nm">Lab</span><span class="sg">Hands-on</span></button>
+      <button type="button" class="rw-stop" role="listitem" data-rw="4"><span class="dot">5</span><span class="nm">Daily practice</span><span class="sg">Engineer decides</span></button>
+      <button type="button" class="rw-stop" role="listitem" data-rw="5"><span class="dot">6</span><span class="nm">Reuse</span><span class="sg">Next team</span></button>
+    </div>
+    <div class="rw-panel" id="rw-panel" aria-live="polite">
+      <div class="rw-stage" id="rw-stage-label">Stage 1 · Listen</div>
+      <h3 id="rw-title">One real pain</h3>
+      <dl class="rw-grid">
+        <div><dt>Engineer moment</dt><dd id="rw-cust"></dd></div>
+        <div><dt>Enablement + agent</dt><dd id="rw-agent"></dd></div>
+        <div><dt>Control check</dt><dd id="rw-ctrl"></dd></div>
+        <div><dt>Adoption KPI <span style="color:#D9781E;font-weight:700">(Illustrative)</span></dt><dd id="rw-kpi"></dd></div>
+      </dl>
+    </div>
+    <div class="rw-controls">
+      <button type="button" id="rw-play">Play</button>
+      <button type="button" class="secondary" id="rw-step">Step</button>
+      <button type="button" class="secondary" id="rw-pause">Pause</button>
+      <button type="button" class="secondary" id="rw-replay">Replay</button>
+      <span class="rw-live" id="rw-live">Stopped · press Play or Step</span>
+    </div>
+  </section>
+
+  <!-- OPERATING MODEL -->
+  <section class="model-i-wrap" id="model-i" aria-label="Operating Model: People + AI for AI enablement">
+    <div class="mi-head">
+      <h2>Operating Model: People + AI</h2>
+      <span class="mi-note">Illustrative · proven pattern from S&amp;P Global</span>
+    </div>
+    <p class="mi-sub">Enablement sits with the teams, builds on shared assets, and learns from daily use.</p>
+    <figure>
+      <svg viewBox="0 0 640 210" width="100%" style="display:block;max-width:900px;margin:auto;font-family:inherit" role="img" aria-label="Operating model: Engineer Experience and Engineering Excellence around team labs, flowing through guardrails into daily practice, with a learning loop">
+        <defs><marker id="mia" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#575E6B"/></marker></defs>
+        <g class="hit" tabindex="0" data-mi="cc" role="button" aria-label="Engineer Experience">
+          <rect x="20" y="10" width="320" height="34" rx="6" fill="#1F3A5F"/>
+          <text x="180" y="25" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="bold">Engineer Experience</text>
+          <text x="180" y="38" text-anchor="middle" fill="#FFFFFF" font-size="8.5">one real pain · one KPI per team · listen first</text>
+        </g>
+        <g class="hit" tabindex="0" data-mi="teams" role="button" aria-label="Team labs">
+          <rect x="30" y="52" width="64" height="62" rx="6" fill="#FFFFFF" stroke="#1F3A5F"/><text x="62" y="78" text-anchor="middle" font-size="9" fill="#333">Team lab</text><text x="62" y="90" text-anchor="middle" font-size="7.5" fill="#575E6B">Payments</text><text x="62" y="103" text-anchor="middle" font-size="8" fill="#D9781E">agent</text>
+          <rect x="108" y="52" width="64" height="62" rx="6" fill="#FFFFFF" stroke="#1F3A5F"/><text x="140" y="78" text-anchor="middle" font-size="9" fill="#333">Team lab</text><text x="140" y="90" text-anchor="middle" font-size="7.5" fill="#575E6B">QE &amp; SRE</text><text x="140" y="103" text-anchor="middle" font-size="8" fill="#D9781E">prompts</text>
+          <rect x="186" y="52" width="64" height="62" rx="6" fill="#FFFFFF" stroke="#1F3A5F"/><text x="218" y="78" text-anchor="middle" font-size="9" fill="#333">Team lab</text><text x="218" y="90" text-anchor="middle" font-size="7.5" fill="#575E6B">Data</text><text x="218" y="103" text-anchor="middle" font-size="8" fill="#D9781E">playbook</text>
+          <rect x="264" y="52" width="64" height="62" rx="6" fill="#FFFFFF" stroke="#1F3A5F"/><text x="296" y="78" text-anchor="middle" font-size="9" fill="#333">Team lab</text><text x="296" y="90" text-anchor="middle" font-size="7.5" fill="#575E6B">Next team</text><text x="296" y="103" text-anchor="middle" font-size="8" fill="#D9781E">champion</text>
+        </g>
+        <g class="hit" tabindex="0" data-mi="ee" role="button" aria-label="Engineering Excellence">
+          <rect x="20" y="122" width="320" height="34" rx="6" fill="#333333"/>
+          <text x="180" y="137" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="bold">Engineering Excellence</text>
+          <text x="180" y="150" text-anchor="middle" fill="#FFFFFF" font-size="8.5">approved tools · shared agents &amp; prompts · reference code</text>
+        </g>
+        <line x1="344" y1="83" x2="384" y2="83" stroke="#575E6B" stroke-width="1.5" marker-end="url(#mia)"/>
+        <g class="hit" tabindex="0" data-mi="gates" role="button" aria-label="Guardrails">
+          <rect x="388" y="63" width="110" height="40" rx="6" fill="#EEF2F7" stroke="#1F3A5F"/>
+          <text x="443" y="80" text-anchor="middle" font-size="9" font-weight="bold" fill="#1F3A5F">Guardrails</text>
+          <text x="443" y="93" text-anchor="middle" font-size="8" fill="#1F3A5F">eval · security · data</text>
+        </g>
+        <line x1="498" y1="83" x2="530" y2="83" stroke="#575E6B" stroke-width="1.5" marker-end="url(#mia)"/>
+        <g class="hit" tabindex="0" data-mi="prod" role="button" aria-label="Daily practice">
+          <rect x="534" y="63" width="90" height="40" rx="6" fill="#1F3A5F"/>
+          <text x="579" y="87" text-anchor="middle" fill="#FFFFFF" font-size="9.5" font-weight="bold">Daily practice</text>
+        </g>
+        <path d="M579,63 L579,27 L344,27" fill="none" stroke="#D9781E" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#mia)"/>
+        <path d="M579,103 L579,139 L344,139" fill="none" stroke="#D9781E" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#mia)"/>
+        <text x="624" y="19" text-anchor="end" font-size="7.6" fill="#D9781E">Weekly use · time saved · quality → next lab</text>
+        <text x="624" y="152" text-anchor="end" font-size="7.6" fill="#D9781E">Field lessons → shared library</text>
+        <rect x="20" y="168" width="604" height="32" rx="6" fill="#EEF2F7" stroke="#1F3A5F"/>
+        <text x="322" y="188" text-anchor="middle" font-size="8" fill="#333"><tspan font-weight="bold" fill="#1F3A5F">Built on learning</tspan> · AI fluency by role · peer pairing · champions · mentoring</text>
+      </svg>
+    </figure>
+    <p class="mi-tip" id="mi-tip" aria-live="polite">Tap any box to see how it works.</p>
+  </section>
+
+  <!-- JD MAP -->
+  <section class="jd" aria-label="How ELEVATE maps to the role">
+    <div class="jd-h"><h2>The role, mapped</h2><span class="jd-n">Principal Engineer, AI Enablement &amp; Adoption</span></div>
+    <div class="jd-g">
+      <button type="button" data-go="lab"><b>Build prototypes and reusable assets</b><span>Agents, prompts, reference code.</span><i>Build lab →</i></button>
+      <button type="button" data-go="learn"><b>Own Tech's AI learning strategy</b><span>Paths by role, labs, workshops.</span><i>Learning paths →</i></button>
+      <button type="button" data-go="adopt"><b>Coach the adoption lifecycle</b><span>Exploration to daily workflow.</span><i>Adoption →</i></button>
+      <button type="button" onclick="document.getElementById('guard').scrollIntoView({behavior:'smooth'})"><b>Responsible AI built in</b><span>Security, data, testing, oversight.</span><i>Guardrails ↓</i></button>
+    </div>
+  </section>
+
+  <section class="govflow" id="guard" aria-label="Guardrails sized to risk" style="margin:18px 0 8px;padding:0">
+    <svg class="gov-flow" viewBox="0 0 960 330" role="img" aria-labelledby="gf-t gf-d" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:Helvetica,Arial,sans-serif">
+<title id="gf-t">ELEVATE guardrails, sized to risk</title>
+<desc id="gf-d">Every lab and reference implementation goes through intake, risk tiering, a fast path of automated checks or a deeper review for high-risk work, evaluation and security testing, a person approving release, team use, and monitoring that feeds back to the shared library. Anchored to NIST AI RMF, ISO/IEC 42001 and SR 11-7 model risk guidance.</desc>
+<defs><marker id="gfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F3A5F"/></marker></defs>
+<rect x="0" y="0" width="960" height="330" rx="12" fill="#FFFFFF" stroke="#D5DCE6"/>
+<text x="20" y="28" font-size="15" font-weight="700" fill="#1F3A5F">Guardrails, sized to risk</text>
+<text x="20" y="46" font-size="11.5" fill="#333">Every lab and shared asset ships the same safe way. People focus on real risk.</text>
+<g font-size="12" fill="#333" text-anchor="middle">
+<rect x="20" y="105" width="100" height="62" rx="8" fill="#EEF2F7" stroke="#1F3A5F"/><text x="70" y="131" font-weight="700" fill="#1F3A5F">Intake</text><text x="70" y="149" font-size="10.5">team, one KPI</text>
+<rect x="145" y="105" width="100" height="62" rx="8" fill="#EEF2F7" stroke="#1F3A5F"/><text x="195" y="131" font-weight="700" fill="#1F3A5F">Risk tiering</text><text x="195" y="149" font-size="10.5">data, actions</text>
+<rect x="270" y="62" width="160" height="58" rx="8" fill="#FFFFFF" stroke="#1F3A5F" stroke-dasharray="4 3"/><text x="350" y="84" font-weight="700" fill="#1F3A5F">Low risk: fast path</text><text x="350" y="102" font-size="10.5">automated checks</text>
+<rect x="270" y="152" width="160" height="58" rx="8" fill="#1F3A5F"/><text x="350" y="174" font-weight="700" fill="#FFFFFF">Higher risk</text><text x="350" y="192" font-size="10.5" fill="#FFFFFF">Security &amp; data review</text>
+<rect x="455" y="105" width="110" height="62" rx="8" fill="#EEF2F7" stroke="#1F3A5F"/><text x="510" y="127" font-weight="700" fill="#1F3A5F">Evaluate</text><text x="510" y="144" font-size="10.5">AI judge, tests,</text><text x="510" y="157" font-size="10.5">red team</text>
+<rect x="590" y="105" width="110" height="62" rx="8" fill="#1F3A5F"/><text x="645" y="127" font-weight="700" fill="#FFFFFF">Publish gate</text><text x="645" y="144" font-size="10.5" fill="#FFFFFF">a person approves</text><text x="645" y="157" font-size="10.5" fill="#FFFFFF">with evidence</text><circle cx="690" cy="114" r="4.5" fill="#F2A541"/>
+<rect x="725" y="105" width="90" height="62" rx="8" fill="#EEF2F7" stroke="#1F3A5F"/><text x="770" y="140" font-weight="700" fill="#1F3A5F">Team use</text>
+<rect x="840" y="105" width="100" height="62" rx="8" fill="#EEF2F7" stroke="#1F3A5F"/><text x="890" y="127" font-weight="700" fill="#1F3A5F">Observe</text><text x="890" y="142" font-size="10.5">usage, quality,</text><text x="890" y="157" font-size="10.5">incidents</text>
+</g>
+<g fill="none" stroke="#1F3A5F" stroke-width="1.6">
+<path d="M120 136H143" marker-end="url(#gfa)"/>
+<path d="M245 136H258V91H268" marker-end="url(#gfa)"/><path d="M258 136V181H268" marker-end="url(#gfa)"/>
+<path d="M430 91H440V136H453" marker-end="url(#gfa)"/><path d="M430 181H440V136"/>
+<path d="M565 136H588" marker-end="url(#gfa)"/><path d="M700 136H723" marker-end="url(#gfa)"/><path d="M815 136H838" marker-end="url(#gfa)"/>
+<path d="M890 167V240H70V169" stroke-dasharray="5 4" marker-end="url(#gfa)"/><path d="M195 240V169" stroke-dasharray="5 4" marker-end="url(#gfa)"/>
+</g>
+<rect x="350" y="230" width="290" height="20" rx="10" fill="#FFFFFF"/>
+<text x="495" y="244" font-size="11" fill="#1F3A5F" text-anchor="middle" font-weight="700">Feedback loop: re-tier, update labs, improve the library</text>
+<line x1="20" y1="268" x2="940" y2="268" stroke="#D5DCE6"/>
+<text x="20" y="295" font-size="10.5" fill="#333" font-weight="700">FRAMEWORK ANCHORS</text>
+<g font-size="11" fill="#1F3A5F" text-anchor="middle">
+<rect x="165" y="280" width="230" height="26" rx="13" fill="#EEF2F7" stroke="#1F3A5F"/><text x="280" y="297">NIST AI RMF</text>
+<rect x="410" y="280" width="230" height="26" rx="13" fill="#EEF2F7" stroke="#1F3A5F"/><text x="525" y="297">ISO/IEC 42001</text>
+<rect x="655" y="280" width="230" height="26" rx="13" fill="#EEF2F7" stroke="#1F3A5F"/><text x="770" y="297">SR 11-7 model risk guidance</text>
+</g>
+<text x="940" y="322" font-size="9.5" fill="#333" text-anchor="end"><tspan fill="#F2A541">●</tspan> human control point</text>
+</svg>
+  </section>
+
+  <div class="tabbar">
+    <div class="tabs" role="tablist" aria-label="ELEVATE sections" id="tabs">
+      <button class="tab" role="tab" id="t-overview" aria-controls="overview" data-tab="overview">Overview</button>
+      <button class="tab" role="tab" id="t-lab" aria-controls="lab" data-tab="lab">Build lab</button>
+      <button class="tab" role="tab" id="t-learn" aria-controls="learn" data-tab="learn">Learning paths</button>
+      <button class="tab" role="tab" id="t-adopt" aria-controls="adopt" data-tab="adopt">Adoption</button>
+      <button class="tab" role="tab" id="t-why" aria-controls="why" data-tab="why">Why me</button>
+      <button class="tab" role="tab" id="t-meet" aria-controls="meet" data-tab="meet">When we meet</button>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section class="pane" id="overview" role="tabpanel" aria-labelledby="t-overview">
+    <div class="summary">
+      <h2>60-second summary: three things to know</h2>
+      <ol>
+        <li><b>Build, then teach:</b> every lab starts from a working reference implementation built with a real team, so engineers learn on their own problems.</li>
+        <li><b>Proven at S&amp;P Global:</b> 350+ engineers on governed AI in 13 months on a platform designed to serve ~1,200; engagement 85% → 95% in 3 quarters through AI upskilling.</li>
+        <li><b>Safe by default:</b> security, data protection, evaluation and human review come with every shared asset, so the safe path is also the fast one.</li>
+      </ol>
+    </div>
+    <div class="proof">
+      <div><b class="mono">350+</b><span>engineers on governed AI in 13 months, on a platform stood up in 6 months</span></div>
+      <div><b class="mono">85% → 95%</b><span>engagement in 3 quarters, with a skills assessment and peer pairing</span></div>
+      <div><b class="mono">100+</b><span>scrum teams adopted one reusable framework, shipped as a shared repository and templates</span></div>
+      <div><b class="mono">50+</b><span>engineers reskilled into automation at Prudential, from 150+ mainframe engineers</span></div>
+    </div>
+    <p class="proof-note"><em>These four figures are from my work. Everything about Wells Fargo on this page is sample data.</em></p>
+    <div class="sec-head" style="margin-top:36px"><span class="label">Where to go next</span></div>
+    <div class="jump">
+      <button type="button" data-go="lab"><b>Build lab</b><span>Follow one reusable asset from a team's pain to daily use</span><i>2 min →</i></button>
+      <button type="button" data-go="learn"><b>Learning paths</b><span>What each role learns, in what format, and how it is measured</span><i>2 min →</i></button>
+      <button type="button" data-go="adopt"><b>Adoption</b><span>The lifecycle, the scorecard and the first 90 days</span><i>2 min →</i></button>
+      <button type="button" data-go="why"><b>Why me</b><span>Where I have done this, with real results</span><i>2 min →</i></button>
+      <button type="button" data-go="meet"><b>When we meet</b><span>What I would walk you through in person</span><i>1 min →</i></button>
+    </div>
+  </section>
+
+  <!-- BUILD LAB -->
+  <section class="pane" id="lab" role="tabpanel" aria-labelledby="t-lab" hidden>
+    <div class="sec-head">
+      <span class="label">Build lab · sample assets</span>
+      <h2>Every lab starts with something that works</h2>
+      <p class="lede">Pick an asset and step through how it goes from one team's pain to something the next team reuses.</p>
+    </div>
+    <div class="fx-uc" role="group" aria-label="Sample assets" id="fx-uc"></div>
+    <ol class="fx-steps" id="fx-steps"></ol>
+    <div class="fx-card" id="fx-card" aria-live="polite"></div>
+    <div class="fx-ctl"><button type="button" id="fx-prev">&larr; Back</button><button type="button" id="fx-next" class="talk">Next stage &rarr;</button></div>
+
+    <div class="sec-head" style="margin-top:34px"><span class="label">What goes in the shared library</span><h2>Reusable by design, owned by name</h2></div>
+    <div class="pillars">
+      <div><h3>Agents and prompts</h3><p>Tested prompt packs and small agents, each with its evaluation set, owner and the data it may touch.</p></div>
+      <div><h3>Reference implementations</h3><p>Working code in Python or Java (RAG, agent with tools, evaluation harness) that teams copy, not reinvent.</p></div>
+      <div><h3>Playbooks and labs</h3><p>A 60-minute lab and a one-page playbook per asset: when to use it, when not to, and how to review its output.</p></div>
+    </div>
+    <div class="sec-head" style="margin-top:34px"><span class="label">Choosing tools</span><h2>New tools are judged on value, risk and scale</h2></div>
+    <div class="fx-tbl"><table>
+      <tr><th>Question</th><th>What it tells us</th></tr>
+      <tr><td>Which daily task does it remove or speed up?</td><td>Value, measured on one team before any rollout</td></tr>
+      <tr><td>What data does it see, and where does it go?</td><td>Security and data protection review, before the lab</td></tr>
+      <tr><td>Pro-code or low-code?</td><td>Engineers get code-first assets; business teams can get low-code flows (such as Copilot Studio, Power Automate or UiPath), under the same guardrails</td></tr>
+      <tr><td>Can we support it at scale?</td><td>Fewer tools done well: at S&amp;P Global, 8–10 tools were consolidated into shared platforms</td></tr>
+    </table></div>
+    <div class="next"><button type="button" data-go="learn">Next: learning paths →</button></div>
+  </section>
+
+  <!-- LEARNING PATHS -->
+  <section class="pane" id="learn" role="tabpanel" aria-labelledby="t-learn" hidden>
+    <div class="sec-head">
+      <span class="label">AI learning &amp; development strategy</span>
+      <h2>Learning by role, on real work, measured by what changes</h2>
+      <p class="lede">A skills assessment first, so each person starts where they are. Then short, hands-on formats, close to the tools.</p>
+    </div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Role</th><th>Aware</th><th>Try</th><th>Use</th><th>Build</th></tr></thead>
+      <tbody>
+        <tr><td><b>Software engineers</b></td><td>Safe use of AI coding assistants</td><td>Lab: write and test with an assistant</td><td>Assistant in daily pull requests</td><td>Publish a prompt pack or agent</td></tr>
+        <tr><td><b>QE &amp; SRE</b></td><td>AI in testing and operations</td><td>Lab: AI-drafted tests and incident summaries</td><td>Judge-checked tests in the pipeline</td><td>Evaluation sets for others</td></tr>
+        <tr><td><b>Data &amp; ML engineers</b></td><td>RAG and agents, explained</td><td>Lab: RAG with evaluation</td><td>Evaluation and observability by default</td><td>Reference implementations</td></tr>
+        <tr><td><b>Product &amp; business partners</b></td><td>What AI can and can't do</td><td>Lab: from pain to use case</td><td>Use cases with one KPI</td><td>Low-code flows, reviewed</td></tr>
+        <tr><td><b>Managers &amp; leaders</b></td><td>AI and the team's work</td><td>Demo day with their teams</td><td>Adoption on the team scorecard</td><td>Sponsor a champion</td></tr>
+      </tbody>
+    </table></div>
+    <div class="sec-head" style="margin-top:30px"><span class="label">Formats</span></div>
+    <div class="pillars">
+      <div><h3>Labs and workshops</h3><p>60–90 minutes, on the team's own code and data patterns, ending with something that runs.</p></div>
+      <div><h3>Peer pairing and champions</h3><p>Each team gets a champion; people learn from a colleague one step ahead, not only from a course.</p></div>
+      <div><h3>Demos and build days</h3><p>Teams show what they built; the best assets go into the shared library with their owner.</p></div>
+    </div>
+    <p class="proof-note" style="margin-top:14px"><em>Lived: at S&amp;P Global, a skills assessment and peer pairing across a 350+ global organization moved engagement from 85% to 95% in 3 quarters. At Prudential, 50+ engineers were reskilled into automation.</em></p>
+    <div class="next"><button type="button" data-go="adopt">Next: adoption →</button></div>
+  </section>
+
+  <!-- ADOPTION -->
+  <section class="pane" id="adopt" role="tabpanel" aria-labelledby="t-adopt" hidden>
+    <div class="sec-head">
+      <span class="label">Adoption lifecycle</span>
+      <h2>From exploration to the way the team works</h2>
+    </div>
+    <div class="fx-proof">
+      <div><b>1 · Explore</b><p>Listen to the team; pick one pain with a baseline. No tool before the problem.</p></div>
+      <div><b>2 · Pilot</b><p>Build with the team on a reference implementation; agree what "better" means.</p></div>
+      <div><b>3 · Embed</b><p>Into the workflow: pipeline, IDE, runbook. Guardrails and human review included.</p></div>
+      <div><b>4 · Sustain</b><p>Champion named; usage and quality watched; the asset goes back to the library.</p></div>
+    </div>
+    <div class="sec-head" style="margin-top:34px"><span class="label">Scorecard · sample targets for year one</span><h2>Adoption measured by what changes, not by logins</h2></div>
+    <div class="fx-tbl"><table>
+      <tr><th>Measure</th><th>Why it matters</th></tr>
+      <tr><td>Weekly active use in real work, by team</td><td>Shows which teams moved from Try to Use</td></tr>
+      <tr><td>Time saved on the targeted task</td><td>Value the team can feel, against its own baseline</td></tr>
+      <tr><td>Quality of AI output (judge score, human edit rate)</td><td>Speed without quality loss</td></tr>
+      <tr><td>Assets reused by a second team</td><td>Whether the library is working</td></tr>
+      <tr><td>Guardrail exceptions and incidents</td><td>Safety stays visible as use grows</td></tr>
+    </table></div>
+    <div class="sec-head" style="margin-top:34px"><span class="label">First 90 days</span></div>
+    <div class="pillars">
+      <div><h3>Days 1&ndash;30</h3><p>Listen to 5&ndash;6 engineering teams and partners in Security and Risk; run a skills baseline; agree the scorecard.</p></div>
+      <div><h3>Days 31&ndash;60</h3><p>First two reference implementations built with teams; first labs run; guardrail checklist agreed.</p></div>
+      <div><h3>Days 61&ndash;90</h3><p>Shared library live with owners; champions named; first scorecard reviewed with Technology leadership.</p></div>
+    </div>
+    <div class="next"><button type="button" data-go="why">Next: why me →</button></div>
+  </section>
+
+  <!-- WHY ME -->
+  <section class="pane" id="why" role="tabpanel" aria-labelledby="t-why" hidden>
+    <div class="sec-head">
+      <span class="label">Why me</span>
+      <h2>I have built it, taught it, and made it stick</h2>
+      <p class="lede">The figures below are from my resume.</p>
+    </div>
+    <div class="lessons">
+      <article class="lesson">
+        <span class="yr">2025–2026 · VP, Head of Quality Engineering · Chair, AI Governance Committee</span><h3>S&amp;P Global</h3>
+        <ul><li>AI developer platform stood up in 6 months, designed to serve ~1,200 engineers; 350+ engineers on governed AI in 13 months</li><li>Skills assessment and peer pairing across a 350+ global organization; engagement 85% → 95% in 3 quarters</li><li>Creator and judge agents with human validation: features per PI +30%, production defects −20% in 6 months, NPS +5</li><li>Security testing framework adopted by 100+ scrum teams, shipped as a shared repository and templates</li><li>Chaired the AI Governance Committee; reviewed 10+ AI tools; 0 autonomous production deploys</li></ul>
+        <p class="shows">Shows up in ELEVATE as <span>Reference implementations</span><span>Peer pairing</span><span>Shared library</span><span>Guardrails</span></p>
+      </article>
+      <article class="lesson">
+        <span class="yr">2024–2025 · VP of Product and Engineering</span><h3>DoubleVerify</h3>
+        <ul><li>AI-assisted testing and predictive defect analysis, with guardrails and human review gates</li><li>Manual effort −25%; test cycles −20%; 200+ contractors across five countries</li></ul>
+        <p class="shows">Shows up in ELEVATE as <span>Human review</span><span>Global teams</span></p>
+      </article>
+      <article class="lesson">
+        <span class="yr">2019–2024 · QAE Director, CTO Office</span><h3>Audible, an Amazon company</h3>
+        <ul><li>Manual effort −60% across 17 teams; regression 5 days → 2</li><li>Machine learning on production incidents from 2022</li><li>Security champion training; Sev2s, security vulnerabilities and launch risk each −30%</li></ul>
+        <p class="shows">Shows up in ELEVATE as <span>Adoption across teams</span><span>Champions</span></p>
+      </article>
+      <article class="lesson">
+        <span class="yr">2015–2019 · Head of Quality Engineering, CIO Office</span><h3>Prudential</h3>
+        <ul><li>Took in 150+ mainframe engineers; reskilled 50+ into automation; moved 35+ roles with backup coverage</li><li>Testing time −30% in 9 months; QA cost −50%</li></ul>
+        <p class="shows">Shows up in ELEVATE as <span>Reskilling</span><span>Change management</span></p>
+      </article>
+    </div>
+    <div class="next"><button type="button" data-go="meet">Next: when we meet →</button></div>
+  </section>
+
+  <!-- WHEN WE MEET -->
+  <section class="pane" id="meet" role="tabpanel" aria-labelledby="t-meet" hidden>
+    <div class="sec-head">
+      <span class="label">When we meet</span>
+      <h2>Some of ELEVATE is better shown than read</h2>
+    </div>
+    <div class="locks">
+      <div class="lockcard"><span class="badge">Live build</span><h3>A reference agent, built in front of you</h3><p>An incident write-up agent with its evaluation set and guardrails, the way I would build it with a team.</p></div>
+      <div class="lockcard"><span class="badge">Deep dive</span><h3>When adoption stalls</h3><ul><li>Engineers try it once and stop</li><li>Output quality drifts after a model update</li><li>A team finds a shortcut around the guardrails</li></ul></div>
+      <div class="lockcard"><span class="badge">Questions I'd bring</span><h3>What I would want to learn from you</h3><ol class="qs"><li>Which engineering work do teams most want AI to take off their plates?</li><li>Where does AI adoption stall today: access, skills, trust or time?</li><li>How do Security and Risk want to be involved from day one?</li></ol></div>
+    </div>
+    <div class="cta">
+      <h3>I would welcome the conversation</h3>
+      <div><button class="talk" type="button" data-contact>Let&rsquo;s talk</button></div>
+      <p><b>Sonia Malik</b> · <span id="em">sonia.malik78@gmail.com</span><button class="copy" type="button" data-copy="sonia.malik78@gmail.com">Copy</button> · 732-629-1034 · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">LinkedIn</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 Sonia Malik. ELEVATE is an independent prototype with sample data. It is not affiliated with, and uses no systems or data from, any employer or prospective employer.</div>
+  </footer>
+</div>
+
+<aside class="about-rail" id="about-rail" aria-label="About Sonia Malik">
+  <div class="ar-head">
+    <div class="ar-av" aria-hidden="true">SM</div>
+    <div>
+      <h2>Sonia Malik</h2>
+      <p class="ar-sub">24+ years in engineering and transformation leadership</p>
+    </div>
+  </div>
+  <p class="ar-fit"><b>For Wells Fargo</b> · Principal Engineer, AI Enablement &amp; Adoption</p>
+  <ul class="ar-stats">
+    <li><span class="n">350+ · 13 months</span><span class="k">engineers on governed AI (S&amp;P Global)</span></li>
+    <li><span class="n">85% → 95%</span><span class="k">engagement through AI upskilling</span></li>
+    <li><span class="n">100+ scrum teams</span><span class="k">on one reusable framework</span></li>
+    <li><span class="n">50+ reskilled</span><span class="k">into automation (Prudential)</span></li>
+  </ul>
+  <div class="ar-btns">
+    <a class="primary" id="resume-link" href="Sonia_Malik_Resume.pdf" target="_blank" rel="noopener">Resume PDF</a>
+    <a class="ghost" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">LinkedIn</a>
+    <button class="talk" type="button" data-contact style="width:100%;justify-content:center">Let&rsquo;s talk</button>
+  </div>
+  <p class="ar-note">Figures are from my work; Wells Fargo examples are sample.</p>
+</aside>
+</div><!-- /.shell -->
+
+<button class="side-tab" type="button" id="side-tab" aria-controls="drawer" aria-expanded="false"><span class="av" aria-hidden="true">SM</span><span class="st-txt">About me · Let&rsquo;s talk</span></button>
+<aside class="drawer" id="drawer" aria-label="About Sonia Malik" hidden>
+  <button class="dr-close" type="button" id="dr-close" aria-label="Close">&times;</button>
+  <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>AI enablement and engineering transformation leader</span></div></div>
+  <p class="pf-pitch">I started as a hands-on engineer and still build. For Wells Fargo Technology, I would build working AI assets with teams, teach through them, and make the safe path the easy one, measured by what changes in daily work.</p>
+  <div class="pf-stats">
+      <span><b>6 months</b> to an AI developer platform designed to serve ~1,200 engineers</span>
+      <span><b>350+</b> engineers on governed AI in 13 months</span>
+      <span><b>85% → 95%</b> engagement in 3 quarters</span>
+      <span><b>17 promotions</b>, including 2 to Director</span>
+    </div>
+  <button class="talk" type="button" data-contact>Let&rsquo;s talk</button>
+</aside>
+<div class="cmodal" id="cmodal" hidden>
+  <div class="cm-back" data-close></div>
+  <div class="cm-card" role="dialog" aria-modal="true" aria-labelledby="cm-title">
+    <button class="cm-close" type="button" data-close aria-label="Close">&times;</button>
+    <span class="label">Next step</span>
+    <h2 id="cm-title">Let&rsquo;s walk through ELEVATE together</h2>
+    <p>In 30 minutes I can build a reference agent live, show how adoption is measured, and walk through my first 90 days.</p>
+    <p class="cm-route">Through your standard process: your recruiting partner can reach me directly to schedule. I am flexible on timing.</p>
+    <div class="cm-row"><span class="cm-k">Email</span><span class="cm-v">sonia.malik78@gmail.com</span><button class="cm-copy" type="button" data-cc="sonia.malik78@gmail.com">Copy</button></div>
+    <div class="cm-row"><span class="cm-k">Phone</span><span class="cm-v">732-629-1034</span><button class="cm-copy" type="button" data-cc="732-629-1034">Copy</button></div>
+    <div class="cm-row"><span class="cm-k">LinkedIn</span><span class="cm-v">linkedin.com/in/sonia-malik-b059705</span><button class="cm-copy" type="button" data-cc="https://www.linkedin.com/in/sonia-malik-b059705">Copy</button></div>
+    <div class="cm-status" id="cm-status" aria-live="polite"></div>
+  </div>
+</div>
+<script>
+/* Build lab stepper */
+(function(){
+var ST=['Listen to the team','Build the reference','Add guardrails','Run the lab','Publish for reuse'];
+var UC=[
+ {n:'Incident write-up agent',u:'Payments Tech · SRE',kpi:'Minutes to a reviewed incident write-up',base:'60 min',tgt:'15 min',
+  s:[['Sit with on-call engineers for a week. The pain: an hour after every incident to gather logs, tickets and timeline into a write-up.','Team lead + enablement lead','Baseline · one KPI'],
+     ['Build a small agent that reads the incident ticket and logs and drafts the write-up in the team template. An AI judge scores each draft against the team rubric.','Enablement lead + 2 engineers','Reference code · evaluation set'],
+     ['Customer and account data masked before any model sees it; the agent can read but never change a ticket; every draft logged.','Security + Data Protection','Masking · read-only · audit log'],
+     ['60-minute lab: engineers run the agent on their last real incident, edit the draft, and see where the judge disagreed with them.','Team champion','Hands-on lab'],
+     ['Agent, prompts, evaluation set and a one-page playbook go into the shared library with a named owner. The next SRE team starts in a day.','Library owner','Reused by team 2']]},
+ {n:'Test-case generator',u:'QE · any product team',kpi:'Stories with tests before development starts',base:'35%',tgt:'80%',
+  s:[['Product and QE engineers say most stories reach development without tests, and gaps show up late.','QE lead + product owner','Baseline · one KPI'],
+     ['A creator agent drafts BDD scenarios from the story; a judge agent checks coverage of the rubric; the engineer accepts or edits.','Enablement lead + QE engineers','Creator + judge agents'],
+     ['Runs on approved models only; no production data in prompts; human approval before tests enter the suite.','Security + QE','Approved models · human approval'],
+     ['Lab on the team\'s own backlog: generate, review, and compare against tests written by hand.','Team champion','Hands-on lab'],
+     ['Prompt pack and rubric published; adopted by a second team with its own rubric.','Library owner','Reused by team 2']]},
+ {n:'Code review prompt pack',u:'Software engineering',kpi:'Review comments resolved before merge',base:'Sample baseline',tgt:'+25%',
+  s:[['Engineers want faster first-pass reviews; reviewers want fewer repeat comments on the same issues.','Engineering manager','Baseline · one KPI'],
+     ['A tested prompt pack for the AI coding assistant: secure-coding checks, error handling, logging hygiene.','Enablement lead + senior engineers','Prompt pack · examples'],
+     ['Secure-coding prompts include negative cases (bad inputs, error messages that leak details); output is advice, a person merges.','Security','Person merges · no auto-merge'],
+     ['Demo plus pairing: a champion reviews a real pull request with the pack beside a colleague.','Team champion','Peer pairing'],
+     ['Pack versioned in the library; re-tested when the model changes.','Library owner','Versioned · re-tested']]}];
+var u=0,k=0,el=function(i){return document.getElementById(i);};
+function draw(){
+ el('fx-uc').innerHTML=UC.map(function(x,i){return '<button type="button" data-u="'+i+'" aria-pressed="'+(i===u)+'">'+x.n+'<small>'+x.u+'</small></button>';}).join('');
+ el('fx-steps').innerHTML=ST.map(function(t,i){return '<li><button type="button" data-k="'+i+'"'+(i===k?' aria-current="step"':'')+' class="'+(i<k?'done':'')+'"><b>'+(i+1)+'</b>'+t+'</button></li>';}).join('');
+ var c=UC[u],x=c.s[k];
+ el('fx-card').innerHTML='<h3>'+(k+1)+'. '+ST[k]+' · '+c.n+'</h3><p>'+x[0]+'</p><div><div class="fx-who"><b>Who owns it:</b> '+x[1]+'</div><span class="tag">'+x[2]+'</span><div class="fx-kv" style="margin-top:6px"><b>KPI:</b> '+c.kpi+'<br><span class="mono">'+c.base+' → '+c.tgt+'</span> <small>(sample)</small></div></div>';
+ el('fx-prev').disabled=k===0; el('fx-next').textContent=k===4?'Start over ↺':'Next stage →';
+}
+document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('#fx-uc [data-u],#fx-steps [data-k],#fx-next,#fx-prev');if(!t)return;
+ if(t.dataset.u!==undefined){u=+t.dataset.u;k=0;} else if(t.dataset.k!==undefined){k=+t.dataset.k;} else if(t.id==='fx-next'){k=k===4?0:k+1;} else if(k>0){k--;}
+ draw();});
+draw();
+})();
+
+/* Who rail */
+(function(){
+var GL={leaders:'Leadership',builders:'Builders',partners:'Partners'};
+var P=[
+{g:'leaders',name:'Technology leaders',st:'Scorecard',h:'AI adoption you can see in the work',pain:'Licenses bought, usage unclear',give:'One scorecard: weekly use, time saved, quality, reuse',gets:[]},
+{g:'leaders',name:'Engineering managers',st:'Embed · Sustain',h:'Your team\'s pain solved first',pain:'Training that never reaches the sprint',give:'A lab on your team\'s own work and a named champion',gets:[]},
+{g:'builders',name:'Software engineers',st:'Try · Use',h:'Less toil, same ownership',pain:'Not sure what is allowed or useful',give:'Approved tools, tested prompts and reference code',gets:[]},
+{g:'builders',name:'QE & SRE',st:'Build lab',h:'Tests and write-ups drafted, you review',pain:'Hours on repeatable work',give:'Creator and judge agents with human approval',gets:[]},
+{g:'builders',name:'Data & ML engineers',st:'Build',h:'RAG and agents with evaluation built in',pain:'Every team rebuilds the basics',give:'Reference implementations and evaluation sets',gets:[]},
+{g:'partners',name:'Security & Data Protection',st:'Guardrails',h:'Involved at intake, not at the end',pain:'Late reviews of tools already in use',give:'Risk tiers, masking and audit logs by default',gets:[]},
+{g:'partners',name:'Risk & Governance',st:'Publish gate',h:'Evidence for every shared asset',pain:'No inventory of who uses what',give:'A library with owners, evaluations and versions',gets:[]},
+{g:'partners',name:'HR, Learning & Development',st:'Learning paths',h:'Skills tied to real roles',pain:'Course completions, not capability',give:'Skills baseline, paths by role, champions',gets:[]}
+];
+var cur=2;
+function draw(){
+ document.querySelectorAll('[data-who-groups]').forEach(function(box){var html='';Object.keys(GL).forEach(function(k){var items=P.map(function(p,i){return [p,i];}).filter(function(x){return x[0].g===k;});if(!items.length)return;
+  html+='<div class="wr-g"><span>'+GL[k]+'</span><div>'+items.map(function(x){return '<button type="button" data-who="'+x[1]+'" aria-pressed="'+(x[1]===cur)+'">'+x[0].name+'</button>';}).join('')+'</div></div>';});box.innerHTML=html;});
+ var p=P[cur];
+ document.querySelectorAll('[data-who-detail]').forEach(function(d){d.innerHTML='<div class="st">'+p.st+'</div><h4>'+p.h+'</h4><div><b>Pain:</b> '+p.pain+'</div><div><b>You get:</b> '+p.give+'</div>';});
+}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-who]');if(!b)return;cur=+b.getAttribute('data-who');draw();
+ if(window.goatcounter&&window.goatcounter.count){var s=new URLSearchParams(location.search).get('src')||'';window.goatcounter.count({path:location.pathname.replace(/\/$/,'')+'/who/'+encodeURIComponent(P[cur].name)+(s?'?src='+s:''),title:'Who: '+P[cur].name,event:true});}});
+draw();
+})();
+
+/* Enablement console */
+(function(){
+var EV=[
+['09:00','','On-call engineer','"Incident write-ups take me an hour."<small>One real pain</small>','Engineer'],
+['09:05','hum','Enablement lead','Sits with the team; baseline captured.<small>Listen first</small>','People'],
+['09:20','ag','Reference agent','Drafts the write-up from ticket + logs.<small>Built with the team</small>','Agent does'],
+['09:21','sys','AI judge','Scores the draft against the team rubric.<small>Evaluated</small>','Agent + AI judge'],
+['09:22','chk','Guardrail','Account data masked; read-only access.<small>Checkpoint</small>','Checkpoint'],
+['09:30','hum','Engineer','Edits and approves the write-up.<small>Engineer decides</small>','Human decides'],
+['09:45','ok','Shared library','Agent + playbook published for team 2.<small>60 min → 15 (sample)</small>','Reuse']];
+var f=document.getElementById('bcn-f');if(!f)return;var ck=document.getElementById('bcn-c'),ln=document.getElementById('bcn-l'),pb=document.getElementById('bcn-p');
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function mn(t){var p=t.split(':');return +p[0]*60+ +p[1];}
+function render(k){var e=EV[k],d=document.createElement('div');d.className='bce '+e[1]+(reduce?' in':'');
+d.innerHTML='<time>'+e[0]+'</time><div class="bb"><span class="wh">'+e[2]+'<span class="ln">'+e[4]+'</span></span>'+e[3]+'</div>';
+f.appendChild(d);var m=mn(e[0])-mn(EV[0][0]);ck.textContent='0:'+('0'+m).slice(-2);ln.innerHTML=e[4];f.scrollTop=f.scrollHeight;
+if(!reduce)requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('in');f.scrollTop=f.scrollHeight;});});}
+var tm=null,i=0,paused=false,started=false,DL=3600;
+function sched(){if(tm)clearTimeout(tm);tm=null;if(i>=EV.length){pb.innerHTML='▶ Play';return;}if(paused)return;tm=setTimeout(function(){render(i++);sched();},DL);}
+function play(){if(tm)clearTimeout(tm);i=0;paused=false;pb.innerHTML='❚❚ Pause';f.innerHTML='';ck.textContent='0:00';ln.textContent='–';if(reduce){for(var k=0;k<EV.length;k++)render(k);i=EV.length;return;}render(i++);sched();}
+pb.addEventListener('click',function(){started=true;if(i>=EV.length){play();return;}paused=!paused;pb.innerHTML=paused?'▶ Play':'❚❚ Pause';sched();});
+document.getElementById('bcn-n').addEventListener('click',function(){started=true;if(i>=EV.length){play();return;}paused=true;pb.innerHTML='▶ Play';render(i++);sched();});
+document.getElementById('bcn-rp').addEventListener('click',function(){started=true;play();});
+var c=document.getElementById('bcn');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es.some(function(x){return x.isIntersecting;})){io.disconnect();if(!started){started=true;setTimeout(play,500);}}},{threshold:0.3});io.observe(c);}else play();
+})();
+
+/* Runway + operating model */
+(function(){
+  const stages=[
+    {name:'Listen', sub:'One real pain', cust:'"Write-ups take an hour after every incident."', agent:'Enablement lead shadows on-call for a week.', ctrl:'Team lead agrees the KPI.', kpi:'Minutes per write-up: 60 (baseline)'},
+    {name:'Prototype', sub:'Built with the team', cust:'"Can it use our template?"', agent:'Reference agent drafts; AI judge scores.', ctrl:'Approved models only.', kpi:'Judge score vs human review'},
+    {name:'Guardrails', sub:'Safe by default', cust:'No account data in prompts.', agent:'Masking, read-only access, audit log.', ctrl:'Security and Data Protection sign off.', kpi:'Guardrail checks passed'},
+    {name:'Lab', sub:'Hands-on, on real work', cust:'Runs it on last week\'s incident.', agent:'60-minute lab; champion pairs.', ctrl:'Engineer edits every draft.', kpi:'Engineers who finish the lab'},
+    {name:'Daily practice', sub:'In the workflow', cust:'Write-up drafted before the call ends.', agent:'Agent in the on-call runbook.', ctrl:'Engineer approves every write-up.', kpi:'Minutes per write-up: 60 → 15'},
+    {name:'Reuse', sub:'Next team, faster', cust:'Team 2 starts in a day.', agent:'Agent + playbook in the shared library.', ctrl:'Named owner; re-tested on model change.', kpi:'Teams reusing the asset'}
+  ];
+  const track=document.getElementById('rw-track');
+  if(!track) return;
+  const stops=[...track.querySelectorAll('.rw-stop')];
+  const token=document.getElementById('rw-token');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i=0, playing=false, timer=null;
+  function placeToken(idx){
+    if(!token || reduce || window.matchMedia('(max-width:640px)').matches) return;
+    const btn=stops[idx]; const tr=track.getBoundingClientRect(); const br=btn.getBoundingClientRect();
+    token.style.left=((br.left-tr.left)+br.width/2)+'px';
+  }
+  function show(idx){
+    i=Math.max(0,Math.min(stages.length-1,idx));
+    const s=stages[i];
+    stops.forEach((b,n)=>{ b.setAttribute('aria-current', n===i?'true':'false'); b.classList.toggle('is-done', n<i); });
+    document.getElementById('rw-stage-label').textContent='Stage '+(i+1)+' · '+s.name;
+    document.getElementById('rw-title').textContent=s.sub;
+    document.getElementById('rw-cust').textContent=s.cust;
+    document.getElementById('rw-agent').textContent=s.agent;
+    document.getElementById('rw-ctrl').textContent=s.ctrl;
+    document.getElementById('rw-kpi').textContent=s.kpi;
+    placeToken(i);
+    const live=document.getElementById('rw-live');
+    if(live) live.textContent=(playing?'Playing':'Paused')+' · stage '+(i+1)+' of 6';
+  }
+  function stopPlay(){ playing=false; if(timer){clearInterval(timer);clearTimeout(timer);timer=null;} const p=document.getElementById('rw-play'); if(p) p.textContent='Play'; }
+  function step(){ if(i>=stages.length-1){ stopPlay(); show(stages.length-1); return; } show(i+1); }
+  function play(){
+    if(playing) return;
+    if(i>=stages.length-1) show(0);
+    playing=true; document.getElementById('rw-play').textContent='Playing…';
+    timer=setInterval(()=>{ if(i>=stages.length-1){ stopPlay(); return;} step(); }, reduce?400:2600);
+  }
+  function replay(){ stopPlay(); show(0); play(); }
+  document.getElementById('rw-play').addEventListener('click', play);
+  document.getElementById('rw-step').addEventListener('click', ()=>{ stopPlay(); step(); });
+  document.getElementById('rw-pause').addEventListener('click', ()=>{ stopPlay(); document.getElementById('rw-live').textContent='Paused · stage '+(i+1)+' of 6'; });
+  document.getElementById('rw-replay').addEventListener('click', replay);
+  stops.forEach(b=>b.addEventListener('click',()=>{ stopPlay(); show(+b.dataset.rw); }));
+  window.addEventListener('resize', ()=>placeToken(i));
+  show(0);
+  const tips={
+    cc:'Engineer Experience: every lab starts with one real pain and one KPI the team agrees.',
+    teams:'Team labs: an enablement lead builds with the team; a champion keeps it going after.',
+    ee:'Engineering Excellence: approved tools, shared agents and prompts, reference code in Python or Java.',
+    gates:'Guardrails: evaluation, security and data protection checks before anything is shared.',
+    prod:'Daily practice: weekly use, time saved and quality loop back into the next lab.'
+  };
+  const tipEl=document.getElementById('mi-tip');
+  document.querySelectorAll('#model-i .hit').forEach(el=>{
+    const showTip=()=>{ if(tipEl) tipEl.textContent=tips[el.dataset.mi]||''; };
+    el.addEventListener('mouseenter', showTip); el.addEventListener('focus', showTip); el.addEventListener('click', showTip);
+  });
+})();
+
+/* Tabs, drawer, contact */
+(function(){
+  document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{
+    const t=b.dataset.copy; const done=()=>{ b.textContent='Copied'; setTimeout(()=>b.textContent='Copy',1500); };
+    try{ navigator.clipboard.writeText(t).then(done).catch(()=>{}); }catch(e){}
+  }));
+  const TABS=[...document.querySelectorAll('#tabs .tab')];
+  function selectTab(id, opts){
+    opts=opts||{};
+    TABS.forEach(t=>{ const on=t.dataset.tab===id; t.setAttribute('aria-selected',String(on)); t.tabIndex=on?0:-1; document.getElementById(t.dataset.tab).hidden=!on; });
+    const bar=document.querySelector('.tabbar');
+    if(opts.scroll){ const y=bar.getBoundingClientRect().top+window.scrollY; if(window.scrollY>y || opts.force) window.scrollTo({top:y, behavior:'auto'}); }
+    if(opts.focus){ const t=TABS.find(x=>x.dataset.tab===id); if(t) t.focus(); }
+  }
+  TABS.forEach((t,i)=>{
+    t.addEventListener('click',()=>selectTab(t.dataset.tab,{scroll:true}));
+    t.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); const n=TABS[(i+(e.key==='ArrowRight'?1:-1)+TABS.length)%TABS.length]; selectTab(n.dataset.tab,{focus:true}); } });
+  });
+  document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>selectTab(b.dataset.go,{scroll:true,force:true})));
+  let start=(location.hash||'').replace('#','');
+  selectTab(TABS.some(t=>t.dataset.tab===start)?start:'overview');
+  if(start && TABS.some(t=>t.dataset.tab===start)){
+    try{ history.replaceState(history.state,'',location.pathname+location.search); }catch(e){}
+    const top=()=>window.scrollTo(0,0); top(); setTimeout(top,0); window.addEventListener('load',()=>{top(); setTimeout(top,50);});
+  }
+  const dr=document.getElementById('drawer'), stab=document.getElementById('side-tab');
+  function openDrawer(){ dr.hidden=false; stab.setAttribute('aria-expanded','true'); document.getElementById('dr-close').focus(); }
+  function closeDrawer(){ dr.hidden=true; stab.setAttribute('aria-expanded','false'); stab.focus(); }
+  stab.addEventListener('click',()=>{ dr.hidden?openDrawer():closeDrawer(); });
+  document.getElementById('dr-close').addEventListener('click',closeDrawer);
+  document.addEventListener('keydown',ev=>{ if(ev.key==='Escape' && !dr.hidden && document.getElementById('cmodal').hidden) closeDrawer(); });
+  const cm=document.getElementById('cmodal'); let cmRet=null;
+  function openContact(){ cmRet=document.activeElement; cm.hidden=false; document.getElementById('cm-status').textContent=''; cm.querySelector('.cm-close').focus(); }
+  function closeContact(){ cm.hidden=true; if(cmRet) cmRet.focus(); }
+  document.querySelectorAll('[data-contact]').forEach(b=>b.addEventListener('click',openContact));
+  cm.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click',closeContact));
+  document.addEventListener('keydown',ev=>{ if(ev.key==='Escape' && !cm.hidden) closeContact(); });
+  cm.querySelectorAll('.cm-copy').forEach(b=>b.addEventListener('click',()=>{
+    const t=b.dataset.cc, st=document.getElementById('cm-status');
+    try{ navigator.clipboard.writeText(t).then(()=>{st.textContent='Copied: '+t;}).catch(()=>{st.textContent='Select and copy: '+t;}); }catch(e){ st.textContent='Select and copy: '+t; }
+  }));
+})();
+</script>
+<script>(function(){ try{ var u=new URL(location.href); if(u.searchParams.has('src')){ u.searchParams.delete('src'); history.replaceState(history.state,'',u.pathname+u.search+u.hash); } }catch(e){} })();</script>
+<script>
+(function(){var s=new URLSearchParams(location.search).get('src')||'';
+var base=location.pathname.replace(/\/(index|full)\.html$/,'/').replace(/\/$/,'');
+window.goatcounter={path:function(p){return location.pathname+(s?'?src='+s:'')}};
+document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[role="tab"],[data-go],[data-contact],.side-tab');
+if(!t||!window.goatcounter||!window.goatcounter.count)return;
+var n=t.getAttribute('data-tab')||t.getAttribute('data-go')||(t.hasAttribute('data-contact')?'contact':(t.classList.contains('side-tab')?'about':(t.textContent||'').trim().slice(0,40)));
+window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,event:true});},true);})();
+</script>
+<script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body></html>
