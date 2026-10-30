@@ -556,6 +556,27 @@ footer b{color:var(--fg)}
     <div class="fx-ctl"><button type="button" id="fx-prev">&larr; Back</button><button type="button" id="fx-next" class="talk">Next stage &rarr;</button></div>
     <p class="fx-loop"><b>The loop:</b> business problem › pod › production › reusable pattern › platform feature › <b>the next team starts further ahead</b></p>
 
+
+    <div class="sec-head" style="margin-top:34px"><span class="label">Scale without losing control</span><h2>Autonomy is earned, one level at a time</h2>
+    <p class="lede">Human oversight is a dial, not a fixed setting. Evidence moves each use case up; any breach steps it back down automatically.</p></div>
+    <div class="fx-tbl"><table>
+      <tr><th>Level</th><th>What the agent does</th><th>What people do</th><th>To move up</th></tr>
+      <tr><td>0 · Shadow</td><td>Runs silently beside people</td><td>Work as today</td><td>Agreement with people over a set volume</td></tr>
+      <tr><td>1 · Assist</td><td>Drafts</td><td>Accept or edit; edit rate tracked</td><td>Edit rate under the limit</td></tr>
+      <tr><td>2 · Sampled</td><td>Acts on high-confidence, low-risk cases</td><td>Review a sample plus every low-confidence case</td><td>Sample error under the limit; no drift</td></tr>
+      <tr><td>3 · Guardrailed autonomy</td><td>Acts within allowed actions, dollar caps, required policy citations</td><td>Handle exceptions only</td><td>Continuous monitoring; automatic step-down on breach</td></tr>
+    </table></div>
+    <p class="fx-loop"><b>Never autonomous:</b> adverse actions such as credit or dispute denials, and decisions regulators reserve for a person. <b>Never in the hot path:</b> agents work beside real-time card authorization, not inside it.</p>
+
+    <div class="sec-head" style="margin-top:34px"><span class="label">When it fails at 2 AM</span><h2>An agent invents a credit policy rule. What happens next?</h2></div>
+    <div class="fx-tbl"><table>
+      <tr><th>Step</th><th>What happens</th></tr>
+      <tr><td>1 · Blocked at runtime</td><td>The answer cites no approved policy, so the guardrail stops it before a card member sees it.</td></tr>
+      <tr><td>2 · Falls back to a person</td><td>The case goes to the human queue with the agent's draft and the reason it was blocked.</td></tr>
+      <tr><td>3 · Circuit breaker</td><td>If uncited answers pass their limit, the use case steps down a level automatically; a per-use-case kill switch is there if needed.</td></tr>
+      <tr><td>4 · On-call runbook</td><td>On-call checks what changed: model version, prompt, policy store or upstream data.</td></tr>
+      <tr><td>5 · Never again</td><td>The failing case becomes a permanent evaluation test that every future release must pass.</td></tr>
+    </table></div>
     <div class="sec-head" style="margin-top:34px"><span class="label">How the team works</span><h2>Small pods, one playbook, one feedback loop</h2></div>
     <div class="pillars">
       <div><h3>The pod</h3><p>An FDE lead and 2&ndash;3 engineers sit with one business owner. A platform liaison keeps every build on TRELLIS, not beside it.</p></div>
@@ -1240,19 +1261,19 @@ var ST=['Discover with the business','Build in a pod','Pass the TRELLIS gates','
 var UC=[
  {n:'Merchant dispute triage',u:'Merchant services',kpi:'Days to resolve a merchant dispute',base:'9 days',tgt:'5 days',
   s:[['Pod sits with dispute analysts. Customer journey: goal, intent, KPI. Today 70% of time goes to gathering documents.','Business owner + FDE lead','Journey map · KPI baseline'],
-     ['Creator agent drafts the triage flow and tests; judge agent scores them against the rubric. An engineer approves each step.','FDE engineers','Creator + judge agents'],
+     ['Creator agent drafts the triage flow and tests; judge agent scores them against the rubric. Engineers review by risk tier, not every step.','FDE engineers','Creator + judge agents'],
      ['Evaluation gate, red-team set and data redaction from TRELLIS. One fail: an ungrounded reason code. Fixed with policy citations.','Platform + Risk','Evaluation gate · redaction'],
      ['Shadow mode for 2 weeks, then a 10% canary. The analyst still decides every dispute.','Business owner','Shadow · canary · kill switch'],
      ['The document-gathering connector becomes a reusable accelerator. The next dispute team starts in week 2, not week 6.','Platform Engineering','New accelerator']]},
  {n:'Card-member servicing assist',u:'Customer care',kpi:'Requests resolved in one contact',base:'48%',tgt:'70%',
   s:[['Pod listens to care calls with care leaders. Biggest repeat: statement and fee questions that need a transfer.','Care leader + FDE lead','Journey map · KPI baseline'],
-     ['Agent drafts answers from approved policies only; judge agent checks grounding; engineer approves.','FDE engineers','Creator + judge agents'],
+     ['Agent drafts answers from approved policies only; judge agent checks grounding; engineers review by risk tier.','FDE engineers','Creator + judge agents'],
      ['High tier: prompt-injection tests, tool allow-list limited to two low-risk actions, human review routing.','Platform + Risk','Red team · allow-list'],
      ['Care professional sees the suggestion and decides. Measured weekly against the one-contact KPI.','Care leader','Human decides · weekly KPI'],
      ['Policy-grounding pack published as a guardrail block; two more servicing teams reuse it.','Platform Engineering','New guardrail pack']]},
  {n:'Commercial invoice matching',u:'Commercial payments',kpi:'Invoices matched automatically',base:'55%',tgt:'80%',
   s:[['Pod works with the operations team on the exceptions queue: which mismatches eat the most time.','Ops owner + FDE lead','Journey map · KPI baseline'],
-     ['Agent proposes matches with confidence and reason; judge agent samples them; engineer approves rules.','FDE engineers','Creator + judge agents'],
+     ['Agent proposes matches with confidence and reason; judge agent samples them; engineers approve the matching rules.','FDE engineers','Creator + judge agents'],
      ['Evaluation on held-out invoices; low-confidence matches always go to a person; audit trail per decision.','Platform + Compliance','Confidence routing · audit trail'],
      ['Live on one client segment first; exceptions queue tracked daily.','Ops owner','Segment rollout · daily KPI'],
      ['Matching evaluation harness reused for reconciliation use cases in other businesses.','Platform Engineering','Reusable eval harness']]}];
