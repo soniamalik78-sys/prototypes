@@ -796,6 +796,16 @@ footer b{color:var(--fg)}
 .hero-l .brand{font-size:clamp(2.6rem,5vw,4.1rem)}
 .hero .pron{font-family:var(--f-display); color:#1F3A5F; font-weight:500; letter-spacing:0; margin-top:10px}
 .hd-f span{font-size:.68rem;padding:5px}
+.tl{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.tl-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.tl-h b{font-size:.9rem;color:#1F3A5F}.tl-h span{font-size:.72rem;color:var(--muted)}
+.tl-s{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;align-items:end;height:118px}
+.tl-s li{display:flex;flex-direction:column;justify-content:flex-end;height:100%;font-size:.7rem;line-height:1.25}
+.tl-s i{display:block;height:var(--h);border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#4F7DB8,#1F3A5F);margin-bottom:6px;opacity:.9}
+.tl-s li:first-child i{background:#D6E0EE}.tl-s li:nth-child(2) i{background:#A9BEDC}
+.tl-s b{color:#1F3A5F;font-size:.76rem}.tl-s span{color:var(--muted)}
+.tl-f{margin:10px 0 0;font-size:.76rem;color:#333;border-top:1px dashed var(--line-strong);padding-top:8px}
+.tl-f button{appearance:none;border:0;background:none;padding:0;font:inherit;font-weight:700;color:#1F3A5F;cursor:pointer;text-decoration:underline}
 .hero-cta{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
 .jd{margin:14px 0 6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
 .jd .jd-h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;align-items:baseline}
@@ -853,6 +863,16 @@ footer b{color:var(--fg)}
       <div class="bcn-bt"><button type="button" class="bcn-r" id="bcn-p">❚❚ Pause</button><button type="button" class="bcn-r solid" id="bcn-n">Next ›</button><button type="button" class="bcn-r" id="bcn-rp" aria-label="Replay">↻</button></div></div>
     </div>
     <p class="bcn-cap">Agents do the legwork; the analyst decides. <a href="#claim-runway">Six stages ↓</a></p>
+    <div class="tl" aria-label="Trust ladder: autonomy is earned">
+      <div class="tl-h"><b>Autonomy is earned</b><span>Evidence moves up · a breach steps down</span></div>
+      <ol class="tl-s">
+        <li style="--h:28%"><i></i><b>Shadow</b><span>runs beside people</span></li>
+        <li style="--h:50%"><i></i><b>Assist</b><span>drafts; people edit</span></li>
+        <li style="--h:72%"><i></i><b>Sampled</b><span>low-risk; people sample</span></li>
+        <li style="--h:94%"><i></i><b>Guardrailed</b><span>exceptions to people</span></li>
+      </ol>
+      <p class="tl-f"><b>Never autonomous:</b> dispute or credit denials. <button type="button" data-go="fde">See the ladder →</button></p>
+    </div>
     </div></div>
   </header>
 
