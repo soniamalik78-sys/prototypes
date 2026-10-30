@@ -11,24 +11,24 @@
 <style>
 /* Layout: single reading column (max 1040px) with a lattice-textured hero; demo is a 4-step stepper with a working panel; tables scroll inside their own box. */
 :root{
-  --bg:#F2F4F3; --surface:#FFFFFF; --sunk:#E7ECEA; --fg:#18211E; --muted:#56625D; --faint:#7A8580;
-  --line:#D6DDDA; --line-strong:#B9C4BF;
-  --accent:#1E6B5C; --accent-soft:#E0EFEA; --accent-ink:#145247;
-  --vine:#6E9A3A;
+  --bg:#F6F8FB; --surface:#FFFFFF; --sunk:#EDF1F6; --fg:#191C22; --muted:#575E6B; --faint:#7D8492;
+  --line:#D8DDE5; --line-strong:#BCC4D1;
+  --accent:#1F4E8C; --accent-soft:#E6EEF8; --accent-ink:#173B6B;
+  --vine:#4F7DB8;
   --ok:#2E7D4F; --ok-bg:#E3F2E8; --warn:#9A6400; --warn-bg:#FBF0D9; --bad:#B3373F; --bad-bg:#F9E3E4;
-  --lattice:rgba(30,107,92,0.10);
+  --lattice:rgba(31,78,140,0.08);
   --f-display:"Newsreader", Georgia, "Times New Roman", serif;
   --f-body:"Public Sans", "Segoe UI", Arial, sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
   --r:10px;
 }
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+@media (prefers-color-scheme: dark){ :root[data-theme="__off__"]{
   --bg:#111816; --surface:#18211E; --sunk:#1F2A26; --fg:#E6ECE9; --muted:#A7B3AE; --faint:#84918B;
   --line:#2C3934; --line-strong:#3D4C46;
   --accent:#5DBFA6; --accent-soft:#1C3631; --accent-ink:#8FD9C5; --vine:#9BC66A;
   --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F;
   --lattice:rgba(93,191,166,0.09); color-scheme:dark; } }
-:root[data-theme="dark"]{
+:root[data-theme="__off__"]{
   --bg:#111816; --surface:#18211E; --sunk:#1F2A26; --fg:#E6ECE9; --muted:#A7B3AE; --faint:#84918B;
   --line:#2C3934; --line-strong:#3D4C46;
   --accent:#5DBFA6; --accent-soft:#1C3631; --accent-ink:#8FD9C5; --vine:#9BC66A;
@@ -262,7 +262,7 @@ tr.fresh td{animation:grow 1.2s ease-out}
 
 /* ---------- Floating profile bar + contact card ---------- */
 .wrap{padding-bottom:120px}
-.pf{position:fixed; left:50%; transform:translateX(-50%); bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; width:min(760px, calc(100% - 24px)); background:var(--surface); border:1px solid var(--line-strong); border-radius:16px; box-shadow:0 10px 30px rgba(10,30,25,.18); padding:10px 12px}
+.pf{position:fixed; left:50%; transform:translateX(-50%); bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; width:min(760px, calc(100% - 24px)); background:var(--surface); border:1px solid var(--line-strong); border-radius:16px; box-shadow:0 10px 30px rgba(15,30,60,.18); padding:10px 12px}
 .pf[hidden]{display:none!important}
 .pf-row{display:flex; align-items:center; gap:12px}
 .av{flex:0 0 40px; height:40px; border-radius:50%; background:var(--accent); color:var(--surface); display:grid; place-items:center; font-weight:700; font-size:.9rem; letter-spacing:.02em}
@@ -279,7 +279,7 @@ tr.fresh td{animation:grow 1.2s ease-out}
 .pf-stats{display:flex; flex-wrap:wrap; gap:6px}
 .pf-stats span{border:1px solid var(--line); background:var(--sunk); border-radius:8px; padding:3px 8px; font-size:.76rem; color:var(--fg)}
 .pf-stats b{color:var(--accent-ink)}
-.pf-mini{position:fixed; right:16px; bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; display:flex; align-items:center; gap:8px; background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:6px 14px 6px 6px; font-size:.85rem; font-weight:700; cursor:pointer; box-shadow:0 8px 22px rgba(10,30,25,.22)}
+.pf-mini{position:fixed; right:16px; bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; display:flex; align-items:center; gap:8px; background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:6px 14px 6px 6px; font-size:.85rem; font-weight:700; cursor:pointer; box-shadow:0 8px 22px rgba(15,30,60,.22)}
 .pf-mini[hidden]{display:none!important}
 .pf-mini .av{flex-basis:30px; height:30px; background:var(--surface); color:var(--accent-ink); font-size:.75rem}
 @media (max-width:560px){ .pf-min span{display:none} .pf-btn{display:none} }
@@ -306,11 +306,11 @@ tr.fresh td{animation:grow 1.2s ease-out}
 .wrap{padding-bottom:64px}
 @media (max-width:1180px){ .wrap{padding-right:60px} .tabbar{margin-right:-60px; padding-right:60px} }
 @media (max-width:560px){ .wrap{padding-right:52px} .tabbar{margin-right:-52px; padding-right:52px} }
-.side-tab{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:70; display:flex; flex-direction:column; align-items:center; gap:10px; background:var(--accent); color:var(--surface); border:none; border-radius:12px 0 0 12px; padding:10px 7px 14px; cursor:pointer; box-shadow:-4px 6px 18px rgba(10,30,25,.18)}
+.side-tab{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:70; display:flex; flex-direction:column; align-items:center; gap:10px; background:var(--accent); color:var(--surface); border:none; border-radius:12px 0 0 12px; padding:10px 7px 14px; cursor:pointer; box-shadow:-4px 6px 18px rgba(15,30,60,.18)}
 .side-tab .av{flex:0 0 30px; width:30px; height:30px; background:var(--surface); color:var(--accent-ink); font-size:.74rem}
 .side-tab .st-txt{writing-mode:vertical-rl; transform:rotate(180deg); font-size:.82rem; font-weight:700; letter-spacing:.02em; white-space:nowrap}
 @media (max-width:560px){ .side-tab .st-txt{font-size:.74rem} }
-.drawer{position:fixed; top:0; right:0; bottom:0; z-index:90; width:min(380px, 92vw); background:var(--surface); border-left:1px solid var(--line-strong); box-shadow:-12px 0 30px rgba(10,30,25,.18); padding:calc(22px + env(safe-area-inset-top,0px)) 22px calc(22px + env(safe-area-inset-bottom,0px)); overflow:auto; display:grid; gap:14px; align-content:start}
+.drawer{position:fixed; top:0; right:0; bottom:0; z-index:90; width:min(380px, 92vw); background:var(--surface); border-left:1px solid var(--line-strong); box-shadow:-12px 0 30px rgba(15,30,60,.18); padding:calc(22px + env(safe-area-inset-top,0px)) 22px calc(22px + env(safe-area-inset-bottom,0px)); overflow:auto; display:grid; gap:14px; align-content:start}
 .drawer[hidden]{display:none!important}
 .dr-close{position:absolute; top:calc(10px + env(safe-area-inset-top,0px)); right:12px; background:none; border:none; font-size:1.6rem; line-height:1; color:var(--faint); cursor:pointer}
 .dr-head{display:flex; gap:12px; align-items:center; padding-right:28px}
@@ -429,7 +429,7 @@ footer b{color:var(--fg)}
 .summary ol{margin:8px 0 0; padding-left:20px; display:grid; gap:6px; font-size:.95rem}
 .tiles.one{grid-template-columns:minmax(0,340px)}
 .scen{background:var(--accent);color:#fff;border-radius:14px;padding:14px 18px;margin-top:22px}
-.scen .label{color:#CDEBE2}
+.scen .label{color:#D6E3F5}
 .scen dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin-top:8px;font-size:.92rem}
 .scen dt{font-family:var(--f-mono);font-size:.82rem;color:#FFE9A8;padding-top:2px}
 .scen dd{margin:0;color:#fff}
@@ -469,14 +469,14 @@ footer b{color:var(--fg)}
       <h2>60-second summary: three things to know</h2>
       <ol>
         <li><b>Responsible AI as a platform product:</b> teams inherit the controls by default instead of waiting on reviews.</li>
-        <li><b>Proven at S&amp;P Global:</b> an AI developer platform for 1,200 engineers in 6 months, ~400 engineers on governed AI in 13 months, and regulated-check approvals cut from 3 days to same day.</li>
+        <li><b>Proven at S&amp;P Global:</b> an AI developer platform designed to serve ~1,200 engineers, stood up in 6 months, ~400 engineers on governed AI in 13 months, and regulated-check approvals cut from 3 days to same day.</li>
         <li><b>A closed loop:</b> customer signals feed prevention, measured every month.</li>
       </ol>
     </div>
     <p class="lede">TRELLIS shows how I would scale AI responsibly through an AI-first PDLC that starts with the customer: every AI capability traces back to a customer outcome, and risk, legal, compliance, privacy, and security requirements become platform capabilities that teams inherit by default. It is an illustrative prototype with sample data, not connected to any company's systems.</p>
-    <p class="firms"><i><b>S&amp;P Global</b> AI developer platform for 1,200 engineers in 6 months</i><i><b>Audible</b> 30% fewer Sev2s, CSAT up 15%</i><i><b>DoubleVerify</b> 25% less manual effort, 20% faster test cycles</i></p>
+    <p class="firms"><i><b>S&amp;P Global</b> AI developer platform designed to serve ~1,200 engineers</i><i><b>Audible</b> 30% fewer Sev2s, CSAT up 15%</i><i><b>DoubleVerify</b> 25% less manual effort, 20% faster test cycles</i></p>
     <div class="proof">
-      <div><b class="mono">6 months</b><span>to stand up an AI developer platform built for 1,200 engineers, on one approved tool stack</span></div>
+      <div><b class="mono">6 months</b><span>to stand up an AI developer platform designed to serve ~1,200 engineers, on one approved tool stack</span></div>
       <div><b class="mono">~400</b><span>engineers on governed AI workflows within 13 months; separately, team engagement rose from 85% to 95% through AI fluency upskilling</span></div>
       <div><b class="mono">2×</b><span>delivery speed: release cadence doubled in 3 months, with regression lead time cut from 9 days to 4</span></div>
       <div><b class="mono">3 days → same day</b><span>approval time on regulated checks, with evidence-backed human approval enforced in the pipeline</span></div>
@@ -745,7 +745,7 @@ footer b{color:var(--fg)}
     <div class="lessons">
       <article class="lesson">
         <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; Quality Engineering</span><h3>S&amp;P Global</h3>
-        <ul><li>AI-first PDLC and AI developer platform in 6 months, built for 1,200 engineers</li><li>Requirements from CISO, Risk, Compliance, and Legal turned into platform controls</li><li>Evidence-backed human approval enforced in the pipeline wherever regulation required it; approval time on regulated checks cut from 3 days to same day; ~400 engineers on governed AI in 13 months</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li><li>Built AI fluency through skills assessment and peer-pairing: team engagement up from 85% to 95% through AI fluency upskilling</li><li>Designed the path to risk-based review as evidence builds</li><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act; hands-on prototyping of agent, AI-judge, and human-validation loops</li></ul>
+        <ul><li>AI-first PDLC and AI developer platform in 6 months, designed to serve ~1,200 engineers</li><li>Requirements from CISO, Risk, Compliance, and Legal turned into platform controls</li><li>Evidence-backed human approval enforced in the pipeline wherever regulation required it; approval time on regulated checks cut from 3 days to same day; ~400 engineers on governed AI in 13 months</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li><li>Built AI fluency through skills assessment and peer-pairing: team engagement up from 85% to 95% through AI fluency upskilling</li><li>Designed the path to risk-based review as evidence builds</li><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act; hands-on prototyping of agent, AI-judge, and human-validation loops</li></ul>
         <p class="shows">Shows up in TRELLIS as <span>Policy-as-code</span><span>Building blocks</span><span>AI fluency</span><span>Adoption metrics</span><span>NIST AI RMF tags</span><span>Judge calibration</span></p>
       </article>
       <article class="lesson">
@@ -841,7 +841,7 @@ footer b{color:var(--fg)}
   <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>AI PDLC, Responsible AI &amp; Quality Engineering leader</span></div></div>
   <p class="pf-pitch">I have led engineering transformation in regulated financial services (S&amp;P Global, Prudential) and in technology-first product companies (Audible, DoubleVerify). For American Express, I would make responsible AI something teams get by default from the platform, measured by adoption as much as by risk.</p>
   <div class="pf-stats">
-      <span><b>6 months</b> to an AI developer platform for 1,200 engineers</span>
+      <span><b>6 months</b> to an AI developer platform designed to serve ~1,200 engineers</span>
       <span><b>~400</b> engineers on governed AI in 13 months</span>
       <span><b>3 days &rarr; same day:</b> evidence-backed human approval on regulated checks</span>
       <span><b>350+</b> people · <b>$70M+</b> budget led</span>

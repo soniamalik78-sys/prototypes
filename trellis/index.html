@@ -11,24 +11,24 @@
 <style>
 /* Layout: single reading column (max 1040px) with a lattice-textured hero; demo is a 4-step stepper with a working panel; tables scroll inside their own box. */
 :root{
-  --bg:#F2F4F3; --surface:#FFFFFF; --sunk:#E7ECEA; --fg:#18211E; --muted:#56625D; --faint:#7A8580;
-  --line:#D6DDDA; --line-strong:#B9C4BF;
-  --accent:#1E6B5C; --accent-soft:#E0EFEA; --accent-ink:#145247;
-  --vine:#6E9A3A;
+  --bg:#F6F8FB; --surface:#FFFFFF; --sunk:#EDF1F6; --fg:#191C22; --muted:#575E6B; --faint:#7D8492;
+  --line:#D8DDE5; --line-strong:#BCC4D1;
+  --accent:#1F4E8C; --accent-soft:#E6EEF8; --accent-ink:#173B6B;
+  --vine:#4F7DB8;
   --ok:#2E7D4F; --ok-bg:#E3F2E8; --warn:#9A6400; --warn-bg:#FBF0D9; --bad:#B3373F; --bad-bg:#F9E3E4;
-  --lattice:rgba(30,107,92,0.10);
+  --lattice:rgba(31,78,140,0.08);
   --f-display:"Newsreader", Georgia, "Times New Roman", serif;
   --f-body:"Public Sans", "Segoe UI", Arial, sans-serif;
   --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
   --r:10px;
 }
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+@media (prefers-color-scheme: dark){ :root[data-theme="__off__"]{
   --bg:#111816; --surface:#18211E; --sunk:#1F2A26; --fg:#E6ECE9; --muted:#A7B3AE; --faint:#84918B;
   --line:#2C3934; --line-strong:#3D4C46;
   --accent:#5DBFA6; --accent-soft:#1C3631; --accent-ink:#8FD9C5; --vine:#9BC66A;
   --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --bad:#EF7F86; --bad-bg:#3A1C1F;
   --lattice:rgba(93,191,166,0.09); color-scheme:dark; } }
-:root[data-theme="dark"]{
+:root[data-theme="__off__"]{
   --bg:#111816; --surface:#18211E; --sunk:#1F2A26; --fg:#E6ECE9; --muted:#A7B3AE; --faint:#84918B;
   --line:#2C3934; --line-strong:#3D4C46;
   --accent:#5DBFA6; --accent-soft:#1C3631; --accent-ink:#8FD9C5; --vine:#9BC66A;
@@ -262,7 +262,7 @@ tr.fresh td{animation:grow 1.2s ease-out}
 
 /* ---------- Floating profile bar + contact card ---------- */
 .wrap{padding-bottom:120px}
-.pf{position:fixed; left:50%; transform:translateX(-50%); bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; width:min(760px, calc(100% - 24px)); background:var(--surface); border:1px solid var(--line-strong); border-radius:16px; box-shadow:0 10px 30px rgba(10,30,25,.18); padding:10px 12px}
+.pf{position:fixed; left:50%; transform:translateX(-50%); bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; width:min(760px, calc(100% - 24px)); background:var(--surface); border:1px solid var(--line-strong); border-radius:16px; box-shadow:0 10px 30px rgba(15,30,60,.18); padding:10px 12px}
 .pf[hidden]{display:none!important}
 .pf-row{display:flex; align-items:center; gap:12px}
 .av{flex:0 0 40px; height:40px; border-radius:50%; background:var(--accent); color:var(--surface); display:grid; place-items:center; font-weight:700; font-size:.9rem; letter-spacing:.02em}
@@ -279,7 +279,7 @@ tr.fresh td{animation:grow 1.2s ease-out}
 .pf-stats{display:flex; flex-wrap:wrap; gap:6px}
 .pf-stats span{border:1px solid var(--line); background:var(--sunk); border-radius:8px; padding:3px 8px; font-size:.76rem; color:var(--fg)}
 .pf-stats b{color:var(--accent-ink)}
-.pf-mini{position:fixed; right:16px; bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; display:flex; align-items:center; gap:8px; background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:6px 14px 6px 6px; font-size:.85rem; font-weight:700; cursor:pointer; box-shadow:0 8px 22px rgba(10,30,25,.22)}
+.pf-mini{position:fixed; right:16px; bottom:calc(14px + env(safe-area-inset-bottom,0px)); z-index:70; display:flex; align-items:center; gap:8px; background:var(--accent); color:var(--surface); border:none; border-radius:999px; padding:6px 14px 6px 6px; font-size:.85rem; font-weight:700; cursor:pointer; box-shadow:0 8px 22px rgba(15,30,60,.22)}
 .pf-mini[hidden]{display:none!important}
 .pf-mini .av{flex-basis:30px; height:30px; background:var(--surface); color:var(--accent-ink); font-size:.75rem}
 @media (max-width:560px){ .pf-min span{display:none} .pf-btn{display:none} }
@@ -306,11 +306,11 @@ tr.fresh td{animation:grow 1.2s ease-out}
 .wrap{padding-bottom:64px}
 @media (max-width:1180px){ .wrap{padding-right:60px} .tabbar{margin-right:-60px; padding-right:60px} }
 @media (max-width:560px){ .wrap{padding-right:52px} .tabbar{margin-right:-52px; padding-right:52px} }
-.side-tab{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:70; display:flex; flex-direction:column; align-items:center; gap:10px; background:var(--accent); color:var(--surface); border:none; border-radius:12px 0 0 12px; padding:10px 7px 14px; cursor:pointer; box-shadow:-4px 6px 18px rgba(10,30,25,.18)}
+.side-tab{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:70; display:flex; flex-direction:column; align-items:center; gap:10px; background:var(--accent); color:var(--surface); border:none; border-radius:12px 0 0 12px; padding:10px 7px 14px; cursor:pointer; box-shadow:-4px 6px 18px rgba(15,30,60,.18)}
 .side-tab .av{flex:0 0 30px; width:30px; height:30px; background:var(--surface); color:var(--accent-ink); font-size:.74rem}
 .side-tab .st-txt{writing-mode:vertical-rl; transform:rotate(180deg); font-size:.82rem; font-weight:700; letter-spacing:.02em; white-space:nowrap}
 @media (max-width:560px){ .side-tab .st-txt{font-size:.74rem} }
-.drawer{position:fixed; top:0; right:0; bottom:0; z-index:90; width:min(380px, 92vw); background:var(--surface); border-left:1px solid var(--line-strong); box-shadow:-12px 0 30px rgba(10,30,25,.18); padding:calc(22px + env(safe-area-inset-top,0px)) 22px calc(22px + env(safe-area-inset-bottom,0px)); overflow:auto; display:grid; gap:14px; align-content:start}
+.drawer{position:fixed; top:0; right:0; bottom:0; z-index:90; width:min(380px, 92vw); background:var(--surface); border-left:1px solid var(--line-strong); box-shadow:-12px 0 30px rgba(15,30,60,.18); padding:calc(22px + env(safe-area-inset-top,0px)) 22px calc(22px + env(safe-area-inset-bottom,0px)); overflow:auto; display:grid; gap:14px; align-content:start}
 .drawer[hidden]{display:none!important}
 .dr-close{position:absolute; top:calc(10px + env(safe-area-inset-top,0px)); right:12px; background:none; border:none; font-size:1.6rem; line-height:1; color:var(--faint); cursor:pointer}
 .dr-head{display:flex; gap:12px; align-items:center; padding-right:28px}
@@ -429,7 +429,7 @@ footer b{color:var(--fg)}
 .summary ol{margin:8px 0 0; padding-left:20px; display:grid; gap:6px; font-size:.95rem}
 .tiles.one{grid-template-columns:minmax(0,340px)}
 .scen{background:var(--accent);color:#fff;border-radius:14px;padding:14px 18px;margin-top:22px}
-.scen .label{color:#CDEBE2}
+.scen .label{color:#D6E3F5}
 .scen dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin-top:8px;font-size:.92rem}
 .scen dt{font-family:var(--f-mono);font-size:.82rem;color:#FFE9A8;padding-top:2px}
 .scen dd{margin:0;color:#fff}
@@ -441,7 +441,7 @@ footer b{color:var(--fg)}
 .fx-uc button{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:6px 14px;font-size:.86rem;font-weight:600;cursor:pointer}
 .fx-uc button small{display:block;font-weight:400;font-size:.72rem;color:var(--muted)}
 .fx-uc button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff}
-.fx-uc button[aria-pressed=true] small{color:#DDF1EB}
+.fx-uc button[aria-pressed=true] small{color:#E3ECF8}
 .fx-steps{list-style:none;padding:0;margin:0 0 10px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
 .fx-steps button{width:100%;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:var(--r);padding:8px 10px;cursor:pointer;font-size:.8rem;line-height:1.3;min-height:58px}
 .fx-steps button b{display:block;font-family:var(--f-mono);font-size:.7rem;color:var(--faint)}
@@ -468,21 +468,530 @@ footer b{color:var(--fg)}
 .fx-proof b{color:var(--accent-ink)}
 .fx-proof p{font-size:.88rem;margin-top:3px}
 @media (max-width:820px){.fx-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.fx-card{grid-template-columns:1fr}.fx-proof{grid-template-columns:1fr}}
+
+/* ===== Real-estate layout ported from BEACON ===== */
+/* ===== Side rails: utilize left/right real estate (desktop) ===== */
+:root{ --rail-l:140px; --rail-r:252px; --orange:#D9781E; --navy:#1F3A5F; --charcoal:#333; }
+.stage-rail, .about-rail{ display:none; }
+.shell{ display:block; }
+@media (min-width:1280px){
+  .shell{
+    display:grid;
+    grid-template-columns: var(--rail-l) minmax(0,1040px) var(--rail-r);
+    gap: 22px 18px;
+    max-width: 1460px;
+    margin: 0 auto;
+    padding: 12px 16px 48px;
+    align-items: start;
+  }
+  .shell > .wrap{
+    max-width: none;
+    margin: 0;
+    padding-inline: 0;
+    padding-block: 0 48px;
+    grid-column: 2;
+  }
+  .stage-rail, .about-rail{ display:flex; }
+  /* About always visible on desktop → hide floating tab */
+  .side-tab{ display:none !important; }
+  /* Undo old drawer clearance padding */
+  .wrap{ padding-right: 0 !important; }
+  .tabbar{ margin-right: 0 !important; padding-right: 0 !important; }
+}
+@media (min-width:1280px) and (max-width:1399px){
+  :root{ --rail-l:120px; --rail-r:220px; }
+  .shell{ gap: 14px 12px; max-width: 1380px; }
+}
+
+/* Left: slim sticky stage tracker */
+.stage-rail{
+  flex-direction:column; gap:6px;
+  position:sticky; top:20px;
+  padding:14px 10px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 4px 18px rgba(31,58,95,.06);
+  z-index:40;
+  max-height: calc(100vh - 40px);
+  overflow:auto;
+}
+.stage-rail .sr-label{
+  font-size:.65rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--faint); margin:0 0 6px 2px;
+}
+.stage-rail button{
+  display:grid; grid-template-columns:22px 1fr; gap:6px; align-items:center;
+  width:100%; text-align:left; border:none; background:transparent;
+  padding:7px 6px; border-radius:8px; cursor:pointer; color:var(--muted);
+  font-size:.72rem; line-height:1.25; font-family:inherit;
+}
+.stage-rail button .sn{
+  width:22px; height:22px; border-radius:6px; display:grid; place-items:center;
+  font-family:var(--f-mono); font-size:.68rem; font-weight:600;
+  background:var(--sunk); color:var(--muted);
+}
+.stage-rail button b{ font-weight:600; color:var(--fg); font-size:.74rem; }
+.stage-rail button:hover{ background:var(--accent-soft); }
+.stage-rail button[aria-current="true"]{ background:var(--accent-soft); color:var(--accent-ink); }
+.stage-rail button[aria-current="true"] .sn{ background:var(--navy); color:#fff; }
+.stage-rail button[aria-current="true"][data-gate="HUMAN"] .sn{ background:var(--orange); color:#fff; }
+.stage-rail button .sg{ display:block; font-size:.62rem; color:var(--faint); font-weight:500; }
+.stage-rail button[aria-current="true"] .sg{ color:var(--accent-ink); }
+
+/* Right: sticky About Sonia */
+.about-rail{
+  flex-direction:column; gap:12px;
+  position:sticky; top:20px;
+  padding:18px 16px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 4px 18px rgba(31,58,95,.06);
+  z-index:40;
+  max-height: calc(100vh - 40px);
+  overflow:auto;
+}
+.about-rail .ar-head{ display:flex; gap:10px; align-items:center; }
+.about-rail .ar-av{
+  flex:0 0 44px; width:44px; height:44px; border-radius:50%;
+  background:var(--navy); color:#fff; display:grid; place-items:center;
+  font-weight:700; font-size:.85rem; letter-spacing:.02em;
+}
+.about-rail h2{ font-family:var(--f-display); font-size:1.15rem; color:var(--navy); margin:0; }
+.about-rail .ar-sub{ font-size:.78rem; color:var(--charcoal); line-height:1.35; margin:0; }
+.about-rail .ar-fit{
+  font-size:.78rem; color:var(--accent-ink); background:var(--accent-soft);
+  border-radius:8px; padding:8px 10px; margin:0; line-height:1.35;
+}
+.about-rail .ar-fit b{ color:var(--navy); }
+.about-rail .ar-loop{
+  font-size:.76rem; color:var(--muted); line-height:1.4; margin:0;
+  padding:8px 0 0; border-top:1px solid var(--line);
+}
+.about-rail .ar-stats{ display:grid; gap:8px; margin:0; padding:0; list-style:none; }
+.about-rail .ar-stats li{
+  display:grid; gap:2px; padding:8px 10px; background:var(--sunk);
+  border-radius:8px; border:1px solid var(--line);
+}
+.about-rail .ar-stats .n{
+  font-family:var(--f-mono); font-size:.82rem; font-weight:600; color:var(--navy);
+}
+.about-rail .ar-stats .k{ font-size:.7rem; color:var(--muted); line-height:1.3; }
+.about-rail .ar-btns{ display:grid; gap:8px; margin-top:2px; }
+.about-rail .ar-btns a{
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  padding:9px 12px; border-radius:8px; font-size:.82rem; font-weight:600;
+  text-decoration:none; text-align:center;
+}
+.about-rail .ar-btns a.primary{
+  background:var(--navy); color:#fff;
+}
+.about-rail .ar-btns a.primary.is-placeholder{ opacity:.85; }
+.about-rail .ar-btns a.ghost{
+  background:transparent; color:var(--navy); border:1px solid var(--line-strong);
+}
+.about-rail .ar-btns a.ghost:hover, .about-rail .ar-btns a.primary:hover{ filter:brightness(1.05); }
+.about-rail .ar-note{ font-size:.65rem; color:var(--faint); margin:0; line-height:1.3; }
+
+/* Mobile / narrow: compact stage chips under tab bar (optional strip) */
+.stage-chips{
+  display:none; gap:6px; overflow-x:auto; padding:8px 0 4px;
+  -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+}
+.stage-chips button{
+  flex:0 0 auto; border:1px solid var(--line-strong); background:var(--surface);
+  color:var(--muted); border-radius:999px; padding:5px 10px; font-size:.72rem;
+  font-family:inherit; cursor:pointer; white-space:nowrap;
+}
+.stage-chips button b{ color:var(--fg); font-weight:600; }
+.stage-chips button[aria-current="true"]{
+  background:var(--accent-soft); border-color:var(--accent); color:var(--accent-ink);
+}
+@media (max-width:1279px){
+  .stage-chips{ display:flex; }
+}
+
+/* What BEACON offers you — role personas */
+.persona-filters{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 14px}
+.persona-filters button{
+  font:inherit; font-size:.78rem; font-weight:600; letter-spacing:.02em;
+  padding:7px 12px; border-radius:999px; border:1px solid var(--line);
+  background:var(--surface); color:var(--muted); cursor:pointer;
+}
+.persona-filters button[aria-pressed="true"]{
+  background:var(--navy,#1F3A5F); color:#fff; border-color:var(--navy,#1F3A5F);
+}
+.persona-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
+@media (max-width:820px){ .persona-grid{grid-template-columns:1fr} }
+.persona{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  padding:16px 16px 14px; display:grid; gap:8px; align-content:start;
+}
+.persona[hidden]{display:none !important}
+.persona .prole{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--accent-ink); background:var(--accent-soft); padding:3px 10px; border-radius:999px; width:fit-content;
+}
+.persona .pstage{
+  font-size:.68rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--faint); margin-left:4px;
+}
+.persona h3{font-family:var(--f-display); font-size:1.05rem; color:var(--navy,#1F3A5F); margin:0}
+.persona .pain{font-size:.88rem; color:var(--muted); margin:0; line-height:1.4}
+.persona .pain b{color:var(--fg)}
+.persona .gives, .persona .gets{margin:0; padding:0; list-style:none; display:grid; gap:4px}
+.persona .gives li, .persona .gets li{
+  font-size:.84rem; color:var(--fg); padding-left:14px; position:relative; line-height:1.35;
+}
+.persona .gives li::before, .persona .gets li::before{
+  content:""; position:absolute; left:0; top:.55em; width:6px; height:6px; border-radius:50%; background:var(--accent);
+}
+.persona .gets li::before{ background:var(--orange,#D9781E); }
+.persona .plabel{font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); margin-top:4px}
+.persona.persona-csuite{ grid-column:1 / -1; border-color:rgba(31,58,95,.25); background:linear-gradient(180deg,#fff 0%, #f7f9fc 100%); }
+.okr-note{
+  font-size:.78rem; color:var(--muted); background:var(--accent-soft); border:1px dashed rgba(217,120,30,.45);
+  border-radius:10px; padding:8px 12px; margin:4px 0 0;
+}
+.okr-note b{color:var(--orange,#D9781E)}
+.okr-grid{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin-top:6px}
+@media (max-width:900px){ .okr-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:520px){ .okr-grid{grid-template-columns:1fr} }
+.okr-card{
+  background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 10px 8px; display:grid; gap:6px;
+}
+.okr-card .ok{font-size:.68rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--navy,#1F3A5F)}
+.okr-card .bar{height:8px; background:#e8edf3; border-radius:999px; overflow:hidden}
+.okr-card .bar > i{display:block; height:100%; background:var(--accent); border-radius:999px}
+.okr-card .bar.q > i{background:var(--orange,#D9781E)}
+.okr-card .bar.cx > i{background:#2a6f97}
+.okr-card .bar.rk > i{background:#5c6b7a}
+.okr-card .bar.ad > i{background:#3d7a5a}
+.okr-card .hint{font-size:.72rem; color:var(--muted); line-height:1.3}
+/* end side rails */
+
+/* Claim runway demo + Operating Model: People + AI */
+.claim-runway{margin:16px 0 12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px 16px;box-shadow:0 1px 0 rgba(31,58,95,.04)}
+.claim-runway .rw-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:10px}
+.claim-runway .rw-head h2{font-size:1.05rem;color:var(--navy,#1F3A5F);margin:0}
+.claim-runway .rw-note{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--orange,#D9781E)}
+.rw-track{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;padding:28px 4px 8px;margin:0}
+.rw-track::before{content:"";position:absolute;left:4%;right:4%;top:42px;height:3px;background:linear-gradient(90deg,#1F3A5F 0%,#D9781E 100%);border-radius:2px;opacity:.35}
+.rw-stop{position:relative;z-index:1;text-align:center;padding:0;border:0;background:transparent;cursor:pointer;font:inherit;color:inherit}
+.rw-stop .dot{display:grid;place-items:center;width:28px;height:28px;margin:0 auto 6px;border-radius:50%;background:#EEF2F7;border:2px solid #1F3A5F;color:#1F3A5F;font-size:.72rem;font-weight:700;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.rw-stop[aria-current="true"] .dot,.rw-stop.is-done .dot{background:#1F3A5F;color:#fff}
+.rw-stop[aria-current="true"] .dot{border-color:#D9781E;box-shadow:0 0 0 3px rgba(217,120,30,.25);transform:scale(1.08)}
+.rw-stop .nm{display:block;font-size:.72rem;font-weight:700;color:#1F3A5F;line-height:1.2}
+.rw-stop .sg{display:block;font-size:.65rem;color:var(--muted);margin-top:2px}
+.rw-token{position:absolute;top:30px;left:0;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:#D9781E;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2);z-index:2;transition:left .55s ease;pointer-events:none}
+.rw-panel{margin-top:10px;background:#f7f9fc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-height:7.5rem}
+.rw-panel .rw-stage{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#D9781E;margin:0 0 4px}
+.rw-panel h3{font-size:1rem;color:#1F3A5F;margin:0 0 8px;font-family:var(--f-display)}
+.rw-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;font-size:.86rem}
+.rw-grid dt{font-weight:700;color:#1F3A5F;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;margin:0}
+.rw-grid dd{margin:2px 0 0;color:var(--fg);line-height:1.35}
+.rw-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.rw-controls button{appearance:none;border:1px solid #1F3A5F;background:#1F3A5F;color:#fff;border-radius:999px;padding:7px 14px;font-size:.85rem;font-weight:600;cursor:pointer}
+.rw-controls button.secondary{background:transparent;color:#1F3A5F}
+.rw-controls button:focus-visible{outline:3px solid #D9781E;outline-offset:2px}
+.rw-controls .rw-live{font-size:.78rem;color:var(--muted);margin-left:auto}
+@media (max-width:640px){
+  .rw-track{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 6px;padding-top:22px}
+  .rw-track::before{display:none}
+  .rw-token{display:none}
+  .rw-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion: reduce){
+  .rw-token{transition:none}
+  .rw-stop .dot{transition:none}
+}
+.model-i-wrap{margin:12px 0 18px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px 16px}
+.model-i-wrap .mi-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 12px;margin-bottom:8px}
+.model-i-wrap h2{font-size:1.05rem;color:#1F3A5F;margin:0}
+.model-i-wrap .mi-note{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#D9781E}
+.model-i-wrap .mi-sub{font-size:.88rem;color:var(--muted);margin:0 0 10px;max-width:70ch}
+.model-i-wrap figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px}
+.model-i-wrap svg .hit{cursor:pointer}
+.model-i-wrap svg .hit:focus{outline:2px solid #D9781E;outline-offset:2px}
+.model-i-wrap .mi-tip{margin-top:10px;font-size:.86rem;color:var(--fg);background:#f7f9fc;border-left:3px solid #D9781E;padding:8px 10px;border-radius:0 8px 8px 0;min-height:2.8rem}
+.model-i-wrap .mi-foundation{font-size:.8rem;color:#333;margin:8px 0 0;text-align:center}
+.model-i-wrap .mi-foundation b{color:#1F3A5F}
+
+
+/* intro wrap fix */
+.hero .pron, .hero .thesis, .hero .acro { max-width: min(62ch, 100%); overflow-wrap: anywhere; word-break: break-word; }
+.hero .pron { font-size: clamp(1.05rem, 1.6vw, 1.35rem); line-height: 1.35; }
+.hero .thesis { white-space: normal; font-family: var(--f-body, inherit); color: var(--muted, #4F5B69); font-size: .95rem; line-height: 1.45; max-width: min(68ch, 100%); }
+@media (min-width: 1200px) and (max-width: 1480px) {
+  .hero .pron, .hero .thesis, .hero .acro { max-width: 52ch; }
+  .shell { --about-w: 240px; }
+}
+
+
+.hero-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,400px);gap:24px;align-items:start}
+.hero-l{min-width:0}
+.bcn{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 40px rgba(31,58,95,.13);overflow:hidden}
+.bcn-h{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;background:#1F3A5F;color:#fff}.bcn-h b{font-size:.9rem}.bcn-h span{font-size:.72rem;opacity:.85}
+.bcn-f{height:330px;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.bce{display:grid;grid-template-columns:40px 1fr;gap:8px;align-items:start;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.bce.in{opacity:1;transform:none}
+.bce time{font:12px var(--f-mono);color:var(--faint);padding-top:3px}
+.bce .bb{border-radius:10px;padding:8px 11px;border:1px solid var(--line);background:#f6f8fb;font-size:.95rem;font-weight:600;line-height:1.3;color:#191C22}
+.bce.ag .bb{background:#ECE6F6;border-color:transparent}.bce.sys .bb{background:#E5ECF6;border-color:transparent}
+.bce.hum .bb{background:#fff;border-left:3px solid #2E7D4F}
+.bce.chk .bb{background:#fff;border:1px solid #e6cf9e;border-left:4px solid #D9781E}
+.bce.ok .bb{background:#E3F2E8;border-color:transparent}
+.bce .wh{display:block;font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#575E6B;margin-bottom:2px}
+.bce .ln{display:inline-block;font-size:.62rem;font-weight:700;border:1px solid #BCC4D1;border-radius:999px;padding:0 6px;margin-left:6px;color:#575E6B;text-transform:none;letter-spacing:0;background:#fff}
+.bce small{display:table;margin-top:4px;font-size:.7rem;font-weight:700;color:#2E7D4F;background:#E3F2E8;border-radius:999px;padding:1px 9px}
+.bce.ok small{background:#fff}.bce.chk small{color:#8F5E00;background:#FBF0D9}
+.bcn-b{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:9px 14px;border-top:1px solid var(--line)}
+.bcn-k{display:flex;gap:16px}.bcn-k b{display:block;font:600 15px/1.1 var(--f-mono);color:#1F3A5F;white-space:nowrap}.bcn-k span{font-size:.7rem;color:var(--muted)}
+.bcn-bt{display:flex;gap:6px}.bcn-r{border:1px solid #1F3A5F;background:#fff;color:#1F3A5F;border-radius:999px;padding:5px 12px;font:inherit;font-weight:700;font-size:.8rem;cursor:pointer;white-space:nowrap}.bcn-r.solid{background:#1F3A5F;color:#fff}
+.bcn-cap{font-size:.8rem;color:var(--muted);margin:8px 0 0}.bcn-cap a{color:#1F3A5F;font-weight:700}
+.rw-grid dd{font-size:.98rem;font-weight:600;color:#191C22}
+@media (max-width:1200px){.hero-g{grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:18px}.bcn-h span{display:none}}
+@media (max-width:860px){.hero-g{grid-template-columns:1fr}.bcn-f{height:300px}}
+
+@media (min-width:1280px){ :root{ --rail-l:250px; } }
+@media (min-width:1280px) and (max-width:1399px){ :root{ --rail-l:230px; --rail-r:210px; } }
+.who-rail{padding:14px 14px !important;gap:8px !important}
+.wr-h{font-family:var(--f-display);font-size:1.15rem;color:#1F3A5F;line-height:1.2}
+.wr-sub{font-size:.74rem;color:var(--muted);font-family:var(--f-body)}
+.wr-groups{display:flex;flex-direction:column;gap:8px}
+.wr-g>span{display:block;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:0 0 4px}
+.wr-g div{display:flex;flex-wrap:wrap;gap:4px}
+.who-rail .wr-g button,.who-inline .wr-g button{display:inline-block;width:auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 10px;font:inherit;font-size:.74rem;font-weight:600;color:#191C22;cursor:pointer;line-height:1.3;grid-template-columns:none}
+.who-rail .wr-g button[aria-pressed=true],.who-inline .wr-g button[aria-pressed=true]{background:#1F3A5F;border-color:#1F3A5F;color:#fff}
+.wr-detail{border:1px solid var(--line);border-left:4px solid #D9781E;border-radius:10px;padding:9px 11px;background:#fff;font-size:.8rem;line-height:1.4}
+.wr-detail .st{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#D9781E}
+.wr-detail h4{margin:2px 0 6px;font-size:.92rem;color:#1F3A5F;font-family:var(--f-body);line-height:1.3}
+.wr-detail b{color:#191C22}
+.wr-detail ul{margin:3px 0 0;padding-left:15px}.wr-detail li{margin:2px 0}
+.who-inline{display:none}
+@media (max-width:1279px){.who-inline{display:block;margin:14px 0 4px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.who-inline .wr-groups{flex-direction:row;flex-wrap:wrap;gap:6px 16px;margin:8px 0}
+.who-inline .wr-detail{display:grid;grid-template-columns:1.2fr 1fr;gap:4px 16px}.who-inline .wr-detail .st,.who-inline .wr-detail h4{grid-column:1/-1}}
+@media (max-width:640px){.who-inline .wr-detail{grid-template-columns:1fr}}
+.hdec{margin-top:18px;background:#fff;border:1px solid var(--line);border-left:4px solid #D9781E;border-radius:12px;padding:10px 12px}
+.hd-t{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1F3A5F;margin-bottom:6px}
+.hd-f{display:flex;align-items:stretch;gap:4px}
+.hd-f span{flex:1 1 0;min-width:0;border-radius:8px;padding:5px 6px;font-size:.72rem;font-weight:700;color:#191C22;background:#E5ECF6;line-height:1.25}
+.hd-f span.l{background:#fff;border:1.5px dashed #D9781E}.hd-f span.c{background:#fff;border:1px solid #1F3A5F}.hd-f span.a{background:#ECE6F6}.hd-f span.e{background:#FBF0D9}.hd-f span.h{background:#E3F2E8}
+.hd-f i{display:block;font-style:normal;font-weight:500;font-size:.72rem;color:#575E6B}
+.hd-loop{margin-top:7px;border-top:1px dashed #BCC4D1;padding-top:6px;font-size:.76rem;color:#3b4552;line-height:1.35}.hd-loop span{color:#D9781E;font-weight:700;font-size:.95rem;margin-right:2px}
+.hd-f em{align-self:center;font-style:normal;color:#8a8f99;font-weight:700}
+.hproof{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.hproof div{background:#1F3A5F;color:#dfe7f1;border-radius:10px;padding:8px 10px;font-size:.74rem;line-height:1.3}
+.hproof b{display:block;color:#fff;font-size:.95rem;margin-bottom:2px}
+@media (min-width:1280px){.hproof{display:none}}
+@media (max-width:640px){.hproof{grid-template-columns:1fr}.hd-f{flex-wrap:wrap}.hd-f span{flex:1 1 40%}.hd-f em{display:none}}
+.brand{display:flex; align-items:center; gap:.18em}
+.tmark{width:.7em; height:.8em; flex:0 0 auto}
+.tmark path{fill:none; stroke:var(--line-strong); stroke-width:2.2; stroke-linecap:round}
+.tmark .v{stroke:var(--accent); stroke-width:2.4}
+.tmark circle{fill:var(--vine)}
+.hero-l .brand{font-size:clamp(2.6rem,5vw,4.1rem)}
+.hero .pron{font-family:var(--f-display); color:#1F3A5F; font-weight:500; letter-spacing:0; margin-top:10px}
+.hd-f span{font-size:.68rem;padding:5px}
+.hero-cta{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
+.jd{margin:14px 0 6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.jd .jd-h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;align-items:baseline}
+.jd h2{font-size:1.05rem;color:#1F3A5F;margin:0}
+.jd .jd-n{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#D9781E}
+.jd-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+.jd-g button{appearance:none;text-align:left;font:inherit;border:1px solid var(--line);border-top:3px solid #1F3A5F;border-radius:10px;background:#fff;padding:9px 10px;cursor:pointer;display:flex;flex-direction:column;gap:3px}
+.jd-g button:hover{border-color:#1F3A5F}
+.jd-g b{font-size:.8rem;color:#1F3A5F;line-height:1.25}
+.jd-g span{font-size:.76rem;color:var(--muted);line-height:1.35}
+.jd-g i{font-style:normal;font-size:.72rem;font-weight:700;color:#D9781E;margin-top:auto}
+@media (max-width:900px){.jd-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.jd-g{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
 
 
+<div class="watermark" aria-hidden="true"></div>
+
+<div class="shell">
+<nav class="stage-rail who-rail" id="stage-rail" aria-label="Who TRELLIS serves">
+  <div class="wr-h">Who TRELLIS serves</div>
+  <div class="wr-sub">Same use case, different seat. Pick a role.</div>
+  <div class="wr-groups" data-who-groups></div>
+  <div class="wr-detail" data-who-detail></div>
+</nav>
 <div class="wrap">
-  <header class="hero">
+  <header class="hero"><div class="hero-g"><div class="hero-l">
     <div class="eyebrow">
       <span class="pill">Executive preview · Sonia Malik</span>
-      <span class="pill neutral">Prepared for American Express · Enterprise AI Platform · Responsible AI + Forward Deployed Engineering</span>
+      <span class="pill neutral">Prepared for American Express · VP, Forward Deployed Engineering</span>
     </div>
-    <div class="brand">TRELLIS</div>
-    <p class="thesis">Responsible AI, engineered in: safe by default, fast by design.</p>
-    <p style="margin-top:16px;display:flex;flex-wrap:wrap;gap:10px"><button class="talk" type="button" data-go="fde">New: the forward deployed view &rarr;</button><button class="talk ghost" type="button" data-go="try">Try the governed platform &rarr;</button></p>
+    <div class="brand"><svg class="tmark" viewBox="0 0 36 44" aria-hidden="true"><path d="M4 42 L32 10 M4 26 L20 10 M16 42 L32 26 M4 10 L32 42 M4 26 L20 42 M16 10 L32 26"/><path class="v" d="M18 44 C14 34 24 28 18 18 C14 12 20 6 22 2"/><circle cx="22" cy="3" r="2.6"/></svg>TRELLIS</div>
+    <div class="pron">Forward deployed engineering on a governed AI platform: from a customer problem to production, then back into the platform.</div>
+    <div class="acro" style="font-size:.9rem;letter-spacing:.02em;margin-top:10px"><span style="color:#1F3A5F"><b>Safe by default · fast by design</b></span> <span style="font-style:italic;color:#333">&nbsp;· a trellis, not a gate.</span></div>
+    <p class="thesis">Illustrative walkthrough: one Merchant Services use case, merchant dispute triage, stage by stage. A small pod builds with the business, TRELLIS gates keep it safe, and what works becomes an accelerator the next team reuses. Sample data, not Amex data.</p>
+    <div class="hdec" aria-label="How decisions get made">
+      <div class="hd-t">How decisions get made</div>
+      <div class="hd-f"><span class="c">Customer problem<i>one KPI</i></span><em>›</em><span class="a">Pod + creator agent<i>builds</i></span><em>›</em><span class="a">AI judge<i>scores vs. rubric</i></span><em>›</em><span class="e">TRELLIS gates<i>one evidence packet</i></span><em>›</em><span class="h">Person decides<i>approve · edit · stop</i></span><em>›</em><span class="l">Feed the platform<i>next team starts ahead</i></span></div>
+      <div class="hd-loop"><span>↺</span> The business KPI drives the loop: when it moves, the pattern becomes an accelerator; when it doesn't, the pod goes back to the journey.</div>
+    </div>
+    <div class="hproof">
+      <div><b>~400 in 13 months</b>engineers on governed AI (S&amp;P Global)</div>
+      <div><b>3 days → same day</b>regulated sign-off with evidence</div>
+      <div><b>100+ scrum teams</b>adopted one security testing framework</div>
+    </div>
+    <p class="hero-cta"><button class="talk" type="button" data-go="fde">Follow a use case &rarr;</button><button class="talk ghost" type="button" data-go="try">Try the governed platform &rarr;</button></p>
+    </div><div class="hero-r">
+    <div class="bcn" id="bcn" aria-label="Sample: one merchant dispute through TRELLIS">
+      <div class="bcn-h"><b>Dispute console · Merchant Services</b><span>Sample · illustrative</span></div>
+      <div class="bcn-f" id="bcn-f" aria-live="polite"></div>
+      <div class="bcn-b"><div class="bcn-k"><div><b id="bcn-c">0:00</b><span>elapsed</span></div><div><b id="bcn-l">–</b><span>current lane</span></div></div>
+      <div class="bcn-bt"><button type="button" class="bcn-r" id="bcn-p">❚❚ Pause</button><button type="button" class="bcn-r solid" id="bcn-n">Next ›</button><button type="button" class="bcn-r" id="bcn-rp" aria-label="Replay">↻</button></div></div>
+    </div>
+    <p class="bcn-cap">One dispute, opened to resolved, with an analyst deciding every case. <a href="#claim-runway">See the six stages ↓</a></p>
+    </div></div>
   </header>
+
+  <section class="who-inline" aria-label="Who TRELLIS serves">
+    <div class="wr-h">Who TRELLIS serves <span class="wr-sub">· pick a role</span></div>
+    <div class="wr-groups" data-who-groups></div>
+    <div class="wr-detail" data-who-detail></div>
+  </section>
+
+  <!-- USE-CASE RUNWAY -->
+  <section class="claim-runway" id="claim-runway" aria-label="Interactive use-case runway through six stages">
+    <div class="rw-head">
+      <h2>Use-case runway · merchant dispute triage, from customer problem to production and back</h2>
+      <span class="rw-note">Illustrative · sample KPI, not Amex data</span>
+    </div>
+    <div class="rw-track" id="rw-track" role="list">
+      <div class="rw-token" id="rw-token" aria-hidden="true"></div>
+      <button type="button" class="rw-stop" role="listitem" data-rw="0" aria-current="true"><span class="dot">1</span><span class="nm">Discover</span><span class="sg">Business owner</span></button>
+      <button type="button" class="rw-stop" role="listitem" data-rw="1"><span class="dot">2</span><span class="nm">Design</span><span class="sg">Exit tests agreed</span></button>
+      <button type="button" class="rw-stop" role="listitem" data-rw="2"><span class="dot">3</span><span class="nm">Build in a pod</span><span class="sg">Auto-checked</span></button>
+      <button type="button" class="rw-stop" role="listitem" data-rw="3"><span class="dot">4</span><span class="nm">TRELLIS gates</span><span class="sg">Auto-checked</span></button>
+      <button type="button" class="rw-stop" role="listitem" data-rw="4"><span class="dot">5</span><span class="nm">Ship &amp; measure</span><span class="sg">Human sign-off</span></button>
+      <button type="button" class="rw-stop" role="listitem" data-rw="5"><span class="dot">6</span><span class="nm">Feed the platform</span><span class="sg">Reuse tracked</span></button>
+    </div>
+    <div class="rw-panel" id="rw-panel" aria-live="polite">
+      <div class="rw-stage" id="rw-stage-label">Stage 1 · Discover</div>
+      <h3 id="rw-title">Problem &amp; one KPI</h3>
+      <dl class="rw-grid">
+        <div><dt>Customer moment</dt><dd id="rw-cust"></dd></div>
+        <div><dt>Pod + agent action</dt><dd id="rw-agent"></dd></div>
+        <div><dt>Control check</dt><dd id="rw-ctrl"></dd></div>
+        <div><dt>KPI <span style="color:#D9781E;font-weight:700">(Illustrative)</span></dt><dd id="rw-kpi"></dd></div>
+      </dl>
+    </div>
+    <div class="rw-controls">
+      <button type="button" id="rw-play">Play</button>
+      <button type="button" class="secondary" id="rw-step">Step</button>
+      <button type="button" class="secondary" id="rw-pause">Pause</button>
+      <button type="button" class="secondary" id="rw-replay">Replay</button>
+      <span class="rw-live" id="rw-live">Stopped · press Play or Step</span>
+    </div>
+  </section>
+
+  <!-- OPERATING MODEL -->
+  <section class="model-i-wrap" id="model-i" aria-label="Operating Model: People + AI, forward deployed pods on one platform">
+    <div class="mi-head">
+      <h2>Operating Model: People + AI · forward deployed pods on one platform</h2>
+      <span class="mi-note">Illustrative · proven pattern from S&amp;P Global</span>
+    </div>
+    <p class="mi-sub">Top bar: Customer Centricity (journeys with goal, intent and one KPI per use case). Bottom bar: Engineering Excellence (the Enterprise AI Platform, accelerators and guardrails). Between them: forward deployed pods. Creator and judge agents with human validation feed the TRELLIS gates into production; production signals and field lessons flow back into both bars.</p>
+    <figure>
+      <svg viewBox="0 0 640 210" width="100%" style="display:block;max-width:900px;margin:auto;font-family:inherit" role="img" aria-label="Operating model diagram: Customer Centricity and Engineering Excellence around forward deployed pods, flowing to TRELLIS gates and production, with a continuous improvement loop">
+        <defs><marker id="mia" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#575E6B"/></marker></defs>
+        <g class="hit" tabindex="0" data-mi="cc" role="button" aria-label="Customer Centricity">
+          <rect x="20" y="10" width="320" height="34" rx="6" fill="#1F3A5F"/>
+          <text x="180" y="25" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="bold">Customer Centricity</text>
+          <text x="180" y="38" text-anchor="middle" fill="#FFFFFF" font-size="8.5">journeys · goal · intent · one KPI per use case</text>
+        </g>
+        <g class="hit" tabindex="0" data-mi="teams" role="button" aria-label="Forward deployed pods">
+          <rect x="30" y="52" width="64" height="62" rx="6" fill="#FFFFFF" stroke="#1F3A5F"/><text x="62" y="78" text-anchor="middle" font-size="9" fill="#333">FDE pod</text><text x="62" y="90" text-anchor="middle" font-size="7.5" fill="#575E6B">Merchant</text><text x="62" y="103" text-anchor="middle" font-size="8" fill="#D9781E">creator</text>
+          <rect x="108" y="52" width="64" height="62" rx="6" fill="#FFFFFF" stroke="#1F3A5F"/><text x="140" y="78" text-anchor="middle" font-size="9" fill="#333">FDE pod</text><text x="140" y="90" text-anchor="middle" font-size="7.5" fill="#575E6B">Servicing</text><text x="140" y="103" text-anchor="middle" font-size="8" fill="#D9781E">judge</text>
+          <rect x="186" y="52" width="64" height="62" rx="6" fill="#FFFFFF" stroke="#1F3A5F"/><text x="218" y="78" text-anchor="middle" font-size="9" fill="#333">FDE pod</text><text x="218" y="90" text-anchor="middle" font-size="7.5" fill="#575E6B">Commercial</text><text x="218" y="103" text-anchor="middle" font-size="8" fill="#D9781E">rubrics</text>
+          <rect x="264" y="52" width="64" height="62" rx="6" fill="#FFFFFF" stroke="#1F3A5F"/><text x="296" y="78" text-anchor="middle" font-size="9" fill="#333">FDE pod</text><text x="296" y="90" text-anchor="middle" font-size="7.5" fill="#575E6B">Next team</text><text x="296" y="103" text-anchor="middle" font-size="8" fill="#D9781E">human</text>
+        </g>
+        <g class="hit" tabindex="0" data-mi="ee" role="button" aria-label="Engineering Excellence">
+          <rect x="20" y="122" width="320" height="34" rx="6" fill="#333333"/>
+          <text x="180" y="137" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="bold">Engineering Excellence</text>
+          <text x="180" y="150" text-anchor="middle" fill="#FFFFFF" font-size="8.5">Enterprise AI Platform · accelerators · guardrails</text>
+        </g>
+        <line x1="344" y1="83" x2="384" y2="83" stroke="#575E6B" stroke-width="1.5" marker-end="url(#mia)"/>
+        <g class="hit" tabindex="0" data-mi="gates" role="button" aria-label="TRELLIS gates">
+          <rect x="388" y="63" width="110" height="40" rx="6" fill="#EEF2F7" stroke="#1F3A5F"/>
+          <text x="443" y="80" text-anchor="middle" font-size="9" font-weight="bold" fill="#1F3A5F">TRELLIS gates</text>
+          <text x="443" y="93" text-anchor="middle" font-size="8" fill="#1F3A5F">eval · red team · redaction</text>
+        </g>
+        <line x1="498" y1="83" x2="530" y2="83" stroke="#575E6B" stroke-width="1.5" marker-end="url(#mia)"/>
+        <g class="hit" tabindex="0" data-mi="prod" role="button" aria-label="Production">
+          <rect x="534" y="63" width="90" height="40" rx="6" fill="#1F3A5F"/>
+          <text x="579" y="87" text-anchor="middle" fill="#FFFFFF" font-size="9.5" font-weight="bold">Production</text>
+        </g>
+        <path d="M579,63 L579,27 L344,27" fill="none" stroke="#D9781E" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#mia)"/>
+        <path d="M579,103 L579,139 L344,139" fill="none" stroke="#D9781E" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#mia)"/>
+        <text x="624" y="19" text-anchor="end" font-size="7.6" fill="#D9781E">Business KPI · NPS · incidents → next journey</text>
+        <text x="624" y="152" text-anchor="end" font-size="7.6" fill="#D9781E">Field lessons → platform features</text>
+        <rect x="20" y="168" width="604" height="32" rx="6" fill="#EEF2F7" stroke="#1F3A5F"/>
+        <text x="322" y="188" text-anchor="middle" font-size="8" fill="#333"><tspan font-weight="bold" fill="#1F3A5F">Built on happy engineers</tspan> · deployment playbook · agent assistants · environments · learning</text>
+      </svg>
+    </figure>
+    <p class="mi-tip" id="mi-tip" aria-live="polite">Tap or hover any part (Customer Centricity, pods, Engineering Excellence, gates or Production) to see how it works.</p>
+  </section>
+
+  <!-- JD MAP -->
+  <section class="jd" aria-label="How TRELLIS maps to the role">
+    <div class="jd-h"><h2>What the role asks for, and where to see it here</h2><span class="jd-n">VP, Forward Deployed Engineering</span></div>
+    <div class="jd-g">
+      <button type="button" data-go="fde"><b>Accelerate enterprise AI adoption</b><span>Pods take use cases to production with one business KPI each.</span><i>Forward deployed →</i></button>
+      <button type="button" data-go="fde"><b>Scale what works</b><span>Each pod leaves an accelerator; reuse is on the scorecard.</span><i>Forward deployed →</i></button>
+      <button type="button" data-go="who"><b>Partner across Product, Platform, Architecture</b><span>Who gets what, before and after.</span><i>Who it serves →</i></button>
+      <button type="button" data-go="engine"><b>Engineering rigor in a regulated firm</b><span>Gates, evidence packets, model lifecycle, team design.</span><i>Under the hood →</i></button>
+    </div>
+  </section>
+
+  <section class="govflow" aria-label="Runtime control layer" style="margin:18px 0 8px;padding:0">
+    <svg class="gov-flow" viewBox="0 0 960 330" role="img" aria-labelledby="gf-t gf-d" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:Helvetica,Arial,sans-serif">
+<title id="gf-t">TRELLIS runtime control layer</title>
+<desc id="gf-d">Intake, risk tiering, then a low-risk fast path of automated checks or a high-impact risk review, then build and evaluate, a release gate with evidence-backed human approval, production, and continuous monitoring that feeds back to tiering and intake. Anchored to NIST AI RMF, ISO/IEC 42001 and SR 11-7 model risk guidance.</desc>
+<defs><marker id="gfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F3A5F"/></marker></defs>
+<rect x="0" y="0" width="960" height="330" rx="12" fill="#FFFFFF" stroke="#D5DCE6"/>
+<text x="20" y="28" font-size="15" font-weight="700" fill="#1F3A5F">Runtime control layer: exception-based, sized to risk</text>
+<text x="20" y="46" font-size="11.5" fill="#333">Controls live in the platform; people spend their time on the cases that carry real risk. Every pod ships through the same path.</text>
+<g font-size="12" fill="#333" text-anchor="middle">
+<rect x="20" y="105" width="100" height="62" rx="8" fill="#EEF2F7" stroke="#1F3A5F"/><text x="70" y="131" font-weight="700" fill="#1F3A5F">Intake</text><text x="70" y="149" font-size="10.5">owner, one KPI</text>
+<rect x="145" y="105" width="100" height="62" rx="8" fill="#EEF2F7" stroke="#1F3A5F"/><text x="195" y="131" font-weight="700" fill="#1F3A5F">Risk tiering</text><text x="195" y="149" font-size="10.5">impact, data</text>
+<rect x="270" y="62" width="160" height="58" rx="8" fill="#FFFFFF" stroke="#1F3A5F" stroke-dasharray="4 3"/><text x="350" y="84" font-weight="700" fill="#1F3A5F">Low risk: fast path</text><text x="350" y="102" font-size="10.5">automated checks</text>
+<rect x="270" y="152" width="160" height="58" rx="8" fill="#1F3A5F"/><text x="350" y="174" font-weight="700" fill="#FFFFFF">High risk</text><text x="350" y="192" font-size="10.5" fill="#FFFFFF">Risk review (high-impact cases)</text>
+<rect x="455" y="105" width="110" height="62" rx="8" fill="#EEF2F7" stroke="#1F3A5F"/><text x="510" y="127" font-weight="700" fill="#1F3A5F">Build &amp; evaluate</text><text x="510" y="144" font-size="10.5">evals, fairness,</text><text x="510" y="157" font-size="10.5">red team</text>
+<rect x="590" y="105" width="110" height="62" rx="8" fill="#1F3A5F"/><text x="645" y="127" font-weight="700" fill="#FFFFFF">Release gate</text><text x="645" y="144" font-size="10.5" fill="#FFFFFF">evidence-backed</text><text x="645" y="157" font-size="10.5" fill="#FFFFFF">human approval</text><circle cx="690" cy="114" r="4.5" fill="#F2A541"/>
+<rect x="725" y="105" width="90" height="62" rx="8" fill="#EEF2F7" stroke="#1F3A5F"/><text x="770" y="140" font-weight="700" fill="#1F3A5F">Production</text>
+<rect x="840" y="105" width="100" height="62" rx="8" fill="#EEF2F7" stroke="#1F3A5F"/><text x="890" y="127" font-weight="700" fill="#1F3A5F">Continuous</text><text x="890" y="142" font-weight="700" fill="#1F3A5F">monitoring</text><text x="890" y="157" font-size="10.5">drift, incidents</text>
+</g>
+<g fill="none" stroke="#1F3A5F" stroke-width="1.6">
+<path d="M120 136H143" marker-end="url(#gfa)"/>
+<path d="M245 136H258V91H268" marker-end="url(#gfa)"/><path d="M258 136V181H268" marker-end="url(#gfa)"/>
+<path d="M430 91H440V136H453" marker-end="url(#gfa)"/><path d="M430 181H440V136"/>
+<path d="M565 136H588" marker-end="url(#gfa)"/><path d="M700 136H723" marker-end="url(#gfa)"/><path d="M815 136H838" marker-end="url(#gfa)"/>
+<path d="M890 167V240H70V169" stroke-dasharray="5 4" marker-end="url(#gfa)"/><path d="M195 240V169" stroke-dasharray="5 4" marker-end="url(#gfa)"/>
+</g>
+<rect x="350" y="230" width="290" height="20" rx="10" fill="#FFFFFF"/>
+<text x="495" y="244" font-size="11" fill="#1F3A5F" text-anchor="middle" font-weight="700">Feedback loop: re-tier, update intake, feed the platform</text>
+<line x1="20" y1="268" x2="940" y2="268" stroke="#D5DCE6"/>
+<text x="20" y="295" font-size="10.5" fill="#333" font-weight="700">FRAMEWORK ANCHORS</text>
+<g font-size="11" fill="#1F3A5F" text-anchor="middle">
+<rect x="165" y="280" width="230" height="26" rx="13" fill="#EEF2F7" stroke="#1F3A5F"/><text x="280" y="297">NIST AI RMF</text>
+<rect x="410" y="280" width="230" height="26" rx="13" fill="#EEF2F7" stroke="#1F3A5F"/><text x="525" y="297">ISO/IEC 42001</text>
+<rect x="655" y="280" width="230" height="26" rx="13" fill="#EEF2F7" stroke="#1F3A5F"/><text x="770" y="297">SR 11-7 model risk guidance</text>
+</g>
+<text x="940" y="322" font-size="9.5" fill="#333" text-anchor="end"><tspan fill="#F2A541">●</tspan> human control point</text>
+</svg>
+  </section>
 
   <div class="tabbar">
     <div class="tabs" role="tablist" aria-label="TRELLIS sections" id="tabs">
@@ -501,15 +1010,15 @@ footer b{color:var(--fg)}
     <div class="summary">
       <h2>60-second summary: three things to know</h2>
       <ol>
-        <li><b>Responsible AI as a platform product:</b> teams inherit the controls by default instead of waiting on reviews.</li>
-        <li><b>Proven at S&amp;P Global:</b> an AI developer platform for 1,200 engineers in 6 months, ~400 engineers on governed AI in 13 months, and regulated-check approvals cut from 3 days to same day.</li>
-        <li><b>A closed loop:</b> customer signals feed prevention, measured every month.</li>
+        <li><b>Two halves of one idea:</b> forward deployed pods take Amex use cases to production with one business KPI each; TRELLIS makes the governed path the fast one.</li>
+        <li><b>Proven at S&amp;P Global:</b> an AI developer platform designed to serve ~1,200 engineers, stood up in 6 months; ~400 engineers on governed AI in 13 months; regulated-check approvals cut from 3 days to same day.</li>
+        <li><b>Every deployment makes the next one faster:</b> what works becomes an accelerator or a platform feature, and reuse is on the scorecard.</li>
       </ol>
     </div>
     <p class="lede">TRELLIS shows how I would scale AI responsibly through an AI-first PDLC that starts with the customer: every AI capability traces back to a customer outcome, and risk, legal, compliance, privacy, and security requirements become platform capabilities that teams inherit by default. It is an illustrative prototype with sample data, not connected to any company's systems.</p>
-    <p class="firms"><i><b>S&amp;P Global</b> AI developer platform for 1,200 engineers in 6 months</i><i><b>Audible</b> Sev2s, security vulnerabilities and launch risk each −30%</i><i><b>DoubleVerify</b> 25% less manual effort, 20% faster test cycles</i></p>
+    <p class="firms"><i><b>S&amp;P Global</b> AI developer platform designed to serve ~1,200 engineers</i><i><b>Audible</b> Sev2s, security vulnerabilities and launch risk each −30%</i><i><b>DoubleVerify</b> 25% less manual effort, 20% faster test cycles</i></p>
     <div class="proof">
-      <div><b class="mono">6 months</b><span>to stand up an AI developer platform built for 1,200 engineers, on one approved tool stack</span></div>
+      <div><b class="mono">6 months</b><span>to stand up an AI developer platform designed to serve ~1,200 engineers, on one approved tool stack</span></div>
       <div><b class="mono">~400</b><span>engineers on governed AI workflows within 13 months; separately, team engagement rose from 85% to 95% through AI fluency upskilling</span></div>
       <div><b class="mono">2×</b><span>delivery speed: release cadence doubled in 3 months, with regression lead time cut from 9 days to 4</span></div>
       <div><b class="mono">3 days → same day</b><span>approval time on regulated checks, with evidence-backed human approval enforced in the pipeline</span></div>
@@ -821,7 +1330,7 @@ footer b{color:var(--fg)}
     <div class="lessons">
       <article class="lesson">
         <span class="yr">2025–2026 · VP, Global Head of AI PDLC &amp; Quality Engineering</span><h3>S&amp;P Global</h3>
-        <ul><li>AI-first PDLC and AI developer platform in 6 months, built for 1,200 engineers</li><li>Requirements from CISO, Risk, Compliance, and Legal turned into platform controls</li><li>Evidence-backed human approval enforced in the pipeline wherever regulation required it; approval time on regulated checks cut from 3 days to same day; ~400 engineers on governed AI in 13 months</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li><li>Built AI fluency through skills assessment and peer-pairing: team engagement up from 85% to 95% through AI fluency upskilling</li><li>Designed the path to risk-based review as evidence builds</li><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act; hands-on prototyping of agent, AI-judge, and human-validation loops</li></ul>
+        <ul><li>AI-first PDLC and AI developer platform in 6 months, designed to serve ~1,200 engineers</li><li>Requirements from CISO, Risk, Compliance, and Legal turned into platform controls</li><li>Evidence-backed human approval enforced in the pipeline wherever regulation required it; approval time on regulated checks cut from 3 days to same day; ~400 engineers on governed AI in 13 months</li><li>Presented AI PDLC standards directly to the AI Governance Committee</li><li>Built AI fluency through skills assessment and peer-pairing: team engagement up from 85% to 95% through AI fluency upskilling</li><li>Designed the path to risk-based review as evidence builds</li><li>Familiar with NIST AI RMF, ISO/IEC 42001, and the EU AI Act; hands-on prototyping of agent, AI-judge, and human-validation loops</li></ul>
         <p class="shows">Shows up in TRELLIS as <span>Policy-as-code</span><span>Building blocks</span><span>AI fluency</span><span>Adoption metrics</span><span>NIST AI RMF tags</span><span>Judge calibration</span></p>
       </article>
       <article class="lesson">
@@ -911,13 +1420,38 @@ footer b{color:var(--fg)}
   </footer>
 </div>
 
+<aside class="about-rail" id="about-rail" aria-label="About Sonia Malik">
+  <div class="ar-head">
+    <div class="ar-av" aria-hidden="true">SM</div>
+    <div>
+      <h2>Sonia Malik</h2>
+      <p class="ar-sub">Leader of leaders · 24+ years in engineering and transformation leadership</p>
+    </div>
+  </div>
+  <p class="ar-fit"><b>For American Express</b> · VP, Forward Deployed Engineering, Enterprise AI Platform</p>
+  <ul class="ar-stats">
+    <li><span class="n">~400 · 13 months</span><span class="k">Engineers on governed AI, on a platform designed to serve ~1,200 (S&amp;P Global)</span></li>
+    <li><span class="n">100+ scrum teams</span><span class="k">Adopted one security testing framework; a second business unit next</span></li>
+    <li><span class="n">3 days → same day</span><span class="k">Regulated sign-off with evidence-backed human approval</span></li>
+    <li><span class="n">Features per PI +30%</span><span class="k">Journey-led delivery with creator and judge agents; NPS +5</span></li>
+  </ul>
+  <p class="ar-loop">Pods build with the business; <b>creator</b> + <b>judge</b> agents with human validation; what works becomes a platform feature.</p>
+  <div class="ar-btns">
+    <a class="primary" id="resume-link" href="Sonia_Malik_Resume.pdf" target="_blank" rel="noopener">Resume PDF</a>
+    <a class="ghost" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">LinkedIn</a>
+    <button class="talk" type="button" data-contact style="width:100%;justify-content:center">Let&rsquo;s talk</button>
+  </div>
+  <p class="ar-note">S&amp;P figures are from my work; use-case data is sample.</p>
+</aside>
+</div><!-- /.shell -->
+
 <button class="side-tab" type="button" id="side-tab" aria-controls="drawer" aria-expanded="false"><span class="av" aria-hidden="true">SM</span><span class="st-txt">About me · Let&rsquo;s talk</span></button>
 <aside class="drawer" id="drawer" aria-label="About Sonia Malik" hidden>
   <button class="dr-close" type="button" id="dr-close" aria-label="Close">&times;</button>
   <div class="dr-head"><div class="av" aria-hidden="true">SM</div><div><b>Sonia Malik</b><span>AI PDLC, Responsible AI &amp; Quality Engineering leader</span></div></div>
   <p class="pf-pitch">I have led engineering transformation in regulated financial services (S&amp;P Global, Prudential) and in technology-first product companies (Audible, DoubleVerify). For American Express, I would make responsible AI something teams get by default from the platform, measured by adoption as much as by risk.</p>
   <div class="pf-stats">
-      <span><b>6 months</b> to an AI developer platform for 1,200 engineers</span>
+      <span><b>6 months</b> to an AI developer platform designed to serve ~1,200 engineers</span>
       <span><b>~400</b> engineers on governed AI in 13 months</span>
       <span><b>3 days &rarr; same day:</b> evidence-backed human approval on regulated checks</span>
       <span><b>350+</b> people · <b>$70M+</b> budget led</span>
@@ -1291,6 +1825,151 @@ document.addEventListener('click',function(e){var t=e.target.closest&&e.target.c
  draw();count();});
 draw();
 })();
+</script>
+<script>
+/* Who rail (data-driven) */
+(function(){
+var GL={leadership:'Leadership',business:'Business partners',platform:'Product, Platform & Risk',pod:'The pod & front line'};
+var P=[
+{g:'leadership',name:'SVP, AI / CTO',st:'Leadership',h:'One scorecard of business value from AI',pain:'Pilots multiply, but few reach production with a business KPI',give:'A pod model with exit tests per stage and one scorecard: use cases in production, KPI moved, accelerator reuse',gets:['Value reported in business terms, not activity','Idea to production gets faster as accelerators build up']},
+{g:'business',name:'Business unit leaders',st:'Merchant · Servicing · Commercial',h:'Your problem solved in production, not in a deck',pain:'Waiting in a central queue for pilots that never ship',give:'A pod that sits with your team, maps the journey and owns one KPI through to production',gets:['A named FDE lead and a weekly KPI','Your people still decide; agents do the legwork']},
+{g:'platform',name:'Product',st:'Discover · Design',h:'Journeys and KPIs before features',pain:'Requirements arrive as one-liners; outcomes are measured late',give:'Creator agents draft journey-based stories; judge agents flag gaps against the KPI',gets:['Scope tied to a customer outcome','Fewer late surprises']},
+{g:'platform',name:'Platform Engineering',st:'Build · Feed the platform',h:'Field lessons become platform features',pain:'Teams build beside the platform, not on it',give:'A platform liaison in every pod and a monthly feed of field findings ranked by reuse',gets:['A roadmap driven by real deployments','Less shadow AI']},
+{g:'platform',name:'Architecture',st:'Design · Build',h:'Patterns, not one-offs',pain:'Every team reinvents connectors and guardrails',give:'Reference patterns: agent templates, connectors, guardrail packs and an evaluation harness',gets:['Consistent designs across business units','Faster architecture reviews']},
+{g:'platform',name:'Risk, Compliance & Legal',st:'TRELLIS gates · Release',h:'Evidence, not slideware',pain:'Reviews happen late and by email',give:'One evidence packet per release: evals, red team, data lineage and approvals',gets:['Review depth sized to risk','An audit trail by default']},
+{g:'pod',name:'FDE leads & engineers',st:'Build in a pod',h:'Ship to production, then leave something reusable',pain:'Heroic one-off builds nobody can maintain',give:'A deployment playbook, creator and judge agents, and gates that run in CI/CD',gets:['Clear exit tests per stage','Each pod adds one accelerator']},
+{g:'pod',name:'Analysts & care professionals',st:'Ship & measure',h:'Agents do the legwork; you decide',pain:'Most time goes to gathering documents',give:'An evidence packet with sources on one screen; only low-risk actions are automated',gets:['Faster resolution for customers','Your edits make the agent better']}
+];
+var cur=0;
+function draw(){
+ document.querySelectorAll('[data-who-groups]').forEach(function(box){var html='';Object.keys(GL).forEach(function(k){var items=P.map(function(p,i){return [p,i];}).filter(function(x){return x[0].g===k;});if(!items.length)return;
+  html+='<div class="wr-g"><span>'+GL[k]+'</span><div>'+items.map(function(x){return '<button type="button" data-who="'+x[1]+'" aria-pressed="'+(x[1]===cur)+'">'+x[0].name+'</button>';}).join('')+'</div></div>';});box.innerHTML=html;});
+ var p=P[cur];
+ document.querySelectorAll('[data-who-detail]').forEach(function(d){d.innerHTML='<div class="st">'+p.st+'</div><h4>'+p.h+'</h4><div><b>Pain:</b> '+p.pain+'</div><div><b>TRELLIS gives you:</b> '+p.give+'</div><div><b>You get:</b><ul>'+p.gets.map(function(g){return '<li>'+g+'</li>';}).join('')+'</ul></div>';});
+}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-who]');if(!b)return;cur=+b.getAttribute('data-who');draw();
+ if(window.goatcounter&&window.goatcounter.count){var s=new URLSearchParams(location.search).get('src')||'';window.goatcounter.count({path:location.pathname.replace(/\/$/,'')+'/who/'+encodeURIComponent(P[cur].name)+(s?'?src='+s:''),title:'Who: '+P[cur].name,event:true});}});
+draw();
+})();
+/* Dispute console */
+(function(){
+var EV=[
+['09:00','','Merchant','"Why is this $1,240 charge disputed, and what do you need from me?"<small>One request, any hour</small>','Customer'],
+['09:01','ag','Intake agent','Dispute, transaction and merchant records gathered.<small>No document chasing</small>','Agent does'],
+['09:03','sys','Triage agent + AI judge','Reason code proposed with policy citations; judge scores it.<small>Checked before a person sees it</small>','Agent + AI judge'],
+['09:04','chk','TRELLIS gate','One reason has no policy source: sent back, fixed with a citation.<small>Approved policy only</small>','Checkpoint'],
+['09:09','hum','Dispute analyst','Decides from the evidence packet.<small>Analyst decides every dispute</small>','Human decides'],
+['09:10','ok','Notify agent','Merchant and card member updated.<small>Days to hours (illustrative)</small>','Agent does'],
+['09:15','ok','Feed the platform','Document-gathering connector becomes an accelerator.<small>Next team starts ahead</small>','Measure &amp; learn']];
+var f=document.getElementById('bcn-f');if(!f)return;var ck=document.getElementById('bcn-c'),ln=document.getElementById('bcn-l'),pb=document.getElementById('bcn-p');
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function mn(t){var p=t.split(':');return +p[0]*60+ +p[1];}
+function render(k){var e=EV[k],d=document.createElement('div');d.className='bce '+e[1]+(reduce?' in':'');
+d.innerHTML='<time>'+e[0]+'</time><div class="bb"><span class="wh">'+e[2]+'<span class="ln">'+e[4]+'</span></span>'+e[3]+'</div>';
+f.appendChild(d);var m=mn(e[0])-mn(EV[0][0]);ck.textContent='0:'+('0'+m).slice(-2);ln.innerHTML=e[4];f.scrollTop=f.scrollHeight;
+if(!reduce)requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('in');f.scrollTop=f.scrollHeight;});});}
+var tm=null,i=0,paused=false,started=false,DL=2500;
+function sched(){if(tm)clearTimeout(tm);tm=null;if(i>=EV.length){pb.innerHTML='▶ Play';return;}if(paused)return;tm=setTimeout(function(){render(i++);sched();},DL);}
+function play(){if(tm)clearTimeout(tm);i=0;paused=false;pb.innerHTML='❚❚ Pause';f.innerHTML='';ck.textContent='0:00';ln.textContent='–';if(reduce){for(var k=0;k<EV.length;k++)render(k);i=EV.length;return;}render(i++);sched();}
+pb.addEventListener('click',function(){started=true;if(i>=EV.length){play();return;}paused=!paused;pb.innerHTML=paused?'▶ Play':'❚❚ Pause';sched();});
+document.getElementById('bcn-n').addEventListener('click',function(){started=true;if(i>=EV.length){play();return;}paused=true;pb.innerHTML='▶ Play';render(i++);sched();});
+document.getElementById('bcn-rp').addEventListener('click',function(){started=true;play();});
+var c=document.getElementById('bcn');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es.some(function(x){return x.isIntersecting;})){io.disconnect();if(!started){started=true;setTimeout(play,500);}}},{threshold:0.3});io.observe(c);}else play();
+})();
+
+/* Claim runway + Operating Model: People + AI interactivity */
+(function(){
+  const stages=[
+    {name:'Discover', sub:'Problem & one KPI', cust:'"Why is my dispute taking nine days?"', agent:'Pod sits with dispute analysts and maps the journey and baseline from past cases.', ctrl:'Business owner names the KPI; use case registered and risk-tiered.', kpi:'Days to resolve · sample 9 → 5'},
+    {name:'Design', sub:'Pod & exit tests', cust:'One request, clear status, a person decides.', agent:'Creator agents draft journey-based stories; a judge flags gaps.', ctrl:'FDE lead and business owner agree an exit test for every stage.', kpi:'Stories tied to the journey KPI'},
+    {name:'Build in a pod', sub:'Agents on the platform', cust:'Documents gathered once, not chased by email.', agent:'Creator agent drafts the triage flow and tests; an engineer approves each step.', ctrl:'Approved tool list; card data masked; built on the platform, not beside it.', kpi:'Release quality score'},
+    {name:'TRELLIS gates', sub:'Evaluate & red team', cust:'Every reason code backed by approved policy.', agent:'Judge agents replay past disputes against analyst decisions.', ctrl:'Evaluation, red-team and redaction gates; one fail fixed with policy citations.', kpi:'Gate pass rate on first run'},
+    {name:'Ship & measure', sub:'Shadow, then canary', cust:'Analyst sees reason, evidence and sources on one screen.', agent:'Runs in shadow mode, then a small canary.', ctrl:'Analyst decides every dispute; business owner approves each step up the trust ladder.', kpi:'Days to resolve, tracked weekly'},
+    {name:'Feed the platform', sub:'Make it repeatable', cust:'The next dispute team starts weeks ahead.', agent:'Document-gathering connector packaged as an accelerator.', ctrl:'Platform Engineering owns it; reuse is tracked.', kpi:'Accelerator reuse · idea-to-production time'}
+  ];
+  const track=document.getElementById('rw-track');
+  if(!track) return;
+  const stops=[...track.querySelectorAll('.rw-stop')];
+  const token=document.getElementById('rw-token');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i=0, playing=false, timer=null;
+
+  function placeToken(idx){
+    if(!token || reduce || window.matchMedia('(max-width:640px)').matches) return;
+    const btn=stops[idx];
+    const tr=track.getBoundingClientRect();
+    const br=btn.getBoundingClientRect();
+    token.style.left=((br.left-tr.left)+br.width/2)+'px';
+  }
+  function show(idx){
+    i=Math.max(0,Math.min(stages.length-1,idx));
+    const s=stages[i];
+    stops.forEach((b,n)=>{
+      b.setAttribute('aria-current', n===i?'true':'false');
+      b.classList.toggle('is-done', n<i);
+    });
+    document.getElementById('rw-stage-label').textContent='Stage '+(i+1)+' · '+s.name;
+    document.getElementById('rw-title').textContent=s.sub;
+    document.getElementById('rw-cust').textContent=s.cust;
+    document.getElementById('rw-agent').textContent=s.agent;
+    document.getElementById('rw-ctrl').textContent=s.ctrl;
+    document.getElementById('rw-kpi').textContent=s.kpi;
+    placeToken(i);
+    const live=document.getElementById('rw-live');
+    if(live) live.textContent=(playing?'Playing':'Paused')+' · stage '+(i+1)+' of 6';
+  }
+  function stopPlay(){ playing=false; if(timer){clearInterval(timer);timer=null;} const p=document.getElementById('rw-play'); if(p) p.textContent='Play'; }
+  function step(){ if(i>=stages.length-1){ stopPlay(); show(stages.length-1); return; } show(i+1); }
+  function play(){
+    if(playing) return;
+    if(i>=stages.length-1) show(0);
+    playing=true;
+    document.getElementById('rw-play').textContent='Playing…';
+    const delay=reduce?0:1100;
+    if(reduce){ // jump through without animation delay cascade
+      let n=i;
+      const tick=()=>{ if(!playing) return; if(n>=stages.length-1){ stopPlay(); show(stages.length-1); return;} n++; show(n); if(n<stages.length-1) timer=setTimeout(tick, 50); else stopPlay(); };
+      timer=setTimeout(tick, 50);
+      return;
+    }
+    timer=setInterval(()=>{ if(i>=stages.length-1){ stopPlay(); return;} step(); }, delay);
+  }
+  function replay(){ stopPlay(); show(0); play(); }
+
+  document.getElementById('rw-play')?.addEventListener('click', play);
+  document.getElementById('rw-step')?.addEventListener('click', ()=>{ stopPlay(); step(); });
+  document.getElementById('rw-pause')?.addEventListener('click', ()=>{ stopPlay(); document.getElementById('rw-live').textContent='Paused · stage '+(i+1)+' of 6'; });
+  document.getElementById('rw-replay')?.addEventListener('click', replay);
+  stops.forEach(b=>b.addEventListener('click',()=>{ stopPlay(); show(+b.dataset.rw); }));
+  document.getElementById('claim-runway')?.addEventListener('keydown', (e)=>{
+    if(e.target.closest && !e.target.closest('#claim-runway')) return;
+    if(e.code==='Space' && (e.target===document.getElementById('rw-play') || e.target.classList?.contains('rw-stop') || e.target.id==='claim-runway')){ e.preventDefault(); playing?stopPlay():play(); }
+    if(e.code==='ArrowRight'){ e.preventDefault(); stopPlay(); step(); }
+    if(e.code==='ArrowLeft'){ e.preventDefault(); stopPlay(); show(i-1); }
+    if(e.code==='KeyR' && !e.metaKey && !e.ctrlKey){ e.preventDefault(); replay(); }
+    if(e.code==='KeyP' && !e.metaKey && !e.ctrlKey){ e.preventDefault(); stopPlay(); }
+  });
+  window.addEventListener('resize', ()=>placeToken(i));
+  show(0);
+
+  const tips={
+    cc:'Customer Centricity: every pod starts from a journey with goal, intent and one business KPI, here days to resolve a merchant dispute.',
+    teams:'Forward deployed pods: an FDE lead and 2–3 engineers sit with one business owner. Creator and judge agents with rubrics and human validation do the legwork.',
+    ee:'Engineering Excellence: the Enterprise AI Platform, accelerators and guardrail packs, so every pod builds on the platform, not beside it.',
+    gates:'TRELLIS gates: evaluation, red team and redaction run in CI/CD and produce one evidence packet; review depth is sized to risk.',
+    prod:'Production: the business KPI, NPS and incidents loop back to the journey, and field lessons become platform features (illustrative).'
+  };
+  const tipEl=document.getElementById('mi-tip');
+  document.querySelectorAll('#model-i .hit').forEach(el=>{
+    const showTip=()=>{ if(tipEl) tipEl.textContent=tips[el.dataset.mi]||''; };
+    el.addEventListener('mouseenter', showTip);
+    el.addEventListener('focus', showTip);
+    el.addEventListener('click', showTip);
+  });
+})();
+
+
 </script>
 </body>
 </html>
