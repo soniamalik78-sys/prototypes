@@ -607,6 +607,8 @@ footer b{color:var(--fg)}
 .ov-who div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--surface);font-size:.8rem;color:var(--muted);line-height:1.35}
 .ov-who b{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:1px 8px;border-radius:999px;margin-bottom:4px}
 .ov-who .w-ai b{background:var(--accent-soft);color:var(--accent-ink)}.ov-who .w-cr b{background:#ECE6F6;color:#4B2E83}.ov-who .w-jg b{background:#FBF0D9;color:#8F5E00}.ov-who .w-hu b{background:#E3F2E8;color:#2E7D4F}
+@media (max-width:820px) and (min-width:561px){.ov-r{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}.ov-r .ov-who{grid-template-columns:1fr;margin-top:6px}.ov-r .ov-who-h{display:none}}
+section.pane{padding-top:28px}
 .ov-who-h{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-top:6px}
 @media (max-width:820px){ .ov-grid{grid-template-columns:1fr} }
 .loopfig{margin:0; max-width:470px; justify-self:center; width:100%}
@@ -758,7 +760,7 @@ table.rub td:nth-child(2){white-space:nowrap}
           <div><b>Close the loop</b><span>CSAT, NPS and service data show whether a release worked, and feed the next round of work.</span></div>
         </div>
       </div>
-      <div>
+      <div class="ov-r">
       <figure class="loopfig">
         <svg id="loop" viewBox="-75 0 510 375" role="img" aria-labelledby="loop-t"><title id="loop-t">The PULSE loop: discover, define, build, check, release, learn, and back to discover</title></svg>
       </figure>
