@@ -598,7 +598,16 @@ footer b{color:var(--fg)}
 .indbar .label{margin:0}
 .indbtns{display:flex; flex-wrap:wrap; gap:6px}
 
-.ov-grid{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:24px; align-items:center}
+.ov-grid{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:28px; align-items:start}
+.ov-pill{display:grid;gap:8px;margin-top:16px}
+.ov-pill div{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:9px 12px;background:var(--surface)}
+.ov-pill b{display:block;font-size:.92rem;color:var(--fg);margin-bottom:2px}
+.ov-pill span{display:block;font-size:.84rem;color:var(--muted);line-height:1.4}
+.ov-who{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.ov-who div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--surface);font-size:.8rem;color:var(--muted);line-height:1.35}
+.ov-who b{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:1px 8px;border-radius:999px;margin-bottom:4px}
+.ov-who .w-ai b{background:var(--accent-soft);color:var(--accent-ink)}.ov-who .w-cr b{background:#ECE6F6;color:#4B2E83}.ov-who .w-jg b{background:#FBF0D9;color:#8F5E00}.ov-who .w-hu b{background:#E3F2E8;color:#2E7D4F}
+.ov-who-h{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-top:6px}
 @media (max-width:820px){ .ov-grid{grid-template-columns:1fr} }
 .loopfig{margin:0; max-width:470px; justify-self:center; width:100%}
 .loopfig svg{width:100%; height:auto; overflow:visible}
@@ -743,27 +752,34 @@ table.rub td:nth-child(2){white-space:nowrap}
       <div>
         <p class="lede">PULSE is how I would make AI the default way a financial services firm builds software. Every change starts from something <span data-ind="who">clients</span> told us, moves through the full lifecycle with AI and agents doing the heavy lifting, and only counts as done when client satisfaction shows it worked. Then the loop starts again.</p>
         <p class="lede" style="margin-top:10px"><span id="pickline">Pick an industry above and the examples change to match.</span> It is an illustrative prototype with sample data, not connected to any company's systems.</p>
+        <div class="ov-pill" aria-label="The idea in three lines">
+          <div><b>Start from the client</b><span>AI turns client feedback, journeys and service data into ranked, ready-to-build work.</span></div>
+          <div><b>Creator and judge agents</b><span>Creator agents write stories, code and tests; judge agents score them against the firm's rubrics, so humans decide from evidence.</span></div>
+          <div><b>Close the loop</b><span>CSAT, NPS and service data show whether a release worked, and feed the next round of work.</span></div>
+        </div>
       </div>
+      <div>
       <figure class="loopfig">
         <svg id="loop" viewBox="-75 0 510 375" role="img" aria-labelledby="loop-t"><title id="loop-t">The PULSE loop: discover, define, build, check, release, learn, and back to discover</title></svg>
       </figure>
+        <div class="ov-who-h">Who does what</div>
+        <div class="ov-who" aria-label="Who does what">
+          <div class="w-ai"><b>AI</b><br>Reads client signals and ranks what matters</div>
+          <div class="w-cr"><b>Creator agents</b><br>Draft stories, code and tests</div>
+          <div class="w-jg"><b>Judge agents</b><br>Score every artifact against the firm's rubric</div>
+          <div class="w-hu"><b>Humans</b><br>Decide what to build and approve every release</div>
+        </div>
+      </div>
     </div>
 
     <div class="sec-head" style="margin-top:30px"><span class="label">Built on what I have already delivered</span></div>
     <div class="proof">
       <div><b class="mono">6 months</b><span>to stand up an AI-first framework and developer platform designed to serve ~1,200 engineers (S&amp;P Global)</span></div>
-      <div><b class="mono">350+</b><span>engineers on governed AI in 13 months (S&amp;P Global)</span></div>
-      <div><b class="mono">3 days → same day</b><span>for regulated sign-off, with human approval enforced for every production deploy (S&amp;P Global)</span></div>
       <div><b class="mono">2&times;</b><span>release cadence in 3 months, with regression cut from 9 days to daily (S&amp;P Global)</span></div>
+      <div><b class="mono">100+</b><span>scrum teams adopted one security testing framework (S&amp;P Global)</span></div>
+      <div><b class="mono">&minus;30%</b><span>Sev2s, security vulnerabilities and launch risk, with machine learning on production incidents (Audible)</span></div>
     </div>
-    <p class="proof-note">These four figures are from my work at S&amp;P Global. Figures in the Use cases and Scorecard tabs are sample data.</p>
-
-    <div class="sec-head" style="margin-top:34px"><span class="label">The idea in three lines</span></div>
-    <div class="pillars">
-      <div><h3>Start from the client</h3><p>AI reads client feedback, journeys and service data, and turns the biggest pain points into ranked, ready-to-build work.</p></div>
-      <div><h3>Creator and judge agents</h3><p>Creator agents write the stories, code and tests. Judge agents score every artifact against the firm's own rubrics, so people decide from evidence, not from scratch.</p></div>
-      <div><h3>Close the loop</h3><p>A release is not the finish line. CSAT, NPS and service data show whether the change worked, and what clients say next becomes the next round of work.</p></div>
-    </div>
+    <p class="proof-note">These four figures are from my work at S&amp;P Global and Audible. Figures in the Use cases and Scorecard tabs are sample data.</p>
 
     <div class="sec-head" style="margin-top:34px"><span class="label">Where to go next</span></div>
     <div class="jump">
