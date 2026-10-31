@@ -673,6 +673,21 @@ table.rub td:nth-child(2){white-space:nowrap}
 .pc-cap{font-size:.8rem;color:var(--muted);margin:8px 0 0}.pc-cap button{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--accent-ink);cursor:pointer;text-decoration:underline}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pce.cr .bb{background:#2a2440}}
 :root[data-theme="dark"] .pce.cr .bb{background:#2a2440}
+.hproof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:26px}
+.hproof div{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:10px 12px;font-size:.8rem;color:var(--muted);line-height:1.35}
+.hproof b{display:block;font-family:var(--f-display);font-size:1.35rem;font-weight:600;color:var(--fg);line-height:1.15;margin-bottom:3px}
+.hsteps{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:18px;font-size:.78rem}
+.hsteps span{padding:4px 10px;border-radius:999px;background:var(--sunk);color:var(--fg);font-weight:600}
+.hsteps span.h{background:#FBF0D9;color:#8F5E00}
+.hsteps em{font-style:normal;color:var(--faint)}
+.hcta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.hcta button{border:1px solid var(--accent-ink);background:var(--accent-ink);color:#fff;border-radius:999px;padding:8px 16px;font:inherit;font-weight:700;font-size:.85rem;cursor:pointer}
+.hcta button.ghost{background:transparent;color:var(--accent-ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hsteps span.h{background:#3a2e14;color:#F2C877}:root:not([data-theme="light"]) .hcta button{background:var(--accent);border-color:var(--accent);color:#0b1416}:root:not([data-theme="light"]) .hcta button.ghost{background:transparent;color:var(--accent)}}
+:root[data-theme="dark"] .hsteps span.h{background:#3a2e14;color:#F2C877}:root[data-theme="dark"] .hcta button{background:var(--accent);border-color:var(--accent);color:#0b1416}:root[data-theme="dark"] .hcta button.ghost{background:transparent;color:var(--accent)}
+@media (max-width:560px){.hproof{grid-template-columns:1fr}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pc-h{background:#0F5259;color:#fff}:root:not([data-theme="light"]) .pc-r{background:transparent;border-color:var(--accent);color:var(--accent)}:root:not([data-theme="light"]) .pc-r.solid{background:var(--accent);border-color:var(--accent);color:#0b1416}:root:not([data-theme="light"]) .pc-k{color:var(--accent)}:root:not([data-theme="light"]) .pc-cap button{color:var(--accent)}}
+:root[data-theme="dark"] .pc-h{background:#0F5259;color:#fff}:root[data-theme="dark"] .pc-r{background:transparent;border-color:var(--accent);color:var(--accent)}:root[data-theme="dark"] .pc-r.solid{background:var(--accent);border-color:var(--accent);color:#0b1416}:root[data-theme="dark"] .pc-k{color:var(--accent)}:root[data-theme="dark"] .pc-cap button{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -686,6 +701,13 @@ table.rub td:nth-child(2){white-space:nowrap}
     <div class="brand"><svg class="pumark" viewBox="0 0 48 48" aria-hidden="true"><circle class="pu-ring" cx="24" cy="24" r="21"/><path class="pu-line" d="M6 25 H15 L19 15 L24 34 L29 19 L32 25 H42"/></svg>PULSE</div>
     <div class="pron">From client signal to safe release, and back again</div>
     <p class="thesis">An AI-first product development lifecycle. AI finds what clients need, creator agents build it, judge agents check it, humans approve what matters, and CSAT and NPS tell us whether it worked.</p>
+    <div class="hsteps" aria-label="The PULSE loop"><span>Discover</span><em>›</em><span>Define</span><em>›</em><span>Build</span><em>›</em><span class="h">Check</span><em>›</em><span class="h">Release</span><em>›</em><span>Learn</span><em>↺</em></div>
+    <div class="hproof" aria-label="Proof from my work">
+      <div><b>350+</b>engineers on governed AI in 13 months (S&amp;P Global)</div>
+      <div><b>3 days → same day</b>regulated sign-off, with human approval on every production deploy</div>
+      <div><b>−30%</b>credit analysts' time to a rating recommendation, in UAT</div>
+    </div>
+    <div class="hcta"><button type="button" data-go="cases">Run all three use cases →</button><button type="button" class="ghost" data-go="agents">Score an artifact with a judge agent →</button></div>
     </div><div class="hero-r">
     <div class="pc" aria-label="Play a sample use case">
       <div class="pc-h"><b>Play a use case · <span id="pc-t">Client complaint to fix</span></b><span>Sample · illustrative</span></div>
