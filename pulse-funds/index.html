@@ -727,7 +727,7 @@ table.rub td:nth-child(2){white-space:nowrap}
       <div class="pc-b"><span class="pc-k" id="pc-k">Step 0 of 8</span>
       <div class="pc-bt"><button type="button" class="pc-r" id="pc-p">❚❚ Pause</button><button type="button" class="pc-r solid" id="pc-n">Next ›</button><button type="button" class="pc-r" id="pc-rp" aria-label="Replay">↻</button></div></div>
     </div>
-    <p class="pc-cap">Agents build and check; a named person decides. <button type="button" data-go="cases">Try all three use cases →</button></p>
+    <p class="pc-cap">Agents build and check; a named human decides. <button type="button" data-go="cases">Try all three use cases →</button></p>
     </div></div>
   </header>
 
@@ -792,7 +792,7 @@ table.rub td:nth-child(2){white-space:nowrap}
     <div class="sec-head">
       <span class="label">Try it</span>
       <h2>Run a client journey through the full lifecycle</h2>
-      <p class="lede">Pick a use case, then run the loop. Each step shows what AI or an agent did, what the judge agent caught, and where a person made the call. <span class="ind-hint">Switch industries above to see the same loop for a different firm.</span></p>
+      <p class="lede">Pick a use case, then run the loop. Each step shows what AI or an agent did, what the judge agent caught, and where a human made the call. <span class="ind-hint">Switch industries above to see the same loop for a different firm.</span></p>
     </div>
     <div class="demo">
       <div class="demo-top">
@@ -809,7 +809,7 @@ table.rub td:nth-child(2){white-space:nowrap}
       <span><i class="role r-ai">AI</i> AI analysis</span>
       <span><i class="role r-cr">Creator</i> Creator agent</span>
       <span><i class="role r-jg">Judge</i> Judge agent</span>
-      <span><i class="role r-ps">Person</i> A person decides</span>
+      <span><i class="role r-ps">Human</i> A human decides</span>
     </div>
     <div class="next"><button type="button" data-go="agents">Next: creator &amp; judge agents →</button></div>
   </section>
@@ -818,13 +818,13 @@ table.rub td:nth-child(2){white-space:nowrap}
   <section class="pane" id="agents" role="tabpanel" aria-labelledby="t-agents" hidden>
     <div class="sec-head">
       <span class="label">How it works</span>
-      <h2>Creator agents build, judge agents check, people decide</h2>
+      <h2>Creator agents build, judge agents check, humans decide</h2>
       <p class="lede">The same pattern runs at every stage, from discovery to release. Choose a sample artifact to see how a judge agent scores it against a rubric.</p>
     </div>
     <div class="trio">
       <div><span class="role r-cr">Creator</span><h3>Creator agents</h3><ul><li>Group client feedback into themes</li><li>Draft stories and acceptance criteria</li><li>Write code, tests and release notes</li><li>Fix what the judge flags</li></ul></div>
       <div><span class="role r-jg">Judge</span><h3>Judge agents</h3><ul><li>Score every artifact against a rubric</li><li>Explain each score in plain words</li><li>Send work back with specific fixes</li><li>Collect the evidence for sign-off</li></ul></div>
-      <div><span class="role r-ps">Person</span><h3>People</h3><ul><li>Choose which problems to solve</li><li>Approve requirements and releases</li><li>Own the rubrics and raise the bar</li><li>Can dispute a judge's score in one click</li></ul></div>
+      <div><span class="role r-ps">Human</span><h3>Humans</h3><ul><li>Choose which problems to solve</li><li>Approve requirements and releases</li><li>Own the rubrics and raise the bar</li><li>Can dispute a judge's score in one click</li></ul></div>
     </div>
 
     <div class="sec-head" style="margin-top:28px"><span class="label">Score a sample artifact</span></div>
@@ -946,8 +946,8 @@ table.rub td:nth-child(2){white-space:nowrap}
         <p>Bring a real pain point. I will show how PULSE would take it from client feedback to a measured release.</p>
       </div>
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Deep dive</span>
-        <h3>Writing judge rubrics people trust</h3>
-        <ul><li>Who owns each rubric</li><li>How scores are explained and disputed</li><li>When a person must sign off</li></ul>
+        <h3>Writing judge rubrics humans trust</h3>
+        <ul><li>Who owns each rubric</li><li>How scores are explained and disputed</li><li>When a human must sign off</li></ul>
         <div class="veil-wrap"><p class="veil">How rubrics are versioned, calibrated against human reviewers, and tightened after every incident.</p></div>
       </div>
       <div class="lockcard"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z"/></svg>Questions I'd bring</span>
@@ -1044,7 +1044,7 @@ table.rub td:nth-child(2){white-space:nowrap}
           ['ci','Pipeline','clear','Security scan, code quality and the consumer-disclosure wording check pass automatically.','Pipeline · 18 min'],
           ['ps','Release','clear','The payments product owner signed off using the evidence the agents collected. Released to 10% of customers first, then everyone.','Named approver · 15 min'],
           ['ai','Learn','clear','Complaints on this theme fell 38% in 30 days, and CSAT for affected customers rose 7 points. The next theme is already in discovery.','CSAT and NPS · 30 days']],
-        verdict:['','Shipped in 9 days, and the loop closed','From a ranked complaint theme to a measured improvement in client satisfaction, with a person approving the release.']},
+        verdict:['','Shipped in 9 days, and the loop closed','From a ranked complaint theme to a measured improvement in client satisfaction, with a human approving the release.']},
       onboard:{intro:'Account-opening completion has dropped, and nobody is sure why.',
         steps:[
           ['ai','Discover','clear','AI spotted account-opening completion fall from 71% to 58%, and pinpointed the step: the ID photo upload, mostly on older Android phones.','AI analysis · 15 min'],
@@ -1066,7 +1066,7 @@ table.rub td:nth-child(2){white-space:nowrap}
           ['ci','Pipeline','clear','The evaluation scores became release gates: any drop below the baseline blocks a release.','Pipeline · automated'],
           ['ps','Release','clear','The support lead approved a launch to 5% of customers, with every uncertain answer escalated to a support specialist.','Named approver · 20 min'],
           ['ai','Learn','clear','Sample month one: 68% of questions resolved without waiting, 12% escalated, and chat CSAT up 5 points. Escalated questions feed the next round of improvements.','CSAT · 30 days']],
-        verdict:['','Live, grounded and supervised','Customers get instant answers from approved sources, and anything uncertain goes to a person.']}
+        verdict:['','Live, grounded and supervised','Customers get instant answers from approved sources, and anything uncertain goes to a human.']}
     },
     ib:{
       complaint:{intro:'Institutional clients keep raising late trade confirmations that do not match their records.',
@@ -1164,13 +1164,13 @@ table.rub td:nth-child(2){white-space:nowrap}
       assist:{intro:'Investor relations answers the same LP questions about terms, dates and banking details.',
         steps:[
           ['ai','Discover','clear','AI found the questions LPs ask most: fund terms, reporting dates, and how to update banking details.','AI analysis · 20 min'],
-          ['ps','Guardrails','clear','Compliance and investor relations approved the only sources it may use (fund documents, the reporting calendar, investor-services procedures) and its limits: no performance promises, no position-level information, and banking changes always go to a person.','Compliance · 2 days'],
+          ['ps','Guardrails','clear','Compliance and investor relations approved the only sources it may use (fund documents, the reporting calendar, investor-services procedures) and its limits: no performance promises, no position-level information, and banking changes always go to a human.','Compliance · 2 days'],
           ['cr','Build','clear','The creator agent built the assistant, grounded only on the approved sources.','Creator agent · 2 days'],
           ['jg','Evaluate','action','The judge agent scored 300 test questions: 92% grounded, but one answer guessed a reporting date that was not in the calendar. The assistant now says it does not know and escalates; the re-run scored 99%.','Judge agent · 20 min'],
-          ['ai','Red-team','clear','Adversarial tests tried prompt injection, requests for position-level information and fake banking-change requests. All were blocked or routed to a person.','QE · 3 hours'],
+          ['ai','Red-team','clear','Adversarial tests tried prompt injection, requests for position-level information and fake banking-change requests. All were blocked or routed to a human.','QE · 3 hours'],
           ['ci','Pipeline','clear','Evaluation scores became release gates: any drop below the baseline blocks a release.','Pipeline · automated'],
           ['ps','Release','clear','The head of investor relations approved a launch to a pilot group of LPs, with every uncertain answer escalated to the IR team.','Named approver · 20 min'],
-          ['ai','Learn','clear','Sample month one: 58% of questions answered instantly, 18% escalated, and every banking-change request went to a person.','LP feedback · 30 days']],
+          ['ai','Learn','clear','Sample month one: 58% of questions answered instantly, 18% escalated, and every banking-change request went to a human.','LP feedback · 30 days']],
         verdict:['','Live, grounded and supervised','LPs get instant answers from fund documents, and anything sensitive or uncertain goes to investor relations.']}
     },
     fa:{
@@ -1199,17 +1199,17 @@ table.rub td:nth-child(2){white-space:nowrap}
       assist:{intro:'Client service answers the same GP and LP questions about notices, statements and wire details every day.',
         steps:[
           ['ai','Discover','clear','AI found the questions asked most: notice status, when statements will be ready, and how to change wire instructions.','AI analysis · 30 min'],
-          ['ps','Guardrails','clear','Compliance and client service approved the only sources it may use (fund documents, the reporting calendar, notice and statement status) and its limits: no cross-client data, no investment commentary, and wire-instruction changes always go to a person with call-back verification.','Compliance · 3 days'],
+          ['ps','Guardrails','clear','Compliance and client service approved the only sources it may use (fund documents, the reporting calendar, notice and statement status) and its limits: no cross-client data, no investment commentary, and wire-instruction changes always go to a human with call-back verification.','Compliance · 3 days'],
           ['cr','Build','clear','The creator agent built the assistant in the client portal, grounded only on the approved sources.','Creator agent · 3 days'],
           ['jg','Evaluate','action','The judge agent scored 500 test questions: 94% grounded, but one answer revealed another client’s fund name. The creator agent added an entitlement filter; the re-run scored 99% with zero cross-client leaks.','Judge agent · 30 min'],
-          ['ai','Red-team','clear','Adversarial tests tried prompt injection, impersonated wire-change requests and attempts to reach other clients’ data. All were blocked or routed to a person.','QE · 4 hours'],
+          ['ai','Red-team','clear','Adversarial tests tried prompt injection, impersonated wire-change requests and attempts to reach other clients’ data. All were blocked or routed to a human.','QE · 4 hours'],
           ['ci','Pipeline','clear','Evaluation scores and the entitlement filter became release gates: any drop blocks a release.','Pipeline · automated'],
           ['ps','Release','clear','The head of client service approved a launch to a pilot group of clients, with every uncertain answer escalated to the client service team.','Named approver · 20 min'],
-          ['ai','Learn','clear','Sample month one: 60% of questions answered instantly, 16% escalated, and every wire-instruction request went to a person.','Client feedback · 30 days']],
-        verdict:['','Live, grounded and fraud-aware','Clients get instant answers from approved sources, other clients’ data stays out of reach, and wire changes always go to a person.']}
+          ['ai','Learn','clear','Sample month one: 60% of questions answered instantly, 16% escalated, and every wire-instruction request went to a human.','Client feedback · 30 days']],
+        verdict:['','Live, grounded and fraud-aware','Clients get instant answers from approved sources, other clients’ data stays out of reach, and wire changes always go to a human.']}
     }
   };
-  const ROLE={ai:['AI','r-ai'],cr:['Creator','r-cr'],jg:['Judge','r-jg'],ps:['Person','r-ps'],ci:['Pipeline','r-ci']};
+  const ROLE={ai:['AI','r-ai'],cr:['Creator','r-cr'],jg:['Judge','r-jg'],ps:['Human','r-ps'],ci:['Pipeline','r-ci']};
 
   // ---------- Industry bar ----------
   function renderInd(){
@@ -1218,7 +1218,7 @@ table.rub td:nth-child(2){white-space:nowrap}
   }
 
   // ---------- Loop diagram ----------
-  const LOOP=[['Discover','AI reads client signals'],['Define','AI drafts, people approve'],['Build','Creator agents'],['Check','Judge agents and tests'],['Release','Gates and sign-off'],['Learn','CSAT and NPS']];
+  const LOOP=[['Discover','AI reads client signals'],['Define','AI drafts, humans approve'],['Build','Creator agents'],['Check','Judge agents and tests'],['Release','Gates and sign-off'],['Learn','CSAT and NPS']];
   function drawLoop(){
     const svg=$('loop'); if(!svg) return;
     const cx=180, cy=180, R=118;
