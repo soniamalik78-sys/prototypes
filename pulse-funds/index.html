@@ -648,12 +648,37 @@ table.rub td:nth-child(2){white-space:nowrap}
 @keyframes pudraw{0%{stroke-dashoffset:70} 45%,80%{stroke-dashoffset:0} 100%{stroke-dashoffset:-70}}
 @media (prefers-reduced-motion:reduce){ .pumark .pu-line{animation:none; stroke-dashoffset:0} }
 .indbar[hidden], .ind-hint[hidden]{display:none!important}
+/* hero play console */
+.hero-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,410px);gap:28px;align-items:start}
+@media (max-width:980px){.hero-g{grid-template-columns:1fr}}
+.pc{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 40px rgba(15,82,89,.13);overflow:hidden}
+.pc-h{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;background:var(--accent-ink);color:#fff}
+.pc-h b{font-size:.88rem}.pc-h span{font-size:.7rem;opacity:.85}
+.pc-in{padding:9px 12px;font-size:.82rem;color:var(--muted);border-bottom:1px solid var(--line);background:var(--sunk)}
+.pc-f{height:320px;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.pce{display:grid;grid-template-columns:62px 1fr;gap:8px;align-items:start;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.pce.in{opacity:1;transform:none}
+.pce time{font:11px var(--f-mono);color:var(--faint);padding-top:4px;line-height:1.25}
+.pce .bb{border-radius:10px;padding:7px 10px;border:1px solid var(--line);background:var(--sunk);font-size:.84rem;line-height:1.35;color:var(--fg)}
+.pce .wh{display:block;font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.pce.ai .bb{background:var(--accent-soft);border-color:transparent}
+.pce.cr .bb{background:#ECE6F6;border-color:transparent}
+.pce.jg .bb{background:var(--surface);border:1px solid #e6cf9e;border-left:4px solid #C98A1A}
+.pce.ps .bb{background:var(--surface);border-left:3px solid #2E7D4F}
+.pce.ci .bb{background:var(--surface)}
+.pc-b{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:9px 14px;border-top:1px solid var(--line)}
+.pc-k{font:600 .8rem var(--f-mono);color:var(--accent-ink)}
+.pc-bt{display:flex;gap:6px}.pc-r{border:1px solid var(--accent-ink);background:var(--surface);color:var(--accent-ink);border-radius:999px;padding:5px 12px;font:inherit;font-weight:700;font-size:.78rem;cursor:pointer}
+.pc-r.solid{background:var(--accent-ink);color:#fff}
+.pc-cap{font-size:.8rem;color:var(--muted);margin:8px 0 0}.pc-cap button{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--accent-ink);cursor:pointer;text-decoration:underline}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pce.cr .bb{background:#2a2440}}
+:root[data-theme="dark"] .pce.cr .bb{background:#2a2440}
 </style>
 </head>
 <body>
 <div class="watermark" aria-hidden="true"></div>
 <div class="wrap">
-  <header class="hero">
+  <header class="hero"><div class="hero-g"><div class="hero-l">
     <div class="eyebrow">
       <span class="pill">Prototype by Sonia Malik</span>
       <span class="pill neutral" id="forpill">For financial services and fintech technology leaders</span>
@@ -661,12 +686,22 @@ table.rub td:nth-child(2){white-space:nowrap}
     <div class="brand"><svg class="pumark" viewBox="0 0 48 48" aria-hidden="true"><circle class="pu-ring" cx="24" cy="24" r="21"/><path class="pu-line" d="M6 25 H15 L19 15 L24 34 L29 19 L32 25 H42"/></svg>PULSE</div>
     <div class="pron">From client signal to safe release, and back again</div>
     <p class="thesis">An AI-first product development lifecycle. AI finds what clients need, creator agents build it, judge agents check it, humans approve what matters, and CSAT and NPS tell us whether it worked.</p>
+    </div><div class="hero-r">
+    <div class="pc" aria-label="Play a sample use case">
+      <div class="pc-h"><b>Play a use case · <span id="pc-t">Client complaint to fix</span></b><span>Sample · illustrative</span></div>
+      <div class="pc-in" id="pc-in"></div>
+      <div class="pc-f" id="pc-f" aria-live="polite"></div>
+      <div class="pc-b"><span class="pc-k" id="pc-k">Step 0 of 8</span>
+      <div class="pc-bt"><button type="button" class="pc-r" id="pc-p">❚❚ Pause</button><button type="button" class="pc-r solid" id="pc-n">Next ›</button><button type="button" class="pc-r" id="pc-rp" aria-label="Replay">↻</button></div></div>
+    </div>
+    <p class="pc-cap">Agents build and check; a named person decides. <button type="button" data-go="cases">Try all three use cases →</button></p>
+    </div></div>
   </header>
 
   <div class="tabbar">
     <div class="tabs" role="tablist" aria-label="PULSE sections" id="tabs">
-      <button class="tab" role="tab" id="t-cases" aria-controls="cases" data-tab="cases">Try a journey</button>
       <button class="tab" role="tab" id="t-overview" aria-controls="overview" data-tab="overview">Overview</button>
+      <button class="tab" role="tab" id="t-cases" aria-controls="cases" data-tab="cases">Use cases</button>
       <button class="tab" role="tab" id="t-agents" aria-controls="agents" data-tab="agents">Creator &amp; judge agents</button>
       <button class="tab" role="tab" id="t-score" aria-controls="score" data-tab="score">Scorecard</button>
       <button class="tab" role="tab" id="t-plan" aria-controls="plan" data-tab="plan">First 90 days</button>
@@ -680,35 +715,8 @@ table.rub td:nth-child(2){white-space:nowrap}
     <div class="indbtns" id="indbtns"></div>
   </div>
 
-  <!-- USE CASES -->
-  <section class="pane" id="cases" role="tabpanel" aria-labelledby="t-cases">
-    <div class="sec-head">
-      <span class="label">Try it</span>
-      <h2>Run a client journey through the full lifecycle</h2>
-      <p class="lede">Pick a use case, then run the loop. Each step shows what AI or an agent did, what the judge agent caught, and where a person made the call. <span class="ind-hint">Switch industries above to see the same loop for a different firm.</span></p>
-    </div>
-    <div class="demo">
-      <div class="demo-top">
-        <div class="cases" role="group" aria-label="Use cases" id="ucs"></div>
-        <button class="reset" id="ureset" type="button">Start over</button>
-      </div>
-      <div class="uc-intro" id="uintro"></div>
-      <ol class="agents steps" id="ulist"></ol>
-      <div class="verdict" id="uverdict" hidden></div>
-      <div style="margin-top:12px"><button class="btn" type="button" id="urun">Run the loop</button></div>
-    </div>
-    <span class="sample-note" style="margin-top:12px">Sample scenario with illustrative numbers. Not based on any specific firm.</span>
-    <div class="legend">
-      <span><i class="role r-ai">AI</i> AI analysis</span>
-      <span><i class="role r-cr">Creator</i> Creator agent</span>
-      <span><i class="role r-jg">Judge</i> Judge agent</span>
-      <span><i class="role r-ps">Person</i> A person decides</span>
-    </div>
-    <div class="next"><button type="button" data-go="overview">Next: how PULSE works →</button></div>
-  </section>
-
   <!-- OVERVIEW -->
-  <section class="pane" id="overview" role="tabpanel" aria-labelledby="t-overview" hidden>
+  <section class="pane" id="overview" role="tabpanel" aria-labelledby="t-overview">
     <div class="ov-grid">
       <div>
         <p class="lede">PULSE is how I would make AI the default way a financial services firm builds software. Every change starts from something <span data-ind="who">clients</span> told us, moves through the full lifecycle with AI and agents doing the heavy lifting, and only counts as done when client satisfaction shows it worked. Then the loop starts again.</p>
@@ -737,13 +745,40 @@ table.rub td:nth-child(2){white-space:nowrap}
 
     <div class="sec-head" style="margin-top:34px"><span class="label">Where to go next</span></div>
     <div class="jump">
-      <button type="button" data-go="cases"><b>Try a journey</b><span>Run three client journeys through the full lifecycle</span><i>3 min →</i></button>
+      <button type="button" data-go="cases"><b>Use cases</b><span>Run three client journeys through the full lifecycle</span><i>3 min →</i></button>
       <button type="button" data-go="agents"><b>Creator &amp; judge agents</b><span>Score a sample artifact against a rubric, and see who signs off</span><i>2 min →</i></button>
       <button type="button" data-go="score"><b>Scorecard</b><span>A sample first year, from lead time to NPS</span><i>1 min →</i></button>
       <button type="button" data-go="plan"><b>First 90 days</b><span>Listen, pilot one journey, then scale</span><i>1 min →</i></button>
       <button type="button" data-go="why"><b>Why me</b><span>Where I have built this before</span><i>2 min →</i></button>
       <button type="button" data-go="meet"><b>Let&rsquo;s talk</b><span>What I would walk through in person</span><i>1 min →</i></button>
     </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="pane" id="cases" role="tabpanel" aria-labelledby="t-cases" hidden>
+    <div class="sec-head">
+      <span class="label">Try it</span>
+      <h2>Run a client journey through the full lifecycle</h2>
+      <p class="lede">Pick a use case, then run the loop. Each step shows what AI or an agent did, what the judge agent caught, and where a person made the call. <span class="ind-hint">Switch industries above to see the same loop for a different firm.</span></p>
+    </div>
+    <div class="demo">
+      <div class="demo-top">
+        <div class="cases" role="group" aria-label="Use cases" id="ucs"></div>
+        <button class="reset" id="ureset" type="button">Start over</button>
+      </div>
+      <div class="uc-intro" id="uintro"></div>
+      <ol class="agents steps" id="ulist"></ol>
+      <div class="verdict" id="uverdict" hidden></div>
+      <div style="margin-top:12px"><button class="btn" type="button" id="urun">Run the loop</button></div>
+    </div>
+    <span class="sample-note" style="margin-top:12px">Sample scenario with illustrative numbers. Not based on any specific firm.</span>
+    <div class="legend">
+      <span><i class="role r-ai">AI</i> AI analysis</span>
+      <span><i class="role r-cr">Creator</i> Creator agent</span>
+      <span><i class="role r-jg">Judge</i> Judge agent</span>
+      <span><i class="role r-ps">Person</i> A person decides</span>
+    </div>
+    <div class="next"><button type="button" data-go="agents">Next: creator &amp; judge agents →</button></div>
   </section>
 
   <!-- AGENTS -->
@@ -1277,10 +1312,37 @@ table.rub td:nth-child(2){white-space:nowrap}
   });
   document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>selectTab(b.dataset.go,{scroll:true})));
 
+
+  // ---------- Hero play console ----------
+  let pcTimer=null, pcI=0, pcPaused=false;
+  const PCW={ai:'AI',cr:'Creator agent',jg:'Judge agent',ps:'Human decides',ci:'Pipeline'};
+  function pcSteps(){ return ((S[ind]||{}).complaint||{}).steps||[]; }
+  function pcReset(){
+    clearTimeout(pcTimer); pcI=0; const f=$('pc-f'); if(!f) return; f.innerHTML='';
+    $('pc-in').textContent=((S[ind]||{}).complaint||{}).intro||'';
+    $('pc-k').textContent='Step 0 of '+pcSteps().length; pcTick();
+  }
+  function pcAdd(){
+    const st=pcSteps(); if(pcI>=st.length) return false;
+    const [r,stage,,txt,meta]=st[pcI]; const d=document.createElement('div');
+    d.className='pce '+r; const t=document.createElement('time'); t.textContent=stage;
+    const bb=document.createElement('div'); bb.className='bb';
+    const w=document.createElement('span'); w.className='wh'; w.textContent=(PCW[r]||'')+(meta?' · '+meta.split(' · ').pop():'');
+    bb.appendChild(w); bb.appendChild(document.createTextNode(txt)); d.append(t,bb);
+    const f=$('pc-f'); f.appendChild(d); requestAnimationFrame(()=>d.classList.add('in')); f.scrollTop=f.scrollHeight;
+    pcI++; $('pc-k').textContent='Step '+pcI+' of '+st.length; return true;
+  }
+  function pcTick(){ clearTimeout(pcTimer); if(pcPaused) return; pcTimer=setTimeout(()=>{ if(pcAdd()) pcTick(); }, pcI===0?600:(reduce?400:2200)); }
+  if($('pc-f')){
+    $('pc-p').addEventListener('click',()=>{ pcPaused=!pcPaused; $('pc-p').textContent=pcPaused?'▶ Play':'❚❚ Pause'; if(!pcPaused) pcTick(); else clearTimeout(pcTimer); });
+    $('pc-n').addEventListener('click',()=>{ clearTimeout(pcTimer); pcAdd(); pcTick(); });
+    $('pc-rp').addEventListener('click',()=>{ pcPaused=false; $('pc-p').textContent='❚❚ Pause'; pcReset(); });
+    let pcInd=null; const _ru=renderUC; renderUC=function(){ _ru.apply(this,arguments); if(pcInd!==ind){ pcInd=ind; pcReset(); } };
+  }
   applyLock(); renderInd(); drawLoop(); renderUC(); renderRubric(); drawScore(12);
   document.querySelectorAll('[data-ind="who"]').forEach(e=>e.textContent=IND[ind].who);
   const start=(location.hash||'').replace('#','');
-  selectTab(TABS.some(t=>t.dataset.tab===start)?start:'cases',{silent:true});
+  selectTab(TABS.some(t=>t.dataset.tab===start)?start:'overview',{silent:true});
 
   // ---------- Side drawer + contact card ----------
   const dr=$('drawer'), stab=$('side-tab');
