@@ -648,6 +648,32 @@ table.rub td:nth-child(2){white-space:nowrap}
 @keyframes pudraw{0%{stroke-dashoffset:70} 45%,80%{stroke-dashoffset:0} 100%{stroke-dashoffset:-70}}
 @media (prefers-reduced-motion:reduce){ .pumark .pu-line{animation:none; stroke-dashoffset:0} }
 .indbar[hidden], .ind-hint[hidden]{display:none!important}
+
+/* tech stack tab */
+.stk{--stk-human:#9A6400;--stk-human-soft:#FBF0D9;--stk-judge:#5B3E9E;--stk-judge-soft:#ECE6F6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stk{--stk-human:#F2C877;--stk-human-soft:#3A2E14;--stk-judge:#C9B6F2;--stk-judge-soft:#2B2442}}
+:root[data-theme="dark"] .stk{--stk-human:#F2C877;--stk-human-soft:#3A2E14;--stk-judge:#C9B6F2;--stk-judge-soft:#2B2442}
+.stk-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:14px}
+.stk-col{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;position:relative;min-width:0}
+.stk-col:not(:last-child)::after{content:"\2192";position:absolute;right:-13px;top:46%;font-size:1.1rem;color:var(--accent);background:var(--bg);line-height:1;padding:2px 0;z-index:1}
+.stk-col h4{margin:0;font-size:.95rem}
+.stk-q{font:500 .7rem var(--f-mono);color:var(--muted)}
+.stk-chip{border-radius:8px;padding:7px 9px;background:var(--sunk);font-size:.82rem;line-height:1.3}
+.stk-chip b{display:block;font-size:.84rem}.stk-chip small{color:var(--muted)}
+.stk-ai{background:var(--accent-soft)}.stk-chip.stk-jg{background:var(--stk-judge-soft)}.stk-chip.stk-hu{background:var(--stk-human-soft)}
+.stk-tools{font:500 .68rem var(--f-mono);color:var(--muted);margin-top:auto;border-top:1px dashed var(--line);padding-top:7px}
+.stk-bands{display:grid;gap:10px;margin-top:16px}
+.stk-band{display:grid;grid-template-columns:190px minmax(0,1fr) minmax(0,260px);gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:10px 14px;border-left:5px solid var(--accent)}
+.stk-band.stk-jg{border-left-color:var(--stk-judge)}.stk-band.stk-hu{border-left-color:var(--stk-human)}
+.stk-band h3{margin:0;font-size:.92rem}.stk-band p{margin:0;font-size:.84rem}
+.stk-band .stk-tools{border:0;padding:0;margin:0}
+.stk-loop{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.82rem}
+.stk-lbl{font:500 .72rem var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px}
+.stk-s{padding:4px 11px;border-radius:999px;background:var(--sunk);font-weight:600}
+.stk-s.stk-h{background:var(--stk-human-soft);color:var(--stk-human)}
+.stk-loop em{font-style:normal;color:var(--muted)}
+@media (max-width:980px){.stk-flow{grid-template-columns:1fr 1fr}.stk-col:not(:last-child)::after{display:none}.stk-band{grid-template-columns:1fr}}
+@media (max-width:560px){.stk-flow{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -668,6 +694,7 @@ table.rub td:nth-child(2){white-space:nowrap}
       <button class="tab" role="tab" id="t-overview" aria-controls="overview" data-tab="overview">Overview</button>
       <button class="tab" role="tab" id="t-cases" aria-controls="cases" data-tab="cases">Use cases</button>
       <button class="tab" role="tab" id="t-agents" aria-controls="agents" data-tab="agents">Creator &amp; judge agents</button>
+      <button class="tab" role="tab" id="t-stack" aria-controls="stack" data-tab="stack">Tech stack</button>
       <button class="tab" role="tab" id="t-score" aria-controls="score" data-tab="score">Scorecard</button>
       <button class="tab" role="tab" id="t-plan" aria-controls="plan" data-tab="plan">First 90 days</button>
       <button class="tab" role="tab" id="t-why" aria-controls="why" data-tab="why">Why me</button>
@@ -712,6 +739,7 @@ table.rub td:nth-child(2){white-space:nowrap}
     <div class="jump">
       <button type="button" data-go="cases"><b>Use cases</b><span>Run three client journeys through the full lifecycle</span><i>3 min →</i></button>
       <button type="button" data-go="agents"><b>Creator &amp; judge agents</b><span>Score a sample artifact against a rubric, and see who signs off</span><i>2 min →</i></button>
+      <button type="button" data-go="stack"><b>Tech stack</b><span>How models, agents, data and controls fit together</span><i>1 min →</i></button>
       <button type="button" data-go="score"><b>Scorecard</b><span>A sample first year, from lead time to NPS</span><i>1 min →</i></button>
       <button type="button" data-go="plan"><b>First 90 days</b><span>Listen, pilot one journey, then scale</span><i>1 min →</i></button>
       <button type="button" data-go="why"><b>Why me</b><span>Where I have built this before</span><i>2 min →</i></button>
@@ -779,6 +807,84 @@ table.rub td:nth-child(2){white-space:nowrap}
       <div><b>Practice leads own the judge rubrics</b><span>Quality engineering, security, architecture and compliance set one bar that every team inherits.</span></div>
       <div><b>Rubrics improve from evidence</b><span>Every disputed score and production incident is reviewed, and the rubric gets sharper.</span></div>
     </div>
+    <div class="next"><button type="button" data-go="stack">Next: tech stack →</button></div>
+  </section>
+
+
+  <!-- TECH STACK -->
+  <section class="pane stk" id="stack" role="tabpanel" aria-labelledby="t-stack" hidden>
+    <div class="sec-head">
+      <span class="label">Tech stack</span>
+      <h2>How the tools fit together</h2>
+      <p class="lede">Every question or task flows left to right, with each step controlled, checked and logged. Tool names are examples; final choices follow a short proof of concept on the firm's own cloud and contracts.</p>
+    </div>
+<div class="stk-flow" aria-label="Request flow">
+    <section class="stk-col">
+      <h4>1 · Who asks</h4><div class="stk-q">users and channels</div>
+      <div class="stk-chip"><b>Investors (LPs)</b><small>investor portal questions</small></div>
+      <div class="stk-chip"><b>Fund managers (GPs)</b><small>reports, capital calls, closes</small></div>
+      <div class="stk-chip"><b>Operations teams</b><small>NAV close, reconciliations, AML/KYC</small></div>
+      <div class="stk-tools">Investor portal · fund-close platform · ops workbench</div>
+    </section>
+    <section class="stk-col">
+      <h4>2 · AI gateway</h4><div class="stk-q">can we control access and cost?</div>
+      <div class="stk-chip stk-ai"><b>One front door to all models</b><small>who can use which model, on what data</small></div>
+      <div class="stk-chip stk-ai"><b>Cost and rate limits</b><small>cost per use case, caching, model by task</small></div>
+      <div class="stk-chip stk-ai"><b>Approved models</b><small>Claude, GPT, Gemini, Llama via enterprise endpoints</small></div>
+      <div class="stk-tools">AWS Bedrock · Azure OpenAI · Azure APIM · LiteLLM / Portkey</div>
+    </section>
+    <section class="stk-col">
+      <h4>3 · Agents</h4><div class="stk-q">can it do the work?</div>
+      <div class="stk-chip stk-ai"><b>Creator agents</b><small>draft notices, answers, code and tests</small></div>
+      <div class="stk-chip stk-jg"><b>Judge agents</b><small>a different model scores against the rubric</small></div>
+      <div class="stk-chip"><b>Orchestration</b><small>plan, act, check, retry</small></div>
+      <div class="stk-tools">LangGraph · Bedrock AgentCore / Strands · Claude Code</div>
+    </section>
+    <section class="stk-col">
+      <h4>4 · Knowledge and tools</h4><div class="stk-q">can it use our data?</div>
+      <div class="stk-chip stk-ai"><b>RAG over fund documents</b><small>retrieval with citations, scoped per investor</small></div>
+      <div class="stk-chip"><b>Curated knowledge</b><small>definitions, rules, runbooks, incident patterns</small></div>
+      <div class="stk-chip"><b>Tool connections (MCP)</b><small>read-only by default, least privilege</small></div>
+      <div class="stk-tools">Bedrock Knowledge Bases · vector DB · OKF-style bundles · MCP</div>
+    </section>
+    <section class="stk-col">
+      <h4>5 · Systems of record</h4><div class="stk-q">where numbers come from</div>
+      <div class="stk-chip"><b>General ledger</b><small>NAV, balances, capital accounts</small></div>
+      <div class="stk-chip"><b>Fund documents</b><small>LPAs, notices, statements</small></div>
+      <div class="stk-chip"><b>CRM and AML/KYC</b><small>investor records and checks</small></div>
+      <div class="stk-tools">Numbers are pulled from here, never generated by the model</div>
+    </section>
+  </div>
+
+  <div class="stk-bands" aria-label="Controls across every step">
+    <div class="stk-band">
+      <h3>Guardrails and entitlements</h3>
+      <p>Each investor sees only their own data. PII scrubbed from prompts and logs. No performance promises; money movement always routes to a human.</p>
+      <div class="stk-tools">Bedrock Guardrails · Azure AI Content Safety · NeMo Guardrails</div>
+    </div>
+    <div class="stk-band stk-jg">
+      <h3>Evals and test harness</h3>
+      <p>Golden question sets verified against the ledger, judge scoring, adversarial tests. Runs on every model, prompt or code change; any drop blocks the release.</p>
+      <div class="stk-tools">promptfoo · Ragas · DeepEval · Bedrock Evaluations · CI/CD gates</div>
+    </div>
+    <div class="stk-band">
+      <h3>Observability</h3>
+      <p>One trace per request: question, model, tools, sources, answer, cost and latency. Alerts on accuracy, errors and spend.</p>
+      <div class="stk-tools">Langfuse · LangSmith · Arize · OpenTelemetry · Datadog / CloudWatch</div>
+    </div>
+    <div class="stk-band stk-hu">
+      <h3>Human approval and audit</h3>
+      <p>Named approvers sign off on what matters, decided by risk. Every score, approval and release is logged automatically as audit evidence.</p>
+      <div class="stk-tools">Approval workflow · immutable logs · SOC 1 evidence</div>
+    </div>
+  </div>
+
+  <div class="stk-loop" aria-label="Delivery loop">
+    <span class="stk-lbl">Delivery loop</span>
+    <span class="stk-s">Discover</span><em>›</em><span class="stk-s">Define</span><em>›</em><span class="stk-s">Build</span><em>›</em><span class="stk-s stk-h">Check</span><em>›</em><span class="stk-s stk-h">Release</span><em>›</em><span class="stk-s">Learn</span><em>↺</em>
+    <span style="margin-left:8px;color:var(--muted)">AI finds what clients need, creator agents build it, judge agents check it, humans approve what matters, and CSAT and NPS tell us whether it worked.</span>
+  </div>
+      <span class="sample-note" style="margin-top:12px">Illustrative architecture. Not based on any firm's systems or data.</span>
     <div class="next"><button type="button" data-go="score">Next: scorecard →</button></div>
   </section>
 
