@@ -519,12 +519,65 @@ td.num{font-variant-numeric:tabular-nums}
 /* LODESTAR layout tweaks */
 .thesis{max-width:none}
 .tab{padding:14px 11px 11px; font-size:.88rem}
+
+/* v2: wider layout, hero console, Model I */
+.wrap{max-width:1220px}
+.hero-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:30px;align-items:start}
+@media (max-width:980px){.hero-g{grid-template-columns:1fr}}
+.hero .thesis{max-width:36ch}
+.hero .thesis[style]{max-width:62ch}
+.hproof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.hproof div{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:10px 12px;font-size:.8rem;color:var(--muted);line-height:1.35}
+.hproof b{display:block;font-family:var(--f-display);font-size:1.3rem;font-weight:600;color:var(--fg);line-height:1.15;margin-bottom:3px}
+@media (max-width:560px){.hproof{grid-template-columns:1fr}}
+.hcta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hcta button{border:1px solid var(--accent-ink);background:var(--accent-ink);color:var(--surface);border-radius:999px;padding:8px 16px;font:inherit;font-weight:700;font-size:.85rem;cursor:pointer}
+.hcta button.ghost{background:transparent;color:var(--accent-ink)}
+.pc{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 40px rgba(10,61,145,.13);overflow:hidden}
+.pc-h{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;background:#082F70;color:#fff}
+.pc-h b{font-size:.88rem}.pc-h span{font-size:.7rem;opacity:.85}
+.pc-in{padding:9px 12px;font-size:.82rem;color:var(--muted);border-bottom:1px solid var(--line);background:var(--sunk)}
+.pc-f{height:330px;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.pce{display:grid;grid-template-columns:70px 1fr;gap:8px;align-items:start;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.pce.in{opacity:1;transform:none}
+.pce time{font:11px var(--f-mono);color:var(--faint);padding-top:4px;line-height:1.25}
+.pce .bb{border-radius:10px;padding:7px 10px;border:1px solid var(--line);background:var(--sunk);font-size:.84rem;line-height:1.35;color:var(--fg)}
+.pce .wh{display:block;font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.pce.ai .bb{background:var(--accent-soft);border-color:transparent}
+.pce.cr .bb{background:#ECE6F6;border-color:transparent;color:#1C1F24}
+.pce.jg .bb{background:var(--surface);border:1px solid #e6cf9e;border-left:4px solid #C98A1A}
+.pce.ps .bb{background:var(--surface);border-left:3px solid var(--ok)}
+.pce.ci .bb{background:var(--surface)}
+.pc-b{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:9px 14px;border-top:1px solid var(--line)}
+.pc-k{font:600 .8rem var(--f-mono);color:var(--accent-ink)}
+.pc-bt{display:flex;gap:6px}.pc-r{border:1px solid var(--accent-ink);background:var(--surface);color:var(--accent-ink);border-radius:999px;padding:5px 12px;font:inherit;font-weight:700;font-size:.78rem;cursor:pointer}
+.pc-r.solid{background:var(--accent-ink);color:var(--surface)}
+.pc-cap{font-size:.8rem;color:var(--muted);margin:8px 0 0}.pc-cap button{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--accent-ink);cursor:pointer;text-decoration:underline}
+.mi-g{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr);gap:18px;align-items:start;margin-top:14px}
+@media (max-width:900px){.mi-g{grid-template-columns:1fr}}
+.mi-fig{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;overflow-x:auto}
+.mi-fig svg{display:block;width:100%;min-width:600px;height:auto}
+.mi-fig text{font-family:"Public Sans","Segoe UI",Arial,sans-serif}
+.mi-fig .hit{cursor:pointer}.mi-fig .hit:hover rect.k,.mi-fig .hit.on rect.k{stroke:#C98A1A;stroke-width:3}
+.mi-fig .hit:focus{outline:none}.mi-fig .hit:focus-visible rect.k{stroke:#C98A1A;stroke-width:3}
+.mi-side{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.mi-side h3{margin:0 0 6px;font-size:1.02rem}
+.mi-tip{min-height:7.5rem;font-size:.92rem;color:var(--fg);border-left:3px solid #C98A1A;padding:6px 10px;background:var(--sunk);border-radius:0 8px 8px 0}
+.mi-tip b{display:block;margin-bottom:3px}
+.mi-keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.mi-keys button{border:1px solid var(--line-strong);background:var(--surface);color:var(--fg);border-radius:999px;padding:4px 10px;font:inherit;font-size:.78rem;cursor:pointer}
+.mi-keys button.on{background:var(--accent-ink);color:var(--surface);border-color:var(--accent-ink)}
+.ov-top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:900px){.ov-top{grid-template-columns:1fr}}
+.ov-top .lede{max-width:none}
+.ov-note{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:10px 14px;font-size:.86rem;color:var(--muted)}
+.ov-note b{color:var(--fg)}
 </style>
 </head>
 <body>
 <div class="watermark" aria-hidden="true"></div>
 <div class="wrap">
-  <header class="hero">
+  <header class="hero"><div class="hero-g"><div class="hero-l">
     <div class="eyebrow">
       <span class="pill">Executive preview · Sonia Malik</span>
       <span class="pill neutral">Applying for VP, AI Center of Excellence · Mastercard</span>
@@ -533,6 +586,23 @@ td.num{font-variant-numeric:tabular-nums}
     <div class="pron">Where AI experiments become production-grade, reusable products</div>
     <p class="thesis">One engineering path from idea to production: built on shared patterns, production-ready by design, measured by value.</p>
     <p class="thesis" style="font-size:.92rem;opacity:.85"><b>Why "LODESTAR":</b> a lodestar is the star you steer by. LODESTAR gives every AI initiative one direction and one standard: shared patterns, one readiness gate, and value measured after launch.</p>
+  
+    <div class="hproof" aria-label="Proof from my work">
+      <div><b>350+</b>engineers on governed AI in 13 months, 80% adoption (S&amp;P Global)</div>
+      <div><b>3 days → same day</b>regulated sign-off: objective metrics made human approval fast and easy</div>
+      <div><b>+30%</b>features per PI with creator and judge agents; NPS up 5</div>
+    </div>
+    <div class="hcta"><button type="button" data-go="desk">Run a readiness review →</button><button type="button" class="ghost" data-mi-jump="1">See the operating model ↓</button></div>
+    </div><div class="hero-r">
+    <div class="pc" aria-label="Play a sample use case">
+      <div class="pc-h"><b>Play a use case · Dispute resolution assistant</b><span>Sample · illustrative</span></div>
+      <div class="pc-in" id="pc-in">A cardholder disputes a charge. Watch one AI solution go from business need to measured value through LODESTAR.</div>
+      <div class="pc-f" id="pc-f" aria-live="polite"></div>
+      <div class="pc-b"><span class="pc-k" id="pc-k">Step 0 of 8</span>
+      <div class="pc-bt"><button type="button" class="pc-r" id="pc-p">❚❚ Pause</button><button type="button" class="pc-r solid" id="pc-n">Next ›</button><button type="button" class="pc-r" id="pc-rp" aria-label="Replay">↻</button></div></div>
+    </div>
+    <p class="pc-cap">Agents build and check; a named human decides. <button type="button" data-go="desk">Try the readiness review →</button></p>
+    </div></div>
   </header>
 
   <div class="tabbar">
@@ -550,14 +620,64 @@ td.num{font-variant-numeric:tabular-nums}
 
   <!-- OVERVIEW -->
   <section class="pane" id="overview" role="tabpanel" aria-labelledby="t-overview">
-    <p class="lede">LODESTAR shows how I would run AI engineering in a Center of Excellence: turning business priorities into AI solutions built from shared agent patterns, taking them through one production-readiness gate, and measuring adoption and value after launch. Responsible AI, security, governance and auditability are built into the path, not added at the end. It is an illustrative prototype with sample data, not connected to any company's systems.</p>
-    <div class="proof">
-      <div><b class="mono">6 months</b><span>to stand up an AI-first PDLC and AI developer platform designed to serve ~1,200 engineers</span></div>
-      <div><b class="mono">3 days → same day</b><span>regulated sign-off: objective, evidence-based metrics made human approval fast and easy</span></div>
-      <div><b class="mono">9 days → daily</b><span>regression, with release cadence doubled in 3 months</span></div>
-      <div><b class="mono">+30%</b><span>features delivered per PI over 3 PIs, across 10 scrum teams using creator and judge agents</span></div>
+    <div class="ov-top"><p class="lede">LODESTAR shows how I would run AI engineering in a Center of Excellence: turning business priorities into AI solutions built from shared agent patterns, taking them through one production-readiness gate, and measuring adoption and value after launch. Responsible AI, security, governance and auditability are built into the path, not added at the end. It is an illustrative prototype with sample data, not connected to any company's systems.</p>
+    <div class="ov-note"><b>How to read this page.</b> Start with the operating model below: click any part to see how it works on a sample Mastercard journey. Then follow one AI solution through the readiness review, the delivery model and the monthly value report. Figures from my S&amp;P Global work are marked; everything else is sample data.</div></div>
+
+    <section id="model-i" aria-label="The operating model">
+    <div class="sec-head" style="margin-top:30px"><span class="label">The operating model: Model I, on one Mastercard journey</span></div>
+    <div class="mi-g">
+      <figure class="mi-fig">
+      <svg viewBox="0 0 780 480" role="img" aria-label="Model I: Customer Centricity on top, delivery portfolios in the middle, Engineering Excellence below, quality gates to production, learnings back to both bars, DevX foundation underneath">
+<path d="M10,10 H440 V106 H290 V256 H440 V346 H10 V256 H160 V106 H10 Z" fill="#000" opacity=".06" transform="translate(4,4)"/>
+<g class="hit" tabindex="0" role="button" data-mi="cc" aria-label="Customer Centricity"><rect class="k" x="10" y="10" width="430" height="96" rx="9" fill="#0F5259"/>
+<text x="22" y="31" fill="#fff" font-size="14" font-weight="700">Customer Centricity</text><text x="428" y="31" fill="#CFE8EA" font-size="10" text-anchor="end">Journey: cardholder dispute</text><g font-size="9.6" text-anchor="middle">
+<rect x="18" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="50" y="58" font-weight="700" fill="#0F5259">1 Flags</text><text x="50" y="70" font-weight="700" fill="#0F5259">a charge</text><text x="50" y="89" fill="#555B63" font-size="9">Time to file</text>
+<rect x="88" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="120" y="58" font-weight="700" fill="#0F5259">2 Evidence</text><text x="120" y="70" font-weight="700" fill="#0F5259">gathered</text><text x="120" y="89" fill="#555B63" font-size="9">File complete</text>
+<rect x="158" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="190" y="58" font-weight="700" fill="#0F5259">3 Merchant</text><text x="190" y="70" font-weight="700" fill="#0F5259">responds</text><text x="190" y="89" fill="#555B63" font-size="9">Response time</text>
+<rect x="228" y="42" width="64" height="56" rx="4" fill="#FBF0D9"/><text x="260" y="58" font-weight="700" fill="#8F5E00">4 Decision</text><text x="260" y="70" font-weight="700" fill="#8F5E00">and credit</text><text x="260" y="89" fill="#8F5E00" font-size="9">Same day</text>
+<rect x="298" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="330" y="58" font-weight="700" fill="#0F5259">5 Charge-</text><text x="330" y="70" font-weight="700" fill="#0F5259">back settled</text><text x="330" y="89" fill="#555B63" font-size="9">Write-offs</text>
+<rect x="368" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="400" y="58" font-weight="700" fill="#0F5259">6 Card-</text><text x="400" y="70" font-weight="700" fill="#0F5259">holder told</text><text x="400" y="89" fill="#555B63" font-size="9">NPS</text>
+</g></g>
+<g class="hit" tabindex="0" role="button" data-mi="dp" aria-label="Delivery portfolios"><rect class="k" x="160" y="106" width="130" height="150" fill="#E3EAF6" stroke="#0A3D91" stroke-width="1"/><text x="225" y="124" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0A3D91">Delivery portfolios</text><g font-size="9.6" text-anchor="middle" fill="#1C1F24">
+<rect x="167" y="132" width="116" height="25" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="148.5">Fraud and Cyber</text>
+<rect x="167" y="162" width="116" height="25" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="178.5">Payments and Network</text>
+<rect x="167" y="192" width="116" height="25" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="208.5">Data and Services</text>
+<rect x="167" y="222" width="116" height="25" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="238.5">Customer Experience</text>
+</g></g>
+<g class="hit" tabindex="0" role="button" data-mi="ee" aria-label="Engineering Excellence"><rect class="k" x="10" y="256" width="430" height="90" rx="9" fill="#1F3A5F"/><text x="22" y="277" fill="#fff" font-size="14" font-weight="700">Engineering Excellence</text><text x="428" y="277" fill="#C9D3E0" font-size="10" text-anchor="end">Central: shared platforms, guardrails</text><g font-size="9.6" text-anchor="middle">
+<rect x="18" y="288" width="96" height="46" rx="4" fill="#fff"/><text x="66" y="306" font-weight="700" fill="#1F3A5F">Reusable agent</text><text x="66" y="321" fill="#1F3A5F">patterns</text>
+<rect x="123" y="288" width="96" height="46" rx="4" fill="#ECE6F6"/><text x="171" y="306" font-weight="700" fill="#5B3E9E">Creator and</text><text x="171" y="321" fill="#5B3E9E">judge agents</text>
+<rect x="228" y="288" width="96" height="46" rx="4" fill="#fff"/><text x="276" y="306" font-weight="700" fill="#1F3A5F">Responsible AI</text><text x="276" y="321" fill="#1F3A5F">and security</text>
+<rect x="333" y="288" width="96" height="46" rx="4" fill="#fff"/><text x="381" y="306" font-weight="700" fill="#1F3A5F">Platform and</text><text x="381" y="321" fill="#1F3A5F">shared tools</text>
+</g></g>
+<path d="M290 181 H452" stroke="#0A3D91" stroke-width="2" fill="none"/><polygon points="452,176 462,181 452,186" fill="#0A3D91"/><text x="372" y="174" text-anchor="middle" font-size="10" font-weight="700" fill="#0A3D91">every release</text>
+<g class="hit" tabindex="0" role="button" data-mi="qg" aria-label="Readiness gate over CI/CD"><rect class="k" x="464" y="122" width="196" height="122" rx="9" fill="#F1ECF9" stroke="#5B3E9E" stroke-width="1.2"/><text x="562" y="142" text-anchor="middle" font-size="11.5" font-weight="700" fill="#5B3E9E">Readiness gate over CI/CD</text><g font-size="9" font-weight="700" fill="#fff" text-anchor="middle">
+<polygon points="472,152 502,152 508,164 502,176 472,176" fill="#8A6CC9"/><text x="490.0" y="167.5">Dev</text>
+<polygon points="504,152 534,152 540,164 534,176 504,176 510,164" fill="#7D5DC0"/><text x="522.0" y="167.5">QA</text>
+<polygon points="536,152 568,152 574,164 568,176 536,176 542,164" fill="#6F4EB5"/><text x="555.0" y="167.5">UAT</text>
+<polygon points="570,152 616,152 622,164 616,176 570,176 576,164" fill="#6343AB"/><text x="596.0" y="167.5">Pre-prod</text>
+<polygon points="618,152 652,152 658,164 652,176 618,176 624,164" fill="#4E3191"/><text x="638.0" y="167.5">Prod</text>
+</g><g font-size="9.6" fill="#1C1F24"><text x="474" y="196">Five evidence checks decide promotion.</text><text x="474" y="212"><tspan font-weight="700" fill="#5B3E9E">Prod:</tspan> a human approves from</text><text x="474" y="226">objective metrics, fast and easy.</text></g></g>
+<path d="M660 182 H672" stroke="#0A3D91" stroke-width="2"/><polygon points="670,177 680,182 670,187" fill="#0A3D91"/>
+<g class="hit" tabindex="0" role="button" data-mi="prod" aria-label="In production"><rect class="k" x="682" y="128" width="92" height="108" rx="9" fill="#FDEBD7" stroke="#B45309" stroke-width="1.4"/><text x="728" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#B45309">In production</text><g font-size="9.6" text-anchor="middle" fill="#1C1F24"><text x="728" y="167">Adoption</text><text x="728" y="182">Cardholder NPS</text><text x="728" y="197">Incidents</text><text x="728" y="212">Value vs</text><text x="728" y="225">baseline</text></g></g>
+<g class="hit" tabindex="0" role="button" data-mi="loop" aria-label="Learnings feed back"><rect class="k" x="0" y="0" width="0" height="0" fill="none"/><path d="M728 128 V58 H446" stroke="#B8860B" stroke-width="2" stroke-dasharray="6 4" fill="none"/><polygon points="448,53 438,58 448,63" fill="#B8860B"/><text x="590" y="50" text-anchor="middle" font-size="10" font-weight="700" fill="#8F5E00">Learnings back to the journeys</text><path d="M728 236 V300 H446" stroke="#B8860B" stroke-width="2" stroke-dasharray="6 4" fill="none"/><polygon points="448,295 438,300 448,305" fill="#B8860B"/><text x="590" y="318" text-anchor="middle" font-size="10" font-weight="700" fill="#8F5E00">Approval reasons tune agents and rubrics</text></g>
+<g class="hit" tabindex="0" role="button" data-mi="devx" aria-label="DevX foundation"><rect class="k" x="10" y="362" width="764" height="110" rx="9" fill="#FCF3DF" stroke="#B8860B" stroke-width="1.2"/><text x="22" y="382" font-size="13" font-weight="700" fill="#8F5E00">DevX foundation</text><text x="762" y="382" text-anchor="end" font-size="10" fill="#8F5E00">Happy engineers (Dev, QE, SRE) build better client outcomes</text><g font-size="10" font-weight="700" fill="#5A4410" text-anchor="middle">
+<rect x="22" y="393" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="143" y="413">Talent</text>
+<rect x="270" y="393" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="391" y="413">Engagement</text>
+<rect x="518" y="393" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="639" y="413">Policies</text>
+<rect x="22" y="431" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="143" y="451">Test environments</text>
+<rect x="270" y="431" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="391" y="451">Test data virtualization</text>
+<rect x="518" y="431" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="639" y="451">Tools engineers want to use</text>
+</g></g></svg>
+      </figure>
+      <aside class="mi-side">
+        <h3>Click any part of the model</h3>
+        <div class="mi-tip" id="mi-tip" aria-live="polite"></div>
+        <div class="mi-keys" id="mi-keys"></div>
+        <p class="proof-note" style="margin-top:10px">I ran this model at S&amp;P Global across two business units. Here it is shown on an illustrative Mastercard journey.</p>
+      </aside>
     </div>
-    <p class="proof-note">These four figures are from my work at S&amp;P Global. Figures in the Value &amp; adoption tab are sample data.</p>
+    </section>
 
     <div class="sec-head" style="margin-top:36px"><span class="label">The idea in three lines</span></div>
     <div class="pillars">
@@ -1087,6 +1207,50 @@ td.num{font-variant-numeric:tabular-nums}
 </script>
 
 
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Hero console
+  const ST=[
+    ['ai','Prioritize','Intake ranks the need: disputes take 5 days to decide. KPI set before build: decided the same day.'],
+    ['ci','Pattern','Built on the shared multi-agent pattern: tracing, cost budget and one human hand-off come with it.'],
+    ['cr','Create','Creator agent drafts the evidence-gathering agent, the merchant-reply step and 42 test scenarios from the journey.'],
+    ['jg','Judge','Judge agent scores against the CoE rubric: grounding 4.6/5, policy match 5/5. Flags a missing timeout fallback.'],
+    ['cr','Fix','Creator agent adds the fallback; the judge re-scores 4.8/5.'],
+    ['ci','Gate','Readiness gate: reliability, observability, security, privacy and Responsible AI pass, each with evidence.'],
+    ['ps','Decide','The product owner approves from the evidence packet in minutes. High-value disputes stay with analysts.'],
+    ['ai','Measure','After launch: weekly adoption and the same-day decision rate go on the monthly value report.']];
+  const W={ai:'AI',cr:'Creator agent',jg:'Judge agent',ps:'Human decides',ci:'Platform'};
+  let t=null,i=0,paused=false;
+  function add(){ if(i>=ST.length) return false; const [r,s,x]=ST[i]; const d=document.createElement('div'); d.className='pce '+r;
+    const tm=document.createElement('time'); tm.textContent=s; const bb=document.createElement('div'); bb.className='bb';
+    const w=document.createElement('span'); w.className='wh'; w.textContent=W[r]; bb.append(w,document.createTextNode(x)); d.append(tm,bb);
+    const f=$('pc-f'); f.appendChild(d); requestAnimationFrame(()=>d.classList.add('in')); f.scrollTop=f.scrollHeight; i++; $('pc-k').textContent='Step '+i+' of '+ST.length; return true; }
+  function tick(){ clearTimeout(t); if(paused) return; t=setTimeout(()=>{ if(add()) tick(); }, i===0?600:(reduce?400:2200)); }
+  function reset(){ clearTimeout(t); i=0; $('pc-f').innerHTML=''; $('pc-k').textContent='Step 0 of '+ST.length; tick(); }
+  if($('pc-f')){ $('pc-p').onclick=()=>{ paused=!paused; $('pc-p').textContent=paused?'▶ Play':'❚❚ Pause'; if(!paused) tick(); else clearTimeout(t); };
+    $('pc-n').onclick=()=>{ clearTimeout(t); add(); tick(); }; $('pc-rp').onclick=()=>{ paused=false; $('pc-p').textContent='❚❚ Pause'; reset(); }; reset(); }
+  // Model I
+  const MI={
+    cc:['Customer Centricity','Every AI initiative starts from a journey with a goal and a KPI. Here: a cardholder disputes a charge, with a KPI at each of six steps. High-value or fraud-flagged disputes go to a person at step 4.'],
+    dp:['Delivery portfolios','Business lines own their AI outcomes: Fraud and Cyber, Payments and Network, Data and Services, Customer Experience. One quality bar for all of them.'],
+    ee:['Engineering Excellence','The CoE builds once for everyone: reusable agent patterns, creator and judge agents, Responsible AI and security checks, and shared platform tools. Teams start from these instead of a blank page.'],
+    qg:['Readiness gate over CI/CD','Every release passes the same five evidence checks at each tier. In production, a human approves from objective metrics, so approval is fast and easy. At S&P Global this took regulated sign-off from 3 days to the same day.'],
+    prod:['In production','Each solution is measured against its baseline: adoption, cardholder NPS, incidents and value. Low-value solutions are retired.'],
+    loop:['Learnings feed back','Production results re-rank the next journeys, and every approval reason tunes the agents and the judge rubric, so the next release clears faster.'],
+    devx:['DevX foundation','Happy engineers build better outcomes: talent, engagement, policies, test environments, test data virtualization and tools engineers want to use. At S&P Global engagement rose from 85% to 95% and onboarding time fell 20%.']};
+  const tip=$('mi-tip'), keys=$('mi-keys'); if(!tip) return;
+  const hits=[...document.querySelectorAll('.mi-fig .hit')];
+  function show(k){ const [h,b]=MI[k]; tip.innerHTML=''; const hb=document.createElement('b'); hb.textContent=h; tip.append(hb,document.createTextNode(b));
+    hits.forEach(g=>g.classList.toggle('on',g.dataset.mi===k)); [...keys.children].forEach(x=>x.classList.toggle('on',x.dataset.k===k)); }
+  Object.keys(MI).forEach(k=>{ const b=document.createElement('button'); b.type='button'; b.dataset.k=k; b.textContent=MI[k][0]; b.onclick=()=>show(k); keys.appendChild(b); });
+  hits.forEach(g=>{ g.addEventListener('click',()=>show(g.dataset.mi)); g.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); show(g.dataset.mi);} }); });
+  show('cc');
+  document.querySelectorAll('[data-mi-jump]').forEach(b=>b.addEventListener('click',()=>{ const ov=document.getElementById('t-overview'); if(ov) ov.click(); setTimeout(()=>document.getElementById('model-i').scrollIntoView({behavior:reduce?'auto':'smooth'}),60); }));
+})();
+</script>
 <script>
 (function(){var s=new URLSearchParams(location.search).get('src')||'';
 var base=location.pathname.replace(/\/(index|full)\.html$/,'/').replace(/\/$/,'');
