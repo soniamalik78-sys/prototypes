@@ -560,6 +560,36 @@ td.num{font-variant-numeric:tabular-nums}
 .rwclock{display:flex;gap:18px}.rwclock b{display:block;font-family:var(--f-mono,monospace);font-size:1.2rem;color:var(--accent);line-height:1}.rwclock span{font-size:.72rem;color:var(--muted)}
 .rwbtn{border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:999px;padding:6px 14px;font-weight:600;font-size:.84rem;cursor:pointer}
 .rwbtn.solid{background:var(--accent);color:#fff}
+
+/* v2: wider layout, hero proof, Model I */
+.wrap{max-width:1220px}
+.hproof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.hproof div{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:10px 12px;font-size:.8rem;color:var(--muted);line-height:1.35}
+.hproof b{display:block;font-family:var(--f-display);font-size:1.3rem;font-weight:600;color:var(--fg);line-height:1.15;margin-bottom:3px}
+@media (max-width:560px){.hproof{grid-template-columns:1fr}}
+.hcta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hcta button{border:1px solid var(--accent-ink);background:var(--accent-ink);color:var(--surface);border-radius:999px;padding:8px 16px;font:inherit;font-weight:700;font-size:.85rem;cursor:pointer}
+.hcta button.ghost{background:transparent;color:var(--accent-ink)}
+.mi-g{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr);gap:18px;align-items:start;margin-top:14px}
+@media (max-width:900px){.mi-g{grid-template-columns:1fr}}
+.mi-fig{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;overflow-x:auto}
+.mi-fig svg{display:block;width:100%;min-width:600px;height:auto}
+.mi-fig text{font-family:"Public Sans","Segoe UI",Arial,sans-serif}
+.mi-fig .hit{cursor:pointer}.mi-fig .hit:hover rect.k,.mi-fig .hit.on rect.k{stroke:#C98A1A;stroke-width:3}
+.mi-fig .hit:focus{outline:none}.mi-fig .hit:focus-visible rect.k{stroke:#C98A1A;stroke-width:3}
+.mi-side{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.mi-side h3{margin:0 0 6px;font-size:1.02rem}
+.mi-tip{min-height:7.5rem;font-size:.92rem;color:var(--fg);border-left:3px solid #C98A1A;padding:6px 10px;background:var(--sunk);border-radius:0 8px 8px 0}
+.mi-tip b{display:block;margin-bottom:3px}
+.mi-keys{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.mi-keys button{border:1px solid var(--line-strong);background:var(--surface);color:var(--fg);border-radius:999px;padding:4px 10px;font:inherit;font-size:.78rem;cursor:pointer}
+.mi-keys button.on{background:var(--accent-ink);color:var(--surface);border-color:var(--accent-ink)}
+.ov-top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:900px){.ov-top{grid-template-columns:1fr}}
+.ov-top .lede{max-width:none}
+.ov-note{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:10px 14px;font-size:.86rem;color:var(--muted)}
+.ov-note b{color:var(--fg)}
+.hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,480px)}
 </style>
 </head>
 <body>
@@ -575,6 +605,12 @@ td.num{font-variant-numeric:tabular-nums}
     <div class="pron">Introducing RUNWAY: one developer experience for the Mastercard Developer Workbench, from a new engineer&rsquo;s first day to production</div>
     <p class="thesis">Scattered tools become one productized developer experience: golden paths, AI built in, governed by default, measured by developers&rsquo; outcomes.</p>
     <p class="why-strip"><b>Why &ldquo;RUNWAY&rdquo;</b> One prepared path every change takes off from: cleared, lit, checked.</p>
+    <div class="hproof" aria-label="Proof from my work">
+      <div><b>6 months</b>to stand up an AI developer platform designed to serve ~1,200 engineers (S&amp;P Global)</div>
+      <div><b>80% adoption</b>of AI coding assistants; onboarding time down 20%</div>
+      <div><b>9 days &rarr; daily</b>regression; release cadence doubled; sign-off 3 days &rarr; same day</div>
+    </div>
+    <div class="hcta"><button type="button" data-go="desk">Run a tool governance review &rarr;</button><button type="button" class="ghost" data-mi-jump="1">See the operating model &darr;</button></div>
     </div><div class="hero-r">
     <div class="rwdemo" id="rw-demo" aria-label="Sample: one work item through the Developer Workbench">
       <div class="rwdemo-h"><b>Workbench console &middot; PAY-482</b><span>Sample &middot; illustrative</span></div>
@@ -628,13 +664,63 @@ td.num{font-variant-numeric:tabular-nums}
   <!-- OVERVIEW -->
   <section class="pane" id="overview" role="tabpanel" aria-labelledby="t-overview">
     <p class="lede">RUNWAY is the framework I am proposing for leading the Developer Workbench: one AI-assisted developer experience from a new engineer&rsquo;s first day to production, built on golden paths, governed by default, and measured by what changes for developers. Engineers are the customers. Tools, AI assistants, environments, testing, pipelines and insights come together as one product. It is an illustrative prototype with sample data, not connected to any company&rsquo;s systems.</p>
-    <div class="proof">
-      <div><b class="mono">6 months</b><span>to stand up an AI developer platform designed to serve ~1,200 engineers</span></div>
-      <div><b class="mono">3 days → same day</b><span>regulated sign-off within 8 months, with human review only where regulation requires it</span></div>
-      <div><b class="mono">9 → 4 days</b><span>regression lead time, then daily; releases from weekly to twice-weekly</span></div>
-      <div><b class="mono">+30%</b><span>features delivered per PI over 3 PIs, across 10 scrum teams using creator and judge agents</span></div>
+    <div class="ov-note" style="margin-top:18px"><b>How to read this page.</b> Start with the operating model below: click any part to see how it works for a Mastercard engineer. Then take a tool request through the governance review, walk a day on the runway, and see the monthly scorecard. Figures from my S&amp;P Global work are marked; everything else is sample data.</div>
+
+    <section id="model-i" aria-label="The operating model">
+    <div class="sec-head" style="margin-top:30px"><span class="label">The operating model: Model I, on the developer journey</span></div>
+    <div class="mi-g">
+      <figure class="mi-fig">
+      <svg viewBox="0 0 780 480" role="img" aria-label="Model I for the Developer Workbench: the developer journey on top, product teams in the middle, the Workbench platform below, an evidence gate to production, telemetry back to the roadmap, and a DevX foundation underneath">
+<path d="M10,10 H440 V106 H290 V256 H440 V346 H10 V256 H160 V106 H10 Z" fill="#000" opacity=".06" transform="translate(4,4)"/>
+<g class="hit" tabindex="0" role="button" data-mi="cc" aria-label="Developer journey"><rect class="k" x="10" y="10" width="430" height="96" rx="9" fill="#0F5259"/>
+<text x="22" y="31" fill="#fff" font-size="14" font-weight="700">Developer Centricity</text><text x="428" y="31" fill="#CFE8EA" font-size="10" text-anchor="end">Engineers are the customers</text><g font-size="9.6" text-anchor="middle">
+<rect x="18" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="50" y="58" font-weight="700" fill="#0F5259">1 Onboard</text><text x="50" y="70" font-weight="700" fill="#0F5259">day one</text><text x="50" y="89" fill="#555B63" font-size="9">Time to 1st PR</text>
+<rect x="88" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="120" y="58" font-weight="700" fill="#0F5259">2 Set up</text><text x="120" y="70" font-weight="700" fill="#0F5259">environment</text><text x="120" y="89" fill="#555B63" font-size="9">Setup time</text>
+<rect x="158" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="190" y="58" font-weight="700" fill="#0F5259">3 Code</text><text x="190" y="70" font-weight="700" fill="#0F5259">with AI</text><text x="190" y="89" fill="#555B63" font-size="9">AI adoption</text>
+<rect x="228" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="260" y="58" font-weight="700" fill="#0F5259">4 Review</text><text x="260" y="70" font-weight="700" fill="#0F5259">and test</text><text x="260" y="89" fill="#555B63" font-size="9">Wait time</text>
+<rect x="298" y="42" width="64" height="56" rx="4" fill="#FBF0D9"/><text x="330" y="58" font-weight="700" fill="#8F5E00">5 Release</text><text x="330" y="70" font-weight="700" fill="#8F5E00">approved</text><text x="330" y="89" fill="#8F5E00" font-size="9">Same day</text>
+<rect x="368" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="400" y="58" font-weight="700" fill="#0F5259">6 Operate</text><text x="400" y="70" font-weight="700" fill="#0F5259">and learn</text><text x="400" y="89" fill="#555B63" font-size="9">MTTR</text>
+</g></g>
+<g class="hit" tabindex="0" role="button" data-mi="dp" aria-label="Product teams"><rect class="k" x="160" y="106" width="130" height="150" fill="#E3EAF6" stroke="#0A3D91" stroke-width="1"/><text x="225" y="124" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0A3D91">Product teams</text><g font-size="9.6" text-anchor="middle" fill="#1C1F24">
+<rect x="167" y="132" width="116" height="25" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="148.5">Payments and Network</text>
+<rect x="167" y="162" width="116" height="25" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="178.5">Fraud and Cyber</text>
+<rect x="167" y="192" width="116" height="25" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="208.5">Open Banking and Data</text>
+<rect x="167" y="222" width="116" height="25" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="238.5">Customer Experience</text>
+</g></g>
+<g class="hit" tabindex="0" role="button" data-mi="ee" aria-label="Workbench platform"><rect class="k" x="10" y="256" width="430" height="90" rx="9" fill="#1F3A5F"/><text x="22" y="277" fill="#fff" font-size="14" font-weight="700">Workbench platform</text><text x="428" y="277" fill="#C9D3E0" font-size="10" text-anchor="end">Central: golden paths, guardrails</text><g font-size="9.6" text-anchor="middle">
+<rect x="18" y="288" width="96" height="46" rx="4" fill="#fff"/><text x="66" y="306" font-weight="700" fill="#1F3A5F">Golden paths</text><text x="66" y="321" fill="#1F3A5F">and templates</text>
+<rect x="123" y="288" width="96" height="46" rx="4" fill="#ECE6F6"/><text x="171" y="306" font-weight="700" fill="#5B3E9E">Creator and</text><text x="171" y="321" fill="#5B3E9E">judge agents</text>
+<rect x="228" y="288" width="96" height="46" rx="4" fill="#fff"/><text x="276" y="306" font-weight="700" fill="#1F3A5F">Test impact</text><text x="276" y="321" fill="#1F3A5F">analysis</text>
+<rect x="333" y="288" width="96" height="46" rx="4" fill="#fff"/><text x="381" y="306" font-weight="700" fill="#1F3A5F">Tool catalog</text><text x="381" y="321" fill="#1F3A5F">and APIs</text>
+</g></g>
+<path d="M290 181 H452" stroke="#0A3D91" stroke-width="2" fill="none"/><polygon points="452,176 462,181 452,186" fill="#0A3D91"/><text x="372" y="174" text-anchor="middle" font-size="10" font-weight="700" fill="#0A3D91">every change</text>
+<g class="hit" tabindex="0" role="button" data-mi="qg" aria-label="Evidence gate over CI/CD"><rect class="k" x="464" y="122" width="196" height="122" rx="9" fill="#F1ECF9" stroke="#5B3E9E" stroke-width="1.2"/><text x="562" y="142" text-anchor="middle" font-size="11.5" font-weight="700" fill="#5B3E9E">Evidence gate over CI/CD</text><g font-size="9" font-weight="700" fill="#fff" text-anchor="middle">
+<polygon points="472,152 502,152 508,164 502,176 472,176" fill="#8A6CC9"/><text x="490.0" y="167.5">Dev</text>
+<polygon points="504,152 534,152 540,164 534,176 504,176 510,164" fill="#7D5DC0"/><text x="522.0" y="167.5">QA</text>
+<polygon points="536,152 568,152 574,164 568,176 536,176 542,164" fill="#6F4EB5"/><text x="555.0" y="167.5">UAT</text>
+<polygon points="570,152 616,152 622,164 616,176 570,176 576,164" fill="#6343AB"/><text x="596.0" y="167.5">Pre-prod</text>
+<polygon points="618,152 652,152 658,164 652,176 618,176 624,164" fill="#4E3191"/><text x="638.0" y="167.5">Prod</text>
+</g><g font-size="9.6" fill="#1C1F24"><text x="474" y="192">Security, PCI, quality and</text><text x="474" y="205">performance evidence decide.</text><text x="474" y="219"><tspan font-weight="700" fill="#5B3E9E">Prod:</tspan> a human approves from</text><text x="474" y="232">objective metrics, fast and easy.</text></g></g>
+<path d="M660 182 H672" stroke="#0A3D91" stroke-width="2"/><polygon points="670,177 680,182 670,187" fill="#0A3D91"/>
+<g class="hit" tabindex="0" role="button" data-mi="prod" aria-label="In production"><rect class="k" x="682" y="128" width="92" height="108" rx="9" fill="#FDEBD7" stroke="#B45309" stroke-width="1.4"/><text x="728" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#B45309">In production</text><g font-size="9.6" text-anchor="middle" fill="#1C1F24"><text x="728" y="166">Lead time</text><text x="728" y="180">Change failure</text><text x="728" y="192">rate</text><text x="728" y="207">MTTR</text><text x="728" y="222">Adoption</text></g></g>
+<g class="hit" tabindex="0" role="button" data-mi="loop" aria-label="Telemetry feeds back"><rect class="k" x="0" y="0" width="0" height="0" fill="none"/><path d="M728 128 V58 H446" stroke="#B8860B" stroke-width="2" stroke-dasharray="6 4" fill="none"/><polygon points="448,53 438,58 448,63" fill="#B8860B"/><text x="590" y="50" text-anchor="middle" font-size="10" font-weight="700" fill="#8F5E00">Telemetry and surveys set the roadmap</text><path d="M728 236 V300 H446" stroke="#B8860B" stroke-width="2" stroke-dasharray="6 4" fill="none"/><polygon points="448,295 438,300 448,305" fill="#B8860B"/><text x="590" y="318" text-anchor="middle" font-size="10" font-weight="700" fill="#8F5E00">Approval reasons tune agents and rubrics</text></g>
+<g class="hit" tabindex="0" role="button" data-mi="devx" aria-label="DevX foundation"><rect class="k" x="10" y="362" width="764" height="110" rx="9" fill="#FCF3DF" stroke="#B8860B" stroke-width="1.2"/><text x="22" y="382" font-size="13" font-weight="700" fill="#8F5E00">DevX foundation</text><text x="762" y="382" text-anchor="end" font-size="10" fill="#8F5E00">Happy engineers ship better payments software</text><g font-size="10" font-weight="700" fill="#5A4410" text-anchor="middle">
+<rect x="22" y="393" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="143" y="413">Onboarding and talent</text>
+<rect x="270" y="393" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="391" y="413">Engagement survey</text>
+<rect x="518" y="393" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="639" y="413">AI coding adoption</text>
+<rect x="22" y="431" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="143" y="451">DORA in every leader&#8217;s goals</text>
+<rect x="270" y="431" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="391" y="451">Developer portal and APIs</text>
+<rect x="518" y="431" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="639" y="451">Hybrid cloud: AWS and on-prem</text>
+</g></g></svg>
+      </figure>
+      <aside class="mi-side">
+        <h3>Click any part of the model</h3>
+        <div class="mi-tip" id="mi-tip" aria-live="polite"></div>
+        <div class="mi-keys" id="mi-keys"></div>
+        <p class="proof-note" style="margin-top:10px">I ran this model at S&amp;P Global across two business units. Here it is shown for an illustrative Mastercard engineering organization.</p>
+      </aside>
     </div>
-    <p class="proof-note">These four figures are from my work at S&amp;P Global. Figures in the Scorecard tab are sample data.</p>
+    </section>
 
     <div class="sec-head" style="margin-top:36px"><span class="label">The idea in three lines</span></div>
     <div class="pillars">
@@ -817,12 +903,12 @@ td.num{font-variant-numeric:tabular-nums}
     <div class="sec-head">
       <span class="label">Why me</span>
       <h2>RUNWAY comes from developer platforms I have built and run</h2>
-      <p class="lede">The figures are from my resume. 24+ years in engineering and transformation leadership, most of it in regulated financial services.</p>
+      <p class="lede">The figures are from my resume: 24+ years in technology, most of it in regulated financial services.</p>
     </div>
     <div class="lessons">
       <article class="lesson">
         <span class="yr">2025–2026 · VP, Head of Quality Engineering · Chair, AI Governance Committee</span><h3>S&amp;P Global</h3>
-        <ul><li>Stood up an AI developer platform in 6 months, designed to serve ~1,200 engineers, with AI across the lifecycle from requirements and code generation to code review and deployment telemetry</li><li>Repositioned central QA as a 32-engineer platform team (automation, performance, security and accessibility testing, center of excellence) building shared frameworks that delivery teams chose to adopt; replaced 8&ndash;10 separate tools with in-house platform tools under an approved tool list</li><li>Brought a first wave of 350+ engineers onto governed AI workflows within 13 months</li><li>Regression lead time from 9 days to 4, then daily; releases from weekly to twice-weekly. Negative security testing caught code, part legacy and part AI-generated, exposing server directory structure; the fix became a standing guardrail</li><li>Turned CISO, Risk, Compliance and Legal requirements into platform controls. Human approval enforced in the pipeline wherever regulation required it, made faster with data-backed evidence for approvers; decision time tracked as a governance KPI</li><li>Led a 350+ global organization and a $70M+ technology budget</li></ul>
+        <ul><li>Stood up an AI developer platform in 6 months, designed to serve ~1,200 engineers, with AI across the lifecycle from requirements and code generation to code review and deployment telemetry</li><li>Repositioned central QA as a 32-engineer platform team (automation, performance, security and accessibility testing, center of excellence) building shared frameworks that delivery teams chose to adopt; replaced 8&ndash;10 separate tools with in-house platform tools, shared frameworks and APIs other platforms consume</li><li>Brought a first wave of 350+ engineers onto governed AI workflows within 13 months: 80% adopted AI coding assistants and onboarding time fell 20%</li><li>Regression from 9 days to daily; release cadence doubled, with test impact analysis across hybrid cloud (AWS and on-premises). Negative security testing caught code, part legacy and part AI-generated, exposing server directory structure; the fix became a standing guardrail</li><li>Turned CISO, Risk, Compliance and Legal requirements into platform controls. Human approval enforced in the pipeline wherever regulation required it, made faster with data-backed evidence for approvers; decision time tracked as a governance KPI</li><li>Led a 350+ global organization and a $70M+ technology budget</li></ul>
         <p class="shows">Shows up in RUNWAY as <span>AI-assisted coding</span><span>Tool governance</span><span>Human in the loop</span></p>
       </article>
       <article class="lesson">
@@ -848,9 +934,9 @@ td.num{font-variant-numeric:tabular-nums}
         <tbody>
           <tr><td>A unified, AI-enabled developer experience from onboarding to production</td><td>Six-stage developer journey and four workbench capabilities</td><td>AI developer platform in 6 months, designed to serve ~1,200 engineers (S&amp;P Global)</td></tr>
           <tr><td>Adoption of AI-assisted and agentic development, with governance, security and measurement</td><td>AI-assisted coding capability; agents propose, engineers decide</td><td>350+ engineers on governed AI workflows in 13 months; chaired the AI Governance Committee (S&amp;P Global)</td></tr>
-          <tr><td>Tooling governance, standards, rationalization and cost transparency</td><td>Tool governance review and the tool catalog</td><td>Replaced 8&ndash;10 separate tools with in-house platform tools under an approved tool list (S&amp;P Global)</td></tr>
-          <tr><td>Quality engineering, testing workflows and secure software delivery</td><td>Built-in quality and secure delivery</td><td>Regression 9 &rarr; 4 days, then daily; releases weekly to twice-weekly (S&amp;P Global); regression 5 &rarr; 2 days across 17 teams (Audible)</td></tr>
-          <tr><td>Data, telemetry and metrics for productivity and adoption</td><td>Monthly Workbench scorecard</td><td>Executive scorecard adopted by Technology and Finance (S&amp;P Global)</td></tr>
+          <tr><td>Tooling governance, standards, rationalization and cost transparency</td><td>Tool governance review and the tool catalog</td><td>Replaced 8&ndash;10 separate tools with in-house platform tools, shared frameworks and APIs other platforms consume (S&amp;P Global)</td></tr>
+          <tr><td>Quality engineering, testing workflows and secure software delivery</td><td>Built-in quality and secure delivery</td><td>Regression 9 days &rarr; daily, release cadence doubled (S&amp;P Global); regression 5 &rarr; 2 days across 17 teams (Audible)</td></tr>
+          <tr><td>Data, telemetry and metrics for productivity and adoption</td><td>Monthly Workbench scorecard</td><td>Executive scorecard adopted by Technology and Finance; MTTR and change failure rate in every QE lead&rsquo;s goals; onboarding time down 20% (S&amp;P Global)</td></tr>
           <tr><td>Partnering with security, risk, compliance, architecture and finance</td><td>Decision rights and the tooling council</td><td>CISO, Risk, Compliance, Legal and Architecture requirements turned into platform controls (S&amp;P Global)</td></tr>
           <tr><td>Leading a large engineering organization as a product organization</td><td>Engineers treated as customers, with a roadmap set by feedback and usage</td><td>Led a 350+ global organization with Senior Directors as direct reports and a $70M+ budget (S&amp;P Global)</td></tr>
         </tbody>
@@ -909,7 +995,7 @@ td.num{font-variant-numeric:tabular-nums}
     <span><b>Faster,</b> evidence-backed human approval on regulated checks</span>
     <span><b>32-engineer</b> platform team; 8&ndash;10 tools replaced</span>
     <span><b>350+</b> people · <b>$70M+</b> budget led</span>
-    <span><b>24+ years</b> in engineering and transformation leadership</span>
+    <span><b>24+ years</b> in technology; <b>80%</b> AI adoption</span>
   </div>
   <button class="talk" type="button" data-contact>Let&rsquo;s talk</button>
 </aside>
@@ -966,13 +1052,13 @@ td.num{font-variant-numeric:tabular-nums}
      a:'Shared test frameworks, automated quality and security gates in CI/CD, risk-based test selection, and release evidence captured automatically.',
      looks:['Test coverage','Security scans','Flaky tests','Change failure rate'],
      m:['lead time for changes','change failure rate'],
-     lived:'<b>S&amp;P Global:</b> regression lead time from 9 days to 4, then daily; releases from weekly to twice-weekly. Negative security testing caught code, part legacy and part AI-generated, exposing server details.'},
+     lived:'<b>S&amp;P Global:</b> regression from 9 days to daily; release cadence doubled. Negative security testing caught code, part legacy and part AI-generated, exposing server details.'},
     {k:'t4', n:'Insights', name:'Developer insights', risk:1, sub:'Telemetry, DORA metrics and developer satisfaction in one view, for teams and leaders',
      b:'Productivity is debated from anecdotes. Tool spend is not linked to usage, so unused licenses keep renewing.',
      a:'One insights layer joining pipeline, tool-usage and survey data: DORA metrics, AI adoption, satisfaction and cost per tool, reported monthly.',
      looks:['DORA metrics','Tool usage against licenses','Satisfaction survey','Cost per active user'],
      m:['developer satisfaction','licenses in active use'],
-     lived:'<b>S&amp;P Global:</b> an executive scorecard adopted by Technology and Finance.'}
+     lived:'<b>S&amp;P Global:</b> an executive scorecard adopted by Technology and Finance; MTTR and change failure rate in every QE lead&rsquo;s year-end goals; engagement survey 85% to 95%, developers included.'}
   ];
     let tsel='t1';
   function renderTiers(){
@@ -1209,6 +1295,29 @@ document.addEventListener('click',function(e){var t=e.target.closest&&e.target.c
 if(!t||!window.goatcounter||!window.goatcounter.count)return;
 var n=t.getAttribute('data-tab')||t.getAttribute('data-go')||(t.hasAttribute('data-contact')?'contact':(t.classList.contains('side-tab')?'about':(t.textContent||'').trim().slice(0,40)));
 window.goatcounter.count({path:base+'/tab/'+n+(s?'?src='+s:''),title:'Tab: '+n,event:true});},true);})();
+</script>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const MI={
+    cc:['Developer Centricity','Engineers are the Workbench’s customers. Their journey has six steps, each with a KPI, from a new engineer’s first day to operating in production. The roadmap goes wherever that journey is slowest.'],
+    dp:['Product teams','Teams building payments and network, fraud and cyber, open banking and data, and customer experience software all take the same paths: one quality bar, each team at its own release pace.'],
+    ee:['Workbench platform','Built once, used by everyone: golden paths and templates, creator and judge agents, test impact analysis that runs only the tests a change touches, and a tool catalog with APIs other platforms consume. At S&P Global this replaced 8–10 separate tools.'],
+    qg:['Evidence gate over CI/CD','Every change passes the same evidence checks at each tier: security and PCI, quality, performance and resiliency. In production, a human approves from objective, evidence-based metrics, so approval is fast and easy. At S&P Global this took regulated sign-off from 3 days to the same day.'],
+    prod:['In production','DORA metrics for every team: lead time, change failure rate and MTTR, plus Workbench adoption. At S&P Global MTTR and change failure rate were in my own year-end goals and every QE lead’s.'],
+    loop:['Telemetry feeds back','Pipeline telemetry and the developer survey re-rank the roadmap, and every approval reason tunes the agents and the judge rubric, so the next change clears faster.'],
+    devx:['DevX foundation','Happy engineers ship better software. At S&P Global onboarding time fell 20%, 80% of engineers adopted AI coding assistants, and the engagement survey, developers included, rose from 85% to 95%.']};
+  const tip=$('mi-tip'), keys=$('mi-keys'); if(!tip) return;
+  const hits=[...document.querySelectorAll('.mi-fig .hit')];
+  function show(k){ const [h,b]=MI[k]; tip.innerHTML=''; const hb=document.createElement('b'); hb.textContent=h; tip.append(hb,document.createTextNode(b));
+    hits.forEach(g=>g.classList.toggle('on',g.dataset.mi===k)); [...keys.children].forEach(x=>x.classList.toggle('on',x.dataset.k===k)); }
+  Object.keys(MI).forEach(k=>{ const b=document.createElement('button'); b.type='button'; b.dataset.k=k; b.textContent=MI[k][0]; b.onclick=()=>show(k); keys.appendChild(b); });
+  hits.forEach(g=>{ g.addEventListener('click',()=>show(g.dataset.mi)); g.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); show(g.dataset.mi);} }); });
+  show('cc');
+  document.querySelectorAll('[data-mi-jump]').forEach(b=>b.addEventListener('click',()=>{ const ov=$('t-overview'); if(ov) ov.click(); setTimeout(()=>$('model-i').scrollIntoView({behavior:reduce?'auto':'smooth'}),60); }));
+})();
 </script>
 <script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
