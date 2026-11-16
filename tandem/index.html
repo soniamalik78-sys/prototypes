@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TANDEM Channels Engineering</title>
+<meta name="description" content="Work sample by Sonia Malik: TANDEM, an AI-first operating model for a channels engineering division, where engineers and agents ship channel features in tandem on shared, modular services.">
+<meta property="og:title" content="TANDEM: engineers and agents, in tandem | Sonia Malik">
+<meta property="og:description" content="Interactive work sample: one AI-first delivery model for every channel, with quality, reliability and cost built into the path.">
+<meta property="og:url" content="https://soniamalik78-sys.github.io/prototypes/tandem/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F4F1; --surface:#FFFFFF; --sunk:#EBE9E4; --fg:#1D1F22; --muted:#555A60; --faint:#7B8087;
+  --line:#DCD9D2; --line-strong:#C2BEB5;
+  --accent:#0E5E5A; --accent-soft:#DDEEEC; --accent-ink:#0A4744;
+  --hot:#C2410C; --hot-soft:#FCE9DF;
+  --ok:#2E7D4F; --ok-bg:#E3F2E8; --warn:#8F5E00; --warn-bg:#FBF0D9;
+  --agent:#5B3FA6; --agent-bg:#EEE9F8; --human:#0E5E5A; --human-bg:#DDEEEC;
+  --f-display:"Fraunces", Georgia, serif;
+  --f-body:"Public Sans", "Segoe UI", Arial, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#121416; --surface:#1A1D20; --sunk:#22262A; --fg:#E7E8EA; --muted:#A9AEB5; --faint:#80868E;
+  --line:#2D3237; --line-strong:#41474E;
+  --accent:#6CC4BD; --accent-soft:#16302E; --accent-ink:#9ADAD4;
+  --hot:#F59A6B; --hot-soft:#3A2418;
+  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12;
+  --agent:#B9A5F0; --agent-bg:#2A2340; --human:#6CC4BD; --human-bg:#16302E; color-scheme:dark; } }
+:root[data-theme="dark"]{
+  --bg:#121416; --surface:#1A1D20; --sunk:#22262A; --fg:#E7E8EA; --muted:#A9AEB5; --faint:#80868E;
+  --line:#2D3237; --line-strong:#41474E;
+  --accent:#6CC4BD; --accent-soft:#16302E; --accent-ink:#9ADAD4;
+  --hot:#F59A6B; --hot-soft:#3A2418;
+  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12;
+  --agent:#B9A5F0; --agent-bg:#2A2340; --human:#6CC4BD; --human-bg:#16302E; color-scheme:dark; }
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg); color:var(--fg); font-family:var(--f-body); font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 20px 64px;}
+h1,h2,h3{font-family:var(--f-display); font-weight:500; margin:0; text-wrap:balance}
+h2{font-size:clamp(1.4rem,2.6vw,1.8rem); line-height:1.2}
+h3{font-size:1.08rem; line-height:1.3}
+p{margin:0}
+a{color:var(--accent-ink)}
+button{font-family:inherit; cursor:pointer}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:4px}
+.label{font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--faint)}
+.muted{color:var(--muted)}
+.mono{font-family:var(--f-mono)}
+.pill{display:inline-flex; align-items:center; gap:6px; font-size:.74rem; font-weight:600; padding:3px 10px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink)}
+.pill.n{background:var(--sunk); color:var(--muted)}
+
+/* HERO */
+.hero{display:grid; grid-template-columns:1fr 1.05fr; gap:32px; padding:32px 0 26px; border-bottom:1px solid var(--line); align-items:start}
+.eyebrow{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px}
+.brand{display:flex; align-items:center; gap:14px}
+.brand svg{flex:none}
+.brand h1{font-size:clamp(2.6rem,6vw,4.2rem); letter-spacing:.04em; line-height:1}
+.tag{color:var(--muted); margin-top:6px; font-size:.98rem}
+.thesis{font-family:var(--f-display); font-size:clamp(1.15rem,2vw,1.4rem); line-height:1.35; margin-top:16px; max-width:34ch}
+.proof{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:18px}
+.tile{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:10px; padding:10px 12px}
+.tile b{font-family:var(--f-display); font-size:1.2rem; font-weight:600; display:block; line-height:1.15}
+.tile span{font-size:.8rem; color:var(--muted); display:block; margin-top:4px; line-height:1.35}
+.ctas{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+.btn{border:1px solid var(--accent); background:var(--accent); color:#fff; border-radius:999px; padding:9px 16px; font-weight:600; font-size:.9rem; text-decoration:none}
+.btn.ghost{background:transparent; color:var(--accent-ink)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .btn:not(.ghost){color:#0b1b1a} }
+
+/* CONSOLE */
+.console{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.c-head{background:var(--accent); color:#fff; padding:12px 16px; display:flex; justify-content:space-between; align-items:center; gap:10px}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .c-head{background:#0E3F3C} }
+.c-head b{font-size:1rem}
+.c-head small{opacity:.85; font-size:.75rem}
+.chips{display:flex; flex-wrap:wrap; gap:6px; padding:12px 14px 4px}
+.chip{border:1px solid var(--line-strong); background:var(--surface); color:var(--fg); border-radius:999px; padding:5px 11px; font-size:.8rem; font-weight:600}
+.chip[aria-pressed="true"]{background:var(--accent-soft); border-color:var(--accent); color:var(--accent-ink)}
+.rail{display:flex; gap:4px; padding:10px 14px 0}
+.rail i{flex:1; height:6px; border-radius:3px; background:var(--sunk)}
+.rail i.on{background:var(--accent)}
+.rail i.cur{background:var(--hot)}
+.feed{height:300px; overflow:auto; padding:10px 14px; display:flex; flex-direction:column; gap:8px}
+.ev{display:grid; grid-template-columns:52px 1fr; gap:8px; animation:in .35s ease}
+@keyframes in{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+@media (prefers-reduced-motion: reduce){.ev{animation:none}}
+.ev .t{font-family:var(--f-mono); font-size:.75rem; color:var(--faint); padding-top:9px}
+.ev .b{background:var(--sunk); border-radius:8px; padding:8px 10px; border-left:3px solid var(--line-strong)}
+.ev.agent .b{border-left-color:var(--agent)}
+.ev.human .b{border-left-color:var(--human)}
+.ev.gate .b{border-left-color:var(--hot)}
+.ev .who{display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin-bottom:3px}
+.who .st{font-size:.68rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--faint)}
+.badge{font-size:.68rem; font-weight:700; padding:1px 7px; border-radius:999px}
+.badge.agent{background:var(--agent-bg); color:var(--agent)}
+.badge.human{background:var(--human-bg); color:var(--human)}
+.badge.gate{background:var(--hot-soft); color:var(--hot)}
+.ev p{font-size:.86rem; line-height:1.45}
+.ev .evd{font-size:.76rem; color:var(--muted); margin-top:4px}
+.ev .evd b{color:var(--fg)}
+.c-foot{border-top:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 14px}
+.c-foot .now{font-family:var(--f-mono); font-size:.85rem; color:var(--accent-ink)}
+.c-note{font-size:.8rem; color:var(--muted); margin-top:8px}
+
+/* TABS */
+.tabs{display:flex; gap:2px; overflow-x:auto; border-bottom:1px solid var(--line); margin-top:8px; position:sticky; top:0; background:var(--bg); z-index:5}
+.tabs button{border:0; background:none; padding:12px 12px 10px; font-weight:600; font-size:.9rem; color:var(--muted); border-bottom:3px solid transparent; white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--fg); border-bottom-color:var(--accent)}
+.pane{display:none; padding-top:26px}
+.pane.on{display:block}
+.intro{color:var(--muted); max-width:72ch; margin:8px 0 18px}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:16px}
+.card h3{margin-bottom:6px}
+.card p,.card li{font-size:.9rem}
+.card ul{margin:6px 0 0; padding-left:18px}
+.card li{margin:3px 0}
+
+/* MODEL I */
+.mi{display:grid; gap:8px}
+.bar{border-radius:10px; padding:12px 14px; font-weight:600; text-align:center}
+.bar small{display:block; font-weight:400; font-size:.8rem; opacity:.85}
+.bar.top{background:var(--accent); color:#fff}
+.bar.bot{background:var(--fg); color:var(--bg)}
+.stem{display:grid; grid-template-columns:repeat(4,1fr); gap:6px; padding:0 9%}
+.stem button{border:1px solid var(--line-strong); background:var(--surface); border-radius:8px; padding:8px 6px; font-size:.78rem; font-weight:600; color:var(--fg); text-align:center}
+.stem button[aria-pressed="true"]{border-color:var(--hot); background:var(--hot-soft); color:var(--hot)}
+.gates{display:grid; grid-template-columns:repeat(6,1fr); gap:4px; margin-top:4px}
+.gates span{font-size:.72rem; text-align:center; background:var(--sunk); border-radius:6px; padding:6px 2px; font-weight:600}
+.loop{font-size:.82rem; color:var(--muted); text-align:center; border:1px dashed var(--line-strong); border-radius:8px; padding:8px}
+.foundation{display:flex; flex-wrap:wrap; gap:6px; justify-content:center}
+.foundation span{font-size:.75rem; border:1px solid var(--line); border-radius:999px; padding:3px 9px; background:var(--surface)}
+.tip{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 14px; font-size:.88rem; min-height:92px}
+
+/* PORTFOLIO */
+.layers{display:grid; gap:8px}
+.layer{display:grid; grid-template-columns:150px 1fr; gap:10px; align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:10px 12px}
+.layer .nm{font-weight:700; font-size:.85rem}
+.layer .nm small{display:block; font-weight:400; color:var(--muted); font-size:.75rem}
+.tags{display:flex; flex-wrap:wrap; gap:5px}
+.tags span{font-size:.76rem; padding:3px 9px; border-radius:999px; background:var(--sunk)}
+.layer.hl{border-color:var(--accent); box-shadow:inset 3px 0 0 var(--accent)}
+.layer.hl .tags span{background:var(--accent-soft); color:var(--accent-ink); font-weight:600}
+
+/* STEPS */
+.steps{display:grid; gap:10px}
+.step{display:grid; grid-template-columns:34px 1fr; gap:12px; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 14px}
+.step .n{width:30px; height:30px; border-radius:50%; background:var(--accent-soft); color:var(--accent-ink); font-weight:700; display:grid; place-items:center; font-size:.85rem}
+.step h3{font-size:1rem}
+.step p{font-size:.88rem; color:var(--muted); margin-top:3px}
+.step .who2{font-size:.78rem; margin-top:5px}
+
+/* TABLE */
+.tbl{width:100%; border-collapse:collapse; font-size:.86rem; background:var(--surface); border:1px solid var(--line); border-radius:10px; overflow:hidden}
+.tbl th,.tbl td{text-align:left; padding:9px 11px; border-bottom:1px solid var(--line); vertical-align:top}
+.tbl th{background:var(--sunk); font-size:.74rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted)}
+.tblwrap{overflow-x:auto}
+.kpis{display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:18px}
+.kpi{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px}
+.kpi .k{font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--faint)}
+.kpi .v{font-family:var(--f-display); font-size:1.05rem; font-weight:600; margin-top:4px; line-height:1.25}
+.kpi .s{font-size:.78rem; color:var(--muted); margin-top:4px}
+
+/* TIMELINE */
+.tl{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+.ph{background:var(--surface); border:1px solid var(--line); border-top:4px solid var(--accent); border-radius:10px; padding:14px}
+.ph .d{font-family:var(--f-mono); font-size:.78rem; color:var(--hot)}
+.ph h3{margin:4px 0 6px}
+.ph ul{margin:0; padding-left:18px; font-size:.86rem}
+
+.why{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+.why .card b{font-family:var(--f-display); font-size:1.2rem; display:block}
+footer{margin-top:40px; padding-top:16px; border-top:1px solid var(--line); font-size:.8rem; color:var(--faint); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .grid2,.why{grid-template-columns:1fr}
+  .grid3,.tl{grid-template-columns:1fr 1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px 48px}
+  .proof,.grid3,.tl,.kpis{grid-template-columns:1fr}
+  .stem{grid-template-columns:1fr 1fr; padding:0}
+  .gates{grid-template-columns:repeat(3,1fr)}
+  .layer{grid-template-columns:1fr}
+  .feed{height:340px}
+  .thesis{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div>
+    <div class="eyebrow">
+      <span class="pill">Prototype by Sonia Malik</span>
+      <span class="pill n">For: VP, Product Engineering · Channels division · Braze</span>
+    </div>
+    <div class="brand">
+      <svg width="58" height="58" viewBox="0 0 58 58" aria-hidden="true">
+        <circle cx="16" cy="40" r="11" fill="none" stroke="var(--accent)" stroke-width="3.5"/>
+        <circle cx="42" cy="40" r="11" fill="none" stroke="var(--hot)" stroke-width="3.5"/>
+        <path d="M16 40 L28 18 L42 40 M22 18 H34" fill="none" stroke="var(--fg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h1>TANDEM</h1>
+    </div>
+    <p class="tag">Engineers and AI agents, in tandem, on one modular channel platform.</p>
+    <p class="thesis">Every channel ships faster and safer when agents draft and check, engineers decide, and quality, reliability and cost are gates in the path, not reviews at the end.</p>
+    <div class="proof">
+      <div class="tile"><b>350+ engineers</b><span>on governed AI in 13 months; platform stood up in 6 months (S&amp;P Global)</span></div>
+      <div class="tile"><b>+30% features</b><span>per PI over 3 PIs with creator and judge agents; NPS +5</span></div>
+      <div class="tile"><b>9 days → daily</b><span>regression; release cadence doubled; sign-off 3 days → same day</span></div>
+    </div>
+    <div class="ctas">
+      <a class="btn" href="#tabs" data-go="journey">Follow one change end to end ↓</a>
+      <a class="btn ghost" href="#tabs" data-go="model">See the operating model ↓</a>
+    </div>
+  </div>
+
+  <section class="console" aria-label="Interactive: one channel change from signal to measured value">
+    <div class="c-head"><b>Channels console · play one change</b><small>Sample · illustrative</small></div>
+    <div class="chips" role="group" aria-label="Pick a channel change">
+      <button class="chip" data-s="0" aria-pressed="true">RCS rich cards</button>
+      <button class="chip" data-s="1">In-app &amp; Banners fallback</button>
+      <button class="chip" data-s="2">Email send-volume guard</button>
+      <button class="chip" data-s="3">WhatsApp agent reply</button>
+    </div>
+    <div class="rail" id="rail" aria-hidden="true"></div>
+    <div class="feed" id="feed" aria-live="polite"></div>
+    <div class="c-foot">
+      <div><div class="now" id="now">Signal</div><div class="label">current step</div></div>
+      <button class="chip" id="replay">↻ Replay</button>
+    </div>
+  </section>
+</header>
+<p class="c-note">Pick a channel to watch one change move from a customer signal to a measured result. Agents draft and check, engineers decide. Steps and numbers in the console are illustrative. <a href="#tabs" data-go="journey">See each step →</a></p>
+
+<nav class="tabs" id="tabs" role="tablist" aria-label="Sections">
+  <button role="tab" data-t="overview" aria-selected="true">Overview</button>
+  <button role="tab" data-t="journey">One change, end to end</button>
+  <button role="tab" data-t="model">Operating model</button>
+  <button role="tab" data-t="platform">Modular channel platform</button>
+  <button role="tab" data-t="score">Scorecard</button>
+  <button role="tab" data-t="days">First 90 days</button>
+  <button role="tab" data-t="why">Why me</button>
+</nav>
+
+<!-- OVERVIEW -->
+<section class="pane on" id="overview" role="tabpanel">
+  <h2>One delivery model for every channel</h2>
+  <p class="intro">The Channels division is where Braze meets the end user. TANDEM is how I would lead it through the AI transition on both fronts the role describes: channel products that become more intelligent and agentic, and an engineering org that uses AI-assisted development to raise its own velocity and quality bar. It is horizontal by design, so a practice proven on one channel team is reused by every other.</p>
+  <div class="grid3">
+    <div class="card"><span class="label">Front 1 · Product</span><h3>Differentiated channel products</h3><p>Agentic features (conversational replies, AI decisioning, automated QA of sends) land on every channel through shared services, so each new capability is built once and positioned across the portfolio. <a href="#tabs" data-go="platform">See the platform →</a></p></div>
+    <div class="card"><span class="label">Front 2 · Engineering</span><h3>AI-assisted, evidence-gated delivery</h3><p>Creator agents draft specs, tests and code; judge agents score them against rubrics; engineers approve. Quality score, reliability and cost per send gate every promotion. <a href="#tabs" data-go="journey">Follow one change →</a></p></div>
+    <div class="card"><span class="label">Front 3 · People</span><h3>Managers of managers who scale it</h3><p>Clear team topology, career paths that reward building with agents, and process added or removed on evidence. Happy engineers are the foundation, not a by-product. <a href="#tabs" data-go="model">See the model →</a></p></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <span class="label">Why this fits Braze now</span>
+    <p style="margin-top:6px">Braze is already giving marketers agents that build Canvases, test content and check every campaign against written standards before launch. TANDEM applies the same idea inside engineering: the standards a channel feature must meet are written once, checked automatically by judge agents, and approved by engineers with the evidence in front of them. It is the pattern I ran at S&amp;P Global for 350+ engineers in a regulated business.</p>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="pane" id="journey" role="tabpanel">
+  <h2>One change, end to end</h2>
+  <p class="intro">The same eight steps for every channel team. Agents do the drafting and checking; engineers own the decisions. The sample is an RCS rich-card carousel; the console above plays four channels.</p>
+  <div class="steps" id="steps"></div>
+</section>
+
+<!-- MODEL -->
+<section class="pane" id="model" role="tabpanel">
+  <h2>The operating model: an I shape</h2>
+  <p class="intro">Customer outcomes across the top, engineering excellence across the bottom, channel teams in between. Every release flows through the same quality gates, and what customers experience flows back as learning. Tap a team in the middle to see how it plugs in.</p>
+  <div class="grid2">
+    <div class="mi">
+      <div class="bar top">Customer centricity<small>brands and their end users: delivery, latency, engagement, trust</small></div>
+      <div class="stem" role="group" aria-label="Channel teams">
+        <button data-m="0" aria-pressed="true">Email</button>
+        <button data-m="1">Push</button>
+        <button data-m="2">SMS · RCS · WhatsApp · LINE</button>
+        <button data-m="3">In-app · Content Cards · Banners</button>
+        <button data-m="4">Landing Pages</button>
+        <button data-m="5">Feature Flags</button>
+        <button data-m="6">Webhooks</button>
+        <button data-m="7">Shared channel core</button>
+      </div>
+      <div class="bar bot">Engineering excellence<small>AI-assisted development · quality gates · reliability · cost efficiency</small></div>
+      <div class="gates" aria-label="Quality gates over CI/CD"><span>Dev</span><span>Integration</span><span>QA</span><span>Staging</span><span>Canary</span><span>Production</span></div>
+      <div class="loop">↺ Incidents, customer tickets, CSAT and NPS feed back into rubrics, tests and team goals</div>
+      <div class="foundation"><span>Talent &amp; growth</span><span>Engagement</span><span>Golden paths</span><span>Test environments</span><span>Test data</span><span>Shared tools</span></div>
+    </div>
+    <div>
+      <div class="tip" id="mtip"></div>
+      <div class="card" style="margin-top:12px">
+        <h3>What stays the same for every team</h3>
+        <ul>
+          <li>One definition of done: rubric score, contract tests, load and cost checks.</li>
+          <li>One release quality score that gates each environment.</li>
+          <li>Human approval made fast: approvers see objective evidence, not a slide.</li>
+          <li>DORA metrics (MTTR, change failure rate) in every leader's goals.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section class="pane" id="platform" role="tabpanel">
+  <h2>A modular channel platform</h2>
+  <p class="intro">The role calls for maturing the systems into a more modular, efficient platform. This is a proposed target shape to validate with the team in the first 90 days, not a description of today's architecture. The idea: build shared capabilities once, keep each channel adapter thin.</p>
+  <div class="layers">
+    <div class="layer"><div class="nm">Marketer surfaces<small>where work starts</small></div><div class="tags"><span>Canvas</span><span>Campaigns</span><span>BrazeAI Operator</span><span>Decisioning Studio</span><span>Creative Studio</span><span>Agent Console</span></div></div>
+    <div class="layer hl"><div class="nm">Channel adapters<small>thin, per channel</small></div><div class="tags"><span>Email</span><span>Push</span><span>SMS / MMS / RCS</span><span>WhatsApp</span><span>LINE</span><span>In-App Messages</span><span>Content Cards</span><span>Banners</span><span>Landing Pages</span><span>Feature Flags</span><span>Webhooks</span><span>Next channel</span></div></div>
+    <div class="layer hl"><div class="nm">Shared channel core<small>built once</small></div><div class="tags"><span>Eligibility &amp; consent</span><span>Rendering &amp; personalization</span><span>Message prioritization &amp; rate limits</span><span>Agent guardrails</span><span>Delivery &amp; retries</span><span>Event stream</span><span>Observability &amp; alerts</span></div></div>
+    <div class="layer"><div class="nm">Data<small>context for agents</small></div><div class="tags"><span>User profiles</span><span>Catalogs</span><span>Cloud Data Ingestion</span><span>Warehouse sharing</span><span>Engagement events</span></div></div>
+    <div class="layer"><div class="nm">Engineering platform<small>how teams build</small></div><div class="tags"><span>AI coding assistants</span><span>Creator &amp; judge agents</span><span>Contract &amp; load tests</span><span>Release quality score</span><span>Progressive rollout</span><span>Cost per send</span></div></div>
+  </div>
+  <div class="grid2" style="margin-top:16px">
+    <div class="card"><h3>What modular buys</h3><ul><li>A new channel is an adapter plus a test suite, not a new stack.</li><li>An agentic feature (say, conversational replies) is built in the core and offered on every eligible channel.</li><li>Reliability and cost work done once lifts every channel.</li></ul></div>
+    <div class="card"><h3>How I would approach it</h3><ul><li>Map today's services and ownership with senior engineers before proposing seams.</li><li>Pick one shared capability as the pilot, measured on latency, error rate and cost.</li><li>Move channel by channel behind feature flags; never a big-bang rewrite.</li></ul></div>
+  </div>
+</section>
+
+<!-- SCORECARD -->
+<section class="pane" id="score" role="tabpanel">
+  <h2>Scorecard</h2>
+  <p class="intro">A brief view for the CTO and executive team, plus the operating detail VPs and Directors act on. Targets are set after a baseline in the first 30 days; nothing here is a claim about Braze today.</p>
+  <div class="kpis">
+    <div class="kpi"><div class="k">Customer</div><div class="v">Channel adoption &amp; engagement</div><div class="s">channels per customer; AI features in use</div></div>
+    <div class="kpi"><div class="k">Reliability</div><div class="v">Send success &amp; latency</div><div class="s">SLO attainment per channel; MTTR</div></div>
+    <div class="kpi"><div class="k">Velocity</div><div class="v">Lead time &amp; deploy frequency</div><div class="s">idea to production, per team</div></div>
+    <div class="kpi"><div class="k">Quality</div><div class="v">Change failure rate</div><div class="s">escaped defects; incidents per release</div></div>
+    <div class="kpi"><div class="k">Efficiency</div><div class="v">Cost per million sends</div><div class="s">infra plus model tokens</div></div>
+  </div>
+  <div class="tblwrap"><table class="tbl">
+    <thead><tr><th>Area</th><th>Measure (operating detail)</th><th>Owner</th><th>Cadence</th><th>Action when off track</th></tr></thead>
+    <tbody>
+      <tr><td>AI-assisted delivery</td><td>% of changes with agent-drafted tests; judge rubric pass rate; approval deltas</td><td>Engineering Directors</td><td>Weekly</td><td>Tune rubrics; pair teams with the platform team</td></tr>
+      <tr><td>Reliability</td><td>SLO burn by channel; time to detect send-volume drops</td><td>Channel EMs + SRE</td><td>Daily</td><td>Freeze feature work on the channel until burn recovers</td></tr>
+      <tr><td>Release quality</td><td>Quality score per release; rollbacks; canary aborts</td><td>QE lead per area</td><td>Per release</td><td>Block promotion; add the missing test to the gate</td></tr>
+      <tr><td>Cost</td><td>Cost per million sends; token spend per agentic feature</td><td>Directors + Finance</td><td>Monthly</td><td>Route to smaller models; cache; fix hot paths</td></tr>
+      <tr><td>Developer experience</td><td>Onboarding time; AI assistant adoption; engagement survey</td><td>All managers</td><td>Quarterly</td><td>Remove a process; fix the golden path</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 90 DAYS -->
+<section class="pane" id="days" role="tabpanel">
+  <h2>First 90 days</h2>
+  <p class="intro">Listen first, prove it on one team, then scale on evidence.</p>
+  <div class="tl">
+    <div class="ph"><div class="d">Days 1–30</div><h3>Listen and baseline</h3><ul><li>1:1s with every manager and senior engineer; time with Product and Design</li><li>Customer calls on two channels</li><li>Baseline lead time, change failure rate, SLOs, cost per send</li></ul></div>
+    <div class="ph"><div class="d">Days 31–60</div><h3>Pilot one team</h3><ul><li>One channel team on creator and judge agents plus the quality gate</li><li>Agree the definition of done and the release quality score</li><li>Map seams for the modular platform with architects</li></ul></div>
+    <div class="ph"><div class="d">Days 61–90</div><h3>Prove and share</h3><ul><li>Publish the pilot's before and after</li><li>Second and third teams onboard from the golden path</li><li>Org design and hiring plan for the next year</li></ul></div>
+    <div class="ph"><div class="d">Beyond</div><h3>Scale</h3><ul><li>Every channel team on the same model</li><li>First shared capability moved into the channel core</li><li>Scorecard reviewed monthly with the CTO</li></ul></div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section class="pane" id="why" role="tabpanel">
+  <h2>Why me</h2>
+  <p class="intro">I lead managers of managers and have moved large engineering organizations onto AI-assisted delivery with quality and speed rising together.</p>
+  <div class="why">
+    <div class="card"><b>350+ engineers</b><p>Vice President, Head of AI PDLC &amp; Quality Engineering at S&amp;P Global; Senior Directors as direct reports, $70M+ budget, 17 promotions including 2 to Director.</p></div>
+    <div class="card"><b>6 months</b><p>to stand up an AI developer platform designed to serve ~1,200 engineers; 80% adoption of AI coding assistants; onboarding time down 20%.</p></div>
+    <div class="card"><b>+30% features per PI</b><p>with creator agents drafting, judge agents scoring against rubrics and engineers approving; production defects down 20% in 6 months.</p></div>
+    <div class="card"><b>Doubled release cadence</b><p>in 3 months; regression 9 days to daily; regulated sign-off 3 days to same day; every release validated across AWS cloud-native and on-premises systems.</p></div>
+    <div class="card"><b>Consumer scale</b><p>At Audible (an Amazon company), led consumer-domain QA; regression 5 days to 2 and Sev2s down 30% using machine learning on production incidents; $50M+ revenue from a non-functional CoE.</p></div>
+    <div class="card"><b>Product and engineering</b><p>VP of Product and Engineering at DoubleVerify, with VPs and Directors as direct reports and the mandate expanded to the full PDLC.</p></div>
+  </div>
+  <p class="muted" style="margin-top:16px; font-size:.9rem">Chair of the AI Governance Committee at S&amp;P Global. AI tools used: Claude Code, GitHub Copilot, Devin, CodeRabbit. <a href="https://www.linkedin.com/in/sonia-malik-b059705">LinkedIn</a></p>
+</section>
+
+<footer><span>TANDEM is an independent work sample by Sonia Malik, not affiliated with or endorsed by Braze. Braze product names are used only to describe public capabilities.</span><span>© 2026 Sonia Malik</span></footer>
+</div>
+
+<script>
+const S=[
+ {name:"RCS rich cards", steps:[
+  ["Signal","human","Product manager","Customers ask for carousels in RCS so retail brands can show several products in one message.","<b>Source:</b> customer requests, tagged to the SMS/RCS roadmap"],
+  ["Spec","agent","Creator agent","Drafts the user journey, acceptance criteria and BDD scenarios, including fallback to SMS when a handset cannot render RCS.","<b>Draft:</b> 9 scenarios · 2 edge cases flagged"],
+  ["Judge","agent","Judge agent","Scores the spec against the channel rubric: consent, fallback, rendering limits, observability. Flags a missing rate-limit case.","<b>Rubric:</b> 82/100 · 1 gap"],
+  ["Approve","human","Engineering lead","Accepts the fix for the gap and approves. The edit is logged as an approval delta to tune the agent.","<b>Decision:</b> approved in one review"],
+  ["Build","agent","AI coding assistant","Implements the carousel in the RCS adapter, reusing shared rendering and delivery services; writes unit and contract tests.","<b>Reuse:</b> shared core · adapter-only change"],
+  ["Gate","gate","Release quality score","Contract tests, load test at peak send volume and cost per send all pass; score clears the bar for canary.","<b>Score:</b> 91 · p95 latency within SLO"],
+  ["Rollout","human","Channel team","Rolls out behind a feature flag to 5% of eligible sends, with a volume-drop alert watching the channel.","<b>Canary:</b> 5% → 50% → 100%"],
+  ["Measured","human","Product + Engineering","Engagement on carousel sends compared with single-card sends; incidents and tickets checked.","<b>Result:</b> tracked on the scorecard"]]},
+ {name:"In-app & Banners fallback", steps:[
+  ["Signal","human","Customer success","Brands see empty banner slots when no content is eligible for a user.","<b>Source:</b> support tickets across several customers"],
+  ["Spec","agent","Creator agent","Drafts a fallback rule shared by In-App Messages, Content Cards and Banners, with acceptance criteria per surface.","<b>Draft:</b> one rule, three surfaces"],
+  ["Judge","agent","Judge agent","Checks the spec for prioritization conflicts and accessibility of fallback content.","<b>Rubric:</b> 88/100 · passes"],
+  ["Approve","human","Engineering lead","Approves; asks for the rule to live in the shared core so the next surface gets it free.","<b>Decision:</b> build once, reuse"],
+  ["Build","agent","AI coding assistant","Implements the rule in the shared eligibility service and wires the three adapters.","<b>Reuse:</b> one service, three channels"],
+  ["Gate","gate","Release quality score","SDK contract tests on iOS, Android and Web; visual checks on sample layouts.","<b>Score:</b> 93 · no regressions"],
+  ["Rollout","human","Channel team","Feature-flagged by customer; watched for render errors.","<b>Canary:</b> opt-in customers first"],
+  ["Measured","human","Product + Engineering","Empty-slot rate and click-through tracked; related tickets closed.","<b>Result:</b> tracked on the scorecard"]]},
+ {name:"Email send-volume guard", steps:[
+  ["Signal","human","SRE","An upstream data issue once sent far fewer emails than normal and no one noticed for hours.","<b>Source:</b> post-incident review"],
+  ["Spec","agent","Creator agent","Drafts a guard: compare live send volume to the normal range and alert the owning team within minutes.","<b>Draft:</b> thresholds per campaign size"],
+  ["Judge","agent","Judge agent","Scores for false alarms on low-volume sends and for alert routing to the right on-call.","<b>Rubric:</b> 79/100 · tune thresholds"],
+  ["Approve","human","Engineering lead","Adjusts thresholds with SRE and approves; the change is captured as an approval delta.","<b>Decision:</b> approved with edits"],
+  ["Build","agent","AI coding assistant","Adds the check to the shared observability service, so every channel can use it.","<b>Reuse:</b> email first, every channel next"],
+  ["Gate","gate","Release quality score","Replay of last quarter's send data shows the incident would have been caught; no noisy alerts.","<b>Score:</b> 90 · replay passed"],
+  ["Rollout","human","Channel team","Shadow mode for two weeks, then paging on.","<b>Canary:</b> shadow → page"],
+  ["Measured","human","SRE + Engineering","Time to detect send-volume drops and MTTR tracked monthly.","<b>Result:</b> tracked on the scorecard"]]},
+ {name:"WhatsApp agent reply", steps:[
+  ["Signal","human","Product manager","Brands want conversational agents to answer inbound WhatsApp messages in their own voice.","<b>Source:</b> agentic roadmap"],
+  ["Spec","agent","Creator agent","Drafts the reply flow: intent, brand guidelines, knowledge sources, handoff to a person, and opt-out handling.","<b>Draft:</b> 12 scenarios incl. handoff"],
+  ["Judge","agent","Judge agent","Runs adversarial prompts (off-brand, unsafe, data leak) against the flow and scores the guardrails.","<b>Rubric:</b> 85/100 · 2 prompts to block"],
+  ["Approve","human","Engineering + Trust","Approves after both prompts are blocked; guardrails go into the shared core for every conversational channel.","<b>Decision:</b> approved with guardrails"],
+  ["Build","agent","AI coding assistant","Wires the WhatsApp adapter to the shared agent guardrail and delivery services.","<b>Reuse:</b> SMS, RCS and web next"],
+  ["Gate","gate","Release quality score","Red-team suite, latency under load and token cost per conversation all inside limits.","<b>Score:</b> 89 · cost per reply in budget"],
+  ["Rollout","human","Channel team","Beta customers only, with conversation sampling reviewed weekly.","<b>Canary:</b> beta → general availability"],
+  ["Measured","human","Product + Engineering","Resolution rate, handoffs and complaints tracked against goals.","<b>Result:</b> tracked on the scorecard"]]}
+];
+const BADGE={agent:"Agent",human:"Human",gate:"Gate"};
+const feed=document.getElementById('feed'), rail=document.getElementById('rail'), now=document.getElementById('now');
+let cur=0, i=0, timer=null;
+function renderRail(){rail.innerHTML=S[cur].steps.map((s,k)=>`<i class="${k<i?'on':k===i?'cur':''}"></i>`).join('')}
+function add(){
+  const s=S[cur].steps[i]; const t=String(9+Math.floor(i*1.4)).padStart(2,'0')+':'+(i%2?'30':'00');
+  const d=document.createElement('div'); d.className='ev '+s[1];
+  d.innerHTML=`<div class="t">${t}</div><div class="b"><div class="who"><span class="st">${s[0]}</span><span class="badge ${s[1]}">${BADGE[s[1]]}</span><span style="font-size:.78rem;font-weight:600">${s[2]}</span></div><p>${s[3]}</p><div class="evd">${s[4]}</div></div>`;
+  feed.appendChild(d); feed.scrollTop=feed.scrollHeight; now.textContent=s[0]+' · '+s[2]; renderRail();
+}
+function play(n){
+  clearInterval(timer); cur=n; i=0; feed.innerHTML='';
+  document.querySelectorAll('.chips .chip').forEach(c=>c.setAttribute('aria-pressed', String(+c.dataset.s===n)));
+  add();
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ while(i<S[cur].steps.length-1){i++; add();} return; }
+  timer=setInterval(()=>{ i++; if(i>=S[cur].steps.length){clearInterval(timer); i=S[cur].steps.length; renderRail(); now.textContent='Done · measured'; return;} add(); },1700);
+}
+document.querySelectorAll('.chips .chip').forEach(c=>c.addEventListener('click',()=>play(+c.dataset.s)));
+document.getElementById('replay').addEventListener('click',()=>play(cur));
+play(0);
+
+// steps tab
+const WHO={agent:"Agent drafts or checks",human:"Engineer or team decides",gate:"Automated gate"};
+document.getElementById('steps').innerHTML=S[0].steps.map((s,k)=>`<div class="step"><div class="n">${k+1}</div><div><h3>${s[0]}: ${s[2]}</h3><p>${s[3]}</p><div class="who2"><span class="badge ${s[1]}">${WHO[s[1]]}</span></div></div></div>`).join('');
+
+// tabs
+function show(t){
+  document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected', String(b.dataset.t===t)));
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on', p.id===t));
+}
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>show(b.dataset.t)));
+document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault(); show(a.dataset.go); document.getElementById('tabs').scrollIntoView({behavior:'smooth'});}));
+
+// model I
+const MT=[
+ ["Email","Highest volume, so the reliability and cost gates matter most: send-volume guards, deliverability checks and cost per million sends on every release."],
+ ["Push","SDK changes ship to customers' apps, so contract tests across iOS, Android and Web run in the gate before any rollout."],
+ ["SMS · RCS · WhatsApp · LINE","Conversational channels: agent guardrails and red-team tests live in the shared core so every messaging channel inherits them."],
+ ["In-app · Content Cards · Banners","On-device surfaces share eligibility, prioritization and fallback rules, built once in the core."],
+ ["Landing Pages","Accessibility and rendering checks are rubric items, scored by judge agents before an engineer approves."],
+ ["Feature Flags","The division ships its own changes behind flags: progressive rollout is the default path to production."],
+ ["Webhooks","Customer integrations: contract tests and retry behavior are part of the definition of done."],
+ ["Shared channel core","A platform team owns the shared services and golden paths, measured by how many channel teams adopt them, not by mandate."]
+];
+const mtip=document.getElementById('mtip');
+function mi(n){document.querySelectorAll('.stem button').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.m===n))); mtip.innerHTML=`<span class="label">${MT[n][0]}</span><p style="margin-top:6px">${MT[n][1]}</p>`;}
+document.querySelectorAll('.stem button').forEach(b=>b.addEventListener('click',()=>mi(+b.dataset.m)));
+mi(0);
+</script>
+</body>
+</html>
