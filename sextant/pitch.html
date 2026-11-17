@@ -206,6 +206,48 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 .dg p{font-size:1rem}.sc2{font-family:var(--f-display);font-size:1.4rem!important;color:var(--ok)}
 .loop{margin-top:12px;font-weight:700;color:var(--gold)}
 
+
+/* Full-height slides */
+.slide.on{display:flex;flex-direction:column;min-height:calc(100vh - 150px)}
+.grow{flex:1 1 auto}
+.vp{align-items:stretch}.vp .mi-fig{display:flex;align-items:center}
+.scen1{display:flex;flex-direction:column;justify-content:center}
+.jw{align-items:stretch}.layers{grid-auto-rows:1fr;height:100%}.lc{height:100%}.lh{height:100%}
+.three{align-items:stretch}.aud{display:flex;flex-direction:column;justify-content:center}
+.sec .sstep{display:flex;flex-direction:column;justify-content:center}
+.pipe{align-items:stretch}.gate{display:flex;flex-direction:column;justify-content:center}
+.dcard{min-height:120px}.dcard.main{min-height:140px}
+/* Phase board */
+.ph{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr;gap:6px;align-items:stretch;margin-top:14px}
+@media (max-width:900px){.ph{grid-template-columns:1fr}.arr{transform:rotate(90deg)}}
+.arr{display:grid;place-items:center;font-size:1.6rem;color:var(--faint)}
+.phc{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.phh{display:flex;gap:10px;align-items:center}
+.phh i{font-style:normal;width:34px;height:34px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-weight:700;flex:none}
+.phh b{display:block;font-family:var(--f-display);font-weight:600;font-size:1.25rem;line-height:1.1}
+.phh span{font-size:.8rem;color:var(--faint)}
+.pcards{display:flex;flex-direction:column;gap:8px;flex:1}
+.pk{background:var(--sunk);border-radius:9px;padding:10px 12px;flex:1;display:flex;flex-direction:column;justify-content:center}
+.pk small{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.pk p{font-size:.95rem;line-height:1.35}.pk em{font-style:normal;color:var(--ok);font-weight:600}
+.pk.opp{background:var(--warn-bg)}.pk.opp small{color:var(--warn)}
+.bddk pre{margin:4px 0 0;background:#0F1720;color:#D7DEE7;border-radius:7px;padding:8px 10px;font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.76rem;line-height:1.5;white-space:pre-wrap}
+.bddk pre span{color:#F0B75E;font-weight:600}
+.who2{display:flex;gap:5px;flex-wrap:wrap}.who2 span{font-size:.74rem;font-weight:700;background:var(--gold-soft);color:var(--warn);border-radius:999px;padding:3px 9px}
+.pr{display:flex;flex-direction:column;gap:5px}
+.pr span{font-size:.78rem;border-radius:7px;padding:5px 9px}
+.pr .ag{background:var(--violet-soft);color:var(--violet)}.pr .hu{background:var(--ok-bg);color:var(--ok);font-weight:600}
+.loopbar{margin-top:10px;text-align:center;font-weight:700;color:var(--warn);background:var(--gold-soft);border-radius:10px;padding:10px}
+
+.evp{margin-top:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.evh b{font-family:var(--f-display);font-size:1.2rem;font-weight:600;margin-right:8px}.evh span{font-size:.84rem;color:var(--faint)}
+.evg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;flex:1}
+@media (max-width:760px){.evg{grid-template-columns:1fr 1fr}}
+.evg div{background:var(--ok-bg);border-radius:10px;padding:12px;display:flex;flex-direction:column;justify-content:center}
+.evg i{font-style:normal;color:var(--ok);font-weight:700}.evg b{font-family:var(--f-display);font-size:1.5rem;color:var(--ok);line-height:1.1}.evg span{font-size:.86rem;color:var(--muted)}
+.al{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px;text-align:left}.al li{background:var(--sunk);border-radius:8px;padding:10px 12px;font-size:.95rem}.al li::before{content:"\2713  ";color:var(--ok);font-weight:700}
+.evg div{padding:10px 12px}
+.sl{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}.sl li{background:rgba(255,255,255,.14);border-radius:8px;padding:9px 10px;font-size:.92rem}
 /* Fill first view on short sections */
 @media (min-width:761px) and (min-height:700px){
  .jstep{padding:18px 14px}.jstep b{font-size:1.05rem}
@@ -232,7 +274,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="kick">Value proposition</div>
   <h2>Model I: customer outcomes in, proven releases out</h2>
   <p class="sub">Customer journeys on top, engineering excellence underneath, evidence in between. Click any part.</p>
-  <div class="vp">
+  <div class="vp grow">
     <figure class="mi-fig"><svg viewBox="0 0 784 480" role="img" aria-label="Model I: customer centricity on top (advisor journey in three layers, then MVP, features and BDD), product teams in the stem, engineering excellence below (design, code, test), an evidence gate to production, KPIs and approval reasons feeding back, and a happy-engineers foundation.">
 <defs><marker id="mia" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0A3D91"/></marker><marker id="mig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#B8860B"/></marker></defs>
 <path d="M10,10 H440 V122 H290 V258 H440 V350 H10 V258 H160 V122 H10 Z" fill="#000" opacity=".06" transform="translate(4,4)"/>
@@ -325,7 +367,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
     <div class="pc"><h3>Institutions</h3><p>A customizable wealth management program</p></div>
     <div class="pc"><h3>Individual investors</h3><p>Personalized guidance from an LPL advisor</p></div>
   </div>
-  <div class="card scen1">
+  <div class="card scen1 grow">
     <p class="big">A 12-advisor practice moves 400 client households to LPL.</p>
     <div class="targets">
       <div><b>30</b><span>days to move every account</span></div>
@@ -341,7 +383,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="kick">Customer journey &middot; three layers</div>
   <h2>Customer, business process and systems, aligned step by step</h2>
   <p class="sub">Click a step to see its goal, intent, KPI and opportunity.</p>
-  <div class="jw">
+  <div class="jw grow">
     <div class="layers" id="layers"></div>
     <aside class="jside" id="jside" aria-live="polite"></aside>
   </div>
@@ -349,11 +391,46 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 
 <!-- 4 AI PDLC -->
 <section class="slide" data-name="AI PDLC">
-  <div class="kick">AI-native PDLC &middot; from journey to release</div>
-  <h2>One opportunity becomes an MVP, features and BDD, then design, code and test</h2>
-  <p class="sub">Click each stage. Agents draft, people approve, and the BDD file is the shared asset.</p>
-  <div class="flow" id="flow"></div>
-  <div class="art" id="art"></div>
+  <div class="kick">AI-native PDLC &middot; driven by the customer</div>
+  <h2>Customer journeys first. Shared assets next. Then build and prove.</h2>
+  <div class="ph grow">
+    <div class="phc" style="--c:var(--teal)">
+      <div class="phh"><i>1</i><div><b>Customer journeys</b><span>Understand the advisor</span></div></div>
+      <div class="pcards">
+        <div class="pk"><small>Customer journey</small><p>Advisor: <b>Move accounts</b></p></div>
+        <div class="pk"><small>Business process</small><p>Transfer and custody</p></div>
+        <div class="pk"><small>System journey</small><p>Transfer and clearing APIs</p></div>
+        <div class="pk opp"><small>Opportunity &middot; KPI</small><p>Catch NIGO errors before submit &middot; <b>NIGO rate</b></p></div>
+      </div>
+      <div class="pr"><span class="ag">Agent mines incidents, calls, NIGO data</span><span class="hu">Product owner picks the opportunity</span></div>
+    </div>
+    <div class="arr" aria-hidden="true">&rarr;</div>
+    <div class="phc" style="--c:var(--gold)">
+      <div class="phh"><i>2</i><div><b>Common assets</b><span>One source for everyone</span></div></div>
+      <div class="pcards">
+        <div class="pk"><small>MVP</small><p>Pre-submit NIGO check &middot; halve rework</p></div>
+        <div class="pk"><small>Features</small><p>Completeness check &middot; account-type match &middot; one-click fix &middot; ops board</p></div>
+        <div class="pk bddk"><small>BDD file</small><pre><span>Given</span> a transfer is prepared
+<span>And</span> a signature is missing
+<span>When</span> the advisor submits
+<span>Then</span> it pauses with a fix</pre></div>
+        <div class="who2"><span>Product</span><span>Dev</span><span>QE</span><span>Compliance</span></div>
+      </div>
+      <div class="pr"><span class="ag">Creator agent drafts, judge agent scores</span><span class="hu">Product, QE, Compliance sign off</span></div>
+    </div>
+    <div class="arr" aria-hidden="true">&rarr;</div>
+    <div class="phc" style="--c:var(--accent)">
+      <div class="phh"><i>3</i><div><b>Build and prove</b><span>SDLC, agent-assisted</span></div></div>
+      <div class="pcards">
+        <div class="pk"><small>Design</small><p>API, experience, guardrails &middot; <em>architect approves</em></p></div>
+        <div class="pk"><small>Code</small><p>Agents draft from BDD &middot; <em>engineer merges</em></p></div>
+        <div class="pk"><small>Test</small><p>BDD runs as tests, negative cases added &middot; <em>score 86</em></p></div>
+        <div class="pk"><small>Release</small><p>Gates pass &middot; <em>human approves from evidence</em></p></div>
+      </div>
+      <div class="pr"><span class="ag">Design, coding, review and test agents</span><span class="hu">Engineers decide</span></div>
+    </div>
+  </div>
+  <div class="loopbar">&#8634; Outcomes (NIGO rate, CSAT, NPS, incidents) flow back to step 1 and re-rank the journeys</div>
 </section>
 
 <!-- 4 AUDIT -->
@@ -361,13 +438,12 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="kick">Audit &middot; Corporate &middot; Legal &middot; Compliance</div>
   <h2>Evidence is a by-product, not a project</h2>
   <p class="sub">Each partner gets what they need from the pipeline, automatically.</p>
-  <div class="three">
-    <div class="aud"><div class="ico" style="background:var(--accent-soft);color:var(--accent)">&#9638;</div><h3>Corporate audit</h3><p>Release evidence pack, generated per release</p></div>
-    <div class="aud"><div class="ico" style="background:var(--violet-soft);color:var(--violet)">&sect;</div><h3>Legal</h3><p>Every AI step traceable: model, data, reviewer</p></div>
-    <div class="aud"><div class="ico" style="background:var(--ok-bg);color:var(--ok)">&#10003;</div><h3>Compliance</h3><p>Policy checks before promotion, approvals logged</p></div>
+  <div class="three grow">
+    <div class="aud"><div class="ico" style="background:var(--accent-soft);color:var(--accent)">&#9638;</div><h3>Corporate audit</h3><p>Release evidence pack, generated per release</p><ul class="al"><li>Control test results</li><li>SOX-ready audit trail</li><li>Exam evidence on request</li></ul></div>
+    <div class="aud"><div class="ico" style="background:var(--violet-soft);color:var(--violet)">&sect;</div><h3>Legal</h3><p>Every AI step traceable: model, data, reviewer</p><ul class="al"><li>Model and data used</li><li>Who approved, and why</li><li>Client disclosure checks</li></ul></div>
+    <div class="aud"><div class="ico" style="background:var(--ok-bg);color:var(--ok)">&#10003;</div><h3>Compliance</h3><p>Policy checks before promotion, approvals logged</p><ul class="al"><li>Policy-as-code results</li><li>Approvals and overrides logged</li><li>Privacy and data-boundary checks</li></ul></div>
   </div>
-  <div class="evi"><span>decision log</span><span>data lineage</span><span>approval reason</span><span>test evidence</span><span>override tracking</span></div>
-  <div class="proof"><b>Proof</b> Provided control and test evidence for SEC examinations and SOX audits at S&amp;P Global.</div>
+    <div class="proof"><b>Proof</b> Provided control and test evidence for SEC examinations and SOX audits at S&amp;P Global.</div>
 </section>
 
 <!-- 5 SECURITY -->
@@ -375,11 +451,11 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="kick">Security</div>
   <h2>Four layers, built into the path</h2>
   <p class="sub">Shift-left without trusting one scan.</p>
-  <div class="sec">
-    <div class="sstep" style="background:#1F3A5F"><em>Every commit</em><b>1 &middot; SAST</b><span>code scanned, AI output included</span></div>
-    <div class="sstep" style="background:#2B4C7E"><em>Every build</em><b>2 &middot; DAST</b><span>with negative runtime tests</span></div>
-    <div class="sstep" style="background:#5B3E9E"><em>Major release</em><b>3 &middot; Pen test</b><span>by impact, not by calendar</span></div>
-    <div class="sstep" style="background:#7A2E5C"><em>Ongoing</em><b>4 &middot; Ethical hacking</b><span>security champions</span></div>
+  <div class="sec grow">
+    <div class="sstep" style="background:#1F3A5F"><em>Every commit</em><b>1 &middot; SAST</b><span>code scanned, AI output included</span><ul class="sl"><li>Secrets and licenses</li><li>Insecure patterns</li><li>Blocks the merge</li></ul></div>
+    <div class="sstep" style="background:#2B4C7E"><em>Every build</em><b>2 &middot; DAST</b><span>with negative runtime tests</span><ul class="sl"><li>Bad and hostile inputs</li><li>Errors leak nothing</li><li>Runs on every build</li></ul></div>
+    <div class="sstep" style="background:#5B3E9E"><em>Major release</em><b>3 &middot; Pen test</b><span>by impact, not by calendar</span><ul class="sl"><li>Network and APIs</li><li>Retest on major change</li><li>CISO re-certifies</li></ul></div>
+    <div class="sstep" style="background:#7A2E5C"><em>Ongoing</em><b>4 &middot; Ethical hacking</b><span>security champions</span><ul class="sl"><li>Internal change agents</li><li>Attack the AI agents too</li><li>Findings feed the rubric</li></ul></div>
   </div>
   <div class="proof"><b>Proof</b> Negative tests caught a server-path leak a SAST-only approval missed. Release held 2 days, shipped clean. Adopted by 100+ scrum teams.</div>
 </section>
@@ -391,6 +467,15 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <p class="sub">Each tier has a quality score. Approvers see evidence and decide in minutes.</p>
   <div class="pipe" id="pipe"></div>
   <div class="run"><button class="btn" id="go" type="button">&#9654; Run a release</button><span class="log" id="log">Threshold 80 at every tier.</span></div>
+  <div class="evp grow"><div class="evh"><b>Evidence pack</b><span>what the approver sees before saying yes (sample)</span></div>
+    <div class="evg">
+      <div><i>&#10003;</i><b>42 / 42</b><span>BDD scenarios pass</span></div>
+      <div><i>&#10003;</i><b>18</b><span>negative tests added by judge agent</span></div>
+      <div><i>&#10003;</i><b>0 high</b><span>SAST and DAST findings</span></div>
+      <div><i>&#10003;</i><b>p95 in SLA</b><span>load and resiliency</span></div>
+      <div><i>&#10003;</i><b>Pass</b><span>compliance and privacy policy checks</span></div>
+      <div><i>&#10003;</i><b>6 min</b><span>release owner approval</span></div>
+    </div></div>
   <div class="proof"><b>Proof</b> 0 autonomous production deploys. Regression 9 &rarr; 4 days.</div>
 </section>
 
@@ -399,7 +484,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="kick">Framework</div>
   <h2>Agents propose. Engineers decide.</h2>
   <p class="sub">A loop that gets faster with every approval.</p>
-  <div class="fw">
+  <div class="fw grow">
     <svg viewBox="0 0 420 330" role="img" aria-label="Creator agent, judge agent, engineer decides, feedback tunes rubric, in a loop">
       <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7A8089"/></marker></defs>
       <path d="M150 70 Q210 30 270 70" stroke="#7A8089" stroke-width="2" fill="none" marker-end="url(#ar)"/>
@@ -498,42 +583,6 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
     if(i===2){ var b=document.createElement('button'); b.type='button'; b.className='btn'; b.textContent='Turn this into an MVP →'; b.onclick=function(){go(S.findIndex(function(s){return s.dataset.name==='AI PDLC'}))}; jside.appendChild(b); }
   }
   jpick(2);
-
-  // AI PDLC flow
-  var F=[
-    ['MVP','Pre-submit NIGO check',
-      '<p class="hyp"><b>Hypothesis</b> Catching form errors before submission halves NIGO rework.</p><div class="kpis"><span>KPI: NIGO rate</span><span>KPI: days to transfer</span></div>',
-      'Creator agent drafts the MVP from the journey','Product owner approves'],
-    ['Features','Four features, prioritized',
-      '<ol class="fl"><li><b>F1</b> Form completeness check</li><li><b>F2</b> Account type matched to LPL registration</li><li><b>F3</b> Advisor alert with a one-click fix</li><li><b>F4</b> Transition ops status board</li></ol>',
-      'Creator agent splits features, judge agent scores them','Product and engineering leads approve'],
-    ['BDD','The shared asset',
-      '<pre class="bdd"><span class="k">Feature:</span> Pre-submit NIGO check\n  <span class="k">Scenario:</span> Beneficiary signature missing\n    <span class="k">Given</span> an advisor prepares a transfer for a household\n    <span class="k">And</span> the beneficiary signature is missing\n    <span class="k">When</span> the advisor submits the transfer\n    <span class="k">Then</span> the submission is paused\n    <span class="k">And</span> the advisor sees the fix in one click\n    <span class="k">And</span> the event is logged for Compliance</pre><div class="who"><span>Product: acceptance criteria</span><span>Dev: the spec</span><span>QE: the tests</span><span>Compliance: the evidence</span></div>',
-      'Creator agent writes scenarios, judge agent checks coverage','Product, QE and Compliance sign off'],
-    ['Design','Contract, experience, guardrails',
-      '<div class="dg"><div><small>API</small><p>Pre-check endpoint on the transfer service</p></div><div><small>Experience</small><p>Inline alert, fix link, no dead ends</p></div><div><small>Guardrails</small><p>Client data stays in boundary, reasons explained</p></div></div>',
-      'Design agent proposes options','Architect and designer approve'],
-    ['Code','Built from the BDD',
-      '<div class="dg"><div><small>Draft</small><p>Coding agent drafts handler and unit tests</p></div><div><small>Review</small><p>Code-review agent and SAST run on every commit</p></div><div><small>Decide</small><p>Engineer edits and merges</p></div></div>',
-      'Coding and review agents','Engineer decides'],
-    ['Test','BDD runs as automated tests',
-      '<div class="dg"><div><small>Functional</small><p>Every Given/When/Then is an automated test</p></div><div><small>Negative</small><p>Missing fields, wrong account types, bad data</p></div><div><small>Score</small><p class="sc2">86 / 100 &middot; passes the gate</p></div></div>',
-      'Judge agent flags missing tests','QE lead approves'],
-    ['Release','Evidence decides, KPI proves',
-      '<div class="dg"><div><small>Gates</small><p>Dev to prod, each tier scored</p></div><div><small>Approve</small><p>Human approves from the evidence pack</p></div><div><small>Learn</small><p>NIGO rate weekly, back to the journey</p></div></div>',
-      'Release agent assembles the evidence pack','Release owner approves in minutes']
-  ];
-  var flow=document.getElementById('flow'), art=document.getElementById('art');
-  var j0=document.createElement('button'); j0.type='button'; j0.className='fs src'; j0.innerHTML='<i>&#9679;</i><b>Journey</b>'; j0.onclick=function(){go(S.findIndex(function(s){return s.dataset.name==='Journey'}))}; flow.appendChild(j0);
-  F.forEach(function(f,i){ var b=document.createElement('button'); b.type='button'; b.className='fs'; b.innerHTML='<i>'+(i+1)+'</i><b></b>'; b.querySelector('b').textContent=f[0]; b.onclick=function(){fpick(i)}; flow.appendChild(b); });
-  function fpick(i){ [].forEach.call(flow.querySelectorAll('.fs:not(.src)'),function(b,k){b.classList.toggle('on',k===i);b.classList.toggle('done',k<i)});
-    var f=F[i]; art.innerHTML='<div class="ah"><div><small></small><h3></h3></div><div class="roles"><span class="ag"></span><span class="hu"></span></div></div><div class="ab"></div>';
-    art.querySelector('small').textContent=f[0]+(f[0]==='BDD'?' · common asset':''); art.querySelector('h3').textContent=f[1];
-    art.querySelector('.ag').textContent='Agent: '+f[3]; art.querySelector('.hu').textContent='Human: '+f[4];
-    art.querySelector('.ab').innerHTML=f[2];
-    if(i===F.length-1){ var l=document.createElement('p'); l.className='loop'; l.textContent='↺ KPI results feed the next journey step'; art.appendChild(l); }
-  }
-  fpick(2);
 
   // Gates
   var G=[['Dev','unit + SAST'],['SI','contracts'],['QA','DAST + regression'],['UAT','business sign-off'],['Pre-prod','load + resiliency'],['Prod','human approves']];
