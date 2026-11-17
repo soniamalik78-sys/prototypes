@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>SEXTANT Model I Pitch</title>
+<meta name="description" content="Model I: one operating model for an AI-native PDLC at LPL. Customer outcomes in, proven releases out. By Sonia Malik.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F5F7; --surface:#FFFFFF; --sunk:#E8EAEE; --fg:#1C1F24; --muted:#555B63; --faint:#7A8089;
+  --line:#D9DCE1; --accent:#0A3D91; --accent-soft:#E3EAF6; --teal:#0F5259; --violet:#5B3E9E; --violet-soft:#F1ECF9;
+  --ok:#2E7D4F; --ok-bg:#E3F2E8; --warn:#8F5E00; --warn-bg:#FBF0D9; --gold:#B8860B; --gold-soft:#FCF3DF;
+  --f-display:"Fraunces", Georgia, serif; --f-body:"Public Sans","Segoe UI",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#111418; --surface:#181C21; --sunk:#20252B; --fg:#E6E8EB; --muted:#A8AEB6; --faint:#7F8690; --line:#2C3239;
+  --accent:#8FB0E6; --accent-soft:#16243A; --teal:#5FB3BA; --violet:#B9A2EA; --violet-soft:#241D33;
+  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --gold:#E5B24E; --gold-soft:#2E2614; color-scheme:dark; } }
+:root[data-theme="dark"]{
+  --bg:#111418; --surface:#181C21; --sunk:#20252B; --fg:#E6E8EB; --muted:#A8AEB6; --faint:#7F8690; --line:#2C3239;
+  --accent:#8FB0E6; --accent-soft:#16243A; --teal:#5FB3BA; --violet:#B9A2EA; --violet-soft:#241D33;
+  --ok:#6CCB8F; --ok-bg:#183326; --warn:#E5B24E; --warn-bg:#352A12; --gold:#E5B24E; --gold-soft:#2E2614; color-scheme:dark; }
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;margin:0;text-wrap:balance}
+p{margin:0}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.top{position:sticky;top:0;z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.top .in{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.brand{font-weight:700;letter-spacing:.06em;font-size:.8rem;color:var(--accent);white-space:nowrap}
+.brand small{color:var(--faint);font-weight:500;letter-spacing:0;margin-left:6px}
+nav{display:flex;gap:6px;flex-wrap:wrap;flex:1;justify-content:flex-end}
+nav button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:5px 11px;font-size:.8rem;font-weight:600}
+nav button[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) nav button[aria-current="true"]{color:#0b1220} }
+main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
+.slide{display:none;animation:fade .25s ease}
+.slide.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.slide{animation:none}}
+.kick{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+.slide h2{font-size:clamp(1.5rem,3.2vw,2.2rem);line-height:1.15;margin-bottom:6px}
+.sub{color:var(--muted);font-size:1.02rem;margin-bottom:18px;max-width:70ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.proof{display:inline-flex;gap:8px;align-items:center;margin-top:14px;font-size:.88rem;color:var(--muted);background:var(--ok-bg);border-radius:8px;padding:8px 12px}
+.proof b{color:var(--ok)}
+/* Value */
+.vp{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);gap:16px;align-items:stretch}
+@media (max-width:880px){.vp{grid-template-columns:1fr}}
+.mi-fig{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;overflow-x:auto}
+.mi-fig svg{display:block;width:100%;min-width:560px;height:auto}
+.mi-fig text{font-family:"Public Sans","Segoe UI",Arial,sans-serif}
+.mi-fig .hit{cursor:pointer}.mi-fig .hit:hover rect.k,.mi-fig .hit.on rect.k{stroke:#C98A1A;stroke-width:3}
+.stats{display:grid;gap:10px;align-content:start}
+.stat{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:12px 14px}
+.stat b{display:block;font-family:var(--f-display);font-size:1.7rem;line-height:1.1;color:var(--accent)}
+.stat span{font-size:.86rem;color:var(--muted)}
+.tip{min-height:64px;font-size:.9rem;color:var(--muted);background:var(--accent-soft);border-radius:10px;padding:10px 12px}
+.tip b{display:block;color:var(--fg);font-size:.92rem}
+/* Scenario */
+.scen{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+@media (max-width:820px){.scen{grid-template-columns:1fr}}
+.big{font-family:var(--f-display);font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.25}
+.targets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.targets div{background:var(--sunk);border-radius:10px;padding:12px;text-align:center}
+.targets b{display:block;font-family:var(--f-display);font-size:1.6rem;color:var(--teal)}
+.targets span{font-size:.8rem;color:var(--muted)}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.person{display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px}
+.av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;flex:none}
+.person .av{color:#fff;font-size:.95rem}.person b{display:block;font-size:.92rem}.person span{font-size:.8rem;color:var(--muted)}
+/* Journey */
+.jrow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;position:relative}
+@media (max-width:760px){.jrow{grid-template-columns:1fr 1fr}}
+.jstep{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 10px;text-align:left;color:var(--fg)}
+.jstep i{font-style:normal;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--sunk);font-size:.78rem;font-weight:700;margin-bottom:6px}
+.jstep b{display:block;font-size:.92rem}
+.jstep span{font-size:.76rem;color:var(--faint)}
+.jstep[aria-pressed="true"]{border-color:var(--teal);background:var(--teal);color:#fff}
+.jstep[aria-pressed="true"] i{background:#fff;color:var(--teal)}.jstep[aria-pressed="true"] span{color:#D6EDEF}
+.down{text-align:center;color:var(--teal);font-size:1.4rem;line-height:1;margin:8px 0}
+.eng{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:760px){.eng{grid-template-columns:1fr 1fr}}
+.eng div{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:10px;padding:12px;min-height:96px}
+.eng small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c);margin-bottom:4px}
+.eng p{font-size:.92rem}
+/* Audit */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:760px){.three{grid-template-columns:1fr}}
+.aud{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+.ico{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;margin:0 auto 10px;font-size:1.5rem}
+.aud h3{font-size:1.15rem;margin-bottom:4px}
+.aud p{font-size:.9rem;color:var(--muted)}
+.evi{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.evi span{font-size:.8rem;border:1px dashed var(--violet);color:var(--violet);border-radius:999px;padding:4px 10px;background:var(--violet-soft)}
+/* Security */
+.sec{display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:stretch}
+@media (max-width:760px){.sec{grid-template-columns:1fr 1fr;gap:8px}}
+.sstep{position:relative;padding:16px 14px 16px 22px;color:#fff;min-height:132px;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%,14px 50%)}
+.sstep:first-child{clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%)}
+@media (max-width:760px){.sstep,.sstep:first-child{clip-path:none;border-radius:10px}}
+.sstep em{font-style:normal;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.sstep b{display:block;font-size:1.05rem;margin:4px 0}
+.sstep span{font-size:.82rem;opacity:.92}
+/* Gates */
+.pipe{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+@media (max-width:760px){.pipe{grid-template-columns:repeat(3,1fr)}}
+.gate{background:var(--surface);border:2px solid var(--line);border-radius:10px;padding:10px 8px;text-align:center;transition:all .3s}
+.gate b{display:block;font-size:.88rem}
+.gate .sc{font-family:var(--f-display);font-size:1.5rem;color:var(--faint)}
+.gate small{display:block;font-size:.72rem;color:var(--faint);min-height:2.2em}
+.gate.pass{border-color:var(--ok);background:var(--ok-bg)}.gate.pass .sc{color:var(--ok)}
+.gate.block{border-color:var(--warn);background:var(--warn-bg)}.gate.block .sc{color:var(--warn)}
+.gate.live{box-shadow:0 0 0 4px var(--accent-soft)}
+.run{margin-top:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn{background:var(--accent);color:#fff;border:0;border-radius:10px;padding:10px 16px;font-weight:700;font-size:.95rem}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .btn{color:#0b1220} }
+.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.log{font-size:.9rem;color:var(--muted)}
+/* Framework */
+.fw{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;align-items:center}
+@media (max-width:820px){.fw{grid-template-columns:1fr}}
+.fw svg{width:100%;height:auto;max-width:520px;display:block;margin:auto}
+.fw svg text{font-family:var(--f-body)}
+.fwl{display:grid;gap:8px}
+.fwl div{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.fwl i{font-style:normal;flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:.8rem}
+.fwl p{font-size:.9rem}
+/* Demo */
+.demo{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:760px){.demo{grid-template-columns:1fr}}
+.dcard{display:block;text-decoration:none;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;transition:transform .15s,border-color .15s}
+.dcard:hover{transform:translateY(-2px);border-color:var(--accent)}
+.dcard.main{grid-column:span 3;background:var(--accent);color:#fff;border-color:var(--accent);display:flex;justify-content:space-between;align-items:center;gap:12px}
+@media (max-width:760px){.dcard.main{grid-column:auto}}
+.dcard.main b{font-family:var(--f-display);font-size:1.4rem;font-weight:500}
+.dcard b{display:block;font-size:1.02rem;margin-bottom:4px}
+.dcard span{font-size:.86rem;color:var(--muted)}
+.dcard.main span{color:#D9E4F6}
+.close{margin-top:22px;text-align:center;font-family:var(--f-display);font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.35;max-width:46ch;margin-inline:auto}
+.foot{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);z-index:5}
+.foot .in{max-width:1120px;margin:0 auto;padding:8px 16px;display:flex;align-items:center;gap:10px}
+.foot .who{font-size:.82rem;color:var(--faint);flex:1}
+.foot button{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:6px 14px;font-weight:600}
+.dots{display:flex;gap:5px}.dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--accent)}
+.note{font-size:.76rem;color:var(--faint);margin-top:10px}
+
+/* Fill first view on short sections */
+@media (min-width:761px) and (min-height:700px){
+ .jstep{padding:18px 14px}.jstep b{font-size:1.05rem}
+ .eng div{min-height:190px;padding:18px}.eng p{font-size:1.15rem;line-height:1.4}
+ .down{font-size:2rem;margin:14px 0}
+ .sstep{min-height:250px;padding:28px 22px 28px 34px}.sstep b{font-size:1.4rem;margin:10px 0}.sstep span{font-size:1rem}
+ .gate{padding:26px 10px}.gate b{font-size:1.05rem}.gate .sc{font-size:2.6rem;margin:6px 0}.gate small{font-size:.82rem}
+ .aud{padding:30px 20px}.ico{width:72px;height:72px;font-size:2rem}.aud h3{font-size:1.35rem}.aud p{font-size:1rem}
+ .targets b{font-size:2.2rem}.targets div{padding:18px 12px}.person{padding:18px 14px}
+ .proof{margin-top:22px;font-size:.95rem;padding:10px 14px}
+ .fw svg{max-width:600px}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <div class="brand">SEXTANT · MODEL I <small>for LPL Financial</small></div>
+  <nav id="nav" aria-label="Pitch sections"></nav>
+</div></header>
+
+<main>
+<!-- 1 VALUE -->
+<section class="slide" data-name="Value">
+  <div class="kick">Value proposition</div>
+  <h2>Model I: customer outcomes in, proven releases out</h2>
+  <p class="sub">One operating model where every change starts with a client KPI and ships only with evidence. Click any part.</p>
+  <div class="vp">
+    <figure class="mi-fig"><svg viewBox="0 0 780 480" role="img" aria-label="Model I for the AI-native PDLC: six lifecycle stages on top, product teams in the middle, the PDLC platform below, an evidence gate to production, telemetry back to the roadmap, and a DevX foundation underneath">
+<path d="M10,10 H440 V106 H290 V256 H440 V346 H10 V256 H160 V106 H10 Z" fill="#000" opacity=".06" transform="translate(4,4)"/>
+<g class="hit" tabindex="0" role="button" data-mi="cc" aria-label="AI-native PDLC stages"><rect class="k" x="10" y="10" width="430" height="96" rx="9" fill="#0F5259"/>
+<text x="22" y="31" fill="#fff" font-size="14" font-weight="700">AI-native PDLC</text><text x="428" y="31" fill="#CFE8EA" font-size="10" text-anchor="end">One path, each stage measured</text><g font-size="9.6" text-anchor="middle">
+<rect x="18" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="50" y="58" font-weight="700" fill="#0F5259">1 Discover</text><text x="50" y="70" font-weight="700" fill="#0F5259">with a KPI</text><text x="50" y="89" fill="#555B63" font-size="9">KPI agreed</text>
+<rect x="88" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="120" y="58" font-weight="700" fill="#0F5259">2 Design</text><text x="120" y="70" font-weight="700" fill="#0F5259">and specify</text><text x="120" y="89" fill="#555B63" font-size="9">Spec quality</text>
+<rect x="158" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="190" y="58" font-weight="700" fill="#0F5259">3 Build</text><text x="190" y="70" font-weight="700" fill="#0F5259">with agents</text><text x="190" y="89" fill="#555B63" font-size="9">Agent yield</text>
+<rect x="228" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="260" y="58" font-weight="700" fill="#0F5259">4 Test</text><text x="260" y="70" font-weight="700" fill="#0F5259">and review</text><text x="260" y="89" fill="#555B63" font-size="9">Defect escape</text>
+<rect x="298" y="42" width="64" height="56" rx="4" fill="#FBF0D9"/><text x="330" y="58" font-weight="700" fill="#8F5E00">5 Release</text><text x="330" y="70" font-weight="700" fill="#8F5E00">approved</text><text x="330" y="89" fill="#8F5E00" font-size="9">Same day</text>
+<rect x="368" y="42" width="64" height="56" rx="4" fill="#fff"/><text x="400" y="58" font-weight="700" fill="#0F5259">6 Operate</text><text x="400" y="70" font-weight="700" fill="#0F5259">and improve</text><text x="400" y="89" fill="#555B63" font-size="9">MTTR</text>
+</g></g>
+<g class="hit" tabindex="0" role="button" data-mi="dp" aria-label="Product teams"><rect class="k" x="160" y="106" width="130" height="150" fill="#E3EAF6" stroke="#0A3D91" stroke-width="1"/><text x="225" y="124" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0A3D91">Product teams</text><g font-size="9.6" text-anchor="middle" fill="#1C1F24">
+<rect x="167" y="132" width="116" height="25" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="148.5">Advisor workflows</text>
+<rect x="167" y="162" width="116" height="25" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="178.5">Investor experience</text>
+<rect x="167" y="192" width="116" height="25" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="208.5">Advisory platforms</text>
+<rect x="167" y="222" width="116" height="25" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="238.5">Data, risk and ops</text>
+</g></g>
+<g class="hit" tabindex="0" role="button" data-mi="ee" aria-label="PDLC platform"><rect class="k" x="10" y="256" width="430" height="90" rx="9" fill="#1F3A5F"/><text x="22" y="277" fill="#fff" font-size="14" font-weight="700">PDLC platform</text><text x="428" y="277" fill="#C9D3E0" font-size="10" text-anchor="end">Built once: paths, agents, guardrails</text><g font-size="9.6" text-anchor="middle">
+<rect x="18" y="288" width="96" height="46" rx="4" fill="#fff"/><text x="66" y="306" font-weight="700" fill="#1F3A5F">Golden paths</text><text x="66" y="321" fill="#1F3A5F">and templates</text>
+<rect x="123" y="288" width="96" height="46" rx="4" fill="#ECE6F6"/><text x="171" y="306" font-weight="700" fill="#5B3E9E">Creator and</text><text x="171" y="321" fill="#5B3E9E">judge agents</text>
+<rect x="228" y="288" width="96" height="46" rx="4" fill="#fff"/><text x="276" y="306" font-weight="700" fill="#1F3A5F">Test impact</text><text x="276" y="321" fill="#1F3A5F">analysis</text>
+<rect x="333" y="288" width="96" height="46" rx="4" fill="#fff"/><text x="381" y="306" font-weight="700" fill="#1F3A5F">Tool catalog</text><text x="381" y="321" fill="#1F3A5F">and APIs</text>
+</g></g>
+<path d="M290 181 H452" stroke="#0A3D91" stroke-width="2" fill="none"/><polygon points="452,176 462,181 452,186" fill="#0A3D91"/><text x="372" y="174" text-anchor="middle" font-size="10" font-weight="700" fill="#0A3D91">every change</text>
+<g class="hit" tabindex="0" role="button" data-mi="qg" aria-label="Evidence gate over CI/CD"><rect class="k" x="464" y="122" width="196" height="122" rx="9" fill="#F1ECF9" stroke="#5B3E9E" stroke-width="1.2"/><text x="562" y="142" text-anchor="middle" font-size="11.5" font-weight="700" fill="#5B3E9E">Evidence gate over CI/CD</text><g font-size="9" font-weight="700" fill="#fff" text-anchor="middle">
+<polygon points="472,152 502,152 508,164 502,176 472,176" fill="#8A6CC9"/><text x="490.0" y="167.5">Dev</text>
+<polygon points="504,152 534,152 540,164 534,176 504,176 510,164" fill="#7D5DC0"/><text x="522.0" y="167.5">QA</text>
+<polygon points="536,152 568,152 574,164 568,176 536,176 542,164" fill="#6F4EB5"/><text x="555.0" y="167.5">UAT</text>
+<polygon points="570,152 616,152 622,164 616,176 570,176 576,164" fill="#6343AB"/><text x="596.0" y="167.5">Pre-prod</text>
+<polygon points="618,152 652,152 658,164 652,176 618,176 624,164" fill="#4E3191"/><text x="638.0" y="167.5">Prod</text>
+</g><g font-size="9.6" fill="#1C1F24"><text x="474" y="192">Security, Compliance, Privacy</text><text x="474" y="205">and Model Risk evidence decide.</text><text x="474" y="219"><tspan font-weight="700" fill="#5B3E9E">Prod:</tspan> a human approves from</text><text x="474" y="232">objective metrics, fast and easy.</text></g></g>
+<path d="M660 182 H672" stroke="#0A3D91" stroke-width="2"/><polygon points="670,177 680,182 670,187" fill="#0A3D91"/>
+<g class="hit" tabindex="0" role="button" data-mi="prod" aria-label="In production"><rect class="k" x="682" y="128" width="92" height="108" rx="9" fill="#FDEBD7" stroke="#B45309" stroke-width="1.4"/><text x="728" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#B45309">In production</text><g font-size="9.6" text-anchor="middle" fill="#1C1F24"><text x="728" y="166">Lead time</text><text x="728" y="180">Change failure</text><text x="728" y="192">rate</text><text x="728" y="207">MTTR</text><text x="728" y="222">Adoption</text></g></g>
+<g class="hit" tabindex="0" role="button" data-mi="loop" aria-label="Telemetry feeds back"><rect class="k" x="0" y="0" width="0" height="0" fill="none"/><path d="M728 128 V58 H446" stroke="#B8860B" stroke-width="2" stroke-dasharray="6 4" fill="none"/><polygon points="448,53 438,58 448,63" fill="#B8860B"/><text x="590" y="50" text-anchor="middle" font-size="10" font-weight="700" fill="#8F5E00">Telemetry and surveys set the roadmap</text><path d="M728 236 V300 H446" stroke="#B8860B" stroke-width="2" stroke-dasharray="6 4" fill="none"/><polygon points="448,295 438,300 448,305" fill="#B8860B"/><text x="590" y="318" text-anchor="middle" font-size="10" font-weight="700" fill="#8F5E00">Approval reasons tune agents and rubrics</text></g>
+<g class="hit" tabindex="0" role="button" data-mi="devx" aria-label="DevX foundation"><rect class="k" x="10" y="362" width="764" height="110" rx="9" fill="#FCF3DF" stroke="#B8860B" stroke-width="1.2"/><text x="22" y="382" font-size="13" font-weight="700" fill="#8F5E00">DevX foundation</text><text x="762" y="382" text-anchor="end" font-size="10" fill="#8F5E00">Happy engineers ship better advisor software</text><g font-size="10" font-weight="700" fill="#5A4410" text-anchor="middle">
+<rect x="22" y="393" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="143" y="413">Onboarding and talent</text>
+<rect x="270" y="393" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="391" y="413">Engagement survey</text>
+<rect x="518" y="393" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="639" y="413">AI coding adoption</text>
+<rect x="22" y="431" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="143" y="451">MTTR and CFR in leaders&#8217; goals</text>
+<rect x="270" y="431" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="391" y="451">Developer portal and APIs</text>
+<rect x="518" y="431" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="639" y="451">Hybrid cloud: AWS and on-prem</text>
+</g></g></svg></figure>
+    <div class="stats">
+      <div class="tip" id="tip" aria-live="polite"></div>
+      <div class="stat"><b>2&times;</b><span>release cadence in 3 months</span></div>
+      <div class="stat"><b>&minus;20%</b><span>production defects in 6 months</span></div>
+      <div class="stat"><b>3 days &rarr; same day</b><span>regulated release sign-off</span></div>
+    </div>
+  </div>
+  <p class="note">Ran at S&amp;P Global across two business units and 350+ engineers. Shown here for an illustrative LPL engineering organization.</p>
+</section>
+
+<!-- 2 SCENARIO -->
+<section class="slide" data-name="Scenario">
+  <div class="kick">Product scenario</div>
+  <h2>An advisor team joins LPL</h2>
+  <p class="sub">One real business moment, run through Model I end to end.</p>
+  <div class="scen">
+    <div class="card">
+      <p class="big">A 12-advisor practice moves 400 client households to LPL.</p>
+      <div class="targets">
+        <div><b>30</b><span>days to move every account</span></div>
+        <div><b>0</b><span>NIGO rework</span></div>
+        <div><b>Day 1</b><span>advisor productive</span></div>
+      </div>
+    </div>
+    <div class="people">
+      <div class="person"><span class="av" style="background:#0F5259">A</span><div><b>Advisor</b><span>keep every client</span></div></div>
+      <div class="person"><span class="av" style="background:#0A3D91">C</span><div><b>Client</b><span>no paperwork pain</span></div></div>
+      <div class="person"><span class="av" style="background:#5B3E9E">O</span><div><b>Transition ops</b><span>no rejected forms</span></div></div>
+      <div class="person"><span class="av" style="background:#B8860B">R</span><div><b>Compliance</b><span>evidence on file</span></div></div>
+    </div>
+  </div>
+  <p class="note">Illustrative scenario and targets.</p>
+</section>
+
+<!-- 3 JOURNEY -> ENGINEERING -->
+<section class="slide" data-name="Journey">
+  <div class="kick">Customer journey &rarr; engineering</div>
+  <h2>Every journey step maps to the teams, agents and KPI behind it</h2>
+  <p class="sub">Click a step.</p>
+  <div class="jrow" id="jrow"></div>
+  <div class="down" aria-hidden="true">&darr;</div>
+  <div class="eng" id="eng"></div>
+  <p class="note">Illustrative mapping.</p>
+</section>
+
+<!-- 4 AUDIT -->
+<section class="slide" data-name="Audit">
+  <div class="kick">Audit &middot; Corporate &middot; Legal &middot; Compliance</div>
+  <h2>Evidence is a by-product, not a project</h2>
+  <p class="sub">Each partner gets what they need from the pipeline, automatically.</p>
+  <div class="three">
+    <div class="aud"><div class="ico" style="background:var(--accent-soft);color:var(--accent)">&#9638;</div><h3>Corporate audit</h3><p>Release evidence pack, generated per release</p></div>
+    <div class="aud"><div class="ico" style="background:var(--violet-soft);color:var(--violet)">&sect;</div><h3>Legal</h3><p>Every AI step traceable: model, data, reviewer</p></div>
+    <div class="aud"><div class="ico" style="background:var(--ok-bg);color:var(--ok)">&#10003;</div><h3>Compliance</h3><p>Policy checks before promotion, approvals logged</p></div>
+  </div>
+  <div class="evi"><span>decision log</span><span>data lineage</span><span>approval reason</span><span>test evidence</span><span>override tracking</span></div>
+  <div class="proof"><b>Proof</b> Provided control and test evidence for SEC examinations and SOX audits at S&amp;P Global.</div>
+</section>
+
+<!-- 5 SECURITY -->
+<section class="slide" data-name="Security">
+  <div class="kick">Security</div>
+  <h2>Four layers, built into the path</h2>
+  <p class="sub">Shift-left without trusting one scan.</p>
+  <div class="sec">
+    <div class="sstep" style="background:#1F3A5F"><em>Every commit</em><b>1 &middot; SAST</b><span>code scanned, AI output included</span></div>
+    <div class="sstep" style="background:#2B4C7E"><em>Every build</em><b>2 &middot; DAST</b><span>with negative runtime tests</span></div>
+    <div class="sstep" style="background:#5B3E9E"><em>Major release</em><b>3 &middot; Pen test</b><span>by impact, not by calendar</span></div>
+    <div class="sstep" style="background:#7A2E5C"><em>Ongoing</em><b>4 &middot; Ethical hacking</b><span>security champions</span></div>
+  </div>
+  <div class="proof"><b>Proof</b> Negative tests caught a server-path leak a SAST-only approval missed. Release held 2 days, shipped clean. Adopted by 100+ scrum teams.</div>
+</section>
+
+<!-- 6 QUALITY GATES -->
+<section class="slide" data-name="Gates">
+  <div class="kick">Quality gates &middot; DevOps &middot; CI/CD</div>
+  <h2>No score, no promotion</h2>
+  <p class="sub">Each tier has a quality score. Approvers see evidence and decide in minutes.</p>
+  <div class="pipe" id="pipe"></div>
+  <div class="run"><button class="btn" id="go" type="button">&#9654; Run a release</button><span class="log" id="log">Threshold 80 at every tier.</span></div>
+  <div class="proof"><b>Proof</b> 0 autonomous production deploys. Regression 9 &rarr; 4 days.</div>
+</section>
+
+<!-- 7 FRAMEWORK -->
+<section class="slide" data-name="Framework">
+  <div class="kick">Framework</div>
+  <h2>Agents propose. Engineers decide.</h2>
+  <p class="sub">A loop that gets faster with every approval.</p>
+  <div class="fw">
+    <svg viewBox="0 0 420 330" role="img" aria-label="Creator agent, judge agent, engineer decides, feedback tunes rubric, in a loop">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7A8089"/></marker></defs>
+      <path d="M150 70 Q210 30 270 70" stroke="#7A8089" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+      <path d="M330 120 Q370 165 330 210" stroke="#7A8089" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+      <path d="M270 260 Q210 300 150 260" stroke="#7A8089" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+      <path d="M90 210 Q50 165 90 120" stroke="#7A8089" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+      <circle cx="90" cy="90" r="50" fill="#0F5259"/><text x="90" y="86" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Creator</text><text x="90" y="103" text-anchor="middle" fill="#CFE8EA" font-size="11">agent drafts</text>
+      <circle cx="330" cy="90" r="50" fill="#5B3E9E"/><text x="330" y="86" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Judge</text><text x="330" y="103" text-anchor="middle" fill="#E6DCF7" font-size="11">scores vs rubric</text>
+      <circle cx="330" cy="240" r="50" fill="#0A3D91"/><text x="330" y="236" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Engineer</text><text x="330" y="253" text-anchor="middle" fill="#D9E4F6" font-size="11">decides</text>
+      <circle cx="90" cy="240" r="50" fill="#B8860B"/><text x="90" y="236" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Learn</text><text x="90" y="253" text-anchor="middle" fill="#FBEFD3" font-size="11">tunes rubric</text>
+      <text x="210" y="160" text-anchor="middle" font-size="12" font-weight="700" fill="#7A8089">EVERY</text><text x="210" y="177" text-anchor="middle" font-size="12" font-weight="700" fill="#7A8089">STORY &amp; CHANGE</text>
+    </svg>
+    <div class="fwl">
+      <div><i style="background:#0F5259">1</i><p>Journeys become MVPs, stories and code</p></div>
+      <div><i style="background:#5B3E9E">2</i><p>Configurable rubric checks quality</p></div>
+      <div><i style="background:#0A3D91">3</i><p>Human validates what matters</p></div>
+      <div><i style="background:#B8860B">4</i><p>Approval reasons feed back</p></div>
+      <div class="proof" style="margin:0"><b>Proof</b> +30% features per PI across 10 teams.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 DEMO -->
+<section class="slide" data-name="Demo">
+  <div class="kick">Solution &middot; demo</div>
+  <h2>See it run</h2>
+  <p class="sub">The full SEXTANT prototype, live.</p>
+  <div class="demo">
+    <a class="dcard main" href="./#day"><div><b>One change, end to end</b><span>A ticket from a developer&rsquo;s queue to production, with every gate</span></div><span style="font-size:1.6rem;color:#fff">&rarr;</span></a>
+    <a class="dcard" href="./#desk"><b>Tool governance review</b><span>Approve an agent or tool in five checks</span></a>
+    <a class="dcard" href="./#trust"><b>Human in the loop</b><span>Where people decide, and how fast</span></a>
+    <a class="dcard" href="./#dash"><b>Monthly scorecard</b><span>Four numbers for the CTO</span></a>
+  </div>
+  <p class="close">&ldquo;AI finds what clients need, creator agents build it, judge agents check it, humans approve what matters, and CSAT and NPS tell us whether it worked.&rdquo;</p>
+</section>
+</main>
+
+<footer class="foot"><div class="in">
+  <span class="who">Sonia Malik &middot; AI-native PDLC</span>
+  <div class="dots" id="dots" aria-hidden="true"></div>
+  <button type="button" id="prev" aria-label="Previous section">&larr;</button>
+  <button type="button" id="next" aria-label="Next section">Next &rarr;</button>
+</div></footer>
+
+<script>
+(function(){
+  var S=[].slice.call(document.querySelectorAll('.slide')), nav=document.getElementById('nav'), dots=document.getElementById('dots'), cur=0;
+  var src=new URLSearchParams(location.search).get('src')||'';
+  S.forEach(function(s,i){var b=document.createElement('button');b.type='button';b.textContent=s.dataset.name;b.onclick=function(){go(i)};nav.appendChild(b);dots.appendChild(document.createElement('i'));});
+  function go(i){cur=Math.max(0,Math.min(S.length-1,i));
+    S.forEach(function(s,k){s.classList.toggle('on',k===cur)});
+    [].forEach.call(nav.children,function(b,k){b.setAttribute('aria-current',k===cur?'true':'false')});
+    [].forEach.call(dots.children,function(d,k){d.classList.toggle('on',k===cur)});
+    document.getElementById('next').textContent=cur===S.length-1?'Start over':'Next →';
+    history.replaceState(null,'','#'+S[cur].dataset.name.toLowerCase());
+    window.scrollTo({top:0});
+    if(window.goatcounter&&window.goatcounter.count){window.goatcounter.count({path:location.pathname+'/'+S[cur].dataset.name.toLowerCase()+(src?'?src='+src:''),title:'Pitch: '+S[cur].dataset.name,event:true});}
+  }
+  document.getElementById('prev').onclick=function(){go(cur-1)};
+  document.getElementById('next').onclick=function(){go(cur===S.length-1?0:cur+1)};
+  document.addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea'))return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);});
+  var h=(location.hash||'').slice(1), start=0; S.forEach(function(s,i){if(s.dataset.name.toLowerCase()===h)start=i}); go(start);
+
+  // Model I tips
+  var MI={cc:['Customer journeys on top','Every change starts from a client journey and one KPI.'],dp:['Product teams in the middle','Advisor, investor, platform and ops teams share one path.'],ee:['Engineering excellence underneath','One platform: golden paths, creator and judge agents, test impact.'],qg:['Evidence gate','Security, compliance and quality scores decide promotion.'],prod:['Production','DORA metrics for every team.'],loop:['Learning loop','Incidents, CSAT and NPS re-rank the roadmap.'],devx:['Happy engineers','Talent, onboarding and tools are the foundation.']};
+  var tip=document.getElementById('tip'), hits=[].slice.call(document.querySelectorAll('.mi-fig .hit'));
+  function show(k){if(!MI[k])return;tip.innerHTML='';var b=document.createElement('b');b.textContent=MI[k][0];tip.appendChild(b);tip.appendChild(document.createTextNode(MI[k][1]));hits.forEach(function(g){g.classList.toggle('on',g.dataset.mi===k)});}
+  hits.forEach(function(g){g.addEventListener('click',function(){show(g.dataset.mi)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(g.dataset.mi)}})});
+  show('cc');
+
+  // Journey
+  var J=[
+    ['Join LPL','sign and onboard',['Advisor onboarding','License-check agent flags gaps','Onboarding rules tested','Days to first trade']],
+    ['Map the book','400 households',['Data mapping service','Mapping agent drafts, judge agent verifies','Contract tests on account types','Mapping accuracy']],
+    ['Move accounts','ACAT transfers',['Custody and transfer APIs','NIGO agent flags forms before submit','Negative tests on rejects','NIGO rate']],
+    ['Welcome clients','first login',['Investor experience app','Welcome drafted, compliance-reviewed','Accessibility and load tests','Client activation']],
+    ['First review','90 days in',['Advisor workstation','Review-prep agent','Performance in peak hours','Assets retained']]
+  ];
+  var C=['--teal','--violet','--accent','--gold'], L=['Product team','Agent','Quality','KPI'];
+  var jrow=document.getElementById('jrow'), eng=document.getElementById('eng');
+  J.forEach(function(j,i){var b=document.createElement('button');b.type='button';b.className='jstep';b.innerHTML='<i>'+(i+1)+'</i><b></b><span></span>';b.querySelector('b').textContent=j[0];b.querySelector('span').textContent=j[1];b.onclick=function(){pick(i)};jrow.appendChild(b);});
+  function pick(i){[].forEach.call(jrow.children,function(b,k){b.setAttribute('aria-pressed',k===i?'true':'false')});eng.innerHTML='';J[i][2].forEach(function(t,k){var d=document.createElement('div');d.style.setProperty('--c','var('+C[k]+')');var s=document.createElement('small');s.textContent=L[k];var p=document.createElement('p');p.textContent=t;d.appendChild(s);d.appendChild(p);eng.appendChild(d);});}
+  pick(2);
+
+  // Gates
+  var G=[['Dev','unit + SAST'],['SI','contracts'],['QA','DAST + regression'],['UAT','business sign-off'],['Pre-prod','load + resiliency'],['Prod','human approves']];
+  var pipe=document.getElementById('pipe'), log=document.getElementById('log'), btn=document.getElementById('go'), timers=[];
+  function reset(){timers.forEach(clearTimeout);timers=[];pipe.innerHTML='';G.forEach(function(g){var d=document.createElement('div');d.className='gate';d.innerHTML='<b></b><div class="sc">&ndash;</div><small></small>';d.querySelector('b').textContent=g[0];d.querySelector('small').textContent=g[1];pipe.appendChild(d);});}
+  reset();
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches, T=reduce?150:700;
+  var steps=[[0,88,'pass','Dev: 88, promoted.'],[1,91,'pass','SI: 91, promoted.'],[2,72,'block','QA: 72, blocked. Judge agent flags two missing negative tests.'],[2,86,'pass','Tests added. QA: 86, promoted.'],[3,90,'pass','UAT: 90, business signs off.'],[4,89,'pass','Pre-prod: 89, load and resiliency pass.'],[5,94,'pass','Prod: evidence pack ready. Human approves in minutes.']];
+  btn.onclick=function(){reset();btn.disabled=true;steps.forEach(function(s,k){timers.push(setTimeout(function(){var g=pipe.children[s[0]];[].forEach.call(pipe.children,function(x){x.classList.remove('live')});g.classList.remove('pass','block');g.classList.add(s[2],'live');g.querySelector('.sc').textContent=s[1];log.textContent=s[3];if(k===steps.length-1)btn.disabled=false;},T*(k+1)));});};
+})();
+</script>
+<script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
