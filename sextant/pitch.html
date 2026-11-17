@@ -151,6 +151,61 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 .dots{display:flex;gap:5px}.dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--accent)}
 .note{font-size:.76rem;color:var(--faint);margin-top:10px}
 
+/* Persona */
+.pers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+@media (max-width:760px){.pers{grid-template-columns:1fr}}
+.pc{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center;opacity:.55}
+.pc.on{opacity:1;border:2px solid var(--teal);box-shadow:0 6px 18px rgba(15,82,89,.12)}
+.pc h3{font-size:1.4rem;margin-bottom:6px}.pc p{font-size:.92rem;color:var(--muted)}
+.pc .tag{position:absolute;top:10px;right:10px;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--teal);color:#fff;border-radius:999px;padding:2px 8px}
+.scen1 .big{text-align:center}
+/* Layers */
+.jw{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:900px){.jw{grid-template-columns:1fr}}
+.layers{display:grid;gap:8px;overflow-x:auto}
+.lrow{display:grid;grid-template-columns:120px repeat(5,minmax(96px,1fr));gap:6px;min-width:640px}
+.lh{background:var(--c);color:#fff;border-radius:10px;padding:10px;display:flex;flex-direction:column;justify-content:center}
+.lh b{font-size:.86rem;line-height:1.2}.lh span{font-size:.72rem;opacity:.85}
+.lc{background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:12px 8px;font-size:.86rem;color:var(--fg);min-height:72px;text-align:center}
+.lc.on{border-color:var(--c);background:var(--accent-soft);font-weight:700;box-shadow:inset 0 -4px 0 var(--c)}
+.jside{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:10px}
+.jside h3{font-size:1.25rem}
+.kv small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.kv p{font-size:.95rem}
+.kv.opp{background:var(--warn-bg);border-radius:8px;padding:8px 10px}.kv.opp small{color:var(--warn)}
+/* Flow */
+.flow{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-bottom:12px}
+@media (max-width:760px){.flow{grid-template-columns:repeat(4,1fr)}}
+.fs{background:var(--surface);border:1.5px solid var(--line);color:var(--fg);padding:10px 4px;text-align:center;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%,10px 50%);border-radius:0}
+.fs:first-child{clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%)}
+.fs i{font-style:normal;display:block;font-size:.72rem;color:var(--faint);font-weight:700}
+.fs b{font-size:.88rem}
+.fs.src{background:var(--teal);color:#fff;border-color:var(--teal)}.fs.src i{color:#CFE8EA}
+.fs.done{background:var(--ok-bg)}
+.fs.on{background:var(--accent);color:#fff}.fs.on i{color:#D9E4F6}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .fs.on{color:#0b1220} }
+.art{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;min-height:300px}
+.ah{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start;margin-bottom:12px}
+.ah small{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.ah h3{font-size:1.4rem}
+.roles{display:flex;gap:6px;flex-wrap:wrap}
+.roles span{font-size:.8rem;border-radius:999px;padding:4px 10px}
+.roles .ag{background:var(--violet-soft);color:var(--violet)}.roles .hu{background:var(--ok-bg);color:var(--ok);font-weight:600}
+.hyp{font-size:1.1rem}.hyp b{color:var(--teal);margin-right:6px}
+.kpis{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}.kpis span{background:var(--gold-soft);color:var(--warn);border-radius:8px;padding:6px 10px;font-weight:600;font-size:.9rem}
+.fl{margin:0;padding-left:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:640px){.fl{grid-template-columns:1fr}}
+.fl li{background:var(--sunk);border-radius:8px;padding:12px;font-size:1rem}.fl b{color:var(--accent);margin-right:6px}
+.bdd{margin:0;background:#0F1720;color:#D7DEE7;border-radius:10px;padding:14px 16px;font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;font-size:.86rem;line-height:1.6;overflow-x:auto;white-space:pre}
+.bdd .k{color:#F0B75E;font-weight:600}
+.who{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.who span{font-size:.84rem;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:4px 10px;font-weight:600}
+.dg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:640px){.dg{grid-template-columns:1fr}}
+.dg div{background:var(--sunk);border-radius:10px;padding:14px;min-height:110px}
+.dg small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:4px}
+.dg p{font-size:1rem}.sc2{font-family:var(--f-display);font-size:1.4rem!important;color:var(--ok)}
+.loop{margin-top:12px;font-weight:700;color:var(--gold)}
+
 /* Fill first view on short sections */
 @media (min-width:761px) and (min-height:700px){
  .jstep{padding:18px 14px}.jstep b{font-size:1.05rem}
@@ -176,7 +231,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 <section class="slide" data-name="Value">
   <div class="kick">Value proposition</div>
   <h2>Model I: customer outcomes in, proven releases out</h2>
-  <p class="sub">One operating model where every change starts with a client KPI and ships only with evidence. Click any part.</p>
+  <p class="sub">Customer journeys on top, engineering excellence underneath, evidence in between. Click any part.</p>
   <div class="vp">
     <figure class="mi-fig"><svg viewBox="0 0 780 480" role="img" aria-label="Model I for the AI-native PDLC: six lifecycle stages on top, product teams in the middle, the PDLC platform below, an evidence gate to production, telemetry back to the roadmap, and a DevX foundation underneath">
 <path d="M10,10 H440 V106 H290 V256 H440 V346 H10 V256 H160 V106 H10 Z" fill="#000" opacity=".06" transform="translate(4,4)"/>
@@ -230,39 +285,45 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <p class="note">Ran at S&amp;P Global across two business units and 350+ engineers. Shown here for an illustrative LPL engineering organization.</p>
 </section>
 
-<!-- 2 SCENARIO -->
-<section class="slide" data-name="Scenario">
-  <div class="kick">Product scenario</div>
-  <h2>An advisor team joins LPL</h2>
-  <p class="sub">One real business moment, run through Model I end to end.</p>
-  <div class="scen">
-    <div class="card">
-      <p class="big">A 12-advisor practice moves 400 client households to LPL.</p>
-      <div class="targets">
-        <div><b>30</b><span>days to move every account</span></div>
-        <div><b>0</b><span>NIGO rework</span></div>
-        <div><b>Day 1</b><span>advisor productive</span></div>
-      </div>
-    </div>
-    <div class="people">
-      <div class="person"><span class="av" style="background:#0F5259">A</span><div><b>Advisor</b><span>keep every client</span></div></div>
-      <div class="person"><span class="av" style="background:#0A3D91">C</span><div><b>Client</b><span>no paperwork pain</span></div></div>
-      <div class="person"><span class="av" style="background:#5B3E9E">O</span><div><b>Transition ops</b><span>no rejected forms</span></div></div>
-      <div class="person"><span class="av" style="background:#B8860B">R</span><div><b>Compliance</b><span>evidence on file</span></div></div>
+<!-- 2 PERSONA -->
+<section class="slide" data-name="Persona">
+  <div class="kick">Who we build for</div>
+  <h2>Three LPL personas, one model. Start with the advisor.</h2>
+  <p class="sub">The same AI-native PDLC serves all three. Here we follow one advisor journey end to end.</p>
+  <div class="pers">
+    <div class="pc on"><span class="tag">Selected</span><h3>Advisors</h3><p>Full ownership, flexibility and personalized support</p></div>
+    <div class="pc"><h3>Institutions</h3><p>A customizable wealth management program</p></div>
+    <div class="pc"><h3>Individual investors</h3><p>Personalized guidance from an LPL advisor</p></div>
+  </div>
+  <div class="card scen1">
+    <p class="big">A 12-advisor practice moves 400 client households to LPL.</p>
+    <div class="targets">
+      <div><b>30</b><span>days to move every account</span></div>
+      <div><b>0</b><span>NIGO rework</span></div>
+      <div><b>Day 1</b><span>advisor productive</span></div>
     </div>
   </div>
-  <p class="note">Illustrative scenario and targets.</p>
+  <p class="note">Personas from lpl.com. Scenario and targets are illustrative.</p>
 </section>
 
-<!-- 3 JOURNEY -> ENGINEERING -->
+<!-- 3 JOURNEY: three layers -->
 <section class="slide" data-name="Journey">
-  <div class="kick">Customer journey &rarr; engineering</div>
-  <h2>Every journey step maps to the teams, agents and KPI behind it</h2>
-  <p class="sub">Click a step.</p>
-  <div class="jrow" id="jrow"></div>
-  <div class="down" aria-hidden="true">&darr;</div>
-  <div class="eng" id="eng"></div>
-  <p class="note">Illustrative mapping.</p>
+  <div class="kick">Customer journey &middot; three layers</div>
+  <h2>Customer, business process and systems, aligned step by step</h2>
+  <p class="sub">Click a step to see its goal, intent, KPI and opportunity.</p>
+  <div class="jw">
+    <div class="layers" id="layers"></div>
+    <aside class="jside" id="jside" aria-live="polite"></aside>
+  </div>
+</section>
+
+<!-- 4 AI PDLC -->
+<section class="slide" data-name="AI PDLC">
+  <div class="kick">AI-native PDLC &middot; from journey to release</div>
+  <h2>One opportunity becomes an MVP, features and BDD, then design, code and test</h2>
+  <p class="sub">Click each stage. Agents draft, people approve, and the BDD file is the shared asset.</p>
+  <div class="flow" id="flow"></div>
+  <div class="art" id="art"></div>
 </section>
 
 <!-- 4 AUDIT -->
@@ -379,19 +440,70 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   hits.forEach(function(g){g.addEventListener('click',function(){show(g.dataset.mi)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(g.dataset.mi)}})});
   show('cc');
 
-  // Journey
-  var J=[
-    ['Join LPL','sign and onboard',['Advisor onboarding','License-check agent flags gaps','Onboarding rules tested','Days to first trade']],
-    ['Map the book','400 households',['Data mapping service','Mapping agent drafts, judge agent verifies','Contract tests on account types','Mapping accuracy']],
-    ['Move accounts','ACAT transfers',['Custody and transfer APIs','NIGO agent flags forms before submit','Negative tests on rejects','NIGO rate']],
-    ['Welcome clients','first login',['Investor experience app','Welcome drafted, compliance-reviewed','Accessibility and load tests','Client activation']],
-    ['First review','90 days in',['Advisor workstation','Review-prep agent','Performance in peak hours','Assets retained']]
+  // Journey: three layers
+  var STEPS=['Join LPL','Map the book','Move accounts','Welcome clients','First review'];
+  var LAY=[
+    ['Customer journey','advisor','--teal',['Join LPL','Map the book','Move accounts','Welcome clients','First review']],
+    ['Business process','LPL operations','--violet',['Contract and registration','Account set-up','Transfer and custody','Compliance review','Review and retention']],
+    ['System journey','platforms','--accent',['Recruiting CRM, licensing','Onboarding portal, data mapping','Transfer and clearing APIs','Client portal, e-sign','Advisor workstation, analytics']]
   ];
-  var C=['--teal','--violet','--accent','--gold'], L=['Product team','Agent','Quality','KPI'];
-  var jrow=document.getElementById('jrow'), eng=document.getElementById('eng');
-  J.forEach(function(j,i){var b=document.createElement('button');b.type='button';b.className='jstep';b.innerHTML='<i>'+(i+1)+'</i><b></b><span></span>';b.querySelector('b').textContent=j[0];b.querySelector('span').textContent=j[1];b.onclick=function(){pick(i)};jrow.appendChild(b);});
-  function pick(i){[].forEach.call(jrow.children,function(b,k){b.setAttribute('aria-pressed',k===i?'true':'false')});eng.innerHTML='';J[i][2].forEach(function(t,k){var d=document.createElement('div');d.style.setProperty('--c','var('+C[k]+')');var s=document.createElement('small');s.textContent=L[k];var p=document.createElement('p');p.textContent=t;d.appendChild(s);d.appendChild(p);eng.appendChild(d);});}
-  pick(2);
+  var INFO=[
+    ['Licensed and trading fast','“Get me set up so I can serve clients.”','Days to first trade','Agent checks licenses and paperwork before day 1'],
+    ['Every household set up right','“Match my book to LPL accounts.”','Mapping accuracy','Mapping agent drafts, judge agent verifies'],
+    ['Clients moved without hassle','“Don’t make my clients redo forms.”','NIGO rate','Catch NIGO errors before submission'],
+    ['Clients confident on day 1','“Help my clients feel at home.”','Client activation','Personalized, compliance-reviewed welcome'],
+    ['Keep every client long term','“Give me time to advise, not chase.”','Assets retained at 90 days','Review-prep agent for the first meeting']
+  ];
+  var layers=document.getElementById('layers'), jside=document.getElementById('jside'), jsel=2;
+  LAY.forEach(function(l,r){
+    var row=document.createElement('div'); row.className='lrow'; row.style.setProperty('--c','var('+l[2]+')');
+    var h=document.createElement('div'); h.className='lh'; h.innerHTML='<b></b><span></span>'; h.querySelector('b').textContent=l[0]; h.querySelector('span').textContent=l[1]; row.appendChild(h);
+    l[3].forEach(function(t,i){ var b=document.createElement('button'); b.type='button'; b.className='lc'; b.dataset.i=i; b.textContent=t; b.onclick=function(){jpick(i)}; row.appendChild(b); });
+    layers.appendChild(row);
+  });
+  function jpick(i){ jsel=i; [].forEach.call(layers.querySelectorAll('.lc'),function(b){b.classList.toggle('on',+b.dataset.i===i)});
+    var d=INFO[i]; jside.innerHTML='';
+    var h=document.createElement('h3'); h.textContent=(i+1)+'. '+STEPS[i]; jside.appendChild(h);
+    [['Goal',d[0]],['Intent',d[1]],['KPI',d[2]],['Opportunity',d[3]]].forEach(function(p,k){ var r=document.createElement('div'); r.className='kv'+(k===3?' opp':''); var s=document.createElement('small'); s.textContent=p[0]; var t=document.createElement('p'); t.textContent=p[1]; r.appendChild(s); r.appendChild(t); jside.appendChild(r); });
+    if(i===2){ var b=document.createElement('button'); b.type='button'; b.className='btn'; b.textContent='Turn this into an MVP →'; b.onclick=function(){go(S.findIndex(function(s){return s.dataset.name==='AI PDLC'}))}; jside.appendChild(b); }
+  }
+  jpick(2);
+
+  // AI PDLC flow
+  var F=[
+    ['MVP','Pre-submit NIGO check',
+      '<p class="hyp"><b>Hypothesis</b> Catching form errors before submission halves NIGO rework.</p><div class="kpis"><span>KPI: NIGO rate</span><span>KPI: days to transfer</span></div>',
+      'Creator agent drafts the MVP from the journey','Product owner approves'],
+    ['Features','Four features, prioritized',
+      '<ol class="fl"><li><b>F1</b> Form completeness check</li><li><b>F2</b> Account type matched to LPL registration</li><li><b>F3</b> Advisor alert with a one-click fix</li><li><b>F4</b> Transition ops status board</li></ol>',
+      'Creator agent splits features, judge agent scores them','Product and engineering leads approve'],
+    ['BDD','The shared asset',
+      '<pre class="bdd"><span class="k">Feature:</span> Pre-submit NIGO check\n  <span class="k">Scenario:</span> Beneficiary signature missing\n    <span class="k">Given</span> an advisor prepares a transfer for a household\n    <span class="k">And</span> the beneficiary signature is missing\n    <span class="k">When</span> the advisor submits the transfer\n    <span class="k">Then</span> the submission is paused\n    <span class="k">And</span> the advisor sees the fix in one click\n    <span class="k">And</span> the event is logged for Compliance</pre><div class="who"><span>Product: acceptance criteria</span><span>Dev: the spec</span><span>QE: the tests</span><span>Compliance: the evidence</span></div>',
+      'Creator agent writes scenarios, judge agent checks coverage','Product, QE and Compliance sign off'],
+    ['Design','Contract, experience, guardrails',
+      '<div class="dg"><div><small>API</small><p>Pre-check endpoint on the transfer service</p></div><div><small>Experience</small><p>Inline alert, fix link, no dead ends</p></div><div><small>Guardrails</small><p>Client data stays in boundary, reasons explained</p></div></div>',
+      'Design agent proposes options','Architect and designer approve'],
+    ['Code','Built from the BDD',
+      '<div class="dg"><div><small>Draft</small><p>Coding agent drafts handler and unit tests</p></div><div><small>Review</small><p>Code-review agent and SAST run on every commit</p></div><div><small>Decide</small><p>Engineer edits and merges</p></div></div>',
+      'Coding and review agents','Engineer decides'],
+    ['Test','BDD runs as automated tests',
+      '<div class="dg"><div><small>Functional</small><p>Every Given/When/Then is an automated test</p></div><div><small>Negative</small><p>Missing fields, wrong account types, bad data</p></div><div><small>Score</small><p class="sc2">86 / 100 &middot; passes the gate</p></div></div>',
+      'Judge agent flags missing tests','QE lead approves'],
+    ['Release','Evidence decides, KPI proves',
+      '<div class="dg"><div><small>Gates</small><p>Dev to prod, each tier scored</p></div><div><small>Approve</small><p>Human approves from the evidence pack</p></div><div><small>Learn</small><p>NIGO rate weekly, back to the journey</p></div></div>',
+      'Release agent assembles the evidence pack','Release owner approves in minutes']
+  ];
+  var flow=document.getElementById('flow'), art=document.getElementById('art');
+  var j0=document.createElement('button'); j0.type='button'; j0.className='fs src'; j0.innerHTML='<i>&#9679;</i><b>Journey</b>'; j0.onclick=function(){go(S.findIndex(function(s){return s.dataset.name==='Journey'}))}; flow.appendChild(j0);
+  F.forEach(function(f,i){ var b=document.createElement('button'); b.type='button'; b.className='fs'; b.innerHTML='<i>'+(i+1)+'</i><b></b>'; b.querySelector('b').textContent=f[0]; b.onclick=function(){fpick(i)}; flow.appendChild(b); });
+  function fpick(i){ [].forEach.call(flow.querySelectorAll('.fs:not(.src)'),function(b,k){b.classList.toggle('on',k===i);b.classList.toggle('done',k<i)});
+    var f=F[i]; art.innerHTML='<div class="ah"><div><small></small><h3></h3></div><div class="roles"><span class="ag"></span><span class="hu"></span></div></div><div class="ab"></div>';
+    art.querySelector('small').textContent=f[0]+(f[0]==='BDD'?' · common asset':''); art.querySelector('h3').textContent=f[1];
+    art.querySelector('.ag').textContent='Agent: '+f[3]; art.querySelector('.hu').textContent='Human: '+f[4];
+    art.querySelector('.ab').innerHTML=f[2];
+    if(i===F.length-1){ var l=document.createElement('p'); l.className='loop'; l.textContent='↺ KPI results feed the next journey step'; art.appendChild(l); }
+  }
+  fpick(2);
 
   // Gates
   var G=[['Dev','unit + SAST'],['SI','contracts'],['QA','DAST + regression'],['UAT','business sign-off'],['Pre-prod','load + resiliency'],['Prod','human approves']];
