@@ -311,6 +311,19 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 .story + .pathbox{margin-top:14px}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .steps li.s3{background:#2E2214} }
 @media (max-width:900px){.bands{display:none}.steps{grid-template-columns:1fr}.steps li:not(:last-child)::after{content:"\2193";right:auto;left:50%;top:auto;bottom:-14px}}
+/* Landing journey strip */
+.jtop{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:10px;padding:8px 10px;margin:6px 0 2px}
+.jt-l{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.jt-steps{display:flex;gap:6px;flex-wrap:wrap}
+.jt-steps button{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:5px 12px 5px 6px;font-size:.86rem;font-weight:600}
+.jt-steps button i{font-style:normal;width:20px;height:20px;border-radius:50%;background:var(--sunk);display:grid;place-items:center;font-size:.72rem}
+.jt-steps button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}.jt-steps button[aria-pressed="true"] i{background:#fff;color:var(--teal)}
+.jt-info{grid-column:1/-1;display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:.88rem;color:var(--muted)}
+.jt-info b{color:var(--fg);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;margin-right:4px}
+.jt-run{margin-left:auto;border:0;background:var(--accent);color:#fff;border-radius:8px;padding:6px 12px;font-weight:700;font-size:.84rem}
+.jt-run:disabled{opacity:.8}
+@media (max-width:640px){.jtop{grid-template-columns:1fr}.jt-run{margin-left:0}}
+.land h2{font-size:clamp(1.35rem,2.6vw,1.9rem)}.ps-land{margin-top:8px}.land .swim{margin-top:8px}
 /* Fill first view on short sections */
 @media (min-width:761px) and (min-height:700px){
  .jstep{padding:18px 14px}.jstep b{font-size:1.05rem}
@@ -333,12 +346,12 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 
 <main>
 <!-- PROCESS -->
-<section class="slide" data-name="Process">
+<section class="slide land" data-name="Process">
   <div class="kick">Development practices &amp; AI-native PDLC &middot; the process</div>
   <h2>A better advisor and client experience with every release. Seven stages: people decide, agents assist, evidence proves.</h2>
-  <div class="pstrip"><span><b>2&times;</b> release cadence in 3 months</span><span><b>&minus;20%</b> production defects in 6 months</span><span><b>3 days &rarr; same day</b> regulated sign-off</span><span><b>350+</b> engineers on governed AI</span></div>
+  <div class="jtop"><span class="jt-l">Advisor journey</span><div class="jt-steps" id="jtsteps"></div><div class="jt-info" id="jtinfo" aria-live="polite"></div></div>
   <div class="swim grow" id="swim"></div>
-  <p class="note">Click a stage. Each one has an owner, an agent, a practice, an artifact, an exit gate and a measure. Proof from S&amp;P Global.</p>
+  <div class="pstrip ps-land"><span><b>2&times;</b> release cadence</span><span><b>&minus;20%</b> production defects</span><span><b>same day</b> regulated sign-off (was 3 days)</span><span><b>350+</b> engineers on governed AI in 13 months</span></div>
 </section>
 
 <!-- 1 VALUE -->
@@ -580,6 +593,19 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
     swim.appendChild(r);});
   function spick(i){[].forEach.call(swim.querySelectorAll('[data-c]'),function(e){e.classList.toggle('on',+e.dataset.c===i)});}
   spick(1);
+
+  // Landing: interactive advisor journey driving the swimlane
+  var JT=[['Join LPL','Licensing paperwork delays day 1','Days to first trade'],['Map the book','Household accounts mismatched','Mapping accuracy'],['Move accounts','Transfer forms rejected (NIGO)','NIGO rate'],['Welcome clients','Confusing first login','Client activation'],['First review','No time to prepare the review','Assets retained']];
+  var jts=document.getElementById('jtsteps'), jti=document.getElementById('jtinfo'), jtimer=[];
+  JT.forEach(function(j,i){var b=document.createElement('button');b.type='button';b.innerHTML='<i>'+(i+1)+'</i>';b.appendChild(document.createTextNode(j[0]));b.onclick=function(){jtpick(i)};jts.appendChild(b);});
+  function jtpick(i){jtimer.forEach(clearTimeout);jtimer=[];[].forEach.call(jts.children,function(b,k){b.setAttribute('aria-pressed',k===i?'true':'false')});
+    jti.innerHTML='';var t=document.createElement('span');t.innerHTML='<b>Pain</b> ';t.appendChild(document.createTextNode(JT[i][1]));var k=document.createElement('span');k.innerHTML='<b>KPI</b> ';k.appendChild(document.createTextNode(JT[i][2]));
+    var r=document.createElement('button');r.type='button';r.className='jt-run';r.textContent='\u25B6 Run it through the 7 stages';r.onclick=function(){run(i)};jti.appendChild(t);jti.appendChild(k);jti.appendChild(r);}
+  function run(i){jtimer.forEach(clearTimeout);jtimer=[];var r=jti.querySelector('.jt-run');if(r){r.disabled=true;r.textContent='Running\u2026';}
+    var d=(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?120:550;
+    for(var k=0;k<7;k++){(function(k){jtimer.push(setTimeout(function(){spick(k)},d*k));})(k);}
+    jtimer.push(setTimeout(function(){if(r){r.disabled=false;r.textContent='\u2713 Shipped. '+JT[i][2]+' tracked weekly. Run again';}},d*7));}
+  jtpick(2);
 
   // Journey: three layers
   var STEPS=['Join LPL','Map the book','Move accounts','Welcome clients','First review'];
