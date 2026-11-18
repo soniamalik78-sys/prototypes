@@ -292,6 +292,25 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 .bas p{font-size:.92rem}
 .score{margin-top:10px;font-size:.92rem;color:var(--muted)}.score b{color:var(--fg)}
 .vstate{margin:12px 0 0;padding:14px 18px;border-left:4px solid var(--teal);background:var(--surface);border-radius:0 10px 10px 0;font-family:var(--f-display);font-size:1.08rem;line-height:1.45}
+/* Story diagram */
+.story{margin-top:6px}
+.bands{display:grid;grid-template-columns:3fr 2fr 1fr;gap:10px;margin-bottom:6px}
+.bands span{font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;border-radius:8px;padding:7px 10px}
+.bands .b1{background:var(--teal)}.bands .b2{background:#1F3A5F}.bands .b3{background:#B45309}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:10px;counter-reset:none}
+.steps li{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 12px 12px;display:flex;flex-direction:column;gap:6px}
+.steps li.s1{border-top:5px solid var(--teal)}.steps li.s2{border-top:5px solid #1F3A5F}.steps li.s3{border-top:5px solid #B45309;background:#FDF4E9}
+.steps li:not(:last-child)::after{content:"\2192";position:absolute;right:-12px;top:42%;width:14px;text-align:center;font-weight:700;color:var(--faint);z-index:1}
+.steps i{font-style:normal;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:.95rem}
+.steps .s1 i{background:var(--teal)}.steps .s2 i{background:#1F3A5F}.steps .s3 i{background:#B45309}
+.steps b{font-family:var(--f-display);font-weight:600;font-size:1.08rem;line-height:1.2}
+.steps p{font-size:.88rem;color:var(--muted);flex:1;line-height:1.4}
+.steps em{font-style:normal;font-size:.74rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.05em}
+.loopback{margin-top:10px;text-align:center;font-weight:700;color:var(--warn);background:var(--gold-soft);border:1px dashed var(--gold);border-radius:10px;padding:9px}
+.found{margin-top:8px;background:var(--gold-soft);border-radius:10px;padding:10px 14px;font-size:.9rem;color:var(--muted)}.found b{color:var(--fg)}
+.story + .pathbox{margin-top:14px}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .steps li.s3{background:#2E2214} }
+@media (max-width:900px){.bands{display:none}.steps{grid-template-columns:1fr}.steps li:not(:last-child)::after{content:"\2193";right:auto;left:50%;top:auto;bottom:-14px}}
 /* Fill first view on short sections */
 @media (min-width:761px) and (min-height:700px){
  .jstep{padding:18px 14px}.jstep b{font-size:1.05rem}
@@ -327,87 +346,25 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="kick">Value proposition &middot; one PDLC for every team</div>
   <h2>One standardized PDLC every team follows: people decide, agents assist, evidence proves, advisors feel the result</h2>
   <p class="sub">A repeatable development-practice process from intake to measurement. Customer journeys on top, engineering excellence underneath, evidence in between.</p>
-  <div class="vp2">
-    <div class="vleft"><figure class="mi-fig"><svg viewBox="0 0 784 480" role="img" aria-label="Model I: customer centricity on top (advisor journey in three layers, then MVP, features and BDD), product teams in the stem, engineering excellence below (design, code, test), an evidence gate to production, KPIs and approval reasons feeding back, and a happy-engineers foundation.">
-<defs><marker id="mia" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0A3D91"/></marker><marker id="mig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#B8860B"/></marker></defs>
-<path d="M10,10 H440 V122 H290 V258 H440 V350 H10 V258 H160 V122 H10 Z" fill="#000" opacity=".06" transform="translate(4,4)"/>
-<g class="hit" tabindex="0" role="button" data-mi="cc" aria-label="Customer centricity">
-<rect class="k" x="10" y="10" width="430" height="112" rx="9" fill="#0F5259"/>
-<text x="22" y="31" fill="#fff" font-size="14" font-weight="700">Customer centricity</text><text x="428" y="31" fill="#CFE8EA" font-size="10" text-anchor="end">Advisor journey, one KPI per step</text>
-<g font-size="9.6" font-weight="700">
-<rect x="18" y="42" width="196" height="21" rx="4" fill="#fff"/><text x="26" y="56" fill="#0F5259">Customer journey</text><text x="206" y="56" fill="#555B63" font-weight="400" text-anchor="end">advisor</text>
-<rect x="18" y="67" width="196" height="21" rx="4" fill="#ECE6F6"/><text x="26" y="81" fill="#5B3E9E">Business process</text><text x="206" y="81" fill="#5B3E9E" font-weight="400" text-anchor="end">LPL operations</text>
-<rect x="18" y="92" width="196" height="21" rx="4" fill="#E3EAF6"/><text x="26" y="106" fill="#0A3D91">System journey</text><text x="206" y="106" fill="#0A3D91" font-weight="400" text-anchor="end">platforms</text>
-</g>
-<path d="M219 77 H238" stroke="#CFE8EA" stroke-width="2" marker-end="url(#mia)"/>
-<g font-size="10" text-anchor="middle" font-weight="700">
-<rect x="244" y="42" width="56" height="71" rx="5" fill="#fff"/><text x="272" y="72" fill="#0F5259">MVP</text><text x="272" y="86" fill="#555B63" font-size="8.6" font-weight="400">hypothesis</text><text x="272" y="97" fill="#555B63" font-size="8.6" font-weight="400">+ KPI</text>
-<rect x="306" y="42" width="58" height="71" rx="5" fill="#fff"/><text x="335" y="72" fill="#0F5259">Features</text><text x="335" y="86" fill="#555B63" font-size="8.6" font-weight="400">prioritized</text><text x="335" y="97" fill="#555B63" font-size="8.6" font-weight="400">by PI</text>
-<rect x="370" y="42" width="62" height="71" rx="5" fill="#FBF0D9" stroke="#B8860B" stroke-width="1.2"/><text x="401" y="72" fill="#8F5E00">BDD</text><text x="401" y="86" fill="#8F5E00" font-size="8.6" font-weight="400">common</text><text x="401" y="97" fill="#8F5E00" font-size="8.6" font-weight="400">asset</text>
-</g></g>
-<g class="hit" tabindex="0" role="button" data-mi="dp" aria-label="Product teams">
-<rect class="k" x="160" y="122" width="130" height="136" fill="#E3EAF6" stroke="#0A3D91" stroke-width="1"/>
-<text x="225" y="139" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0A3D91">Product teams</text>
-<g font-size="10" text-anchor="middle" fill="#1C1F24">
-<rect x="167" y="146" width="116" height="23" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="161.5">Advisors</text>
-<rect x="167" y="173" width="116" height="23" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="188.5">Institutions</text>
-<rect x="167" y="200" width="116" height="23" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="215.5">Individual investors</text>
-<rect x="167" y="227" width="116" height="23" rx="4" fill="#fff" stroke="#BCC1C9"/><text x="225" y="242.5">Ops, data and risk</text>
-</g></g>
-<g class="hit" tabindex="0" role="button" data-mi="ee" aria-label="Engineering excellence">
-<rect class="k" x="10" y="258" width="430" height="92" rx="9" fill="#1F3A5F"/>
-<text x="22" y="278" fill="#fff" font-size="14" font-weight="700">Engineering excellence</text><text x="428" y="278" fill="#C9D6EA" font-size="10" text-anchor="end">Agents draft, engineers decide</text>
-<g font-size="9.6" text-anchor="middle">
-<rect x="18" y="289" width="98" height="52" rx="4" fill="#fff"/><text x="67" y="308" font-weight="700" fill="#1F3A5F">Design</text><text x="67" y="322" fill="#555B63">agent proposes,</text><text x="67" y="334" fill="#555B63">architect approves</text>
-<rect x="123" y="289" width="98" height="52" rx="4" fill="#ECE6F6"/><text x="172" y="308" font-weight="700" fill="#5B3E9E">Code</text><text x="172" y="322" fill="#5B3E9E">creator and review</text><text x="172" y="334" fill="#5B3E9E">agents from BDD</text>
-<rect x="228" y="289" width="98" height="52" rx="4" fill="#fff"/><text x="277" y="308" font-weight="700" fill="#1F3A5F">Test</text><text x="277" y="322" fill="#555B63">BDD runs as tests,</text><text x="277" y="334" fill="#555B63">judge finds gaps</text>
-<rect x="333" y="289" width="98" height="52" rx="4" fill="#fff"/><text x="382" y="308" font-weight="700" fill="#1F3A5F">Platform</text><text x="382" y="322" fill="#555B63">golden paths,</text><text x="382" y="334" fill="#555B63">tool catalog</text>
-</g></g>
-<path d="M290 190 H458" stroke="#0A3D91" stroke-width="2" fill="none" marker-end="url(#mia)"/><text x="374" y="183" text-anchor="middle" font-size="10" font-weight="700" fill="#0A3D91">every change</text>
-<g class="hit" tabindex="0" role="button" data-mi="qg" aria-label="Evidence gate over CI/CD">
-<rect class="k" x="464" y="128" width="200" height="124" rx="9" fill="#F1ECF9" stroke="#5B3E9E" stroke-width="1.2"/>
-<text x="564" y="148" text-anchor="middle" font-size="11.5" font-weight="700" fill="#5B3E9E">Quality gates over CI/CD</text>
-<g font-size="9.4" font-weight="700" fill="#fff" text-anchor="middle">
-<polygon points="472,158 502,158 508,170 502,182 472,182" fill="#8A6CC9"/><text x="489" y="173.5">Dev</text>
-<polygon points="504,158 534,158 540,170 534,182 504,182 510,170" fill="#7D5DC0"/><text x="523" y="173.5">QA</text>
-<polygon points="536,158 568,158 574,170 568,182 536,182 542,170" fill="#6F4EB5"/><text x="556" y="173.5">UAT</text>
-<polygon points="570,158 618,158 624,170 618,182 570,182 576,170" fill="#6343AB"/><text x="597" y="173.5">Pre-prod</text>
-<polygon points="620,158 654,158 660,170 654,182 620,182 626,170" fill="#4E3191"/><text x="640" y="173.5">Prod</text>
-</g>
-<g font-size="9.6" fill="#1C1F24"><text x="474" y="200">Each tier scored: security, privacy,</text><text x="474" y="213">compliance, model risk, quality.</text><text x="474" y="230"><tspan font-weight="700" fill="#5B3E9E">Prod:</tspan> a human approves from</text><text x="474" y="243">the evidence pack, in minutes.</text></g>
-</g>
-<path d="M664 190 H676" stroke="#0A3D91" stroke-width="2" marker-end="url(#mia)"/>
-<g class="hit" tabindex="0" role="button" data-mi="prod" aria-label="Production outcomes">
-<rect class="k" x="682" y="134" width="94" height="112" rx="9" fill="#FDEBD7" stroke="#B45309" stroke-width="1.4"/>
-<text x="729" y="154" text-anchor="middle" font-size="11" font-weight="700" fill="#B45309">Outcomes</text>
-<g font-size="9.4" text-anchor="middle" fill="#1C1F24"><text x="729" y="174">NIGO rate</text><text x="729" y="189">CSAT and NPS</text><text x="729" y="204">Incidents</text><text x="729" y="219">DORA metrics</text><text x="729" y="234">Adoption</text></g>
-</g>
-<g class="hit" tabindex="0" role="button" data-mi="loop" aria-label="Learning loops">
-<rect class="k" x="0" y="0" width="0" height="0" fill="none"/>
-<path d="M729 134 V66 H448" stroke="#B8860B" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#mig)"/><text x="590" y="60" text-anchor="middle" font-size="10" font-weight="700" fill="#8F5E00">KPIs re-rank the journeys</text>
-<path d="M729 246 V304 H448" stroke="#B8860B" stroke-width="2" stroke-dasharray="6 4" fill="none" marker-end="url(#mig)"/><text x="590" y="320" text-anchor="middle" font-size="10" font-weight="700" fill="#8F5E00">Approval reasons tune agents and rubrics</text>
-</g>
-<g class="hit" tabindex="0" role="button" data-mi="devx" aria-label="Happy engineers foundation">
-<rect class="k" x="10" y="364" width="766" height="108" rx="9" fill="#FCF3DF" stroke="#B8860B" stroke-width="1.2"/>
-<text x="22" y="384" font-size="13" font-weight="700" fill="#8F5E00">Built on happy engineers</text><text x="764" y="384" font-size="10" fill="#8F5E00" text-anchor="end">Developer experience is the foundation</text>
-<g font-size="10" text-anchor="middle" fill="#5A4300" font-weight="600">
-<rect x="22" y="394" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="143" y="414">Onboarding and talent</text>
-<rect x="271" y="394" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="392" y="414">Engagement survey</text>
-<rect x="520" y="394" width="244" height="31" rx="4" fill="#F3E2BC"/><text x="642" y="414">AI coding adoption</text>
-<rect x="22" y="431" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="143" y="451">Test data and environments</text>
-<rect x="271" y="431" width="242" height="31" rx="4" fill="#F3E2BC"/><text x="392" y="451">Developer portal and APIs</text>
-<rect x="520" y="431" width="244" height="31" rx="4" fill="#F3E2BC"/><text x="642" y="451">MTTR and CFR in leaders&#8217; goals</text>
-</g></g>
-</svg>
-</figure>
-      <div class="tip" id="tip" aria-live="polite"></div>
-    </div>
-    <div class="pathbox">
+  <div class="story">
+    <div class="bands" aria-hidden="true"><span class="b1">Customer centricity: start from the advisor</span><span class="b2">Engineering excellence: build it right</span><span class="b3">Advisor outcome</span></div>
+    <ol class="steps">
+      <li class="s1"><i>1</i><b>An advisor hits friction</b><p>Clients&rsquo; transfer forms get rejected and must be redone.</p><em>Customer journey</em></li>
+      <li class="s1"><i>2</i><b>We map it end to end</b><p>Advisor journey, LPL business process and systems, with one KPI: the NIGO rate.</p><em>Three-layer journey</em></li>
+      <li class="s1"><i>3</i><b>Everyone shares one spec</b><p>An MVP, features and a BDD file that product, engineering, QE and compliance all work from.</p><em>MVP &middot; features &middot; BDD</em></li>
+      <li class="s2"><i>4</i><b>Agents draft, engineers decide</b><p>Agents propose the design, code and tests from the BDD. Engineers review and approve.</p><em>Design &middot; code &middot; test</em></li>
+      <li class="s2"><i>5</i><b>Gates prove it is safe</b><p>Security, privacy, compliance, model risk and quality are scored at every stage. A person approves the release from the evidence.</p><em>Quality gates</em></li>
+      <li class="s3"><i>6</i><b>Advisors feel the result</b><p>Fewer rejected forms, faster transfers, happier clients.</p><em>NIGO &darr; &middot; CSAT and NPS &uarr;</em></li>
+    </ol>
+    <div class="loopback">&#8634; What advisors feel goes back to step 1 and decides what we improve next.</div>
+    <div class="found"><b>Underneath it all: happy engineers.</b> One paved platform, approved AI tools, onboarding and skills, test data on demand.</div>
+  </div>
+  <div class="pathbox">
       <h3>The path every team takes</h3>
       <table class="pt2"><thead><tr><th scope="col">Stage</th><th scope="col">Owner</th><th scope="col">Evidence</th><th scope="col">Exit gate</th></tr></thead><tbody><tr><th scope="row"><i>1</i>Discover</th><td>Product owner</td><td>Journey and KPI</td><td>KPI agreed</td></tr><tr><th scope="row"><i>2</i>Define</th><td>Three Amigos</td><td>MVP, features, shared BDD</td><td>BDD score &ge; 80</td></tr><tr><th scope="row"><i>3</i>Design</th><td>Architect</td><td>API contract, ADR, threat model</td><td>Architecture and security sign-off</td></tr><tr><th scope="row"><i>4</i>Build</th><td>Engineer, named PR owner</td><td>Code, unit tests, SAST every commit</td><td>Review and SAST pass, approved tools only</td></tr><tr><th scope="row"><i>5</i>Test</th><td>QE lead</td><td>Scored BDD, negative tests, DAST, resiliency</td><td>Quality &ge; 80, no high findings</td></tr><tr><th scope="row"><i>6</i>Release</th><td>Release owner with Risk, Legal, Compliance, Privacy, Model Risk</td><td>Signed evidence pack, control tests</td><td>A human approves from the pack, in minutes</td></tr><tr><th scope="row"><i>7</i>Operate and learn</th><td>Product and SRE</td><td>NIGO, CSAT/NPS, incidents, DORA</td><td>Outcomes re-rank the backlog</td></tr></tbody></table>
       <p class="same">Same path for every team: eight enterprise practices, one tool catalog, one paved CI/CD.</p>
     </div>
-  </div>
+    
   <div class="pstrip"><span><b>2&times;</b> release cadence in 3 months</span><span><b>&minus;20%</b> production defects in 6 months</span><span><b>3 days &rarr; same day</b> regulated sign-off</span><span><b>+30%</b> features per PI</span><span><b>+5</b> NPS</span></div>
   <div class="bas"><div><small>Before</small><p>Each team governs AI differently, and reviews come late</p></div><span aria-hidden="true">&rarr;</span><div><small>After</small><p>One PDLC with gates, owners and controls in the pipeline</p></div><span aria-hidden="true">&rarr;</span><div><small>Scale</small><p>Pilot one team, then waves</p></div></div>
   <p class="score"><b>What this process reports to the CTO:</b> cycle time, quality, agent effectiveness, developer experience, cost-to-deliver, technical debt, resilience, advisor outcomes, exam-ready evidence.</p>
@@ -598,10 +555,10 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 
   // Model I tips
   var MI={cc:['Customer centricity','Advisor journey in three layers: customer, business process, systems. Opportunities become an MVP, features and a BDD file everyone shares.'],dp:['Product teams','Teams aligned to LPL personas: advisors, institutions and investors, plus ops, data and risk.'],ee:['Engineering excellence','Design, code and test built from the BDD. Agents draft, engineers decide.'],qg:['Quality gates over CI/CD','Every tier scored. In production a human approves from the evidence pack, in minutes.'],prod:['Outcomes','NIGO rate, CSAT, NPS, incidents and DORA metrics show whether it worked.'],loop:['Learning loops','KPIs re-rank the journeys. Approval reasons tune the agents and rubrics.'],devx:['Built on happy engineers','Talent, onboarding, AI adoption and test data are the foundation.']};
-  var tip=document.getElementById('tip'), hits=[].slice.call(document.querySelectorAll('.mi-fig .hit'));
+  var tip=document.getElementById('tip'); if(tip){ var hits=[].slice.call(document.querySelectorAll('.mi-fig .hit'));
   function show(k){if(!MI[k])return;tip.innerHTML='';var b=document.createElement('b');b.textContent=MI[k][0];tip.appendChild(b);tip.appendChild(document.createTextNode(MI[k][1]));hits.forEach(function(g){g.classList.toggle('on',g.dataset.mi===k)});}
   hits.forEach(function(g){g.addEventListener('click',function(){show(g.dataset.mi)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(g.dataset.mi)}})});
-  show('cc');
+  show('cc'); }
 
   // Process swimlane
   var STG=['Discover','Define','Design','Build','Test','Release','Operate and learn'];
