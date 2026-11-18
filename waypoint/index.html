@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>WAYPOINT · Governed AI-native platforms for Voya Financial</title>
+<meta name="description" content="A proposed governed, AI-native operating model for Voya's enterprise AI, automation and data platforms. By Sonia Malik.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F6F8;--surface:#fff;--sunk:#EBEDF1;--fg:#16202E;--muted:#4F5866;--faint:#737C89;--line:#D8DCE3;
+  --navy:#0B2A5B;--navy-soft:#E4EAF5;--orange:#D9622B;--orange-soft:#FCEBDF;--orange-ink:#A9461A;
+  --teal:#0F5F66;--teal-soft:#E0F0F1;--violet:#5B3E9E;--violet-soft:#EFEAF8;--ok:#2E7D4F;--ok-soft:#E3F2E8;--gold:#94680A;--gold-soft:#FBF1DC;
+  --f-display:"Fraunces",Georgia,serif;--f-body:"Public Sans","Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--navy)}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--orange);outline-offset:2px;border-radius:4px}
+svg.i{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+/* header */
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:58px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.logo .mk{width:36px;height:36px;border-radius:9px;background:var(--navy);display:grid;place-items:center}
+.logo .mk svg{width:24px;height:24px}
+.logo b{display:block;font-family:var(--f-display);font-weight:600;letter-spacing:.14em;font-size:1.02rem;color:var(--navy)}
+.logo small{display:block;font-size:.7rem;color:var(--faint);margin-top:-2px}
+.menu{display:flex;gap:2px;margin-left:auto}
+.menu a{font-size:.84rem;font-weight:600;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:8px}
+.menu a:hover,.menu a.on{background:var(--navy-soft);color:var(--navy)}
+.cta{background:var(--navy);color:#fff;text-decoration:none;font-weight:700;font-size:.82rem;padding:9px 14px;border-radius:9px;white-space:nowrap}
+.cta:hover{background:#12397a}
+.burger{display:none;margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 9px}
+/* hero */
+.hero{padding:12px 0 6px}
+.hero .row1{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.1em;color:var(--orange-ink);background:var(--orange-soft);padding:4px 9px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
+.hero h1{font-size:1.62rem;line-height:1.15;color:var(--navy)}
+.hero .sub{color:var(--muted);font-size:.9rem;margin-top:4px}
+.why{margin-top:9px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;background:var(--surface);border:1px solid #BFCBE0;border-left:4px solid var(--navy);border-radius:10px;padding:8px 14px}
+.why .lbl{font-size:.66rem;font-weight:700;letter-spacing:.1em;color:var(--navy);text-transform:uppercase;line-height:1.3}
+.why ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 18px;font-size:.8rem}
+.why li{display:flex;gap:6px;align-items:baseline}
+.why li:before{content:"";width:6px;height:6px;border-radius:2px;background:var(--orange);transform:translateY(-1px);flex:none}
+.why b.n{font-family:var(--f-display);color:var(--navy);font-size:.95rem}
+.why .src{font-size:.66rem;color:var(--faint)}
+.why .links{display:flex;flex-direction:column;gap:2px;font-size:.78rem;font-weight:600;text-align:right}
+.why .links a{text-decoration:none}
+.steps{display:flex;align-items:center;gap:8px;margin-top:9px;flex-wrap:wrap}
+.chip{display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:5px 10px 5px 6px;font-size:.8rem;font-weight:600}
+.chip .ic{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;background:var(--navy-soft);color:var(--navy)}
+.chip .ic svg{width:15px;height:15px}
+.chip .num{width:17px;height:17px;border-radius:50%;background:var(--navy);color:#fff;font-size:.66rem;display:grid;place-items:center}
+.sep{color:var(--faint)}
+.tag-ill{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--gold);background:var(--gold-soft);border:1px solid #EBD6A6;padding:2px 7px;border-radius:999px;text-transform:uppercase}
+.steps .go{margin-left:auto;display:flex;gap:12px;align-items:center}
+.btn{border:0;background:var(--orange);color:#fff;font-weight:700;font-size:.82rem;padding:8px 14px;border-radius:9px;text-decoration:none}
+.btn:hover{background:#c2551f}
+.lnk{font-weight:600;font-size:.82rem;text-decoration:none}
+/* sections */
+.sec{padding:12px 0 22px}
+.sec+.sec{border-top:1px solid var(--line);padding-top:26px}
+.sh{display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.sh .no{font-family:var(--f-display);font-size:.85rem;color:var(--orange-ink);border:1px solid var(--orange);border-radius:999px;padding:0 9px}
+.sh h2{font-size:1.32rem;color:var(--navy)}
+.sh p{color:var(--muted);font-size:.86rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+/* proposal */
+.groups{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:5px}
+.groups span{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-align:center;border-top:3px solid;padding-top:3px}
+.g1{grid-column:span 1;color:var(--navy);border-color:var(--navy)}.g2{grid-column:span 3;color:var(--navy);border-color:var(--navy)}.g3{grid-column:span 2;color:var(--gold);border-color:var(--gold)}.g4{grid-column:span 1;color:var(--ok);border-color:var(--ok)}
+.stages{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;list-style:none;margin:0;padding:0}
+.stage{position:relative;text-align:center;padding:9px 6px 8px;border:1px solid var(--line);background:var(--surface);border-radius:11px;cursor:pointer;transition:box-shadow .15s,border-color .15s;width:100%;font:inherit;color:inherit}
+.stage:hover{box-shadow:0 3px 12px rgba(11,42,91,.10)}
+.stage[aria-selected="true"]{border:2px solid var(--navy);padding:8px 5px 7px;box-shadow:0 4px 16px rgba(11,42,91,.14)}
+.stage .k{position:absolute;top:5px;right:8px;font-size:.66rem;color:var(--faint)}
+.stage .ic{width:36px;height:36px;border-radius:50%;margin:0 auto 4px;display:grid;place-items:center;background:var(--navy-soft);color:var(--navy)}
+.stage.ev .ic{background:var(--gold-soft);color:var(--gold)}.stage.out .ic{background:var(--ok-soft);color:var(--ok)}
+.stage .ic svg{width:19px;height:19px}
+.stage b{display:block;font-size:.92rem}
+.stage .who{display:block;font-size:.72rem;color:var(--teal)}
+.stage .gate{display:inline-block;margin-top:4px;font-size:.68rem;font-weight:600;background:var(--gold-soft);color:#6f4e06;border-radius:999px;padding:1px 8px}
+.stage:not(:last-child):after{content:"";position:absolute;right:-9px;top:44%;border:5px solid transparent;border-left:6px solid #9AA3B1}
+.partners{display:flex;gap:8px;align-items:center;margin:7px 0 0;flex-wrap:wrap}
+.partners .loop{font-size:.72rem;color:var(--orange-ink);font-weight:600;display:flex;gap:4px;align-items:center}
+.partners .band{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap;border:1px solid #9FBFC2;background:var(--teal-soft);border-radius:10px;padding:4px 10px}
+.partners .band b{font-size:.64rem;letter-spacing:.1em;color:var(--teal);text-transform:uppercase}
+.pill{font-size:.72rem;border:1px solid var(--line);background:#fff;border-radius:999px;padding:1px 9px}
+.detail{margin-top:8px;display:grid;grid-template-columns:230px repeat(4,1fr);gap:10px;padding:11px 12px;border-left:4px solid var(--navy)}
+.detail .hd small{font-size:.66rem;letter-spacing:.1em;font-weight:700;color:var(--faint);text-transform:uppercase}
+.detail .hd h3{font-size:1.15rem;margin:2px 0 3px}
+.detail .hd p{font-size:.8rem;color:var(--muted)}
+.ctrls{display:flex;gap:6px;margin-top:6px}
+.ctrls button{border:1px solid var(--line);background:#fff;border-radius:7px;font-size:.74rem;padding:3px 9px;font-weight:600}
+.ctrls button.pri{background:var(--navy);color:#fff;border-color:var(--navy)}
+.box{border-radius:9px;padding:8px 10px;font-size:.8rem}
+.box h4{margin:0 0 3px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;display:flex;gap:5px;align-items:center}
+.box h4 svg{width:14px;height:14px}
+.b1{background:var(--ok-soft)}.b1 h4{color:var(--ok)}
+.b2{background:var(--violet-soft)}.b2 h4{color:var(--violet)}
+.b3{background:var(--gold-soft)}.b3 h4{color:var(--gold)}
+.b4{background:var(--orange-soft)}.b4 h4{color:var(--orange-ink)}
+.note{font-size:.72rem;color:var(--faint);margin-top:6px}
+/* platforms */
+.hub{display:grid;grid-template-columns:360px 1fr;gap:16px;align-items:start}
+.hubsvg{padding:10px}
+.hubsvg svg{width:100%;height:auto;display:block}
+.plats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.plat{padding:12px}
+.plat .t{display:flex;gap:8px;align-items:center;margin-bottom:4px}
+.plat .t .ic{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:var(--navy-soft);color:var(--navy);flex:none}
+.plat h3{font-family:var(--f-body);font-size:.9rem;font-weight:700}
+.plat p{font-size:.8rem;color:var(--muted)}
+.role{display:inline-block;margin-top:7px;font-size:.68rem;font-weight:700;border-radius:999px;padding:2px 9px}
+.r-lead{background:var(--navy);color:#fff}
+.r-part{background:var(--teal-soft);color:var(--teal)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.76rem;color:var(--muted);margin-top:9px}
+/* personas */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.tab{display:flex;gap:7px;align-items:center;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 13px;font-weight:600;font-size:.82rem;color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.tab svg{width:16px;height:16px}
+.jp{padding:14px}
+.jp .intro{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+.jp .intro p{font-size:.86rem;color:var(--muted)}
+.journey{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;list-style:none;margin:0;padding:0;counter-reset:s}
+.journey li{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg);position:relative}
+.journey li .st{font-size:.64rem;font-weight:700;letter-spacing:.08em;color:var(--orange-ink);text-transform:uppercase}
+.journey li b{display:block;font-size:.88rem;margin:1px 0 6px}
+.journey li .ln{font-size:.76rem;display:flex;gap:5px;margin-top:4px}
+.journey li .ln svg{width:14px;height:14px;margin-top:2px}
+.journey li .a{color:var(--violet)}.journey li .g{color:var(--teal)}
+.outc{margin-top:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:.8rem;background:var(--ok-soft);border-radius:9px;padding:7px 10px}
+.outc b{color:var(--ok)}
+/* governance */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.gv{padding:14px}
+.gv .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;margin-bottom:6px}
+.gv h3{font-family:var(--f-body);font-size:.95rem;font-weight:700;margin-bottom:4px}
+.gv ul{margin:0;padding-left:17px;font-size:.82rem;color:var(--muted)}
+.gv li{margin:2px 0}
+table{border-collapse:collapse;width:100%;font-size:.82rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:700}
+td b{color:var(--navy)}
+.tbl{margin-top:10px;padding:4px 6px;overflow:hidden}
+/* security */
+.sx{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sx .card{padding:12px;border-top:4px solid var(--navy)}
+.sx .card .no{font-family:var(--f-display);font-size:1.4rem;color:var(--orange)}
+.sx h3{font-family:var(--f-body);font-size:.9rem;font-weight:700}
+.sx p{font-size:.8rem;color:var(--muted);margin-top:3px}
+.sx .at{display:inline-block;margin-top:7px;font-size:.68rem;font-weight:600;background:var(--navy-soft);color:var(--navy);border-radius:999px;padding:1px 8px}
+.story{margin-top:10px;display:grid;grid-template-columns:1.2fr 1fr;gap:10px}
+.story .card{padding:13px}
+.story h3{font-size:1rem;color:var(--navy);margin-bottom:4px}
+.story p,.story li{font-size:.82rem;color:var(--muted)}
+.story ol,.story ul{margin:4px 0 0;padding-left:18px}
+/* QE */
+.ratio{display:flex;align-items:center;gap:14px;padding:14px}
+.ratio .big{font-family:var(--f-display);font-size:2rem;color:var(--navy);white-space:nowrap}
+.ratio .big span{color:var(--orange)}
+.bars{display:grid;gap:6px;flex:1}
+.bar{display:grid;grid-template-columns:96px 1fr;gap:8px;align-items:center;font-size:.76rem}
+.bar i{display:block;height:12px;border-radius:6px;background:linear-gradient(90deg,var(--navy) var(--d),var(--orange) var(--d))}
+.qe{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}
+.qe .card{padding:12px}
+.qe h3{font-family:var(--f-body);font-size:.9rem;font-weight:700;margin-bottom:3px}
+.qe li{font-size:.8rem;color:var(--muted)}
+.qe ul{margin:0;padding-left:17px}
+/* proof */
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pf{padding:13px}
+.pf .co{font-size:.66rem;letter-spacing:.1em;font-weight:700;color:var(--orange-ink);text-transform:uppercase}
+.pf h3{font-family:var(--f-body);font-size:.84rem;font-weight:700;margin:2px 0 7px;color:var(--navy)}
+.kpi{display:flex;gap:8px;align-items:baseline;border-top:1px dashed var(--line);padding:5px 0;font-size:.78rem;color:var(--muted)}
+.kpi b{font-family:var(--f-display);font-size:1.05rem;color:var(--navy);min-width:78px;font-weight:600}
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.road .card{padding:12px;border-top:4px solid var(--orange)}
+.road .card small{font-size:.68rem;font-weight:700;color:var(--faint);letter-spacing:.08em;text-transform:uppercase}
+.road h3{font-family:var(--f-body);font-size:.9rem;font-weight:700;margin:1px 0 4px}
+.road p{font-size:.8rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);background:var(--surface);padding:16px 0 22px;font-size:.78rem;color:var(--muted)}
+footer .wrap{display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap}
+/* responsive */
+@media (max-width:1100px){
+  .menu{display:none}
+  .burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:58px;right:12px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+  .top .cta{display:none}
+  .hub{grid-template-columns:1fr}
+  .hubsvg{max-width:420px}
+}
+@media (max-width:900px){
+  .groups{display:none}
+  .stages{grid-template-columns:repeat(4,1fr)}
+  .stage:after{display:none}
+  .detail{grid-template-columns:1fr 1fr}
+  .detail .hd{grid-column:1/-1}
+  .plats,.three,.qe{grid-template-columns:1fr 1fr}
+  .journey{grid-template-columns:1fr 1fr}
+  .sx,.proof,.road{grid-template-columns:1fr 1fr}
+  .story{grid-template-columns:1fr}
+  .why{grid-template-columns:1fr}
+  .why .links{flex-direction:row;gap:14px;text-align:left}
+}
+@media (max-width:600px){
+  body{font-size:14px}
+  .wrap{padding:0 14px}
+  .logo small{display:none}
+  .hero h1{font-size:1.38rem}
+  .eyebrow{white-space:normal}
+  .why ul{grid-template-columns:1fr}
+  .stages{grid-template-columns:1fr 1fr}
+  .detail,.plats,.three,.qe,.journey,.sx,.proof,.road{grid-template-columns:1fr}
+  .partners .band{margin-left:0}
+  .steps .go{margin-left:0;width:100%;flex-wrap:wrap}
+  .sep{display:none}
+  .ratio{flex-direction:column;align-items:flex-start}
+  table,thead,tbody,tr,td,th{display:block}
+  thead{display:none}
+  tr{border-bottom:1px solid var(--line);padding:6px 0}
+  td{border:0;padding:2px 8px}
+}
+@media print{.top,.steps .go,.ctrls{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <symbol id="i-ear" viewBox="0 0 24 24"><path d="M6 8.5a6 6 0 1 1 12 0c0 3-2 4-3 5.5s-1 4.5-4 4.5a3 3 0 0 1-3-3"/><path d="M9 9a3 3 0 0 1 6 0"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4h11l-2 4 2 4H5"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="m4 20 4-1 11-11-3-3L5 16z"/><path d="m14 7 3 3"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 6l-2 12"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M4 15v4h16v-4M12 4v11M7 9l5-5 5 5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="m7 15 4-4 3 3 5-6"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16h5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></symbol>
+  <symbol id="i-gate" viewBox="0 0 24 24"><path d="M4 21V5M20 21V5M4 9h16M4 15h16"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></symbol>
+  <symbol id="i-brain" viewBox="0 0 24 24"><path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 3 3h0V4z"/><path d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-3 3V4z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h7"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></symbol>
+  <symbol id="i-piggy" viewBox="0 0 24 24"><path d="M5 11a7 6 0 0 1 13-2h2v4h-2a7 6 0 0 1-3 4v3h-3v-2h-2v2H7v-3a6 6 0 0 1-2-6z"/><path d="M10 8h4"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5l8-2v18M12 8h8v13M7 8h2M7 12h2M7 16h2M15 12h2M15 16h2"/></symbol>
+  <symbol id="i-handshake" viewBox="0 0 24 24"><path d="m3 12 4-4 4 2 3-2 7 4"/><path d="m7 14 3 3 2-1 2 2 3-3M3 12l4 4"/></symbol>
+  <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></symbol>
+  <symbol id="i-loop" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2"/><path d="M20 4v5h-5M4 20v-5h5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M15 20a4.5 4.5 0 0 1 6-4.2"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></symbol>
+ </defs>
+</svg>
+
+<header class="top">
+ <div class="wrap">
+  <a class="logo" href="#top" aria-label="WAYPOINT home">
+   <span class="mk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c-3.6 0-6.5 2.8-6.5 6.4 0 4.6 6.5 12.6 6.5 12.6s6.5-8 6.5-12.6c0-3.6-2.9-6.4-6.5-6.4z" stroke="#fff" stroke-width="1.6"/><path d="m14.6 6.4-1.6 3.6-3.6 1.6 1.6-3.6z" fill="#F08A4B" stroke="#F08A4B" stroke-width="1"/></svg></span>
+   <span><b>WAYPOINT</b><small>Governed AI-native platforms · for Voya Financial</small></span>
+  </a>
+  <nav class="menu" id="menu" aria-label="Sections">
+   <a href="#proposal">Proposal</a>
+   <a href="#platforms">Platforms</a>
+   <a href="#journeys">Journeys</a>
+   <a href="#governance">Governance</a>
+   <a href="#security">Security</a>
+   <a href="#qe">QA to QE</a>
+   <a href="#proof">Proof</a>
+  </nav>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Menu">☰</button>
+  <a class="cta" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">Book a walkthrough</a>
+ </div>
+</header>
+
+<main id="top">
+<div class="wrap">
+ <section class="hero" aria-labelledby="h1">
+  <div class="row1">
+   <span class="eyebrow">A proposal for Voya Financial · Enterprise AI &amp; Automation</span>
+   <h1 id="h1">I&rsquo;ll listen first. I&rsquo;ve also brought a starting point.</h1>
+  </div>
+  <p class="sub">A proposed governed, AI-native operating model for Voya&rsquo;s AI, automation and data platforms, shaped by what I learn from your teams, and proven at S&amp;P Global with 350+ engineers.</p>
+  <div class="why" id="why">
+   <span class="lbl">Why Sonia<br>for Voya</span>
+   <ul>
+    <li><span>Reported to the CTO at Prudential, DoubleVerify and S&amp;P Global</span></li>
+    <li><span>Chaired S&amp;P Global&rsquo;s AI Governance Committee · prepared SEC examination evidence at S&amp;P Global</span></li>
+    <li><span><b class="n">350+</b> engineers on governed AI in 13 months · <b class="n">&minus;20%</b> production defects · <b class="n">2&times;</b> release cadence <span class="src">S&amp;P Global actuals</span></span></li>
+    <li><span>Retirement domain: Head of Quality Engineering, Prudential Customer Office &amp; Retirement · GCC across four countries at DoubleVerify</span></li>
+   </ul>
+   <span class="links"><a href="#proof">Proof &rarr;</a><a href="#security">+ Security &amp; QE &rarr;</a></span>
+  </div>
+  <div class="steps">
+   <span class="chip"><span class="ic"><svg class="i"><use href="#i-ear"/></svg></span><span class="num">1</span>Listen</span><span class="sep">&rsaquo;</span>
+   <span class="chip"><span class="ic"><svg class="i"><use href="#i-search"/></svg></span><span class="num">2</span>Learn</span><span class="sep">&rsaquo;</span>
+   <span class="chip"><span class="ic"><svg class="i"><use href="#i-doc"/></svg></span><span class="num">3</span>Propose</span><span class="sep">&rsaquo;</span>
+   <span class="chip"><span class="ic"><svg class="i"><use href="#i-flag"/></svg></span><span class="num">4</span>Prove</span>
+   <span class="tag-ill">Illustrative plan</span>
+   <span class="go"><button class="btn" id="tour" type="button">&#9654; Walk the proposal</button><a class="lnk" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">Book a 15-min walkthrough &rarr;</a></span>
+  </div>
+ </section>
+
+ <section class="sec" id="proposal" aria-labelledby="p-h">
+  <div class="sh"><span class="no">01</span><h2 id="p-h">The proposal</h2><p>One governed path every team follows, for software, AI use cases and automations alike: people decide, agents assist, evidence proves. Click a stage.</p></div>
+  <div class="groups" aria-hidden="true"><span class="g1">Customer</span><span class="g2">Engineering excellence</span><span class="g3">Evidence &amp; controls</span><span class="g4">Outcomes</span></div>
+  <div class="stages" role="tablist" aria-label="Stages" id="stages"></div>
+  <div class="partners">
+   <span class="loop"><svg class="i"><use href="#i-loop"/></svg>Measure feeds Intake: outcomes re-rank the backlog</span>
+   <span class="band"><b>Control partners at the evidence gate</b><span class="pill">CISO</span><span class="pill">Risk</span><span class="pill">Model Risk</span><span class="pill">Compliance</span><span class="pill">Legal</span><span class="pill">Privacy</span></span>
+  </div>
+  <div class="card detail" id="detail" aria-live="polite"></div>
+  <p class="note">Stage design, owners and gate thresholds are ILLUSTRATIVE, a starting point to refine with Voya&rsquo;s teams. The pattern (journeys first, a quality score that blocks promotion, evidence produced as work happens) is what Sonia ran at S&amp;P Global.</p>
+ </section>
+
+ <section class="sec" id="platforms" aria-labelledby="pl-h">
+  <div class="sh"><span class="no">02</span><h2 id="pl-h">One path across Voya&rsquo;s six platforms</h2><p>A hub sets the standards and controls once; spokes in each business area and the Global Capability Center build on them.</p></div>
+  <div class="hub">
+   <div class="card hubsvg" aria-label="Hub-and-spoke operating model diagram">
+    <svg viewBox="0 0 340 300" role="img" aria-labelledby="hubt"><title id="hubt">Hub-and-spoke: a central AI platform hub with spokes to business areas and the Global Capability Center</title>
+     <g stroke="#B9C3D4" stroke-width="2" stroke-dasharray="4 4">
+      <line x1="170" y1="150" x2="170" y2="40"/><line x1="170" y1="150" x2="290" y2="95"/><line x1="170" y1="150" x2="290" y2="210"/><line x1="170" y1="150" x2="170" y2="262"/><line x1="170" y1="150" x2="50" y2="210"/><line x1="170" y1="150" x2="50" y2="95"/>
+     </g>
+     <circle cx="170" cy="150" r="58" fill="#0B2A5B"/>
+     <text x="170" y="138" text-anchor="middle" fill="#fff" font-family="Public Sans,Arial" font-size="13" font-weight="700">AI platform hub</text>
+     <text x="170" y="156" text-anchor="middle" fill="#C9D6EE" font-family="Public Sans,Arial" font-size="10">standards · evaluation</text>
+     <text x="170" y="170" text-anchor="middle" fill="#C9D6EE" font-family="Public Sans,Arial" font-size="10">controls · scorecard</text>
+     <g font-family="Public Sans,Arial" font-size="10.5" font-weight="600" fill="#16202E" text-anchor="middle">
+      <circle cx="170" cy="40" r="30" fill="#FCEBDF" stroke="#D9622B"/><text x="170" y="37">Retirement</text><text x="170" y="50">spoke</text>
+      <circle cx="290" cy="95" r="30" fill="#FCEBDF" stroke="#D9622B"/><text x="290" y="92">Wealth &amp;</text><text x="290" y="105">advice</text>
+      <circle cx="290" cy="210" r="30" fill="#FCEBDF" stroke="#D9622B"/><text x="290" y="207">Benefits</text><text x="290" y="220">spoke</text>
+      <circle cx="170" cy="262" r="30" fill="#E0F0F1" stroke="#0F5F66"/><text x="170" y="259">Global</text><text x="170" y="272">Capability Ctr</text>
+      <circle cx="50" cy="210" r="30" fill="#FCEBDF" stroke="#D9622B"/><text x="50" y="207">Operations</text><text x="50" y="220">spoke</text>
+      <circle cx="50" cy="95" r="30" fill="#FCEBDF" stroke="#D9622B"/><text x="50" y="92">Enterprise</text><text x="50" y="105">tech</text>
+     </g>
+    </svg>
+    <p class="note">ILLUSTRATIVE spoke names; Voya&rsquo;s own structure sets the real ones. At S&amp;P Global Sonia ran this shape: a 32+ engineer central platform team with QE leaders embedded in delivery teams.</p>
+   </div>
+   <div>
+    <div class="plats">
+     <div class="card plat"><div class="t"><span class="ic"><svg class="i"><use href="#i-code"/></svg></span><h3>AI-native software engineering</h3></div><p>AI across design, build, test and release, with a quality score that blocks promotion and DORA metrics on one scorecard.</p><span class="role r-lead">I lead this directly</span></div>
+     <div class="card plat"><div class="t"><span class="ic"><svg class="i"><use href="#i-layers"/></svg></span><h3>Enterprise AI &amp; agentic platforms</h3></div><p>Approved tools and models, evaluation gates, developer enablement and adoption. Platform engineering builds the runtime; the hub sets how it&rsquo;s used.</p><span class="role r-lead">I lead governance &amp; adoption</span></div>
+     <div class="card plat"><div class="t"><span class="ic"><svg class="i"><use href="#i-gear"/></svg></span><h3>Intelligent automation</h3></div><p>Bring RPA and workflow automations through the same intake, evaluation and evidence steps as software, then move the right ones to agent-assisted workflows.</p><span class="role r-lead">I lead, with a strong IA head</span></div>
+     <div class="card plat"><div class="t"><span class="ic"><svg class="i"><use href="#i-brain"/></svg></span><h3>Data science &amp; applied AI</h3></div><p>Model work gets the same governed path to production: validation evidence, Model Risk at the gate, monitoring in Measure.</p><span class="role r-part">I hire and empower a strong head</span></div>
+     <div class="card plat"><div class="t"><span class="ic"><svg class="i"><use href="#i-book"/></svg></span><h3>Intelligence &amp; knowledge architecture</h3></div><p>Shared knowledge services for customer, associate and advisor experiences, held to the same quality and evaluation bar.</p><span class="role r-part">I partner with an architecture lead</span></div>
+     <div class="card plat"><div class="t"><span class="ic"><svg class="i"><use href="#i-db"/></svg></span><h3>Enterprise data platforms &amp; governance</h3></div><p>Data products tested end to end, from ingestion to the decision they inform, as Sonia&rsquo;s team did for S&amp;P Ratings.</p><span class="role r-part">I partner with a data platform lead</span></div>
+    </div>
+    <div class="legend"><span><span class="role r-lead">Navy</span> where Sonia has led the work</span><span><span class="role r-part">Teal</span> where she&rsquo;d build the team and set the shared path</span></div>
+   </div>
+  </div>
+ </section>
+
+ <section class="sec" id="journeys" aria-labelledby="j-h">
+  <div class="sh"><span class="no">03</span><h2 id="j-h">See it through Voya&rsquo;s people</h2><p>Journeys first: each step names what an agent drafts and what keeps it safe. All journeys below are ILLUSTRATIVE.</p></div>
+  <div class="tabs" role="tablist" id="ptabs"></div>
+  <div class="card jp" id="jpanel" role="tabpanel" aria-live="polite"></div>
+ </section>
+
+ <section class="sec" id="governance" aria-labelledby="g-h">
+  <div class="sh"><span class="no">04</span><h2 id="g-h">Governance built in</h2><p>Voya&rsquo;s &ldquo;Execute on the Fundamentals&rdquo;, mapped to where each control lives on the path.</p></div>
+  <div class="three">
+   <div class="card gv"><span class="ic" style="background:var(--ok-soft);color:var(--ok)"><svg class="i"><use href="#i-user"/></svg></span><h3>People decide</h3><ul><li>Product owners accept intake and outcomes</li><li>Engineers own every merge</li><li>Release owners and control partners approve each release from the evidence pack</li></ul></div>
+   <div class="card gv"><span class="ic" style="background:var(--violet-soft);color:var(--violet)"><svg class="i"><use href="#i-bot"/></svg></span><h3>Agents assist</h3><ul><li>A creator agent drafts specs, code, tests and evidence</li><li>A judge agent scores the draft against the standard</li><li>Only approved tools and models, chosen by the governance committee</li></ul></div>
+   <div class="card gv"><span class="ic" style="background:var(--gold-soft);color:var(--gold)"><svg class="i"><use href="#i-doc"/></svg></span><h3>Evidence proves</h3><ul><li>Evidence is produced as work happens, not assembled at the end</li><li>Audit- and exam-ready by default</li><li>One scorecard from team to CTO</li></ul></div>
+  </div>
+  <div class="card tbl">
+   <table>
+    <thead><tr><th>Voya Fundamental</th><th>Where it lives on the path</th><th>What Sonia has run before</th></tr></thead>
+    <tbody>
+     <tr><td><b>Security</b></td><td>Build (SAST), Test (DAST), Release (pen-test impact check)</td><td>4-stage security testing framework adopted by 100+ scrum teams in S&amp;P Ratings</td></tr>
+     <tr><td><b>Governance</b></td><td>Tool and model approval; evidence gate with control partners</td><td>Chaired S&amp;P Global&rsquo;s AI Governance Committee; regulated sign-off 3 days &rarr; same day</td></tr>
+     <tr><td><b>Observability</b></td><td>Measure: DORA metrics (lead time, deploy frequency, change failure rate, time to restore) and agent monitoring</td><td>Scorecard to the CTO; ROI scorecard to the CFO at S&amp;P Global and DoubleVerify</td></tr>
+     <tr><td><b>Explainability</b></td><td>Design and Test: rationale shown to the person deciding</td><td>Ratings AI decision support: recommends a rating with rationale; the analyst decides</td></tr>
+     <tr><td><b>Quality</b></td><td>Test: CI/CD quality score that blocks promotion</td><td>Production defects &minus;20% in 6 months; regression 9 days &rarr; daily</td></tr>
+     <tr><td><b>Risk</b></td><td>Audit evidence gate; log scrubbing before data reaches AI models</td><td>Prepared SEC examination evidence at S&amp;P Global; closed SOX findings with auditors at DoubleVerify</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </section>
+
+ <section class="sec" id="security" aria-labelledby="s-h">
+  <div class="sh"><span class="no">05</span><h2 id="s-h">Security testing built in</h2><p>A 4-stage framework Sonia built at S&amp;P Global, ready to fit Voya&rsquo;s path.</p></div>
+  <div class="sx">
+   <div class="card"><span class="no">1</span><h3>SAST</h3><p>Static code analysis on every change, legacy and AI-generated alike.</p><span class="at">Build stage</span></div>
+   <div class="card"><span class="no">2</span><h3>DAST</h3><p>Runtime testing with positive and negative inputs, because clean static scans don&rsquo;t catch everything.</p><span class="at">Test stage</span></div>
+   <div class="card"><span class="no">3</span><h3>Network penetration testing</h3><p>For each major release: revisit results, run impact analysis on the code changes, then retest or get CISO re-certification.</p><span class="at">Release stage</span></div>
+   <div class="card"><span class="no">4</span><h3>Ethical hacking</h3><p>Change agents from the security team take on ethical-hacker work, as at S&amp;P Global; at Audible, an Amazon service team did it.</p><span class="at">Measure stage</span></div>
+  </div>
+  <div class="story">
+   <div class="card"><h3>The release Sonia stopped</h3><p>During her own hands-on testing with negative inputs, an error message exposed the full server directory structure at runtime. The code was part legacy and part AI-generated. SAST was clean and go-live had been approved on SAST alone. She stopped the release and ran full DAST; it went live 2 days late. A follow-on finding showed log files holding details that were reaching AI models, so log scrubbing became a permanent pipeline check. The framework that followed was adopted by 100+ scrum teams in Ratings and picked up next by S&amp;P Dow Jones Indices.</p></div>
+   <div class="card"><h3>First 90 days at Voya <span class="tag-ill">Illustrative</span></h3><ol><li>Days 1&ndash;30: map current security testing per platform with the CISO team</li><li>Days 31&ndash;60: add DAST and log scrubbing to one pilot team&rsquo;s path</li><li>Days 61&ndash;90: tie pen-test impact checks to major releases; publish shared templates</li></ol></div>
+  </div>
+ </section>
+
+ <section class="sec" id="qe" aria-labelledby="q-h">
+  <div class="sh"><span class="no">06</span><h2 id="q-h">From QA to QE</h2><p>Quality moves into the team and into the pipeline, so speed and control rise together.</p></div>
+  <div class="card ratio">
+   <div class="big">2.5:1 <span>&rarr;</span> 4:1</div>
+   <div class="bars" aria-label="Developer to QE ratio, before and after">
+    <div class="bar"><span>Before (Dev:QE)</span><i style="--d:71%" title="2.5 developers per QE engineer"></i></div>
+    <div class="bar"><span>After (Dev:QE)</span><i style="--d:80%" title="4 developers per QE engineer"></i></div>
+   </div>
+   <p style="font-size:.8rem;color:var(--muted);max-width:360px">S&amp;P Global: developer-to-QE ratio, as automation and quality gates moved into the pipeline. Navy = developers, orange = QE.</p>
+  </div>
+  <div class="qe">
+   <div class="card"><h3>Prudential (retirement and insurance)</h3><ul><li>QA cost &minus;50%</li><li>Testing time &minus;30% in 9 months</li><li>UAT a week &rarr; 2&ndash;3 days across 5 business units</li><li>Customer Office QE scaled to 40+ FTEs for 10 scrum teams</li></ul></div>
+   <div class="card"><h3>People first</h3><ul><li>150+ mainframe engineers taken in; 50+ reskilled into automation</li><li>35+ roles moved with backup coverage</li><li>17 promotions incl. 2 to Director at S&amp;P Global</li><li>Engagement 85% &rarr; 95% in 3 quarters</li></ul></div>
+   <div class="card"><h3>How Sonia coaches</h3><ul><li>Structured automation curriculum with prizes and awards</li><li>Hackathons on automation and customer centricity (100+ at S&amp;P Global&rsquo;s first)</li><li>Hands-on workshops to move teams to a new operating model</li></ul></div>
+  </div>
+ </section>
+
+ <section class="sec" id="proof" aria-labelledby="pr-h">
+  <div class="sh"><span class="no">07</span><h2 id="pr-h">Proof</h2><p>Actuals from Sonia&rsquo;s past roles. Nothing here is a Voya figure.</p></div>
+  <div class="proof">
+   <div class="card pf"><span class="co">S&amp;P Global</span><h3>Vice President, Head of AI PDLC &amp; Quality Engineering · Chair, AI Governance Committee</h3>
+    <div class="kpi"><b>350+</b>engineers on governed AI in 13 months</div>
+    <div class="kpi"><b>~1,200</b>engineers the AI developer platform was designed to serve</div>
+    <div class="kpi"><b>2&times;</b>release cadence in 3 months</div>
+    <div class="kpi"><b>&minus;20%</b>production defects in 6 months</div>
+    <div class="kpi"><b>3d &rarr; same day</b>regulated sign-off</div>
+    <div class="kpi"><b>+30%</b>features per PI over 3 PIs; NPS +5</div>
+    <div class="kpi"><b>$70M+</b>budget; two business units</div></div>
+   <div class="card pf"><span class="co">DoubleVerify</span><h3>VP of Product and Engineering – Head of AI PDLC &amp; Quality Engineering</h3>
+    <div class="kpi"><b>$35M</b>budget; VPs and Directors as direct reports</div>
+    <div class="kpi"><b>4</b>countries in the global capability center</div>
+    <div class="kpi"><b>200+</b>contractors across five countries</div>
+    <div class="kpi"><b>&minus;20%</b>test cycles; manual effort &minus;25%</div>
+    <div class="kpi"><b>SOX</b>findings closed with auditors</div></div>
+   <div class="card pf"><span class="co">Audible (an Amazon company)</span><h3>QAE Director (CTO Office) – Consumer Domain QA Head</h3>
+    <div class="kpi"><b>$50M+</b>revenue from the non-functional CoE</div>
+    <div class="kpi"><b>4 &rarr; 41</b>engineers plus 2 offshore centers</div>
+    <div class="kpi"><b>&minus;30%</b>Sev2s, security vulnerabilities and launch risk</div>
+    <div class="kpi"><b>&minus;60%</b>manual effort across 17 teams</div></div>
+   <div class="card pf"><span class="co">Prudential</span><h3>Head of Quality Engineering (CIO Office) – Customer Office &amp; Retirement</h3>
+    <div class="kpi"><b>$100M</b>revenue impact contributed to, as quality lead for the unified customer dashboard</div>
+    <div class="kpi"><b>3% &rarr; 5%</b>multi-product customers</div>
+    <div class="kpi"><b>$8M&ndash;$10M</b>Retirement BU budget</div>
+    <div class="kpi"><b>&minus;50%</b>QA cost</div></div>
+  </div>
+  <div class="road">
+   <div class="card"><small>Days 1&ndash;30 · Illustrative</small><h3>Listen</h3><p>Meet platform, business and control-partner leaders; sit with retirement, advisor and operations teams; read the current scorecards.</p></div>
+   <div class="card"><small>Days 31&ndash;60 · Illustrative</small><h3>Learn</h3><p>Map one journey end to end across software, automation and data; find where evidence, quality and adoption stall.</p></div>
+   <div class="card"><small>Days 61&ndash;90 · Illustrative</small><h3>Propose</h3><p>Agree the shared path, gates and scorecard with the CTO and control partners; choose one pilot team per spoke.</p></div>
+   <div class="card"><small>After 90 days · Illustrative</small><h3>Prove</h3><p>Run the pilot, publish results on the scorecard, then scale in waves with the GCC.</p></div>
+  </div>
+ </section>
+</div>
+</main>
+<footer>
+ <div class="wrap">
+  <span><b>Sonia Malik</b> · NJ / NYC · 24+ years in technology · <a href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">LinkedIn</a></span>
+  <span>Master of Science (Computer Applications) and Bachelor&rsquo;s in Computer Science, Kurukshetra University · Rutgers Mini MBA (Customer Centricity)</span>
+  <span>An independent work sample, not affiliated with Voya Financial. Figures are Sonia&rsquo;s actuals from past roles; anything labeled ILLUSTRATIVE is a proposal.</span>
+ </div>
+</footer>
+<script>
+(function(){
+var S=[
+ {k:"intake",n:"Intake",ic:"target",who:"Product owner",gate:"Outcome + KPI agreed",cls:"",
+  sum:"A participant, sponsor, advisor or associate opportunity becomes one outcome, one KPI and a shared spec everyone builds and tests from.",
+  d:"Product owner, with engineering and quality sign-off",a:"Drafts the spec from journey notes; a judge agent scores clarity",e:"Journey map, KPI, acceptance criteria",x:"KPI agreed; spec quality passes"},
+ {k:"design",n:"Design",ic:"pen",who:"Architect",gate:"Security review OK",cls:"",
+  sum:"Architecture, data use and AI use are decided up front, including which approved model or automation fits.",
+  d:"Architect and security partner",a:"Drafts design options and threat-model prompts",e:"Design record, data and model choices",x:"Security and privacy review passed"},
+ {k:"build",n:"Build",ic:"code",who:"Engineer (owns merge)",gate:"Review + SAST pass",cls:"",
+  sum:"Engineers build with approved AI coding tools; every merge has a named human owner.",
+  d:"Engineer owns every merge",a:"Creator agent drafts code and tests; judge agent reviews",e:"Review record, SAST results",x:"Peer review and SAST pass"},
+ {k:"test",n:"Test",ic:"flask",who:"QE lead",gate:"Quality score \u2265 80",cls:"",
+  sum:"Automated functional, DAST, performance and AI evaluation tests run in the pipeline; a quality score blocks promotion.",
+  d:"QE lead",a:"Generates test cases and negative inputs; summarizes failures",e:"Test results, DAST report, evaluation scores",x:"Quality score \u2265 80 (ILLUSTRATIVE threshold)"},
+ {k:"evidence",n:"Audit evidence",ic:"shield",who:"Release owner + partners",gate:"Pack complete",cls:"ev",
+  sum:"The evidence pack assembles itself from earlier stages; control partners review it in one place.",
+  d:"Release owner with Risk, Model Risk, Compliance, Legal, Privacy, CISO",a:"Compiles the pack and flags gaps",e:"Evidence pack, exam- and audit-ready",x:"Control partners sign off"},
+ {k:"release",n:"Release",ic:"up",who:"Release owner",gate:"People approve",cls:"ev",
+  sum:"People approve every release from the evidence pack; pen-test impact checks run for major releases.",
+  d:"Release owner",a:"Prepares release notes and the pen-test impact analysis",e:"Approval record, release notes",x:"Approved from the evidence pack"},
+ {k:"measure",n:"Measure",ic:"chart",who:"Product + engineering",gate:"Backlog re-ranked",cls:"out",
+  sum:"DORA metrics, quality, adoption and customer outcomes feed one scorecard, then re-rank the backlog.",
+  d:"Product owner and engineering leader",a:"Monitors agents and models; spots incident patterns",e:"Scorecard: DORA, quality, adoption, KPI",x:"Backlog re-ranked from outcomes"}
+];
+var st=document.getElementById('stages'),dt=document.getElementById('detail'),cur=0;
+S.forEach(function(s,i){
+ var b=document.createElement('button');b.type='button';b.className='stage '+s.cls;b.setAttribute('role','tab');b.id='st-'+s.k;
+ b.innerHTML='<span class="k">'+(i+1)+'</span><span class="ic"><svg class="i"><use href="#i-'+s.ic+'"/></svg></span><b>'+s.n+'</b><span class="who">'+s.who+'</span><span class="gate">'+s.gate+'</span>';
+ b.addEventListener('click',function(){show(i)});st.appendChild(b);
+});
+function show(i){
+ cur=i;var s=S[i];
+ Array.prototype.forEach.call(st.children,function(c,j){c.setAttribute('aria-selected',j===i?'true':'false')});
+ dt.innerHTML='<div class="hd"><small>Stage '+(i+1)+' of 7</small><h3>'+s.n+'</h3><p>'+s.sum+'</p><div class="ctrls"><button type="button" id="pv" aria-label="Previous stage">&lsaquo;</button><button type="button" class="pri" id="nx">Next &rsaquo;</button></div></div>'+
+ '<div class="box b1"><h4><svg class="i"><use href="#i-user"/></svg>Decides</h4>'+s.d+'</div>'+
+ '<div class="box b2"><h4><svg class="i"><use href="#i-bot"/></svg>Agents assist</h4>'+s.a+'</div>'+
+ '<div class="box b3"><h4><svg class="i"><use href="#i-doc"/></svg>Evidence</h4>'+s.e+'</div>'+
+ '<div class="box b4"><h4><svg class="i"><use href="#i-gate"/></svg>Exit gate</h4>'+s.x+'</div>';
+ document.getElementById('pv').onclick=function(){show((cur+6)%7)};
+ document.getElementById('nx').onclick=function(){show((cur+1)%7)};
+}
+show(0);
+var timer=null;
+document.getElementById('tour').addEventListener('click',function(){
+ if(timer){clearInterval(timer);timer=null;this.innerHTML='&#9654; Walk the proposal';return;}
+ var b=this;b.textContent='\u275A\u275A Pause';show(0);var n=0;
+ document.getElementById('proposal').scrollIntoView({block:'start'});
+ timer=setInterval(function(){n++;if(n>6){clearInterval(timer);timer=null;b.innerHTML='&#9654; Walk the proposal';return;}show(n)},3200);
+});
+
+var P=[
+ {k:"participant",n:"Retirement participant",ic:"piggy",intro:"A participant enrolls, saves and plans for retirement income.",
+  steps:[["Enroll","Plain-language plan summary drafted","Compliance-approved content only"],["Choose contributions","Explains options side by side","Participant decides; no auto-changes"],["Check readiness","Summarizes progress toward goals","Privacy: data minimized before any model"],["Request a loan or rollover","Pre-fills the request from known data","Evidence of each step kept for audit"],["Plan retirement income","Drafts questions for a call with a person","Advice stays with licensed people"]],
+  out:"Fewer abandoned requests; clearer self-service"},
+ {k:"sponsor",n:"Plan sponsor",ic:"building",intro:"An employer sets up and runs its plan with Voya.",
+  steps:[["Plan setup","Drafts setup checklist from the plan documents","Operations reviews every field"],["Payroll file upload","Flags file errors before processing","Rules engine decides; agent explains"],["Compliance testing","Assembles test inputs and a summary","Results reviewed by specialists"],["Employee communications","Drafts notices in plain language","Legal and Compliance approve"],["Plan reporting","Summarizes plan health for the sponsor","Numbers trace to source systems"]],
+  out:"Faster setup; fewer file exceptions"},
+ {k:"advisor",n:"Advisor",ic:"handshake",intro:"An advisor prepares for and follows up on a client conversation.",
+  steps:[["Book review","Highlights client changes since last contact","Advisor sees the source of each item"],["Meeting prep","Drafts an agenda and talking points","Advisor edits and owns the content"],["Proposal","Pre-fills forms from approved data","Suitability decided by the advisor"],["Account opening","Checks paperwork for missing items","Evidence kept for supervision"],["Follow-up","Drafts the recap note","Advisor approves before sending"]],
+  out:"More time with clients; complete paperwork first time"},
+ {k:"ops",n:"Operations & service",ic:"headset",intro:"Associates handle requests, documents and exceptions.",
+  steps:[["Intake a request","Classifies and routes it","Associate can override routing"],["Process documents","Extracts fields from forms","Low-confidence fields go to a person"],["Work exceptions","Suggests next step with history","Associate decides; action logged"],["Resolve and respond","Drafts the reply","Approved templates only"],["Root-cause loop","Groups repeat issues for fixing","Feeds Intake: backlog re-ranked"]],
+  out:"Fewer repeat requests; faster resolution"}
+];
+var pt=document.getElementById('ptabs'),jp=document.getElementById('jpanel');
+P.forEach(function(p,i){
+ var b=document.createElement('button');b.type='button';b.className='tab';b.setAttribute('role','tab');
+ b.innerHTML='<svg class="i"><use href="#i-'+p.ic+'"/></svg>'+p.n;b.addEventListener('click',function(){showP(i)});pt.appendChild(b);
+});
+function showP(i){
+ var p=P[i];
+ Array.prototype.forEach.call(pt.children,function(c,j){c.setAttribute('aria-selected',j===i?'true':'false')});
+ var h='<div class="intro"><p><b>'+p.n+':</b> '+p.intro+'</p><span class="tag-ill">Illustrative journey</span></div><ol class="journey">';
+ p.steps.forEach(function(s,j){h+='<li><span class="st">Step '+(j+1)+'</span><b>'+s[0]+'</b><span class="ln a"><svg class="i"><use href="#i-bot"/></svg>'+s[1]+'</span><span class="ln g"><svg class="i"><use href="#i-shield"/></svg>'+s[2]+'</span></li>'});
+ h+='</ol><div class="outc"><svg class="i" style="color:var(--ok)"><use href="#i-check"/></svg><b>Outcome to measure (ILLUSTRATIVE):</b> '+p.out+'</div>';
+ jp.innerHTML=h;
+}
+showP(0);
+
+var bg=document.getElementById('burger'),mn=document.getElementById('menu');
+bg.addEventListener('click',function(){var o=mn.classList.toggle('open');bg.setAttribute('aria-expanded',o?'true':'false')});
+mn.addEventListener('click',function(e){if(e.target.tagName==='A'){mn.classList.remove('open');bg.setAttribute('aria-expanded','false')}});
+var links=mn.querySelectorAll('a');
+if('IntersectionObserver' in window){
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});
+ ['proposal','platforms','journeys','governance','security','qe','proof'].forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el)});
+}
+})();
+</script>
+</body>
+</html>
