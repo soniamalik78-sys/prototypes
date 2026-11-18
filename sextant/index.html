@@ -269,6 +269,29 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 .pt .a{background:var(--violet-soft);color:var(--violet)}.pt .g{background:var(--ok-bg);color:var(--ok);font-weight:600}
 @media (max-width:640px){.brand{white-space:normal;font-size:.72rem}.brand small{display:none}}
 .pstrip{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 4px}.pstrip span{background:var(--ok-bg);color:var(--muted);border-radius:8px;padding:6px 10px;font-size:.86rem}.pstrip b{color:var(--ok);font-family:var(--f-display);font-size:1.05rem;margin-right:4px}
+/* Model I v2 */
+.vp2{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:980px){.vp2{grid-template-columns:1fr}}
+.vleft{display:grid;gap:8px}.vleft .mi-fig{overflow:visible}.vleft .mi-fig svg{min-width:0}
+.pathbox{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:12px;padding:12px 14px}
+.pathbox h3{font-size:1.15rem;margin-bottom:8px}
+.pt2{width:100%;border-collapse:collapse;font-size:.8rem;line-height:1.3}
+.pt2 th,.pt2 td{text-align:left;vertical-align:top;padding:6px 6px;border-bottom:1px solid var(--line)}
+.pt2 thead th{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.pt2 tbody th{font-weight:700;white-space:nowrap;color:var(--accent)}
+.pt2 tbody th i{font-style:normal;display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--accent-soft);font-size:.68rem;margin-right:5px}
+.pt2 td:last-child{color:var(--ok);font-weight:600}
+@media (max-width:640px){.pathbox{overflow-x:auto}.pt2{min-width:560px}}
+.same{margin-top:8px;font-size:.86rem;font-weight:600;color:var(--teal)}
+.bas{display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr;gap:6px;align-items:center;margin-top:10px}
+@media (max-width:760px){.bas{grid-template-columns:1fr}.bas>span{transform:rotate(90deg);text-align:center}}
+.bas>span{text-align:center;color:var(--faint);font-size:1.3rem}
+.bas div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;height:100%}
+.bas div:nth-of-type(1){border-left:4px solid var(--warn)}.bas div:nth-of-type(2){border-left:4px solid var(--ok)}.bas div:nth-of-type(3){border-left:4px solid var(--accent)}
+.bas small{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.bas p{font-size:.92rem}
+.score{margin-top:10px;font-size:.92rem;color:var(--muted)}.score b{color:var(--fg)}
+.vstate{margin:12px 0 0;padding:14px 18px;border-left:4px solid var(--teal);background:var(--surface);border-radius:0 10px 10px 0;font-family:var(--f-display);font-size:1.08rem;line-height:1.45}
 /* Fill first view on short sections */
 @media (min-width:761px) and (min-height:700px){
  .jstep{padding:18px 14px}.jstep b{font-size:1.05rem}
@@ -301,11 +324,11 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 
 <!-- 1 VALUE -->
 <section class="slide" data-name="Model I">
-  <div class="kick">Value proposition</div>
-  <h2>Model I: development practices and an AI-native PDLC, driven by the customer</h2>
-  <p class="sub">Customer journeys on top, engineering excellence underneath, evidence in between. Click any part.</p>
-  <div class="vp grow">
-    <figure class="mi-fig"><svg viewBox="0 0 784 480" role="img" aria-label="Model I: customer centricity on top (advisor journey in three layers, then MVP, features and BDD), product teams in the stem, engineering excellence below (design, code, test), an evidence gate to production, KPIs and approval reasons feeding back, and a happy-engineers foundation.">
+  <div class="kick">Value proposition &middot; one PDLC for every team</div>
+  <h2>One standardized PDLC every team follows: people decide, agents assist, evidence proves, advisors feel the result</h2>
+  <p class="sub">A repeatable development-practice process from intake to measurement. Customer journeys on top, engineering excellence underneath, evidence in between.</p>
+  <div class="vp2">
+    <div class="vleft"><figure class="mi-fig"><svg viewBox="0 0 784 480" role="img" aria-label="Model I: customer centricity on top (advisor journey in three layers, then MVP, features and BDD), product teams in the stem, engineering excellence below (design, code, test), an evidence gate to production, KPIs and approval reasons feeding back, and a happy-engineers foundation.">
 <defs><marker id="mia" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0A3D91"/></marker><marker id="mig" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#B8860B"/></marker></defs>
 <path d="M10,10 H440 V122 H290 V258 H440 V350 H10 V258 H160 V122 H10 Z" fill="#000" opacity=".06" transform="translate(4,4)"/>
 <g class="hit" tabindex="0" role="button" data-mi="cc" aria-label="Customer centricity">
@@ -351,7 +374,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 <polygon points="570,158 618,158 624,170 618,182 570,182 576,170" fill="#6343AB"/><text x="597" y="173.5">Pre-prod</text>
 <polygon points="620,158 654,158 660,170 654,182 620,182 626,170" fill="#4E3191"/><text x="640" y="173.5">Prod</text>
 </g>
-<g font-size="9.6" fill="#1C1F24"><text x="474" y="200">Each tier scored: security,</text><text x="474" y="213">compliance, quality, performance.</text><text x="474" y="230"><tspan font-weight="700" fill="#5B3E9E">Prod:</tspan> a human approves from</text><text x="474" y="243">the evidence pack, in minutes.</text></g>
+<g font-size="9.6" fill="#1C1F24"><text x="474" y="200">Each tier scored: security, privacy,</text><text x="474" y="213">compliance, model risk, quality.</text><text x="474" y="230"><tspan font-weight="700" fill="#5B3E9E">Prod:</tspan> a human approves from</text><text x="474" y="243">the evidence pack, in minutes.</text></g>
 </g>
 <path d="M664 190 H676" stroke="#0A3D91" stroke-width="2" marker-end="url(#mia)"/>
 <g class="hit" tabindex="0" role="button" data-mi="prod" aria-label="Production outcomes">
@@ -377,14 +400,19 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 </g></g>
 </svg>
 </figure>
-    <div class="stats">
       <div class="tip" id="tip" aria-live="polite"></div>
-      <div class="stat"><b>2&times;</b><span>release cadence in 3 months</span></div>
-      <div class="stat"><b>&minus;20%</b><span>production defects in 6 months</span></div>
-      <div class="stat"><b>3 days &rarr; same day</b><span>regulated release sign-off</span></div>
+    </div>
+    <div class="pathbox">
+      <h3>The path every team takes</h3>
+      <table class="pt2"><thead><tr><th scope="col">Stage</th><th scope="col">Owner</th><th scope="col">Evidence</th><th scope="col">Exit gate</th></tr></thead><tbody><tr><th scope="row"><i>1</i>Discover</th><td>Product owner</td><td>Journey and KPI</td><td>KPI agreed</td></tr><tr><th scope="row"><i>2</i>Define</th><td>Three Amigos</td><td>MVP, features, shared BDD</td><td>BDD score &ge; 80</td></tr><tr><th scope="row"><i>3</i>Design</th><td>Architect</td><td>API contract, ADR, threat model</td><td>Architecture and security sign-off</td></tr><tr><th scope="row"><i>4</i>Build</th><td>Engineer, named PR owner</td><td>Code, unit tests, SAST every commit</td><td>Review and SAST pass, approved tools only</td></tr><tr><th scope="row"><i>5</i>Test</th><td>QE lead</td><td>Scored BDD, negative tests, DAST, resiliency</td><td>Quality &ge; 80, no high findings</td></tr><tr><th scope="row"><i>6</i>Release</th><td>Release owner with Risk, Legal, Compliance, Privacy, Model Risk</td><td>Signed evidence pack, control tests</td><td>A human approves from the pack, in minutes</td></tr><tr><th scope="row"><i>7</i>Operate and learn</th><td>Product and SRE</td><td>NIGO, CSAT/NPS, incidents, DORA</td><td>Outcomes re-rank the backlog</td></tr></tbody></table>
+      <p class="same">Same path for every team: eight enterprise practices, one tool catalog, one paved CI/CD.</p>
     </div>
   </div>
-  <p class="note">Ran at S&amp;P Global across two business units and 350+ engineers. Shown here for an illustrative LPL engineering organization.</p>
+  <div class="pstrip"><span><b>2&times;</b> release cadence in 3 months</span><span><b>&minus;20%</b> production defects in 6 months</span><span><b>3 days &rarr; same day</b> regulated sign-off</span><span><b>+30%</b> features per PI</span><span><b>+5</b> NPS</span></div>
+  <div class="bas"><div><small>Before</small><p>Each team governs AI differently, and reviews come late</p></div><span aria-hidden="true">&rarr;</span><div><small>After</small><p>One PDLC with gates, owners and controls in the pipeline</p></div><span aria-hidden="true">&rarr;</span><div><small>Scale</small><p>Pilot one team, then waves</p></div></div>
+  <p class="score"><b>What this process reports to the CTO:</b> cycle time, quality, agent effectiveness, developer experience, cost-to-deliver, technical debt, resilience, advisor outcomes, exam-ready evidence.</p>
+  <blockquote class="vstate">Standardize LPL&rsquo;s development practices into one AI-native PDLC, from intake through design, build, quality gates, audit evidence, release and measurement, so smaller, higher-leverage teams of engineers and agents deliver faster for advisors while quality, resilience and security get stronger. People decide, agents assist, exam-ready evidence comes out of the path itself, and the CTO sees cycle time, quality and realized value on one scorecard.</blockquote>
+  <p class="note">This process ran at S&amp;P Global across two business units, with 350+ engineers on governed AI in 13 months. S&amp;P figures are actuals; LPL items are illustrative. This is the path I&rsquo;d baseline, pilot and scale at LPL.</p>
 </section>
 
 <!-- PRACTICES -->
@@ -520,7 +548,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
       <div><i>&#10003;</i><b>18</b><span>negative tests added by judge agent</span></div>
       <div><i>&#10003;</i><b>0 high</b><span>SAST and DAST findings</span></div>
       <div><i>&#10003;</i><b>p95 in SLA</b><span>load and resiliency</span></div>
-      <div><i>&#10003;</i><b>Pass</b><span>compliance and privacy policy checks</span></div>
+      <div><i>&#10003;</i><b>Pass</b><span>compliance, privacy and model-risk checks</span></div>
       <div><i>&#10003;</i><b>6 min</b><span>release owner approval</span></div>
     </div></div>
   <div class="proof"><b>Proof</b> 0 autonomous production deploys. Regression 9 &rarr; 4 days.</div>
@@ -553,19 +581,20 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   var S=[].slice.call(document.querySelectorAll('.slide')), nav=document.getElementById('nav'), dots=document.getElementById('dots'), cur=0;
   var src=new URLSearchParams(location.search).get('src')||'';
   S.forEach(function(s,i){var b=document.createElement('button');b.type='button';b.textContent=s.dataset.name;b.onclick=function(){go(i)};nav.appendChild(b);dots.appendChild(document.createElement('i'));});
+  function slug(n){return n.toLowerCase().replace(/[^a-z0-9]+/g,'-')}
   function go(i){cur=Math.max(0,Math.min(S.length-1,i));
     S.forEach(function(s,k){s.classList.toggle('on',k===cur)});
     [].forEach.call(nav.children,function(b,k){b.setAttribute('aria-current',k===cur?'true':'false')});
     [].forEach.call(dots.children,function(d,k){d.classList.toggle('on',k===cur)});
     document.getElementById('next').textContent=cur===S.length-1?'Start over':'Next →';
-    history.replaceState(null,'','#'+S[cur].dataset.name.toLowerCase());
+    history.replaceState(null,'','#'+slug(S[cur].dataset.name));
     window.scrollTo({top:0});
     if(window.goatcounter&&window.goatcounter.count){window.goatcounter.count({path:location.pathname+'/'+S[cur].dataset.name.toLowerCase()+(src?'?src='+src:''),title:'Pitch: '+S[cur].dataset.name,event:true});}
   }
   document.getElementById('prev').onclick=function(){go(cur-1)};
   document.getElementById('next').onclick=function(){go(cur===S.length-1?0:cur+1)};
   document.addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea'))return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);});
-  var h=(location.hash||'').slice(1), start=0; S.forEach(function(s,i){if(s.dataset.name.toLowerCase()===h)start=i}); go(start);
+  var AL={value:'model-i','ai-pdlc':'walkthrough'}; var h=decodeURIComponent((location.hash||'').slice(1)).toLowerCase().replace(/[^a-z0-9]+/g,'-'); h=AL[h]||h; var start=0; S.forEach(function(s,i){if(slug(s.dataset.name)===h)start=i}); go(start);
 
   // Model I tips
   var MI={cc:['Customer centricity','Advisor journey in three layers: customer, business process, systems. Opportunities become an MVP, features and a BDD file everyone shares.'],dp:['Product teams','Teams aligned to LPL personas: advisors, institutions and investors, plus ops, data and risk.'],ee:['Engineering excellence','Design, code and test built from the BDD. Agents draft, engineers decide.'],qg:['Quality gates over CI/CD','Every tier scored. In production a human approves from the evidence pack, in minutes.'],prod:['Outcomes','NIGO rate, CSAT, NPS, incidents and DORA metrics show whether it worked.'],loop:['Learning loops','KPIs re-rank the journeys. Approval reasons tune the agents and rubrics.'],devx:['Built on happy engineers','Talent, onboarding, AI adoption and test data are the foundation.']};
