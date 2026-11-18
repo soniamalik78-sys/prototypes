@@ -465,7 +465,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="kick">Value proposition &middot; one PDLC for every team</div>
   <h2>One standardized PDLC every team follows: people decide, agents assist, evidence proves, advisors feel the result</h2>
   <p class="sub">A repeatable development-practice process from intake to measurement. Customer journeys on top, engineering excellence underneath, evidence in between.</p>
-  <figure class="mi3"><svg viewBox="0 0 640 210" role="img" aria-label="Model I for LPL: Customer Centricity and Engineering Excellence around product pods for advisors, institutions, investors and operations, flowing through quality gates to production, with two learning loops back, built on happy engineers">
+  <figure class="mi3"><svg viewBox="0 0 640 210" role="img" aria-label="Model I for LPL: Customer Centricity and Engineering Excellence around product pods for advisors, institutions, investors and operations, flowing through quality gates to production, with two learning loops back, built on developer experience">
         <defs><marker id="mia3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#575E6B"/></marker></defs>
         <rect x="20" y="10" width="320" height="34" rx="6" fill="#0F5259"/>
         <text x="180" y="25" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="bold">Customer Centricity</text>
@@ -491,7 +491,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
         <text x="624" y="19" text-anchor="end" font-size="7.6" fill="#D9781E">NIGO &#183; CSAT and NPS &#183; incidents &#8594; next journey</text>
         <text x="624" y="152" text-anchor="end" font-size="7.6" fill="#D9781E">Approval reasons and incidents &#8594; practices and agents</text>
         <rect x="20" y="168" width="604" height="32" rx="6" fill="#EEF2F7" stroke="#1F3A5F"/>
-        <text x="322" y="188" text-anchor="middle" font-size="8" fill="#333"><tspan font-weight="bold" fill="#1F3A5F">Built on happy engineers</tspan> &#183; onboarding and skills &#183; approved AI tools &#183; test data &#183; developer portal</text>
+        <text x="322" y="188" text-anchor="middle" font-size="8" fill="#333"><tspan font-weight="bold" fill="#1F3A5F">Built on developer experience</tspan> &#183; skills development &#183; approved AI tools &#183; test data on demand &#183; developer portal</text>
       </svg></figure>
   <div class="story2">
     <figure class="loopfig2"><svg id="loop2" viewBox="-110 -14 580 400" role="img" aria-labelledby="loop2-t"><title id="loop2-t">The SEXTANT loop around advisors and their clients: discover, define, design, build, test, release, learn, and back to discover</title></svg></figure>
@@ -503,7 +503,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
     </div>
   </div>
   <div class="who4"><span class="w-ai"><b>AI</b> reads advisor and client signals</span><span class="w-cr"><b>Creator agents</b> draft specs, code and tests</span><span class="w-jg"><b>Judge agents</b> score every artifact</span><span class="w-hu"><b>People</b> decide and approve every release</span></div>
-  <div class="found"><b>Underneath it all: happy engineers.</b> One paved platform, approved AI tools, onboarding and skills, test data on demand.</div>
+  <div class="found"><b>Underneath it all: developer experience.</b> One paved platform, approved AI tools, skills development and coaching, test data on demand.</div>
   </div>
   <div class="pathbox">
       <h3>The path every team takes</h3>
@@ -746,7 +746,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   var AL={value:'model-i','ai-pdlc':'walkthrough',audit:'controls',security:'controls',persona:'journey',why:'why-sonia'}; var h=decodeURIComponent((location.hash||'').slice(1)).toLowerCase().replace(/[^a-z0-9]+/g,'-'); h=AL[h]||h; var start=0; S.forEach(function(s,i){if(slug(s.dataset.name)===h)start=i}); go(start);
 
   // Model I tips
-  var MI={cc:['Customer centricity','Advisor journey in three layers: customer, business process, systems. Opportunities become an MVP, features and a BDD file everyone shares.'],dp:['Product teams','Teams aligned to LPL personas: advisors, institutions and investors, plus ops, data and risk.'],ee:['Engineering excellence','Design, code and test built from the BDD. Agents draft, engineers decide.'],qg:['Quality gates over CI/CD','Every tier scored. In production a human approves from the evidence pack, in minutes.'],prod:['Outcomes','NIGO rate, CSAT, NPS, incidents and DORA metrics show whether it worked.'],loop:['Learning loops','KPIs re-rank the journeys. Approval reasons tune the agents and rubrics.'],devx:['Built on happy engineers','Talent, onboarding, AI adoption and test data are the foundation.']};
+  var MI={cc:['Customer centricity','Advisor journey in three layers: customer, business process, systems. Opportunities become an MVP, features and a BDD file everyone shares.'],dp:['Product teams','Teams aligned to LPL personas: advisors, institutions and investors, plus ops, data and risk.'],ee:['Engineering excellence','Design, code and test built from the BDD. Agents draft, engineers decide.'],qg:['Quality gates over CI/CD','Every tier scored. In production a human approves from the evidence pack, in minutes.'],prod:['Outcomes','NIGO rate, CSAT, NPS, incidents and DORA metrics show whether it worked.'],loop:['Learning loops','KPIs re-rank the journeys. Approval reasons tune the agents and rubrics.'],devx:['Built on developer experience','Skills development, onboarding, approved AI tools and test data are the foundation.']};
   var tip=document.getElementById('tip'); if(tip){ var hits=[].slice.call(document.querySelectorAll('.mi-fig .hit'));
   function show(k){if(!MI[k])return;tip.innerHTML='';var b=document.createElement('b');b.textContent=MI[k][0];tip.appendChild(b);tip.appendChild(document.createTextNode(MI[k][1]));hits.forEach(function(g){g.classList.toggle('on',g.dataset.mi===k)});}
   hits.forEach(function(g){g.addEventListener('click',function(){show(g.dataset.mi)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(g.dataset.mi)}})});
