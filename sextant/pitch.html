@@ -248,6 +248,26 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 .al{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px;text-align:left}.al li{background:var(--sunk);border-radius:8px;padding:10px 12px;font-size:.95rem}.al li::before{content:"\2713  ";color:var(--ok);font-weight:700}
 .evg div{padding:10px 12px}
 .sl{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}.sl li{background:rgba(255,255,255,.14);border-radius:8px;padding:9px 10px;font-size:.92rem}
+/* Swimlane */
+.swim{display:grid;grid-template-rows:auto repeat(6,1fr);gap:5px;margin-top:12px;overflow-x:auto}
+.sw-row{display:grid;grid-template-columns:118px repeat(7,minmax(104px,1fr));gap:5px;min-width:860px}
+.sw-st{background:var(--surface);border:1.5px solid var(--line);color:var(--fg);padding:8px 4px;font-weight:700;font-size:.86rem;clip-path:polygon(0 0,calc(100% - 9px) 0,100% 50%,calc(100% - 9px) 100%,0 100%,9px 50%);display:flex;flex-direction:column;align-items:center}
+.sw-st i{font-style:normal;font-size:.7rem;color:var(--faint)}
+.sw-st.on{background:var(--accent);color:#fff;border-color:var(--accent)}.sw-st.on i{color:#D9E4F6}
+.sw-lh{background:var(--c);color:#fff;border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;justify-content:center}
+.sw-lh b{font-size:.9rem}.sw-lh span{font-size:.7rem;opacity:.85}
+.sw-c{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--c);border-radius:7px;padding:8px;font-size:.86rem;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.25;transition:background .15s}
+.sw-c.on{background:var(--accent-soft);font-weight:700;border-color:var(--accent)}
+/* Practices */
+.prac{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:10px;margin-top:12px}
+@media (max-width:900px){.prac{grid-template-columns:1fr 1fr}}
+.pt{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.pt i{font-style:normal;font-size:.72rem;font-weight:700;color:var(--faint)}
+.pt b{font-family:var(--f-display);font-weight:600;font-size:1.15rem;line-height:1.15}
+.pt p{font-size:.9rem;color:var(--muted);flex:1}
+.pt span{font-size:.78rem;border-radius:7px;padding:5px 8px}
+.pt .a{background:var(--violet-soft);color:var(--violet)}.pt .g{background:var(--ok-bg);color:var(--ok);font-weight:600}
+@media (max-width:640px){.brand{white-space:normal;font-size:.72rem}.brand small{display:none}}
 /* Fill first view on short sections */
 @media (min-width:761px) and (min-height:700px){
  .jstep{padding:18px 14px}.jstep b{font-size:1.05rem}
@@ -264,7 +284,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 </head>
 <body>
 <header class="top"><div class="in">
-  <div class="brand">SEXTANT · MODEL I <small>for LPL Financial</small></div>
+  <div class="brand">SEXTANT · DEVELOPMENT PRACTICES &amp; AI PDLC <small>for LPL Financial</small></div>
   <nav id="nav" aria-label="Pitch sections"></nav>
 </div></header>
 
@@ -272,7 +292,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 <!-- 1 VALUE -->
 <section class="slide" data-name="Value">
   <div class="kick">Value proposition</div>
-  <h2>Model I: customer outcomes in, proven releases out</h2>
+  <h2>Model I: development practices and an AI-native PDLC, driven by the customer</h2>
   <p class="sub">Customer journeys on top, engineering excellence underneath, evidence in between. Click any part.</p>
   <div class="vp grow">
     <figure class="mi-fig"><svg viewBox="0 0 784 480" role="img" aria-label="Model I: customer centricity on top (advisor journey in three layers, then MVP, features and BDD), product teams in the stem, engineering excellence below (design, code, test), an evidence gate to production, KPIs and approval reasons feeding back, and a happy-engineers foundation.">
@@ -357,6 +377,31 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <p class="note">Ran at S&amp;P Global across two business units and 350+ engineers. Shown here for an illustrative LPL engineering organization.</p>
 </section>
 
+<!-- PROCESS -->
+<section class="slide" data-name="Process">
+  <div class="kick">Target-state AI-native PDLC &middot; the process</div>
+  <h2>Seven stages. Every stage has an owner, an agent, a practice, an artifact, a gate and a measure.</h2>
+  <div class="swim grow" id="swim"></div>
+  <p class="note">Click a stage to highlight it. Decision rights stay with people; agents assist inside each stage.</p>
+</section>
+
+<!-- PRACTICES -->
+<section class="slide" data-name="Practices">
+  <div class="kick">Development practices &middot; enterprise standards</div>
+  <h2>Eight development practices every team adopts, with agents built in and guardrails on</h2>
+  <div class="prac grow">
+    <div class="pt"><i>1</i><b>Spec-first BDD</b><p>Every story ships with a BDD file</p><span class="a">Agent drafts scenarios</span><span class="g">Three Amigos sign off</span></div>
+    <div class="pt"><i>2</i><b>Agentic dev standards</b><p>Agent taxonomy, repo context files, approved tool catalog</p><span class="a">Agents use approved tools only</span><span class="g">No client data in prompts</span></div>
+    <div class="pt"><i>3</i><b>Trunk-based, small PRs</b><p>Short-lived branches, small reviewable changes</p><span class="a">Agent splits large changes</span><span class="g">Named owner per PR</span></div>
+    <div class="pt"><i>4</i><b>Code review</b><p>AI first pass, human owner decides</p><span class="a">Review agent flags risk</span><span class="g">Evidence required to merge</span></div>
+    <div class="pt"><i>5</i><b>Shift-left quality</b><p>BDD automation, test impact analysis, negative tests</p><span class="a">Test and judge agents</span><span class="g">Quality score gates</span></div>
+    <div class="pt"><i>6</i><b>DevSecOps</b><p>SAST every commit, DAST every build</p><span class="a">Agent suggests fixes</span><span class="g">High findings block</span></div>
+    <div class="pt"><i>7</i><b>Golden-path CI/CD</b><p>One paved path, infrastructure as code, feature flags</p><span class="a">Agent assembles evidence</span><span class="g">No autonomous prod deploys</span></div>
+    <div class="pt"><i>8</i><b>Observability and learning</b><p>SLOs, DORA metrics, blameless reviews</p><span class="a">Incident-pattern agent</span><span class="g">Findings tune the rubrics</span></div>
+  </div>
+  <div class="proof"><b>Proof</b> At S&amp;P Global: one framework, standards and reference workflows in 6 months, designed for ~1,200 engineers across two business units.</div>
+</section>
+
 <!-- 2 PERSONA -->
 <section class="slide" data-name="Persona">
   <div class="kick">Who we build for</div>
@@ -390,8 +435,8 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 </section>
 
 <!-- 4 AI PDLC -->
-<section class="slide" data-name="AI PDLC">
-  <div class="kick">AI-native PDLC &middot; driven by the customer</div>
+<section class="slide" data-name="Walkthrough">
+  <div class="kick">Walkthrough &middot; one advisor opportunity through the process</div>
   <h2>Customer journeys first. Shared assets next. Then build and prove.</h2>
   <div class="ph grow">
     <div class="phc" style="--c:var(--teal)">
@@ -479,34 +524,6 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="proof"><b>Proof</b> 0 autonomous production deploys. Regression 9 &rarr; 4 days.</div>
 </section>
 
-<!-- 7 FRAMEWORK -->
-<section class="slide" data-name="Framework">
-  <div class="kick">Framework</div>
-  <h2>Agents propose. Engineers decide.</h2>
-  <p class="sub">A loop that gets faster with every approval.</p>
-  <div class="fw grow">
-    <svg viewBox="0 0 420 330" role="img" aria-label="Creator agent, judge agent, engineer decides, feedback tunes rubric, in a loop">
-      <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7A8089"/></marker></defs>
-      <path d="M150 70 Q210 30 270 70" stroke="#7A8089" stroke-width="2" fill="none" marker-end="url(#ar)"/>
-      <path d="M330 120 Q370 165 330 210" stroke="#7A8089" stroke-width="2" fill="none" marker-end="url(#ar)"/>
-      <path d="M270 260 Q210 300 150 260" stroke="#7A8089" stroke-width="2" fill="none" marker-end="url(#ar)"/>
-      <path d="M90 210 Q50 165 90 120" stroke="#7A8089" stroke-width="2" fill="none" marker-end="url(#ar)"/>
-      <circle cx="90" cy="90" r="50" fill="#0F5259"/><text x="90" y="86" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Creator</text><text x="90" y="103" text-anchor="middle" fill="#CFE8EA" font-size="11">agent drafts</text>
-      <circle cx="330" cy="90" r="50" fill="#5B3E9E"/><text x="330" y="86" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Judge</text><text x="330" y="103" text-anchor="middle" fill="#E6DCF7" font-size="11">scores vs rubric</text>
-      <circle cx="330" cy="240" r="50" fill="#0A3D91"/><text x="330" y="236" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Engineer</text><text x="330" y="253" text-anchor="middle" fill="#D9E4F6" font-size="11">decides</text>
-      <circle cx="90" cy="240" r="50" fill="#B8860B"/><text x="90" y="236" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Learn</text><text x="90" y="253" text-anchor="middle" fill="#FBEFD3" font-size="11">tunes rubric</text>
-      <text x="210" y="160" text-anchor="middle" font-size="12" font-weight="700" fill="#7A8089">EVERY</text><text x="210" y="177" text-anchor="middle" font-size="12" font-weight="700" fill="#7A8089">STORY &amp; CHANGE</text>
-    </svg>
-    <div class="fwl">
-      <div><i style="background:#0F5259">1</i><p>Journeys become MVPs, stories and code</p></div>
-      <div><i style="background:#5B3E9E">2</i><p>Configurable rubric checks quality</p></div>
-      <div><i style="background:#0A3D91">3</i><p>Human validates what matters</p></div>
-      <div><i style="background:#B8860B">4</i><p>Approval reasons feed back</p></div>
-      <div class="proof" style="margin:0"><b>Proof</b> +30% features per PI across 10 teams.</div>
-    </div>
-  </div>
-</section>
-
 <!-- 8 DEMO -->
 <section class="slide" data-name="Demo">
   <div class="kick">Solution &middot; demo</div>
@@ -555,6 +572,27 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   hits.forEach(function(g){g.addEventListener('click',function(){show(g.dataset.mi)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(g.dataset.mi)}})});
   show('cc');
 
+  // Process swimlane
+  var STG=['Discover','Define','Design','Build','Test','Release','Operate and learn'];
+  var LN=[
+    ['Decides','human','--ok',['Product owner','Three Amigos','Architect','Engineer','QE lead','Release owner','SRE and product']],
+    ['Assists','agent','--violet',['Insight agent','Creator + judge','Design agent','Coding + review','Test + judge','Evidence agent','Incident agent']],
+    ['Practice','standard','--teal',['Journey mapping','Spec-first BDD','API-first, threat model','Trunk-based, small PRs','Test impact analysis','Golden-path CI/CD','SLOs, blameless review']],
+    ['Artifact','output','--gold',['Journey + KPI','MVP, features, BDD','Contract, ADR','Code + unit tests','Scored results','Evidence pack','KPI insights']],
+    ['Exit gate','criteria','--warn',['KPI agreed','BDD score ≥ 80','Arch + security OK','Review + SAST pass','Quality ≥ 80','Human approval','Backlog re-ranked']],
+    ['Measure','KPI','--accent',['Opportunity value','Spec quality','Design rework','PR cycle time','Defect escape','Lead time, CFR','MTTR, CSAT, NPS']]
+  ];
+  var swim=document.getElementById('swim');
+  var hd=document.createElement('div'); hd.className='sw-row sw-hd'; hd.appendChild(document.createElement('div'));
+  STG.forEach(function(t,i){var b=document.createElement('button');b.type='button';b.className='sw-st';b.dataset.c=i;b.innerHTML='<i>'+(i+1)+'</i><span></span>';b.querySelector('span').textContent=t;b.onclick=function(){spick(i)};hd.appendChild(b);});
+  swim.appendChild(hd);
+  LN.forEach(function(l){var r=document.createElement('div');r.className='sw-row';r.style.setProperty('--c','var('+l[2]+')');
+    var h=document.createElement('div');h.className='sw-lh';h.innerHTML='<b></b><span></span>';h.querySelector('b').textContent=l[0];h.querySelector('span').textContent=l[1];r.appendChild(h);
+    l[3].forEach(function(t,i){var c=document.createElement('div');c.className='sw-c';c.dataset.c=i;c.textContent=t;r.appendChild(c);});
+    swim.appendChild(r);});
+  function spick(i){[].forEach.call(swim.querySelectorAll('[data-c]'),function(e){e.classList.toggle('on',+e.dataset.c===i)});}
+  spick(1);
+
   // Journey: three layers
   var STEPS=['Join LPL','Map the book','Move accounts','Welcome clients','First review'];
   var LAY=[
@@ -580,7 +618,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
     var d=INFO[i]; jside.innerHTML='';
     var h=document.createElement('h3'); h.textContent=(i+1)+'. '+STEPS[i]; jside.appendChild(h);
     [['Goal',d[0]],['Intent',d[1]],['KPI',d[2]],['Opportunity',d[3]]].forEach(function(p,k){ var r=document.createElement('div'); r.className='kv'+(k===3?' opp':''); var s=document.createElement('small'); s.textContent=p[0]; var t=document.createElement('p'); t.textContent=p[1]; r.appendChild(s); r.appendChild(t); jside.appendChild(r); });
-    if(i===2){ var b=document.createElement('button'); b.type='button'; b.className='btn'; b.textContent='Turn this into an MVP →'; b.onclick=function(){go(S.findIndex(function(s){return s.dataset.name==='AI PDLC'}))}; jside.appendChild(b); }
+    if(i===2){ var b=document.createElement('button'); b.type='button'; b.className='btn'; b.textContent='Turn this into an MVP →'; b.onclick=function(){go(S.findIndex(function(s){return s.dataset.name==='Walkthrough'}))}; jside.appendChild(b); }
   }
   jpick(2);
 
