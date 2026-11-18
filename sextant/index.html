@@ -832,6 +832,22 @@ body.onland main{padding-top:10px}
 @media (max-width:1100px){.hero7 .hcta3{margin-left:0}}
 @media (max-width:760px){.hero7 .hpath{display:grid!important;grid-template-columns:1fr 1fr;width:100%!important}.hero7 .hpath li::after{display:none}.h7-path,.h7-pr{flex-direction:column;align-items:flex-start;width:100%}.hero7 .hproof3{flex-direction:row}.hero7 .h3-t{font-size:1.45rem}.hero7 .h3-s{font-size:.86rem}.h7-path{flex-wrap:wrap}.hero7 .hpath{flex-wrap:wrap}.hero7 .hcta3{flex-wrap:wrap}.hero7 .hp-note,.hero7 .hp-foot{align-self:center}}
 @media print{.hero7{border:0}.hero7 .h7-r3{display:none!important}}
+
+/* v7b: Why Sonia for LPL strip */
+.h7-why{display:flex;align-items:center;gap:8px 14px;margin-top:8px;padding:6px 12px;background:color-mix(in srgb,var(--accent) 6%,var(--surface));border:1px solid color-mix(in srgb,var(--accent) 22%,var(--line));border-left:3px solid var(--accent);border-radius:10px}
+.h7-wl{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.h7-why ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px;flex:1;min-width:0}
+.h7-why li{font-size:.8rem;line-height:1.35;color:var(--fg);display:block;padding-left:12px;text-indent:-12px}.h7-ico{display:inline-block;width:12px;text-indent:0}
+.h7-ico{color:var(--accent);font-size:.55rem}
+.h7-k{font-family:var(--f-display);font-weight:700;color:var(--ok);font-size:.95rem}
+.h7-why small{font-size:.6rem;color:var(--faint)}
+.h7-wm{border:0;background:none;color:var(--accent);font-weight:700;font-size:.8rem;white-space:nowrap;padding:2px 0;cursor:pointer}
+.h7-wm:hover{text-decoration:underline}
+@media (max-width:1600px){.hero7 .hpath span:not(.hp-ic){display:none}.hero7 .hpath li{padding-right:11px}}
+@media (max-width:760px){.h7-why{flex-direction:column;align-items:flex-start;gap:4px}.h7-why ul{flex-direction:column}}
+@media print{.h7-why{break-inside:avoid}}
+@media (max-width:760px){.land .pf-nb{padding-left:8px}}
+@media (max-width:760px){.jc-bar2 i,.ppl .jc-bar2 i{height:30px}.jc-bar2 i span,.ppl .jc-bar2 i span{display:flex;align-items:center;justify-content:center;white-space:normal;line-height:1.05;font-size:.56rem;text-overflow:clip;padding:0 1px}}
 </style>
 </head>
 <body>
@@ -851,9 +867,13 @@ body.onland main{padding-top:10px}
   <div class="hero3 hero7" id="hero">
     <div class="h7-r1"><span class="h3-eye">A proposal for LPL Financial &middot; AI-native PDLC</span><h1 class="h3-t">I&rsquo;ll listen first. I&rsquo;ve also brought a starting point.</h1></div>
     <p class="h3-s">A proposed AI-native PDLC for LPL, shaped by what I learn from your teams, advisors and control partners, and proven at S&amp;P Global with 350+ engineers.</p>
+    <div class="h7-why" aria-label="Why Sonia for LPL"><b class="h7-wl">Why Sonia for LPL</b><ul>
+      <li><span class="h7-ico" aria-hidden="true">&#9670;</span>Reported to the CTO at Prudential, DoubleVerify and S&amp;P Global</li>
+      <li><span class="h7-ico" aria-hidden="true">&#9670;</span>Chaired S&amp;P Global&rsquo;s AI Governance Committee with the CISO, Risk, Compliance and Legal</li>
+      <li><span class="h7-ico" aria-hidden="true">&#9670;</span><span class="h7-k">350+</span> engineers on governed AI in 13 months &middot; <span class="h7-k">&minus;20%</span> production defects &middot; <span class="h7-k">2&times;</span> release cadence <small>S&amp;P Global actuals</small></li>
+    </ul><button type="button" class="h7-wm" data-slide="Why Sonia">Why Sonia &rarr;</button></div>
     <div class="h7-r3">
       <div class="h7-path"><ol class="hpath" aria-label="How I would start: listen, learn, propose, prove"><li style="--c:var(--teal)" title="Listen: First 30 days: teams, advisors, Risk &amp; Compliance"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 1 1 12 0c0 3-2 4-3 5.5s-1 3.5-3.5 3.5"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-1.5 2-1.5 3"/></svg></span><div><b><i>1</i>Listen</b><span>30 days with teams, advisors, Risk</span></div></li><li style="--c:var(--accent)" title="Learn: Baseline cycle time, quality, developer experience"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/><path d="M8 12l2-2 1.5 1.5L14 9"/></svg></span><div><b><i>2</i>Learn</b><span>Baseline cycle time, quality, DevEx</span></div></li><li style="--c:var(--violet)" title="Propose: Target-state PDLC, stage gates, team model"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h4"/></svg></span><div><b><i>3</i>Propose</b><span>Target PDLC, gates, team model</span></div></li><li style="--c:var(--ok)" title="Prove: Pilot one team, then scale in waves"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg></span><div><b><i>4</i>Prove</b><span>Pilot one team, scale in waves</span></div></li></ol><span class="hp-note">Illustrative plan</span></div>
-      <div class="h7-pr"><div class="hproof3" aria-label="Proof from S&amp;P Global"><div><b>2&times;</b><span>release cadence</span></div><div><b>&minus;20%</b><span>production defects</span></div></div><span class="hp-foot">S&amp;P Global actuals</span></div>
       <div class="hcta3"><button type="button" class="hbtn" id="tourbtn">&#9654; See the proposal in 60 seconds</button><a class="hlink" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">Book a 15-min walkthrough &rarr;</a></div>
     </div>
     <a class="hscroll" href="#sec-proposal" data-sec="sec-proposal" aria-label="Scroll to the proposal">&#8595;</a>
@@ -909,8 +929,8 @@ body.onland main{padding-top:10px}
     <div class="ls-h"><span class="ls-n">04</span><div><h2 id="pr-h">Proof</h2><p>What this approach delivered at S&amp;P Global, and what LPL&rsquo;s CTO would see.</p></div></div>
     <div class="proof3">
       <div class="p3s"><div><b>2&times;</b><span>release cadence</span></div><div><b>&minus;20%</b><span>production defects</span></div><div><b>same day</b><span>regulated sign-off (was 3 days)</span></div><div><b>350+</b><span>engineers on governed AI in 13 months</span></div></div>
-      <div class="p3c"><div class="g3"><h3>One scorecard for the CTO</h3><p>Cycle time, quality, agent effectiveness, developer experience, cost-to-deliver, technical debt, resilience, advisor outcomes, exam-ready evidence.</p><button type="button" class="g3-l" data-slide="Scorecard">Open the scorecard &rarr;</button></div>
-      <div class="g3"><h3>Why Sonia</h3><p>24+ years in engineering and transformation leadership. SEC examination and SOX evidence. Reported to the CTO at Prudential, DoubleVerify and S&amp;P Global.</p><button type="button" class="g3-l" data-slide="Why Sonia">Why me &rarr;</button></div></div>
+      <div class="p3c"><div class="g3"><h3>One scorecard for the CTO</h3><p>DORA (lead time, deploy frequency, change failure rate, time to restore), cycle time, quality, agent effectiveness, developer experience, cost-to-deliver, technical debt, resilience, advisor outcomes, exam-ready evidence.</p><button type="button" class="g3-l" data-slide="Scorecard">Open the scorecard &rarr;</button></div>
+      <div class="g3"><h3>Why Sonia</h3><p>24+ years in technology. Prepared SEC examination evidence at S&amp;P Global; closed SOX findings with auditors at DoubleVerify. Reported to the CTO at Prudential, DoubleVerify and S&amp;P Global. Chaired S&amp;P Global&rsquo;s AI Governance Committee with the CISO, Risk, Compliance and Legal.</p><button type="button" class="g3-l" data-slide="Why Sonia">Why me &rarr;</button></div></div>
       <p class="hnote">S&amp;P Global figures are actuals.</p>
     </div>
   </section>
@@ -950,7 +970,7 @@ body.onland main{padding-top:10px}
         <text x="322" y="188" text-anchor="middle" font-size="8" fill="#333"><tspan font-weight="bold" fill="#1F3A5F">Built on developer experience</tspan> &#183; skills development &#183; approved AI tools &#183; test data on demand &#183; developer portal</text>
       </svg></figure>
   <div class="story2">
-    <figure class="loopfig2"><svg id="loop2" viewBox="-110 -14 580 400" role="img" aria-labelledby="loop2-t"><title id="loop2-t">The SEXTANT loop around advisors and their clients: discover, define, design, build, test, release, learn, and back to discover</title></svg></figure>
+    <figure class="loopfig2"><svg id="loop2" viewBox="-110 -14 580 400" role="img" aria-labelledby="loop2-t"><title id="loop2-t">The SEXTANT loop around advisors and their clients: intake, design, build, test, audit evidence, release, measure, and back to intake</title></svg></figure>
     <div class="player">
       <div class="pc-h"><b>Play the story &middot; Transfer forms rejected</b><span>Sample &middot; illustrative</span></div>
       <div class="pc-in">Advisors&rsquo; clients keep getting transfer forms rejected and have to redo them.</div>
@@ -963,7 +983,7 @@ body.onland main{padding-top:10px}
   </div>
   <div class="pathbox">
       <h3>The path every team takes</h3>
-      <table class="pt2"><thead><tr><th scope="col">Stage</th><th scope="col">Owner</th><th scope="col">Evidence</th><th scope="col">Exit gate</th></tr></thead><tbody><tr><th scope="row"><i>1</i>Discover</th><td>Product owner</td><td>Journey and KPI</td><td>KPI agreed</td></tr><tr><th scope="row"><i>2</i>Define</th><td>Three Amigos</td><td>MVP, features, shared BDD</td><td>BDD score &ge; 80</td></tr><tr><th scope="row"><i>3</i>Design</th><td>Architect</td><td>API contract, ADR, threat model</td><td>Architecture and security sign-off</td></tr><tr><th scope="row"><i>4</i>Build</th><td>Engineer, named PR owner</td><td>Code, unit tests, SAST every commit</td><td>Review and SAST pass, approved tools only</td></tr><tr><th scope="row"><i>5</i>Test</th><td>QE lead</td><td>Scored BDD, negative tests, DAST, resiliency</td><td>Quality score &ge; 80, no high findings</td></tr><tr><th scope="row"><i>6</i>Release</th><td>Release owner with Risk, Legal, Compliance, Privacy, Model Risk</td><td>Signed evidence pack, control tests</td><td>A human approves from the pack, in minutes</td></tr><tr><th scope="row"><i>7</i>Operate and learn</th><td>Product and SRE</td><td>NIGO, CSAT/NPS, incidents, DORA</td><td>Outcomes re-rank the backlog</td></tr></tbody></table>
+      <table class="pt2"><thead><tr><th scope="col">Stage</th><th scope="col">Owner</th><th scope="col">Evidence</th><th scope="col">Exit gate</th></tr></thead><tbody><tr><th scope="row"><i>1</i>Intake</th><td>Product owner, Three Amigos</td><td>Journey, KPI, MVP, shared BDD</td><td>KPI agreed, BDD score &ge; 80</td></tr><tr><th scope="row"><i>2</i>Design</th><td>Architect</td><td>API contract, ADR, threat model</td><td>Architecture and security sign-off</td></tr><tr><th scope="row"><i>3</i>Build</th><td>Engineer, named PR owner</td><td>Code, unit tests, SAST every commit</td><td>Review and SAST pass, approved tools only</td></tr><tr><th scope="row"><i>4</i>Test</th><td>QE lead</td><td>Scored BDD, negative tests, DAST, resiliency</td><td>Quality score &ge; 80, no high findings</td></tr><tr><th scope="row"><i>5</i>Audit evidence</th><td>Release owner with Risk, Legal, Compliance, Privacy, Model Risk</td><td>Signed evidence pack, control tests</td><td>Pack complete</td></tr><tr><th scope="row"><i>6</i>Release</th><td>Release owner</td><td>Golden-path CI/CD, release record</td><td>A person approves from the pack, in minutes</td></tr><tr><th scope="row"><i>7</i>Measure</th><td>Product and SRE</td><td>NIGO, CSAT/NPS, incidents, DORA</td><td>Outcomes re-rank the backlog</td></tr></tbody></table>
       <p class="same">Same path for every team: eight enterprise practices, one tool catalog, one paved CI/CD.</p>
     </div>
     
@@ -984,10 +1004,10 @@ body.onland main{padding-top:10px}
     <div class="pt"><i>4</i><b>Code review</b><p>AI first pass, human owner decides</p><span class="a">Review agent flags risk</span><span class="g">Evidence required to merge</span></div>
     <div class="pt"><i>5</i><b>Shift-left quality</b><p>BDD automation, test impact analysis, negative tests</p><span class="a">Test and judge agents</span><span class="g">Quality score gates</span></div>
     <div class="pt"><i>6</i><b>DevSecOps</b><p>SAST every commit, DAST every build</p><span class="a">Agent suggests fixes</span><span class="g">High findings block</span></div>
-    <div class="pt"><i>7</i><b>Golden-path CI/CD</b><p>One paved path, infrastructure as code, feature flags</p><span class="a">Agent assembles evidence</span><span class="g">No autonomous prod deploys</span></div>
+    <div class="pt"><i>7</i><b>Golden-path CI/CD</b><p>One paved path, infrastructure as code, feature flags</p><span class="a">Agent assembles evidence</span><span class="g">Release owner signs off</span></div>
     <div class="pt"><i>8</i><b>Observability and learning</b><p>SLOs, DORA metrics, blameless reviews</p><span class="a">Incident-pattern agent</span><span class="g">Findings tune the rubrics</span></div>
   </div>
-  <div class="proof"><b>Proof</b> At S&amp;P Global: one framework, standards and reference workflows in 6 months, designed for ~1,200 engineers across two business units.</div>
+  <div class="proof"><b>Proof</b> At S&amp;P Global: AI developer platform stood up in 6 months and designed to serve ~1,200 engineers; AI-first PDLC across two business units.</div>
 </section>
 
 <section class="slide" data-name="Journey">
@@ -1086,7 +1106,7 @@ body.onland main{padding-top:10px}
       <div><i>&#10003;</i><b>Pass</b><span>compliance, privacy and model-risk checks</span></div>
       <div><i>&#10003;</i><b>6 min</b><span>release owner approval</span></div>
     </div></div>
-  <div class="proof"><b>Proof</b> 0 autonomous production deploys. Regression 9 &rarr; 4 days.</div>
+  <div class="proof"><b>Proof</b> Regression 9 days &rarr; daily. Regulated sign-off 3 days &rarr; same day.</div>
 </section>
 
 <section class="slide" data-name="Controls">
@@ -1103,7 +1123,7 @@ body.onland main{padding-top:10px}
     <div class="sstep" style="background:#5B3E9E"><em>Major release</em><b>3 &middot; Pen test</b><span>by impact, not by calendar; CISO re-certifies</span></div>
     <div class="sstep" style="background:#7A2E5C"><em>Ongoing</em><b>4 &middot; Ethical hacking</b><span>champions attack the agents too</span></div>
   </div>
-  <div class="proof"><b>Proof</b> SEC examination and SOX evidence at S&amp;P Global. Negative tests caught a server-path leak a scan-only approval missed; the framework was adopted by 100+ scrum teams.</div>
+  <div class="proof"><b>Proof</b> Prepared SEC examination evidence at S&amp;P Global; closed SOX findings with auditors at DoubleVerify. Negative tests caught a server-path leak a scan-only approval missed; the framework was adopted by 100+ scrum teams.</div>
 </section>
 
 <section class="slide" data-name="Scorecard">
@@ -1120,6 +1140,7 @@ body.onland main{padding-top:10px}
   <p class="note" style="margin-top:4px">What the same scorecard moved at S&amp;P Global. At LPL, all measures are baselined in the first 30 days.</p>
   <div class="sc-tab">
     <table><thead><tr><th scope="col">Measure (CTO)</th><th scope="col">Leading indicators (VPs and Directors)</th><th scope="col">Who acts</th></tr></thead><tbody>
+      <tr><th scope="row">Delivery (DORA)</th><td>Lead time &middot; deploy frequency &middot; change failure rate &middot; time to restore</td><td>Engineering leads and SRE</td></tr>
       <tr><th scope="row">Cycle time</th><td>PR wait time &middot; review queue &middot; BDD rework</td><td>Engineering leads</td></tr>
       <tr><th scope="row">Quality</th><td>Defect escape by stage &middot; gate failures &middot; flaky tests</td><td>QE leads</td></tr>
       <tr><th scope="row">Agent effectiveness</th><td>Accepted agent output &middot; rework of agent output &middot; cost per accepted change</td><td>Platform team</td></tr>
@@ -1142,7 +1163,7 @@ body.onland main{padding-top:10px}
     <div class="ph5"><small>Year 2+</small><b>Target state</b><ul><li>One PDLC across LPL</li><li>Continuous improvement from the scorecard</li></ul><em>Owned by the practice leads</em></div>
   </div>
   <div class="crit"><b>Scale only when</b><span>KPI moved vs baseline</span><span>No open high findings</span><span>Team engagement holds</span><span>Control partners sign off</span></div>
-  <div class="proof"><b>Proof</b> At S&amp;P Global: framework, standards and reference workflows in 6 months; 350+ engineers on governed AI in 13 months.</div>
+  <div class="proof"><b>Proof</b> At S&amp;P Global: AI developer platform stood up in 6 months; 350+ engineers on governed AI in 13 months.</div>
 </section>
 
 <section class="slide" data-name="Why Sonia">
@@ -1151,11 +1172,11 @@ body.onland main{padding-top:10px}
   <div class="why">
     <div class="wcard"><small>Audible, an Amazon company</small><b>Machine learning on production incidents</b><ul><li>QA grew from 4 to 41 engineers</li><li>Sev2s, security vulnerabilities and launch risk each &minus;30%</li><li>Regression 5 days &rarr; 2</li></ul></div>
     <div class="warrow" aria-hidden="true">&rarr;</div>
-    <div class="wcard"><small>DoubleVerify &middot; VP Product &amp; Engineering</small><b>AI-assisted delivery</b><ul><li>Manual testing effort down ~25%</li><li>Test cycles down ~20%</li><li>Built the global capability center in India</li></ul></div>
+    <div class="wcard"><small>DoubleVerify &middot; VP Product &amp; Engineering</small><b>AI-assisted delivery</b><ul><li>Manual effort &minus;25%</li><li>Test cycles &minus;20%</li><li>SOX findings closed with auditors</li><li>Global capability center in India</li></ul></div>
     <div class="warrow" aria-hidden="true">&rarr;</div>
     <div class="wcard hl"><small>S&amp;P Global &middot; VP, Head of AI PDLC &amp; QE, Chair AI Governance</small><b>Agentic, AI-first PDLC</b><ul><li>350+ engineers on governed AI in 13 months</li><li>Framework designed for ~1,200 engineers</li><li>2&times; release cadence, &minus;20% production defects</li></ul></div>
   </div>
-  <div class="wplus"><span>24+ years in engineering and transformation leadership</span><span>SEC examination and SOX evidence</span><span>Reported to the CTO at Prudential, DoubleVerify and S&amp;P Global</span></div>
+  <div class="wplus"><span>24+ years in technology</span><span>Prepared SEC examination evidence at S&amp;P Global; closed SOX findings with auditors at DoubleVerify</span><span>Reported to the CTO at Prudential, DoubleVerify and S&amp;P Global</span><span>Chaired S&amp;P Global&rsquo;s AI Governance Committee with the CISO, Risk, Compliance and Legal</span></div>
   <p class="close" style="margin-top:18px">&ldquo;AI finds what clients need, creator agents build it, judge agents check it, humans approve what matters, and CSAT and NPS tell us whether it worked.&rdquo;</p>
   <p class="contact" style="text-align:center">Sonia Malik &middot; NJ / NYC &middot; <a href="https://www.linkedin.com/in/sonia-malik-b059705" rel="noopener">linkedin.com/in/sonia-malik-b059705</a></p>
 </section>
@@ -1353,7 +1374,7 @@ body.onland main{padding-top:10px}
     {st:[6],t:'Measure: the KPI, CSAT and NPS re-rank the backlog; approval reasons tune agents and rubrics.',jd:'Outcome-based measures: cycle time, quality, developer experience, business value',jc:'Outcome-based measures'}
   ];
   var SCALE={n:'Scale',op:'Pilot one team, then scale in waves',t:'Skills development, coaching and adoption support take the path from one pilot team to every team.',jd:'Organizational transformation and workforce evolution',jc:'Workforce evolution'};
-  var SN=['Intake','Design','Build','Test','Audit','Release','Measure'];
+  var SN=['Intake','Design','Build','Test','Audit evidence','Release','Measure'];
   var STEP_MS=5600, SEG_MS=520, SEG_START=500; // ~5.6 s per step; the bar fills over ~3.6 s, then holds
   var jcp=document.getElementById('jcp'),jcs=document.getElementById('jcs'),jcc=document.getElementById('jcc'),jcpb=document.getElementById('jcplay'),jcjd=document.getElementById('jcjd'),jcEl=document.getElementById('jc');
   var jper=0,jstep=0,jtm=[],jplaying=false,jhover=false,jdOpen=false;
@@ -1391,15 +1412,15 @@ body.onland main{padding-top:10px}
   jselect(0); // step 1 shown static; nothing plays until Play is pressed
 
   // Model I loop + story player
-  var LP=[['Discover','AI reads advisor signals'],['Define','BDD drafted, people approve'],['Design','Architect approves'],['Build','Creator agents'],['Test','Judge agents and tests'],['Release','Gates and sign-off'],['Learn','NIGO, CSAT and NPS']];
+  var LP=[['Intake','Signals, KPI and BDD'],['Design','Architect approves'],['Build','Creator agents'],['Test','Judge agents and tests'],['Audit evidence','Pack assembled'],['Release','Owner signs off'],['Measure','NIGO, CSAT and NPS']];
   var ST=[
-    ['ai','AI','Discover','AI read three months of rejected transfers, advisor tickets and call notes. Top theme: forms rejected for a missing signature.'],
-    ['cr','Creator agent \u2192 people','Define','A creator agent drafted the MVP and a BDD file: pause the transfer and show the fix. Product, QE and Compliance approved it.'],
+    ['ai','AI \u2192 people','Intake','AI read three months of rejected transfers, advisor tickets and call notes; top theme: a missing signature. A creator agent drafted the MVP and a BDD file, and Product, QE and Compliance approved it.'],
     ['cr','Design agent \u2192 architect','Design','A design agent proposed a pre-check API and an inline alert. The architect approved it, with client data kept in boundary.'],
     ['cr','Coding agent \u2192 engineer','Build','A coding agent drafted the code and unit tests from the BDD. The engineer reviewed and merged.'],
     ['jg','Judge agent','Test','The judge agent found two missing negative tests. They were added and the quality score reached 86, above the gate.'],
-    ['hu','Release owner','Release','The evidence pack was ready: tests, scans, compliance and privacy checks. The release owner approved it in minutes.'],
-    ['ai','AI \u2192 product','Learn','The NIGO rate is tracked weekly. Fewer rejected forms, faster transfers, and the next advisor theme is ranked.']
+    ['cr','Evidence agent \u2192 partners','Audit evidence','The evidence pack assembled itself in the pipeline: tests, scans, compliance and privacy checks.'],
+    ['hu','Release owner','Release','The release owner reviewed the pack and approved it in minutes.'],
+    ['ai','AI \u2192 product','Measure','The NIGO rate is tracked weekly. Fewer rejected forms, faster transfers, and the next advisor theme is ranked.']
   ];
   var svg2=document.getElementById('loop2'), pcf=document.getElementById('pcf'), pck=document.getElementById('pck'), cur2=0, ptimer=null;
   if(svg2){
