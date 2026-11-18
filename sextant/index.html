@@ -387,6 +387,49 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 .wcard.hl{border:2px solid var(--accent);background:var(--accent-soft)}
 .wplus{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.wplus span{background:var(--ok-bg);color:var(--ok);font-weight:600;border-radius:8px;padding:7px 12px;font-size:.88rem}
 .contact{margin-top:12px;font-size:.95rem;color:var(--muted)}.contact a{color:var(--accent);font-weight:600}
+/* Loop + player (from PULSE) */
+.story2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center;margin-top:8px}
+@media (max-width:900px){.story2{grid-template-columns:1fr}}
+.loopfig2{margin:0;max-width:560px;justify-self:center;width:100%}
+.loopfig2 svg{width:100%;height:auto;overflow:visible}
+.lp-ring{fill:none;stroke:var(--faint);stroke-width:2;stroke-dasharray:4 6;opacity:.7}
+.lp-dot{fill:var(--teal)}
+.lp-spin{transform-origin:180px 186px;animation:lpspin 14s linear infinite}
+@keyframes lpspin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.lp-spin{animation:none}}
+.lp-g{cursor:pointer}
+.lp-node{fill:var(--surface);stroke:var(--teal);stroke-width:2.5}
+.lp-n{font-family:var(--f-body);font-size:10px;font-weight:700;fill:var(--teal)}
+.lp-g.done .lp-node{fill:var(--ok-bg);stroke:var(--ok)}.lp-g.done .lp-n{fill:var(--ok)}
+.lp-g.on .lp-node{fill:var(--teal);stroke:var(--teal)}.lp-g.on .lp-n{fill:#fff}
+.lp-g:hover .lp-node,.lp-g:focus-visible .lp-node{stroke-width:4}
+.lp-t{font-family:var(--f-body);font-weight:700;font-size:14px;fill:var(--fg)}
+.lp-g.on .lp-t{fill:var(--teal)}
+.lp-s{font-family:var(--f-body);font-size:11px;fill:var(--muted)}
+.lp-core{fill:var(--accent-soft)}
+.lp-c1{font-family:var(--f-body);font-size:10px;font-weight:700;letter-spacing:.08em;fill:var(--accent)}
+.lp-c2{font-family:var(--f-display);font-size:21px;fill:var(--accent)}
+.player{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(15,23,32,.08)}
+.pc-h{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;background:#0F5259;color:#fff}
+.pc-h b{font-size:.9rem}.pc-h span{font-size:.72rem;opacity:.85}
+.pc-in{padding:9px 14px;font-size:.88rem;color:var(--muted);border-bottom:1px solid var(--line);background:var(--sunk)}
+.pc-f{list-style:none;margin:0;height:300px;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.pc-m{border-radius:10px;padding:8px 11px;max-width:94%;opacity:.7}
+.pc-m.now{opacity:1;box-shadow:0 0 0 2px var(--teal)}
+.pc-m small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px}
+.pc-m p{font-size:.9rem;line-height:1.4}
+.pc-m.ai{background:var(--accent-soft)}.pc-m.ai small{color:var(--accent)}
+.pc-m.cr{background:var(--violet-soft);align-self:flex-end}.pc-m.cr small{color:var(--violet)}
+.pc-m.jg{background:var(--gold-soft)}.pc-m.jg small{color:var(--warn)}
+.pc-m.hu{background:var(--ok-bg);align-self:flex-end}.pc-m.hu small{color:var(--ok)}
+.pc-b{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:9px 14px;border-top:1px solid var(--line)}
+.pc-k{font-weight:700;font-size:.82rem;color:var(--teal)}
+.pc-bt{display:flex;gap:6px}.pc-r{border:1px solid var(--teal);background:var(--surface);color:var(--teal);border-radius:999px;padding:6px 13px;font-weight:700;font-size:.82rem}
+.pc-r.solid{background:var(--teal);color:#fff}
+.who4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+@media (max-width:760px){.who4{grid-template-columns:1fr 1fr}}
+.who4 span{border-radius:10px;padding:8px 10px;font-size:.84rem;color:var(--muted)}.who4 b{display:block;color:var(--fg)}
+.who4 .w-ai{background:var(--accent-soft)}.who4 .w-cr{background:var(--violet-soft)}.who4 .w-jg{background:var(--gold-soft)}.who4 .w-hu{background:var(--ok-bg)}
 /* Fill first view on short sections */
 @media (min-width:761px) and (min-height:700px){
  .jstep{padding:18px 14px}.jstep b{font-size:1.05rem}
@@ -420,18 +463,17 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="kick">Value proposition &middot; one PDLC for every team</div>
   <h2>One standardized PDLC every team follows: people decide, agents assist, evidence proves, advisors feel the result</h2>
   <p class="sub">A repeatable development-practice process from intake to measurement. Customer journeys on top, engineering excellence underneath, evidence in between.</p>
-  <div class="story">
-    <div class="bands" aria-hidden="true"><span class="b1">Customer centricity: start from the advisor</span><span class="b2">Engineering excellence: build it right</span><span class="b3">Advisor outcome</span></div>
-    <ol class="steps">
-      <li class="s1"><i>1</i><b>An advisor hits friction</b><p>Clients&rsquo; transfer forms get rejected and must be redone.</p><em>Customer journey</em></li>
-      <li class="s1"><i>2</i><b>We map it end to end</b><p>Advisor journey, LPL business process and systems, with one KPI: the NIGO rate.</p><em>Three-layer journey</em></li>
-      <li class="s1"><i>3</i><b>Everyone shares one spec</b><p>An MVP, features and a BDD file that product, engineering, QE and compliance all work from.</p><em>MVP &middot; features &middot; BDD</em></li>
-      <li class="s2"><i>4</i><b>Agents draft, engineers decide</b><p>Agents propose the design, code and tests from the BDD. Engineers review and approve.</p><em>Design &middot; code &middot; test</em></li>
-      <li class="s2"><i>5</i><b>Gates prove it is safe</b><p>Security, privacy, compliance, model risk and quality are scored at every stage. A person approves the release from the evidence.</p><em>Quality gates</em></li>
-      <li class="s3"><i>6</i><b>Advisors feel the result</b><p>Fewer rejected forms, faster transfers, happier clients.</p><em>NIGO &darr; &middot; CSAT and NPS &uarr;</em></li>
-    </ol>
-    <div class="loopback">&#8634; What advisors feel goes back to step 1 and decides what we improve next.</div>
-    <div class="found"><b>Underneath it all: happy engineers.</b> One paved platform, approved AI tools, onboarding and skills, test data on demand.</div>
+  <div class="story2">
+    <figure class="loopfig2"><svg id="loop2" viewBox="-110 -14 580 400" role="img" aria-labelledby="loop2-t"><title id="loop2-t">The SEXTANT loop around advisors and their clients: discover, define, design, build, test, release, learn, and back to discover</title></svg></figure>
+    <div class="player">
+      <div class="pc-h"><b>Play the story &middot; Transfer forms rejected</b><span>Sample &middot; illustrative</span></div>
+      <div class="pc-in">Advisors&rsquo; clients keep getting transfer forms rejected and have to redo them.</div>
+      <ol class="pc-f" id="pcf" aria-live="polite"></ol>
+      <div class="pc-b"><span class="pc-k" id="pck">Step 1 of 7</span><div class="pc-bt"><button type="button" class="pc-r" id="pcprev" aria-label="Previous step">&lsaquo;</button><button type="button" class="pc-r" id="pcplay">&#9654; Play</button><button type="button" class="pc-r solid" id="pcnext">Next &rsaquo;</button></div></div>
+    </div>
+  </div>
+  <div class="who4"><span class="w-ai"><b>AI</b> reads advisor and client signals</span><span class="w-cr"><b>Creator agents</b> draft specs, code and tests</span><span class="w-jg"><b>Judge agents</b> score every artifact</span><span class="w-hu"><b>People</b> decide and approve every release</span></div>
+  <div class="found"><b>Underneath it all: happy engineers.</b> One paved platform, approved AI tools, onboarding and skills, test data on demand.</div>
   </div>
   <div class="pathbox">
       <h3>The path every team takes</h3>
@@ -713,6 +755,42 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
     for(var k=0;k<7;k++){(function(k){jtimer.push(setTimeout(function(){spick(k)},d*k));})(k);}
     jtimer.push(setTimeout(function(){if(r){r.disabled=false;r.textContent='\u2713 Shipped. '+JT[i][2]+' tracked weekly. Run again';}},d*7));}
   jtpick(2);
+
+  // Model I loop + story player
+  var LP=[['Discover','AI reads advisor signals'],['Define','BDD drafted, people approve'],['Design','Architect approves'],['Build','Creator agents'],['Test','Judge agents and tests'],['Release','Gates and sign-off'],['Learn','NIGO, CSAT and NPS']];
+  var ST=[
+    ['ai','AI','Discover','AI read three months of rejected transfers, advisor tickets and call notes. Top theme: forms rejected for a missing signature.'],
+    ['cr','Creator agent \u2192 people','Define','A creator agent drafted the MVP and a BDD file: pause the transfer and show the fix. Product, QE and Compliance approved it.'],
+    ['cr','Design agent \u2192 architect','Design','A design agent proposed a pre-check API and an inline alert. The architect approved it, with client data kept in boundary.'],
+    ['cr','Coding agent \u2192 engineer','Build','A coding agent drafted the code and unit tests from the BDD. The engineer reviewed and merged.'],
+    ['jg','Judge agent','Test','The judge agent found two missing negative tests. They were added and the quality score reached 86, above the gate.'],
+    ['hu','Release owner','Release','The evidence pack was ready: tests, scans, compliance and privacy checks. The release owner approved it in minutes.'],
+    ['ai','AI \u2192 product','Learn','The NIGO rate is tracked weekly. Fewer rejected forms, faster transfers, and the next advisor theme is ranked.']
+  ];
+  var svg2=document.getElementById('loop2'), pcf=document.getElementById('pcf'), pck=document.getElementById('pck'), cur2=0, ptimer=null;
+  if(svg2){
+    var cx=180,cy=186,R=128,out=svg2.querySelector('title').outerHTML;
+    out+='<circle class="lp-ring" cx="'+cx+'" cy="'+cy+'" r="'+R+'"/>';
+    out+='<g class="lp-spin"><circle class="lp-dot" cx="'+cx+'" cy="'+(cy-R)+'" r="6"/></g>';
+    LP.forEach(function(n,i){var ang=(-90+i*360/LP.length)*Math.PI/180,x=cx+R*Math.cos(ang),y=cy+R*Math.sin(ang);
+      var lx=cx+(R+20)*Math.cos(ang),ly=cy+(R+20)*Math.sin(ang),anc=Math.abs(Math.cos(ang))<0.25?'middle':(Math.cos(ang)>0?'start':'end'),dy=Math.sin(ang)<-0.8?-12:(Math.sin(ang)>0.8?16:4);
+      out+='<g class="lp-g" data-i="'+i+'" tabindex="0" role="button" aria-label="'+n[0]+'"><circle class="lp-node" cx="'+x+'" cy="'+y+'" r="11"/><text class="lp-n" x="'+x+'" y="'+(y+4)+'" text-anchor="middle">'+(i+1)+'</text><text class="lp-t" x="'+lx+'" y="'+(ly+dy)+'" text-anchor="'+anc+'">'+n[0]+'</text><text class="lp-s" x="'+lx+'" y="'+(ly+dy+15)+'" text-anchor="'+anc+'">'+n[1]+'</text></g>';});
+    out+='<circle class="lp-core" cx="'+cx+'" cy="'+cy+'" r="60"/><text class="lp-c1" x="'+cx+'" y="'+(cy-8)+'" text-anchor="middle">ADVISORS AND</text><text class="lp-c2" x="'+cx+'" y="'+(cy+16)+'" text-anchor="middle">their clients</text>';
+    svg2.innerHTML=out;
+    [].forEach.call(svg2.querySelectorAll('.lp-g'),function(g){var go2=function(){stopPlay();show2(+g.dataset.i)};g.addEventListener('click',go2);g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go2()}})});
+  }
+  function show2(i){cur2=Math.max(0,Math.min(ST.length-1,i));
+    if(svg2)[].forEach.call(svg2.querySelectorAll('.lp-g'),function(g){g.classList.toggle('on',+g.dataset.i===cur2);g.classList.toggle('done',+g.dataset.i<cur2)});
+    pcf.innerHTML='';ST.slice(0,cur2+1).forEach(function(st,k){var li=document.createElement('li');li.className='pc-m '+st[0]+(k===cur2?' now':'');var h=document.createElement('small');h.textContent=(k+1)+' \u00b7 '+st[2]+' \u00b7 '+st[1];var p=document.createElement('p');p.textContent=st[3];li.appendChild(h);li.appendChild(p);pcf.appendChild(li);});
+    pcf.scrollTop=pcf.scrollHeight; pck.textContent='Step '+(cur2+1)+' of '+ST.length;
+    document.getElementById('pcnext').textContent=cur2===ST.length-1?'Start over':'Next \u203a';}
+  function stopPlay(){if(ptimer){clearInterval(ptimer);ptimer=null;document.getElementById('pcplay').textContent='\u25B6 Play';}}
+  if(pcf){
+    document.getElementById('pcnext').onclick=function(){stopPlay();show2(cur2===ST.length-1?0:cur2+1)};
+    document.getElementById('pcprev').onclick=function(){stopPlay();show2(cur2-1)};
+    document.getElementById('pcplay').onclick=function(){if(ptimer){stopPlay();return;} if(cur2===ST.length-1)show2(0); this.textContent='\u275A\u275A Pause'; ptimer=setInterval(function(){if(cur2>=ST.length-1){stopPlay();return;} show2(cur2+1)},2600)};
+    show2(0);
+  }
 
   // Journey: three layers
   var STEPS=['Join LPL','Map the book','Move accounts','Welcome clients','First review'];
