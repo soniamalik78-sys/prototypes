@@ -723,6 +723,75 @@ main,.top .in,.foot .in,.subnav .in{max-width:1680px;padding-left:clamp(16px,3vw
  .land .pf-d{margin-top:22px;padding:18px 20px}.land .pf-dh h3{font-size:1.5rem}.land .pf-dh p{font-size:.95rem}.land .pf-l{padding:12px 14px}.land .pf-l p{font-size:.98rem}.land .pf-ft{font-size:.88rem}
 }
 @media print{main{padding:0!important;max-width:none!important}.land .hero2 h2{font-size:1.6rem!important;max-width:none}.jc{display:none!important}.land .hero2{grid-template-columns:1fr}.hero2 .h2l .ps-land{grid-template-columns:repeat(4,1fr);max-width:none}}
+
+/* ===== v6: calm landing: hero, then sections in reading order ===== */
+body.onland .subnav{display:none}
+.hero3{min-height:calc(100vh - 140px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px 0 36px;position:relative}
+.h3-eye{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:5px 14px}
+.h3-t{font-family:var(--f-display);font-weight:600;font-size:clamp(2rem,4.2vw,3.6rem);line-height:1.08;letter-spacing:-.015em;margin:18px 0 0;max-width:20ch}
+.h3-s{color:var(--muted);font-size:clamp(1rem,1.25vw,1.2rem);line-height:1.5;max-width:62ch;margin:16px auto 0}
+.hpath{list-style:none;padding:0;margin:34px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px;width:100%;max-width:1080px;counter-reset:hp}
+.hpath li{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.hpath li:not(:last-child)::after{content:"";position:absolute;top:30px;left:calc(50% + 42px);right:calc(-50% + 26px);height:2px;background:linear-gradient(90deg,var(--line),var(--line))}
+.hpath li:not(:last-child)::before{content:"";position:absolute;top:25px;right:calc(-50% + 20px);border-left:9px solid var(--faint);border-top:6px solid transparent;border-bottom:6px solid transparent;opacity:.6}
+.hp-ic{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 13%,var(--surface));color:var(--c);box-shadow:var(--shadow-sm);transition:transform .2s var(--ease)}
+.hpath li:hover .hp-ic{transform:translateY(-3px)}
+.hp-ic svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.hpath b{font-size:1.08rem;display:inline-flex;align-items:center;gap:6px;margin-top:4px}
+.hpath b i{font-style:normal;font-size:.68rem;width:18px;height:18px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center}
+.hpath span:not(.hp-ic){font-size:.88rem;color:var(--muted);line-height:1.35;max-width:24ch}
+.hp-note{font-size:.7rem;color:var(--faint);margin-top:10px}
+.hproof3{display:flex;gap:14px;margin-top:22px}
+.hproof3 div{display:flex;align-items:baseline;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 16px;box-shadow:var(--shadow-sm)}
+.hproof3 b{font-family:var(--f-display);font-size:1.5rem;color:var(--ok)}.hproof3 span{font-size:.88rem;color:var(--muted)}
+.hp-foot{font-size:.7rem;color:var(--faint);margin-top:6px}
+.hcta3{display:flex;gap:18px;align-items:center;margin-top:24px;flex-wrap:wrap;justify-content:center}
+.hbtn{border:0;background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 70%,var(--teal)));color:#fff;font-weight:700;font-size:1rem;padding:13px 22px;border-radius:12px;box-shadow:0 8px 20px color-mix(in srgb,var(--accent) 30%,transparent);transition:transform .15s var(--ease),box-shadow .15s}
+.hbtn:hover{transform:translateY(-1px);box-shadow:0 12px 26px color-mix(in srgb,var(--accent) 34%,transparent)}
+.hlink{color:var(--accent);font-weight:700;text-decoration:none;font-size:.95rem}.hlink:hover{text-decoration:underline}
+.hscroll{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);text-decoration:none;background:var(--surface);animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translate(-50%,4px)}}
+@media (prefers-reduced-motion: reduce){.hscroll{animation:none}}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .hbtn,:root:not([data-theme="light"]) .hpath b i{color:#0b1220} }
+.lsec{padding:44px 0 10px;scroll-margin-top:70px;border-top:1px solid var(--line);margin-top:10px;transition:background .3s}
+.ls-h{display:flex;gap:16px;align-items:flex-start;margin-bottom:18px}
+.ls-n{font-family:var(--f-display);font-size:1.1rem;color:var(--accent);border:1.5px solid var(--accent);border-radius:10px;padding:4px 9px;line-height:1.2;margin-top:4px}
+.ls-h h2{font-size:clamp(1.5rem,2.4vw,2.1rem)!important;margin:0 0 4px!important}
+.ls-h p{color:var(--muted);font-size:1rem;max-width:75ch}
+.tour-on{box-shadow:inset 4px 0 0 var(--accent)}
+.hero3.tour-on{box-shadow:none}
+.ppl{max-width:900px;margin:0 auto}
+.ppl .jc{height:auto}.ppl .hnote{text-align:center}
+.ppl .jc-c{min-height:190px;padding:14px 18px}.ppl .jc-tt h4{font-size:1.4rem}.ppl .jc-av{width:56px;height:56px}.ppl .jc-bar2 i{height:30px}.ppl .jc-bar2 i span{line-height:30px;font-size:.68rem}
+.gov3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.g3{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+.g3 h3{font-size:1.2rem}.g3>p{color:var(--muted);font-size:.92rem}
+.g3-t{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.g3-t li{background:var(--sunk);border-radius:8px;padding:6px 8px;font-size:.76rem;color:var(--muted);line-height:1.25}.g3-t b{display:block;color:var(--fg);font-size:.86rem}
+.g3-c{display:flex;flex-wrap:wrap;gap:5px}.g3-c span{font-size:.78rem;font-weight:600;border:1px solid color-mix(in srgb,var(--teal) 45%,var(--line));color:var(--teal);border-radius:999px;padding:2px 10px}
+.g3-u{margin:0;padding-left:18px;font-size:.88rem;color:var(--muted)}
+.g3-j{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.g3-j li{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.86rem;border-bottom:1px solid var(--line);padding:4px 0}
+.g3-j b{font-size:.74rem;background:var(--violet-soft);color:var(--violet);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.g3-l{margin-top:auto;align-self:flex-start;border:0;background:none;color:var(--accent);font-weight:700;padding:4px 0;font-size:.9rem}
+.g3-l:hover{text-decoration:underline}
+.proof3 .p3s{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.p3s div{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow-sm)}
+.p3s b{display:block;font-family:var(--f-display);font-size:1.8rem;color:var(--ok);line-height:1.1}.p3s span{font-size:.88rem;color:var(--muted)}
+.p3c{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.tfl{position:fixed;left:50%;bottom:64px;transform:translateX(-50%);z-index:30;width:min(440px,calc(100vw - 24px));background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:10px 12px;display:grid;gap:7px}
+.tfl[hidden]{display:none}
+.tfl-t{display:flex;justify-content:space-between;gap:8px;font-size:.84rem}.tfl-t span{color:var(--faint);font-variant-numeric:tabular-nums}
+.tfl-p{height:4px;background:var(--sunk);border-radius:4px;overflow:hidden}.tfl-p i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--teal));transition:width .5s var(--ease)}
+.tfl-b{display:flex;gap:6px;justify-content:flex-end}
+.tfl-b button{border:1px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:999px;padding:4px 12px;font-weight:700;font-size:.8rem}
+.tfl-b #tflpause{background:var(--accent);color:#fff}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tfl-b #tflpause{color:#0b1220} }
+@media (max-width:980px){.gov3{grid-template-columns:1fr}.proof3 .p3s{grid-template-columns:1fr 1fr}.p3c{grid-template-columns:1fr}}
+@media (max-width:760px){.hpath{grid-template-columns:1fr 1fr;gap:22px 14px}.hpath li::after,.hpath li::before{display:none}.hero3{min-height:0;padding-top:16px}.hscroll{display:none}.ls-h{gap:10px}}
+@media (max-width:420px){.hproof3{flex-direction:column;gap:8px}.hproof3 div{justify-content:center}}
+@media print{body.onland .subnav{display:none}.hero3{min-height:0;padding:0 0 6px}.hpath,.hp-note,.hproof3,.hp-foot,.hcta3,.hscroll,.h3-s{display:none!important}.h3-t{font-size:1.5rem;margin-top:6px;max-width:none}
+ #sec-people,#sec-gov,#sec-proof,.tfl{display:none!important}.lsec{padding-top:8px;border:0}.ls-h{margin-bottom:6px}}
 </style>
 </head>
 <body>
@@ -730,10 +799,6 @@ main,.top .in,.foot .in,.subnav .in{max-width:1680px;padding-left:clamp(16px,3vw
   <a class="brand" href="#process" id="brand" aria-label="SEXTANT, back to the start"><span class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 23a12 12 0 0 1 20 0"/><path d="M16 7L8.5 23M16 7l7.5 16"/><circle cx="16" cy="7" r="2.4" class="f"/><path d="M10 27h12"/></svg></span><span class="bt"><b>SEXTANT</b><small>AI-native PDLC &middot; for LPL Financial</small></span></a>
   <nav id="nav" aria-label="Sections"></nav>
   <div class="hx">
-    <div class="tour" role="group" aria-label="Guided tour">
-      <span class="tk"><b id="tclk">0:00</b><span id="tlbl">Guided tour</span></span>
-      <button type="button" class="tr" id="tplay" aria-label="Play the guided tour">&#9654; Play</button><button type="button" class="tr solid" id="tnext" aria-label="Next tour step">Next &rsaquo;</button><button type="button" class="tr" id="trp" aria-label="Replay the tour from the start">&#8635;</button>
-    </div>
     <a class="cta" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">Book a 15-min walkthrough</a>
     <button type="button" class="menu" id="menubtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
@@ -743,14 +808,40 @@ main,.top .in,.foot .in,.subnav .in{max-width:1680px;padding-left:clamp(16px,3vw
 
 <main>
 <section class="slide land" data-name="Process">
-  <div class="hero2">
-    <div class="h2l">
-      <div class="kick">Development practices &amp; AI-native PDLC for LPL</div>
-      <h2>Deliver faster for advisors and clients, with quality and exam-ready evidence built in.</h2>
-      <p class="hsub">One AI-native PDLC for every team: smaller, higher-leverage teams of engineers and agents, with quality, resilience, security and accountability stronger every release.</p>
-      <div class="pstrip ps-land" aria-label="Proof from S&amp;P Global"><span><b>2&times;</b> release cadence</span><span><b>&minus;20%</b> production defects</span><span><b>same day</b> regulated sign-off (was 3 days)</span><span><b>350+</b> engineers on governed AI in 13 months</span></div>
-      <p class="hnote">S&amp;P Global actuals. Personas and journeys on this page are illustrative.</p>
+  <div class="hero3" id="hero">
+    <div class="h3-eye">A proposal for LPL Financial &middot; AI-native PDLC</div>
+    <h1 class="h3-t">I&rsquo;ll listen first. I&rsquo;ve also brought a starting point.</h1>
+    <p class="h3-s">A proposed AI-native PDLC for LPL, shaped by what I learn from your teams, advisors and control partners, and proven at S&amp;P Global with 350+ engineers.</p>
+    <ol class="hpath" aria-label="How I would start: listen, learn, propose, prove">
+      <li style="--c:var(--teal)"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 1 1 12 0c0 3-2 4-3 5.5s-1 3.5-3.5 3.5"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-1.5 2-1.5 3"/></svg></span><b><i>1</i>Listen</b><span>First 30 days: teams, advisors, Risk &amp; Compliance</span></li>
+      <li style="--c:var(--accent)"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/><path d="M8 12l2-2 1.5 1.5L14 9"/></svg></span><b><i>2</i>Learn</b><span>Baseline cycle time, quality, developer experience</span></li>
+      <li style="--c:var(--violet)"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h4"/></svg></span><b><i>3</i>Propose</b><span>Target-state PDLC, stage gates, team model</span></li>
+      <li style="--c:var(--ok)"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg></span><b><i>4</i>Prove</b><span>Pilot one team, then scale in waves</span></li>
+    </ol>
+    <p class="hp-note">Illustrative plan</p>
+    <div class="hproof3" aria-label="Proof from S&amp;P Global"><div><b>2&times;</b><span>release cadence</span></div><div><b>&minus;20%</b><span>production defects</span></div></div>
+    <p class="hp-foot">S&amp;P Global actuals</p>
+    <div class="hcta3"><button type="button" class="hbtn" id="tourbtn">&#9654; See the proposal in 60 seconds</button><a class="hlink" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">Book a 15-min walkthrough &rarr;</a></div>
+    <a class="hscroll" href="#sec-proposal" data-sec="sec-proposal" aria-label="Scroll to the proposal">&#8595;</a>
+  </div>
+
+  <section class="lsec" id="sec-proposal" aria-labelledby="sp-h">
+    <div class="ls-h"><span class="ls-n">01</span><div><h2 id="sp-h">The proposal</h2><p>Seven stages every team follows: people decide, agents assist, evidence proves. Click a stage to open it.</p></div></div>
+  <div class="pf" id="pf">
+    <div class="pf-legend" aria-hidden="true"><span style="--c:var(--ok)"><i></i>Owner decides</span><span style="--c:var(--violet)"><i></i>Agents assist</span><span style="--c:var(--gold)"><i></i>Evidence produced</span><span style="--c:var(--warn)"><i></i>Exit gate</span><span style="--c:var(--teal)"><i></i>Control partners</span><span class="pf-hint">Click a stage, or press &#9654; Play in the header</span></div>
+    <div class="pf-map">
+      <div class="pf-ph" aria-hidden="true"><span style="--g:1/2;--c:var(--teal)">Customer</span><span style="--g:2/5;--c:var(--accent)">Engineering excellence</span><span style="--g:5/7;--c:var(--warn)">Evidence &amp; controls</span><span style="--g:7/8;--c:var(--ok)">Outcomes</span></div>
+      <ol class="pf-track" id="pftrack" role="tablist" aria-label="The seven PDLC stages"></ol>
+      <div class="pf-cp" aria-hidden="true"><div class="pf-lpl">&#8634; Measure feeds Intake: outcomes re-rank the backlog</div><div class="pf-cpb"><b>Control partners at the audit gate</b><span>Risk</span><span>Legal</span><span>Compliance</span><span>Privacy</span><span>Model Risk</span></div></div>
+      <div class="pf-loop" id="pfloop" role="button" tabindex="0" aria-label="Feedback loop from Measure back to Intake"><span>&#8634; Measure feeds Intake: outcomes re-rank the backlog, approval reasons tune agents and rubrics</span></div>
     </div>
+    <div id="pfdetail" aria-live="polite"></div>
+  </div>
+  </section>
+
+  <section class="lsec" id="sec-people" aria-labelledby="pe-h">
+    <div class="ls-h"><span class="ls-n">02</span><div><h2 id="pe-h">See it through LPL&rsquo;s people</h2><p>Pick a persona and press Play. Each journey step is an opportunity to improve, delivered through the seven stages and mapped to the role.</p></div></div>
+    <div class="ppl">
     <div class="jc" id="jc" aria-label="Sample: an LPL persona journey through the seven-stage PDLC">
       <div class="jc-h"><b>Journey console &middot; LPL personas</b><span>Sample &middot; illustrative</span></div>
       <div class="jc-p" id="jcp" role="tablist" aria-label="Choose a persona"></div>
@@ -761,17 +852,34 @@ main,.top .in,.foot .in,.subnav .in{max-width:1680px;padding-left:clamp(16px,3vw
         <button type="button" class="jc-r" id="jcjd" aria-pressed="false">JD map</button>
       </div>
     </div>
-  </div>
-  <div class="pf grow" id="pf">
-    <div class="pf-legend" aria-hidden="true"><span style="--c:var(--ok)"><i></i>Owner decides</span><span style="--c:var(--violet)"><i></i>Agents assist</span><span style="--c:var(--gold)"><i></i>Evidence produced</span><span style="--c:var(--warn)"><i></i>Exit gate</span><span style="--c:var(--teal)"><i></i>Control partners</span><span class="pf-hint">Click a stage, or press &#9654; Play in the header</span></div>
-    <div class="pf-map">
-      <div class="pf-ph" aria-hidden="true"><span style="--g:1/2;--c:var(--teal)">Customer</span><span style="--g:2/5;--c:var(--accent)">Engineering excellence</span><span style="--g:5/7;--c:var(--warn)">Evidence &amp; controls</span><span style="--g:7/8;--c:var(--ok)">Outcomes</span></div>
-      <ol class="pf-track" id="pftrack" role="tablist" aria-label="The seven PDLC stages"></ol>
-      <div class="pf-cp" aria-hidden="true"><div class="pf-lpl">&#8634; Measure feeds Intake: outcomes re-rank the backlog</div><div class="pf-cpb"><b>Control partners at the audit gate</b><span>Risk</span><span>Legal</span><span>Compliance</span><span>Privacy</span><span>Model Risk</span></div></div>
-      <div class="pf-loop" id="pfloop" role="button" tabindex="0" aria-label="Feedback loop from Measure back to Intake"><span>&#8634; Measure feeds Intake: outcomes re-rank the backlog, approval reasons tune agents and rubrics</span></div>
+      <p class="hnote">Personas and journeys are illustrative.</p>
     </div>
-    <div id="pfdetail" aria-live="polite"></div>
-  </div>
+  </section>
+
+  <section class="lsec" id="sec-gov" aria-labelledby="go-h">
+    <div class="ls-h"><span class="ls-n">03</span><div><h2 id="go-h">Governance built in</h2><p>Controls run in the path, so evidence is a by-product, not a late review.</p></div></div>
+    <div class="gov3">
+      <div class="g3"><h3>Quality gates</h3><p>No score, no promotion. Threshold 80 at every tier.</p>
+        <ol class="g3-t"><li><b>Dev</b>unit + SAST</li><li><b>SI</b>contracts</li><li><b>QA</b>DAST + regression</li><li><b>UAT</b>business sign-off</li><li><b>Pre-prod</b>load + resiliency</li><li><b>Prod</b>human approves</li></ol>
+        <button type="button" class="g3-l" data-slide="Gates">Open the gates &rarr;</button></div>
+      <div class="g3"><h3>Controls with LPL&rsquo;s partners</h3><p>Every AI step traceable: model, data, reviewer.</p>
+        <div class="g3-c"><span>Risk</span><span>Legal</span><span>Compliance</span><span>Privacy</span><span>Model Risk</span><span>Security</span></div>
+        <ul class="g3-u"><li>Evidence pack generated per release</li><li>Policy checks before promotion</li><li>Approvals and overrides logged</li></ul>
+        <button type="button" class="g3-l" data-slide="Controls">Open the controls &rarr;</button></div>
+      <div class="g3"><h3>How this maps to the JD</h3><p>LPL R-054699, in the role&rsquo;s own words.</p>
+        <ul class="g3-j"><li><span>Intake</span><b>Stage gates &amp; decision rights</b></li><li><span>Design + Build</span><b>Agent roles &amp; collaboration</b></li><li><span>Test + Audit</span><b>Embed controls</b></li><li><span>Release</span><b>Platform &amp; toolchain</b></li><li><span>Measure</span><b>Outcome-based measures</b></li><li><span>Scale</span><b>Workforce evolution</b></li></ul></div>
+    </div>
+  </section>
+
+  <section class="lsec" id="sec-proof" aria-labelledby="pr-h">
+    <div class="ls-h"><span class="ls-n">04</span><div><h2 id="pr-h">Proof</h2><p>What this approach delivered at S&amp;P Global, and what LPL&rsquo;s CTO would see.</p></div></div>
+    <div class="proof3">
+      <div class="p3s"><div><b>2&times;</b><span>release cadence</span></div><div><b>&minus;20%</b><span>production defects</span></div><div><b>same day</b><span>regulated sign-off (was 3 days)</span></div><div><b>350+</b><span>engineers on governed AI in 13 months</span></div></div>
+      <div class="p3c"><div class="g3"><h3>One scorecard for the CTO</h3><p>Cycle time, quality, agent effectiveness, developer experience, cost-to-deliver, technical debt, resilience, advisor outcomes, exam-ready evidence.</p><button type="button" class="g3-l" data-slide="Scorecard">Open the scorecard &rarr;</button></div>
+      <div class="g3"><h3>Why Sonia</h3><p>24+ years in engineering and transformation leadership. SEC examination and SOX evidence. Reported to the CTO at Prudential, DoubleVerify and S&amp;P Global.</p><button type="button" class="g3-l" data-slide="Why Sonia">Why me &rarr;</button></div></div>
+      <p class="hnote">S&amp;P Global figures are actuals.</p>
+    </div>
+  </section>
   <div class="pf-print" id="pfprint" aria-hidden="true"></div>
 </section>
 
@@ -1043,37 +1151,40 @@ main,.top .in,.foot .in,.subnav .in{max-width:1680px;padding-left:clamp(16px,3vw
 (function(){
   var S=[].slice.call(document.querySelectorAll('.slide')), nav=document.getElementById('nav'), dots=document.getElementById('dots'), cur=0;
   var src=new URLSearchParams(location.search).get('src')||'';
-  var LBL={'Process':'The process','Why Sonia':'Why Sonia'};
-  var DSC={'Process':'Seven stages: people decide, agents assist, evidence proves','Value model':'One PDLC every team follows','Practices':'Enterprise development standards','Journey':'The advisor journey in three layers','Walkthrough':'One advisor opportunity through the process','Team model':'Smaller, higher-leverage human-agent teams','Gates':'Scored quality gates over CI/CD','Controls':'Audit, Legal, Compliance, Privacy, Model Risk, Security','Scorecard':'Outcome measures for the CTO','Roadmap':'Baseline, pilot, then scale in waves','Demo':'See the full prototype run','Why Sonia':'Track record and proof'};
-  var GR=[['Overview',['Process','Value model']],['Process',['Practices','Journey','Walkthrough','Team model']],['Governance',['Gates','Controls']],['Proof',['Scorecard','Roadmap','Demo']],['About',['Why Sonia']]];
+  var LBL={'Process':'Overview','Process>sec-proposal':'The 7-stage PDLC','Process>sec-people':'Persona journeys','Process>sec-gov':'Governance built in','Process>sec-proof':'Proof at a glance','Why Sonia':'Why Sonia'};
+  var DSC={'Process':'Listen, learn, propose, prove','Process>sec-proposal':'People decide, agents assist, evidence proves','Process>sec-people':'Advisor, institution, investor, operations','Process>sec-gov':'Gates, controls and the JD map','Process>sec-proof':'S&P Global results and the CTO scorecard','Value model':'One PDLC every team follows','Practices':'Enterprise development standards','Journey':'The advisor journey in three layers','Walkthrough':'One advisor opportunity through the process','Team model':'Smaller, higher-leverage human-agent teams','Gates':'Scored quality gates over CI/CD','Controls':'Audit, Legal, Compliance, Privacy, Model Risk, Security','Scorecard':'Outcome measures for the CTO','Roadmap':'Baseline, pilot, then scale in waves','Demo':'See the full prototype run','Why Sonia':'Track record and proof'};
+  var GR=[['Proposal',['Process','Process>sec-proposal','Value model','Practices','Roadmap']],['Journeys',['Process>sec-people','Journey','Walkthrough','Team model']],['Governance',['Process>sec-gov','Gates','Controls']],['Proof',['Process>sec-proof','Scorecard','Why Sonia','Demo']]];
   var IDX={};S.forEach(function(s,i){IDX[s.dataset.name]=i;dots.appendChild(document.createElement('i'));});
-  var used={};GR.forEach(function(g){g[1]=g[1].filter(function(n){return n in IDX});g[1].forEach(function(n){used[n]=1})});
+  function nm(x){return x.split('>')[0]}function sc(x){return x.split('>')[1]}
+  var used={};GR.forEach(function(g){g[1]=g[1].filter(function(n){return nm(n) in IDX});g[1].forEach(function(n){used[n]=1})});
   S.forEach(function(s){if(!used[s.dataset.name])GR[GR.length-1][1].push(s.dataset.name)});
   function lbl(n){return LBL[n]||n}
   var top=document.getElementById('top'),mb=document.getElementById('menubtn'),subt=document.getElementById('subtabs'),pos=document.getElementById('pos');
   function closeMenu(){top.classList.remove('open');mb.setAttribute('aria-expanded','false');[].forEach.call(nav.querySelectorAll('.ng'),function(g){g.classList.remove('open')});}
   GR.forEach(function(g,gi){var w=document.createElement('div');w.className='ng';var b=document.createElement('button');b.type='button';b.className='ngb';b.setAttribute('aria-haspopup','true');b.innerHTML='<span></span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg>';b.querySelector('span').textContent=g[0];
-    b.onclick=function(){go(IDX[g[1][0]]);userNav();closeMenu();};
+    b.onclick=function(){openItem(g[1][0]);closeMenu();};
     b.onkeydown=function(e){if(e.key==='ArrowDown'){e.preventDefault();w.classList.add('open');var f=w.querySelector('.ngm button');if(f)f.focus();}if(e.key==='Escape'){w.classList.remove('open');}};
     var m=document.createElement('div');m.className='ngm';m.setAttribute('role','menu');
-    g[1].forEach(function(n){var it=document.createElement('button');it.type='button';it.setAttribute('role','menuitem');it.dataset.n=n;it.innerHTML='<b></b><span></span>';it.querySelector('b').textContent=lbl(n);it.querySelector('span').textContent=DSC[n]||'';it.onclick=function(){go(IDX[n]);userNav();closeMenu();if(document.activeElement)document.activeElement.blur();};m.appendChild(it);});
+    g[1].forEach(function(n){var it=document.createElement('button');it.type='button';it.setAttribute('role','menuitem');it.dataset.n=n;it.innerHTML='<b></b><span></span>';it.querySelector('b').textContent=lbl(n);it.querySelector('span').textContent=DSC[n]||'';it.onclick=function(){openItem(n);closeMenu();if(document.activeElement)document.activeElement.blur();};m.appendChild(it);});
     w.addEventListener('mouseleave',function(){w.classList.remove('open')});
     w.appendChild(b);w.appendChild(m);nav.appendChild(w);});
   mb.onclick=function(){var o=!top.classList.contains('open');top.classList.toggle('open',o);mb.setAttribute('aria-expanded',o?'true':'false');};
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
   document.addEventListener('click',function(e){if(!e.target.closest('#top'))closeMenu();});
+  function goSec(id){if(S[cur].dataset.name!=='Process')go(IDX['Process']);var el=document.getElementById(id);if(el)setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'})},30);}
+  function openItem(n){userNav();if(sc(n)){goSec(sc(n));}else go(IDX[n]);}
   function gof(i){var n=S[i].dataset.name;for(var k=0;k<GR.length;k++){if(GR[k][1].indexOf(n)>-1)return k;}return 0;}
   function syncNav(){var gi=gof(cur),n=S[cur].dataset.name;
     [].forEach.call(nav.querySelectorAll('.ng'),function(w,k){w.classList.toggle('cur',k===gi);w.querySelector('.ngb').setAttribute('aria-current',k===gi?'true':'false');});
     [].forEach.call(nav.querySelectorAll('.ngm button'),function(it){it.setAttribute('aria-current',it.dataset.n===n?'page':'false')});
-    subt.innerHTML='';GR[gi][1].forEach(function(m){var t=document.createElement('button');t.type='button';t.setAttribute('role','tab');t.setAttribute('aria-selected',m===n?'true':'false');t.textContent=lbl(m);t.onclick=function(){go(IDX[m]);userNav();};subt.appendChild(t);});
+    subt.innerHTML='';GR[gi][1].filter(function(m){return !sc(m)}).forEach(function(m){var t=document.createElement('button');t.type='button';t.setAttribute('role','tab');t.setAttribute('aria-selected',m===n?'true':'false');t.textContent=lbl(m);t.onclick=function(){go(IDX[m]);userNav();};subt.appendChild(t);});
     var gl=document.createElement('span');gl.className='sg';gl.textContent=GR[gi][0];subt.insertBefore(gl,subt.firstChild);
     pos.textContent=(cur+1)+' / '+S.length;}
   var userNav=function(){};
   function slug(n){return n.toLowerCase().replace(/[^a-z0-9]+/g,'-')}
   function go(i){cur=Math.max(0,Math.min(S.length-1,i));
     S.forEach(function(s,k){s.classList.toggle('on',k===cur)});
-    syncNav();
+    syncNav();document.body.classList.toggle('onland',S[cur].classList.contains('land'));
     [].forEach.call(dots.children,function(d,k){d.classList.toggle('on',k===cur)});
     document.getElementById('next').textContent=cur===S.length-1?'Start over':'Next →';
     history.replaceState(null,'','#'+slug(S[cur].dataset.name));
@@ -1084,7 +1195,9 @@ main,.top .in,.foot .in,.subnav .in{max-width:1680px;padding-left:clamp(16px,3vw
   document.getElementById('next').onclick=function(){go(cur===S.length-1?0:cur+1);userNav()};
   document.getElementById('brand').onclick=function(e){e.preventDefault();go(0);userNav();};
   document.addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea'))return;if(e.key==='ArrowRight'){go(cur+1);userNav();}if(e.key==='ArrowLeft'){go(cur-1);userNav();}});
-  var AL={value:'value-model','model-i':'value-model','model-1':'value-model',modeli:'value-model',pdlc:'process',flow:'process','ai-pdlc':'walkthrough',audit:'controls',security:'controls',persona:'journey',why:'why-sonia'}; var h=decodeURIComponent((location.hash||'').slice(1)).toLowerCase().replace(/[^a-z0-9]+/g,'-'); h=AL[h]||h; var start=0; S.forEach(function(s,i){if(slug(s.dataset.name)===h)start=i}); go(start);
+  var AL={value:'value-model','model-i':'value-model','model-1':'value-model',modeli:'value-model',pdlc:'process',flow:'process','ai-pdlc':'walkthrough',audit:'controls',security:'controls',persona:'journey',why:'why-sonia'}; var SECH={proposal:'sec-proposal','the-proposal':'sec-proposal',people:'sec-people',journeys:'sec-people',personas:'sec-people',governance:'sec-gov','governance-built-in':'sec-gov',proof:'sec-proof','sec-proposal':'sec-proposal','sec-people':'sec-people','sec-gov':'sec-gov','sec-proof':'sec-proof'}; var h=decodeURIComponent((location.hash||'').slice(1)).toLowerCase().replace(/[^a-z0-9]+/g,'-'); var hs=SECH[h]; h=AL[h]||h; var start=0; S.forEach(function(s,i){if(slug(s.dataset.name)===h)start=i}); go(start); if(hs){goSec(hs);}
+  [].forEach.call(document.querySelectorAll('[data-slide]'),function(b){b.addEventListener('click',function(){go(IDX[b.dataset.slide]);userNav();})});
+  [].forEach.call(document.querySelectorAll('a[data-sec]'),function(a){a.addEventListener('click',function(e){e.preventDefault();goSec(a.dataset.sec);})});
 
   // Model I tips
   var MI={cc:['Customer centricity','Advisor journey in three layers: customer, business process, systems. Opportunities become an MVP, features and a BDD file everyone shares.'],dp:['Product teams','Teams aligned to LPL personas: advisors, institutions and investors, plus ops, data and risk.'],ee:['Engineering excellence','Design, code and test built from the BDD. Agents draft, engineers decide.'],qg:['Quality gates over CI/CD','Every tier scored. In production a human approves from the evidence pack, in minutes.'],prod:['Outcomes','NIGO rate, CSAT, NPS, incidents and DORA metrics show whether it worked.'],loop:['Learning loops','KPIs re-rank the journeys. Approval reasons tune the agents and rubrics.'],devx:['Built on developer experience','Skills development, onboarding, approved AI tools and test data are the foundation.']};
@@ -1154,25 +1267,32 @@ main,.top .in,.foot .in,.subnav .in{max-width:1680px;padding-left:clamp(16px,3vw
   function spick(i){if(i>=0&&i<7)ppick(i);}
   ppick(0);
 
-  // Guided tour in the header (TRELLIS / BEACON console pattern: Play / Pause, Next, Replay, elapsed clock)
-  var TS=[];S.forEach(function(sl,i){if(sl.dataset.name==='Process'){for(var k=0;k<7;k++)TS.push({s:i,k:k});}else TS.push({s:i});});
-  var tpb=document.getElementById('tplay'),tclk=document.getElementById('tclk'),tlb=document.getElementById('tlbl'),tpr=document.getElementById('tprog');
-  var ti=-1,tt=null,tc=null,t0=0,tel=0,tplaying=false,tfromTour=false;
-  var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function dur(st){return st.k!==undefined?(RM?2600:2400):(RM?6500:6000);}
-  function fmt(ms){var x=Math.floor(ms/1000);return Math.floor(x/60)+':'+('0'+x%60).slice(-2);}
-  function tick(){tclk.textContent=fmt(tel+(tplaying?Date.now()-t0:0));}
-  function show(i){ti=i;var st=TS[i];tfromTour=true;if(cur!==st.s)go(st.s);if(st.k!==undefined){pstop();ppick(st.k);}tfromTour=false;
-    tlb.textContent=lbl(S[st.s].dataset.name)+(st.k!==undefined?' \u00B7 '+PF[st.k].n:'');tpr.style.width=((i+1)/TS.length*100)+'%';}
-  function sched(){clearTimeout(tt);if(!tplaying)return;tt=setTimeout(function(){if(ti>=TS.length-1){tstop(true);return;}show(ti+1);sched();},dur(TS[ti]));}
-  function tstart(){if(ti<0||ti>=TS.length-1){tel=0;show(0);}tplaying=true;t0=Date.now();clearInterval(tc);tc=setInterval(tick,500);tpb.innerHTML='&#10073;&#10073; Pause';tpb.setAttribute('aria-label','Pause the guided tour');top.classList.add('touring');sched();}
-  function tstop(done){if(tplaying)tel+=Date.now()-t0;tplaying=false;clearTimeout(tt);clearInterval(tc);tick();tpb.innerHTML=done?'&#8635; Again':'&#9654; Play';tpb.setAttribute('aria-label','Play the guided tour');top.classList.remove('touring');if(done){tlb.textContent='Tour complete';}}
-  tpb.onclick=function(){if(tplaying)tstop();else{if(ti>=TS.length-1)ti=-1;tstart();}};
-  document.getElementById('tnext').onclick=function(){var n=ti<0?0:ti+1;if(n>=TS.length)n=0;show(n);if(tplaying){t0=Date.now()-0;sched();}};
-  document.getElementById('trp').onclick=function(){tstop();ti=-1;tel=0;tstart();};
-  userNav=function(){if(tfromTour)return;if(tplaying)tstop();var f=-1;for(var k=0;k<TS.length;k++){if(TS[k].s===cur){f=k;break;}}ti=f;tpr.style.width=((f+1)/TS.length*100)+'%';tlb.textContent=lbl(S[cur].dataset.name);};
-  // stage clicks on the Process slide also pause the tour
-  [].forEach.call(document.querySelectorAll('.pf-n'),function(b){b.addEventListener('click',function(){if(tplaying)tstop();});});
+  // "See the proposal in 60 seconds": guided tour down the landing page, with a floating Pause / Next / Close control while it runs
+  var TS=[{sec:'hero',d:6000,l:'Listen first, with a starting point'}];
+  for(var tk=0;tk<7;tk++)TS.push({sec:'sec-proposal',k:tk,d:3800,l:'The proposal \u00B7 '+PF[tk].n});
+  TS.push({sec:'sec-people',d:12000,l:'See it through LPL\u2019s people',people:1},{sec:'sec-gov',d:7000,l:'Governance built in'},{sec:'sec-proof',d:7000,l:'Proof'});
+  var tfl=document.createElement('div');tfl.className='tfl';tfl.id='tfl';tfl.hidden=true;tfl.setAttribute('role','group');tfl.setAttribute('aria-label','Guided tour');
+  tfl.innerHTML='<div class="tfl-t"><b id="tfll">Guided tour</b><span id="tflc">1 / '+TS.length+'</span></div><div class="tfl-p"><i id="tflp"></i></div><div class="tfl-b"><button type="button" id="tflpause">&#10073;&#10073; Pause</button><button type="button" id="tflnext">Next &rsaquo;</button><button type="button" id="tflx" aria-label="Close the tour">&times;</button></div>';
+  document.body.appendChild(tfl);
+  var tpb=document.getElementById('tflpause'),tlb=document.getElementById('tfll'),tcn=document.getElementById('tflc'),tpr=document.getElementById('tflp');
+  var ti=-1,tt=null,tplaying=false,tfromTour=false,tactive=false;
+  function tshow(i){ti=i;var st=TS[i];tfromTour=true;if(S[cur].dataset.name!=='Process')go(IDX['Process']);tfromTour=false;
+    [].forEach.call(document.querySelectorAll('.tour-on'),function(e){e.classList.remove('tour-on')});
+    var el=document.getElementById(st.sec);if(el){el.classList.add('tour-on');if(st.k===undefined||st.k===0)el.scrollIntoView({behavior:'smooth',block:'start'});}
+    if(st.k!==undefined){pstop();ppick(st.k);}
+    if(st.people&&typeof jselect==='function'){jselect(0);jplay();}else if(typeof jpause==='function'&&jplaying){jpause();}
+    tlb.textContent=st.l;tcn.textContent=(i+1)+' / '+TS.length;tpr.style.width=((i+1)/TS.length*100)+'%';}
+  function tsched(){clearTimeout(tt);if(!tplaying)return;tt=setTimeout(function(){if(ti>=TS.length-1){tend();return;}tshow(ti+1);tsched();},TS[ti].d);}
+  function tstart(){tactive=true;tfl.hidden=false;document.body.classList.add('touring');tplaying=true;tpb.innerHTML='&#10073;&#10073; Pause';tshow(0);tsched();}
+  function tpause(){tplaying=false;clearTimeout(tt);tpb.innerHTML='&#9654; Resume';if(typeof jpause==='function'&&jplaying)jpause();}
+  function tresume(){tplaying=true;tpb.innerHTML='&#10073;&#10073; Pause';tshow(ti);tsched();}
+  function tend(){tplaying=false;tactive=false;clearTimeout(tt);tfl.hidden=true;document.body.classList.remove('touring');[].forEach.call(document.querySelectorAll('.tour-on'),function(e){e.classList.remove('tour-on')});if(typeof jpause==='function'&&jplaying)jpause();}
+  tpb.onclick=function(){tplaying?tpause():tresume();};
+  document.getElementById('tflnext').onclick=function(){if(ti>=TS.length-1){tend();return;}tshow(ti+1);if(tplaying)tsched();};
+  document.getElementById('tflx').onclick=tend;
+  document.getElementById('tourbtn').onclick=tstart;
+  userNav=function(){if(tfromTour)return;if(tactive)tend();};
+  [].forEach.call(document.querySelectorAll('.pf-n'),function(b){b.addEventListener('click',function(){if(tplaying)tpause();});});
   if(new URLSearchParams(location.search).get('tour')==='1')tstart();
 
   // Hero journey console (RUNWAY "Workbench console" pattern, slowed down and visual-first):
