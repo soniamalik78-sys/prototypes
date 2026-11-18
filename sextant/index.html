@@ -633,65 +633,78 @@ main{padding-top:10px}
 @media (max-width:640px){.foot .who{display:none}}
 @media print{.land .pf-print .pf-l{padding:5px 7px}.land .pf-print .pf-l p{font-size:.72rem;line-height:1.3}.land .pf-print .pf-dh h3{font-size:1rem}.land .pf-print .pf-dh p{display:none}.land .pf-print .pf-ft{font-size:.68rem}.land .pf-print .pf-d{grid-template-columns:1fr;margin:0;padding:8px 10px}.land .pf-print .pf-ly{grid-template-columns:1fr}.subnav,.hx,.menu{display:none!important}.kick{background:none;padding:0}.top{display:none!important}}
 
-/* ===== v3: hero journey console (RUNWAY pattern) ===== */
-.land .hero2{grid-template-columns:minmax(0,1fr) minmax(0,470px);gap:26px;align-items:start;margin-bottom:10px}
-.land .hero2 h2{font-size:clamp(1.55rem,2.6vw,2.15rem)}
-.hero2 .h2l .ps-land{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:14px;max-width:520px}
+/* ===== v4: wide layout + calm, visual-first journey console ===== */
+main,.top .in,.foot .in,.subnav .in{max-width:1680px;padding-left:clamp(16px,3vw,48px);padding-right:clamp(16px,3vw,48px)}
+.land .hero2{grid-template-columns:minmax(0,1fr) minmax(400px,560px);gap:clamp(20px,3vw,48px);align-items:center;margin-bottom:10px}
+.land .hero2 h2{font-size:clamp(1.55rem,2.4vw,2.6rem);max-width:26ch}
+.hsub{font-size:clamp(.92rem,1vw,1.05rem)}
+.hero2 .h2l .ps-land{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:14px;max-width:none}
+@media (max-width:1400px){.land .hero2{grid-template-columns:minmax(0,1fr) 440px;gap:24px}.land .hero2 h2{font-size:1.8rem;max-width:none}.hsub{font-size:.9rem}.hero2 .h2l .ps-land{margin-top:10px}.hero2 .h2l .ps-land span{padding:6px 9px}}
 .hnote{font-size:.72rem;color:var(--faint);margin-top:8px}
 .jc{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 40px rgba(16,24,40,.13);overflow:hidden;display:flex;flex-direction:column}
-.jc-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 75%,var(--teal)));color:#fff}
-.jc-h b{font-size:.9rem;white-space:nowrap}.jc-h span{font-size:.72rem;opacity:.85;white-space:nowrap}
-.jc-p{display:flex;gap:5px;flex-wrap:wrap;padding:9px 12px 4px}
-.jc-p button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:3px 10px;font-size:.76rem;font-weight:600;transition:background .15s,color .15s,border-color .15s}
-.jc-p button:hover{border-color:var(--accent);color:var(--fg)}
+.jc-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 14px;background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 75%,var(--teal)));color:#fff}
+.jc-h b{font-size:.88rem;white-space:nowrap}.jc-h span{font-size:.7rem;opacity:.85;white-space:nowrap}
+.jc-p{display:flex;gap:5px;flex-wrap:wrap;padding:9px 12px 2px}
+.jc-p button{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:3px 10px 3px 6px;font-size:.76rem;font-weight:600;transition:background .15s,color .15s,border-color .15s}
+.jc-p button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.jc-p button:hover{border-color:var(--teal);color:var(--fg)}
 .jc-p button[aria-selected="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
-.jc-s{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;list-style:none;margin:6px 12px 4px;padding:0}
-.jc-s li{display:flex;flex-direction:column;gap:3px;font-size:.62rem;color:var(--faint);line-height:1.15;min-width:0}
-.jc-s li i{display:block;height:4px;border-radius:4px;background:var(--sunk);font-size:0;transition:background .3s}
-.jc-s li span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.jc-s li.done i{background:var(--ok)}.jc-s li.cur i{background:var(--teal)}.jc-s li.cur span{color:var(--fg);font-weight:700}
-.jc-f{height:300px;overflow-y:auto;padding:8px 12px;display:flex;flex-direction:column;gap:7px;scroll-behavior:auto}
-.jc-intro{margin:auto 0;font-size:.84rem;color:var(--muted);background:var(--sunk);border-radius:10px;padding:12px}
-.jc-intro b{display:block;color:var(--fg);font-size:.95rem;margin-bottom:3px}
-.jc-ev{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
-.jc-ev.in{opacity:1;transform:none}
-.jc-ev .n{width:24px;height:24px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-size:.72rem;font-weight:700;margin-top:2px}
-.jc-ev.cur .n{background:var(--accent);color:#fff}
-.jc-ev .bub{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 9px;font-size:.8rem;line-height:1.35;border-left:3px solid var(--teal)}
-.jc-ev.cur .bub{box-shadow:var(--shadow)}
-.jc-ev .who{display:flex;justify-content:space-between;gap:6px;flex-wrap:wrap;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
-.jc-ev .who em{font-style:normal;letter-spacing:0;text-transform:none;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:0 7px}
-.jc-ev .op{display:block;font-size:.88rem;margin:2px 0 4px;color:var(--fg)}
-.jc-ev .op small{display:inline-block;font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ok);background:var(--ok-bg);border-radius:4px;padding:0 5px;margin-right:6px;vertical-align:2px}
-.jc-bar{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin:2px 0 4px}
-.jc-bar i{display:block;height:15px;border-radius:3px;background:var(--sunk);position:relative;overflow:hidden;transition:background .2s}
-.jc-bar i span{position:absolute;inset:0;font-style:normal;font-size:.52rem;font-weight:700;line-height:15px;text-align:center;color:var(--faint);white-space:nowrap;overflow:hidden}
-.jc-bar i.on{background:color-mix(in srgb,var(--accent) 22%,var(--surface))}.jc-bar i.on span{color:var(--accent)}
-.jc-bar i.em.on{background:var(--accent)}.jc-bar i.em.on span{color:#fff}
-.jc-ev .pd{color:var(--muted);font-size:.78rem}
-.jc-ev .jd{display:inline-block;margin-top:4px;font-size:.68rem;font-weight:700;color:var(--violet);background:var(--violet-soft);border-radius:6px;padding:1px 7px}
-.jc-ev.ok .bub{background:var(--ok-bg);border-left-color:var(--ok)}
-.jc-ev.ok .n{background:var(--ok);color:#fff}
-.jc-jd{grid-template-columns:1fr}
-.jc-jd .bub{border-left-color:var(--violet)}
-.jc-jd table{width:100%;border-collapse:collapse;margin:4px 0;font-size:.72rem}
-.jc-jd th,.jc-jd td{text-align:left;padding:3px 4px;border-bottom:1px solid var(--line);vertical-align:top}
-.jc-jd thead th{font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
-.jc-jd tbody th{color:var(--fg);white-space:nowrap}.jc-jd td:last-child{color:var(--violet);font-weight:600}
-.jc-b{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid var(--line);flex-wrap:wrap}
-.jc-k{display:flex;gap:16px}.jc-k b{display:block;font:600 .95rem/1.1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--accent);white-space:nowrap}.jc-k span{font-size:.66rem;color:var(--muted)}
+.jc-s{display:grid;grid-template-columns:repeat(5,1fr) .7fr;gap:5px;list-style:none;margin:8px 12px 2px;padding:0}
+.jc-s button{width:100%;display:flex;flex-direction:column;gap:3px;border:0;background:none;padding:0;text-align:left;font-size:.62rem;color:var(--faint);line-height:1.15;min-width:0}
+.jc-s i{display:block;height:5px;border-radius:5px;background:var(--sunk);transition:background .4s}
+.jc-s span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.jc-s .done i{background:var(--ok)}.jc-s .cur i{background:var(--teal)}.jc-s .cur span{color:var(--fg);font-weight:700}
+.jc-s .sc i{background:repeating-linear-gradient(90deg,var(--sunk) 0 4px,transparent 4px 7px)}.jc-s .sc.cur i,.jc-s .sc.done i{background:var(--ok)}
+.jc-c{padding:10px 12px 8px;min-height:176px;display:flex;flex-direction:column}
+.jc-card{display:flex;flex-direction:column;gap:9px;animation:jcin .45s var(--ease)}
+@keyframes jcin{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.jc-card{animation:none}}
+.jc-top{display:flex;gap:12px;align-items:center}
+.jc-av{flex:none;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--teal) 14%,var(--surface));color:var(--teal)}
+.jc-av svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.jc-card.end .jc-av{background:var(--ok-bg);color:var(--ok)}
+.jc-tt small{display:block;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+.jc-tt h4{margin:2px 0 0;font-family:var(--f-display);font-weight:600;font-size:1.22rem;line-height:1.2;color:var(--fg)}
+.jc-ch{display:flex;gap:6px;flex-wrap:wrap}
+.jc-ch span{font-size:.72rem;font-weight:700;border-radius:999px;padding:2px 9px}
+.jc-ch .kpi{background:var(--accent-soft);color:var(--accent)}.jc-ch .jdc{background:var(--violet-soft);color:var(--violet)}
+.jc-bar2{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.jc-bar2 i{display:block;height:24px;border-radius:6px;background:var(--sunk);position:relative;overflow:hidden;transition:background .45s}
+.jc-bar2 i span{position:absolute;inset:0;font-style:normal;font-size:.6rem;font-weight:700;line-height:24px;text-align:center;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 2px}
+.jc-bar2 i.on{background:color-mix(in srgb,var(--accent) 20%,var(--surface))}.jc-bar2 i.on span{color:var(--accent)}
+.jc-bar2 i.em.on{background:var(--accent)}.jc-bar2 i.em.on span{color:#fff}
+.jc-det{font-size:.8rem;color:var(--muted)}
+.jc-det summary{cursor:pointer;font-weight:700;font-size:.74rem;color:var(--accent);list-style:none;display:inline-flex;align-items:center;gap:4px}
+.jc-det summary::-webkit-details-marker{display:none}
+.jc-det summary::before{content:"+";display:inline-grid;place-items:center;width:15px;height:15px;border:1px solid currentColor;border-radius:50%;font-size:.7rem;line-height:1}
+.jc-det[open] summary::before{content:"\2212"}
+.jc-det p{margin:5px 0 0;line-height:1.4}.jc-det .jdl{color:var(--violet)}
+.jdm .jdh{font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+.jdm ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.jdm li{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.8rem;border-bottom:1px solid var(--line);padding:3px 0}
+.jdm li b{font-size:.7rem;background:var(--violet-soft);color:var(--violet);border-radius:999px;padding:1px 9px;white-space:nowrap}
+.jc-b{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid var(--line)}
 .jc-bt{display:flex;gap:5px}
-.jc-r{border:1px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:999px;padding:4px 11px;font-weight:700;font-size:.76rem;white-space:nowrap;transition:background .15s}
-.jc-r:hover{background:var(--accent-soft)}.jc-r.solid{background:var(--accent);color:#fff}
+.jc-r{border:1px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:999px;padding:4px 12px;font-weight:700;font-size:.76rem;white-space:nowrap;transition:background .15s}
+.jc-r:hover{background:var(--accent-soft)}.jc-r.solid{background:var(--accent);color:#fff;min-width:92px}
 #jcjd[aria-pressed="true"]{background:var(--violet-soft);border-color:var(--violet);color:var(--violet)}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .jc-h,:root:not([data-theme="light"]) .jc-r.solid,:root:not([data-theme="light"]) .jc-ev.cur .n,:root:not([data-theme="light"]) .jc-bar i.em.on span{color:#0b1220} }
+.jc.playing .jc-h{background:linear-gradient(135deg,var(--teal),var(--accent))}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .jc-h,:root:not([data-theme="light"]) .jc-r.solid,:root:not([data-theme="light"]) .jc-bar2 i.em.on span,:root:not([data-theme="light"]) .jc-p button[aria-selected="true"]{color:#0b1220} }
 .pf-n.live{border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 30%,transparent)}
-.pf-n.live .pf-ic{animation:pulse 1s ease-in-out infinite}
+.pf-n.live .pf-ic{animation:pulse 1.2s ease-in-out infinite}
 @keyframes pulse{50%{transform:scale(1.08)}}
 @media (prefers-reduced-motion: reduce){.pf-n.live .pf-ic{animation:none}}
-@media (max-width:980px){.land .hero2{grid-template-columns:1fr}.hero2 .h2l .ps-land{max-width:none;grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media (max-width:640px){.hero2 .h2l .ps-land{grid-template-columns:1fr 1fr}.jc-f{height:330px}.jc-h span{display:none}.jc-b{justify-content:center}}
-@media print{.jc{display:none!important}.land .hero2{grid-template-columns:1fr}.hero2 .h2l .ps-land{grid-template-columns:repeat(4,1fr);max-width:none}}
+/* wider stage diagram on big screens */
+@media (min-width:1440px){.land .pf-track,.land .pf-ph,.land .pf-cp{column-gap:30px}.land .pf-track li:not(:last-child)::after{right:-21px}.land .pf-nm{font-size:1.05rem}.land .pf-own{font-size:.8rem}.land .pf-g{font-size:.76rem}.land .pf-ic{width:44px;height:44px}.land .pf-l p{font-size:.9rem}}
+@media (max-width:980px){.land .hero2{grid-template-columns:1fr}.hero2 .h2l .ps-land{max-width:none;grid-template-columns:repeat(4,minmax(0,1fr))}.land .hero2 h2{max-width:none}}
+@media (max-width:640px){.hero2 .h2l .ps-land{grid-template-columns:1fr 1fr}.jc-h span{display:none}.jc-r{padding:4px 9px}.jc-tt h4{font-size:1.08rem}.jc-bar2 i span{font-size:.5rem}}
+.land .pf-cp{align-items:center}
+.pf-lpl{display:none}
+@media (min-width:761px){.land .pf-lpl{display:block;grid-column:1/3;font-size:.72rem;font-weight:700;color:var(--gold);line-height:1.3;padding-right:8px}
+ .land .pf-loop{height:10px;margin-top:0}.land .pf-loop span{display:none}}
+.jc-h{padding:7px 14px}.jc-c{min-height:150px;padding:8px 12px 6px}.jc-card{gap:7px}.jc-b{padding:6px 12px}.jc-p{padding-top:7px}
+.land .hero2{margin-bottom:6px}
+@media print{main{padding:0!important;max-width:none!important}.land .hero2 h2{font-size:1.6rem!important;max-width:none}.jc{display:none!important}.land .hero2{grid-template-columns:1fr}.hero2 .h2l .ps-land{grid-template-columns:repeat(4,1fr);max-width:none}}
 </style>
 </head>
 <body>
@@ -723,11 +736,11 @@ main{padding-top:10px}
     <div class="jc" id="jc" aria-label="Sample: an LPL persona journey through the seven-stage PDLC">
       <div class="jc-h"><b>Journey console &middot; LPL personas</b><span>Sample &middot; illustrative</span></div>
       <div class="jc-p" id="jcp" role="tablist" aria-label="Choose a persona"></div>
-      <ol class="jc-s" id="jcs" aria-hidden="true"></ol>
-      <div class="jc-f" id="jcf" aria-live="polite"></div>
+      <ol class="jc-s" id="jcs"></ol>
+      <div class="jc-c" id="jcc" aria-live="polite"></div>
       <div class="jc-b">
-        <div class="jc-k"><div><b id="jck">&ndash;</b><span>journey step</span></div><div><b id="jcst">&ndash;</b><span>PDLC stage</span></div></div>
-        <div class="jc-bt"><button type="button" class="jc-r" id="jcplay">&#9654; Play</button><button type="button" class="jc-r solid" id="jcnext">Next &rsaquo;</button><button type="button" class="jc-r" id="jcrp" aria-label="Replay this journey">&#8635;</button><button type="button" class="jc-r" id="jcjd" aria-pressed="false">JD map</button></div>
+        <div class="jc-bt"><button type="button" class="jc-r" id="jcback" aria-label="Previous step">&lsaquo; Back</button><button type="button" class="jc-r solid" id="jcplay">&#9654; Play</button><button type="button" class="jc-r" id="jcnext" aria-label="Next step">Next &rsaquo;</button></div>
+        <button type="button" class="jc-r" id="jcjd" aria-pressed="false">JD map</button>
       </div>
     </div>
   </div>
@@ -736,7 +749,7 @@ main{padding-top:10px}
     <div class="pf-map">
       <div class="pf-ph" aria-hidden="true"><span style="--g:1/2;--c:var(--teal)">Customer</span><span style="--g:2/5;--c:var(--accent)">Engineering excellence</span><span style="--g:5/7;--c:var(--warn)">Evidence &amp; controls</span><span style="--g:7/8;--c:var(--ok)">Outcomes</span></div>
       <ol class="pf-track" id="pftrack" role="tablist" aria-label="The seven PDLC stages"></ol>
-      <div class="pf-cp" aria-hidden="true"><div class="pf-cpb"><b>Control partners at the audit gate</b><span>Risk</span><span>Legal</span><span>Compliance</span><span>Privacy</span><span>Model Risk</span></div></div>
+      <div class="pf-cp" aria-hidden="true"><div class="pf-lpl">&#8634; Measure feeds Intake: outcomes re-rank the backlog</div><div class="pf-cpb"><b>Control partners at the audit gate</b><span>Risk</span><span>Legal</span><span>Compliance</span><span>Privacy</span><span>Model Risk</span></div></div>
       <div class="pf-loop" id="pfloop" role="button" tabindex="0" aria-label="Feedback loop from Measure back to Intake"><span>&#8634; Measure feeds Intake: outcomes re-rank the backlog, approval reasons tune agents and rubrics</span></div>
     </div>
     <div id="pfdetail" aria-live="polite"></div>
@@ -1087,7 +1100,7 @@ main{padding-top:10px}
      own:'Engineer, the named PR owner',ag:'Coding and review agents draft from the BDD',ev:'Code + unit tests; SAST on every commit, AI output included',gate:'Review and SAST pass; approved tools only',pr:'Trunk-based, small PRs',kpi:'PR cycle time'},
     {n:'Test',ic:'test',os:'QE lead',gs:'Quality score \u2265 80',sum:'Every tier is scored against the BDD; judge agents find the gaps people would miss.',
      own:'QE lead',ag:'Test agent generates, judge agent scores against the BDD',ev:'Scored BDD and negative tests, DAST, resiliency',gate:'Quality score \u2265 80; no high SAST/DAST findings',pr:'Test impact analysis',kpi:'Defect escape'},
-    {n:'Audit evidence',ic:'audit',os:'Release owner + control partners',gs:'Pack complete',sum:'Controls run in the pipeline, so the exam-ready pack is a by-product of the path, not a late review.',
+    {n:'Audit evidence',ic:'audit',os:'Release owner + partners',gs:'Pack complete',sum:'Controls run in the pipeline, so the exam-ready pack is a by-product of the path, not a late review.',
      own:'Release owner, with Risk, Legal, Compliance, Privacy and Model Risk',ag:'Evidence agent assembles the pack',ev:'Control tests, policy-as-code results, approvals and overrides, model / data / reviewer trace, exam pack',gate:'Pack complete before promotion',pr:'Policy-as-code, controls in the pipeline',kpi:'Exam-ready evidence',cp:1},
     {n:'Release',ic:'release',os:'Release owner',gs:'Human approves',sum:'One golden path to production. A person decides, reading the evidence instead of chasing it.',
      own:'Release owner',ag:'Evidence agent attaches the signed pack to the release',ev:'Signed evidence pack, golden-path CI/CD',gate:'A human approves from the evidence pack, in minutes',pr:'Golden-path CI/CD',kpi:'Lead time, change failure rate'},
@@ -1144,67 +1157,66 @@ main{padding-top:10px}
   [].forEach.call(document.querySelectorAll('.pf-n'),function(b){b.addEventListener('click',function(){if(tplaying)tstop();});});
   if(new URLSearchParams(location.search).get('tour')==='1')tstart();
 
-  // Hero journey console (RUNWAY "Workbench console" pattern): pick an LPL persona, press Play,
-  // each journey step plays as an enhancement opportunity + KPI, the 7-stage PDLC delivers it, and the JD responsibility it maps to is tagged.
+  // Hero journey console (RUNWAY "Workbench console" pattern, slowed down and visual-first):
+  // pick an LPL persona; one step at a time; the 7-stage bar fills within each step; Details and JD map on demand.
   var JT=[['Join LPL','Get new advisors trading from day 1','Days to first trade'],['Map the book','Map every household right the first time','Mapping accuracy'],['Move accounts','Get transfer forms right the first time','NIGO rate'],['Welcome clients','Make the first client login effortless','Client activation'],['First review','Arrive at the first review fully prepared','Assets retained']];
+  var PI={
+    adv:'<circle cx="12" cy="7" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/><path d="M12 13.5l-1.3 3 1.3 2 1.3-2z"/>',
+    ins:'<path d="M3 9l9-5 9 5"/><path d="M5.5 9.5v8M10 9.5v8M14 9.5v8M18.5 9.5v8"/><path d="M3 20.5h18"/>',
+    inv:'<circle cx="8" cy="7" r="3"/><path d="M2.5 20a5.5 5.5 0 0 1 11 0"/><path d="M15 15.5l2.5-3 2 1.5L22.5 9"/>',
+    ops:'<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/>',
+    scale:'<path d="M4 12a8 8 0 0 1 14-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15"/><path d="M4 20v-5h5"/>'
+  };
   var PERS=[
-    {id:'adv',n:'Advisor',full:'Financial advisor',ab:'Advisors',steps:JT},
-    {id:'ins',n:'Institution',full:'Institution partner',ab:'Institutions',steps:[['Join the platform','Make onboarding a new institution simple and predictable','Time to onboard'],['Set up the program','Set up advisors, products and access right the first time','Setup rework'],['Move accounts','Get bulk transfer forms right the first time','NIGO rate'],['Support their advisors','Give program advisors answers without a ticket','CSAT'],['Program review','See the program\u2019s results in one view','NPS']]},
-    {id:'inv',n:'Investor',full:'Individual investor',ab:'Investors',steps:[['Open an account','Open an account in one sitting','Client activation'],['Fund it','Get transfer forms right the first time','NIGO rate'],['First login','Make the first login effortless','CSAT'],['Ask a question','Get a clear answer from the advisor or the app, fast','Time to answer'],['Annual review','See progress toward goals before the meeting','NPS']]},
-    {id:'ops',n:'Ops & service',full:'Operations & service',ab:'Operations',steps:[['Receive paperwork','Catch a missing signature before submission','NIGO rate'],['Process transfers','Move transfers straight through, without rekeying','Straight-through rate'],['Resolve exceptions','Route each exception to the right person, with context','Time to resolve'],['Compliance review','Have the evidence ready before the review starts','Exam-ready evidence'],['Answer the advisor','Answer advisor questions on first contact','CSAT']]}
+    {id:'adv',n:'Advisor',full:'Financial advisor',steps:JT},
+    {id:'ins',n:'Institution',full:'Institution partner',steps:[['Join the platform','Make onboarding a new institution simple and predictable','Time to onboard'],['Set up the program','Set up the program right the first time','Setup rework'],['Move accounts','Get bulk transfer forms right the first time','NIGO rate'],['Support their advisors','Give program advisors answers without a ticket','CSAT'],['Program review','See the program\u2019s results in one view','NPS']]},
+    {id:'inv',n:'Investor',full:'Individual investor',steps:[['Open an account','Open an account in one sitting','Client activation'],['Fund it','Get transfer forms right the first time','NIGO rate'],['First login','Make the first login effortless','CSAT'],['Ask a question','Get clear answers, fast','Time to answer'],['Annual review','See progress toward goals before the meeting','NPS']]},
+    {id:'ops',n:'Ops & service',full:'Operations & service',steps:[['Receive paperwork','Catch a missing signature before submission','NIGO rate'],['Process transfers','Move transfers straight through, without rekeying','Straight-through rate'],['Resolve exceptions','Route each exception to the right person','Time to resolve'],['Compliance review','Have the evidence ready before the review starts','Exam-ready evidence'],['Answer the advisor','Answer advisor questions on first contact','CSAT']]}
   ];
-  // Step position -> how the PDLC delivers it (stages emphasised) -> JD responsibility (R-054699 wording)
   var HOW=[
-    {st:[0],t:'Intake: Three Amigos agree the KPI; the insight agent reads signals; the shared BDD is scored \u2265 80.',jd:'Target-state PDLC: stage gates, decision rights, success measures'},
-    {st:[1,2],t:'Design + Build: the design agent proposes the contract; coding agents draft from the BDD; a named engineer owns the PR.',jd:'Team model: agent roles, human-agent collaboration patterns'},
-    {st:[3,4],t:'Test + Audit evidence: the judge agent scores it (Quality score \u2265 80); the evidence agent assembles the pack with Compliance, Privacy and Model Risk.',jd:'Embed controls with Risk, Information Security, Compliance, Legal, Privacy, Model Risk'},
-    {st:[5],t:'Release: golden-path CI/CD; a person approves from the evidence pack, in minutes.',jd:'PDLC platform and toolchain: CI/CD, test automation, observability'},
-    {st:[6],t:'Measure: the KPI, CSAT and NPS re-rank the backlog; approval reasons tune agents and rubrics.',jd:'Outcome-based measures: cycle time, quality, developer experience, business value'}
+    {st:[0],t:'Intake: Three Amigos agree the KPI; the insight agent reads signals; the shared BDD is scored \u2265 80.',jd:'Target-state PDLC: stage gates, decision rights, success measures',jc:'Stage gates & decision rights'},
+    {st:[1,2],t:'Design + Build: the design agent proposes the contract; coding agents draft from the BDD; a named engineer owns the PR.',jd:'Team model: agent roles, human-agent collaboration patterns',jc:'Agent roles & collaboration'},
+    {st:[3,4],t:'Test + Audit evidence: the judge agent scores it (Quality score \u2265 80); the evidence agent assembles the pack with Compliance, Privacy and Model Risk.',jd:'Embed controls with Risk, Information Security, Compliance, Legal, Privacy, Model Risk',jc:'Embed controls'},
+    {st:[5],t:'Release: golden-path CI/CD; a person approves from the evidence pack, in minutes.',jd:'PDLC platform and toolchain: CI/CD, test automation, observability',jc:'Platform & toolchain'},
+    {st:[6],t:'Measure: the KPI, CSAT and NPS re-rank the backlog; approval reasons tune agents and rubrics.',jd:'Outcome-based measures: cycle time, quality, developer experience, business value',jc:'Outcome-based measures'}
   ];
-  var SCALE={t:'Scale: pilot one team, then waves, with skills development, coaching and adoption support.',jd:'Organizational transformation and workforce evolution'};
+  var SCALE={n:'Scale',op:'Pilot one team, then scale in waves',t:'Skills development, coaching and adoption support take the path from one pilot team to every team.',jd:'Organizational transformation and workforce evolution',jc:'Workforce evolution'};
   var SN=['Intake','Design','Build','Test','Audit','Release','Measure'];
-  var jcp=document.getElementById('jcp'),jcs=document.getElementById('jcs'),jcf=document.getElementById('jcf'),jck=document.getElementById('jck'),jcst=document.getElementById('jcst'),jcpb=document.getElementById('jcplay'),jcjd=document.getElementById('jcjd');
-  var jper=0,jstep=-1,jgen=0,jtm=[],jplaying=false;
+  var STEP_MS=5600, SEG_MS=520, SEG_START=500; // ~5.6 s per step; the bar fills over ~3.6 s, then holds
+  var jcp=document.getElementById('jcp'),jcs=document.getElementById('jcs'),jcc=document.getElementById('jcc'),jcpb=document.getElementById('jcplay'),jcjd=document.getElementById('jcjd'),jcEl=document.getElementById('jc');
+  var jper=0,jstep=0,jtm=[],jplaying=false,jhover=false,jdOpen=false;
   var JRM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  PERS.forEach(function(pp,i){var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.textContent=pp.n;b.onclick=function(){jselect(i,true)};jcp.appendChild(b);});
+  function pico(k){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+PI[k]+'</svg>';}
+  PERS.forEach(function(pp,i){var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.innerHTML=pico(pp.id)+'<span></span>';b.querySelector('span').textContent=pp.n;b.onclick=function(){jselect(i)};jcp.appendChild(b);});
   function live(k){[].forEach.call(document.querySelectorAll('.pf-n'),function(n,i){n.classList.toggle('live',i===k)});}
-  function jclear(){jgen++;jtm.forEach(clearTimeout);jtm=[];}
-  function jsetPlay(on){jplaying=on;jcpb.innerHTML=on?'&#10073;&#10073; Pause':(jstep>=5?'&#8635; Again':'&#9654; Play');}
-  function strip(){var st=PERS[jper].steps;jcs.innerHTML=st.map(function(x,i){return '<li class="'+(i<jstep?'done':i===jstep?'cur':'')+'"><i>'+(i+1)+'</i><span>'+esc(x[0])+'</span></li>'}).join('');}
-  function jselect(i,autoplay){jclear();jper=i;jstep=-1;jcf.innerHTML='';jck.textContent='\u2013';jcst.textContent='\u2013';live(-1);jcjd.setAttribute('aria-pressed','false');
-    [].forEach.call(jcp.children,function(b,k){b.setAttribute('aria-selected',k===i?'true':'false')});
-    jcf.innerHTML='<div class="jc-intro"><b>'+esc(PERS[i].full)+'</b>Five journey steps, each an opportunity to improve, delivered through the seven-stage PDLC and mapped to the LPL role. Press &#9654; Play.</div>';
-    strip();jsetPlay(false);if(autoplay)jplay();}
-  function scrollF(){jcf.scrollTop=jcf.scrollHeight;}
-  function addEv(html,cls){var d=document.createElement('div');d.className='jc-ev '+(cls||'')+(JRM?' in':'');d.innerHTML=html;var it=jcf.querySelector('.jc-intro');if(it)it.remove();
-    [].forEach.call(jcf.querySelectorAll('.jc-ev.cur'),function(x){x.classList.remove('cur')});d.classList.add('cur');jcf.appendChild(d);scrollF();
-    if(!JRM)requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('in');scrollF();})});return d;}
-  function bar(st){return '<div class="jc-bar">'+SN.map(function(n,k){return '<i class="'+(st.indexOf(k)>-1?'em':'')+'" title="'+n+'"><span>'+n+'</span></i>'}).join('')+'</div>';}
-  function showStep(i,my,cb){jstep=i;strip();var pp=PERS[jper],x=pp.steps[i],h=HOW[i];jck.textContent=(i+1)+' / 5';
-    var d=addEv('<span class="n">'+(i+1)+'</span><div class="bub"><span class="who">'+esc(x[0])+'<em>KPI &middot; '+esc(x[2])+'</em></span><b class="op"><small>Opportunity</small>'+esc(x[1])+'</b>'+bar(h.st)+'<p class="pd">'+esc(h.t)+'</p><span class="jd">JD &middot; '+esc(h.jd)+'</span></div>');
-    var segs=d.querySelectorAll('.jc-bar i'),dt=JRM?0:190;
-    if(!dt){[].forEach.call(segs,function(s){s.classList.add('on')});jcst.textContent=SN[h.st[h.st.length-1]];live(h.st[0]);if(cb)cb();return;}
-    for(var k=0;k<7;k++){(function(k){jtm.push(setTimeout(function(){if(my!==jgen)return;segs[k].classList.add('on');jcst.textContent=SN[k];live(k);
-      if(k===6){jtm.push(setTimeout(function(){if(my!==jgen)return;var e=h.st[0];live(e);jcst.textContent=SN[h.st[h.st.length-1]];if(cb)cb();},260));}},400+dt*k));})(k);}}
-  function showEnd(my){jstep=5;strip();jck.textContent='Done';jcst.textContent='Loop';live(-1);
-    addEv('<span class="n">&#8635;</span><div class="bub sc"><span class="who">Scale</span><p class="pd">'+esc(SCALE.t)+'</p><span class="jd">JD &middot; '+esc(SCALE.jd)+'</span></div>','ok');
-    showJD(false);jsetPlay(false);}
-  function jdRows(){var st=PERS[jper].steps;return HOW.map(function(h,i){return '<tr><th>'+esc(st[i][0])+'</th><td>'+SN.filter(function(_,k){return h.st.indexOf(k)>-1}).join(' + ')+'</td><td>'+esc(h.jd)+'</td></tr>'}).join('')+'<tr><th>Scale</th><td>Pilot, then waves</td><td>'+esc(SCALE.jd)+'</td></tr>';}
-  function showJD(toggle){var ex=jcf.querySelector('.jc-jd');if(ex){if(toggle){ex.remove();jcjd.setAttribute('aria-pressed','false');}return;}
-    addEv('<div class="bub jdm"><span class="who">How this maps to the JD &middot; R-054699</span><table><thead><tr><th>Step</th><th>PDLC</th><th>JD responsibility</th></tr></thead><tbody>'+jdRows()+'</tbody></table><p class="pd">The role\u2019s brief: smaller, higher-leverage teams that deliver faster while strengthening quality, resilience, security and accountability.</p></div>','jc-jd');
-    jcjd.setAttribute('aria-pressed','true');}
-  function jrun(my){var n=jstep+1;if(n>4){showEnd(my);return;}showStep(n,my,function(){jtm.push(setTimeout(function(){if(my!==jgen||!jplaying)return;jrun(my);},JRM?1800:1500));});}
-  function jplay(){if(jstep>=5)jselect(jper,false);jclear();var my=jgen;jsetPlay(true);jrun(my);}
-  function jpause(){jclear();jsetPlay(false);}
+  function jclear(){jtm.forEach(clearTimeout);jtm=[];}
+  function setPlayBtn(){jcpb.innerHTML=jplaying?'&#10073;&#10073; Pause':(jstep>=5?'&#8635; Replay':'&#9654; Play');jcEl.classList.toggle('playing',jplaying);}
+  function strip(){var st=PERS[jper].steps;jcs.innerHTML='';st.concat([[SCALE.n]]).forEach(function(x,i){var li=document.createElement('li');var b=document.createElement('button');b.type='button';b.className=(i<jstep?'done':i===jstep?'cur':'')+(i===5?' sc':'');b.setAttribute('aria-label','Step '+(i+1)+': '+x[0]);b.innerHTML='<i></i><span></span>';b.querySelector('span').textContent=x[0];b.onclick=function(){jpause();jshow(i,false)};li.appendChild(b);jcs.appendChild(li);});}
+  function jcard(i){var pp=PERS[jper],end=i===5,x=end?null:pp.steps[i],h=end?SCALE:HOW[i],st=end?[0,1,2,3,4,5,6]:h.st;
+    return '<div class="jc-card'+(end?' end':'')+'"><div class="jc-top"><span class="jc-av">'+pico(end?'scale':pp.id)+'</span><div class="jc-tt"><small>'+(end?'Then':'Step '+(i+1)+' of 5')+' &middot; '+esc(end?SCALE.n:x[0])+'</small><h4>'+esc(end?SCALE.op:x[1])+'</h4></div></div>'+
+      '<div class="jc-ch">'+(end?'':'<span class="kpi">KPI &middot; '+esc(x[2])+'</span>')+'<span class="jdc">JD &middot; '+esc(h.jc)+'</span></div>'+
+      '<div class="jc-bar2">'+SN.map(function(n,k){return '<i class="'+(st.indexOf(k)>-1?'em':'')+'"><span>'+n+'</span></i>'}).join('')+'</div>'+
+      '<details class="jc-det"><summary>Details</summary><p>'+esc(h.t)+'</p><p class="jdl"><b>JD R-054699:</b> '+esc(h.jd)+'</p></details></div>';}
+  function jshow(i,animate){jclear();jstep=i;jdOpen=false;jcjd.setAttribute('aria-pressed','false');strip();jcc.innerHTML=jcard(i);setPlayBtn();
+    var det=jcc.querySelector('.jc-det');det.addEventListener('toggle',function(){if(det.open)jpause();});
+    var segs=jcc.querySelectorAll('.jc-bar2 i');
+    if(!animate||JRM){[].forEach.call(segs,function(s){s.classList.add('on')});live(-1);return;}
+    for(var k=0;k<7;k++){(function(k){jtm.push(setTimeout(function(){segs[k].classList.add('on');live(k);},SEG_START+SEG_MS*k));})(k);}
+    jtm.push(setTimeout(function(){var em=i<5?HOW[i].st[0]:-1;live(em);},SEG_START+SEG_MS*7));
+    jtm.push(setTimeout(function(){if(!jplaying)return;if(i>=5){jplaying=false;live(-1);setPlayBtn();return;}jshow(i+1,true);},STEP_MS));}
+  function jselect(i){jpause();jper=i;[].forEach.call(jcp.children,function(b,k){b.setAttribute('aria-selected',k===i?'true':'false')});jshow(0,false);}
+  function jplay(){jhover=false;if(jstep>=5)jstep=0;jplaying=true;jshow(jstep,true);}
+  function jpause(){jhover=false;jclear();jplaying=false;live(-1);var segs=jcc.querySelectorAll('.jc-bar2 i');[].forEach.call(segs,function(s){s.classList.add('on')});setPlayBtn();}
+  function jdmap(){if(jdOpen){jshow(jstep,false);return;}jpause();jdOpen=true;jcjd.setAttribute('aria-pressed','true');var st=PERS[jper].steps;
+    jcc.innerHTML='<div class="jc-card jdm"><small class="jdh">How this maps to the JD &middot; R-054699</small><ul>'+st.map(function(x,i){return '<li><span>'+esc(x[0])+'</span><b>'+esc(HOW[i].jc)+'</b></li>'}).join('')+'<li><span>Scale</span><b>'+esc(SCALE.jc)+'</b></li></ul></div>';}
   jcpb.onclick=function(){jplaying?jpause():jplay();};
-  document.getElementById('jcnext').onclick=function(){jpause();if(jstep>=5){jselect(jper,false);}var my=jgen;var n=jstep+1;if(n>4)showEnd(my);else showStep(n,my);};
-  document.getElementById('jcrp').onclick=function(){jselect(jper,true);};
-  jcjd.onclick=function(){jpause();showJD(true);};
-  jselect(0,false);
-  // autoplay once, like RUNWAY, when the console is on screen
-  (function(){var jc=document.getElementById('jc');if(JRM||!jc)return;var go1=function(){if(S[cur].dataset.name==='Process'&&jstep<0&&!jplaying)jplay();};
-    var fr=(document.fonts&&document.fonts.ready)?document.fonts.ready:Promise.resolve();
-    Promise.race([fr,new Promise(function(r){setTimeout(r,1500)})]).then(function(){setTimeout(function(){if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es.some(function(x){return x.isIntersecting})){io.disconnect();go1();}},{threshold:0.3});io.observe(jc);}else go1();},700);});})();
+  document.getElementById('jcnext').onclick=function(){jpause();jshow(jstep>=5?0:jstep+1,false);};
+  document.getElementById('jcback').onclick=function(){jpause();jshow(jstep<=0?0:jstep-1,false);};
+  jcjd.onclick=jdmap;
+  // pause on hover; resume the current step when the pointer leaves
+  jcEl.addEventListener('mouseenter',function(){if(jplaying){jhover=true;jclear();jplaying=false;setPlayBtn();jcpb.innerHTML='&#10073;&#10073; Paused';}});
+  jcEl.addEventListener('mouseleave',function(){if(jhover){jhover=false;jplaying=true;jshow(jstep,true);}});
+  jselect(0); // step 1 shown static; nothing plays until Play is pressed
 
   // Model I loop + story player
   var LP=[['Discover','AI reads advisor signals'],['Define','BDD drafted, people approve'],['Design','Architect approves'],['Build','Creator agents'],['Test','Judge agents and tests'],['Release','Gates and sign-off'],['Learn','NIGO, CSAT and NPS']];
