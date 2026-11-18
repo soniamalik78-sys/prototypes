@@ -249,15 +249,89 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 .evg div{padding:10px 12px}
 .sl{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}.sl li{background:rgba(255,255,255,.14);border-radius:8px;padding:9px 10px;font-size:.92rem}
 /* Swimlane */
-.swim{display:grid;grid-template-rows:auto repeat(6,1fr);gap:5px;margin-top:12px;overflow-x:auto}
-.sw-row{display:grid;grid-template-columns:118px repeat(7,minmax(104px,1fr));gap:5px;min-width:860px}
-.sw-st{background:var(--surface);border:1.5px solid var(--line);color:var(--fg);padding:8px 4px;font-weight:700;font-size:.86rem;clip-path:polygon(0 0,calc(100% - 9px) 0,100% 50%,calc(100% - 9px) 100%,0 100%,9px 50%);display:flex;flex-direction:column;align-items:center}
-.sw-st i{font-style:normal;font-size:.7rem;color:var(--faint)}
-.sw-st.on{background:var(--accent);color:#fff;border-color:var(--accent)}.sw-st.on i{color:#D9E4F6}
-.sw-lh{background:var(--c);color:#fff;border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;justify-content:center}
-.sw-lh b{font-size:.9rem}.sw-lh span{font-size:.7rem;opacity:.85}
-.sw-c{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--c);border-radius:7px;padding:8px;font-size:.86rem;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.25;transition:background .15s}
-.sw-c.on{background:var(--accent-soft);font-weight:700;border-color:var(--accent)}
+/* Process flow (stage cards, gates, control partners, feedback loop) */
+.pf{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+.pf-legend{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:.76rem;color:var(--muted);align-items:center}
+.pf-legend span{display:inline-flex;align-items:center;gap:5px}.pf-legend i{width:10px;height:10px;border-radius:3px;background:var(--c)}
+.pf-legend .pf-hint{margin-left:auto;color:var(--faint)}
+.pf-map{position:relative}
+.pf-ph{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:22px;margin-bottom:6px}
+.pf-ph span{grid-column:var(--g);border-top:3px solid var(--c);padding-top:3px;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c);text-align:center;line-height:1.25}
+.pf-track{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:22px;list-style:none;margin:0;padding:0}
+.pf-track li{position:relative;display:flex}
+.pf-track li:not(:last-child)::after{content:"";position:absolute;right:-17px;top:38px;width:0;height:0;border-left:11px solid var(--faint);border-top:7px solid transparent;border-bottom:7px solid transparent;opacity:.7}
+.pf-n{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:5px;background:var(--surface);border:1.5px solid var(--line);border-top:4px solid var(--c);border-radius:12px;padding:10px 7px 8px;color:var(--fg);transition:transform .15s,box-shadow .15s,border-color .15s;min-width:0}
+.pf-n:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(16,24,40,.08)}
+.pf-n[aria-selected="true"]{border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 22%,transparent),0 8px 20px rgba(16,24,40,.10);transform:translateY(-2px)}
+.pf-ic{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 14%,var(--surface));color:var(--c);position:relative}
+.pf-n[aria-selected="true"] .pf-ic{background:var(--c);color:#fff}
+.pf-ic svg,.pf-li svg,.pf-own svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pf-ic em{position:absolute;top:-4px;right:-8px;font-style:normal;font-size:.62rem;font-weight:700;background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:0 5px;line-height:1.5}
+.pf-nm{font-weight:700;font-size:.95rem;line-height:1.15}
+.pf-own{display:inline-flex;align-items:center;gap:4px;font-size:.74rem;color:var(--ok);font-weight:600;line-height:1.2}
+.pf-own svg{width:13px;height:13px;flex:none}
+.pf-g{margin-top:auto;display:inline-flex;align-items:center;gap:4px;background:var(--warn-bg);color:var(--warn);border-radius:999px;padding:2px 8px;font-size:.7rem;font-weight:700;line-height:1.3}
+.pf-g::before{content:"";width:7px;height:7px;background:currentColor;transform:rotate(45deg);flex:none}
+.pf-n.audit{background:linear-gradient(var(--surface),color-mix(in srgb,var(--teal) 6%,var(--surface)))}
+.pf-cp{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:22px;margin-top:6px}
+.pf-cpb{grid-column:3/8;position:relative;display:flex;flex-wrap:wrap;gap:5px;align-items:center;justify-content:center;border:1.5px solid var(--teal);background:color-mix(in srgb,var(--teal) 7%,var(--surface));border-radius:10px;padding:6px 8px;font-size:.76rem}
+.pf-cpb::before{content:"";position:absolute;top:-8px;left:calc(50% - 8px);border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:8px solid var(--teal)}
+.pf-cpb b{color:var(--teal);font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;margin-right:4px}
+.pf-cpb span{background:var(--surface);border:1px solid color-mix(in srgb,var(--teal) 40%,var(--line));color:var(--fg);border-radius:999px;padding:1px 9px;font-weight:600}
+.pf-loop{position:relative;height:26px;margin:2px calc(100% / 14) 0;border:2px dashed var(--gold);border-top:0;border-radius:0 0 16px 16px;cursor:pointer}
+.pf-loop::before{content:"";position:absolute;left:-7px;top:-6px;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:9px solid var(--gold)}
+.pf-loop span{position:absolute;left:50%;bottom:-11px;transform:translateX(-50%);background:var(--bg);padding:0 10px;font-size:.78rem;font-weight:700;color:var(--gold);white-space:nowrap}
+.pf-loop.on{border-style:solid}.pf-loop.on span{color:var(--fg)}
+.pf-d{display:grid;grid-template-columns:minmax(200px,.9fr) minmax(0,2.6fr);gap:12px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:12px;padding:12px 14px;margin-top:8px}
+.pf-dh{display:flex;flex-direction:column;gap:6px}
+.pf-dh small{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.pf-dh h3{font-size:1.35rem;line-height:1.15}
+.pf-dh p{font-size:.9rem;color:var(--muted)}
+.pf-step{display:flex;gap:6px;margin-top:auto;align-items:center;flex-wrap:wrap}
+.pf-step button{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:4px 10px;font-weight:700;font-size:.82rem}
+.pf-step button.solid{background:var(--accent);border-color:var(--accent);color:#fff}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .pf-step button.solid{color:#0b1220} }
+.pf-step span{font-size:.74rem;color:var(--faint);margin-right:auto}
+.pf-ly{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.pf-l{background:var(--b);border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.pf-l .pf-li{display:flex;align-items:center;gap:6px;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--c)}
+.pf-l .pf-li svg{width:16px;height:16px}
+.pf-l p{font-size:.88rem;line-height:1.35}
+.pf-ft{grid-column:2;display:flex;gap:6px 14px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.pf-ft b{font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-right:4px}
+.pf-ft .cp{color:var(--teal);font-weight:600}
+.pf-print{display:none}
+@media (max-width:900px){.pf-d{grid-template-columns:1fr}.pf-ft{grid-column:1}.pf-ly{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){
+ .pf-legend .pf-hint{display:none}
+ .pf-ph,.pf-cp{display:none}
+ .pf-track{grid-template-columns:1fr;row-gap:14px}
+ .pf-track li:not(:last-child)::after{right:auto;left:31px;top:auto;bottom:-13px;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid var(--faint);border-bottom:0}
+ .pf-n{flex-direction:row;text-align:left;align-items:center;padding:8px 10px;gap:10px;flex-wrap:wrap}
+ .pf-nb{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+ .pf-g{margin-top:0}
+ .pf-n .pf-cpm{display:flex}
+ .pf-loop{height:auto;margin:4px 0 0;border:2px dashed var(--gold);border-radius:10px;padding:6px 10px}
+ .pf-loop::before{display:none}
+ .pf-loop span{position:static;transform:none;background:none;padding:0;white-space:normal;display:block;text-align:center}
+ .pf-ly{grid-template-columns:1fr}
+}
+.pf-nb{display:contents}
+@media (max-width:760px){.pf-nb{display:flex}}
+.pf-cpm{display:none;flex-wrap:wrap;gap:4px;width:100%}
+.pf-cpm span{font-size:.68rem;border:1px solid var(--teal);color:var(--teal);border-radius:999px;padding:0 7px;font-weight:600}
+@media print{
+ .top,.foot,.jt-run,.pf-step,.pf-legend .pf-hint{display:none!important}
+ body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ main{padding:0;max-width:none}
+ .slide.on{min-height:0}
+ .pf-n,.pf-n:hover,.pf-n[aria-selected="true"]{transform:none;box-shadow:none}
+ .pf-d{display:none}
+ .pf-print{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px;break-before:page;font-size:12px}
+ .pf-print .pf-l p{font-size:.72rem}.pf-print .pf-dh h3{font-size:1rem}.pf-print .pf-ft{font-size:.68rem}.pf-print .pf-l{padding:5px 7px}
+ .pf-print .pf-d{display:grid;grid-template-columns:1fr;align-content:start;margin:0;break-inside:avoid;padding:8px 10px}
+ .pf-print .pf-ly{grid-template-columns:1fr;gap:4px}.pf-print .pf-ft{grid-column:1}.pf-print .pf-dh p{display:none}
+}
 /* Practices */
 .prac{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:10px;margin-top:12px}
 @media (max-width:900px){.prac{grid-template-columns:1fr 1fr}}
@@ -323,7 +397,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 .jt-run{margin-left:auto;border:0;background:var(--accent);color:#fff;border-radius:8px;padding:6px 12px;font-weight:700;font-size:.84rem}
 .jt-run:disabled{opacity:.8}
 @media (max-width:640px){.jtop{grid-template-columns:1fr}.jt-run{margin-left:0}}
-.land h2{font-size:clamp(1.35rem,2.6vw,1.9rem)}.ps-land{margin-top:8px}.land .swim{margin-top:8px}
+.land h2{font-size:clamp(1.35rem,2.6vw,1.9rem)}.ps-land{margin-top:8px}
 /* Persona row */
 .perrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:2px 0 6px}
 .perrow .pl{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-right:4px}
@@ -457,8 +531,18 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="kick">Development practices &amp; AI-native PDLC &middot; the process</div>
   <h2>A better advisor and client experience with every release. Seven stages: people decide, agents assist, evidence proves.</h2>
   <div class="jtop"><span class="jt-l">Advisor journey</span><div class="jt-steps" id="jtsteps"></div><div class="jt-info" id="jtinfo" aria-live="polite"></div></div>
-  <div class="swim grow" id="swim"></div>
+  <div class="pf grow" id="pf">
+    <div class="pf-legend" aria-hidden="true"><span style="--c:var(--ok)"><i></i>Owner decides</span><span style="--c:var(--violet)"><i></i>Agents assist</span><span style="--c:var(--gold)"><i></i>Evidence produced</span><span style="--c:var(--warn)"><i></i>Exit gate</span><span style="--c:var(--teal)"><i></i>Control partners</span><span class="pf-hint">Click a stage to open it</span></div>
+    <div class="pf-map">
+      <div class="pf-ph" aria-hidden="true"><span style="--g:1/2;--c:var(--teal)">Customer centricity</span><span style="--g:2/5;--c:var(--accent)">Engineering excellence</span><span style="--g:5/7;--c:var(--warn)">Evidence &amp; controls</span><span style="--g:7/8;--c:var(--ok)">Outcomes</span></div>
+      <ol class="pf-track" id="pftrack" role="tablist" aria-label="The seven PDLC stages"></ol>
+      <div class="pf-cp" aria-hidden="true"><div class="pf-cpb"><b>Control partners at the audit gate</b><span>Risk</span><span>Legal</span><span>Compliance</span><span>Privacy</span><span>Model Risk</span></div></div>
+      <div class="pf-loop" id="pfloop" role="button" tabindex="0" aria-label="Feedback loop from Measure back to Intake"><span>&#8634; Measure feeds Intake: outcomes re-rank the backlog, approval reasons tune agents and rubrics</span></div>
+    </div>
+    <div id="pfdetail" aria-live="polite"></div>
+  </div>
   <div class="pstrip ps-land"><span><b>2&times;</b> release cadence</span><span><b>&minus;20%</b> production defects</span><span><b>same day</b> regulated sign-off (was 3 days)</span><span><b>350+</b> engineers on governed AI in 13 months</span></div>
+  <div class="pf-print" id="pfprint" aria-hidden="true"></div>
 </section>
 
 <section class="slide" data-name="Model I">
@@ -743,7 +827,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   document.getElementById('prev').onclick=function(){go(cur-1)};
   document.getElementById('next').onclick=function(){go(cur===S.length-1?0:cur+1)};
   document.addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea'))return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);});
-  var AL={value:'model-i','ai-pdlc':'walkthrough',audit:'controls',security:'controls',persona:'journey',why:'why-sonia'}; var h=decodeURIComponent((location.hash||'').slice(1)).toLowerCase().replace(/[^a-z0-9]+/g,'-'); h=AL[h]||h; var start=0; S.forEach(function(s,i){if(slug(s.dataset.name)===h)start=i}); go(start);
+  var AL={value:'model-i','model-1':'model-i',modeli:'model-i',pdlc:'process',flow:'process','ai-pdlc':'walkthrough',audit:'controls',security:'controls',persona:'journey',why:'why-sonia'}; var h=decodeURIComponent((location.hash||'').slice(1)).toLowerCase().replace(/[^a-z0-9]+/g,'-'); h=AL[h]||h; var start=0; S.forEach(function(s,i){if(slug(s.dataset.name)===h)start=i}); go(start);
 
   // Model I tips
   var MI={cc:['Customer centricity','Advisor journey in three layers: customer, business process, systems. Opportunities become an MVP, features and a BDD file everyone shares.'],dp:['Product teams','Teams aligned to LPL personas: advisors, institutions and investors, plus ops, data and risk.'],ee:['Engineering excellence','Design, code and test built from the BDD. Agents draft, engineers decide.'],qg:['Quality gates over CI/CD','Every tier scored. In production a human approves from the evidence pack, in minutes.'],prod:['Outcomes','NIGO rate, CSAT, NPS, incidents and DORA metrics show whether it worked.'],loop:['Learning loops','KPIs re-rank the journeys. Approval reasons tune the agents and rubrics.'],devx:['Built on developer experience','Skills development, onboarding, approved AI tools and test data are the foundation.']};
@@ -752,26 +836,66 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   hits.forEach(function(g){g.addEventListener('click',function(){show(g.dataset.mi)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(g.dataset.mi)}})});
   show('cc'); }
 
-  // Process swimlane
-  var STG=['Discover','Define','Design','Build','Test','Release','Operate and learn'];
-  var LN=[
-    ['Decides','human','--ok',['Product owner','Three Amigos','Architect','Engineer','QE lead','Release owner','SRE and product']],
-    ['Assists','agent','--violet',['Insight agent','Creator + judge','Design agent','Coding + review','Test + judge','Evidence agent','Incident agent']],
-    ['Practice','standard','--teal',['Journey mapping','Spec-first BDD','API-first, threat model','Trunk-based, small PRs','Test impact analysis','Golden-path CI/CD','SLOs, blameless review']],
-    ['Artifact','output','--gold',['Journey + KPI','MVP, features, BDD','Contract, ADR','Code + unit tests','Scored results','Evidence pack','KPI insights']],
-    ['Exit gate','criteria','--warn',['KPI agreed','BDD score ≥ 80','Arch + security OK','Review + SAST pass','Quality ≥ 80','Human approval','Backlog re-ranked']],
-    ['Measure','KPI','--accent',['Opportunity value','Spec quality','Design rework','PR cycle time','Defect escape','Lead time, CFR','MTTR, CSAT, NPS']]
+  // Process flow: seven stages, owner / agents / evidence / gate, control partners, feedback loop
+  var IC={
+    intake:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/>',
+    design:'<path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/><path d="M4 4h6M4 4v6"/>',
+    build:'<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14"/>',
+    test:'<path d="M9 3h6M10 3v6L4.6 18.6A1.6 1.6 0 0 0 6 21h12a1.6 1.6 0 0 0 1.4-2.4L14 9V3"/><path d="M7 15h10"/>',
+    audit:'<path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+    release:'<path d="M12 15V4M7.5 8.5L12 4l4.5 4.5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/>',
+    measure:'<path d="M4 4v16h16"/><path d="M8 15l3.5-4.5 3 3L20 7"/>',
+    person:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/>',
+    agent:'<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/>',
+    doc:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>',
+    gate:'<path d="M12 2.5l9.5 9.5-9.5 9.5L2.5 12z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>'
+  };
+  function ico(k){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+IC[k]+'</svg>';}
+  var PC=['--teal','--accent','--accent','--accent','--warn','--warn','--ok'];
+  var PF=[
+    {n:'Intake',ic:'intake',os:'Product owner',gs:'BDD \u2265 80',sum:'An advisor pain becomes one KPI, an MVP and a shared BDD file everyone builds and tests from.',
+     own:'Product owner, with Three Amigos sign-off',ag:'Insight agent reads advisor signals; creator agent drafts, judge agent scores',ev:'Journey + KPI, MVP, features, shared BDD',gate:'KPI agreed and BDD score \u2265 80',pr:'Journey mapping, spec-first BDD',kpi:'Opportunity value, spec quality'},
+    {n:'Design',ic:'design',os:'Architect',gs:'Arch + security OK',sum:'Contract and threat model come before code, so build and test start from the same design.',
+     own:'Architect',ag:'Design agent proposes the API contract and options',ev:'API contract, ADR, threat model',gate:'Architecture and security OK',pr:'API-first, threat model',kpi:'Design rework'},
+    {n:'Build',ic:'build',os:'Engineer (PR owner)',gs:'Review + SAST pass',sum:'Agents draft from the BDD; a named engineer owns and merges every PR.',
+     own:'Engineer, the named PR owner',ag:'Coding and review agents draft from the BDD',ev:'Code + unit tests; SAST on every commit, AI output included',gate:'Review and SAST pass; approved tools only',pr:'Trunk-based, small PRs',kpi:'PR cycle time'},
+    {n:'Test',ic:'test',os:'QE lead',gs:'Quality \u2265 80',sum:'Every tier is scored against the BDD; judge agents find the gaps people would miss.',
+     own:'QE lead',ag:'Test agent generates, judge agent scores against the BDD',ev:'Scored BDD and negative tests, DAST, resiliency',gate:'Quality score \u2265 80; no high SAST/DAST findings',pr:'Test impact analysis',kpi:'Defect escape'},
+    {n:'Audit evidence',ic:'audit',os:'Release owner + control partners',gs:'Pack complete',sum:'Controls run in the pipeline, so the exam-ready pack is a by-product of the path, not a late review.',
+     own:'Release owner, with Risk, Legal, Compliance, Privacy and Model Risk',ag:'Evidence agent assembles the pack',ev:'Control tests, policy-as-code results, approvals and overrides, model / data / reviewer trace, exam pack',gate:'Pack complete before promotion',pr:'Policy-as-code, controls in the pipeline',kpi:'Exam-ready evidence',cp:1},
+    {n:'Release',ic:'release',os:'Release owner',gs:'Human approves',sum:'One golden path to production. A person decides, reading the evidence instead of chasing it.',
+     own:'Release owner',ag:'Evidence agent attaches the signed pack to the release',ev:'Signed evidence pack, golden-path CI/CD',gate:'A human approves from the evidence pack, in minutes',pr:'Golden-path CI/CD',kpi:'Lead time, change failure rate'},
+    {n:'Measure',ic:'measure',os:'Product + SRE',gs:'Backlog re-ranked',sum:'Outcomes decide what comes next, and approval reasons make the agents and rubrics better.',
+     own:'Product and SRE',ag:'Incident-pattern agent clusters incidents and signals',ev:'NIGO, CSAT / NPS, incidents, DORA',gate:'Outcomes re-rank the backlog; approval reasons tune agents and rubrics',pr:'SLOs, blameless review',kpi:'MTTR, CSAT, NPS'}
   ];
-  var swim=document.getElementById('swim');
-  var hd=document.createElement('div'); hd.className='sw-row sw-hd'; hd.appendChild(document.createElement('div'));
-  STG.forEach(function(t,i){var b=document.createElement('button');b.type='button';b.className='sw-st';b.dataset.c=i;b.innerHTML='<i>'+(i+1)+'</i><span></span>';b.querySelector('span').textContent=t;b.onclick=function(){spick(i)};hd.appendChild(b);});
-  swim.appendChild(hd);
-  LN.forEach(function(l){var r=document.createElement('div');r.className='sw-row';r.style.setProperty('--c','var('+l[2]+')');
-    var h=document.createElement('div');h.className='sw-lh';h.innerHTML='<b></b><span></span>';h.querySelector('b').textContent=l[0];h.querySelector('span').textContent=l[1];r.appendChild(h);
-    l[3].forEach(function(t,i){var c=document.createElement('div');c.className='sw-c';c.dataset.c=i;c.textContent=t;r.appendChild(c);});
-    swim.appendChild(r);});
-  function spick(i){[].forEach.call(swim.querySelectorAll('[data-c]'),function(e){e.classList.toggle('on',+e.dataset.c===i)});}
-  spick(1);
+  var CPS=['Risk','Legal','Compliance','Privacy','Model Risk'];
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  var pft=document.getElementById('pftrack'), pfd=document.getElementById('pfdetail'), pfl=document.getElementById('pfloop'), pfp=document.getElementById('pfprint'), pcur=0, pplay=[];
+  PF.forEach(function(st,i){var li=document.createElement('li');var b=document.createElement('button');b.type='button';b.className='pf-n'+(st.cp?' audit':'');b.setAttribute('role','tab');b.id='pft'+i;b.setAttribute('aria-controls','pfdetail');b.style.setProperty('--c','var('+PC[i]+')');
+    b.innerHTML='<span class="pf-ic">'+ico(st.ic)+'<em>'+(i+1)+'</em></span><span class="pf-nb"><span class="pf-nm">'+esc(st.n)+'</span><span class="pf-own">'+ico('person')+esc(st.os)+'</span></span><span class="pf-g">'+esc(st.gs)+'</span>'+(st.cp?'<span class="pf-cpm">'+CPS.map(function(c){return '<span>'+c+'</span>'}).join('')+'</span>':'');
+    b.onclick=function(){pstop();ppick(i);if(window.matchMedia&&matchMedia('(max-width:760px)').matches)pfd.scrollIntoView({behavior:'smooth',block:'nearest'});};
+    b.onkeydown=function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();e.stopPropagation();ppick((i+1)%7);document.getElementById('pft'+pcur).focus();}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();e.stopPropagation();ppick((i+6)%7);document.getElementById('pft'+pcur).focus();}};
+    li.appendChild(b);pft.appendChild(li);});
+  function card(st,i,stepper){
+    var L=[['Decides','person','--ok','--ok-bg',st.own],['Agents assist','agent','--violet','--violet-soft',st.ag],['Evidence produced','doc','--gold','--gold-soft',st.ev],['Exit gate','gate','--warn','--warn-bg',st.gate]];
+    var h='<div class="pf-d" style="--c:var('+PC[i]+')"><div class="pf-dh"><small>Stage '+(i+1)+' of 7</small><h3>'+esc(st.n)+'</h3><p>'+esc(st.sum)+'</p>';
+    if(stepper)h+='<div class="pf-step"><span>'+(i===6?'Then back to Intake':'Next: '+esc(PF[i+1].n))+'</span><button type="button" data-a="prev" aria-label="Previous stage">&lsaquo;</button><button type="button" data-a="play">'+(pplay.length?'&#10073;&#10073; Pause':'&#9654; Play')+'</button><button type="button" class="solid" data-a="next">Next &rsaquo;</button></div>';
+    h+='</div><div class="pf-ly">';
+    L.forEach(function(l){h+='<div class="pf-l" style="--c:var('+l[2]+');--b:var('+l[3]+')"><span class="pf-li">'+ico(l[1])+l[0]+'</span><p>'+esc(l[4])+'</p></div>';});
+    h+='</div><div class="pf-ft"><span><b>Practice</b>'+esc(st.pr)+'</span><span><b>KPI</b>'+esc(st.kpi)+'</span>'+(st.cp?'<span class="cp"><b>Control partners</b>'+CPS.join(' \u00B7 ')+'</span>':'')+'</div></div>';
+    return h;}
+  function ppick(i){pcur=i;[].forEach.call(pft.querySelectorAll('.pf-n'),function(b,k){b.setAttribute('aria-selected',k===i?'true':'false');b.tabIndex=k===i?0:-1;});
+    pfl.classList.toggle('on',i===6);pfd.innerHTML=card(PF[i],i,true);pfd.setAttribute('aria-labelledby','pft'+i);
+    [].forEach.call(pfd.querySelectorAll('[data-a]'),function(b){b.onclick=function(){var a=b.dataset.a;if(a==='play'){pplay.length?pstop():pstart();return;}pstop();ppick(a==='next'?(pcur+1)%7:(pcur+6)%7);}});}
+  function pstop(){pplay.forEach(clearTimeout);pplay=[];var b=pfd.querySelector('[data-a="play"]');if(b)b.innerHTML='&#9654; Play';}
+  function pstart(){pstop();var d=(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?500:2200;var k=pcur===6?0:pcur;
+    function tick(){k++;if(k>6){pstop();return;}pplay=[setTimeout(tick,d)];ppick(k);}
+    pplay=[setTimeout(tick,d)];ppick(k);}
+  function loopgo(){pstop();ppick(0);pfl.classList.add('on');setTimeout(function(){pfl.classList.remove('on')},900);}
+  pfl.onclick=loopgo;pfl.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();loopgo();}};
+  pfp.innerHTML=PF.map(function(st,i){return card(st,i,false)}).join('');
+  function spick(i){if(i>=0&&i<7)ppick(i);}
+  ppick(0);
 
   // Landing: interactive advisor journey driving the swimlane
   var JT=[['Join LPL','Licensing paperwork delays day 1','Days to first trade'],['Map the book','Household accounts mismatched','Mapping accuracy'],['Move accounts','Transfer forms rejected (NIGO)','NIGO rate'],['Welcome clients','Confusing first login','Client activation'],['First review','No time to prepare the review','Assets retained']];
@@ -782,8 +906,8 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
     var r=document.createElement('button');r.type='button';r.className='jt-run';r.textContent='\u25B6 Run it through the 7 stages';r.onclick=function(){run(i)};jti.appendChild(t);jti.appendChild(k);jti.appendChild(r);}
   function run(i){jtimer.forEach(clearTimeout);jtimer=[];var r=jti.querySelector('.jt-run');if(r){r.disabled=true;r.textContent='Running\u2026';}
     var d=(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?120:550;
-    for(var k=0;k<7;k++){(function(k){jtimer.push(setTimeout(function(){spick(k)},d*k));})(k);}
-    jtimer.push(setTimeout(function(){if(r){r.disabled=false;r.textContent='\u2713 Shipped. '+JT[i][2]+' tracked weekly. Run again';}},d*7));}
+    for(var k=0;k<7;k++){(function(k){jtimer.push(setTimeout(function(){pstop();spick(k)},d*k));})(k);}
+    jtimer.push(setTimeout(function(){pfl.classList.add('on');if(r){r.disabled=false;r.textContent='\u2713 Shipped. '+JT[i][2]+' tracked weekly. Run again';}},d*7));}
   jtpick(2);
 
   // Model I loop + story player
