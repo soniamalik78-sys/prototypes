@@ -792,6 +792,46 @@ body.onland .subnav{display:none}
 @media (max-width:420px){.hproof3{flex-direction:column;gap:8px}.hproof3 div{justify-content:center}}
 @media print{body.onland .subnav{display:none}.hero3{min-height:0;padding:0 0 6px}.hpath,.hp-note,.hproof3,.hp-foot,.hcta3,.hscroll,.h3-s{display:none!important}.h3-t{font-size:1.5rem;margin-top:6px;max-width:none}
  #sec-people,#sec-gov,#sec-proof,.tfl{display:none!important}.lsec{padding-top:8px;border:0}.ls-h{margin-bottom:6px}}
+
+/* ===== v7: compact hero band, proposal on the first screen ===== */
+.hero7{min-height:0;display:block;text-align:left;padding:4px 0 10px;border-bottom:1px solid var(--line)}
+.hero7 .hscroll{display:none}
+.h7-r1{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
+.hero7 .h3-eye{font-size:.66rem;padding:3px 10px;white-space:nowrap}
+.hero7 .h3-t{font-size:clamp(1.5rem,2.3vw,2.05rem);margin:0;max-width:none;line-height:1.15}
+.hero7 .h3-s{font-size:.9rem;margin:4px 0 0;max-width:none;line-height:1.4}
+.h7-r3{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:10px}
+.h7-path{display:flex;align-items:center;gap:8px;flex:1 1 auto;min-width:0}
+.hero7 .hpath{display:flex;gap:6px;margin:0;width:auto;max-width:none}
+.hero7 .hpath li{flex-direction:row;align-items:center;gap:7px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:5px 9px 5px 5px;box-shadow:var(--shadow-sm);cursor:default}
+.hero7 .hpath li::before{display:none}
+.hero7 .hpath li:not(:last-child)::after{content:"\203A";position:absolute;top:50%;left:auto;right:-6px;transform:translate(50%,-50%);height:auto;background:none;color:var(--faint);font-size:.9rem;line-height:1}
+.hero7 .hp-ic{width:28px;height:28px;border-radius:8px;flex:none;box-shadow:none}
+.hero7 .hp-ic svg{width:16px;height:16px}
+.hero7 .hpath li:hover .hp-ic{transform:none}
+.hero7 .hpath li>div{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.hero7 .hpath b{font-size:.8rem;margin:0;gap:4px}
+.hero7 .hpath b i{width:14px;height:14px;font-size:.58rem}
+.hero7 .hpath span:not(.hp-ic){font-size:.68rem;max-width:none;white-space:nowrap}
+.hero7 .hp-note,.hero7 .hp-foot{font-size:.62rem;margin:0;white-space:nowrap;align-self:flex-end}
+.h7-pr{display:flex;align-items:center;gap:6px}
+.hero7 .hproof3{margin:0;gap:6px}
+.hero7 .hproof3 div{padding:4px 10px;border-radius:9px;gap:5px}
+.hero7 .hproof3 b{font-size:1.05rem}.hero7 .hproof3 span{font-size:.72rem}
+.hero7 .hcta3{margin:0 0 0 auto;gap:12px;flex-wrap:nowrap}
+.hero7 .hbtn{font-size:.86rem;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.hero7 .hlink{font-size:.82rem;white-space:nowrap}
+body.onland main{padding-top:10px}
+.hero7+#sec-proposal{border-top:0;margin-top:0;padding-top:10px}
+#sec-proposal .ls-h{align-items:center;margin-bottom:6px;gap:10px}
+#sec-proposal .ls-h>div{display:flex;align-items:baseline;gap:4px 14px;flex-wrap:wrap}
+#sec-proposal .ls-h h2{font-size:1.35rem!important;margin:0!important}
+#sec-proposal .ls-h p{font-size:.84rem;max-width:none}
+#sec-proposal .ls-n{font-size:.85rem;padding:2px 7px;margin:0}
+@media (max-width:1180px){.hero7 .hpath span:not(.hp-ic){display:none}.hero7 .hpath li{padding-right:11px}}
+@media (max-width:1100px){.hero7 .hcta3{margin-left:0}}
+@media (max-width:760px){.hero7 .hpath{display:grid!important;grid-template-columns:1fr 1fr;width:100%!important}.hero7 .hpath li::after{display:none}.h7-path,.h7-pr{flex-direction:column;align-items:flex-start;width:100%}.hero7 .hproof3{flex-direction:row}.hero7 .h3-t{font-size:1.45rem}.hero7 .h3-s{font-size:.86rem}.h7-path{flex-wrap:wrap}.hero7 .hpath{flex-wrap:wrap}.hero7 .hcta3{flex-wrap:wrap}.hero7 .hp-note,.hero7 .hp-foot{align-self:center}}
+@media print{.hero7{border:0}.hero7 .h7-r3{display:none!important}}
 </style>
 </head>
 <body>
@@ -808,20 +848,14 @@ body.onland .subnav{display:none}
 
 <main>
 <section class="slide land" data-name="Process">
-  <div class="hero3" id="hero">
-    <div class="h3-eye">A proposal for LPL Financial &middot; AI-native PDLC</div>
-    <h1 class="h3-t">I&rsquo;ll listen first. I&rsquo;ve also brought a starting point.</h1>
+  <div class="hero3 hero7" id="hero">
+    <div class="h7-r1"><span class="h3-eye">A proposal for LPL Financial &middot; AI-native PDLC</span><h1 class="h3-t">I&rsquo;ll listen first. I&rsquo;ve also brought a starting point.</h1></div>
     <p class="h3-s">A proposed AI-native PDLC for LPL, shaped by what I learn from your teams, advisors and control partners, and proven at S&amp;P Global with 350+ engineers.</p>
-    <ol class="hpath" aria-label="How I would start: listen, learn, propose, prove">
-      <li style="--c:var(--teal)"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 1 1 12 0c0 3-2 4-3 5.5s-1 3.5-3.5 3.5"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-1.5 2-1.5 3"/></svg></span><b><i>1</i>Listen</b><span>First 30 days: teams, advisors, Risk &amp; Compliance</span></li>
-      <li style="--c:var(--accent)"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/><path d="M8 12l2-2 1.5 1.5L14 9"/></svg></span><b><i>2</i>Learn</b><span>Baseline cycle time, quality, developer experience</span></li>
-      <li style="--c:var(--violet)"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h4"/></svg></span><b><i>3</i>Propose</b><span>Target-state PDLC, stage gates, team model</span></li>
-      <li style="--c:var(--ok)"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg></span><b><i>4</i>Prove</b><span>Pilot one team, then scale in waves</span></li>
-    </ol>
-    <p class="hp-note">Illustrative plan</p>
-    <div class="hproof3" aria-label="Proof from S&amp;P Global"><div><b>2&times;</b><span>release cadence</span></div><div><b>&minus;20%</b><span>production defects</span></div></div>
-    <p class="hp-foot">S&amp;P Global actuals</p>
-    <div class="hcta3"><button type="button" class="hbtn" id="tourbtn">&#9654; See the proposal in 60 seconds</button><a class="hlink" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">Book a 15-min walkthrough &rarr;</a></div>
+    <div class="h7-r3">
+      <div class="h7-path"><ol class="hpath" aria-label="How I would start: listen, learn, propose, prove"><li style="--c:var(--teal)" title="Listen: First 30 days: teams, advisors, Risk &amp; Compliance"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 1 1 12 0c0 3-2 4-3 5.5s-1 3.5-3.5 3.5"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-1.5 2-1.5 3"/></svg></span><div><b><i>1</i>Listen</b><span>30 days with teams, advisors, Risk</span></div></li><li style="--c:var(--accent)" title="Learn: Baseline cycle time, quality, developer experience"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/><path d="M8 12l2-2 1.5 1.5L14 9"/></svg></span><div><b><i>2</i>Learn</b><span>Baseline cycle time, quality, DevEx</span></div></li><li style="--c:var(--violet)" title="Propose: Target-state PDLC, stage gates, team model"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h4"/></svg></span><div><b><i>3</i>Propose</b><span>Target PDLC, gates, team model</span></div></li><li style="--c:var(--ok)" title="Prove: Pilot one team, then scale in waves"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg></span><div><b><i>4</i>Prove</b><span>Pilot one team, scale in waves</span></div></li></ol><span class="hp-note">Illustrative plan</span></div>
+      <div class="h7-pr"><div class="hproof3" aria-label="Proof from S&amp;P Global"><div><b>2&times;</b><span>release cadence</span></div><div><b>&minus;20%</b><span>production defects</span></div></div><span class="hp-foot">S&amp;P Global actuals</span></div>
+      <div class="hcta3"><button type="button" class="hbtn" id="tourbtn">&#9654; See the proposal in 60 seconds</button><a class="hlink" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">Book a 15-min walkthrough &rarr;</a></div>
+    </div>
     <a class="hscroll" href="#sec-proposal" data-sec="sec-proposal" aria-label="Scroll to the proposal">&#8595;</a>
   </div>
 
