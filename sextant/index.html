@@ -324,6 +324,69 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 .jt-run:disabled{opacity:.8}
 @media (max-width:640px){.jtop{grid-template-columns:1fr}.jt-run{margin-left:0}}
 .land h2{font-size:clamp(1.35rem,2.6vw,1.9rem)}.ps-land{margin-top:8px}.land .swim{margin-top:8px}
+/* Persona row */
+.perrow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:2px 0 6px}
+.perrow .pl{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-right:4px}
+.pchip{font-size:.84rem;font-weight:600;border:1.5px solid var(--line);border-radius:999px;padding:4px 11px;color:var(--faint)}
+.pchip.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.pscen{font-size:.86rem;color:var(--muted);margin-left:6px}
+/* Controls compact */
+.ctl .aud{padding:14px 16px;text-align:left}.ctl .aud h3{font-size:1.15rem}.ctl .al{margin-top:8px}.ctl .al li{padding:7px 10px;font-size:.88rem}
+.sec-s{margin-top:12px}.sec-s .sstep{min-height:110px!important;padding:14px 16px 14px 26px!important}.sec-s .sstep b{font-size:1.1rem!important;margin:4px 0!important}.sec-s .sstep span{font-size:.86rem!important}
+/* Team model */
+.tm{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:12px;margin-top:12px;align-items:stretch}
+@media (max-width:900px){.tm{grid-template-columns:1fr}}
+.tmcol{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.tmh{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.tmc{border-radius:10px;padding:10px 12px}.tmc small{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.tmc ul{margin:6px 0 0;padding-left:18px;font-size:.9rem}.tmc li{margin:3px 0}
+.tmc.today{background:var(--warn-bg)}.tmc.today small{color:var(--warn)}
+.tmc.pod{background:var(--ok-bg);flex:1}.tmc.pod small{color:var(--ok)}
+.tmarrow{text-align:center;color:var(--faint);font-size:1.2rem;line-height:1}
+.lvl{border-radius:10px;padding:10px 12px;display:grid;gap:2px;flex:1}
+.lvl b{font-size:1rem}.lvl span{font-size:.86rem;color:var(--muted)}.lvl em{font-style:normal;font-size:.78rem;font-weight:600}
+.lvl.l1{background:var(--accent-soft)}.lvl.l1 em{color:var(--accent)}
+.lvl.l2{background:var(--violet-soft)}.lvl.l2 em{color:var(--violet)}
+.lvl.l3{background:var(--gold-soft)}.lvl.l3 em{color:var(--warn)}
+.lvl.l0{background:var(--sunk);border:1.5px dashed var(--faint)}
+.esc{margin:0;padding:0;list-style:none;display:grid;gap:6px;counter-reset:e}
+.esc li{counter-increment:e;background:var(--sunk);border-radius:8px;padding:8px 10px 8px 38px;position:relative;font-size:.9rem}
+.esc li::before{content:counter(e);position:absolute;left:10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:.72rem;font-weight:700;display:grid;place-items:center}
+.wf{display:flex;flex-direction:column;gap:6px}.wf span{background:var(--ok-bg);color:var(--ok);font-weight:600;border-radius:8px;padding:7px 10px;font-size:.86rem}
+/* Scorecard */
+.sc-top{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:12px}
+@media (max-width:900px){.sc-top{grid-template-columns:repeat(2,1fr)}}
+.sc-top div{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:10px;padding:12px 10px;text-align:center}
+.sc-top b{display:block;font-family:var(--f-display);font-size:1.6rem;color:var(--accent);line-height:1.1}.sc-top span{font-size:.8rem;color:var(--muted)}
+.sc-tab{margin-top:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 14px;overflow-x:auto}
+.sc-tab table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:560px;height:100%}
+.sc-tab th,.sc-tab td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.sc-tab thead th{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.sc-tab tbody th{color:var(--accent);white-space:nowrap}.sc-tab td:last-child{color:var(--ok);font-weight:600;white-space:nowrap}
+.sc-tab tr:last-child th,.sc-tab tr:last-child td{border-bottom:0}
+/* Roadmap */
+.rm{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+@media (max-width:900px){.rm{grid-template-columns:1fr}}
+.rm>div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 12px;display:flex;flex-direction:column;gap:4px;border-top:5px solid var(--c)}
+.rm .ph1{--c:var(--teal)}.rm .ph2{--c:var(--violet)}.rm .ph3{--c:var(--accent)}.rm .ph4{--c:var(--gold)}.rm .ph5{--c:var(--ok)}
+.rm small{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.rm b{font-family:var(--f-display);font-weight:600;font-size:1.2rem}
+.rm ul{margin:4px 0 0;padding-left:18px;font-size:.88rem;flex:1}.rm li{margin:4px 0}
+.rm em{font-style:normal;font-size:.8rem;font-weight:600;color:var(--ok);background:var(--ok-bg);border-radius:7px;padding:6px 8px}
+.crit{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.crit b{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--fg);margin-right:4px}
+.crit span{background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:5px 11px;font-size:.84rem;font-weight:600}
+/* Why */
+.why{display:grid;grid-template-columns:1fr 24px 1fr 24px 1.15fr;gap:6px;align-items:stretch;margin-top:12px}
+@media (max-width:900px){.why{grid-template-columns:1fr}.warrow{transform:rotate(90deg)}}
+.warrow{display:grid;place-items:center;color:var(--faint);font-size:1.4rem}
+.wcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.wcard small{font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--faint)}
+.wcard b{font-family:var(--f-display);font-weight:600;font-size:1.3rem;line-height:1.2}
+.wcard ul{margin:4px 0 0;padding-left:18px;font-size:.95rem}.wcard li{margin:5px 0}
+.wcard.hl{border:2px solid var(--accent);background:var(--accent-soft)}
+.wplus{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.wplus span{background:var(--ok-bg);color:var(--ok);font-weight:600;border-radius:8px;padding:7px 12px;font-size:.88rem}
+.contact{margin-top:12px;font-size:.95rem;color:var(--muted)}.contact a{color:var(--accent);font-weight:600}
 /* Fill first view on short sections */
 @media (min-width:761px) and (min-height:700px){
  .jstep{padding:18px 14px}.jstep b{font-size:1.05rem}
@@ -345,7 +408,6 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 </div></header>
 
 <main>
-<!-- PROCESS -->
 <section class="slide land" data-name="Process">
   <div class="kick">Development practices &amp; AI-native PDLC &middot; the process</div>
   <h2>A better advisor and client experience with every release. Seven stages: people decide, agents assist, evidence proves.</h2>
@@ -354,7 +416,6 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="pstrip ps-land"><span><b>2&times;</b> release cadence</span><span><b>&minus;20%</b> production defects</span><span><b>same day</b> regulated sign-off (was 3 days)</span><span><b>350+</b> engineers on governed AI in 13 months</span></div>
 </section>
 
-<!-- 1 VALUE -->
 <section class="slide" data-name="Model I">
   <div class="kick">Value proposition &middot; one PDLC for every team</div>
   <h2>One standardized PDLC every team follows: people decide, agents assist, evidence proves, advisors feel the result</h2>
@@ -385,7 +446,6 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <p class="note">This process ran at S&amp;P Global across two business units, with 350+ engineers on governed AI in 13 months. S&amp;P figures are actuals; LPL items are illustrative. This is the path I&rsquo;d baseline, pilot and scale at LPL.</p>
 </section>
 
-<!-- PRACTICES -->
 <section class="slide" data-name="Practices">
   <div class="kick">Development practices &middot; enterprise standards</div>
   <h2>Eight development practices every team adopts, with agents built in and guardrails on</h2>
@@ -402,39 +462,17 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="proof"><b>Proof</b> At S&amp;P Global: one framework, standards and reference workflows in 6 months, designed for ~1,200 engineers across two business units.</div>
 </section>
 
-<!-- 2 PERSONA -->
-<section class="slide" data-name="Persona">
-  <div class="kick">Who we build for</div>
-  <h2>Three LPL personas, one model. Start with the advisor.</h2>
-  <p class="sub">The same AI-native PDLC serves all three. Here we follow one advisor journey end to end.</p>
-  <div class="pers">
-    <div class="pc on"><span class="tag">Selected</span><h3>Advisors</h3><p>Full ownership, flexibility and personalized support</p></div>
-    <div class="pc"><h3>Institutions</h3><p>A customizable wealth management program</p></div>
-    <div class="pc"><h3>Individual investors</h3><p>Personalized guidance from an LPL advisor</p></div>
-  </div>
-  <div class="card scen1 grow">
-    <p class="big">A 12-advisor practice moves 400 client households to LPL.</p>
-    <div class="targets">
-      <div><b>30</b><span>days to move every account</span></div>
-      <div><b>0</b><span>NIGO rework</span></div>
-      <div><b>Day 1</b><span>advisor productive</span></div>
-    </div>
-  </div>
-  <p class="note">Personas from lpl.com. Scenario and targets are illustrative.</p>
-</section>
-
-<!-- 3 JOURNEY: three layers -->
 <section class="slide" data-name="Journey">
   <div class="kick">Customer journey &middot; three layers</div>
   <h2>Customer, business process and systems, aligned step by step</h2>
-  <p class="sub">Click a step to see its goal, intent, KPI and opportunity.</p>
+  <div class="perrow"><span class="pl">LPL personas</span><span class="pchip on">Advisors</span><span class="pchip">Institutions</span><span class="pchip">Individual investors</span><span class="pscen">Example: a 12-advisor practice moves 400 households to LPL in 30 days, with zero NIGO rework.</span></div>
+  <p class="sub" style="margin-bottom:10px">Same process for all three personas. Click a step to see its goal, intent, KPI and opportunity.</p>
   <div class="jw grow">
     <div class="layers" id="layers"></div>
     <aside class="jside" id="jside" aria-live="polite"></aside>
   </div>
 </section>
 
-<!-- 4 AI PDLC -->
 <section class="slide" data-name="Walkthrough">
   <div class="kick">Walkthrough &middot; one advisor opportunity through the process</div>
   <h2>Customer journeys first. Shared assets next. Then build and prove.</h2>
@@ -478,34 +516,33 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="loopbar">&#8634; Outcomes (NIGO rate, CSAT, NPS, incidents) flow back to step 1 and re-rank the journeys</div>
 </section>
 
-<!-- 4 AUDIT -->
-<section class="slide" data-name="Audit">
-  <div class="kick">Audit &middot; Corporate &middot; Legal &middot; Compliance</div>
-  <h2>Evidence is a by-product, not a project</h2>
-  <p class="sub">Each partner gets what they need from the pipeline, automatically.</p>
-  <div class="three grow">
-    <div class="aud"><div class="ico" style="background:var(--accent-soft);color:var(--accent)">&#9638;</div><h3>Corporate audit</h3><p>Release evidence pack, generated per release</p><ul class="al"><li>Control test results</li><li>SOX-ready audit trail</li><li>Exam evidence on request</li></ul></div>
-    <div class="aud"><div class="ico" style="background:var(--violet-soft);color:var(--violet)">&sect;</div><h3>Legal</h3><p>Every AI step traceable: model, data, reviewer</p><ul class="al"><li>Model and data used</li><li>Who approved, and why</li><li>Client disclosure checks</li></ul></div>
-    <div class="aud"><div class="ico" style="background:var(--ok-bg);color:var(--ok)">&#10003;</div><h3>Compliance</h3><p>Policy checks before promotion, approvals logged</p><ul class="al"><li>Policy-as-code results</li><li>Approvals and overrides logged</li><li>Privacy and data-boundary checks</li></ul></div>
+<section class="slide" data-name="Team model">
+  <div class="kick">Target-state team model &middot; human-agent collaboration</div>
+  <h2>Smaller, higher-leverage teams: people own outcomes, agents do the heavy lifting</h2>
+  <div class="tm grow">
+    <div class="tmcol">
+      <div class="tmh">Team shape</div>
+      <div class="tmc today"><small>Today</small><ul><li>Hand-offs between roles</li><li>Reviews and tests at the end</li><li>Each team picks its own tools</li></ul></div>
+      <div class="tmarrow" aria-hidden="true">&darr;</div>
+      <div class="tmc pod"><small>AI-augmented pod</small><ul><li>Product owner, engineers with quality skills, shared SRE</li><li>Agents for spec, code, review, test and evidence</li><li>One paved path and tool catalog</li></ul></div>
+    </div>
+    <div class="tmcol">
+      <div class="tmh">Agent taxonomy &middot; autonomy levels</div>
+      <div class="lvl l1"><b>Assist</b><span>Suggests, a person acts</span><em>Insight, coding assistant, review</em></div>
+      <div class="lvl l2"><b>Propose</b><span>Drafts a full artifact, a person approves</span><em>Creator, design, test generation</em></div>
+      <div class="lvl l3"><b>Act with approval</b><span>Executes after explicit approval, fully logged</span><em>Evidence pack, incident triage</em></div>
+      <div class="lvl l0"><b>Never autonomous</b><span>Production deploys, client data access, client-facing decisions</span></div>
+    </div>
+    <div class="tmcol">
+      <div class="tmh">Escalation path</div>
+      <ol class="esc"><li>Agent unsure, or a rule trips</li><li>Named owner decides</li><li>Practice lead</li><li>Risk, Compliance, Model Risk</li></ol>
+      <div class="tmh" style="margin-top:12px">Workforce evolution</div>
+      <div class="wf"><span>Engineers as reviewers and orchestrators</span><span>QE engineers the agents&rsquo; quality</span><span>New roles: agent ops, PDLC coach</span><span>Academy, champions, hackathons</span></div>
+    </div>
   </div>
-    <div class="proof"><b>Proof</b> Provided control and test evidence for SEC examinations and SOX audits at S&amp;P Global.</div>
+  <div class="proof"><b>Proof</b> At S&amp;P Global: 80% of engineers onboarded to AI coding assistants, onboarding time &minus;20%, engagement 85% &rarr; 95%, 17 team promotions.</div>
 </section>
 
-<!-- 5 SECURITY -->
-<section class="slide" data-name="Security">
-  <div class="kick">Security</div>
-  <h2>Four layers, built into the path</h2>
-  <p class="sub">Shift-left without trusting one scan.</p>
-  <div class="sec grow">
-    <div class="sstep" style="background:#1F3A5F"><em>Every commit</em><b>1 &middot; SAST</b><span>code scanned, AI output included</span><ul class="sl"><li>Secrets and licenses</li><li>Insecure patterns</li><li>Blocks the merge</li></ul></div>
-    <div class="sstep" style="background:#2B4C7E"><em>Every build</em><b>2 &middot; DAST</b><span>with negative runtime tests</span><ul class="sl"><li>Bad and hostile inputs</li><li>Errors leak nothing</li><li>Runs on every build</li></ul></div>
-    <div class="sstep" style="background:#5B3E9E"><em>Major release</em><b>3 &middot; Pen test</b><span>by impact, not by calendar</span><ul class="sl"><li>Network and APIs</li><li>Retest on major change</li><li>CISO re-certifies</li></ul></div>
-    <div class="sstep" style="background:#7A2E5C"><em>Ongoing</em><b>4 &middot; Ethical hacking</b><span>security champions</span><ul class="sl"><li>Internal change agents</li><li>Attack the AI agents too</li><li>Findings feed the rubric</li></ul></div>
-  </div>
-  <div class="proof"><b>Proof</b> Negative tests caught a server-path leak a SAST-only approval missed. Release held 2 days, shipped clean. Adopted by 100+ scrum teams.</div>
-</section>
-
-<!-- 6 QUALITY GATES -->
 <section class="slide" data-name="Gates">
   <div class="kick">Quality gates &middot; DevOps &middot; CI/CD</div>
   <h2>No score, no promotion</h2>
@@ -524,7 +561,77 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   <div class="proof"><b>Proof</b> 0 autonomous production deploys. Regression 9 &rarr; 4 days.</div>
 </section>
 
-<!-- 8 DEMO -->
+<section class="slide" data-name="Controls">
+  <div class="kick">Controls &middot; Audit, Legal, Compliance, Privacy, Model Risk, Security</div>
+  <h2>Controls built into the path: evidence is a by-product, security is layered</h2>
+  <div class="three ctl">
+    <div class="aud"><h3>Corporate audit</h3><p>Evidence pack generated per release</p><ul class="al"><li>Control test results</li><li>SOX-ready audit trail</li><li>Exam evidence on request</li></ul></div>
+    <div class="aud"><h3>Legal, Privacy, Model Risk</h3><p>Every AI step traceable: model, data, reviewer</p><ul class="al"><li>Model and data used</li><li>Who approved, and why</li><li>Data stays in boundary</li></ul></div>
+    <div class="aud"><h3>Compliance</h3><p>Policy checks before promotion</p><ul class="al"><li>Policy-as-code results</li><li>Approvals and overrides logged</li><li>Client disclosure checks</li></ul></div>
+  </div>
+  <div class="sec sec-s grow">
+    <div class="sstep" style="background:#1F3A5F"><em>Every commit</em><b>1 &middot; SAST</b><span>AI-generated code included; blocks the merge</span></div>
+    <div class="sstep" style="background:#2B4C7E"><em>Every build</em><b>2 &middot; DAST</b><span>negative runtime tests; errors leak nothing</span></div>
+    <div class="sstep" style="background:#5B3E9E"><em>Major release</em><b>3 &middot; Pen test</b><span>by impact, not by calendar; CISO re-certifies</span></div>
+    <div class="sstep" style="background:#7A2E5C"><em>Ongoing</em><b>4 &middot; Ethical hacking</b><span>champions attack the agents too</span></div>
+  </div>
+  <div class="proof"><b>Proof</b> SEC examination and SOX evidence at S&amp;P Global. Negative tests caught a server-path leak a scan-only approval missed; the framework was adopted by 100+ scrum teams.</div>
+</section>
+
+<section class="slide" data-name="Scorecard">
+  <div class="kick">Outcome-based measures &middot; executive reporting</div>
+  <h2>One scorecard: the CTO sees value, leaders see where to act</h2>
+  <div class="sc-top">
+    <div><b>2&times;</b><span>Release frequency</span></div>
+    <div><b>&minus;20%</b><span>Production defects</span></div>
+    <div><b>Same day</b><span>Regulated sign-off (was 3 days)</span></div>
+    <div><b>+30%</b><span>Features per PI</span></div>
+    <div><b>85 &rarr; 95%</b><span>Engineer engagement</span></div>
+    <div><b>+5</b><span>NPS</span></div>
+  </div>
+  <p class="note" style="margin-top:4px">What the same scorecard moved at S&amp;P Global. At LPL, all measures are baselined in the first 30 days.</p>
+  <div class="sc-tab">
+    <table><thead><tr><th scope="col">Measure (CTO)</th><th scope="col">Leading indicators (VPs and Directors)</th><th scope="col">Who acts</th></tr></thead><tbody>
+      <tr><th scope="row">Cycle time</th><td>PR wait time &middot; review queue &middot; BDD rework</td><td>Engineering leads</td></tr>
+      <tr><th scope="row">Quality</th><td>Defect escape by stage &middot; gate failures &middot; flaky tests</td><td>QE leads</td></tr>
+      <tr><th scope="row">Agent effectiveness</th><td>Accepted agent output &middot; rework of agent output &middot; cost per accepted change</td><td>Platform team</td></tr>
+      <tr><th scope="row">Developer experience</th><td>Onboarding time &middot; survey score &middot; tool friction tickets</td><td>Engineering managers</td></tr>
+      <tr><th scope="row">Cost-to-deliver</th><td>Token spend per feature &middot; tool consolidation &middot; capitalizable work</td><td>Finance and platform</td></tr>
+      <tr><th scope="row">Resilience</th><td>MTTR &middot; SLO breaches &middot; repeat incidents</td><td>SRE</td></tr>
+      <tr><th scope="row">Advisor outcomes</th><td>NIGO rate &middot; CSAT and NPS &middot; adoption</td><td>Product owners</td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<section class="slide" data-name="Roadmap">
+  <div class="kick">Transformation roadmap &middot; baseline, pilot, scale</div>
+  <h2>A working pilot in 90 days, then scale in waves</h2>
+  <div class="rm grow">
+    <div class="ph1"><small>Days 0&ndash;30</small><b>Baseline</b><ul><li>Listen to teams and partners</li><li>Map today&rsquo;s PDLC and tools</li><li>Baseline DORA, quality, developer experience</li><li>Pick the pilot team</li></ul><em>Exit: baseline agreed with the CTO</em></div>
+    <div class="ph2"><small>Days 31&ndash;60</small><b>Design the pilot</b><ul><li>Stage gates and decision rights</li><li>Agent roles and tool catalog v1</li><li>Evidence pack agreed with control partners</li><li>BDD and quality score in one team</li></ul><em>Exit: controls approved, pilot ready</em></div>
+    <div class="ph3"><small>Days 61&ndash;90</small><b>Pilot live</b><ul><li>One advisor team runs the full PDLC</li><li>Weekly scorecard</li><li>Fix friction fast</li></ul><em>Exit: measurable gain vs baseline, go for wave 1</em></div>
+    <div class="ph4"><small>Months 4&ndash;12</small><b>Scale in waves</b><ul><li>Wave by portfolio: advisors, investors, institutions, operations</li><li>Champions network and academy</li><li>Platform hardening</li></ul><em>Exit per wave: adoption target met, no control exceptions</em></div>
+    <div class="ph5"><small>Year 2+</small><b>Target state</b><ul><li>One PDLC across LPL</li><li>Continuous improvement from the scorecard</li></ul><em>Owned by the practice leads</em></div>
+  </div>
+  <div class="crit"><b>Scale only when</b><span>KPI moved vs baseline</span><span>No open high findings</span><span>Team engagement holds</span><span>Control partners sign off</span></div>
+  <div class="proof"><b>Proof</b> At S&amp;P Global: framework, standards and reference workflows in 6 months; 350+ engineers on governed AI in 13 months.</div>
+</section>
+
+<section class="slide" data-name="Why Sonia">
+  <div class="kick">Why me</div>
+  <h2>I&rsquo;ve built this path before, and I&rsquo;d build it at LPL</h2>
+  <div class="why">
+    <div class="wcard"><small>Audible, an Amazon company</small><b>Machine learning on production incidents</b><ul><li>QA grew from 4 to 41 engineers</li><li>Sev2s, security vulnerabilities and launch risk each &minus;30%</li><li>Regression 5 days &rarr; 2</li></ul></div>
+    <div class="warrow" aria-hidden="true">&rarr;</div>
+    <div class="wcard"><small>DoubleVerify &middot; VP Product &amp; Engineering</small><b>AI-assisted delivery</b><ul><li>Manual testing effort down ~25%</li><li>Test cycles down ~20%</li><li>Built the global capability center in India</li></ul></div>
+    <div class="warrow" aria-hidden="true">&rarr;</div>
+    <div class="wcard hl"><small>S&amp;P Global &middot; VP, Head of AI PDLC &amp; QE, Chair AI Governance</small><b>Agentic, AI-first PDLC</b><ul><li>350+ engineers on governed AI in 13 months</li><li>Framework designed for ~1,200 engineers</li><li>2&times; release cadence, &minus;20% production defects</li></ul></div>
+  </div>
+  <div class="wplus"><span>24+ years in engineering and transformation leadership</span><span>SEC examination and SOX evidence</span><span>Reported to the CTO at Prudential, DoubleVerify and S&amp;P Global</span></div>
+  <p class="close" style="margin-top:18px">&ldquo;AI finds what clients need, creator agents build it, judge agents check it, humans approve what matters, and CSAT and NPS tell us whether it worked.&rdquo;</p>
+  <p class="contact" style="text-align:center">Sonia Malik &middot; NJ / NYC &middot; <a href="https://www.linkedin.com/in/sonia-malik-b059705" rel="noopener">linkedin.com/in/sonia-malik-b059705</a></p>
+</section>
+
 <section class="slide" data-name="Demo">
   <div class="kick">Solution &middot; demo</div>
   <h2>See it run</h2>
@@ -564,7 +671,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   document.getElementById('prev').onclick=function(){go(cur-1)};
   document.getElementById('next').onclick=function(){go(cur===S.length-1?0:cur+1)};
   document.addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea'))return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);});
-  var AL={value:'model-i','ai-pdlc':'walkthrough'}; var h=decodeURIComponent((location.hash||'').slice(1)).toLowerCase().replace(/[^a-z0-9]+/g,'-'); h=AL[h]||h; var start=0; S.forEach(function(s,i){if(slug(s.dataset.name)===h)start=i}); go(start);
+  var AL={value:'model-i','ai-pdlc':'walkthrough',audit:'controls',security:'controls',persona:'journey',why:'why-sonia'}; var h=decodeURIComponent((location.hash||'').slice(1)).toLowerCase().replace(/[^a-z0-9]+/g,'-'); h=AL[h]||h; var start=0; S.forEach(function(s,i){if(slug(s.dataset.name)===h)start=i}); go(start);
 
   // Model I tips
   var MI={cc:['Customer centricity','Advisor journey in three layers: customer, business process, systems. Opportunities become an MVP, features and a BDD file everyone shares.'],dp:['Product teams','Teams aligned to LPL personas: advisors, institutions and investors, plus ops, data and risk.'],ee:['Engineering excellence','Design, code and test built from the BDD. Agents draft, engineers decide.'],qg:['Quality gates over CI/CD','Every tier scored. In production a human approves from the evidence pack, in minutes.'],prod:['Outcomes','NIGO rate, CSAT, NPS, incidents and DORA metrics show whether it worked.'],loop:['Learning loops','KPIs re-rank the journeys. Approval reasons tune the agents and rubrics.'],devx:['Built on happy engineers','Talent, onboarding, AI adoption and test data are the foundation.']};
