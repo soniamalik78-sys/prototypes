@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>SEXTANT Model I Pitch</title>
+<title>SEXTANT · AI-native PDLC for LPL Financial</title>
 <meta name="description" content="Model I: one operating model for an AI-native PDLC at LPL. Customer outcomes in, proven releases out. By Sonia Malik.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -518,34 +518,163 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
  .proof{margin-top:22px;font-size:.95rem;padding:10px 14px}
  .fw svg{max-width:600px}
 }
+/* ===== v2 product polish: header, nav, tour, hero, cards ===== */
+:root{--shadow-sm:0 1px 2px rgba(16,24,40,.05);--shadow:0 1px 2px rgba(16,24,40,.04),0 6px 18px rgba(16,24,40,.06);--shadow-lg:0 12px 32px rgba(16,24,40,.12);--r:14px;--ease:cubic-bezier(.2,.7,.2,1)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--shadow-sm:0 1px 2px rgba(0,0,0,.4);--shadow:0 1px 2px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.35);--shadow-lg:0 12px 32px rgba(0,0,0,.5)} }
+body{background:radial-gradient(1200px 380px at 15% -80px,color-mix(in srgb,var(--accent) 9%,transparent),transparent 70%),radial-gradient(900px 320px at 95% -60px,color-mix(in srgb,var(--teal) 8%,transparent),transparent 70%),var(--bg);background-attachment:fixed}
+/* header */
+.top{background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.top .in{max-width:1240px;padding:8px 20px;flex-wrap:nowrap;gap:18px;min-height:56px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg);letter-spacing:0;font-size:inherit;white-space:nowrap;flex:none}
+.logo{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--teal));box-shadow:0 4px 10px color-mix(in srgb,var(--accent) 30%,transparent)}
+.logo svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.logo svg .f{fill:#fff;stroke:none}
+.bt{display:flex;flex-direction:column;line-height:1.1}
+.bt b{font-family:var(--f-display);font-weight:600;font-size:1.15rem;letter-spacing:.14em;color:var(--fg)}
+.bt small{font-size:.7rem;color:var(--faint);font-weight:600;letter-spacing:.02em;margin:2px 0 0}
+nav{flex:1;justify-content:center;gap:2px;flex-wrap:nowrap}
+.ng{position:relative}
+.ngb{display:inline-flex;align-items:center;gap:5px;border:0;background:none;color:var(--muted);font-weight:600;font-size:.88rem;padding:8px 12px;border-radius:9px;transition:background .15s,color .15s}
+.ngb svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.6;transition:transform .2s var(--ease)}
+.ngb:hover,.ng:focus-within .ngb,.ng.open .ngb{background:var(--sunk);color:var(--fg)}
+.ng.cur .ngb{color:var(--accent);background:var(--accent-soft)}
+.ng:hover .ngb svg,.ng.open .ngb svg{transform:rotate(180deg)}
+.ngm{position:absolute;left:50%;top:calc(100% + 8px);transform:translate(-50%,6px);min-width:290px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:6px;display:grid;gap:2px;opacity:0;visibility:hidden;transition:opacity .16s,transform .16s var(--ease),visibility .16s;z-index:20}
+.ngm::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
+.ng:hover .ngm,.ng:focus-within .ngm,.ng.open .ngm{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.ngm button{display:flex;flex-direction:column;align-items:flex-start;text-align:left;border:0;background:none;color:var(--fg);border-radius:10px;padding:8px 12px;transition:background .12s}
+.ngm button b{font-size:.9rem}.ngm button span{font-size:.76rem;color:var(--faint);line-height:1.3}
+.ngm button:hover,.ngm button:focus-visible{background:var(--sunk)}
+.ngm button[aria-current="page"]{background:var(--accent-soft)}.ngm button[aria-current="page"] b{color:var(--accent)}
+.hx{display:flex;align-items:center;gap:10px;flex:none}
+.tour{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 4px 3px 12px;box-shadow:var(--shadow-sm)}
+.tk{display:flex;flex-direction:column;line-height:1.05;min-width:76px;max-width:150px;margin-right:2px}
+.tk b{font:600 .82rem/1.1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--accent)}
+.tk span{font-size:.64rem;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tr{border:1px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:999px;padding:4px 11px;font-weight:700;font-size:.78rem;white-space:nowrap;transition:background .15s,color .15s,transform .1s}
+.tr:hover{background:var(--accent-soft)}.tr:active{transform:scale(.97)}
+.tr.solid{background:var(--accent);color:#fff}.tr.solid:hover{filter:brightness(1.08)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tr.solid,:root:not([data-theme="light"]) .cta{color:#0b1220} }
+.top.touring .tour{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+.top.touring #tplay{background:var(--accent-soft)}
+.cta{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 70%,var(--teal)));color:#fff;text-decoration:none;font-weight:700;font-size:.84rem;padding:9px 15px;border-radius:10px;box-shadow:0 4px 12px color-mix(in srgb,var(--accent) 28%,transparent);white-space:nowrap;transition:transform .15s var(--ease),box-shadow .15s}
+.cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px color-mix(in srgb,var(--accent) 32%,transparent)}
+.menu{display:none;width:40px;height:38px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px;flex-direction:column;justify-content:space-between}
+.menu span{display:block;height:2px;background:var(--fg);border-radius:2px}
+.subnav{border-top:1px solid var(--line);background:color-mix(in srgb,var(--surface) 70%,transparent);position:relative}
+.subnav .in{min-height:38px;padding:0 20px;gap:12px}
+.tabs{display:flex;align-items:stretch;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none;align-self:stretch}
+.tabs .sg{display:flex;align-items:center;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding-right:10px;margin-right:4px;border-right:1px solid var(--line);white-space:nowrap}
+.tabs button{border:0;background:none;color:var(--muted);font-weight:600;font-size:.84rem;padding:0 10px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s}
+.tabs button:hover{color:var(--fg)}
+.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+.pos{font-size:.74rem;color:var(--faint);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tprog{position:absolute;left:0;right:0;bottom:-1px;height:2px}.tprog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--teal));transition:width .4s var(--ease)}
+@media (max-width:1400px){.cta{font-size:0;padding:9px 12px}.cta::before{content:"Book a walkthrough";font-size:.82rem}}
+@media (max-width:1100px){.cta{display:none}.bt small{display:none}}
+@media (max-width:960px){
+ .menu{display:flex}
+ nav{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:var(--shadow-lg);padding:8px 16px 14px;display:none;max-height:calc(100vh - 60px);overflow:auto}
+ .top.open nav{display:flex}
+ .ngb{width:100%;justify-content:space-between;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding:10px 4px 4px;background:none!important}.ngb svg{display:none}
+ .ngm{position:static;transform:none!important;opacity:1;visibility:visible;box-shadow:none;border:0;padding:0;min-width:0;background:none}
+ .ngm::before{display:none}
+ .top.open .cta-m{display:flex}
+}
+@media (max-width:640px){
+ .top .in{padding:8px 12px;gap:8px}.bt small{display:none}.bt b{font-size:1rem}
+ .tk{display:none}.tour{padding:3px}.tr{padding:4px 9px}#tnext{display:none}
+ .subnav .in{padding:0 12px}.pos{display:none}
+}
+/* typography + section rhythm */
+main{padding-top:16px}
+.kick{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:3px 10px;font-size:.68rem;letter-spacing:.09em;margin-bottom:8px}
+.kick::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.slide h2{letter-spacing:-.01em;font-weight:600}
+/* cards: one shadow and radius language */
+.card,.mi3,.pathbox,.jtop,.pf-d,.wcard,.dcard,.mi-fig,.loopfig2,.pcard{box-shadow:var(--shadow)}
+.dcard,.wcard{transition:transform .18s var(--ease),box-shadow .18s}
+.dcard:hover,.wcard:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.foot{background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.foot button{transition:background .15s,transform .1s}.foot button:hover{background:var(--sunk)}
+#next{background:var(--accent);border-color:var(--accent);color:#fff}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) #next{color:#0b1220} }
+/* Process hero */
+.hero2{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:22px;align-items:center;margin-bottom:6px}
+.h2l{display:flex;flex-direction:column}
+.land .hero2 h2{font-size:clamp(1.5rem,2.5vw,2.05rem);line-height:1.12;margin-bottom:6px}
+.hsub{color:var(--muted);font-size:.95rem;line-height:1.45;max-width:68ch}
+.hero2 .ps-land{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0}
+.hero2 .ps-land span{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--ok);border-radius:10px;padding:7px 10px;font-size:.76rem;line-height:1.3;box-shadow:var(--shadow-sm)}
+.hero2 .ps-land b{display:block;font-size:1.15rem;margin:0 0 1px}
+@media (max-width:900px){.hero2{grid-template-columns:1fr}}
+.land .jtop{margin:4px 0 0;padding:7px 10px}
+.land .pf{margin-top:4px;gap:4px}
+.land .pf-legend{font-size:.72rem}
+.land .pf-n{padding:8px 7px 7px;gap:4px;box-shadow:var(--shadow-sm)}
+.land .pf-ic{width:38px;height:38px}
+.land .pf-track li:not(:last-child)::after{top:30px}
+.land .pf-cp{margin-top:5px}.land .pf-cpb{padding:4px 8px}
+.land .pf-loop{height:20px}
+.land .pf-d{margin-top:12px;padding:10px 12px;grid-template-columns:minmax(180px,.8fr) minmax(0,2.8fr)}
+.land .pf-dh h3{font-size:1.2rem}.land .pf-dh p{font-size:.84rem;line-height:1.35}
+.land .pf-l{padding:7px 9px}.land .pf-l p{font-size:.84rem;line-height:1.3}
+.land .pf-legend{display:none}
+.pf-dt{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}
+.pf-dt .pf-step{margin-top:0;flex-wrap:nowrap;gap:4px}.pf-dt .pf-step span{display:none}
+.pf-dt .pf-step button{padding:2px 8px;font-size:.74rem}
+main{padding-top:10px}
+.land .pf-d{margin-top:8px}.land .pf-loop{height:16px}.land .pf-loop span{bottom:-10px}
+.land .pf-g{white-space:nowrap;padding:2px 7px}
+.land .jtop{gap:4px 10px;padding:6px 10px}
+.land .hero2{margin-bottom:4px}
+@media (max-width:900px){.land .pf-d{grid-template-columns:1fr}.land .pf-ly{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.land .pf-loop{height:auto}.land .pf-loop span{bottom:auto}.land .pf-ly{grid-template-columns:1fr}.land .pf-track li:not(:last-child)::after{top:auto}}
+.tk{width:100px;min-width:0;max-width:none}#tplay{min-width:76px}.top .in{gap:14px}.ngb{padding:8px 10px}
+@media (max-width:640px){.foot .who{display:none}}
+@media print{.land .pf-print .pf-l{padding:5px 7px}.land .pf-print .pf-l p{font-size:.72rem;line-height:1.3}.land .pf-print .pf-dh h3{font-size:1rem}.land .pf-print .pf-dh p{display:none}.land .pf-print .pf-ft{font-size:.68rem}.land .pf-print .pf-d{grid-template-columns:1fr;margin:0;padding:8px 10px}.land .pf-print .pf-ly{grid-template-columns:1fr}.subnav,.hx,.menu{display:none!important}.kick{background:none;padding:0}.top{display:none!important}}
 </style>
 </head>
 <body>
-<header class="top"><div class="in">
-  <div class="brand">SEXTANT · DEVELOPMENT PRACTICES &amp; AI PDLC <small>for LPL Financial</small></div>
-  <nav id="nav" aria-label="Pitch sections"></nav>
-</div></header>
+<header class="top" id="top"><div class="in">
+  <a class="brand" href="#process" id="brand" aria-label="SEXTANT, back to the start"><span class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 23a12 12 0 0 1 20 0"/><path d="M16 7L8.5 23M16 7l7.5 16"/><circle cx="16" cy="7" r="2.4" class="f"/><path d="M10 27h12"/></svg></span><span class="bt"><b>SEXTANT</b><small>AI-native PDLC &middot; for LPL Financial</small></span></a>
+  <nav id="nav" aria-label="Sections"></nav>
+  <div class="hx">
+    <div class="tour" role="group" aria-label="Guided tour">
+      <span class="tk"><b id="tclk">0:00</b><span id="tlbl">Guided tour</span></span>
+      <button type="button" class="tr" id="tplay" aria-label="Play the guided tour">&#9654; Play</button><button type="button" class="tr solid" id="tnext" aria-label="Next tour step">Next &rsaquo;</button><button type="button" class="tr" id="trp" aria-label="Replay the tour from the start">&#8635;</button>
+    </div>
+    <a class="cta" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">Book a 15-min walkthrough</a>
+    <button type="button" class="menu" id="menubtn" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</div>
+<div class="subnav"><div class="in"><div class="tabs" id="subtabs" role="tablist" aria-label="Pages in this section"></div><span class="pos" id="pos"></span></div><div class="tprog"><i id="tprog"></i></div></div>
+</header>
 
 <main>
 <section class="slide land" data-name="Process">
-  <div class="kick">Development practices &amp; AI-native PDLC &middot; the process</div>
-  <h2>A better advisor and client experience with every release. Seven stages: people decide, agents assist, evidence proves.</h2>
+  <div class="hero2">
+    <div class="h2l">
+      <div class="kick">Development practices &amp; AI-native PDLC for LPL</div>
+      <h2>Deliver faster for advisors and clients, with quality and exam-ready evidence built in.</h2>
+      <p class="hsub">One AI-native PDLC for every team: smaller, higher-leverage teams of engineers and agents, with quality, resilience, security and accountability stronger every release.</p>
+    </div>
+    <div class="pstrip ps-land" aria-label="Proof from S&amp;P Global"><span><b>2&times;</b> release cadence</span><span><b>&minus;20%</b> production defects</span><span><b>same day</b> regulated sign-off (was 3 days)</span><span><b>350+</b> engineers on governed AI in 13 months</span></div>
+  </div>
   <div class="jtop"><span class="jt-l">Advisor journey</span><div class="jt-steps" id="jtsteps"></div><div class="jt-info" id="jtinfo" aria-live="polite"></div></div>
   <div class="pf grow" id="pf">
-    <div class="pf-legend" aria-hidden="true"><span style="--c:var(--ok)"><i></i>Owner decides</span><span style="--c:var(--violet)"><i></i>Agents assist</span><span style="--c:var(--gold)"><i></i>Evidence produced</span><span style="--c:var(--warn)"><i></i>Exit gate</span><span style="--c:var(--teal)"><i></i>Control partners</span><span class="pf-hint">Click a stage to open it</span></div>
+    <div class="pf-legend" aria-hidden="true"><span style="--c:var(--ok)"><i></i>Owner decides</span><span style="--c:var(--violet)"><i></i>Agents assist</span><span style="--c:var(--gold)"><i></i>Evidence produced</span><span style="--c:var(--warn)"><i></i>Exit gate</span><span style="--c:var(--teal)"><i></i>Control partners</span><span class="pf-hint">Click a stage, or press &#9654; Play in the header</span></div>
     <div class="pf-map">
-      <div class="pf-ph" aria-hidden="true"><span style="--g:1/2;--c:var(--teal)">Customer centricity</span><span style="--g:2/5;--c:var(--accent)">Engineering excellence</span><span style="--g:5/7;--c:var(--warn)">Evidence &amp; controls</span><span style="--g:7/8;--c:var(--ok)">Outcomes</span></div>
+      <div class="pf-ph" aria-hidden="true"><span style="--g:1/2;--c:var(--teal)">Customer</span><span style="--g:2/5;--c:var(--accent)">Engineering excellence</span><span style="--g:5/7;--c:var(--warn)">Evidence &amp; controls</span><span style="--g:7/8;--c:var(--ok)">Outcomes</span></div>
       <ol class="pf-track" id="pftrack" role="tablist" aria-label="The seven PDLC stages"></ol>
       <div class="pf-cp" aria-hidden="true"><div class="pf-cpb"><b>Control partners at the audit gate</b><span>Risk</span><span>Legal</span><span>Compliance</span><span>Privacy</span><span>Model Risk</span></div></div>
       <div class="pf-loop" id="pfloop" role="button" tabindex="0" aria-label="Feedback loop from Measure back to Intake"><span>&#8634; Measure feeds Intake: outcomes re-rank the backlog, approval reasons tune agents and rubrics</span></div>
     </div>
     <div id="pfdetail" aria-live="polite"></div>
   </div>
-  <div class="pstrip ps-land"><span><b>2&times;</b> release cadence</span><span><b>&minus;20%</b> production defects</span><span><b>same day</b> regulated sign-off (was 3 days)</span><span><b>350+</b> engineers on governed AI in 13 months</span></div>
   <div class="pf-print" id="pfprint" aria-hidden="true"></div>
 </section>
 
-<section class="slide" data-name="Model I">
+<section class="slide" data-name="Value model">
   <div class="kick">Value proposition &middot; one PDLC for every team</div>
   <h2>One standardized PDLC every team follows: people decide, agents assist, evidence proves, advisors feel the result</h2>
   <p class="sub">A repeatable development-practice process from intake to measurement. Customer journeys on top, engineering excellence underneath, evidence in between.</p>
@@ -591,7 +720,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   </div>
   <div class="pathbox">
       <h3>The path every team takes</h3>
-      <table class="pt2"><thead><tr><th scope="col">Stage</th><th scope="col">Owner</th><th scope="col">Evidence</th><th scope="col">Exit gate</th></tr></thead><tbody><tr><th scope="row"><i>1</i>Discover</th><td>Product owner</td><td>Journey and KPI</td><td>KPI agreed</td></tr><tr><th scope="row"><i>2</i>Define</th><td>Three Amigos</td><td>MVP, features, shared BDD</td><td>BDD score &ge; 80</td></tr><tr><th scope="row"><i>3</i>Design</th><td>Architect</td><td>API contract, ADR, threat model</td><td>Architecture and security sign-off</td></tr><tr><th scope="row"><i>4</i>Build</th><td>Engineer, named PR owner</td><td>Code, unit tests, SAST every commit</td><td>Review and SAST pass, approved tools only</td></tr><tr><th scope="row"><i>5</i>Test</th><td>QE lead</td><td>Scored BDD, negative tests, DAST, resiliency</td><td>Quality &ge; 80, no high findings</td></tr><tr><th scope="row"><i>6</i>Release</th><td>Release owner with Risk, Legal, Compliance, Privacy, Model Risk</td><td>Signed evidence pack, control tests</td><td>A human approves from the pack, in minutes</td></tr><tr><th scope="row"><i>7</i>Operate and learn</th><td>Product and SRE</td><td>NIGO, CSAT/NPS, incidents, DORA</td><td>Outcomes re-rank the backlog</td></tr></tbody></table>
+      <table class="pt2"><thead><tr><th scope="col">Stage</th><th scope="col">Owner</th><th scope="col">Evidence</th><th scope="col">Exit gate</th></tr></thead><tbody><tr><th scope="row"><i>1</i>Discover</th><td>Product owner</td><td>Journey and KPI</td><td>KPI agreed</td></tr><tr><th scope="row"><i>2</i>Define</th><td>Three Amigos</td><td>MVP, features, shared BDD</td><td>BDD score &ge; 80</td></tr><tr><th scope="row"><i>3</i>Design</th><td>Architect</td><td>API contract, ADR, threat model</td><td>Architecture and security sign-off</td></tr><tr><th scope="row"><i>4</i>Build</th><td>Engineer, named PR owner</td><td>Code, unit tests, SAST every commit</td><td>Review and SAST pass, approved tools only</td></tr><tr><th scope="row"><i>5</i>Test</th><td>QE lead</td><td>Scored BDD, negative tests, DAST, resiliency</td><td>Quality score &ge; 80, no high findings</td></tr><tr><th scope="row"><i>6</i>Release</th><td>Release owner with Risk, Legal, Compliance, Privacy, Model Risk</td><td>Signed evidence pack, control tests</td><td>A human approves from the pack, in minutes</td></tr><tr><th scope="row"><i>7</i>Operate and learn</th><td>Product and SRE</td><td>NIGO, CSAT/NPS, incidents, DORA</td><td>Outcomes re-rank the backlog</td></tr></tbody></table>
       <p class="same">Same path for every team: eight enterprise practices, one tool catalog, one paved CI/CD.</p>
     </div>
     
@@ -621,7 +750,7 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 <section class="slide" data-name="Journey">
   <div class="kick">Customer journey &middot; three layers</div>
   <h2>Customer, business process and systems, aligned step by step</h2>
-  <div class="perrow"><span class="pl">LPL personas</span><span class="pchip on">Advisors</span><span class="pchip">Institutions</span><span class="pchip">Individual investors</span><span class="pscen">Example: a 12-advisor practice moves 400 households to LPL in 30 days, with zero NIGO rework.</span></div>
+  <div class="perrow"><span class="pl">LPL personas</span><span class="pchip on">Advisors</span><span class="pchip">Institutions</span><span class="pchip">Individual investors</span><span class="pscen">Example: a 12-advisor practice moves 400 households to LPL in 30 days, with no NIGO rework.</span></div>
   <p class="sub" style="margin-bottom:10px">Same process for all three personas. Click a step to see its goal, intent, KPI and opportunity.</p>
   <div class="jw grow">
     <div class="layers" id="layers"></div>
@@ -813,21 +942,48 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
 (function(){
   var S=[].slice.call(document.querySelectorAll('.slide')), nav=document.getElementById('nav'), dots=document.getElementById('dots'), cur=0;
   var src=new URLSearchParams(location.search).get('src')||'';
-  S.forEach(function(s,i){var b=document.createElement('button');b.type='button';b.textContent=s.dataset.name;b.onclick=function(){go(i)};nav.appendChild(b);dots.appendChild(document.createElement('i'));});
+  var LBL={'Process':'The process','Why Sonia':'Why Sonia'};
+  var DSC={'Process':'Seven stages: people decide, agents assist, evidence proves','Value model':'One PDLC every team follows','Practices':'Enterprise development standards','Journey':'The advisor journey in three layers','Walkthrough':'One advisor opportunity through the process','Team model':'Smaller, higher-leverage human-agent teams','Gates':'Scored quality gates over CI/CD','Controls':'Audit, Legal, Compliance, Privacy, Model Risk, Security','Scorecard':'Outcome measures for the CTO','Roadmap':'Baseline, pilot, then scale in waves','Demo':'See the full prototype run','Why Sonia':'Track record and proof'};
+  var GR=[['Overview',['Process','Value model']],['Process',['Practices','Journey','Walkthrough','Team model']],['Governance',['Gates','Controls']],['Proof',['Scorecard','Roadmap','Demo']],['About',['Why Sonia']]];
+  var IDX={};S.forEach(function(s,i){IDX[s.dataset.name]=i;dots.appendChild(document.createElement('i'));});
+  var used={};GR.forEach(function(g){g[1]=g[1].filter(function(n){return n in IDX});g[1].forEach(function(n){used[n]=1})});
+  S.forEach(function(s){if(!used[s.dataset.name])GR[GR.length-1][1].push(s.dataset.name)});
+  function lbl(n){return LBL[n]||n}
+  var top=document.getElementById('top'),mb=document.getElementById('menubtn'),subt=document.getElementById('subtabs'),pos=document.getElementById('pos');
+  function closeMenu(){top.classList.remove('open');mb.setAttribute('aria-expanded','false');[].forEach.call(nav.querySelectorAll('.ng'),function(g){g.classList.remove('open')});}
+  GR.forEach(function(g,gi){var w=document.createElement('div');w.className='ng';var b=document.createElement('button');b.type='button';b.className='ngb';b.setAttribute('aria-haspopup','true');b.innerHTML='<span></span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg>';b.querySelector('span').textContent=g[0];
+    b.onclick=function(){go(IDX[g[1][0]]);userNav();closeMenu();};
+    b.onkeydown=function(e){if(e.key==='ArrowDown'){e.preventDefault();w.classList.add('open');var f=w.querySelector('.ngm button');if(f)f.focus();}if(e.key==='Escape'){w.classList.remove('open');}};
+    var m=document.createElement('div');m.className='ngm';m.setAttribute('role','menu');
+    g[1].forEach(function(n){var it=document.createElement('button');it.type='button';it.setAttribute('role','menuitem');it.dataset.n=n;it.innerHTML='<b></b><span></span>';it.querySelector('b').textContent=lbl(n);it.querySelector('span').textContent=DSC[n]||'';it.onclick=function(){go(IDX[n]);userNav();closeMenu();if(document.activeElement)document.activeElement.blur();};m.appendChild(it);});
+    w.addEventListener('mouseleave',function(){w.classList.remove('open')});
+    w.appendChild(b);w.appendChild(m);nav.appendChild(w);});
+  mb.onclick=function(){var o=!top.classList.contains('open');top.classList.toggle('open',o);mb.setAttribute('aria-expanded',o?'true':'false');};
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+  document.addEventListener('click',function(e){if(!e.target.closest('#top'))closeMenu();});
+  function gof(i){var n=S[i].dataset.name;for(var k=0;k<GR.length;k++){if(GR[k][1].indexOf(n)>-1)return k;}return 0;}
+  function syncNav(){var gi=gof(cur),n=S[cur].dataset.name;
+    [].forEach.call(nav.querySelectorAll('.ng'),function(w,k){w.classList.toggle('cur',k===gi);w.querySelector('.ngb').setAttribute('aria-current',k===gi?'true':'false');});
+    [].forEach.call(nav.querySelectorAll('.ngm button'),function(it){it.setAttribute('aria-current',it.dataset.n===n?'page':'false')});
+    subt.innerHTML='';GR[gi][1].forEach(function(m){var t=document.createElement('button');t.type='button';t.setAttribute('role','tab');t.setAttribute('aria-selected',m===n?'true':'false');t.textContent=lbl(m);t.onclick=function(){go(IDX[m]);userNav();};subt.appendChild(t);});
+    var gl=document.createElement('span');gl.className='sg';gl.textContent=GR[gi][0];subt.insertBefore(gl,subt.firstChild);
+    pos.textContent=(cur+1)+' / '+S.length;}
+  var userNav=function(){};
   function slug(n){return n.toLowerCase().replace(/[^a-z0-9]+/g,'-')}
   function go(i){cur=Math.max(0,Math.min(S.length-1,i));
     S.forEach(function(s,k){s.classList.toggle('on',k===cur)});
-    [].forEach.call(nav.children,function(b,k){b.setAttribute('aria-current',k===cur?'true':'false')});
+    syncNav();
     [].forEach.call(dots.children,function(d,k){d.classList.toggle('on',k===cur)});
     document.getElementById('next').textContent=cur===S.length-1?'Start over':'Next →';
     history.replaceState(null,'','#'+slug(S[cur].dataset.name));
     window.scrollTo({top:0});
     if(window.goatcounter&&window.goatcounter.count){window.goatcounter.count({path:location.pathname+'/'+S[cur].dataset.name.toLowerCase()+(src?'?src='+src:''),title:'Pitch: '+S[cur].dataset.name,event:true});}
   }
-  document.getElementById('prev').onclick=function(){go(cur-1)};
-  document.getElementById('next').onclick=function(){go(cur===S.length-1?0:cur+1)};
-  document.addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea'))return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);});
-  var AL={value:'model-i','model-1':'model-i',modeli:'model-i',pdlc:'process',flow:'process','ai-pdlc':'walkthrough',audit:'controls',security:'controls',persona:'journey',why:'why-sonia'}; var h=decodeURIComponent((location.hash||'').slice(1)).toLowerCase().replace(/[^a-z0-9]+/g,'-'); h=AL[h]||h; var start=0; S.forEach(function(s,i){if(slug(s.dataset.name)===h)start=i}); go(start);
+  document.getElementById('prev').onclick=function(){go(cur-1);userNav()};
+  document.getElementById('next').onclick=function(){go(cur===S.length-1?0:cur+1);userNav()};
+  document.getElementById('brand').onclick=function(e){e.preventDefault();go(0);userNav();};
+  document.addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea'))return;if(e.key==='ArrowRight'){go(cur+1);userNav();}if(e.key==='ArrowLeft'){go(cur-1);userNav();}});
+  var AL={value:'value-model','model-i':'value-model','model-1':'value-model',modeli:'value-model',pdlc:'process',flow:'process','ai-pdlc':'walkthrough',audit:'controls',security:'controls',persona:'journey',why:'why-sonia'}; var h=decodeURIComponent((location.hash||'').slice(1)).toLowerCase().replace(/[^a-z0-9]+/g,'-'); h=AL[h]||h; var start=0; S.forEach(function(s,i){if(slug(s.dataset.name)===h)start=i}); go(start);
 
   // Model I tips
   var MI={cc:['Customer centricity','Advisor journey in three layers: customer, business process, systems. Opportunities become an MVP, features and a BDD file everyone shares.'],dp:['Product teams','Teams aligned to LPL personas: advisors, institutions and investors, plus ops, data and risk.'],ee:['Engineering excellence','Design, code and test built from the BDD. Agents draft, engineers decide.'],qg:['Quality gates over CI/CD','Every tier scored. In production a human approves from the evidence pack, in minutes.'],prod:['Outcomes','NIGO rate, CSAT, NPS, incidents and DORA metrics show whether it worked.'],loop:['Learning loops','KPIs re-rank the journeys. Approval reasons tune the agents and rubrics.'],devx:['Built on developer experience','Skills development, onboarding, approved AI tools and test data are the foundation.']};
@@ -853,13 +1009,13 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   function ico(k){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+IC[k]+'</svg>';}
   var PC=['--teal','--accent','--accent','--accent','--warn','--warn','--ok'];
   var PF=[
-    {n:'Intake',ic:'intake',os:'Product owner',gs:'BDD \u2265 80',sum:'An advisor pain becomes one KPI, an MVP and a shared BDD file everyone builds and tests from.',
+    {n:'Intake',ic:'intake',os:'Product owner',gs:'BDD \u2265 80',sum:'An advisor opportunity becomes one KPI, an MVP and a shared BDD file everyone builds and tests from.',
      own:'Product owner, with Three Amigos sign-off',ag:'Insight agent reads advisor signals; creator agent drafts, judge agent scores',ev:'Journey + KPI, MVP, features, shared BDD',gate:'KPI agreed and BDD score \u2265 80',pr:'Journey mapping, spec-first BDD',kpi:'Opportunity value, spec quality'},
     {n:'Design',ic:'design',os:'Architect',gs:'Arch + security OK',sum:'Contract and threat model come before code, so build and test start from the same design.',
      own:'Architect',ag:'Design agent proposes the API contract and options',ev:'API contract, ADR, threat model',gate:'Architecture and security OK',pr:'API-first, threat model',kpi:'Design rework'},
     {n:'Build',ic:'build',os:'Engineer (PR owner)',gs:'Review + SAST pass',sum:'Agents draft from the BDD; a named engineer owns and merges every PR.',
      own:'Engineer, the named PR owner',ag:'Coding and review agents draft from the BDD',ev:'Code + unit tests; SAST on every commit, AI output included',gate:'Review and SAST pass; approved tools only',pr:'Trunk-based, small PRs',kpi:'PR cycle time'},
-    {n:'Test',ic:'test',os:'QE lead',gs:'Quality \u2265 80',sum:'Every tier is scored against the BDD; judge agents find the gaps people would miss.',
+    {n:'Test',ic:'test',os:'QE lead',gs:'Quality score \u2265 80',sum:'Every tier is scored against the BDD; judge agents find the gaps people would miss.',
      own:'QE lead',ag:'Test agent generates, judge agent scores against the BDD',ev:'Scored BDD and negative tests, DAST, resiliency',gate:'Quality score \u2265 80; no high SAST/DAST findings',pr:'Test impact analysis',kpi:'Defect escape'},
     {n:'Audit evidence',ic:'audit',os:'Release owner + control partners',gs:'Pack complete',sum:'Controls run in the pipeline, so the exam-ready pack is a by-product of the path, not a late review.',
      own:'Release owner, with Risk, Legal, Compliance, Privacy and Model Risk',ag:'Evidence agent assembles the pack',ev:'Control tests, policy-as-code results, approvals and overrides, model / data / reviewer trace, exam pack',gate:'Pack complete before promotion',pr:'Policy-as-code, controls in the pipeline',kpi:'Exam-ready evidence',cp:1},
@@ -878,9 +1034,9 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
     li.appendChild(b);pft.appendChild(li);});
   function card(st,i,stepper){
     var L=[['Decides','person','--ok','--ok-bg',st.own],['Agents assist','agent','--violet','--violet-soft',st.ag],['Evidence produced','doc','--gold','--gold-soft',st.ev],['Exit gate','gate','--warn','--warn-bg',st.gate]];
-    var h='<div class="pf-d" style="--c:var('+PC[i]+')"><div class="pf-dh"><small>Stage '+(i+1)+' of 7</small><h3>'+esc(st.n)+'</h3><p>'+esc(st.sum)+'</p>';
+    var h='<div class="pf-d" style="--c:var('+PC[i]+')"><div class="pf-dh"><div class="pf-dt"><small>Stage '+(i+1)+' of 7</small>';
     if(stepper)h+='<div class="pf-step"><span>'+(i===6?'Then back to Intake':'Next: '+esc(PF[i+1].n))+'</span><button type="button" data-a="prev" aria-label="Previous stage">&lsaquo;</button><button type="button" data-a="play">'+(pplay.length?'&#10073;&#10073; Pause':'&#9654; Play')+'</button><button type="button" class="solid" data-a="next">Next &rsaquo;</button></div>';
-    h+='</div><div class="pf-ly">';
+    h+='</div><h3>'+esc(st.n)+'</h3><p>'+esc(st.sum)+'</p></div><div class="pf-ly">';
     L.forEach(function(l){h+='<div class="pf-l" style="--c:var('+l[2]+');--b:var('+l[3]+')"><span class="pf-li">'+ico(l[1])+l[0]+'</span><p>'+esc(l[4])+'</p></div>';});
     h+='</div><div class="pf-ft"><span><b>Practice</b>'+esc(st.pr)+'</span><span><b>KPI</b>'+esc(st.kpi)+'</span>'+(st.cp?'<span class="cp"><b>Control partners</b>'+CPS.join(' \u00B7 ')+'</span>':'')+'</div></div>';
     return h;}
@@ -897,12 +1053,33 @@ main{max-width:1120px;margin:0 auto;padding:22px 16px 90px}
   function spick(i){if(i>=0&&i<7)ppick(i);}
   ppick(0);
 
+  // Guided tour in the header (TRELLIS / BEACON console pattern: Play / Pause, Next, Replay, elapsed clock)
+  var TS=[];S.forEach(function(sl,i){if(sl.dataset.name==='Process'){for(var k=0;k<7;k++)TS.push({s:i,k:k});}else TS.push({s:i});});
+  var tpb=document.getElementById('tplay'),tclk=document.getElementById('tclk'),tlb=document.getElementById('tlbl'),tpr=document.getElementById('tprog');
+  var ti=-1,tt=null,tc=null,t0=0,tel=0,tplaying=false,tfromTour=false;
+  var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function dur(st){return st.k!==undefined?(RM?2600:2400):(RM?6500:6000);}
+  function fmt(ms){var x=Math.floor(ms/1000);return Math.floor(x/60)+':'+('0'+x%60).slice(-2);}
+  function tick(){tclk.textContent=fmt(tel+(tplaying?Date.now()-t0:0));}
+  function show(i){ti=i;var st=TS[i];tfromTour=true;if(cur!==st.s)go(st.s);if(st.k!==undefined){pstop();ppick(st.k);}tfromTour=false;
+    tlb.textContent=lbl(S[st.s].dataset.name)+(st.k!==undefined?' \u00B7 '+PF[st.k].n:'');tpr.style.width=((i+1)/TS.length*100)+'%';}
+  function sched(){clearTimeout(tt);if(!tplaying)return;tt=setTimeout(function(){if(ti>=TS.length-1){tstop(true);return;}show(ti+1);sched();},dur(TS[ti]));}
+  function tstart(){if(ti<0||ti>=TS.length-1){tel=0;show(0);}tplaying=true;t0=Date.now();clearInterval(tc);tc=setInterval(tick,500);tpb.innerHTML='&#10073;&#10073; Pause';tpb.setAttribute('aria-label','Pause the guided tour');top.classList.add('touring');sched();}
+  function tstop(done){if(tplaying)tel+=Date.now()-t0;tplaying=false;clearTimeout(tt);clearInterval(tc);tick();tpb.innerHTML=done?'&#8635; Again':'&#9654; Play';tpb.setAttribute('aria-label','Play the guided tour');top.classList.remove('touring');if(done){tlb.textContent='Tour complete';}}
+  tpb.onclick=function(){if(tplaying)tstop();else{if(ti>=TS.length-1)ti=-1;tstart();}};
+  document.getElementById('tnext').onclick=function(){var n=ti<0?0:ti+1;if(n>=TS.length)n=0;show(n);if(tplaying){t0=Date.now()-0;sched();}};
+  document.getElementById('trp').onclick=function(){tstop();ti=-1;tel=0;tstart();};
+  userNav=function(){if(tfromTour)return;if(tplaying)tstop();var f=-1;for(var k=0;k<TS.length;k++){if(TS[k].s===cur){f=k;break;}}ti=f;tpr.style.width=((f+1)/TS.length*100)+'%';tlb.textContent=lbl(S[cur].dataset.name);};
+  // stage clicks on the Process slide also pause the tour
+  [].forEach.call(document.querySelectorAll('.pf-n'),function(b){b.addEventListener('click',function(){if(tplaying)tstop();});});
+  if(new URLSearchParams(location.search).get('tour')==='1')tstart();
+
   // Landing: interactive advisor journey driving the swimlane
-  var JT=[['Join LPL','Licensing paperwork delays day 1','Days to first trade'],['Map the book','Household accounts mismatched','Mapping accuracy'],['Move accounts','Transfer forms rejected (NIGO)','NIGO rate'],['Welcome clients','Confusing first login','Client activation'],['First review','No time to prepare the review','Assets retained']];
+  var JT=[['Join LPL','Get new advisors trading from day 1','Days to first trade'],['Map the book','Map every household right the first time','Mapping accuracy'],['Move accounts','Get transfer forms right the first time','NIGO rate'],['Welcome clients','Make the first client login effortless','Client activation'],['First review','Arrive at the first review fully prepared','Assets retained']];
   var jts=document.getElementById('jtsteps'), jti=document.getElementById('jtinfo'), jtimer=[];
   JT.forEach(function(j,i){var b=document.createElement('button');b.type='button';b.innerHTML='<i>'+(i+1)+'</i>';b.appendChild(document.createTextNode(j[0]));b.onclick=function(){jtpick(i)};jts.appendChild(b);});
   function jtpick(i){jtimer.forEach(clearTimeout);jtimer=[];[].forEach.call(jts.children,function(b,k){b.setAttribute('aria-pressed',k===i?'true':'false')});
-    jti.innerHTML='';var t=document.createElement('span');t.innerHTML='<b>Pain</b> ';t.appendChild(document.createTextNode(JT[i][1]));var k=document.createElement('span');k.innerHTML='<b>KPI</b> ';k.appendChild(document.createTextNode(JT[i][2]));
+    jti.innerHTML='';var t=document.createElement('span');t.innerHTML='<b>Opportunity</b> ';t.appendChild(document.createTextNode(JT[i][1]));var k=document.createElement('span');k.innerHTML='<b>KPI</b> ';k.appendChild(document.createTextNode(JT[i][2]));
     var r=document.createElement('button');r.type='button';r.className='jt-run';r.textContent='\u25B6 Run it through the 7 stages';r.onclick=function(){run(i)};jti.appendChild(t);jti.appendChild(k);jti.appendChild(r);}
   function run(i){jtimer.forEach(clearTimeout);jtimer=[];var r=jti.querySelector('.jt-run');if(r){r.disabled=true;r.textContent='Running\u2026';}
     var d=(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?120:550;
