@@ -848,6 +848,53 @@ body.onland main{padding-top:10px}
 @media print{.h7-why{break-inside:avoid}}
 @media (max-width:760px){.land .pf-nb{padding-left:8px}}
 @media (max-width:760px){.jc-bar2 i,.ppl .jc-bar2 i{height:30px}.jc-bar2 i span,.ppl .jc-bar2 i span{display:flex;align-items:center;justify-content:center;white-space:normal;line-height:1.05;font-size:.56rem;text-overflow:clip;padding:0 1px}}
+
+/* ===== v8: What I'd add for LPL: security testing + QA to QE ===== */
+.add-eye{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);border-radius:999px;padding:2px 9px;margin-bottom:4px}
+.ill{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--warn);background:var(--warn-bg);border-radius:6px;padding:2px 7px;vertical-align:middle}
+.sx-flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;counter-reset:sx}
+.sx-flow li{position:relative;background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:14px;padding:14px 16px 12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+.sx-flow li:not(:last-child)::after{content:"\2192";position:absolute;right:-12px;top:30px;transform:translateX(50%);color:var(--faint);font-size:1.1rem;z-index:1}
+.sx-h{display:flex;align-items:center;gap:10px}
+.sx-ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 13%,var(--surface));color:var(--c);flex:none}
+.sx-ic svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sx-h b{font-size:1rem;line-height:1.2;display:block}.sx-h small{font-size:.7rem;color:var(--faint);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.sx-flow p{margin:0;font-size:.86rem;color:var(--muted);line-height:1.4}
+.sx-in{margin-top:auto;display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:.7rem;color:var(--faint)}
+.sx-in span{font-size:.72rem;font-weight:700;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:1px 9px}
+.sx-log{display:flex;align-items:center;gap:12px;margin-top:12px;background:color-mix(in srgb,var(--teal) 7%,var(--surface));border:1px dashed color-mix(in srgb,var(--teal) 50%,var(--line));border-radius:12px;padding:10px 14px}
+.sx-log .sx-ic{--c:var(--teal);width:32px;height:32px}
+.sx-log p{margin:0;font-size:.88rem;color:var(--fg);line-height:1.4;flex:1}.sx-log p b{color:var(--teal)}
+.sx-log .sx-in{margin:0}
+.sx-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:16px;margin-top:16px}
+.sx-story{border-left:4px solid var(--warn)}
+.sx-tl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.sx-tl li{background:var(--sunk);border-radius:10px;padding:8px 10px;font-size:.82rem;color:var(--muted);line-height:1.35}
+.sx-tl li b{display:block;color:var(--fg);font-size:.86rem;margin-bottom:2px}.sx-tl li em{font-style:normal;font-size:.68rem;font-weight:700;color:var(--accent);letter-spacing:.05em;text-transform:uppercase}
+.sx-proof{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.sx-proof div{display:flex;align-items:baseline;gap:8px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:10px;padding:7px 12px;box-shadow:var(--shadow-sm)}
+.sx-proof b{font-family:var(--f-display);font-size:1.25rem;color:var(--ok)}.sx-proof span{font-size:.84rem;color:var(--muted)}.sx-proof small{font-size:.68rem;color:var(--faint)}
+.qx-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:16px;align-items:stretch}
+.qx-ratio{display:flex;flex-direction:column;gap:10px;justify-content:center}
+.qx-bar{display:grid;grid-template-columns:62px 1fr;align-items:center;gap:10px;font-size:.8rem;color:var(--muted)}
+.qx-bar>div{display:flex;gap:3px;flex-wrap:nowrap;align-items:center}
+.qx-bar i{display:block;width:14px;height:22px;border-radius:4px;background:var(--accent)}.qx-bar i.q{background:var(--ok)}.qx-bar i.h{width:7px}
+.qx-bar strong{font-family:var(--f-display);font-size:1.15rem;color:var(--fg);margin-left:8px;white-space:nowrap}
+.qx-co{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.qx-co .g3 h3{font-size:1rem;display:flex;align-items:center;gap:8px}
+.qx-co ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.qx-co li{display:flex;gap:8px;align-items:baseline;font-size:.86rem;color:var(--muted);line-height:1.35}
+.qx-co li b{font-family:var(--f-display);color:var(--ok);font-size:1.02rem;white-space:nowrap;min-width:5.6em}
+.qx-ch{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.qx-ch li{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow-sm)}
+.qx-ch li b{display:block;font-size:.92rem;margin-bottom:2px}.qx-ch li span{font-size:.8rem;color:var(--muted);line-height:1.35}
+.qx-plan{margin-top:16px}
+.h7-wb{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.h7-wb .h7-wm{font-size:.76rem;padding:1px 0;text-decoration:none}.h7-wb a.h7-wm:hover{text-decoration:underline}
+@media (max-width:1100px){.sx-flow{grid-template-columns:1fr 1fr}.sx-flow li:nth-child(2)::after{display:none}.qx-ch{grid-template-columns:1fr 1fr}}
+@media (max-width:980px){.sx-two,.qx-top{grid-template-columns:1fr}}
+@media (max-width:760px){.sx-flow,.qx-co,.qx-ch,.sx-tl{grid-template-columns:1fr}.sx-flow li::after{display:none}.sx-log{flex-wrap:wrap}.h7-wb{flex-direction:row;gap:14px}.qx-bar{grid-template-columns:54px 1fr}.qx-bar i{width:11px}.qx-bar i.h{width:6px}}
+@media print{#sec-security,#sec-qe{display:none!important}}
 </style>
 </head>
 <body>
@@ -871,7 +918,7 @@ body.onland main{padding-top:10px}
       <li><span class="h7-ico" aria-hidden="true">&#9670;</span>Reported to the CTO at Prudential, DoubleVerify and S&amp;P Global</li>
       <li><span class="h7-ico" aria-hidden="true">&#9670;</span>Chaired S&amp;P Global&rsquo;s AI Governance Committee with the CISO, Risk, Compliance and Legal</li>
       <li><span class="h7-ico" aria-hidden="true">&#9670;</span><span class="h7-k">350+</span> engineers on governed AI in 13 months &middot; <span class="h7-k">&minus;20%</span> production defects &middot; <span class="h7-k">2&times;</span> release cadence <small>S&amp;P Global actuals</small></li>
-    </ul><button type="button" class="h7-wm" data-slide="Why Sonia">Why Sonia &rarr;</button></div>
+    </ul><div class="h7-wb"><button type="button" class="h7-wm" data-slide="Why Sonia">Why Sonia &rarr;</button><a class="h7-wm" href="#security" data-sec="sec-security">+ Security &amp; QE &rarr;</a></div></div>
     <div class="h7-r3">
       <div class="h7-path"><ol class="hpath" aria-label="How I would start: listen, learn, propose, prove"><li style="--c:var(--teal)" title="Listen: First 30 days: teams, advisors, Risk &amp; Compliance"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9a6 6 0 1 1 12 0c0 3-2 4-3 5.5s-1 3.5-3.5 3.5"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-1.5 2-1.5 3"/></svg></span><div><b><i>1</i>Listen</b><span>30 days with teams, advisors, Risk</span></div></li><li style="--c:var(--accent)" title="Learn: Baseline cycle time, quality, developer experience"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/><path d="M8 12l2-2 1.5 1.5L14 9"/></svg></span><div><b><i>2</i>Learn</b><span>Baseline cycle time, quality, DevEx</span></div></li><li style="--c:var(--violet)" title="Propose: Target-state PDLC, stage gates, team model"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h4"/></svg></span><div><b><i>3</i>Propose</b><span>Target PDLC, gates, team model</span></div></li><li style="--c:var(--ok)" title="Prove: Pilot one team, then scale in waves"><span class="hp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg></span><div><b><i>4</i>Prove</b><span>Pilot one team, scale in waves</span></div></li></ol><span class="hp-note">Illustrative plan</span></div>
       <div class="hcta3"><button type="button" class="hbtn" id="tourbtn">&#9654; See the proposal in 60 seconds</button><a class="hlink" href="https://www.linkedin.com/in/sonia-malik-b059705" target="_blank" rel="noopener">Book a 15-min walkthrough &rarr;</a></div>
@@ -925,8 +972,48 @@ body.onland main{padding-top:10px}
     </div>
   </section>
 
+
+  <section class="lsec" id="sec-security" aria-labelledby="sx-h">
+    <div class="ls-h"><span class="ls-n">04</span><div><span class="add-eye">What I&rsquo;d add for LPL</span><h2 id="sx-h">Security testing built in</h2><p>As agents write more of the code, security testing has to run in the path, not after it. My 4-stage framework plugs into the same seven stages, so findings land in the evidence pack, not a late review.</p></div></div>
+    <ol class="sx-flow" aria-label="Four-stage security testing framework">
+      <li style="--c:var(--accent)"><div class="sx-h"><span class="sx-ic"><svg viewBox="0 0 24 24"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/><path d="M13.5 4l-3 16"/></svg></span><div><small>Stage 1</small><b>SAST</b></div></div><p>Static code analysis on every commit, AI-assisted code included.</p><div class="sx-in">Runs in <span>Build</span></div></li>
+      <li style="--c:var(--violet)"><div class="sx-h"><span class="sx-ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><div><small>Stage 2</small><b>DAST</b></div></div><p>Runtime testing with positive and negative inputs, so what passes on paper is proven running.</p><div class="sx-in">Runs in <span>Test</span></div></li>
+      <li style="--c:var(--warn)"><div class="sx-h"><span class="sx-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span><div><small>Stage 3</small><b>Network penetration testing</b></div></div><p>Tied to each major release: revisit results, run impact analysis on the changed code, then retest or get CISO re-certification.</p><div class="sx-in">Runs in <span>Test</span><span>Release</span></div></li>
+      <li style="--c:var(--teal)"><div class="sx-h"><span class="sx-ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><div><small>Stage 4</small><b>Ethical hacking</b></div></div><p>Change agents from the security team take on ethical-hacker responsibilities and probe like an attacker would.</p><div class="sx-in">Runs in <span>Test</span>ongoing</div></li>
+    </ol>
+    <div class="sx-log"><span class="sx-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 10h7M9 14h4"/><path d="M15 17l4 4"/></svg></span><p><b>Always on: log scrubbing.</b> Logs held details that were being exposed to AI models, so log scrubbing became a permanent pipeline check.</p><div class="sx-in">Evidence in <span>Audit evidence</span></div></div>
+    <div class="sx-two">
+      <div class="g3 sx-story"><h3>Why it exists: one release I stopped</h3><p>At S&amp;P Global, SAST was clean and go-live had been approved on SAST results alone. In my own testing with negative inputs, an error message exposed the server directory structure at runtime. The code was part legacy and part AI-generated. I stopped the release, ran full DAST, and we went live 2 days late, safely. Then I turned it into a reusable framework.</p></div>
+      <div class="g3"><h3>A 90-day security-gate rollout for LPL <span class="ill">Illustrative plan</span></h3>
+        <ol class="sx-tl"><li><em>Days 1&ndash;30 &middot; Listen</em><b>Map today&rsquo;s security testing</b>With Information Security and the CISO&rsquo;s team: what runs, where, and what each release is approved on.</li><li><em>Days 31&ndash;60 &middot; Pilot</em><b>Gates on one product team</b>SAST and DAST as gates, log scrubbing as a check, and pen-test re-checks tied to its next major release.</li><li><em>Days 61&ndash;90 &middot; Scale</em><b>Shared templates, in waves</b>A shared repository and templates, security change agents in each wave, results in every evidence pack.</li></ol></div>
+    </div>
+    <div class="sx-proof" aria-label="Proof"><div><b>100+</b><span>scrum teams adopted it in S&amp;P Ratings</span></div><div><b>Next</b><span>picked up by S&amp;P Dow Jones Indices</span></div><div><b>&minus;30%</b><span>security vulnerabilities</span><small>Audible</small></div><div><span>Built on security champion training at Audible and Prudential experience</span></div></div>
+  </section>
+
+  <section class="lsec" id="sec-qe" aria-labelledby="qx-h">
+    <div class="ls-h"><span class="ls-n">05</span><div><span class="add-eye">What I&rsquo;d add for LPL</span><h2 id="qx-h">From QA to QE</h2><p>Quality engineered in from the start, not checked at the end, with people brought along, not left behind.</p></div></div>
+    <div class="qx-top">
+      <div class="g3 qx-ratio"><h3>Dev:QE ratio at S&amp;P Global</h3>
+        <div class="qx-bar" aria-label="Before: 2.5 developers per QE engineer"><span>Before</span><div><i></i><i></i><i class="h"></i><i class="q"></i><strong>2.5 : 1</strong></div></div>
+        <div class="qx-bar" aria-label="After: 4 developers per QE engineer"><span>After</span><div><i></i><i></i><i></i><i></i><i class="q"></i><strong>4 : 1</strong></div></div>
+        <p class="hnote" style="margin:0">Blue: developers &middot; green: QE engineer.</p></div>
+      <div class="qx-co">
+        <div class="g3"><h3><span class="sx-ic" style="--c:var(--accent);width:28px;height:28px"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>S&amp;P Global</h3><ul><li><b>2.5:1 &rarr; 4:1</b>Dev:QE ratio</li><li><b>32+</b>engineer platform team building shared frameworks and tools</li><li><b>8&ndash;10</b>tools consolidated</li></ul></div>
+        <div class="g3"><h3><span class="sx-ic" style="--c:var(--teal);width:28px;height:28px"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 14.2A5 5 0 0 1 21 19"/></svg></span>Prudential</h3><ul><li><b>&minus;50%</b>QA cost</li><li><b>&minus;30%</b>testing time in 9 months</li><li><b>50+</b>reskilled into automation, of 150+ mainframe engineers taken in</li><li><b>40+</b>Customer Office QE, scaled for 10 scrum teams</li></ul></div>
+      </div>
+    </div>
+    <ul class="qx-ch" aria-label="How people change">
+      <li><span class="sx-ic" style="--c:var(--violet)"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3 2.7-5 6-5 1.5 0 2.9.4 4 1.2 1.1-.8 2.5-1.2 4-1.2 3.3 0 6 2 6 5"/></svg></span><div><b>Peer-pair coaching</b><span>No one learns alone: engineers pair up as they move to automation.</span></div></li>
+      <li><span class="sx-ic" style="--c:var(--accent)"><svg viewBox="0 0 24 24"><path d="M3 8l9-4 9 4-9 4z"/><path d="M7 10v5c0 1.7 2.2 3 5 3s5-1.3 5-3v-5"/></svg></span><div><b>Outside expertise</b><span>External trainers and conferences bring in new practice.</span></div></li>
+      <li><span class="sx-ic" style="--c:var(--ok)"><svg viewBox="0 0 24 24"><path d="M4 20V13M10 20V8M16 20v-5M22 4l-6 6-4-3-8 6"/></svg></span><div><b>A clear metrics framework</b><span>Everyone sees the same measures of progress.</span></div></li>
+      <li><span class="sx-ic" style="--c:var(--warn)"><svg viewBox="0 0 24 24"><path d="M12 3c3 3 5 6 5 10a5 5 0 0 1-10 0c0-2 1-4 2-5 0 2 1 3 2 3 0-3 0-5 1-8z"/></svg></span><div><b>Fail fast, safely</b><span>Small pilots where trying something new is safe.</span></div></li>
+    </ul>
+    <div class="g3 qx-plan"><h3>What this could look like at LPL <span class="ill">Illustrative plan</span></h3>
+      <ol class="sx-tl"><li><em>Assess</em><b>Skills and tools baseline</b>Where testing is manual, which tools overlap, and how each team measures quality today.</li><li><em>Coach</em><b>Pair up, in waves</b>Peer-pair coaching and a shared platform team for frameworks, so teams reuse instead of rebuild.</li><li><em>Measure</em><b>Consolidate and track</b>Fewer tools, automation in the pipeline, and Dev:QE, defect escape and test cycle time on the CTO scorecard.</li></ol></div>
+  </section>
+
   <section class="lsec" id="sec-proof" aria-labelledby="pr-h">
-    <div class="ls-h"><span class="ls-n">04</span><div><h2 id="pr-h">Proof</h2><p>What this approach delivered at S&amp;P Global, and what LPL&rsquo;s CTO would see.</p></div></div>
+    <div class="ls-h"><span class="ls-n">06</span><div><h2 id="pr-h">Proof</h2><p>What this approach delivered at S&amp;P Global, and what LPL&rsquo;s CTO would see.</p></div></div>
     <div class="proof3">
       <div class="p3s"><div><b>2&times;</b><span>release cadence</span></div><div><b>&minus;20%</b><span>production defects</span></div><div><b>same day</b><span>regulated sign-off (was 3 days)</span></div><div><b>350+</b><span>engineers on governed AI in 13 months</span></div></div>
       <div class="p3c"><div class="g3"><h3>One scorecard for the CTO</h3><p>DORA (lead time, deploy frequency, change failure rate, time to restore), cycle time, quality, agent effectiveness, developer experience, cost-to-deliver, technical debt, resilience, advisor outcomes, exam-ready evidence.</p><button type="button" class="g3-l" data-slide="Scorecard">Open the scorecard &rarr;</button></div>
@@ -1206,9 +1293,9 @@ body.onland main{padding-top:10px}
 (function(){
   var S=[].slice.call(document.querySelectorAll('.slide')), nav=document.getElementById('nav'), dots=document.getElementById('dots'), cur=0;
   var src=new URLSearchParams(location.search).get('src')||'';
-  var LBL={'Process':'Overview','Process>sec-proposal':'The 7-stage PDLC','Process>sec-people':'Persona journeys','Process>sec-gov':'Governance built in','Process>sec-proof':'Proof at a glance','Why Sonia':'Why Sonia'};
-  var DSC={'Process':'Listen, learn, propose, prove','Process>sec-proposal':'People decide, agents assist, evidence proves','Process>sec-people':'Advisor, institution, investor, operations','Process>sec-gov':'Gates, controls and the JD map','Process>sec-proof':'S&P Global results and the CTO scorecard','Value model':'One PDLC every team follows','Practices':'Enterprise development standards','Journey':'The advisor journey in three layers','Walkthrough':'One advisor opportunity through the process','Team model':'Smaller, higher-leverage human-agent teams','Gates':'Scored quality gates over CI/CD','Controls':'Audit, Legal, Compliance, Privacy, Model Risk, Security','Scorecard':'Outcome measures for the CTO','Roadmap':'Baseline, pilot, then scale in waves','Demo':'See the full prototype run','Why Sonia':'Track record and proof'};
-  var GR=[['Proposal',['Process','Process>sec-proposal','Value model','Practices','Roadmap']],['Journeys',['Process>sec-people','Journey','Walkthrough','Team model']],['Governance',['Process>sec-gov','Gates','Controls']],['Proof',['Process>sec-proof','Scorecard','Why Sonia','Demo']]];
+  var LBL={'Process':'Overview','Process>sec-proposal':'The 7-stage PDLC','Process>sec-people':'Persona journeys','Process>sec-gov':'Governance built in','Process>sec-proof':'Proof at a glance','Process>sec-security':'Security testing built in','Process>sec-qe':'From QA to QE','Why Sonia':'Why Sonia'};
+  var DSC={'Process':'Listen, learn, propose, prove','Process>sec-proposal':'People decide, agents assist, evidence proves','Process>sec-people':'Advisor, institution, investor, operations','Process>sec-gov':'Gates, controls and the JD map','Process>sec-proof':'S&P Global results and the CTO scorecard','Process>sec-security':'4-stage framework and a 90-day rollout','Process>sec-qe':'Dev:QE, reskilling and how people change','Value model':'One PDLC every team follows','Practices':'Enterprise development standards','Journey':'The advisor journey in three layers','Walkthrough':'One advisor opportunity through the process','Team model':'Smaller, higher-leverage human-agent teams','Gates':'Scored quality gates over CI/CD','Controls':'Audit, Legal, Compliance, Privacy, Model Risk, Security','Scorecard':'Outcome measures for the CTO','Roadmap':'Baseline, pilot, then scale in waves','Demo':'See the full prototype run','Why Sonia':'Track record and proof'};
+  var GR=[['Proposal',['Process','Process>sec-proposal','Value model','Practices','Roadmap']],['Journeys',['Process>sec-people','Journey','Walkthrough','Team model']],['Governance',['Process>sec-gov','Gates','Controls']],['What I\u2019d add',['Process>sec-security','Process>sec-qe']],['Proof',['Process>sec-proof','Scorecard','Why Sonia','Demo']]];
   var IDX={};S.forEach(function(s,i){IDX[s.dataset.name]=i;dots.appendChild(document.createElement('i'));});
   function nm(x){return x.split('>')[0]}function sc(x){return x.split('>')[1]}
   var used={};GR.forEach(function(g){g[1]=g[1].filter(function(n){return nm(n) in IDX});g[1].forEach(function(n){used[n]=1})});
@@ -1250,7 +1337,7 @@ body.onland main{padding-top:10px}
   document.getElementById('next').onclick=function(){go(cur===S.length-1?0:cur+1);userNav()};
   document.getElementById('brand').onclick=function(e){e.preventDefault();go(0);userNav();};
   document.addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('input,textarea'))return;if(e.key==='ArrowRight'){go(cur+1);userNav();}if(e.key==='ArrowLeft'){go(cur-1);userNav();}});
-  var AL={value:'value-model','model-i':'value-model','model-1':'value-model',modeli:'value-model',pdlc:'process',flow:'process','ai-pdlc':'walkthrough',audit:'controls',security:'controls',persona:'journey',why:'why-sonia'}; var SECH={proposal:'sec-proposal','the-proposal':'sec-proposal',people:'sec-people',journeys:'sec-people',personas:'sec-people',governance:'sec-gov','governance-built-in':'sec-gov',proof:'sec-proof','sec-proposal':'sec-proposal','sec-people':'sec-people','sec-gov':'sec-gov','sec-proof':'sec-proof'}; var h=decodeURIComponent((location.hash||'').slice(1)).toLowerCase().replace(/[^a-z0-9]+/g,'-'); var hs=SECH[h]; h=AL[h]||h; var start=0; S.forEach(function(s,i){if(slug(s.dataset.name)===h)start=i}); go(start); if(hs){goSec(hs);}
+  var AL={value:'value-model','model-i':'value-model','model-1':'value-model',modeli:'value-model',pdlc:'process',flow:'process','ai-pdlc':'walkthrough',audit:'controls',persona:'journey',why:'why-sonia'}; var SECH={proposal:'sec-proposal','the-proposal':'sec-proposal',people:'sec-people',journeys:'sec-people',personas:'sec-people',governance:'sec-gov','governance-built-in':'sec-gov',proof:'sec-proof',security:'sec-security','security-testing':'sec-security',qe:'sec-qe','qa-to-qe':'sec-qe','from-qa-to-qe':'sec-qe','sec-security':'sec-security','sec-qe':'sec-qe',add:'sec-security','sec-proposal':'sec-proposal','sec-people':'sec-people','sec-gov':'sec-gov','sec-proof':'sec-proof'}; var h=decodeURIComponent((location.hash||'').slice(1)).toLowerCase().replace(/[^a-z0-9]+/g,'-'); var hs=SECH[h]; h=AL[h]||h; var start=0; S.forEach(function(s,i){if(slug(s.dataset.name)===h)start=i}); go(start); if(hs){goSec(hs);}
   [].forEach.call(document.querySelectorAll('[data-slide]'),function(b){b.addEventListener('click',function(){go(IDX[b.dataset.slide]);userNav();})});
   [].forEach.call(document.querySelectorAll('a[data-sec]'),function(a){a.addEventListener('click',function(e){e.preventDefault();goSec(a.dataset.sec);})});
 
