@@ -704,6 +704,24 @@ main,.top .in,.foot .in,.subnav .in{max-width:1680px;padding-left:clamp(16px,3vw
  .land .pf-loop{height:10px;margin-top:0}.land .pf-loop span{display:none}}
 .jc-h{padding:7px 14px}.jc-c{min-height:150px;padding:8px 12px 6px}.jc-card{gap:7px}.jc-b{padding:6px 12px}.jc-p{padding-top:7px}
 .land .hero2{margin-bottom:6px}
+/* v5: balanced hero, no dead gutter */
+.land .hero2{grid-template-columns:minmax(0,1fr) clamp(460px,34vw,600px);gap:32px;align-items:stretch}
+.land .hero2 .h2l{justify-content:center;min-width:0}
+.land .hero2 h2{max-width:none;font-size:clamp(1.7rem,2vw,2.45rem)}
+.land .hero2 .hsub{max-width:none}
+.land .hero2 .h2l .ps-land{grid-template-columns:repeat(4,minmax(0,1fr));max-width:none;width:100%}
+.land .hero2 .jc{height:100%}.land .hero2 .jc-c{flex:1}
+@media (max-width:1400px){.land .hero2{grid-template-columns:minmax(0,1fr) 460px;gap:28px}.land .hero2 h2{font-size:1.75rem}}
+@media (max-width:980px){.land .hero2{grid-template-columns:1fr}.land .hero2 .jc{height:auto}}
+@media (max-width:640px){.land .hero2 .h2l .ps-land{grid-template-columns:1fr 1fr}}
+@media (min-width:1700px) and (min-height:1000px){
+ main{padding-top:22px}.land .hero2{margin-bottom:18px}
+ .land .hero2 h2{font-size:2.75rem}.land .hero2 .hsub{font-size:1.12rem}.hero2 .h2l .ps-land span{padding:12px 14px;font-size:.86rem}.hero2 .h2l .ps-land b{font-size:1.45rem}
+ .jc-c{min-height:200px;padding:14px 16px}.jc-tt h4{font-size:1.45rem}.jc-av{width:56px;height:56px}.jc-bar2 i{height:30px}.jc-bar2 i span{line-height:30px;font-size:.68rem}.jc-ch span{font-size:.8rem}
+ .land .pf-n{padding:16px 10px 12px;gap:7px}.land .pf-ic{width:54px;height:54px}.land .pf-ic svg{width:28px;height:28px}.land .pf-nm{font-size:1.15rem}.land .pf-track li:not(:last-child)::after{top:42px}
+ .land .pf-ph{margin-bottom:10px}.land .pf-cp{margin-top:12px}.land .pf-loop{margin-top:4px}
+ .land .pf-d{margin-top:22px;padding:18px 20px}.land .pf-dh h3{font-size:1.5rem}.land .pf-dh p{font-size:.95rem}.land .pf-l{padding:12px 14px}.land .pf-l p{font-size:.98rem}.land .pf-ft{font-size:.88rem}
+}
 @media print{main{padding:0!important;max-width:none!important}.land .hero2 h2{font-size:1.6rem!important;max-width:none}.jc{display:none!important}.land .hero2{grid-template-columns:1fr}.hero2 .h2l .ps-land{grid-template-columns:repeat(4,1fr);max-width:none}}
 </style>
 </head>
