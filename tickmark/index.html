@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TICKMARK · Governed AI solution delivery for EisnerAmper</title>
+<meta name="description" content="A proposed delivery path that takes every AI solution from idea to client-ready, tested and approved, across all EisnerAmper service lines. By Sonia Malik.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Crect width=%2724%27 height=%2724%27 rx=%275%27 fill=%27%230E4D45%27/%3E%3Cpath d=%27m6 12.5 4 4 8-9%27 fill=%27none%27 stroke=%27%23E2B24A%27 stroke-width=%272.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F6F5;--surface:#fff;--sunk:#E9EEEC;--fg:#15201D;--muted:#4D5A56;--faint:#717D79;--line:#D5DDDA;
+  --green:#0E4D45;--green-soft:#E1EEEB;--gold:#8F6410;--gold-soft:#FBF1DA;--gold-hi:#E2B24A;
+  --blue:#1F4E8C;--blue-soft:#E4ECF7;--red:#A33A2A;--red-soft:#F8E6E2;--ok:#2E7D4F;--ok-soft:#E3F2E8;
+  --f-display:"Fraunces",Georgia,serif;--f-body:"Public Sans","Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:66px}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--green)}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+svg.i{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+/* header */
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:56px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.logo .mk{width:34px;height:34px;border-radius:9px;background:var(--green);display:grid;place-items:center}
+.logo b{display:block;font-family:var(--f-display);font-weight:600;letter-spacing:.14em;font-size:1rem;color:var(--green)}
+.logo small{display:block;font-size:.68rem;color:var(--faint);margin-top:-2px}
+.menu{display:flex;gap:2px;margin-left:auto}
+.menu a{font-size:.83rem;font-weight:600;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:8px}
+.menu a:hover,.menu a.on{background:var(--green-soft);color:var(--green)}
+.cta{background:var(--green);color:#fff;text-decoration:none;font-weight:700;font-size:.8rem;padding:8px 13px;border-radius:9px;white-space:nowrap}
+.burger{display:none;margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 9px}
+/* hero */
+.hero{padding:12px 0 4px}
+.eyebrow{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.1em;color:var(--gold);background:var(--gold-soft);padding:3px 9px;border-radius:999px;text-transform:uppercase}
+.hero h1{font-size:1.55rem;line-height:1.18;color:var(--green);margin-top:5px}
+.hero .sub{color:var(--muted);font-size:.9rem;margin-top:3px;max-width:80ch}
+.why{margin-top:9px;display:grid;grid-template-columns:auto repeat(4,1fr);gap:10px;align-items:stretch}
+.why .lbl{font-size:.64rem;font-weight:700;letter-spacing:.1em;color:var(--green);text-transform:uppercase;display:flex;align-items:center;line-height:1.3;padding-right:4px}
+.proof{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--gold-hi);border-radius:9px;padding:6px 10px;font-size:.76rem;color:var(--muted)}
+.proof b{display:block;font-family:var(--f-display);font-size:1.02rem;color:var(--green);font-weight:600}
+/* journey */
+.sec{padding:14px 0 22px}
+.sec+.sec{border-top:1px solid var(--line);padding-top:24px}
+.sh{display:flex;align-items:baseline;gap:12px;margin-bottom:9px;flex-wrap:wrap}
+.sh .no{font-family:var(--f-display);font-size:.84rem;color:var(--gold);border:1px solid var(--gold-hi);border-radius:999px;padding:0 9px}
+.sh h2{font-size:1.28rem;color:var(--green)}
+.sh p{color:var(--muted);font-size:.86rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{display:flex;gap:7px;align-items:center;border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 12px;font-weight:600;font-size:.84rem;color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--green);border-color:var(--green);color:#fff}
+.case{margin-top:9px;padding:12px 14px}
+.case .hd{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.case h3{font-size:1.12rem}
+.tier{font-size:.7rem;font-weight:700;border-radius:999px;padding:2px 10px;letter-spacing:.04em}
+.t1{background:var(--ok-soft);color:var(--ok)}.t2{background:var(--blue-soft);color:var(--blue)}.t3{background:var(--red-soft);color:var(--red)}
+.case .why-t{font-size:.8rem;color:var(--muted)}
+.play{margin-left:auto;display:flex;gap:6px}
+.play button{border:1px solid var(--line);background:#fff;border-radius:8px;font-weight:700;font-size:.78rem;padding:6px 11px}
+.play button.pri{background:var(--gold-hi);border-color:var(--gold-hi);color:#3a2a05}
+.flow{list-style:none;margin:11px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:9px}
+.st{position:relative;border:1px solid var(--line);border-radius:10px;padding:8px 9px 9px;background:#FBFCFB;transition:border-color .25s,background .25s,box-shadow .25s}
+.st:not(:last-child):after{content:"";position:absolute;right:-9px;top:20px;border:5px solid transparent;border-left:6px solid #9AA6A2}
+.st .k{display:flex;gap:6px;align-items:center;font-size:.7rem;font-weight:700;letter-spacing:.04em;color:var(--green);text-transform:uppercase}
+.st .tk{width:18px;height:18px;border-radius:50%;border:1.6px solid #B5C0BC;display:grid;place-items:center;flex:none;transition:all .25s}
+.st .tk svg{width:12px;height:12px;stroke:#fff;stroke-width:3;opacity:0}
+.st b{display:block;font-size:.88rem;margin:3px 0 2px;color:var(--fg)}
+.st .w{font-size:.76rem;color:var(--muted)}
+.st .g{display:block;margin-top:5px;font-size:.72rem;color:var(--gold);background:var(--gold-soft);border-radius:6px;padding:3px 6px}
+.st .s{display:block;margin-top:4px;font-size:.7rem;color:var(--green);font-weight:600}
+.st.on{border-color:var(--green);background:#fff;box-shadow:0 3px 12px rgba(14,77,69,.12)}
+.st.on .tk{background:var(--green);border-color:var(--green)}
+.st.on .tk svg{opacity:1}
+.st.now{border:2px solid var(--gold-hi);padding:7px 8px 8px}
+.outc{margin-top:9px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:.82rem}
+.outc .m{display:flex;gap:6px;align-items:center;background:var(--ok-soft);color:var(--ok);border-radius:8px;padding:4px 10px;font-weight:600}
+.ill{font-size:.6rem;font-weight:700;letter-spacing:.08em;color:var(--gold);background:var(--gold-soft);border:1px solid #EBD6A6;padding:1px 7px;border-radius:999px;text-transform:uppercase}
+.same{font-size:.78rem;color:var(--faint);margin-left:auto}
+.same a{font-weight:600}
+/* path table */
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);background:var(--sunk)}
+td b{color:var(--green)}
+.tbl{overflow-x:auto}
+/* tiers */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tc{padding:12px}
+.tc h3{font-size:1rem;display:flex;gap:8px;align-items:center}
+.tc .ex{font-size:.78rem;color:var(--muted);margin:4px 0 6px}
+.tc ul{margin:0;padding-left:17px;font-size:.8rem}
+.tc li{margin:2px 0}
+.tc.x1{border-top:4px solid var(--ok)}.tc.x2{border-top:4px solid var(--blue)}.tc.x3{border-top:4px solid var(--red)}
+/* scorecard */
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}
+.kpi{padding:10px}
+.kpi small{display:block;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:700;min-height:2.4em}
+.kpi b{display:block;font-family:var(--f-display);font-size:1.35rem;color:var(--green);font-weight:600}
+.kpi span{font-size:.74rem;color:var(--muted)}
+.two{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;margin-top:10px}
+.pad{padding:12px}
+.pad h3{font-size:.98rem;margin-bottom:6px;color:var(--green)}
+/* plan */
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ph{padding:12px}
+.ph small{font-size:.66rem;font-weight:700;letter-spacing:.1em;color:var(--gold);text-transform:uppercase}
+.ph h3{font-size:1rem;margin:2px 0 5px}
+.ph ul{margin:0;padding-left:17px;font-size:.8rem}
+.ph li{margin:3px 0}
+.pm{margin-top:10px;padding:11px 14px;display:flex;gap:12px;align-items:flex-start;border-left:4px solid var(--gold-hi)}
+.pm p{font-size:.84rem}
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.ab{padding:12px}
+.ab b.n{display:block;font-family:var(--f-display);font-size:1.15rem;color:var(--green)}
+.ab p{font-size:.8rem;color:var(--muted);margin-top:2px}
+.ab .co{font-size:.66rem;font-weight:700;letter-spacing:.08em;color:var(--faint);text-transform:uppercase}
+.contact{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.contact a{font-weight:700;text-decoration:none;font-size:.84rem;background:var(--green-soft);border-radius:999px;padding:7px 14px}
+footer{padding:14px 0 30px;font-size:.74rem;color:var(--faint);border-top:1px solid var(--line)}
+@media (max-width:1000px){
+  .flow{grid-template-columns:repeat(3,1fr)}
+  .st:nth-child(3):after{display:none}
+  .kpis{grid-template-columns:repeat(3,1fr)}
+  .why{grid-template-columns:1fr 1fr}.why .lbl{grid-column:1/-1}
+}
+@media (max-width:760px){
+  .menu{display:none;position:absolute;top:56px;left:0;right:0;background:#fff;flex-direction:column;padding:8px 16px;border-bottom:1px solid var(--line)}
+  .menu.open{display:flex}
+  .burger{display:block}.cta{display:none}
+  .flow{grid-template-columns:1fr 1fr}
+  .st:after{display:none}
+  .tiers,.plan,.about,.two{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:1.3rem}
+  .wrap{padding:0 16px}
+  .play{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <symbol id="i-tick" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+ <symbol id="i-audit" viewBox="0 0 24 24"><path d="M9 4h6l1 2h3v14H5V6h3z"/><path d="m9 13 2 2 4-4"/></symbol>
+ <symbol id="i-tax" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+ <symbol id="i-adv" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="M12 8v5M12 16h.01"/></symbol>
+ <symbol id="i-out" viewBox="0 0 24 24"><path d="M4 7h16v12H4z"/><path d="M8 7V5h8v2M4 12h16"/></symbol>
+ <symbol id="i-firm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></symbol>
+ <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+</svg>
+
+<header class="top">
+ <div class="wrap">
+  <a class="logo" href="#top"><span class="mk"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#E2B24A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span><span><b>TICKMARK</b><small>A proposal for EisnerAmper · Sonia Malik</small></span></a>
+  <nav class="menu" id="menu" aria-label="Sections">
+   <a href="#journey">Journey</a><a href="#path">Delivery path</a><a href="#tiers">Risk tiers</a><a href="#scorecard">Scorecard</a><a href="#plan">First 90 days</a><a href="#about">About Sonia</a>
+  </nav>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
+  <a class="cta" href="mailto:sonia.malik78@gmail.com" data-contact>Contact Sonia</a>
+ </div>
+</header>
+
+<main class="wrap" id="top">
+ <section class="hero">
+  <span class="eyebrow">Work sample · Senior Director, AI Solution Delivery</span>
+  <h1>Every AI solution reviewed, tested and ticked before it reaches a client.</h1>
+  <p class="sub">TICKMARK is one delivery path for EisnerAI across Assurance, Tax, Advisory, Outsourcing and firm operations. The same gates, sized to each solution's risk, take an idea to a trusted, measured release.</p>
+  <div class="why">
+   <span class="lbl">Why Sonia</span>
+   <div class="proof"><b>3 days to same day</b>regulated sign-off, with controls built into delivery (S&amp;P Global)</div>
+   <div class="proof"><b>350+ engineers</b>on governed AI in 13 months (S&amp;P Global)</div>
+   <div class="proof"><b>Stopped a release</b>that passed static analysis; shipped 2 days late, safely</div>
+   <div class="proof"><b>17 promotions</b>including 2 to Director, leading delivery leaders</div>
+  </div>
+ </section>
+
+ <section class="sec" id="journey">
+  <div class="sh"><span class="no">1</span><h2>Pick a service line and watch a solution move through the path</h2><p>One path, five service lines, gates sized by risk.</p></div>
+  <div class="tabs" role="tablist" id="tabs" aria-label="Service lines"></div>
+  <div class="card case" id="case" role="tabpanel"></div>
+ </section>
+
+ <section class="sec" id="path">
+  <div class="sh"><span class="no">2</span><h2>The delivery path, with entry and exit criteria</h2><p>Reusable across every practice; only the depth of each gate changes with the <a href="#tiers">risk tier</a>.</p></div>
+  <div class="card tbl">
+   <table>
+    <thead><tr><th>Stage</th><th>What happens</th><th>Exit criteria (the tick)</th><th>Who signs</th></tr></thead>
+    <tbody>
+     <tr><td><b>1 · Intake &amp; value case</b></td><td>Practice sponsor brings the problem; one-page value case with hours, quality or revenue at stake</td><td>Sponsor named, baseline measured, success metric agreed</td><td>Practice leader, AI Solution Delivery</td></tr>
+     <tr><td><b>2 · Risk tier</b></td><td>Classify by client impact, data sensitivity and professional standards touched</td><td>Tier set; required gates, reviewers and data controls listed</td><td>Risk &amp; Quality, Information Security</td></tr>
+     <tr><td><b>3 · Build</b></td><td>Creator agents draft code, prompts and tests; engineers own and review every change</td><td>Requirements traced to tests; scope frozen for the release; change log open</td><td>Engineering lead</td></tr>
+     <tr><td><b>4 · Evaluate</b></td><td>Judge agents score outputs against rubrics and labeled samples; security testing, including penetration testing for client-facing tiers</td><td>Accuracy, grounding and safety thresholds met; no open high-severity findings</td><td>Quality lead, Information Security</td></tr>
+     <tr><td><b>5 · User acceptance testing</b></td><td>Practitioners run it side by side with today's process on real (approved) work</td><td>UAT feedback closed in days, not weeks; sign-off recorded</td><td>Practice sponsor</td></tr>
+     <tr><td><b>6 · Release &amp; monitor</b></td><td>Staged rollout with a release-quality score; drift, usage and value tracked</td><td>Value scorecard live; rollback plan tested; human review rules in place</td><td>Chief AI Officer (Tier 3), AI Solution Delivery</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </section>
+
+ <section class="sec" id="tiers">
+  <div class="sh"><span class="no">3</span><h2>Risk tiers decide how deep each gate goes</h2><p>Governance that speeds low-risk work up and slows only what needs it.</p></div>
+  <div class="tiers">
+   <div class="card tc x1"><h3><span class="tier t1">Tier 1</span>Internal productivity</h3><p class="ex">Staff-facing, no client data leaves the firm, a person uses the answer.</p><ul><li>Automated evaluation and grounding checks</li><li>Light UAT with a pilot group</li><li>Release by AI Solution Delivery</li><li>Target: idea to production in weeks</li></ul></div>
+   <div class="card tc x2"><h3><span class="tier t2">Tier 2</span>Client-supporting</h3><p class="ex">Uses client data; a professional reviews every output before it is used.</p><ul><li>Rubric evaluation on labeled client-like samples</li><li>Data isolation by client; access reviewed</li><li>UAT with practitioners on real work</li><li>Low-confidence items routed to a person</li></ul></div>
+   <div class="card tc x3"><h3><span class="tier t3">Tier 3</span>Client-facing or standards-bearing</h3><p class="ex">Touches audit evidence, tax positions or client deliverables under professional standards.</p><ul><li>Full evaluation plus penetration testing</li><li>Risk &amp; Quality review before UAT</li><li>Audit trail of every recommendation and override</li><li>Release approved by the Chief AI Officer</li></ul></div>
+  </div>
+ </section>
+
+ <section class="sec" id="scorecard">
+  <div class="sh"><span class="no">4</span><h2>One scorecard: value for leadership, detail for delivery</h2><p>Targets below are <span class="ill">Illustrative</span>, set with each practice from its own baseline.</p></div>
+  <div class="kpis">
+   <div class="card kpi"><small>Hours returned to practices</small><b>+15%</b><span>capacity on targeted workflows</span></div>
+   <div class="card kpi"><small>Idea to production</small><b>-40%</b><span>cycle time by tier</span></div>
+   <div class="card kpi"><small>Solutions in production</small><b>12</b><span>in year one, across all lines</span></div>
+   <div class="card kpi"><small>Adoption</small><b>70%</b><span>of intended users, monthly</span></div>
+   <div class="card kpi"><small>Escaped defects</small><b>-30%</b><span>issues found after release</span></div>
+   <div class="card kpi"><small>Return on AI spend</small><b>3x</b><span>value over run cost</span></div>
+  </div>
+  <div class="two">
+   <div class="card pad"><h3>Operational view for directors and project managers</h3>
+    <div class="tbl"><table><thead><tr><th>Measure</th><th>Why it matters</th></tr></thead><tbody>
+     <tr><td>Gate pass rate, first time</td><td>Shows where solutions stall and why</td></tr>
+     <tr><td>UAT feedback turnaround</td><td>Days, not weeks, keeps practitioners engaged</td></tr>
+     <tr><td>Open findings by severity</td><td>Nothing high-severity reaches a client</td></tr>
+     <tr><td>Scope changes after freeze</td><td>Requirements discipline, release by release</td></tr>
+     <tr><td>Override rate by reviewers</td><td>Where the AI is not yet trusted, and why</td></tr>
+    </tbody></table></div>
+   </div>
+   <div class="card pad"><h3>How the numbers stay honest</h3>
+    <ul style="margin:0;padding-left:17px;font-size:.82rem">
+     <li>Every solution starts with a measured baseline at intake</li>
+     <li>Value counted only after UAT sign-off, by the practice</li>
+     <li>Run cost includes model and token spend, not just build</li>
+     <li>Reviewed monthly with practice leaders; quarterly with the Chief AI Officer</li>
+    </ul>
+   </div>
+  </div>
+ </section>
+
+ <section class="sec" id="plan">
+  <div class="sh"><span class="no">5</span><h2>First 90 days</h2><p>Listen first, then one path, then scale.</p></div>
+  <div class="plan">
+   <div class="card ph"><small>Days 1–30</small><h3>Listen and map</h3><ul><li>Meet the Chief AI Officer, practice leaders, Risk &amp; Quality and Information Security</li><li>Inventory every AI solution in flight: owner, tier, stage, value</li><li>Spend time with project managers on what slows delivery today</li></ul></div>
+   <div class="card ph"><small>Days 31–60</small><h3>One path, one view</h3><ul><li>Agree the tiers and gate criteria with Risk &amp; Quality</li><li>Pilot the path on two solutions from different service lines</li><li>Stand up the scorecard with real baselines</li></ul></div>
+   <div class="card ph"><small>Days 61–90</small><h3>Make it repeatable</h3><ul><li>Templates for value cases, test plans and UAT sign-off</li><li>Release-quality score in the pipeline</li><li>Quarterly portfolio review with the Chief AI Officer</li></ul></div>
+  </div>
+  <div class="card pm"><svg class="i" style="color:var(--gold);margin-top:2px"><use href="#i-tick"/></svg><p><b>Leading the project and program managers.</b> One set of delivery standards, clear career paths and coaching, the way I grew 17 promotions, including 2 to Director, at S&amp;P Global. The goal is a team that delivers without every decision coming back to leadership.</p></div>
+ </section>
+
+ <section class="sec" id="about">
+  <div class="sh"><span class="no">6</span><h2>About Sonia</h2><p>Results from my career, not projections.</p></div>
+  <div class="about">
+   <div class="card ab"><span class="co">S&amp;P Global</span><b class="n">Regulated sign-off 3 days to same day</b><p>Chaired the AI Governance Committee and built Security, Risk, Compliance and Legal requirements into delivery as controls.</p></div>
+   <div class="card ab"><span class="co">S&amp;P Global</span><b class="n">Release readiness made measurable</b><p>A release-quality score gated promotion between environments, with entry and exit criteria for every phase.</p></div>
+   <div class="card ab"><span class="co">S&amp;P Global</span><b class="n">Features per PI +30% over 3 PIs</b><p>Creator agents drafted MVPs and stories from customer journeys, judge agents scored them, engineers approved.</p></div>
+   <div class="card ab"><span class="co">Audible, an Amazon company</span><b class="n">Sev2s -30%</b><p>Machine learning on production incidents found root-cause patterns so teams stopped repeating them.</p></div>
+   <div class="card ab"><span class="co">Prudential</span><b class="n">UAT feedback a week to 2–3 days</b><p>Live working sessions with all 5 business units.</p></div>
+   <div class="card ab"><span class="co">S&amp;P Global, DoubleVerify</span><b class="n">Audit-ready by design</b><p>Prepared SEC examination evidence and closed SOX findings with auditors.</p></div>
+  </div>
+  <div class="contact">
+   <a href="mailto:sonia.malik78@gmail.com" data-contact><svg class="i" style="vertical-align:-4px;margin-right:4px"><use href="#i-mail"/></svg>sonia.malik78@gmail.com</a>
+   <a href="https://www.linkedin.com/in/sonia-malik-b059705" rel="noopener" data-contact>LinkedIn</a>
+   <span style="font-size:.8rem;color:var(--muted)">Based in NJ, 15 minutes from the Iselin office.</span>
+  </div>
+ </section>
+</main>
+<footer><div class="wrap">TICKMARK is an independent work sample by Sonia Malik for the Senior Director, AI Solution Delivery role. Use cases and targets are illustrative, not EisnerAmper data. Results under About Sonia are from her career. © 2026 Sonia Malik</div></footer>
+
+<script>
+(function(){
+var C=[
+ {k:"assurance",n:"Assurance",ic:"audit",t:3,title:"Audit evidence review assistant",tw:"Tier 3: it touches audit evidence under professional standards.",
+  s:[["Intake","Engagement partner sponsors; baseline hours spent matching sample support","Baseline measured"],
+     ["Risk tier","Tier 3: client data, audit evidence, standards apply","Risk & Quality agrees tier"],
+     ["Build","Agents draft extraction and matching; engineers own the code","Requirements traced to tests"],
+     ["Evaluate","Judge agents score matches on labeled samples; penetration test; client data isolated","Thresholds met, no high findings"],
+     ["UAT","Three engagement teams run it side by side with manual review","Sponsor signs off"],
+     ["Release","Auditor reviews every flag; drift and overrides monitored","Chief AI Officer approves"]],
+  out:"Hours per engagement spent matching evidence"},
+ {k:"tax",n:"Tax",ic:"tax",t:3,title:"Workpaper drafter for returns",tw:"Tier 3: it informs tax positions a professional signs.",
+  s:[["Intake","Tax practice leader sponsors; baseline prep time per return","Baseline measured"],
+     ["Risk tier","Tier 3: client financial data, signed returns","Risk & Quality agrees tier"],
+     ["Build","Agents draft workpapers from source documents with citations","Every figure traced to a source"],
+     ["Evaluate","Judge agents check figures against source; reviewers test edge cases","Accuracy threshold met"],
+     ["UAT","Seniors run a dry run before busy season on prior-year returns","Reviewer signs off"],
+     ["Release","Preparer and reviewer still sign; review notes tracked","Chief AI Officer approves"]],
+  out:"Prep time and review notes per return"},
+ {k:"advisory",n:"Advisory",ic:"adv",t:2,title:"Risk assessment first draft",tw:"Tier 2: a consultant reviews every observation before the client sees it.",
+  s:[["Intake","Risk advisory sponsor; baseline time to first draft","Baseline measured"],
+     ["Risk tier","Tier 2: client policies in, consultant reviews out","Tier recorded"],
+     ["Build","Agents map client policies to a control framework and draft gaps","Scope frozen for release"],
+     ["Evaluate","Judge agents score grounding: every gap cites the policy line","Grounding threshold met"],
+     ["UAT","Two engagements compare drafts with consultant work","Sponsor signs off"],
+     ["Release","Consultant edits and owns the deliverable; edits feed back","Value scorecard live"]],
+  out:"Time to first draft; consultant edit rate"},
+ {k:"outsourcing",n:"Outsourcing",ic:"out",t:2,title:"Invoice coding and reconciliation",tw:"Tier 2: client books, with low-confidence items routed to an accountant.",
+  s:[["Intake","Client accounting leader sponsors; baseline items per hour","Baseline measured"],
+     ["Risk tier","Tier 2: client ledgers, accountant reviews exceptions","Tier recorded"],
+     ["Build","Agents suggest coding and match bank lines to entries","Rules and confidence levels agreed"],
+     ["Evaluate","Judge agents score on a labeled month of transactions","Accuracy by vendor type met"],
+     ["UAT","Accountants run one close cycle in parallel","Sponsor signs off"],
+     ["Release","Low-confidence items go to a person; corrections retrain","Value scorecard live"]],
+  out:"Share of items coded without edits; close-cycle days"},
+ {k:"firm",n:"Firm operations",ic:"firm",t:1,title:"Methodology and policy search for staff",tw:"Tier 1: internal, and a person uses every answer.",
+  s:[["Intake","Learning and quality leaders sponsor; baseline time to find answers","Baseline measured"],
+     ["Risk tier","Tier 1: firm content only, staff-facing","Tier recorded"],
+     ["Build","Agents answer from approved firm content with sources","Content owners named"],
+     ["Evaluate","Judge agents check every answer cites a source","Grounding threshold met"],
+     ["UAT","A pilot group of 50 staff for two weeks","Pilot lead signs off"],
+     ["Release","Firm-wide rollout; unanswered questions feed content","Adoption tracked"]],
+  out:"Time to answer; monthly active users"}
+];
+var tabs=document.getElementById('tabs'),box=document.getElementById('case'),timer=null,cur=0;
+C.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.className='tab';b.setAttribute('role','tab');b.dataset.tab=c.k;
+ b.innerHTML='<svg class="i"><use href="#i-'+c.ic+'"/></svg>'+c.n;b.addEventListener('click',function(){show(i,true)});tabs.appendChild(b);});
+var names=["Intake & value","Risk tier","Build","Evaluate","User acceptance","Release & monitor"];
+function show(i,auto){
+ cur=i;var c=C[i];clearInterval(timer);
+ Array.prototype.forEach.call(tabs.children,function(t,j){t.setAttribute('aria-selected',j===i?'true':'false')});
+ var h='<div class="hd"><h3>'+c.title+'</h3><span class="tier t'+c.t+'">Tier '+c.t+'</span><span class="why-t">'+c.tw+'</span><span class="play"><button type="button" class="pri replay" id="pl">Play the path</button><button type="button" id="all">Show all</button></span></div><ol class="flow">';
+ c.s.forEach(function(s,j){h+='<li class="st"><span class="k"><span class="tk"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span>'+(j+1)+' · '+names[j]+'</span><span class="w" style="display:block;margin-top:4px">'+s[1]+'</span><span class="g">Tick: '+s[2]+'</span></li>'});
+ h+='</ol><div class="outc"><span class="m"><svg class="i"><use href="#i-tick"/></svg>Outcome to measure</span>'+c.out+' <span class="ill">Illustrative</span><span class="same">Same six stages for every service line. See the <a href="#path">delivery path</a>.</span></div>';
+ box.innerHTML=h;
+ document.getElementById('pl').addEventListener('click',run);
+ document.getElementById('all').addEventListener('click',function(){clearInterval(timer);setStep(6)});
+ if(auto)run(); else setStep(6);
+}
+function setStep(n){var li=box.querySelectorAll('.st');li.forEach(function(x,j){x.classList.toggle('on',j<n);x.classList.toggle('now',j===n-1&&n<6)})}
+function run(){clearInterval(timer);var n=0;setStep(0);
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){setStep(6);return}
+ timer=setInterval(function(){n++;setStep(n);if(n>=6)clearInterval(timer)},700)}
+show(0,true);
+
+var bg=document.getElementById('burger'),mn=document.getElementById('menu');
+bg.addEventListener('click',function(){var o=mn.classList.toggle('open');bg.setAttribute('aria-expanded',o?'true':'false')});
+mn.addEventListener('click',function(e){if(e.target.tagName==='A'){mn.classList.remove('open');bg.setAttribute('aria-expanded','false')}});
+var links=mn.querySelectorAll('a');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});
+ ['journey','path','tiers','scorecard','plan','about'].forEach(function(id){io.observe(document.getElementById(id))});}
+})();
+</script>
+<script>
+(function(){window.goatcounter={path:function(p){return location.pathname+location.search}};
+document.addEventListener('click',function(e){var t=e.target.closest('[role=tab],[data-contact],.replay');if(!t||!window.goatcounter||!window.goatcounter.count)return;
+var n=(t.dataset.tab||(t.hasAttribute('data-contact')?'contact':'replay'));window.goatcounter.count({path:'prototypes/tickmark/tab/'+n+location.search,title:'Tab: '+n,event:true});},true);})();
+</script>
+<script data-goatcounter="https://soniamalik78.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
