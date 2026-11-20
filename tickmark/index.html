@@ -65,6 +65,7 @@ svg.i{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-widt
 .case h3{font-size:1.12rem}
 .tier{font-size:.7rem;font-weight:700;border-radius:999px;padding:2px 10px;letter-spacing:.04em}
 .t1{background:var(--ok-soft);color:var(--ok)}.t2{background:var(--blue-soft);color:var(--blue)}.t3{background:var(--red-soft);color:var(--red)}
+.pill-who{font-size:.72rem;font-weight:600;color:var(--green);background:var(--green-soft);border-radius:999px;padding:2px 9px}
 .case .why-t{font-size:.8rem;color:var(--muted)}
 .play{margin-left:auto;display:flex;gap:6px}
 .play button{border:1px solid var(--line);background:#fff;border-radius:8px;font-weight:700;font-size:.78rem;padding:6px 11px}
@@ -138,7 +139,8 @@ footer{padding:14px 0 30px;font-size:.74rem;color:var(--faint);border-top:1px so
 @media (max-width:760px){
   .menu{display:none;position:absolute;top:56px;left:0;right:0;background:#fff;flex-direction:column;padding:8px 16px;border-bottom:1px solid var(--line)}
   .menu.open{display:flex}
-  .burger{display:block}.cta{display:none}
+  .burger{display:block;margin-left:0}.cta{font-size:.72rem;padding:7px 9px;margin-left:auto}
+  .logo small{display:none}.top .wrap{gap:8px}.cta{font-size:.7rem;padding:7px 8px;white-space:nowrap}.burger{padding:5px 7px;font-size:.8rem}.cta .lg{display:none}
   .flow{grid-template-columns:1fr 1fr}
   .st:after{display:none}
   .tiers,.plan,.about,.two{grid-template-columns:1fr}
@@ -168,21 +170,21 @@ footer{padding:14px 0 30px;font-size:.74rem;color:var(--faint);border-top:1px so
    <a href="#journey">Journey</a><a href="#path">Delivery path</a><a href="#tiers">Risk tiers</a><a href="#scorecard">Scorecard</a><a href="#plan">First 90 days</a><a href="#about">About Sonia</a>
   </nav>
   <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
-  <a class="cta" href="mailto:sonia.malik78@gmail.com" data-contact>Contact Sonia</a>
+  <a class="cta" href="mailto:sonia.malik78@gmail.com?subject=TICKMARK%20walkthrough%20-%20Senior%20Director%2C%20AI%20Solution%20Delivery" data-contact>Book a <span class="lg">20-minute </span>walkthrough</a>
  </div>
 </header>
 
 <main class="wrap" id="top">
  <section class="hero">
   <span class="eyebrow">Work sample · Senior Director, AI Solution Delivery</span>
-  <h1>Every AI solution reviewed, tested and ticked before it reaches a client.</h1>
-  <p class="sub">TICKMARK is one delivery path for EisnerAI across Assurance, Tax, Advisory, Outsourcing and firm operations. The same gates, sized to each solution's risk, take an idea to a trusted, measured release.</p>
+  <h1>Every AI solution from approved use case to measured client outcome, on time, tested and signed off.</h1>
+  <p class="sub">TICKMARK is one delivery path for EisnerAI across Assurance, Tax, Advisory, Outsourcing and firm operations. The same gates, sized to each solution's risk, can carry solutions like the <a href="https://www.eisneramper.com/about-us/news/proprietary-software-running-on-microsoft-foundry-0326/" rel="noopener">EisnerAI Audit Design Agent</a> (built on Microsoft Foundry) from pilot to every practice.</p>
   <div class="why">
    <span class="lbl">Why Sonia</span>
    <div class="proof"><b>3 days to same day</b>regulated sign-off, with controls built into delivery (S&amp;P Global)</div>
    <div class="proof"><b>350+ engineers</b>on governed AI in 13 months (S&amp;P Global)</div>
    <div class="proof"><b>Stopped a release</b>that passed static analysis; shipped 2 days late, safely</div>
-   <div class="proof"><b>17 promotions</b>including 2 to Director, leading delivery leaders</div>
+   <div class="proof"><b>Growing delivery leaders</b>17 promotions including 2 to Director, through coaching and career paths (S&amp;P Global)</div>
   </div>
  </section>
 
@@ -199,9 +201,9 @@ footer{padding:14px 0 30px;font-size:.74rem;color:var(--faint);border-top:1px so
     <thead><tr><th>Stage</th><th>What happens</th><th>Exit criteria (the tick)</th><th>Who signs</th></tr></thead>
     <tbody>
      <tr><td><b>1 · Intake &amp; value case</b></td><td>Practice sponsor brings the problem; one-page value case with hours, quality or revenue at stake</td><td>Sponsor named, baseline measured, success metric agreed</td><td>Practice leader, AI Solution Delivery</td></tr>
-     <tr><td><b>2 · Risk tier</b></td><td>Classify by client impact, data sensitivity and professional standards touched</td><td>Tier set; required gates, reviewers and data controls listed</td><td>Risk &amp; Quality, Information Security</td></tr>
+     <tr><td><b>2 · Risk tier</b></td><td>Classify by client impact, data sensitivity and professional standards touched; environment, access, security, data and licensing lead times mapped onto the critical path so late approvals never stall delivery</td><td>Tier set; required gates, reviewers and data controls listed</td><td>Professional Practice and Risk, Information Security</td></tr>
      <tr><td><b>3 · Build</b></td><td>Creator agents draft code, prompts and tests; engineers own and review every change</td><td>Requirements traced to tests; scope frozen for the release; change log open</td><td>Engineering lead</td></tr>
-     <tr><td><b>4 · Evaluate</b></td><td>Judge agents score outputs against rubrics and labeled samples; security testing, including penetration testing for client-facing tiers</td><td>Accuracy, grounding and safety thresholds met; no open high-severity findings</td><td>Quality lead, Information Security</td></tr>
+     <tr><td><b>4 · Evaluate</b></td><td>Judge agents score outputs against rubrics and labeled samples; security testing, including penetration testing for client-facing tiers</td><td>Quality score of 80 or more <span class="ill">Illustrative</span>; accuracy, grounding and safety thresholds met; no open high-severity findings</td><td>Quality lead, Information Security</td></tr>
      <tr><td><b>5 · User acceptance testing</b></td><td>Practitioners run it side by side with today's process on real (approved) work</td><td>UAT feedback closed in days, not weeks; sign-off recorded</td><td>Practice sponsor</td></tr>
      <tr><td><b>6 · Release &amp; monitor</b></td><td>Staged rollout with a release-quality score; drift, usage and value tracked</td><td>Value scorecard live; rollback plan tested; human review rules in place</td><td>Chief AI Officer (Tier 3), AI Solution Delivery</td></tr>
     </tbody>
@@ -214,19 +216,19 @@ footer{padding:14px 0 30px;font-size:.74rem;color:var(--faint);border-top:1px so
   <div class="tiers">
    <div class="card tc x1"><h3><span class="tier t1">Tier 1</span>Internal productivity</h3><p class="ex">Staff-facing, no client data leaves the firm, a person uses the answer.</p><ul><li>Automated evaluation and grounding checks</li><li>Light UAT with a pilot group</li><li>Release by AI Solution Delivery</li><li>Target: idea to production in weeks</li></ul></div>
    <div class="card tc x2"><h3><span class="tier t2">Tier 2</span>Client-supporting</h3><p class="ex">Uses client data; a professional reviews every output before it is used.</p><ul><li>Rubric evaluation on labeled client-like samples</li><li>Data isolation by client; access reviewed</li><li>UAT with practitioners on real work</li><li>Low-confidence items routed to a person</li></ul></div>
-   <div class="card tc x3"><h3><span class="tier t3">Tier 3</span>Client-facing or standards-bearing</h3><p class="ex">Touches audit evidence, tax positions or client deliverables under professional standards.</p><ul><li>Full evaluation plus penetration testing</li><li>Risk &amp; Quality review before UAT</li><li>Audit trail of every recommendation and override</li><li>Release approved by the Chief AI Officer</li></ul></div>
+   <div class="card tc x3"><h3><span class="tier t3">Tier 3</span>Client-facing or standards-bearing</h3><p class="ex">Touches audit evidence, tax positions or client deliverables under professional standards.</p><ul><li>Full evaluation plus penetration testing</li><li>Single sign-on and external user access reviewed; sensitive data approved before UAT</li><li>Professional Practice and Risk review before UAT</li><li>Audit trail of every recommendation and override</li><li>Release approved by the Chief AI Officer</li></ul></div>
   </div>
  </section>
 
  <section class="sec" id="scorecard">
-  <div class="sh"><span class="no">4</span><h2>One scorecard: value for leadership, detail for delivery</h2><p>Targets below are <span class="ill">Illustrative</span>, set with each practice from its own baseline.</p></div>
+  <div class="sh"><span class="no">4</span><h2>One scorecard: value for leadership, detail for delivery</h2><p>Every target is <span class="ill">Illustrative</span>, set with each practice from its own baseline.</p></div>
   <div class="kpis">
-   <div class="card kpi"><small>Hours returned to practices</small><b>+15%</b><span>capacity on targeted workflows</span></div>
-   <div class="card kpi"><small>Idea to production</small><b>-40%</b><span>cycle time by tier</span></div>
-   <div class="card kpi"><small>Solutions in production</small><b>12</b><span>in year one, across all lines</span></div>
-   <div class="card kpi"><small>Adoption</small><b>70%</b><span>of intended users, monthly</span></div>
-   <div class="card kpi"><small>Escaped defects</small><b>-30%</b><span>issues found after release</span></div>
-   <div class="card kpi"><small>Return on AI spend</small><b>3x</b><span>value over run cost</span></div>
+   <div class="card kpi"><span class="ill" style="float:right">Illus.</span><small>Hours returned to practices</small><b>+15%</b><span>capacity on targeted workflows</span></div>
+   <div class="card kpi"><span class="ill" style="float:right">Illus.</span><small>Idea to production</small><b>-40%</b><span>cycle time by tier</span></div>
+   <div class="card kpi"><span class="ill" style="float:right">Illus.</span><small>Solutions in production</small><b>12</b><span>in year one, across all lines</span></div>
+   <div class="card kpi"><span class="ill" style="float:right">Illus.</span><small>Adoption</small><b>70%</b><span>of intended users, monthly</span></div>
+   <div class="card kpi"><span class="ill" style="float:right">Illus.</span><small>Escaped defects</small><b>-30%</b><span>issues found after release</span></div>
+   <div class="card kpi"><span class="ill" style="float:right">Illus.</span><small>Client-facing value</small><b>Set at intake</b><span>revenue, retention and client experience, from each baseline</span></div>
   </div>
   <div class="two">
    <div class="card pad"><h3>Operational view for directors and project managers</h3>
@@ -238,7 +240,7 @@ footer{padding:14px 0 30px;font-size:.74rem;color:var(--faint);border-top:1px so
      <tr><td>Override rate by reviewers</td><td>Where the AI is not yet trusted, and why</td></tr>
     </tbody></table></div>
    </div>
-   <div class="card pad"><h3>How the numbers stay honest</h3>
+   <div class="card pad"><h3>How value is counted</h3>
     <ul style="margin:0;padding-left:17px;font-size:.82rem">
      <li>Every solution starts with a measured baseline at intake</li>
      <li>Value counted only after UAT sign-off, by the practice</li>
@@ -252,27 +254,27 @@ footer{padding:14px 0 30px;font-size:.74rem;color:var(--faint);border-top:1px so
  <section class="sec" id="plan">
   <div class="sh"><span class="no">5</span><h2>First 90 days</h2><p>Listen first, then one path, then scale.</p></div>
   <div class="plan">
-   <div class="card ph"><small>Days 1–30</small><h3>Listen and map</h3><ul><li>Meet the Chief AI Officer, practice leaders, Risk &amp; Quality and Information Security</li><li>Inventory every AI solution in flight: owner, tier, stage, value</li><li>Spend time with project managers on what slows delivery today</li></ul></div>
-   <div class="card ph"><small>Days 31–60</small><h3>One path, one view</h3><ul><li>Agree the tiers and gate criteria with Risk &amp; Quality</li><li>Pilot the path on two solutions from different service lines</li><li>Stand up the scorecard with real baselines</li></ul></div>
+   <div class="card ph"><small>Days 1–30</small><h3>Listen and map</h3><ul><li>Meet the Chief AI Officer, practice leaders, Professional Practice and Risk and Information Security</li><li>Inventory every AI solution in flight: owner, tier, stage, value</li><li>Spend time with project managers on what slows delivery today</li></ul></div>
+   <div class="card ph"><small>Days 31–60</small><h3>One path, one view</h3><ul><li>Agree the tiers and gate criteria with Professional Practice and Risk</li><li>Pilot the path on two solutions from different service lines</li><li>Stand up the scorecard with real baselines</li></ul></div>
    <div class="card ph"><small>Days 61–90</small><h3>Make it repeatable</h3><ul><li>Templates for value cases, test plans and UAT sign-off</li><li>Release-quality score in the pipeline</li><li>Quarterly portfolio review with the Chief AI Officer</li></ul></div>
   </div>
-  <div class="card pm"><svg class="i" style="color:var(--gold);margin-top:2px"><use href="#i-tick"/></svg><p><b>Leading the project and program managers.</b> One set of delivery standards, clear career paths and coaching, the way I grew 17 promotions, including 2 to Director, at S&amp;P Global. The goal is a team that delivers without every decision coming back to leadership.</p></div>
+  <div class="card pm"><svg class="i" style="color:var(--gold);margin-top:2px"><use href="#i-tick"/></svg><p><b>Leading the project and program managers.</b> One set of delivery standards, clear career paths and coaching, the way Sonia grew 17 promotions, including 2 to Director, at S&amp;P Global. The goal is a team that delivers without every decision coming back to leadership.</p></div>
  </section>
 
  <section class="sec" id="about">
-  <div class="sh"><span class="no">6</span><h2>About Sonia</h2><p>Results from my career, not projections.</p></div>
+  <div class="sh"><span class="no">6</span><h2>About Sonia</h2><p>Results from Sonia's career.</p></div>
   <div class="about">
    <div class="card ab"><span class="co">S&amp;P Global</span><b class="n">Regulated sign-off 3 days to same day</b><p>Chaired the AI Governance Committee and built Security, Risk, Compliance and Legal requirements into delivery as controls.</p></div>
    <div class="card ab"><span class="co">S&amp;P Global</span><b class="n">Release readiness made measurable</b><p>A release-quality score gated promotion between environments, with entry and exit criteria for every phase.</p></div>
-   <div class="card ab"><span class="co">S&amp;P Global</span><b class="n">Features per PI +30% over 3 PIs</b><p>Creator agents drafted MVPs and stories from customer journeys, judge agents scored them, engineers approved.</p></div>
+   <div class="card ab"><span class="co">S&amp;P Global</span><b class="n">Features per planning increment +30% over 3 increments</b><p>Creator agents drafted MVPs and stories from customer journeys, judge agents scored them, engineers approved.</p></div>
    <div class="card ab"><span class="co">Audible, an Amazon company</span><b class="n">Sev2s -30%</b><p>Machine learning on production incidents found root-cause patterns so teams stopped repeating them.</p></div>
    <div class="card ab"><span class="co">Prudential</span><b class="n">UAT feedback a week to 2–3 days</b><p>Live working sessions with all 5 business units.</p></div>
    <div class="card ab"><span class="co">S&amp;P Global, DoubleVerify</span><b class="n">Audit-ready by design</b><p>Prepared SEC examination evidence and closed SOX findings with auditors.</p></div>
   </div>
   <div class="contact">
-   <a href="mailto:sonia.malik78@gmail.com" data-contact><svg class="i" style="vertical-align:-4px;margin-right:4px"><use href="#i-mail"/></svg>sonia.malik78@gmail.com</a>
+   <a href="mailto:sonia.malik78@gmail.com?subject=TICKMARK%20walkthrough%20-%20Senior%20Director%2C%20AI%20Solution%20Delivery" data-contact><svg class="i" style="vertical-align:-4px;margin-right:4px"><use href="#i-mail"/></svg>sonia.malik78@gmail.com</a>
    <a href="https://www.linkedin.com/in/sonia-malik-b059705" rel="noopener" data-contact>LinkedIn</a>
-   <span style="font-size:.8rem;color:var(--muted)">Based in NJ, 15 minutes from the Iselin office.</span>
+   <span style="font-size:.8rem;color:var(--muted)">Book a 20-minute TICKMARK walkthrough. Based in NJ, 15 minutes from the Iselin office.</span>
   </div>
  </section>
 </main>
@@ -281,23 +283,23 @@ footer{padding:14px 0 30px;font-size:.74rem;color:var(--faint);border-top:1px so
 <script>
 (function(){
 var C=[
- {k:"assurance",n:"Assurance",ic:"audit",t:3,title:"Audit evidence review assistant",tw:"Tier 3: it touches audit evidence under professional standards.",
+ {k:"assurance",n:"Assurance",ic:"audit",t:3,title:"Evidence matching for sampled transactions",who:"Audit senior, busy season",tw:"Tier 3: it touches audit evidence under professional standards.",
   s:[["Intake","Engagement partner sponsors; baseline hours spent matching sample support","Baseline measured"],
-     ["Risk tier","Tier 3: client data, audit evidence, standards apply","Risk & Quality agrees tier"],
+     ["Risk tier","Tier 3: client data, audit evidence, standards apply","Professional Practice and Risk agree tier"],
      ["Build","Agents draft extraction and matching; engineers own the code","Requirements traced to tests"],
      ["Evaluate","Judge agents score matches on labeled samples; penetration test; client data isolated","Thresholds met, no high findings"],
      ["UAT","Three engagement teams run it side by side with manual review","Sponsor signs off"],
      ["Release","Auditor reviews every flag; drift and overrides monitored","Chief AI Officer approves"]],
   out:"Hours per engagement spent matching evidence"},
- {k:"tax",n:"Tax",ic:"tax",t:3,title:"Workpaper drafter for returns",tw:"Tier 3: it informs tax positions a professional signs.",
+ {k:"tax",n:"Tax",ic:"tax",t:3,title:"Workpaper drafter for returns",who:"Tax preparer, filing season",tw:"Tier 3: it informs tax positions a professional signs.",
   s:[["Intake","Tax practice leader sponsors; baseline prep time per return","Baseline measured"],
-     ["Risk tier","Tier 3: client financial data, signed returns","Risk & Quality agrees tier"],
+     ["Risk tier","Tier 3: client financial data, signed returns","Professional Practice and Risk agree tier"],
      ["Build","Agents draft workpapers from source documents with citations","Every figure traced to a source"],
      ["Evaluate","Judge agents check figures against source; reviewers test edge cases","Accuracy threshold met"],
      ["UAT","Seniors run a dry run before busy season on prior-year returns","Reviewer signs off"],
      ["Release","Preparer and reviewer still sign; review notes tracked","Chief AI Officer approves"]],
   out:"Prep time and review notes per return"},
- {k:"advisory",n:"Advisory",ic:"adv",t:2,title:"Risk assessment first draft",tw:"Tier 2: a consultant reviews every observation before the client sees it.",
+ {k:"advisory",n:"Advisory",ic:"adv",t:2,title:"Risk assessment first draft",who:"Risk consultant, client kickoff",tw:"Tier 2: a consultant reviews every observation before the client sees it.",
   s:[["Intake","Risk advisory sponsor; baseline time to first draft","Baseline measured"],
      ["Risk tier","Tier 2: client policies in, consultant reviews out","Tier recorded"],
      ["Build","Agents map client policies to a control framework and draft gaps","Scope frozen for release"],
@@ -305,7 +307,7 @@ var C=[
      ["UAT","Two engagements compare drafts with consultant work","Sponsor signs off"],
      ["Release","Consultant edits and owns the deliverable; edits feed back","Value scorecard live"]],
   out:"Time to first draft; consultant edit rate"},
- {k:"outsourcing",n:"Outsourcing",ic:"out",t:2,title:"Invoice coding and reconciliation",tw:"Tier 2: client books, with low-confidence items routed to an accountant.",
+ {k:"outsourcing",n:"Outsourcing",ic:"out",t:2,title:"Invoice coding and reconciliation",who:"Staff accountant, month-end close",tw:"Tier 2: client books, with low-confidence items routed to an accountant.",
   s:[["Intake","Client accounting leader sponsors; baseline items per hour","Baseline measured"],
      ["Risk tier","Tier 2: client ledgers, accountant reviews exceptions","Tier recorded"],
      ["Build","Agents suggest coding and match bank lines to entries","Rules and confidence levels agreed"],
@@ -313,7 +315,7 @@ var C=[
      ["UAT","Accountants run one close cycle in parallel","Sponsor signs off"],
      ["Release","Low-confidence items go to a person; corrections retrain","Value scorecard live"]],
   out:"Share of items coded without edits; close-cycle days"},
- {k:"firm",n:"Firm operations",ic:"firm",t:1,title:"Methodology and policy search for staff",tw:"Tier 1: internal, and a person uses every answer.",
+ {k:"firm",n:"Firm operations",ic:"firm",t:1,title:"Methodology and policy search for staff",who:"New associate, first 90 days",tw:"Tier 1: internal, and a person uses every answer.",
   s:[["Intake","Learning and quality leaders sponsor; baseline time to find answers","Baseline measured"],
      ["Risk tier","Tier 1: firm content only, staff-facing","Tier recorded"],
      ["Build","Agents answer from approved firm content with sources","Content owners named"],
@@ -329,7 +331,7 @@ var names=["Intake & value","Risk tier","Build","Evaluate","User acceptance","Re
 function show(i,auto){
  cur=i;var c=C[i];clearInterval(timer);
  Array.prototype.forEach.call(tabs.children,function(t,j){t.setAttribute('aria-selected',j===i?'true':'false')});
- var h='<div class="hd"><h3>'+c.title+'</h3><span class="tier t'+c.t+'">Tier '+c.t+'</span><span class="why-t">'+c.tw+'</span><span class="play"><button type="button" class="pri replay" id="pl">Play the path</button><button type="button" id="all">Show all</button></span></div><ol class="flow">';
+ var h='<div class="hd"><h3>'+c.title+'</h3><span class="pill-who">'+c.who+'</span><span class="tier t'+c.t+'">Tier '+c.t+'</span><span class="why-t">'+c.tw+'</span><span class="play"><button type="button" class="pri replay" id="pl">Play the path</button><button type="button" id="all">Show all</button></span></div><ol class="flow">';
  c.s.forEach(function(s,j){h+='<li class="st"><span class="k"><span class="tk"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span>'+(j+1)+' · '+names[j]+'</span><span class="w" style="display:block;margin-top:4px">'+s[1]+'</span><span class="g">Tick: '+s[2]+'</span></li>'});
  h+='</ol><div class="outc"><span class="m"><svg class="i"><use href="#i-tick"/></svg>Outcome to measure</span>'+c.out+' <span class="ill">Illustrative</span><span class="same">Same six stages for every service line. See the <a href="#path">delivery path</a>.</span></div>';
  box.innerHTML=h;
