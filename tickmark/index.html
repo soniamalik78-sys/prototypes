@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>How EisnerAmper Ships Trusted AI Faster · TICKMARK by Sonia Malik</title>
+<title>How EisnerAmper Ships Trusted AI Faster · TICKMARK proposal by Sonia Malik</title>
 <meta name="description" content="A proposal, to refine with EisnerAmper's teams: one delivery path that takes every AI solution from approved idea to measured client outcome. By Sonia Malik.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Crect width=%2724%27 height=%2724%27 rx=%275%27 fill=%27%230E4D45%27/%3E%3Cpath d=%27m6 12.5 4 4 8-9%27 fill=%27none%27 stroke=%27%23E2B24A%27 stroke-width=%272.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -141,6 +141,7 @@ svg.i{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-widt
 .listen{margin-top:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:12px 16px;border-left:4px solid var(--gold-hi)}
 .lq{flex:1;min-width:260px;font-size:.9rem}.lq ul{margin:6px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.lq li{background:var(--gold-soft);border-radius:9px;padding:8px 10px;font-size:.82rem;color:#4b3608;font-weight:600}
 @media (max-width:1180px){.lq ul{grid-template-columns:1fr 1fr}}@media (max-width:820px){.lq ul{grid-template-columns:1fr}}
+.contact{margin-top:12px;display:flex;gap:9px;flex-wrap:wrap;align-items:center;font-size:.86rem}.contact b{color:var(--green);margin-right:4px}.contact a{font-weight:700;text-decoration:none;font-size:.82rem;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px}.contact a.pri{background:var(--green);color:#fff;border-color:var(--green)}.contact span{font-size:.8rem;color:var(--faint)}
 .kpi.flash{border-color:var(--ok);box-shadow:0 0 0 3px var(--ok-soft);transition:box-shadow .3s}
 .listen a{font-weight:700;text-decoration:none;font-size:.82rem;background:var(--green);color:#fff;border-radius:999px;padding:8px 16px;white-space:nowrap}
 footer{padding:12px 0 28px;font-size:.72rem;color:var(--faint);border-top:1px solid var(--line)}
@@ -256,7 +257,13 @@ footer{padding:12px 0 28px;font-size:.72rem;color:var(--faint);border-top:1px so
     </div>
    </div>
   </div>
-  <div class="card listen"><div class="lq"><b>What I would want to learn from you first</b><ul><li>Where do AI solutions stall today, and why?</li><li>How does Professional Practice review AI work now?</li><li>Which solutions are closest to client-facing?</li><li>What would make your project managers' week easier?</li></ul></div><a href="mailto:sonia.malik78@gmail.com?subject=TICKMARK%20-%20Senior%20Director%2C%20AI%20Solution%20Delivery" data-contact>Talk it through · NJ / NYC</a></div>
+  <div class="card listen"><div class="lq"><b>What I would want to learn from you first</b><ul><li>Where do AI solutions stall today, and why?</li><li>How does Professional Practice review AI work now?</li><li>Which solutions are closest to client-facing?</li><li>What would make your project managers' week easier?</li></ul></div></div>
+  <div class="contact" id="contact"><b>Next step</b>
+   <a class="pri" href="mailto:sonia.malik78@gmail.com?subject=TICKMARK%20walkthrough%20-%20Senior%20Director%2C%20AI%20Solution%20Delivery" data-contact>Book a 20-minute walkthrough</a>
+   <a href="mailto:sonia.malik78@gmail.com?subject=TICKMARK%20-%20Senior%20Director%2C%20AI%20Solution%20Delivery" data-contact>sonia.malik78@gmail.com</a>
+   <a href="https://www.linkedin.com/in/sonia-malik-b059705" rel="noopener" data-contact>LinkedIn</a>
+   <a href="mailto:sonia.malik78@gmail.com?subject=Resume%20request%20-%20TICKMARK" data-contact>Request my resume</a>
+   <span>Based in NJ / NYC</span></div>
  </section>
 </main>
 <footer><div class="wrap">TICKMARK is a proposal by Sonia Malik for the Senior Director, AI Solution Delivery role, built from public information. Use cases, screens and targets are illustrative, not EisnerAmper data. Results under Why Sonia are from her career. © 2026 Sonia Malik</div></footer>
@@ -331,12 +338,12 @@ function go(j){step=j;var c=C[cur],s=c.s[j];
  var h='<div class="ttl">'+s[0]+'</div>';s[1].forEach(function(r){h+='<div class="row">'+r[0]+'<span class="st '+r[1]+'">'+r[2]+'</span></div>'});
  document.getElementById('scr').innerHTML=h;
  document.getElementById('tick').textContent=s[2];
- document.getElementById('sign').textContent=(j===5&&c.t<3)?'AI Solution Delivery':SIGN[j][0];
+ document.getElementById('sign').textContent=((j===5&&c.t<3)||(j===1&&c.t===1))?'AI Solution Delivery':SIGN[j][0];
  document.getElementById('depth').textContent='Tier '+c.t+': '+DEPTH[c.t][j];
  var o=document.getElementById('outc');o.classList.toggle('show',j===5);o.innerHTML='<svg class="i"><use href="#i-tick"/></svg>'+c.out+' <span class="ill">Illustrative</span><a href="#value" style="margin-left:auto;font-size:.8rem">Added to the scorecard ↓</a>';var k=document.getElementById('kpi-live');if(k)k.classList.toggle('flash',j===5);}
 function play(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){go(5);return}
  if(step>=5)go(0);var p=document.getElementById('play');p.textContent='Pause';
- timer=setInterval(function(){if(step>=5){stop();return}go(step+1)},2200);}
+ timer=setInterval(function(){go(step+1);if(step>=5)stop();},2200);}
 pick(0,true);
 // risk matrix
 var mx=document.getElementById('mx'),R=[["Tier 1","Internal productivity",1],["Tier 2","Client-supporting",2],["Tier 3","Client-facing or standards-bearing",3]];
